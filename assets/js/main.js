@@ -109,9 +109,30 @@ function renderTeam(filterCategory = 'ALL', searchQuery = '') {
   }
 
   container.innerHTML = filtered.map(m => {
+    let catKey = 'pdi';
+    let catBadge = 'PDI & Senior';
+
+    if (m.category === 'Coordinadora') {
+      catKey = 'leadership';
+      catBadge = 'Coordinación';
+    } else if (m.category.includes('Directora') || m.category.includes('Investigador Senior') || m.category === 'PDI') {
+      catKey = 'pdi';
+      catBadge = 'PDI & Senior';
+    } else if (m.category.includes('Posdoctoral')) {
+      catKey = 'postdoc';
+      catBadge = 'Posdoctoral';
+    } else if (m.category.includes('Predoctoral')) {
+      catKey = 'predoc';
+      catBadge = 'Predoctoral';
+    } else if (m.category.includes('Técnico')) {
+      catKey = 'tech';
+      catBadge = 'Personal Técnico';
+    }
+
     return `
-      <div class="team-card-inst">
-        <div class="team-photo-box">
+      <div class="team-card-inst team-card-${catKey}">
+        <span class="team-category-badge badge-${catKey}">${catBadge}</span>
+        <div class="team-photo-box photo-${catKey}">
           <img src="${m.image}" alt="${m.name}" class="team-photo-img" />
         </div>
         <div class="team-card-info">

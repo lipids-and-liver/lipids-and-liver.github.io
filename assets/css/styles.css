@@ -705,8 +705,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team-card-inst {
+  position: relative;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
+  border-top: 4px solid var(--ehu-navy);
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -717,9 +719,68 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.team-category-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
+}
+
+/* 1. Leadership / Coordinación */
+.team-card-leadership { border-top-color: #002B49; }
+.photo-leadership { border-color: #002B49 !important; box-shadow: 0 0 0 3px rgba(0, 43, 73, 0.12) !important; }
+.badge-leadership { background: #002B49; color: #ffffff; }
+
+/* 2. PDI & Seniors */
+.team-card-pdi { border-top-color: #1e3a5f; }
+.photo-pdi { border-color: #1e3a5f !important; box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12) !important; }
+.badge-pdi { background: #1e3a5f; color: #ffffff; }
+
+/* 3. Posdoctoral */
+.team-card-postdoc { border-top-color: #0284c7; }
+.photo-postdoc { border-color: #0284c7 !important; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12) !important; }
+.badge-postdoc { background: #0284c7; color: #ffffff; }
+
+/* 4. Predoctoral */
+.team-card-predoc { border-top-color: #16a34a; }
+.photo-predoc { border-color: #16a34a !important; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12) !important; }
+.badge-predoc { background: #16a34a; color: #ffffff; }
+
+/* 5. Personal Técnico */
+.team-card-tech { border-top-color: #d97706; }
+.photo-tech { border-color: #d97706 !important; box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.12) !important; }
+.badge-tech { background: #d97706; color: #ffffff; }
+
+/* Dark mode overrides */
+[data-theme="dark"] .team-card-leadership { border-top-color: #60a5fa; }
+[data-theme="dark"] .photo-leadership { border-color: #60a5fa !important; }
+[data-theme="dark"] .badge-leadership { background: #1d4ed8; }
+
+[data-theme="dark"] .team-card-pdi { border-top-color: #93c5fd; }
+[data-theme="dark"] .photo-pdi { border-color: #93c5fd !important; }
+[data-theme="dark"] .badge-pdi { background: #1e40af; }
+
+[data-theme="dark"] .team-card-postdoc { border-top-color: #38bdf8; }
+[data-theme="dark"] .photo-postdoc { border-color: #38bdf8 !important; }
+[data-theme="dark"] .badge-postdoc { background: #0369a1; }
+
+[data-theme="dark"] .team-card-predoc { border-top-color: #4ade80; }
+[data-theme="dark"] .photo-predoc { border-color: #4ade80 !important; }
+[data-theme="dark"] .badge-predoc { background: #15803d; }
+
+[data-theme="dark"] .team-card-tech { border-top-color: #fbbf24; }
+[data-theme="dark"] .photo-tech { border-color: #fbbf24 !important; }
+[data-theme="dark"] .badge-tech { background: #b45309; }
+
 .team-card-inst:hover {
   box-shadow: var(--shadow-md);
-  border-color: var(--ehu-navy);
   transform: translateY(-3px);
 }
 
