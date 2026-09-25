@@ -873,23 +873,23 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
 }
 
-/* 1. Leadership / Coordinación - Prestigious Gold & Imperial Navy Distinction */
+/* 1. Leadership / Coordinación - Prestigious Ruby Crimson & Gold Distinction */
 .team-card-leadership {
-  border-top: 5px solid #d97706;
-  border-left: 1px solid rgba(217, 119, 6, 0.3);
-  border-right: 1px solid rgba(217, 119, 6, 0.3);
-  box-shadow: 0 6px 18px rgba(0, 43, 73, 0.12);
+  border-top: 5px solid #be123c;
+  border-left: 1px solid rgba(190, 18, 60, 0.35);
+  border-right: 1px solid rgba(190, 18, 60, 0.35);
+  box-shadow: 0 6px 18px rgba(190, 18, 60, 0.15);
 }
 
 .photo-leadership {
-  border-color: #d97706 !important;
-  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.22), 0 6px 14px rgba(0, 43, 73, 0.25) !important;
+  border-color: #be123c !important;
+  box-shadow: 0 0 0 4px rgba(190, 18, 60, 0.22), 0 6px 14px rgba(0, 43, 73, 0.25) !important;
 }
 
 .badge-leadership {
-  background: linear-gradient(135deg, #002B49 0%, #1e3a5f 100%);
+  background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
   color: #fef08a;
-  border: 1px solid #d97706;
+  border: 1px solid #f59e0b;
   font-weight: 800;
 }
 
@@ -919,9 +919,9 @@ h1, h2, h3, h4, h5, h6 {
 .badge-tech { background: #d97706; color: #ffffff; }
 
 /* Dark mode overrides */
-[data-theme="dark"] .team-card-leadership { border-top-color: #f59e0b; border-left: 1px solid rgba(245, 158, 11, 0.4); border-right: 1px solid rgba(245, 158, 11, 0.4); }
-[data-theme="dark"] .photo-leadership { border-color: #f59e0b !important; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25), 0 6px 14px rgba(0, 0, 0, 0.4) !important; }
-[data-theme="dark"] .badge-leadership { background: linear-gradient(135deg, #1e3a5f 0%, #002B49 100%); color: #fef08a; border: 1px solid #f59e0b; }
+[data-theme="dark"] .team-card-leadership { border-top-color: #f43f5e; border-left: 1px solid rgba(244, 63, 94, 0.4); border-right: 1px solid rgba(244, 63, 94, 0.4); }
+[data-theme="dark"] .photo-leadership { border-color: #f43f5e !important; box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.25), 0 6px 14px rgba(0, 0, 0, 0.4) !important; }
+[data-theme="dark"] .badge-leadership { background: linear-gradient(135deg, #be123c 0%, #9f1239 100%); color: #fef08a; border: 1px solid #f59e0b; }
 
 [data-theme="dark"] .team-card-pdi { border-top-color: #93c5fd; }
 [data-theme="dark"] .photo-pdi { border-color: #93c5fd !important; }
@@ -1164,16 +1164,16 @@ h1, h2, h3, h4, h5, h6 {
 /* Dedicated Curriculum CV View Styling */
 /* Dedicated Curriculum CV View Category Theming */
 .cv-category-leadership .cv-header-card {
-  border-top: 5px solid #d97706;
-  border-left: 1px solid rgba(217, 119, 6, 0.25);
-  border-right: 1px solid rgba(217, 119, 6, 0.25);
+  border-top: 5px solid #be123c;
+  border-left: 1px solid rgba(190, 18, 60, 0.25);
+  border-right: 1px solid rgba(190, 18, 60, 0.25);
 }
 .cv-category-leadership .cv-photo {
-  border-color: #d97706;
-  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.2), 0 6px 16px rgba(0, 43, 73, 0.2);
+  border-color: #be123c;
+  box-shadow: 0 0 0 4px rgba(190, 18, 60, 0.2), 0 6px 16px rgba(0, 43, 73, 0.2);
 }
-.cv-category-leadership .cv-section-title { color: #002B49; }
-.cv-category-leadership .cv-section-title i { color: #d97706; }
+.cv-category-leadership .cv-section-title { color: #991b1b; }
+.cv-category-leadership .cv-section-title i { color: #be123c; }
 
 .cv-category-ryc .cv-header-card { border-top: 5px solid #6366f1; }
 .cv-category-ryc .cv-photo { border-color: #6366f1; }
@@ -1201,10 +1201,10 @@ h1, h2, h3, h4, h5, h6 {
 .cv-category-tech .cv-section-title i { color: #d97706; }
 
 /* Dark mode overrides for CV category theming */
-[data-theme="dark"] .cv-category-leadership .cv-header-card { border-top-color: #60a5fa; }
-[data-theme="dark"] .cv-category-leadership .cv-photo { border-color: #60a5fa; }
-[data-theme="dark"] .cv-category-leadership .cv-section-title { color: #60a5fa; }
-[data-theme="dark"] .cv-category-leadership .cv-section-title i { color: #60a5fa; }
+[data-theme="dark"] .cv-category-leadership .cv-header-card { border-top-color: #f43f5e; }
+[data-theme="dark"] .cv-category-leadership .cv-photo { border-color: #f43f5e; }
+[data-theme="dark"] .cv-category-leadership .cv-section-title { color: #fb7185; }
+[data-theme="dark"] .cv-category-leadership .cv-section-title i { color: #f43f5e; }
 
 [data-theme="dark"] .cv-category-ryc .cv-header-card { border-top-color: #818cf8; }
 [data-theme="dark"] .cv-category-ryc .cv-photo { border-color: #818cf8; }
