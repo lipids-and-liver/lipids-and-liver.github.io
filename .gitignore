@@ -1,0 +1,9 @@
+# Ensure .agents context folder is tracked by Git
+!.agents/
+!.agents/*
+!.agents/**/*
+
+# OS temporary files
+.DS_Store
+Thumbs.db
+*.tmp
