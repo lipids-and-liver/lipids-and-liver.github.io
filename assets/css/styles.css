@@ -720,17 +720,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team-category-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   font-size: 0.65rem;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: var(--shadow-sm);
-  z-index: 2;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 /* 1. Leadership / Coordinación */
@@ -850,24 +848,49 @@ h1, h2, h3, h4, h5, h6 {
   flex-grow: 1;
 }
 
-.team-cv-btn {
-  display: inline-flex;
+.team-card-footer {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  justify-content: space-between;
   width: 100%;
-  padding: 9px;
-  background: var(--ehu-navy);
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-  transition: background-color var(--transition-smooth);
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--border-color);
+  gap: 8px;
 }
 
-.team-cv-btn:hover {
-  background-color: var(--logo-green);
+.team-cv-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ehu-navy);
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all var(--transition-smooth);
+}
+
+.team-cv-btn-icon:hover {
+  background: var(--ehu-navy);
+  color: #ffffff;
+  border-color: var(--ehu-navy);
+  transform: scale(1.04);
+}
+
+[data-theme="dark"] .team-cv-btn-icon {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .team-cv-btn-icon:hover {
+  background: var(--logo-green);
+  color: #ffffff;
+  border-color: var(--logo-green);
 }
 
 /* PhD Theses Cards & Grid */

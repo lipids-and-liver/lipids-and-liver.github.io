@@ -131,7 +131,6 @@ function renderTeam(filterCategory = 'ALL', searchQuery = '') {
 
     return `
       <div class="team-card-inst team-card-${catKey}">
-        <span class="team-category-badge badge-${catKey}">${catBadge}</span>
         <div class="team-photo-box photo-${catKey}">
           <img src="${m.image}" alt="${m.name}" class="team-photo-img" />
         </div>
@@ -139,9 +138,13 @@ function renderTeam(filterCategory = 'ALL', searchQuery = '') {
           <h4 class="team-member-name">${m.name}</h4>
           <div class="team-member-role">${m.role}</div>
           <div class="team-member-dept">${m.department}</div>
-          <a href="curriculum.html?id=${m.id}" class="team-cv-btn">
-            <i class="fas fa-file-alt"></i> Ver Currículum Completo
-          </a>
+          
+          <div class="team-card-footer">
+            <span class="team-category-badge badge-${catKey}">${catBadge}</span>
+            <a href="curriculum.html?id=${m.id}" class="team-cv-btn-icon" title="Ver Currículum Completo">
+              <i class="fas fa-id-card"></i> CV
+            </a>
+          </div>
         </div>
       </div>
     `;
