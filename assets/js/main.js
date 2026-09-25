@@ -230,13 +230,25 @@ function setupThemeToggle() {
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
 
+  const icon = btn.querySelector('i');
+  const text = btn.querySelector('.theme-toggle-text');
+
+  function updateBtnUI(theme) {
+    if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    if (text) text.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro';
+    updateHeaderLogo(theme);
+  }
+
+  // Sync initial UI state on load
+  const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  updateBtnUI(initialTheme);
+
   btn.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-    btn.querySelector('i').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    updateHeaderLogo(next);
+    updateBtnUI(next);
   });
 }
 

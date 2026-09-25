@@ -53,8 +53,8 @@
             <button class="lang-btn">EU</button>
             <button class="lang-btn">EN</button>
           </div>
-          <button class="theme-toggle-btn" id="theme-toggle" title="Cambiar tema">
-            <i class="fas fa-moon"></i>
+          <button class="theme-toggle-btn" id="theme-toggle" title="Cambiar tema claro/oscuro">
+            <i class="fas fa-moon"></i> <span class="theme-toggle-text">Modo Oscuro</span>
           </button>
           <a href="index.html#theses" class="btn-inst-primary" style="padding: 6px 14px; font-size:0.85rem">
             <i class="fas fa-arrow-left"></i> Volver a Tesis Doctorales
@@ -142,15 +142,26 @@
       // Theme toggle setup
       const themeBtn = document.getElementById('theme-toggle');
       if (themeBtn) {
+        const icon = themeBtn.querySelector('i');
+        const text = themeBtn.querySelector('.theme-toggle-text');
+        const ehuLogo = document.getElementById('ehu-header-logo');
+
+        function updateThemeUI(theme) {
+          if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+          if (text) text.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro';
+          if (ehuLogo) ehuLogo.src = theme === 'dark' ? 'assets/images/logo/ehu_logo_negatiboa.svg' : 'assets/images/logo/ehu_logo_positiboa.svg';
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeUI(savedTheme);
+
         themeBtn.addEventListener('click', () => {
           const current = document.documentElement.getAttribute('data-theme');
           const next = current === 'dark' ? 'light' : 'dark';
           document.documentElement.setAttribute('data-theme', next);
           localStorage.setItem('theme', next);
-          const ehuLogo = document.getElementById('ehu-header-logo');
-          if (ehuLogo) {
-            ehuLogo.src = next === 'dark' ? 'assets/images/logo/ehu_logo_negatiboa.svg' : 'assets/images/logo/ehu_logo_positiboa.svg';
-          }
+          updateThemeUI(next);
         });
       }
 
