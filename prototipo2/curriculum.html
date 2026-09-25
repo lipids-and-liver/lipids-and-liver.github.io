@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Currículums | Lipids & Liver (Prototipo 2 - Biotech Vanguardia)</title>
+  <meta name="description" content="Currículum académico, proyectos, publicaciones y cargos del personal investigador del Grupo Lipids & Liver." />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/biotech.css" />
+</head>
+<body>
+
+  <!-- Ambient Radiant Mesh Background -->
+  <div class="ambient-mesh"></div>
+
+  <!-- Top Prototype Switcher & Institutional Utility Bar -->
+  <div class="proto-top-bar">
+    <div class="container proto-top-inner">
+      <div class="proto-institutions">
+        <a href="https://www.ehu.eus" target="_blank" rel="noopener"><i class="fas fa-university"></i> UPV/EHU</a>
+        <span>&bull;</span>
+        <a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener"><i class="fas fa-hospital-user"></i> IIS Biocruces Bizkaia</a>
+        <span>&bull;</span>
+        <span style="opacity:0.75">Depto. Fisiología &bull; Medicina y Enfermería</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-size:0.75rem; color:#94a3b8;"><i class="fas fa-flask"></i> Vista Activa: <strong>Prototipo 2 (Biotech Vanguardia)</strong></span>
+        <a href="../prototipo1/curriculum.html" class="proto-switch-pill">
+          <i class="fas fa-history"></i> Ver Prototipo 1 (Clásico)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Glass Navbar -->
+  <div class="floating-navbar-wrapper">
+    <nav class="floating-navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="ehu-logo" id="ehu-brand-logo" />
+        <div style="width:1px; height:24px; background:var(--bio-border);"></div>
+        <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver" class="brand-logo" />
+        <div class="nav-brand-title">
+          <span class="nav-brand-name">Lipids &amp; Liver</span>
+          <span class="nav-brand-sub">Portal de Currículums</span>
+        </div>
+      </a>
+
+      <!-- Quick Member Selector in Nav -->
+      <div style="display:flex; align-items:center; gap:8px;">
+        <label for="member-select" style="font-size:0.82rem; font-weight:700; color:var(--bio-emerald);">
+          <i class="fas fa-user-circle"></i> Investigador/a:
+        </label>
+        <select id="member-select" style="padding:6px 14px; border-radius:20px; border:1px solid var(--bio-border); font-family:var(--font-sans); font-size:0.85rem; font-weight:600; background:var(--bio-surface-solid); color:var(--bio-text-primary); cursor:pointer; outline:none;">
+          <!-- Populated dynamically -->
+        </select>
+      </div>
+
+      <div class="nav-right-actions">
+        <a href="index.html" class="btn-bio-secondary" style="padding:6px 16px; font-size:0.85rem;">
+          <i class="fas fa-arrow-left"></i> Portada Prototipo 2
+        </a>
+        <button class="theme-pill-btn" id="theme-toggle-btn" title="Alternar tema claro/oscuro">
+          <i class="fas fa-moon"></i> <span class="theme-text">Modo Oscuro</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main CV Container -->
+  <main class="container" id="cv-biotech-container" style="padding: 1rem 0 5rem;">
+    <!-- Injected dynamically by JS -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-biotech">
+    <div class="container">
+      <div class="footer-bottom-bar" style="margin-top:0; padding-top:0; border-top:none;">
+        <div>&copy; 2026 Grupo de Investigación Lipids &amp; Liver &bull; UPV/EHU &bull; IIS Biocruces Bizkaia</div>
+        <div>Portal Oficial de Currículum e Investigadores (Prototipo 2)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('member-select');
+      const container = document.getElementById('cv-biotech-container');
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      const ehuLogo = document.getElementById('ehu-brand-logo');
+
+      // Theme toggle setup
+      function updateTheme(theme) {
+        if (!themeBtn) return;
+        const icon = themeBtn.querySelector('i');
+        const text = themeBtn.querySelector('.theme-text');
+        if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        if (text) text.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro';
+        if (ehuLogo) ehuLogo.src = theme === 'dark' ? 'assets/images/logo/ehu_logo_negatiboa.svg' : 'assets/images/logo/ehu_logo_positiboa.svg';
+      }
+
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateTheme(savedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateTheme(next);
+        });
+      }
+
+      // Populate member options
+      APP_DATA.teamMembers.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m.id;
+        opt.textContent = `${m.name} (${m.category})`;
+        select.appendChild(opt);
+      });
+
+      // URL param
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlId = urlParams.get('id') || APP_DATA.teamMembers[0].id;
+      select.value = urlId;
+      renderBioCV(urlId);
+
+      select.addEventListener('change', (e) => {
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + e.target.value;
+        window.history.pushState({path: newUrl}, '', newUrl);
+        renderBioCV(e.target.value);
+      });
+
+      function renderBioCV(id) {
+        const member = APP_DATA.teamMembers.find(m => m.id === id) || APP_DATA.teamMembers[0];
+        const cv = member.cv || {};
+
+        let catKey = 'pdi';
+        let catBadge = 'PDI & Senior';
+
+        if (member.category === 'Coordinadora') {
+          catKey = 'leadership';
+          catBadge = 'Coordinación';
+        } else if (member.category.includes('Ramón y Cajal')) {
+          catKey = 'ryc';
+          catBadge = 'Ramón y Cajal';
+        } else if (member.category.includes('Posdoctoral')) {
+          catKey = 'postdoc';
+          catBadge = 'Posdoctoral';
+        } else if (member.category.includes('Predoctoral')) {
+          catKey = 'predoc';
+          catBadge = 'Predoctoral';
+        } else if (member.category.includes('Técnico')) {
+          catKey = 'tech';
+          catBadge = 'Técnico';
+        }
+
+        container.innerHTML = `
+          <!-- Header Profile Bento Card -->
+          <div class="bento-card col-12" style="border-top: 5px solid var(--bio-emerald); margin-bottom: 1.5rem;">
+            <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+              <img src="${member.image}" alt="${member.name}" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid var(--bio-emerald); box-shadow:0 0 20px rgba(16, 185, 129, 0.3);" />
+              <div style="flex-grow:1;">
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;">
+                  <h1 style="font-family:var(--font-display); font-size:2rem; font-weight:800; margin:0;">${member.name}</h1>
+                  <span class="team-category-badge badge-${catKey}" style="font-size:0.8rem; padding:4px 14px;">${catBadge}</span>
+                </div>
+                <div style="font-size:1.1rem; color:var(--bio-emerald); font-weight:700; margin-bottom:0.75rem;">${cv.title || member.role}</div>
+                <p style="color:var(--bio-text-secondary); max-width:850px; font-size:1.02rem; margin-bottom:1rem;">${member.bio || ''}</p>
+                <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:0.88rem; color:var(--bio-text-muted);">
+                  <span><i class="fas fa-university"></i> ${member.department}</span>
+                  <span><i class="fas fa-door-open"></i> ${member.office || 'Facultad de Medicina, Leioa'}</span>
+                  <span><i class="fas fa-envelope"></i> <a href="mailto:${member.email}" style="color:var(--bio-cyan); text-decoration:none;">${member.email}</a></span>
+                  ${member.orcid ? `<span><i class="fas fa-id-badge"></i> <a href="https://orcid.org/${member.orcid}" target="_blank" rel="noopener" style="color:var(--bio-emerald); text-decoration:none;">ORCID: ${member.orcid}</a></span>` : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-grid">
+            <!-- Degrees -->
+            ${cv.degrees ? `
+            <div class="bento-card col-6">
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--bio-emerald); margin-bottom:1rem;">
+                <i class="fas fa-graduation-cap"></i> Titulación y Formación Académica
+              </h3>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; color:var(--bio-text-secondary);">
+                ${cv.degrees.map(d => `<li><i class="fas fa-check" style="color:var(--bio-emerald); margin-right:8px;"></i> ${d}</li>`).join('')}
+              </ul>
+            </div>
+            ` : ''}
+
+            <!-- Positions -->
+            ${cv.positions ? `
+            <div class="bento-card col-6">
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--bio-cyan); margin-bottom:1rem;">
+                <i class="fas fa-briefcase"></i> Cargos Académicos e Institucionales
+              </h3>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; color:var(--bio-text-secondary);">
+                ${cv.positions.map(p => `<li><i class="fas fa-arrow-right" style="color:var(--bio-cyan); margin-right:8px;"></i> ${p}</li>`).join('')}
+              </ul>
+            </div>
+            ` : ''}
+
+            <!-- Research Summary -->
+            ${cv.researchSummary ? `
+            <div class="bento-card col-12">
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--bio-emerald); margin-bottom:1rem;">
+                <i class="fas fa-microscope"></i> Resumen de Actividad Investigadora
+              </h3>
+              <p style="color:var(--bio-text-secondary); line-height:1.8; font-size:1.05rem;">${cv.researchSummary}</p>
+            </div>
+            ` : ''}
+
+            <!-- Grants -->
+            ${cv.grants ? `
+            <div class="bento-card col-12">
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--bio-amber); margin-bottom:1rem;">
+                <i class="fas fa-award"></i> Proyectos de Investigación y Financiación Competitiva
+              </h3>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:12px; color:var(--bio-text-secondary);">
+                ${cv.grants.map(g => `<li style="padding:10px 14px; background:var(--bio-surface-hover); border-radius:12px; border-left:3px solid var(--bio-amber);"><i class="fas fa-file-contract" style="color:var(--bio-amber); margin-right:8px;"></i> ${g}</li>`).join('')}
+              </ul>
+            </div>
+            ` : ''}
+
+            <!-- Publications -->
+            ${cv.publications ? `
+            <div class="bento-card col-12">
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--bio-cyan); margin-bottom:1rem;">
+                <i class="fas fa-book-open"></i> Publicaciones Científicas Seleccionadas
+              </h3>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:12px; color:var(--bio-text-secondary);">
+                ${cv.publications.map(pub => `<li style="padding:10px 14px; background:var(--bio-surface-hover); border-radius:12px; border-left:3px solid var(--bio-cyan);"><i class="fas fa-quote-left" style="color:var(--bio-cyan); margin-right:8px;"></i> ${pub}</li>`).join('')}
+              </ul>
+            </div>
+            ` : ''}
+
+            <!-- Teaching -->
+            ${cv.teaching ? `
+            <div class="bento-card col-12">
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--bio-emerald); margin-bottom:1rem;">
+                <i class="fas fa-chalkboard-teacher"></i> Actividad Docente y Dirección Académica
+              </h3>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; color:var(--bio-text-secondary);">
+                ${cv.teaching.map(t => `<li><i class="fas fa-user-graduate" style="color:var(--bio-emerald); margin-right:8px;"></i> ${t}</li>`).join('')}
+              </ul>
+            </div>
+            ` : ''}
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
