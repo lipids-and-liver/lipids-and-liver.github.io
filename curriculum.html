@@ -48,10 +48,10 @@
         </div>
 
         <div class="header-actions">
-          <div class="lang-selector">
-            <button class="lang-btn active">ES</button>
-            <button class="lang-btn">EU</button>
-            <button class="lang-btn">EN</button>
+          <div class="lang-selector" id="lang-switch-group">
+            <button class="lang-btn active" data-lang="es">ES</button>
+            <button class="lang-btn" data-lang="eu">EU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
           </div>
           <button class="theme-toggle-btn" id="theme-toggle" title="Cambiar tema claro/oscuro">
             <i class="fas fa-moon"></i> <span class="theme-toggle-text">Modo Oscuro</span>
@@ -70,8 +70,9 @@
           <li class="nav-menu-item"><a href="index.html#hero">Inicio</a></li>
           <li class="nav-menu-item"><a href="index.html#about">El Grupo</a></li>
           <li class="nav-menu-item"><a href="index.html#lines">Investigación</a></li>
-          <li class="nav-menu-item"><a href="index.html#team" class="active">Personal &amp; CV</a></li>
-          <li class="nav-menu-item"><a href="index.html#publications">Publicaciones</a></li>
+          <li class="nav-menu-item"><a href="curriculum.html" class="active">Personal &amp; CV</a></li>
+          <li class="nav-menu-item"><a href="tesis.html">Tesis Doctorales</a></li>
+          <li class="nav-menu-item"><a href="publicaciones.html">Publicaciones</a></li>
           <li class="nav-menu-item"><a href="index.html#contact">Contacto</a></li>
         </ul>
 
@@ -108,8 +109,9 @@
           <h4>Enlaces Rápidos</h4>
           <ul class="footer-links-inst">
             <li><a href="index.html#hero">Página Principal</a></li>
-            <li><a href="index.html#lines">Líneas de Investigación</a></li>
-            <li><a href="index.html#publications">Publicaciones</a></li>
+            <li><a href="curriculum.html">Portal de CVs</a></li>
+            <li><a href="tesis.html">Tesis Doctorales</a></li>
+            <li><a href="publicaciones.html">Catálogo de Publicaciones</a></li>
           </ul>
         </div>
         <div>
@@ -157,6 +159,21 @@
           updateThemeUI(next);
         });
       }
+
+      // Language switcher setup
+      const langBtns = document.querySelectorAll('.lang-btn');
+      const savedLang = localStorage.getItem('lang') || 'es';
+      langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === savedLang));
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          langBtns.forEach(b => b.classList.remove('active'));
+          const target = e.target.closest('.lang-btn');
+          if (target) {
+            target.classList.add('active');
+            localStorage.setItem('lang', target.dataset.lang);
+          }
+        });
+      });
 
       // Populate member select options
       APP_DATA.teamMembers.forEach(m => {

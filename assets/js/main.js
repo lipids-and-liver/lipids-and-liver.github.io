@@ -5,12 +5,20 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Current state
-  let currentLang = 'es';
+  let currentLang = localStorage.getItem('lang') || 'es';
   let currentTheme = localStorage.getItem('theme') || 'light';
 
   // Apply saved theme
   document.documentElement.setAttribute('data-theme', currentTheme);
   updateHeaderLogo(currentTheme);
+
+  // Apply saved language if not default
+  if (currentLang !== 'es') {
+    applyTranslations(currentLang);
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === currentLang);
+    });
+  }
 
   // Initial Data Renders
   renderStats();
@@ -257,8 +265,13 @@ function setupLanguageSwitcher() {
   btns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       btns.forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      applyTranslations(e.target.dataset.lang);
+      const targetBtn = e.target.closest('.lang-btn');
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+        const lang = targetBtn.dataset.lang;
+        localStorage.setItem('lang', lang);
+        applyTranslations(lang);
+      }
     });
   });
 }
