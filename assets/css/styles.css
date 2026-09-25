@@ -1000,6 +1000,58 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Dedicated Curriculum CV View Styling */
+/* Dedicated Curriculum CV View Category Theming */
+.cv-category-leadership .cv-header-card { border-top: 5px solid #002B49; }
+.cv-category-leadership .cv-photo { border-color: #002B49; }
+.cv-category-leadership .cv-section-title { color: #002B49; }
+.cv-category-leadership .cv-section-title i { color: #002B49; }
+
+.cv-category-pdi .cv-header-card { border-top: 5px solid #1e3a5f; }
+.cv-category-pdi .cv-photo { border-color: #1e3a5f; }
+.cv-category-pdi .cv-section-title { color: #1e3a5f; }
+.cv-category-pdi .cv-section-title i { color: #1e3a5f; }
+
+.cv-category-postdoc .cv-header-card { border-top: 5px solid #0284c7; }
+.cv-category-postdoc .cv-photo { border-color: #0284c7; }
+.cv-category-postdoc .cv-section-title { color: #0284c7; }
+.cv-category-postdoc .cv-section-title i { color: #0284c7; }
+
+.cv-category-predoc .cv-header-card { border-top: 5px solid #16a34a; }
+.cv-category-predoc .cv-photo { border-color: #16a34a; }
+.cv-category-predoc .cv-section-title { color: #16a34a; }
+.cv-category-predoc .cv-section-title i { color: #16a34a; }
+
+.cv-category-tech .cv-header-card { border-top: 5px solid #d97706; }
+.cv-category-tech .cv-photo { border-color: #d97706; }
+.cv-category-tech .cv-section-title { color: #d97706; }
+.cv-category-tech .cv-section-title i { color: #d97706; }
+
+/* Dark mode overrides for CV category theming */
+[data-theme="dark"] .cv-category-leadership .cv-header-card { border-top-color: #60a5fa; }
+[data-theme="dark"] .cv-category-leadership .cv-photo { border-color: #60a5fa; }
+[data-theme="dark"] .cv-category-leadership .cv-section-title { color: #60a5fa; }
+[data-theme="dark"] .cv-category-leadership .cv-section-title i { color: #60a5fa; }
+
+[data-theme="dark"] .cv-category-pdi .cv-header-card { border-top-color: #93c5fd; }
+[data-theme="dark"] .cv-category-pdi .cv-photo { border-color: #93c5fd; }
+[data-theme="dark"] .cv-category-pdi .cv-section-title { color: #93c5fd; }
+[data-theme="dark"] .cv-category-pdi .cv-section-title i { color: #93c5fd; }
+
+[data-theme="dark"] .cv-category-postdoc .cv-header-card { border-top-color: #38bdf8; }
+[data-theme="dark"] .cv-category-postdoc .cv-photo { border-color: #38bdf8; }
+[data-theme="dark"] .cv-category-postdoc .cv-section-title { color: #38bdf8; }
+[data-theme="dark"] .cv-category-postdoc .cv-section-title i { color: #38bdf8; }
+
+[data-theme="dark"] .cv-category-predoc .cv-header-card { border-top-color: #4ade80; }
+[data-theme="dark"] .cv-category-predoc .cv-photo { border-color: #4ade80; }
+[data-theme="dark"] .cv-category-predoc .cv-section-title { color: #4ade80; }
+[data-theme="dark"] .cv-category-predoc .cv-section-title i { color: #4ade80; }
+
+[data-theme="dark"] .cv-category-tech .cv-header-card { border-top-color: #fbbf24; }
+[data-theme="dark"] .cv-category-tech .cv-photo { border-color: #fbbf24; }
+[data-theme="dark"] .cv-category-tech .cv-section-title { color: #fbbf24; }
+[data-theme="dark"] .cv-category-tech .cv-section-title i { color: #fbbf24; }
+
 .cv-container {
   padding: 40px 0 80px;
 }

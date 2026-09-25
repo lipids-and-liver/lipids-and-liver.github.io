@@ -172,12 +172,37 @@
         const member = APP_DATA.teamMembers.find(m => m.id === memberId) || APP_DATA.teamMembers[0];
         const cv = member.cv || {};
 
+        let catKey = 'pdi';
+        let catBadge = 'PDI & Senior';
+
+        if (member.category === 'Coordinadora') {
+          catKey = 'leadership';
+          catBadge = 'Coordinación';
+        } else if (member.category.includes('Directora') || member.category.includes('Investigador Senior') || member.category === 'PDI') {
+          catKey = 'pdi';
+          catBadge = 'PDI & Senior';
+        } else if (member.category.includes('Posdoctoral')) {
+          catKey = 'postdoc';
+          catBadge = 'Posdoctoral';
+        } else if (member.category.includes('Predoctoral')) {
+          catKey = 'predoc';
+          catBadge = 'Predoctoral';
+        } else if (member.category.includes('Técnico')) {
+          catKey = 'tech';
+          catBadge = 'Personal Técnico';
+        }
+
+        cvContainer.className = `container cv-container cv-category-${catKey}`;
+
         cvContainer.innerHTML = `
           <!-- Header Profile Card -->
           <div class="cv-header-card">
-            <img src="${member.image}" alt="${member.name}" class="cv-photo" />
+            <img src="${member.image}" alt="${member.name}" class="cv-photo photo-${catKey}" />
             <div>
-              <h1 class="cv-main-name">${member.name}</h1>
+              <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px;">
+                <h1 class="cv-main-name" style="margin:0">${member.name}</h1>
+                <span class="team-category-badge badge-${catKey}" style="font-size:0.75rem; padding:4px 12px; border-radius:14px;">${catBadge}</span>
+              </div>
               <div class="cv-main-title">${cv.title || member.role}</div>
               <p style="color:var(--text-secondary); margin-bottom:1.25rem;">${member.bio || ''}</p>
               
