@@ -689,6 +689,89 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }
 
+/* Modern Publications Filter Bar & Pill Buttons */
+.pub-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 2.2rem;
+}
+
+.pub-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-surface-alt);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.pub-filter-btn i {
+  font-size: 0.85rem;
+  color: var(--logo-green);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.pub-filter-btn:hover {
+  background: var(--bg-surface);
+  color: var(--ehu-navy);
+  border-color: var(--logo-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(104, 159, 56, 0.18);
+}
+
+.pub-filter-btn:hover i {
+  transform: scale(1.15);
+  color: var(--ehu-navy);
+}
+
+.pub-filter-btn.active {
+  background: linear-gradient(135deg, var(--ehu-navy) 0%, #1e3a5f 100%);
+  color: #ffffff;
+  border-color: var(--ehu-navy);
+  box-shadow: 0 4px 14px rgba(0, 43, 73, 0.28);
+  transform: translateY(-1px);
+}
+
+.pub-filter-btn.active i {
+  color: #8AC63F;
+}
+
+[data-theme="dark"] .pub-filter-btn {
+  background: var(--bg-surface-alt);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .pub-filter-btn:hover {
+  background: var(--bg-surface);
+  color: #ffffff;
+  border-color: var(--logo-green);
+  box-shadow: 0 4px 12px rgba(138, 198, 63, 0.25);
+}
+
+[data-theme="dark"] .pub-filter-btn.active {
+  background: linear-gradient(135deg, var(--logo-green) 0%, #4f7e28 100%);
+  color: #ffffff;
+  border-color: var(--logo-green);
+  box-shadow: 0 4px 14px rgba(138, 198, 63, 0.35);
+}
+
+[data-theme="dark"] .pub-filter-btn.active i {
+  color: #ffffff;
+}
+
 /* Academic Team Filter Buttons */
 .team-filter-bar {
   display: flex;
