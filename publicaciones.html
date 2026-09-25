@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Completo de Publicaciones Científicas | Lipids & Liver (UPV/EHU)</title>
+  <meta name="description" content="Repositorio oficial de artículos y publicaciones en revistas científicas indexadas (JCR) del Grupo de Investigación Lipids & Liver." />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Institutional Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Top Institutional Utility Bar -->
+  <div class="top-institutional-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <a href="https://www.ehu.eus" target="_blank" rel="noopener"><i class="fas fa-university"></i> Universidad del País Vasco / Euskal Herriko Unibertsitatea</a>
+        <span>&bull;</span>
+        <a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener"><i class="fas fa-hospital-user"></i> IIS Biocruces Bizkaia</a>
+      </div>
+      <div class="top-bar-right">
+        <span>Departamento de Fisiología &bull; Facultad de Medicina y Enfermería</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header with Both Logos -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-main-row">
+        <div class="brand-logos-container">
+          <a href="index.html">
+            <img src="assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="ehu-logo-img" id="ehu-header-logo" />
+          </a>
+          <div class="brand-divider"></div>
+          <a href="index.html">
+            <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver Logo" class="group-logo-img" />
+          </a>
+          <div class="header-title-box">
+            <span class="header-title-main">Lipids &amp; Liver</span>
+            <span class="header-title-sub">Grupo de Investigación Consolidado</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="lang-selector">
+            <button class="lang-btn active">ES</button>
+            <button class="lang-btn">EU</button>
+            <button class="lang-btn">EN</button>
+          </div>
+          <button class="theme-toggle-btn" id="theme-toggle" title="Cambiar tema claro/oscuro">
+            <i class="fas fa-moon"></i> <span class="theme-toggle-text">Modo Oscuro</span>
+          </button>
+          <a href="index.html" class="btn-inst-primary" style="padding: 6px 14px; font-size:0.85rem">
+            <i class="fas fa-arrow-left"></i> Volver a la Web Principal
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav Bar -->
+    <nav class="nav-bar-row">
+      <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+        <ul class="nav-menu">
+          <li class="nav-menu-item"><a href="index.html#hero">Inicio</a></li>
+          <li class="nav-menu-item"><a href="index.html#about">El Grupo</a></li>
+          <li class="nav-menu-item"><a href="index.html#lines">Investigación</a></li>
+          <li class="nav-menu-item"><a href="personal.html">Personal Investigador</a></li>
+          <li class="nav-menu-item"><a href="tesis.html">Tesis Doctorales</a></li>
+          <li class="nav-menu-item"><a href="publicaciones.html" class="active">Publicaciones</a></li>
+          <li class="nav-menu-item"><a href="index.html#contact">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header Banner -->
+  <div style="background: var(--ehu-navy); color: #ffffff; padding: 40px 0; margin-bottom: 2.5rem; border-bottom: 3px solid var(--logo-green);">
+    <div class="container">
+      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;"><i class="fas fa-book-open" style="color:var(--logo-green); margin-right:10px;"></i> Catálogo Completo de Publicaciones Científicas</h1>
+      <p style="font-size: 1.05rem; opacity: 0.9;">Artículos científicos en revistas de alto impacto internacional indexadas en JCR / PubMed</p>
+    </div>
+  </div>
+
+  <main class="container" style="margin-bottom: 4rem;">
+    <!-- Topic Filters -->
+    <div class="pub-filters" id="pub-filters" style="margin-bottom:2.2rem">
+      <button class="pub-filter-btn active" data-topic="ALL"><i class="fas fa-layer-group"></i> Todas las Áreas</button>
+      <button class="pub-filter-btn" data-topic="mafld"><i class="fas fa-notes-medical"></i> MAFLD / NASH</button>
+      <button class="pub-filter-btn" data-topic="cancer"><i class="fas fa-dna"></i> Cáncer Hepático</button>
+      <button class="pub-filter-btn" data-topic="lipidomics"><i class="fas fa-vial"></i> Lipidómica SGIker</button>
+      <button class="pub-filter-btn" data-topic="e2f"><i class="fas fa-chart-line"></i> Daño Hepático (E2F)</button>
+      <button class="pub-filter-btn" data-topic="exposome"><i class="fas fa-globe-americas"></i> Exposoma &amp; MDCs</button>
+    </div>
+
+    <!-- Dynamic Publications List -->
+    <div class="pubs-list" id="pubs-list">
+      <!-- Dynamically rendered by main.js -->
+    </div>
+  </main>
+
+  <!-- Institutional Footer -->
+  <footer class="institutional-footer">
+    <div class="container">
+      <div class="footer-logos-row">
+        <img src="assets/images/logo/ehu_logo_negatiboa.svg" alt="UPV/EHU Logo" style="height:40px;" />
+        <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver Logo" style="height:45px; filter: brightness(0) invert(1);" />
+      </div>
+
+      <div class="footer-grid-inst">
+        <div>
+          <h4>Grupo de Investigación Lipids &amp; Liver</h4>
+          <p>Departamento de Fisiología, Facultad de Medicina y Enfermería (UPV/EHU)<br />Instituto de Investigación Sanitaria Biocruces Bizkaia</p>
+        </div>
+        <div>
+          <h4>Enlaces Rápidos</h4>
+          <ul class="footer-links-inst">
+            <li><a href="index.html">Página Principal</a></li>
+            <li><a href="personal.html">Personal Investigador</a></li>
+            <li><a href="tesis.html">Tesis Doctorales</a></li>
+            <li><a href="curriculum.html">Portal de CVs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <p>Barrio Sarriena SN, 48940 Leioa, Bizkaia<br />Email: patricia.aspichueta@ehu.eus</p>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <div>&copy; 2026 Grupo Lipids &amp; Liver - Universidad del País Vasco / Euskal Herriko Unibertsitatea</div>
+        <div>Catálogo Oficial de Publicaciones Científicas</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
