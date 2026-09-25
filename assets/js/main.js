@@ -114,22 +114,22 @@ function renderTeam(filterCategory = 'ALL', searchQuery = '') {
 
     if (m.category === 'Coordinadora') {
       catKey = 'leadership';
-      catBadge = 'Coordinación';
+      catBadge = '<i class="fas fa-crown" style="margin-right:4px;"></i> Coordinación';
     } else if (m.category.includes('Ramón y Cajal') || m.category.includes('Ryb')) {
       catKey = 'ryc';
-      catBadge = 'Ramón y Cajal';
+      catBadge = '<i class="fas fa-award" style="margin-right:4px;"></i> Ramón y Cajal';
     } else if (m.category.includes('Directora') || m.category.includes('Investigador Senior') || m.category === 'PDI') {
       catKey = 'pdi';
-      catBadge = 'PDI & Senior';
+      catBadge = '<i class="fas fa-user-graduate" style="margin-right:4px;"></i> PDI & Senior';
     } else if (m.category.includes('Posdoctoral')) {
       catKey = 'postdoc';
-      catBadge = 'Posdoctoral';
+      catBadge = '<i class="fas fa-microscope" style="margin-right:4px;"></i> Posdoctoral';
     } else if (m.category.includes('Predoctoral')) {
       catKey = 'predoc';
-      catBadge = 'Predoctoral';
+      catBadge = '<i class="fas fa-user-edit" style="margin-right:4px;"></i> Predoctoral';
     } else if (m.category.includes('Técnico')) {
       catKey = 'tech';
-      catBadge = 'Personal Técnico';
+      catBadge = '<i class="fas fa-flask" style="margin-right:4px;"></i> Personal Técnico';
     }
 
     return `
