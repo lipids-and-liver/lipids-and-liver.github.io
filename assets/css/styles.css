@@ -736,6 +736,11 @@ h1, h2, h3, h4, h5, h6 {
 .photo-leadership { border-color: #002B49 !important; box-shadow: 0 0 0 3px rgba(0, 43, 73, 0.12) !important; }
 .badge-leadership { background: #002B49; color: #ffffff; }
 
+/* 1.5. Ramón y Cajal */
+.team-card-ryc { border-top-color: #6366f1; }
+.photo-ryc { border-color: #6366f1 !important; box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important; }
+.badge-ryc { background: #6366f1; color: #ffffff; }
+
 /* 2. PDI & Seniors */
 .team-card-pdi { border-top-color: #1e3a5f; }
 .photo-pdi { border-color: #1e3a5f !important; box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12) !important; }
@@ -1006,6 +1011,11 @@ h1, h2, h3, h4, h5, h6 {
 .cv-category-leadership .cv-section-title { color: #002B49; }
 .cv-category-leadership .cv-section-title i { color: #002B49; }
 
+.cv-category-ryc .cv-header-card { border-top: 5px solid #6366f1; }
+.cv-category-ryc .cv-photo { border-color: #6366f1; }
+.cv-category-ryc .cv-section-title { color: #6366f1; }
+.cv-category-ryc .cv-section-title i { color: #6366f1; }
+
 .cv-category-pdi .cv-header-card { border-top: 5px solid #1e3a5f; }
 .cv-category-pdi .cv-photo { border-color: #1e3a5f; }
 .cv-category-pdi .cv-section-title { color: #1e3a5f; }
@@ -1031,6 +1041,11 @@ h1, h2, h3, h4, h5, h6 {
 [data-theme="dark"] .cv-category-leadership .cv-photo { border-color: #60a5fa; }
 [data-theme="dark"] .cv-category-leadership .cv-section-title { color: #60a5fa; }
 [data-theme="dark"] .cv-category-leadership .cv-section-title i { color: #60a5fa; }
+
+[data-theme="dark"] .cv-category-ryc .cv-header-card { border-top-color: #818cf8; }
+[data-theme="dark"] .cv-category-ryc .cv-photo { border-color: #818cf8; }
+[data-theme="dark"] .cv-category-ryc .cv-section-title { color: #818cf8; }
+[data-theme="dark"] .cv-category-ryc .cv-section-title i { color: #818cf8; }
 
 [data-theme="dark"] .cv-category-pdi .cv-header-card { border-top-color: #93c5fd; }
 [data-theme="dark"] .cv-category-pdi .cv-photo { border-color: #93c5fd; }

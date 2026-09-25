@@ -89,7 +89,7 @@ function renderTeam(filterCategory = 'ALL', searchQuery = '') {
     if (filterCategory === 'ALL') {
       matchesCategory = true;
     } else if (filterCategory === 'PDI') {
-      matchesCategory = member.category === 'Coordinadora' || member.category === 'Directora de Línea' || member.category === 'Investigador Senior' || member.category === 'PDI';
+      matchesCategory = member.category === 'Coordinadora' || member.category === 'Directora de Línea' || member.category === 'Investigador Senior' || member.category === 'PDI' || member.category.includes('Ramón y Cajal');
     } else {
       matchesCategory = member.category.toLowerCase().includes(filterCategory.toLowerCase());
     }
@@ -115,6 +115,9 @@ function renderTeam(filterCategory = 'ALL', searchQuery = '') {
     if (m.category === 'Coordinadora') {
       catKey = 'leadership';
       catBadge = 'Coordinación';
+    } else if (m.category.includes('Ramón y Cajal') || m.category.includes('Ryb')) {
+      catKey = 'ryc';
+      catBadge = 'Ramón y Cajal';
     } else if (m.category.includes('Directora') || m.category.includes('Investigador Senior') || m.category === 'PDI') {
       catKey = 'pdi';
       catBadge = 'PDI & Senior';

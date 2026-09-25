@@ -178,6 +178,9 @@
         if (member.category === 'Coordinadora') {
           catKey = 'leadership';
           catBadge = 'Coordinación';
+        } else if (member.category.includes('Ramón y Cajal')) {
+          catKey = 'ryc';
+          catBadge = 'Ramón y Cajal';
         } else if (member.category.includes('Directora') || member.category.includes('Investigador Senior') || member.category === 'PDI') {
           catKey = 'pdi';
           catBadge = 'PDI & Senior';
