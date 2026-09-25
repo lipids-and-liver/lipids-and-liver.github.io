@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lipids &amp; Liver | Experiencia Cinematográfica (Prototipo 5) - UPV/EHU &amp; Biocruces</title>
+  <meta name="description" content="Prototipo 5 del Grupo Lipids & Liver (IT1560-22). Experiencia inmersiva con transiciones fluidas de 60fps y narrativa científica sintética." />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Cinematic Stylesheet -->
+  <link rel="stylesheet" href="assets/css/cinema.css" />
+</head>
+<body>
+
+  <!-- Interactive Canvas Particle Simulation (Lipid Vesicles) -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="cinema-ambient-glow glow-1"></div>
+  <div class="cinema-ambient-glow glow-2"></div>
+
+  <!-- Minimalist Floating Header -->
+  <header class="cinema-top-header">
+    <a href="index.html" class="cinema-brand">
+      <img src="assets/images/logo/ehu_logo_negatiboa.svg" alt="UPV/EHU" class="cinema-logo" />
+      <div style="width:1px; height:24px; background:var(--cinema-border);"></div>
+      <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver" class="cinema-logo" style="filter: brightness(0) invert(1);" />
+      <div class="cinema-brand-title">
+        <span class="cinema-brand-name">Lipids &amp; Liver</span>
+        <span class="cinema-brand-tag">Experiencia Inmersiva &bull; IT1560-22</span>
+      </div>
+    </a>
+
+    <div class="cinema-top-actions">
+      <!-- Prototype Switcher -->
+      <div class="proto-switcher-cinema">
+        <span style="color:var(--cinema-text-muted); font-size:0.7rem;">PROTOTIPOS:</span>
+        <a href="../prototipo1/index.html" class="proto-link-pill">1. Clásico</a>
+        <a href="../prototipo2/index.html" class="proto-link-pill">2. Bento</a>
+        <a href="../prototipo3/index.html" class="proto-link-pill">3. Editorial</a>
+        <a href="../prototipo4/index.html" class="proto-link-pill">4. High-Tech</a>
+        <span class="proto-link-pill active" style="color:var(--cinema-mint); font-weight:700;">5. Cinematic</span>
+      </div>
+
+      <!-- Quick Drawer Trigger -->
+      <button class="btn-drawer-trigger" onclick="openDrawer('lines')">
+        <i class="fas fa-layer-group"></i> Ver Dossier
+      </button>
+    </div>
+  </header>
+
+  <!-- Side Chapter Rail -->
+  <nav class="cinema-side-rail" aria-label="Navegación de capítulos">
+    <button class="rail-dot active" data-label="01 Manifiesto" onclick="updateDeck(0)"></button>
+    <button class="rail-dot" data-label="02 Pilares Científicos" onclick="updateDeck(1)"></button>
+    <button class="rail-dot" data-label="03 Red Humana" onclick="updateDeck(2)"></button>
+    <button class="rail-dot" data-label="04 Impacto &amp; Métricas" onclick="updateDeck(3)"></button>
+    <button class="rail-dot" data-label="05 Alianza &amp; Sede" onclick="updateDeck(4)"></button>
+  </nav>
+
+  <!-- FULLSCREEN CHAPTER DECK -->
+  <main class="cinema-deck-viewport">
+
+    <!-- CHAPTER 01: EL MANIFIESTO -->
+    <section class="cinema-chapter active" id="chapter-1">
+      <div class="chapter-content-box">
+        <div>
+          <div class="chapter-number-pill anim-el delay-1">
+            <i class="fas fa-certificate"></i> Capítulo 01 &bull; Manifiesto Científico
+          </div>
+
+          <h1 class="chapter-headline anim-el delay-2">
+            Decodificando el lenguaje oculto de los <span class="highlight-mint">lípidos</span> en el hígado.
+          </h1>
+
+          <p class="chapter-lead-text anim-el delay-3">
+            Desde 2007 desentrañando la fisiología hepática en la UPV/EHU y el IIS Biocruces Bizkaia. Investigación molecular y translacional de vanguardia para frenar la esteatohepatitis y el cáncer de hígado.
+          </p>
+
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;" class="anim-el delay-4">
+            <button class="btn-cinema-glow" onclick="updateDeck(1)">
+              Explorar Pilares <i class="fas fa-arrow-down"></i>
+            </button>
+            <button class="btn-cinema-glass" onclick="openDrawer('lines')">
+              <i class="fas fa-book-open"></i> Resumen Ejecutivo
+            </button>
+          </div>
+        </div>
+
+        <div class="anim-el delay-3">
+          <div class="cinema-figure-card">
+            <img src="assets/images/hero_outdoor_group.jpg" alt="Lipids & Liver Research Group" class="cinema-figure-img" />
+            <div class="cinema-figure-overlay">
+              <h4 style="font-size:1.15rem; color:#fff; margin-bottom:4px;">Grupo Consolidado IT1560-22</h4>
+              <p style="font-size:0.85rem; color:var(--cinema-text-secondary);">Departamento de Fisiología &bull; Facultad de Medicina y Enfermería &bull; Leioa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 02: LOS 4 PILARES CIENTÍFICOS -->
+    <section class="cinema-chapter" id="chapter-2">
+      <div class="chapter-fullwidth-box">
+        <div class="chapter-number-pill anim-el delay-1">
+          <i class="fas fa-dna"></i> Capítulo 02 &bull; Frontera Molecular
+        </div>
+
+        <h2 class="chapter-headline anim-el delay-2" style="margin-bottom:1rem;">
+          Cuatro frentes contra la <span class="highlight-cyan">enfermedad hepática</span>.
+        </h2>
+
+        <p class="chapter-lead-text anim-el delay-3" style="max-width:700px; margin-bottom:2rem;">
+          Selecciona cada pilar para focalizar la diana de investigación o abre la memoria completa.
+        </p>
+
+        <!-- Dynamic Focal Card -->
+        <div style="width:100%; max-width:900px; background:var(--cinema-surface); border:1px solid var(--cinema-border); border-radius:24px; padding:2rem 2.5rem; display:grid; grid-template-columns: 1fr 1fr; gap:2.5rem; align-items:center; text-align:left; margin-bottom:1.5rem;" class="anim-el delay-3">
+          <div>
+            <h3 id="pillar-focal-title" style="font-family:var(--cinema-font-display); font-size:1.5rem; color:#fff; margin-bottom:0.75rem;">
+              Esteatohepatitis Metabólica (MAFLD / MASH)
+            </h3>
+            <p id="pillar-focal-desc" style="color:var(--cinema-text-secondary); line-height:1.7; font-size:1rem; margin-bottom:1.5rem;">
+              Análisis longitudinal de la lipotoxicidad y perfiles de fosfolípidos que impulsan el paso de esteatosis simple a cirrosis hepática.
+            </p>
+            <button class="btn-cinema-glow" style="padding:10px 22px; font-size:0.85rem;" onclick="openDrawer('lines')">
+              <i class="fas fa-microscope"></i> Ver Detalle de la Línea
+            </button>
+          </div>
+
+          <div>
+            <img id="pillar-focal-img" src="assets/images/mafld.jpg" alt="Pilar Científico" style="width:100%; height:200px; object-fit:cover; border-radius:16px; border:1px solid var(--cinema-border);" />
+          </div>
+        </div>
+
+        <!-- Interactive Pillar Selectors -->
+        <div class="pillar-selector-strip anim-el delay-4" style="max-width:900px;">
+          <div class="pillar-card active" data-index="0">
+            <div class="pillar-num">01</div>
+            <div class="pillar-title">MAFLD / MASH</div>
+            <div class="pillar-sub">Lipotoxicidad hepática</div>
+          </div>
+          <div class="pillar-card" data-index="1">
+            <div class="pillar-num">02</div>
+            <div class="pillar-title">Cáncer Hepático</div>
+            <div class="pillar-sub">Desaturación SCD1</div>
+          </div>
+          <div class="pillar-card" data-index="2">
+            <div class="pillar-num">03</div>
+            <div class="pillar-title">Regulación E2F</div>
+            <div class="pillar-sub">Control mitocondrial</div>
+          </div>
+          <div class="pillar-card" data-index="3">
+            <div class="pillar-num">04</div>
+            <div class="pillar-title">Lipidómica SGIker</div>
+            <div class="pillar-sub">Espectrometría UHPLC</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 03: LA RED HUMANA -->
+    <section class="cinema-chapter" id="chapter-3">
+      <div class="chapter-fullwidth-box">
+        <div class="chapter-number-pill anim-el delay-1">
+          <i class="fas fa-users"></i> Capítulo 03 &bull; Talento y Liderazgo
+        </div>
+
+        <h2 class="chapter-headline anim-el delay-2" style="margin-bottom:1rem;">
+          18 investigadores en la <span class="highlight-mint">primera línea</span> biomédica.
+        </h2>
+
+        <p class="chapter-lead-text anim-el delay-3" style="max-width:750px; margin-bottom:2.5rem;">
+          Bajo la coordinación de la Dra. Patricia Aspichueta, nuestro equipo aglutina catedráticos, investigadores Ramón y Cajal, doctores posdoctorales y personal técnico.
+        </p>
+
+        <!-- Spotlight Roster Highlights -->
+        <div class="spotlight-roster anim-el delay-4" style="max-width:960px; margin-bottom:2rem;">
+          <div class="spotlight-card">
+            <img src="assets/images/team/patricia_aspichueta.jpg" alt="Dra. Patricia Aspichueta" class="spotlight-avatar" style="border-color:#f43f5e;" />
+            <div>
+              <div style="font-family:var(--cinema-font-display); font-weight:700; font-size:1.05rem; color:#fff;">Dra. Patricia Aspichueta</div>
+              <div style="font-size:0.8rem; color:#f43f5e; font-weight:600;">Coordinadora Principal</div>
+              <div style="font-size:0.75rem; color:var(--cinema-text-muted);">Catedrática de Fisiología</div>
+            </div>
+          </div>
+
+          <div class="spotlight-card">
+            <img src="assets/images/team/asier_izagirre.jpg" alt="Dr. Juan Luis García" class="spotlight-avatar" style="border-color:#a855f7;" />
+            <div>
+              <div style="font-family:var(--cinema-font-display); font-weight:700; font-size:1.05rem; color:#fff;">Dr. Juan Luis García</div>
+              <div style="font-size:0.8rem; color:#a855f7; font-weight:600;">Investigador Ramón y Cajal</div>
+              <div style="font-size:0.75rem; color:var(--cinema-text-muted);">Genómica y Metabolismo</div>
+            </div>
+          </div>
+
+          <div class="spotlight-card">
+            <img src="assets/images/team/olatz_fresnedo.jpg" alt="Dra. Olatz Fresnedo" class="spotlight-avatar" style="border-color:var(--cinema-mint);" />
+            <div>
+              <div style="font-family:var(--cinema-font-display); font-weight:700; font-size:1.05rem; color:#fff;">Dra. Olatz Fresnedo</div>
+              <div style="font-size:0.8rem; color:var(--cinema-mint); font-weight:600;">Responsable Lipidómica SGIker</div>
+              <div style="font-size:0.75rem; color:var(--cinema-text-muted);">Profesora Titular</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="anim-el delay-4" style="display:flex; gap:1rem;">
+          <button class="btn-cinema-glow" onclick="openDrawer('team')">
+            <i class="fas fa-id-card"></i> Abrir Roster Completo (18 Miembros)
+          </button>
+          <a href="../curriculum.html" target="_blank" class="btn-cinema-glass">
+            <i class="fas fa-external-link-alt"></i> Portal de CVs Tradicional
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 04: IMPACTO & MÉTRICAS -->
+    <section class="cinema-chapter" id="chapter-4">
+      <div class="chapter-fullwidth-box">
+        <div class="chapter-number-pill anim-el delay-1">
+          <i class="fas fa-chart-line"></i> Capítulo 04 &bull; Impacto Científico
+        </div>
+
+        <h2 class="chapter-headline anim-el delay-2" style="margin-bottom:1.5rem;">
+          Ciencia con <span class="highlight-cyan">rigor y transferencia</span>.
+        </h2>
+
+        <!-- Big Stat Counters -->
+        <div class="stat-cinematic-row anim-el delay-3" style="max-width:960px;">
+          <div class="stat-cinematic-box">
+            <div class="stat-cinematic-num">2007</div>
+            <div style="font-weight:700; color:#fff; font-size:1rem; margin-bottom:4px;">Acreditación Continuada</div>
+            <div style="font-size:0.82rem; color:var(--cinema-text-muted);">Gobierno Vasco Tipo A</div>
+          </div>
+
+          <div class="stat-cinematic-box">
+            <div class="stat-cinematic-num">15+</div>
+            <div style="font-weight:700; color:#fff; font-size:1rem; margin-bottom:4px;">Tesis Doctorales</div>
+            <div style="font-size:0.82rem; color:var(--cinema-text-muted);">6 en curso &bull; 9 defendidas</div>
+          </div>
+
+          <div class="stat-cinematic-box">
+            <div class="stat-cinematic-num">10+</div>
+            <div style="font-weight:700; color:#fff; font-size:1rem; margin-bottom:4px;">PDI y Catedráticos</div>
+            <div style="font-size:0.82rem; color:var(--cinema-text-muted);">Facultad de Medicina</div>
+          </div>
+
+          <div class="stat-cinematic-box">
+            <div class="stat-cinematic-num">Q1</div>
+            <div style="font-weight:700; color:#fff; font-size:1rem; margin-bottom:4px;">Revistas Internacionales</div>
+            <div style="font-size:0.82rem; color:var(--cinema-text-muted);">J. Hepatology, Gut, Cancers</div>
+          </div>
+        </div>
+
+        <div class="anim-el delay-4" style="display:flex; gap:1rem;">
+          <button class="btn-cinema-glow" onclick="openDrawer('theses')">
+            <i class="fas fa-graduation-cap"></i> Ver Repositorio de Tesis
+          </button>
+          <a href="../publicaciones.html" target="_blank" class="btn-cinema-glass">
+            <i class="fas fa-book"></i> Catálogo Completo JCR
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 05: CONEXIÓN & ALIANZA -->
+    <section class="cinema-chapter" id="chapter-5">
+      <div class="chapter-content-box">
+        <div>
+          <div class="chapter-number-pill anim-el delay-1">
+            <i class="fas fa-satellite"></i> Capítulo 05 &bull; Alianza &amp; Sede
+          </div>
+
+          <h2 class="chapter-headline anim-el delay-2">
+            Conectados desde Leioa con la <span class="highlight-mint">biomedicina global</span>.
+          </h2>
+
+          <p class="chapter-lead-text anim-el delay-3">
+            Ubicados estratégicamente en el campus científico de la UPV/EHU y vinculados directamente al ecosistema hospitalario del IIS Biocruces Bizkaia.
+          </p>
+
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;" class="anim-el delay-4">
+            <button class="btn-cinema-glow" onclick="openDrawer('contact')">
+              <i class="fas fa-envelope"></i> Contacto y Colaboración
+            </button>
+            <button class="btn-cinema-glass" onclick="updateDeck(0)">
+              <i class="fas fa-redo"></i> Volver al Inicio
+            </button>
+          </div>
+        </div>
+
+        <div class="anim-el delay-3">
+          <div style="background:var(--cinema-surface); border:1px solid var(--cinema-border); border-radius:24px; padding:2.5rem; display:flex; flex-direction:column; gap:1.5rem;">
+            <div>
+              <div style="color:var(--cinema-mint); font-family:var(--cinema-font-display); font-size:0.8rem; font-weight:700; margin-bottom:4px;">// SEDE INSTITUCIONAL</div>
+              <h4 style="font-size:1.2rem; color:#fff; margin-bottom:6px;">Departamento de Fisiología</h4>
+              <p style="color:var(--cinema-text-secondary); font-size:0.92rem; line-height:1.6;">
+                Facultad de Medicina y Enfermería &bull; UPV/EHU<br />Barrio Sarriena s/n, 48940 Leioa, Bizkaia
+              </p>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--cinema-border);" />
+
+            <div>
+              <div style="color:var(--cinema-cyan); font-family:var(--cinema-font-display); font-size:0.8rem; font-weight:700; margin-bottom:4px;">// RED TRANSLACIONAL</div>
+              <h4 style="font-size:1.2rem; color:#fff; margin-bottom:6px;">IIS Biocruces Bizkaia</h4>
+              <p style="color:var(--cinema-text-secondary); font-size:0.92rem; line-height:1.6;">
+                Plaza de Cruces s/n, 48903 Barakaldo, Bizkaia
+              </p>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--cinema-border);" />
+
+            <div style="font-size:0.85rem; color:var(--cinema-text-muted);">
+              Coordinación: <a href="mailto:patricia.aspichueta@ehu.eus" style="color:var(--cinema-mint); text-decoration:none;">patricia.aspichueta@ehu.eus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Interactive Deck Controls -->
+  <footer class="cinema-bottom-bar">
+    <div class="cinema-progress-wrapper">
+      <span id="progress-text">01 / 05</span>
+      <div class="cinema-progress-track">
+        <div class="cinema-progress-fill" id="progress-fill"></div>
+      </div>
+      <span style="font-size:0.75rem; color:var(--cinema-text-muted);">(Usa el scroll, las flechas del teclado o los botones)</span>
+    </div>
+
+    <div class="cinema-nav-arrows">
+      <button class="btn-arrow" id="deck-prev" title="Capítulo Anterior">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+      <button class="btn-arrow" id="deck-next" title="Capítulo Siguiente">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Curtain Drawer -->
+  <div class="cinema-drawer-backdrop" id="cinema-drawer">
+    <div class="cinema-drawer-panel">
+      <button class="drawer-close-btn" id="drawer-close" title="Cerrar"><i class="fas fa-times"></i></button>
+      <h3 id="drawer-title" style="font-family:var(--cinema-font-display); font-size:1.6rem; color:var(--cinema-mint); margin-bottom:2rem; padding-right:2rem;">
+        Dossier Detallado
+      </h3>
+      <div id="drawer-body">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/cinema.js"></script>
+</body>
+</html>
