@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dissertations Database | Lipids & Liver (Prototipo 4 - High-Tech)</title>
+  <meta name="description" content="Base de datos de tesis doctorales del Grupo Lipids & Liver en formato consola high-tech." />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- High-Tech Stylesheet -->
+  <link rel="stylesheet" href="assets/css/hightech.css" />
+</head>
+<body>
+
+  <!-- Top Telemetry Prototype Switcher Strip -->
+  <div class="ht-top-bar">
+    <div class="container ht-top-inner">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="ht-status-pulse">
+          <span class="ht-pulse-dot"></span> [SYS_ONLINE: UPV/EHU &bull; BIOCRUCES_BIZKAIA]
+        </span>
+        <span style="opacity:0.6;">&bull; DEPT_PHYSIOLOGY // FACULTY_MEDICINE</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ht-text-muted);">PROTO_SELECT:</span>
+        <div class="ht-proto-links">
+          <a href="../prototipo1/tesis.html" class="ht-proto-btn">01_CLASSIC</a>
+          <a href="../prototipo2/tesis.html" class="ht-proto-btn">02_BENTO</a>
+          <a href="../prototipo3/tesis.html" class="ht-proto-btn">03_EDITORIAL</a>
+          <span class="ht-proto-btn active">04_HIGH_TECH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Console -->
+  <header class="ht-header">
+    <div class="container ht-header-inner">
+      <a href="index.html" class="ht-brand">
+        <img src="assets/images/logo/ehu_logo_negatiboa.svg" alt="UPV/EHU" class="logo" id="ht-ehu-logo" />
+        <div style="width:1px; height:24px; background:var(--ht-border);"></div>
+        <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver" class="logo" style="filter: brightness(0) invert(1);" />
+        <div class="ht-brand-text">
+          <span class="ht-brand-name">
+            Lipids &amp; Liver <span class="ht-brand-tag">[THESES_TERMINAL]</span>
+          </span>
+          <span class="ht-brand-sub">PHD DISSERTATIONS CONSOLE</span>
+        </div>
+      </a>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <label for="thesis-select" style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan);">THESIS_ID:</label>
+          <select id="thesis-select" style="max-width:320px; padding:6px 12px; background:var(--ht-surface); border:1px solid var(--ht-border); color:var(--ht-text-primary); font-family:var(--ht-font-mono); font-size:0.8rem; cursor:pointer;">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <a href="index.html" class="btn-ht-ghost" style="text-decoration:none; padding:6px 14px; font-size:0.8rem;">
+          <i class="fas fa-arrow-left"></i> RETURN_TO_ROOT
+        </a>
+        <button class="ht-btn-ghost" id="theme-toggle-btn" title="Alternar tema">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="thesis-hightech-container" style="padding: 3rem 1.5rem 5rem;">
+    <!-- Injected dynamically -->
+  </main>
+
+  <footer class="ht-footer">
+    <div class="container ht-footer-bottom" style="margin-top:0; padding-top:0; border-top:none;">
+      <div>&copy; 2026 LIPIDS &amp; LIVER // UPV/EHU &bull; BIOCRUCES BIZKAIA</div>
+      <div>PROTOTYPE_04 // DISSERTATION_DATABASE_CONSOLE</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('thesis-select');
+      const container = document.getElementById('thesis-hightech-container');
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      const logo = document.getElementById('ht-ehu-logo');
+
+      function updateTheme(theme) {
+        if (themeBtn) {
+          const icon = themeBtn.querySelector('i');
+          if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        if (logo) {
+          logo.src = theme === 'dark' 
+            ? 'assets/images/logo/ehu_logo_negatiboa.svg'
+            : 'assets/images/logo/ehu_logo_positiboa.svg';
+        }
+      }
+
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateTheme(savedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateTheme(next);
+        });
+      }
+
+      const allTheses = [
+        ...APP_DATA.theses.ongoing.map(t => ({ ...t, isOngoing: true })),
+        ...APP_DATA.theses.completed.map(t => ({ ...t, isOngoing: false }))
+      ];
+
+      const groupOngoing = document.createElement('optgroup');
+      groupOngoing.label = "STATUS: ONGOING";
+      APP_DATA.theses.ongoing.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t.id;
+        opt.textContent = `${t.author} - ${t.title.substring(0, 42)}...`;
+        groupOngoing.appendChild(opt);
+      });
+      select.appendChild(groupOngoing);
+
+      const groupCompleted = document.createElement('optgroup');
+      groupCompleted.label = "STATUS: DEFENDED";
+      APP_DATA.theses.completed.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t.id;
+        opt.textContent = `${t.author} (${t.year}) - ${t.title.substring(0, 42)}...`;
+        groupCompleted.appendChild(opt);
+      });
+      select.appendChild(groupCompleted);
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlId = urlParams.get('id') || allTheses[0].id;
+      select.value = urlId;
+      renderHtThesis(urlId);
+
+      select.addEventListener('change', (e) => {
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + e.target.value;
+        window.history.pushState({path: newUrl}, '', newUrl);
+        renderHtThesis(e.target.value);
+      });
+
+      function renderHtThesis(id) {
+        const thesis = allTheses.find(t => t.id === id) || allTheses[0];
+
+        container.innerHTML = `
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); border-left:4px solid ${thesis.isOngoing ? 'var(--ht-mint)' : 'var(--ht-cyan)'}; padding:2rem; margin-bottom:2rem;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:${thesis.isOngoing ? 'var(--ht-mint)' : 'var(--ht-cyan)'}; margin-bottom:0.75rem;">
+              [STATUS: ${thesis.badge.toUpperCase()}] &bull; [PERIOD: ${thesis.year}]
+            </div>
+            <h1 style="font-family:var(--ht-font-display); font-size:2.2rem; color:#fff; line-height:1.3; margin-bottom:1rem;">
+              "${thesis.title}"
+            </h1>
+            <div style="font-family:var(--ht-font-mono); font-size:1.1rem; color:var(--ht-cyan); margin-bottom:1.5rem;">
+              CANDIDATE: ${thesis.author}
+            </div>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; padding:1.25rem; background:#070b13; border:1px solid var(--ht-border); font-family:var(--ht-font-mono); font-size:0.8rem; color:var(--ht-text-secondary);">
+              <div><strong style="color:#fff;">INSTITUTION:</strong><br />${thesis.institution}</div>
+              <div><strong style="color:#fff;">DIRECTORS:</strong><br />${thesis.directors || 'Dra. Patricia Aspichueta'}</div>
+              <div><strong style="color:#fff;">PROGRAM:</strong><br />${thesis.program || 'Doctorado en Biomedicina'}</div>
+              <div><strong style="color:#fff;">YEAR:</strong><br />${thesis.year}</div>
+            </div>
+          </div>
+
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:2rem; margin-bottom:1.5rem;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-mint); margin-bottom:0.75rem;">// DISSERTATION_ABSTRACT_PAYLOAD</div>
+            <p style="color:var(--ht-text-secondary); line-height:1.8; font-size:1.02rem;">
+              ${thesis.abstract || 'Resumen de la tesis doctoral en desarrollo en el Departamento de Fisiología.'}
+            </p>
+          </div>
+
+          ${thesis.keywords ? `
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:1.75rem;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan); margin-bottom:0.75rem;">// DESCRIPTORS_AND_SPECTRAL_TAGS</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              ${thesis.keywords.map(k => `<span style="font-family:var(--ht-font-mono); font-size:0.75rem; padding:4px 10px; background:#070b13; border:1px solid var(--ht-border); color:var(--ht-cyan);">#${k}</span>`).join('')}
+            </div>
+          </div>
+          ` : ''}
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

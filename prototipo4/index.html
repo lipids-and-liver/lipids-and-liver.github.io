@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lipids &amp; Liver | High-Tech Lab Console (Prototipo 4) - UPV/EHU &amp; Biocruces</title>
+  <meta name="description" content="Prototipo 4 del Grupo Lipids & Liver (IT1560-22). Fisiología de precisión, espectrometría de masas y lipidómica computacional." />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- High-Tech Stylesheet -->
+  <link rel="stylesheet" href="assets/css/hightech.css" />
+</head>
+<body>
+
+  <!-- Top Telemetry Prototype Switcher Strip -->
+  <div class="ht-top-bar">
+    <div class="container ht-top-inner">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="ht-status-pulse">
+          <span class="ht-pulse-dot"></span> [SYS_ONLINE: UPV/EHU &bull; BIOCRUCES_BIZKAIA]
+        </span>
+        <span style="opacity:0.6;">&bull; DEPT_PHYSIOLOGY // FACULTY_MEDICINE</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ht-text-muted);">PROTO_SELECT:</span>
+        <div class="ht-proto-links">
+          <a href="../prototipo1/index.html" class="ht-proto-btn">01_CLASSIC</a>
+          <a href="../prototipo2/index.html" class="ht-proto-btn">02_BENTO</a>
+          <a href="../prototipo3/index.html" class="ht-proto-btn">03_EDITORIAL</a>
+          <span class="ht-proto-btn active">04_HIGH_TECH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Console -->
+  <header class="ht-header">
+    <div class="container ht-header-inner">
+      <a href="index.html" class="ht-brand">
+        <img src="assets/images/logo/ehu_logo_negatiboa.svg" alt="UPV/EHU" class="logo" id="ht-ehu-logo" />
+        <div style="width:1px; height:24px; background:var(--ht-border);"></div>
+        <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver" class="logo" style="filter: brightness(0) invert(1);" />
+        <div class="ht-brand-text">
+          <span class="ht-brand-name">
+            Lipids &amp; Liver <span class="ht-brand-tag">[IT1560-22]</span>
+          </span>
+          <span class="ht-brand-sub">PRECISION LIPIDOMICS &amp; HEPATIC PATHOLOGY</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="ht-nav-menu">
+          <li><a href="#hero" class="active" data-i18n="nav_home">00_INDEX</a></li>
+          <li><a href="#about" data-i18n="nav_about">01_LAB</a></li>
+          <li><a href="#lines" data-i18n="nav_lines">02_TARGETS</a></li>
+          <li><a href="#team" data-i18n="nav_team">03_TEAM</a></li>
+          <li><a href="#theses" data-i18n="nav_theses">04_THESES</a></li>
+          <li><a href="#publications" data-i18n="nav_pubs">05_PUBLICATIONS</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">06_CONTACT</a></li>
+          <li><a href="curriculum.html" style="color:var(--ht-mint);"><i class="fas fa-terminal"></i> CV_DOSSIER</a></li>
+        </ul>
+      </nav>
+
+      <div class="ht-controls">
+        <div style="display:flex; gap:2px;">
+          <button class="ht-btn-ghost ht-lang-btn active" data-lang="es">ES</button>
+          <button class="ht-btn-ghost ht-lang-btn" data-lang="eu">EU</button>
+          <button class="ht-btn-ghost ht-lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <button class="ht-btn-ghost" id="theme-toggle-btn" title="Alternar tema">
+          <i class="fas fa-sun"></i> <span class="theme-text">LIGHT_UI</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="ht-hero" id="hero">
+      <div class="container ht-hero-grid">
+        <div>
+          <div class="ht-terminal-tag">
+            <i class="fas fa-microchip"></i> [SYS_GOV_EUSKADI // ACREDITACION_CONSOLIDADA_TIPO_A]
+          </div>
+
+          <h1 class="ht-hero-title" data-i18n="hero_title">
+            DECODIFICANDO EL METABOLISMO HEPÁTICO &amp; <span class="glow-cyan">LIPIDÓMICA DE ALTA RESOLUCIÓN</span>
+          </h1>
+
+          <p class="ht-hero-desc" data-i18n="hero_subtitle">
+            Consorcio de investigación molecular translacional en la Universidad del País Vasco y el Instituto Sanitario Biocruces Bizkaia. Detección temprana, perfiles de espectrometría de masas y dianas génicas E2F en patologías hepáticas crónicas.
+          </p>
+
+          <div class="ht-hero-actions">
+            <a href="#lines" class="btn-ht-cyber" data-i18n="cta_lines">
+              <i class="fas fa-satellite-dish"></i> EXPLORAR DIANAS
+            </a>
+            <a href="#team" class="btn-ht-outline" data-i18n="cta_team">
+              <i class="fas fa-users"></i> EQUIPO CIENTÍFICO
+            </a>
+            <a href="curriculum.html" class="btn-ht-outline" style="border-color:var(--ht-mint); color:var(--ht-mint);">
+              <i class="fas fa-id-card"></i> PORTAL DE CVS
+            </a>
+          </div>
+        </div>
+
+        <!-- HUD Telemetry Box -->
+        <div class="ht-hud-box">
+          <div class="ht-hud-top-bar">
+            <span>[UNIT: LEIOA_LAB // CAM_01]</span>
+            <span><i class="fas fa-circle" style="color:var(--ht-mint); font-size:0.6rem;"></i> LIVE_FEED</span>
+          </div>
+          <img src="assets/images/hero_outdoor_group.jpg" alt="Lipids & Liver Team" class="ht-hud-photo" />
+          <div class="ht-hud-telemetry">
+            <div class="ht-telemetry-item">
+              <div class="ht-telemetry-label">GRUPO INVESTIGADOR</div>
+              <div class="ht-telemetry-val">LIPIDS &amp; LIVER (IT1560-22)</div>
+            </div>
+            <div class="ht-telemetry-item">
+              <div class="ht-telemetry-label">CORE PLATFORM</div>
+              <div class="ht-telemetry-val">SGIker UHPLC-MS/MS</div>
+            </div>
+            <div class="ht-telemetry-item">
+              <div class="ht-telemetry-label">INSTITUCIONAL</div>
+              <div class="ht-telemetry-val">UPV/EHU &bull; BIOCRUCES</div>
+            </div>
+            <div class="ht-telemetry-item">
+              <div class="ht-telemetry-label">DIRECTORA PRINCIPAL</div>
+              <div class="ht-telemetry-val">DRA. P. ASPICHUETA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats telemetry strip -->
+      <div class="container">
+        <div class="ht-stats-grid" id="ht-stats-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 01: LAB PRESENTATION -->
+    <section class="ht-section" id="about">
+      <div class="container">
+        <div class="ht-section-header">
+          <div>
+            <span class="ht-section-tag">// MODULE_01 // INSTITUTIONAL_IDENTITY</span>
+            <h2 class="ht-section-title" data-i18n="about_title">PERFIL INSTITUCIONAL &amp; RED DE INVESTIGACIÓN</h2>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:2rem;">
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:2rem; border-radius:4px;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan); margin-bottom:0.75rem;">
+              [SYSTEM_STATEMENT // DESDE_2007]
+            </div>
+            <p style="color:var(--ht-text-secondary); line-height:1.75; font-size:1.05rem; margin-bottom:1.25rem;">
+              El Grupo Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> investiga en el Departamento de Fisiología de la Facultad de Medicina y Enfermería de la UPV/EHU la reprogramación metabólica en hepatopatías humanas (esteatosis simple, MASH/NASH, fibrosis y carcinoma hepatocelular).
+            </p>
+            <p style="color:var(--ht-text-secondary); line-height:1.75; font-size:1.05rem;">
+              En convergencia con el <strong>Instituto de Investigación Sanitaria Biocruces Bizkaia</strong> y la dirección científica de la <strong>Unidad de Lipidómica de los SGIker</strong>, desplegamos tecnologías avanzadas de espectrometría de masas para la caracterización fenotípica y molecular de muestras de pacientes.
+            </p>
+          </div>
+
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:2rem; border-radius:4px;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-mint); margin-bottom:0.75rem;">
+              [TECHNICAL_CAPABILITIES]
+            </div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; font-family:var(--ht-font-mono); font-size:0.85rem; color:var(--ht-text-secondary);">
+              <li><i class="fas fa-check" style="color:var(--ht-cyan);"></i> UHPLC-ESI-QTOF Spectrometry</li>
+              <li><i class="fas fa-check" style="color:var(--ht-cyan);"></i> E2F Transcription Modulation</li>
+              <li><i class="fas fa-check" style="color:var(--ht-cyan);"></i> Preclinical Murine Hepatectomy</li>
+              <li><i class="fas fa-check" style="color:var(--ht-cyan);"></i> Translational Biocruces Cohorts</li>
+              <li><i class="fas fa-check" style="color:var(--ht-cyan);"></i> Metabolic Chemical Exposome</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: RESEARCH LINES -->
+    <section class="ht-section" id="lines">
+      <div class="container">
+        <div class="ht-section-header">
+          <div>
+            <span class="ht-section-tag">// MODULE_02 // STRATEGIC_TARGETS</span>
+            <h2 class="ht-section-title" data-i18n="lines_title">LÍNEAS DE INVESTIGACIÓN ACTIVAS</h2>
+          </div>
+        </div>
+
+        <div class="ht-lines-grid" id="ht-lines-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: PERSONNEL -->
+    <section class="ht-section" id="team">
+      <div class="container">
+        <div class="ht-section-header">
+          <div>
+            <span class="ht-section-tag">// MODULE_03 // HUMAN_TELEMETRY</span>
+            <h2 class="ht-section-title" data-i18n="team_title">PERSONAL INVESTIGADOR &amp; DOCENTE</h2>
+          </div>
+          <a href="curriculum.html" class="btn-ht-cyber">
+            <i class="fas fa-id-card"></i> DOSSIER_DE_CVS
+          </a>
+        </div>
+
+        <div class="ht-roster-controls">
+          <button class="ht-filter-btn active" data-category="ALL">[ALL_STAFF]</button>
+          <button class="ht-filter-btn" data-category="PDI">[PDI_SENIOR]</button>
+          <button class="ht-filter-btn" data-category="Posdoctoral">[POSTDOC]</button>
+          <button class="ht-filter-btn" data-category="Predoctoral">[PREDOC]</button>
+          <button class="ht-filter-btn" data-category="Técnico">[TECH_CORE]</button>
+
+          <div class="ht-search-box" style="margin-left:auto;">
+            <input type="text" class="ht-search-input" id="ht-team-search" placeholder="grep_investigador --query..." />
+          </div>
+        </div>
+
+        <div class="ht-team-grid" id="ht-team-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: PHD THESES -->
+    <section class="ht-section" id="theses">
+      <div class="container">
+        <div class="ht-section-header">
+          <div>
+            <span class="ht-section-tag">// MODULE_04 // DISSERTATION_DATABASE</span>
+            <h2 class="ht-section-title" data-i18n="theses_title">TESIS DOCTORALES EN CURSO &amp; DEFENDIDAS</h2>
+          </div>
+          <a href="tesis.html" class="btn-ht-outline">
+            <i class="fas fa-database"></i> CATÁLOGO_COMPLETO
+          </a>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-bottom:2rem;">
+          <button class="ht-filter-btn ht-theses-filter-btn active" data-type="ALL">[ALL_15]</button>
+          <button class="ht-filter-btn ht-theses-filter-btn" data-type="ONGOING">[ONGOING_06]</button>
+          <button class="ht-filter-btn ht-theses-filter-btn" data-type="COMPLETED">[DEFENDED_09]</button>
+        </div>
+
+        <div id="ht-theses-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: PUBLICATIONS -->
+    <section class="ht-section" id="publications">
+      <div class="container">
+        <div class="ht-section-header">
+          <div>
+            <span class="ht-section-tag">// MODULE_05 // JCR_PUBLICATIONS</span>
+            <h2 class="ht-section-title" data-i18n="pubs_title">PRODUCCIÓN CIENTÍFICA EN REVISTAS INDEXADAS</h2>
+          </div>
+          <a href="publicaciones.html" class="btn-ht-cyber">
+            <i class="fas fa-book"></i> REGISTRO_PUBLICACIONES
+          </a>
+        </div>
+
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:2rem;">
+          <button class="ht-filter-btn ht-pub-filter-btn active" data-topic="ALL">[TOPIC: ALL]</button>
+          <button class="ht-filter-btn ht-pub-filter-btn" data-topic="mafld">[MAFLD/NASH]</button>
+          <button class="ht-filter-btn ht-pub-filter-btn" data-topic="cancer">[HCC_CANCER]</button>
+          <button class="ht-filter-btn ht-pub-filter-btn" data-topic="lipidomics">[SGIKER_LIPID]</button>
+          <button class="ht-filter-btn ht-pub-filter-btn" data-topic="e2f">[E2F_DAMAGE]</button>
+          <button class="ht-filter-btn ht-pub-filter-btn" data-topic="exposome">[EXPOSOME]</button>
+        </div>
+
+        <div id="ht-pubs-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: CONTACT -->
+    <section class="ht-section" id="contact" style="border-bottom:none;">
+      <div class="container">
+        <div class="ht-section-header">
+          <div>
+            <span class="ht-section-tag">// MODULE_06 // TERMINAL_COMMUNICATION</span>
+            <h2 class="ht-section-title" data-i18n="contact_title">CONTACTO &amp; ENLACE TELEMÁTICO</h2>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2.5rem;">
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:2rem; border-radius:4px;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan); margin-bottom:1rem;">
+              [NODE_COORDINATES]
+            </div>
+            <div style="display:flex; flex-direction:column; gap:16px; font-family:var(--ht-font-mono); font-size:0.85rem; color:var(--ht-text-secondary);">
+              <div>
+                <span style="color:var(--ht-text-muted);">// INSTITUTION:</span><br />
+                Universidad del País Vasco (UPV/EHU)<br />
+                Facultad de Medicina y Enfermería &bull; Dpto. Fisiología<br />
+                Barrio Sarriena s/n, 48940 Leioa, Bizkaia
+              </div>
+              <div>
+                <span style="color:var(--ht-text-muted);">// HEALTH_INSTITUTE:</span><br />
+                IIS Biocruces Bizkaia &bull; Hospital Universitario Cruces
+              </div>
+              <div>
+                <span style="color:var(--ht-text-muted);">// CHIEF_COORDINATOR:</span><br />
+                Dra. Patricia Aspichueta Celaá<br />
+                <a href="mailto:patricia.aspichueta@ehu.eus" style="color:var(--ht-cyan); text-decoration:none;">patricia.aspichueta@ehu.eus</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:2rem; border-radius:4px;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-mint); margin-bottom:1rem;">
+              [TRANSMIT_INQUIRY]
+            </div>
+            <form onsubmit="event.preventDefault(); alert('MENSAJE TRANSMITIDO AL CONSOLA DE LIPIDS & LIVER'); this.reset();" style="display:flex; flex-direction:column; gap:12px;">
+              <input type="text" placeholder="USER_NAME" required style="padding:10px 14px; background:#070b13; border:1px solid var(--ht-border); color:#fff; font-family:var(--ht-font-mono); font-size:0.85rem;" />
+              <input type="email" placeholder="USER_EMAIL" required style="padding:10px 14px; background:#070b13; border:1px solid var(--ht-border); color:#fff; font-family:var(--ht-font-mono); font-size:0.85rem;" />
+              <textarea rows="4" placeholder="MESSAGE_PAYLOAD..." required style="padding:10px 14px; background:#070b13; border:1px solid var(--ht-border); color:#fff; font-family:var(--ht-font-mono); font-size:0.85rem;"></textarea>
+              <button type="submit" class="btn-ht-cyber" style="align-self:flex-start;">
+                <i class="fas fa-terminal"></i> TRANSMIT_MESSAGE
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div class="ht-modal-overlay" id="ht-modal-overlay">
+    <div class="ht-modal-card">
+      <button class="ht-modal-close" id="ht-modal-close"><i class="fas fa-times"></i></button>
+      <div style="font-family:var(--ht-font-mono); font-size:0.72rem; color:var(--ht-mint); margin-bottom:0.5rem;">[INSPECTION_MODE // TELEMETRY_ACTIVE]</div>
+      <h3 id="ht-modal-title" style="font-family:var(--ht-font-display); font-size:1.5rem; color:var(--ht-cyan); margin-bottom:1rem;"></h3>
+      <div id="ht-modal-body" style="color:var(--ht-text-secondary); line-height:1.75; font-size:0.95rem;"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ht-footer">
+    <div class="container">
+      <div class="ht-footer-bottom">
+        <div>&copy; 2026 LIPIDS &amp; LIVER // UPV/EHU &bull; IIS BIOCRUCES BIZKAIA // IT1560-22</div>
+        <div>PROTOTYPE_04 // HIGH_TECH_LAB_EDITION</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/hightech.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personnel Dossier | Lipids & Liver (Prototipo 4 - High-Tech)</title>
+  <meta name="description" content="Dossier de personal del Grupo Lipids & Liver en formato consola high-tech." />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- High-Tech Stylesheet -->
+  <link rel="stylesheet" href="assets/css/hightech.css" />
+</head>
+<body>
+
+  <!-- Top Telemetry Prototype Switcher Strip -->
+  <div class="ht-top-bar">
+    <div class="container ht-top-inner">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="ht-status-pulse">
+          <span class="ht-pulse-dot"></span> [SYS_ONLINE: UPV/EHU &bull; BIOCRUCES_BIZKAIA]
+        </span>
+        <span style="opacity:0.6;">&bull; DEPT_PHYSIOLOGY // FACULTY_MEDICINE</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ht-text-muted);">PROTO_SELECT:</span>
+        <div class="ht-proto-links">
+          <a href="../prototipo1/curriculum.html" class="ht-proto-btn">01_CLASSIC</a>
+          <a href="../prototipo2/curriculum.html" class="ht-proto-btn">02_BENTO</a>
+          <a href="../prototipo3/curriculum.html" class="ht-proto-btn">03_EDITORIAL</a>
+          <span class="ht-proto-btn active">04_HIGH_TECH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Console -->
+  <header class="ht-header">
+    <div class="container ht-header-inner">
+      <a href="index.html" class="ht-brand">
+        <img src="assets/images/logo/ehu_logo_negatiboa.svg" alt="UPV/EHU" class="logo" id="ht-ehu-logo" />
+        <div style="width:1px; height:24px; background:var(--ht-border);"></div>
+        <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver" class="logo" style="filter: brightness(0) invert(1);" />
+        <div class="ht-brand-text">
+          <span class="ht-brand-name">
+            Lipids &amp; Liver <span class="ht-brand-tag">[CV_TERMINAL]</span>
+          </span>
+          <span class="ht-brand-sub">RESEARCH PERSONNEL DOSSIER</span>
+        </div>
+      </a>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <!-- Selector -->
+        <div style="display:flex; align-items:center; gap:8px;">
+          <label for="member-select" style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan);">STAFF_ID:</label>
+          <select id="member-select" style="padding:6px 12px; background:var(--ht-surface); border:1px solid var(--ht-border); color:var(--ht-text-primary); font-family:var(--ht-font-mono); font-size:0.8rem; cursor:pointer;">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <a href="index.html" class="btn-ht-ghost" style="text-decoration:none; padding:6px 14px; font-size:0.8rem;">
+          <i class="fas fa-arrow-left"></i> RETURN_TO_ROOT
+        </a>
+        <button class="ht-btn-ghost" id="theme-toggle-btn" title="Alternar tema">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="cv-hightech-container" style="padding: 3rem 1.5rem 5rem;">
+    <!-- Injected dynamically -->
+  </main>
+
+  <footer class="ht-footer">
+    <div class="container ht-footer-bottom" style="margin-top:0; padding-top:0; border-top:none;">
+      <div>&copy; 2026 LIPIDS &amp; LIVER // UPV/EHU &bull; BIOCRUCES BIZKAIA</div>
+      <div>PROTOTYPE_04 // PERSONNEL_DOSSIER_TERMINAL</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('member-select');
+      const container = document.getElementById('cv-hightech-container');
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      const logo = document.getElementById('ht-ehu-logo');
+
+      function updateTheme(theme) {
+        if (themeBtn) {
+          const icon = themeBtn.querySelector('i');
+          if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        if (logo) {
+          logo.src = theme === 'dark' 
+            ? 'assets/images/logo/ehu_logo_negatiboa.svg'
+            : 'assets/images/logo/ehu_logo_positiboa.svg';
+        }
+      }
+
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateTheme(savedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateTheme(next);
+        });
+      }
+
+      APP_DATA.teamMembers.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m.id;
+        opt.textContent = `${m.name} [${m.category}]`;
+        select.appendChild(opt);
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlId = urlParams.get('id') || APP_DATA.teamMembers[0].id;
+      select.value = urlId;
+      renderHtCV(urlId);
+
+      select.addEventListener('change', (e) => {
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + e.target.value;
+        window.history.pushState({path: newUrl}, '', newUrl);
+        renderHtCV(e.target.value);
+      });
+
+      function renderHtCV(id) {
+        const member = APP_DATA.teamMembers.find(m => m.id === id) || APP_DATA.teamMembers[0];
+        const cv = member.cv || {};
+
+        container.innerHTML = `
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); border-left:4px solid var(--ht-cyan); padding:2rem; margin-bottom:2rem;">
+            <div style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
+              <img src="${member.image}" alt="${member.name}" style="width:100px; height:100px; border-radius:4px; object-fit:cover; border:1px solid var(--ht-cyan); box-shadow:0 0 15px var(--ht-cyan-glow);" />
+              <div>
+                <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-mint); margin-bottom:4px;">
+                  [CATEGORY: ${member.category.toUpperCase()}] &bull; [AFFILIATION: UPV/EHU &amp; BIOCRUCES]
+                </div>
+                <h1 style="font-family:var(--ht-font-display); font-size:2.2rem; color:#fff; margin-bottom:4px;">${member.name}</h1>
+                <div style="font-family:var(--ht-font-mono); font-size:0.95rem; color:var(--ht-cyan); margin-bottom:1rem;">${cv.title || member.role}</div>
+                <p style="color:var(--ht-text-secondary); max-width:800px; font-size:1rem; line-height:1.7;">${member.bio || ''}</p>
+                <div style="display:flex; gap:16px; flex-wrap:wrap; font-family:var(--ht-font-mono); font-size:0.8rem; margin-top:1rem; color:var(--ht-text-muted);">
+                  <span>DEPARTMENT: ${member.department}</span>
+                  <span>OFFICE: ${member.office || 'Facultad de Medicina, Leioa'}</span>
+                  <span>EMAIL: <a href="mailto:${member.email}" style="color:var(--ht-cyan);">${member.email}</a></span>
+                  ${member.orcid ? `<span>ORCID: <a href="https://orcid.org/${member.orcid}" target="_blank" rel="noopener" style="color:var(--ht-mint);">${member.orcid}</a></span>` : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+            ${cv.degrees ? `
+            <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:1.5rem;">
+              <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan); margin-bottom:0.75rem;">// ACADEMIC_CREDENTIALS</div>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.9rem; color:var(--ht-text-secondary);">
+                ${cv.degrees.map(d => `<li><i class="fas fa-check" style="color:var(--ht-cyan); margin-right:6px;"></i> ${d}</li>`).join('')}
+              </ul>
+            </div>
+            ` : ''}
+
+            ${cv.positions ? `
+            <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:1.5rem;">
+              <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-mint); margin-bottom:0.75rem;">// INSTITUTIONAL_POSITIONS</div>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.9rem; color:var(--ht-text-secondary);">
+                ${cv.positions.map(p => `<li><i class="fas fa-arrow-right" style="color:var(--ht-mint); margin-right:6px;"></i> ${p}</li>`).join('')}
+              </ul>
+            </div>
+            ` : ''}
+          </div>
+
+          ${cv.researchSummary ? `
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:1.75rem; margin-bottom:1.5rem;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan); margin-bottom:0.75rem;">// RESEARCH_ACTIVITY_DOSSIER</div>
+            <p style="color:var(--ht-text-secondary); line-height:1.75; font-size:1rem;">${cv.researchSummary}</p>
+          </div>
+          ` : ''}
+
+          ${cv.grants ? `
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:1.75rem; margin-bottom:1.5rem;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-amber); margin-bottom:0.75rem;">// COMPETITIVE_GRANTS_AND_PROJECTS</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.92rem; color:var(--ht-text-secondary);">
+              ${cv.grants.map(g => `<li style="padding:8px 12px; background:#070b13; border-left:2px solid var(--ht-amber); font-family:var(--ht-font-mono); font-size:0.85rem;">${g}</li>`).join('')}
+            </ul>
+          </div>
+          ` : ''}
+
+          ${cv.publications ? `
+          <div style="background:var(--ht-surface); border:1px solid var(--ht-border); padding:1.75rem; margin-bottom:1.5rem;">
+            <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan); margin-bottom:0.75rem;">// SELECTED_PUBLICATIONS</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.92rem; color:var(--ht-text-secondary);">
+              ${cv.publications.map(p => `<li style="padding:8px 12px; background:#070b13; border-left:2px solid var(--ht-cyan);">${p}</li>`).join('')}
+            </ul>
+          </div>
+          ` : ''}
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

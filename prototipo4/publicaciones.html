@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications Database | Lipids & Liver (Prototipo 4 - High-Tech)</title>
+  <meta name="description" content="Catálogo de publicaciones en revistas indexadas (JCR) del Grupo Lipids & Liver." />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- High-Tech Stylesheet -->
+  <link rel="stylesheet" href="assets/css/hightech.css" />
+</head>
+<body>
+
+  <!-- Top Telemetry Prototype Switcher Strip -->
+  <div class="ht-top-bar">
+    <div class="container ht-top-inner">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="ht-status-pulse">
+          <span class="ht-pulse-dot"></span> [SYS_ONLINE: UPV/EHU &bull; BIOCRUCES_BIZKAIA]
+        </span>
+        <span style="opacity:0.6;">&bull; DEPT_PHYSIOLOGY // FACULTY_MEDICINE</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="color:var(--ht-text-muted);">PROTO_SELECT:</span>
+        <div class="ht-proto-links">
+          <a href="../prototipo1/publicaciones.html" class="ht-proto-btn">01_CLASSIC</a>
+          <a href="../prototipo2/publicaciones.html" class="ht-proto-btn">02_BENTO</a>
+          <a href="../prototipo3/publicaciones.html" class="ht-proto-btn">03_EDITORIAL</a>
+          <span class="ht-proto-btn active">04_HIGH_TECH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Console -->
+  <header class="ht-header">
+    <div class="container ht-header-inner">
+      <a href="index.html" class="ht-brand">
+        <img src="assets/images/logo/ehu_logo_negatiboa.svg" alt="UPV/EHU" class="logo" id="ht-ehu-logo" />
+        <div style="width:1px; height:24px; background:var(--ht-border);"></div>
+        <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver" class="logo" style="filter: brightness(0) invert(1);" />
+        <div class="ht-brand-text">
+          <span class="ht-brand-name">
+            Lipids &amp; Liver <span class="ht-brand-tag">[PUBLICATIONS_TERMINAL]</span>
+          </span>
+          <span class="ht-brand-sub">JCR INDEXED PEER-REVIEWED DATABASE</span>
+        </div>
+      </a>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <a href="index.html" class="btn-ht-ghost" style="text-decoration:none; padding:6px 14px; font-size:0.8rem;">
+          <i class="fas fa-arrow-left"></i> RETURN_TO_ROOT
+        </a>
+        <button class="ht-btn-ghost" id="theme-toggle-btn" title="Alternar tema">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 3rem 1.5rem 5rem;">
+    <div style="background:var(--ht-surface); border:1px solid var(--ht-border); border-left:4px solid var(--ht-cyan); padding:2rem; margin-bottom:2.5rem;">
+      <div style="font-family:var(--ht-font-mono); font-size:0.75rem; color:var(--ht-cyan); margin-bottom:0.5rem;">
+        // REGISTRY: JCR_Q1_PUBLICATIONS &bull; NIH_PUBMED_INDEXED
+      </div>
+      <h1 style="font-family:var(--ht-font-display); font-size:2.4rem; color:#fff; margin-bottom:0.5rem;">
+        CATÁLOGO CIENTÍFICO DE PUBLICACIONES JCR
+      </h1>
+      <p style="color:var(--ht-text-secondary); max-width:750px; font-size:1rem;">
+        Artículos científicos evaluados por comités internacionales de pares en revistas biomédicas y de hepatología de alto factor de impacto.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:2.5rem;">
+      <button class="ht-filter-btn ht-pub-filter-btn active" data-topic="ALL">[TOPIC: ALL]</button>
+      <button class="ht-filter-btn ht-pub-filter-btn" data-topic="mafld">[MAFLD/NASH]</button>
+      <button class="ht-filter-btn ht-pub-filter-btn" data-topic="cancer">[HCC_CANCER]</button>
+      <button class="ht-filter-btn ht-pub-filter-btn" data-topic="lipidomics">[SGIKER_LIPID]</button>
+      <button class="ht-filter-btn ht-pub-filter-btn" data-topic="e2f">[E2F_DAMAGE]</button>
+      <button class="ht-filter-btn ht-pub-filter-btn" data-topic="exposome">[EXPOSOME]</button>
+    </div>
+
+    <!-- Publications List -->
+    <div id="ht-pubs-list">
+      <!-- Populated dynamically -->
+    </div>
+  </main>
+
+  <footer class="ht-footer">
+    <div class="container ht-footer-bottom" style="margin-top:0; padding-top:0; border-top:none;">
+      <div>&copy; 2026 LIPIDS &amp; LIVER // UPV/EHU &bull; BIOCRUCES BIZKAIA</div>
+      <div>PROTOTYPE_04 // PUBLICATIONS_DATABASE_CONSOLE</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/hightech.js"></script>
+</body>
+</html>
