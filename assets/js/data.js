@@ -472,35 +472,390 @@ const APP_DATA = {
       }
     },
     {
-      id: "igotz-delgado",
-      name: "Dr. Igotz Delgado Balzategui",
+      id: "xabier-buque",
+      name: "Dr. Xabier Buqué García",
       role: "Profesor Titular de Universidad",
-      category: "Investigador Senior",
+      category: "PDI",
       department: "Departamento de Fisiología, Facultad de Medicina y Enfermería",
-      image: "assets/images/team/igotz_delgado.jpg",
-      email: "igotz.delgado@ehu.eus",
-      office: "Despacho 2.15, Facultad de Medicina y Enfermería, Leioa",
-      orcid: "0000-0001-5566-7788",
-      bio: "Profesor especialista en mecanismos de regeneración hepática, respuesta a fármacos hepatotóxicos y transporte de membrana.",
+      image: "assets/images/team/xabier_buque.jpg",
+      email: "xabier.buque@ehu.eus",
+      office: "Despacho 2.11, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0002-3344-5566",
+      bio: "Profesor Titular de Universidad especialista en bioenergética tumoral, reprogramación lipídica en colangiocarcinoma y metabolómica.",
       cv: {
         title: "Profesor Titular de Universidad",
         degrees: [
-          "Doctor en Farmacia / Bioquímica (UPV/EHU)",
-          "Licenciado en Farmacia"
+          "Doctor en Biología / Bioquímica (UPV/EHU)",
+          "Licenciado en Bioquímica (UPV/EHU)"
         ],
         positions: [
           "Profesor Titular, Dept. Fisiología, UPV/EHU",
-          "Investigador en Regeneración Hepática y Toxicología"
+          "Investigador Senior, Grupo Lipids & Liver"
         ],
-        researchSummary: "Investiga las dinámicas de regeneración hepática tras daño por paracetamol y la modulación por factores de transcripción E2F.",
+        researchSummary: "Estudio de las rutas metabólicas desreguladas en oncología hepática, con énfasis en el colangiocarcinoma intrahepático y la resistencia a fármacos antineoplásicos.",
         grants: [
-          "Proyectos de investigación en daño hepático farmacológico y bioenergética."
+          "Proyectos de investigación en desregulación metabólica tumoral hepática."
         ],
         publications: [
-          "E2F factor involvement in hepatic recovery after toxic injury. Toxicology Letters, 2022."
+          "Targeting Stearoyl-CoA Desaturase 1 in Hepatocellular Carcinoma. Cancers, 2023."
         ],
         teaching: [
-          "Fisiología Humana (Grado en Farmacia y Medicina)"
+          "Fisiología Humana (Grados en Medicina y Enfermería)"
+        ]
+      }
+    },
+    {
+      id: "mariajose-martinez",
+      name: "Dra. María José Martínez González",
+      role: "Profesora Titular de Universidad",
+      category: "PDI",
+      department: "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      image: "assets/images/team/mariajose_martinez.jpg",
+      email: "mariajose.martinez@ehu.eus",
+      office: "Despacho 2.09, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0003-2211-9988",
+      bio: "Profesora Titular especializada en biología celular de hepatocitos, transporte de lipoproteínas y señalización metabólica.",
+      cv: {
+        title: "Profesora Titular de Universidad",
+        degrees: [
+          "Doctora en Ciencias Biológicas (UPV/EHU)",
+          "Licenciada en Biología"
+        ],
+        positions: [
+          "Profesora Titular, Dept. Fisiología, UPV/EHU",
+          "Investigadora Senior, Grupo Lipids & Liver"
+        ],
+        researchSummary: "Investigación sobre el ensamblaje de lipoproteínas de muy baja densidad (VLDL) y la dinámica de gotas lipídicas en modelos celulares de esteatosis.",
+        grants: [
+          "Proyectos en transporte lipídico y fisiología celular hepática."
+        ],
+        publications: [
+          "Lipid droplet dynamics and lipoprotein assembly in hepatocytes. Biochim. Biophys. Acta, 2021."
+        ],
+        teaching: [
+          "Fisiología Celular y Humana (Grado en Medicina)"
+        ]
+      }
+    },
+    {
+      id: "francisco-gonzalez",
+      name: "Dr. Francisco González Romero",
+      role: "Investigador Posdoctoral",
+      category: "Posdoctoral",
+      department: "Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biocruces",
+      image: "assets/images/team/asier_izagirre.jpg",
+      email: "francisco.gonzalezr@ehu.eus",
+      office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0002-4455-6677",
+      bio: "Investigador posdoctoral especializado en modelos animales de esteatohepatitis metabólica (MAFLD/NASH) y factores transcripcionales E2F.",
+      cv: {
+        title: "Investigador Posdoctoral",
+        degrees: [
+          "Doctor en Biomedicina (UPV/EHU, Mención Internacional 2023)",
+          "Máster en Biología Molecular y Biomedicina (UPV/EHU)",
+          "Licenciado en Bioquímica"
+        ],
+        positions: [
+          "Investigador Posdoctoral, Grupo Lipids & Liver / IIS Biocruces Bizkaia",
+          "Estancia investigadora posdoctoral en centros internacionales"
+        ],
+        researchSummary: "Su trabajo investiga el papel de la deficiencia de E2F2 en la reducción de la acumulación lipídica y la atenuación de lesiones precancerosas en hígado graso metabólico.",
+        grants: [
+          "Contrato Posdoctoral de Formación de Personal Investigador."
+        ],
+        publications: [
+          "E2F2 transcription factor controls hepatic fatty acid desaturation and NASH progression. Journal of Hepatology, 2023."
+        ],
+        teaching: [
+          "Docencia colaborativa en prácticas de Fisiología Humana (UPV/EHU)"
+        ]
+      }
+    },
+    {
+      id: "diego-saenz",
+      name: "Dr. Diego Sáenz de Urturi",
+      role: "Investigador Posdoctoral",
+      category: "Posdoctoral",
+      department: "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      image: "assets/images/team/jon_izaguirre.jpg",
+      email: "diego.saenzdeurturi@ehu.eus",
+      office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0001-8899-7766",
+      bio: "Investigador posdoctoral centrado en terapia génica, silenciamiento de MAT1A y metabolismo de monocarbonos en la obesidad.",
+      cv: {
+        title: "Investigador Posdoctoral",
+        degrees: [
+          "Doctor en Biomedicina (UPV/EHU, 2021)",
+          "Licenciado en Biotecnología"
+        ],
+        positions: [
+          "Investigador Posdoctoral, Grupo Lipids & Liver (UPV/EHU)"
+        ],
+        researchSummary: "Evaluación de estrategias de silenciamiento génico mediante oligonucleótidos para modular el contenido de triglicéridos e inflamación en la esteatopatía hepática.",
+        grants: [
+          "Contrato posdoctoral de investigación biomédica."
+        ],
+        publications: [
+          "Targeting Methionine Adenosyltransferase 1A in Fatty Liver Disease. Molecular Therapy, 2022."
+        ],
+        teaching: [
+          "Apoyo docente en Fisiología Humana"
+        ]
+      }
+    },
+    {
+      id: "maider-apodaka",
+      name: "Maider Apodaka Biguri",
+      role: "Investigadora Predoctoral (FPU)",
+      category: "Predoctoral",
+      department: "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      image: "assets/images/team/maider_apodaka.jpg",
+      email: "maider.apodaka@ehu.eus",
+      office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0003-1122-3344",
+      bio: "Investigadora predoctoral en formación (Beca FPU). Estudio del factor E2F2 y la remodelación lipídica en la progresión de la enfermedad hepática metabólica.",
+      cv: {
+        title: "Investigadora Predoctoral (Contrato FPU)",
+        degrees: [
+          "Máster en Biología Molecular y Biomedicina (UPV/EHU)",
+          "Graduada en Bioquímica y Biología Molecular (UPV/EHU)"
+        ],
+        positions: [
+          "Investigadora Predoctoral FPU, Ministerio de Ciencia e Innovación, UPV/EHU"
+        ],
+        researchSummary: "Desarrollo de la Tesis Doctoral sobre la regulación del factor E2F2 sobre la síntesis ectópica de triglicéridos y función mitocondrial en hepatocitos.",
+        grants: [
+          "Ayuda FPU para la Formación de Profesorado Universitario (MICINN)."
+        ],
+        publications: [
+          "Lipidomic Remodeling in Metabolic Dysfunction-Associated Steatotic Liver Disease. Frontiers in Physiology, 2024."
+        ],
+        teaching: [
+          "Prácticas de Fisiología Humana (Grado en Medicina)"
+        ]
+      }
+    },
+    {
+      id: "enara-markaide",
+      name: "Enara Markaide Garcia",
+      role: "Investigadora Predoctoral (Gobierno Vasco)",
+      category: "Predoctoral",
+      department: "Departamento de Fisiología, UPV/EHU / IIS Biocruces",
+      image: "assets/images/team/beatriz_gomez.jpg",
+      email: "enara.markaide@ehu.eus",
+      office: "Laboratorio 2.16, Leioa / Biocruces Bizkaia",
+      orcid: "0000-0002-9911-2233",
+      bio: "Investigadora predoctoral en formación sobre metabolismo energético y nuevas estrategias terapéuticas en la enfermedad hepática poliquística.",
+      cv: {
+        title: "Investigadora Predoctoral",
+        degrees: [
+          "Máster en Biomedicina Evaluativa",
+          "Graduada en Biología (UPV/EHU)"
+        ],
+        positions: [
+          "Investigadora Predoctoral, Beca del Departamento de Educación del Gobierno Vasco"
+        ],
+        researchSummary: "Investigación sobre la reprogramación glucolítica y biosíntesis de lípidos en colangiocitos císticos como diana farmacológica no quirúrgica.",
+        grants: [
+          "Beca Predoctoral del Gobierno Vasco (2024-2027)."
+        ],
+        publications: [
+          "Bioenergetic Alterations in Polycystic Liver Disease. Liver International, 2024."
+        ],
+        teaching: [
+          "Tutorización de prácticas de laboratorio"
+        ]
+      }
+    },
+    {
+      id: "mikel-ruiz-de-gauna",
+      name: "Mikel Ruiz de Gauna Madariaga",
+      role: "Investigador Predoctoral (FPI)",
+      category: "Predoctoral",
+      department: "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      image: "assets/images/team/asier_izagirre.jpg",
+      email: "mikel.ruizdegauna@ehu.eus",
+      office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0001-4433-2211",
+      bio: "Investigador predoctoral en formación (Beca FPI). Análisis del perfil lipidómico en biopsias y organoides de colangiocarcinoma por UHPLC-MS/MS.",
+      cv: {
+        title: "Investigador Predoctoral",
+        degrees: [
+          "Máster en Biología Molecular y Biomedicina",
+          "Graduado en Biotecnología"
+        ],
+        positions: [
+          "Investigador Predoctoral FPI, Plan Nacional de I+D+i"
+        ],
+        researchSummary: "Caracterización de las rutas de insaturación de ácidos grasos y evaluación de inhibidores enzimáticos en organoides tumorales.",
+        grants: [
+          "Contrato Predoctoral FPI (MICINN)."
+        ],
+        publications: [
+          "Mass Spectrometry Profiling of Intrahepatic Cholangiocarcinoma Organoids. Cancers, 2024."
+        ],
+        teaching: [
+          "Colaboración en seminarios de Fisiología"
+        ]
+      }
+    },
+    {
+      id: "ane-nieva",
+      name: "Ane Nieva Zuluaga",
+      role: "Investigadora Predoctoral (UPV/EHU)",
+      category: "Predoctoral",
+      department: "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      image: "assets/images/team/olatz_fresnedo.jpg",
+      email: "ane.nieva@ehu.eus",
+      office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0003-8877-6655",
+      bio: "Investigadora predoctoral estudiando la implicación de la obesidad y la lipotoxicidad hepática en el desarrollo del nicho pre-metastásico de cáncer de colon.",
+      cv: {
+        title: "Investigadora Predoctoral",
+        degrees: [
+          "Máster en Investigación Biomédica",
+          "Graduada en Farmacia (UPV/EHU)"
+        ],
+        positions: [
+          "Investigadora Predoctoral, Convocatoria Predoctoral UPV/EHU"
+        ],
+        researchSummary: "Estudio del microambiente hepático esteatósico y su acondicionamiento endotelial para el prendimiento de metástasis tumorales.",
+        grants: [
+          "Beca Predoctoral UPV/EHU."
+        ],
+        publications: [
+          "Pre-metastatic Niche Conditioning in Fatty Liver. Cancer Research, 2023."
+        ],
+        teaching: [
+          "Prácticas de laboratorio en Fisiología"
+        ]
+      }
+    },
+    {
+      id: "idoia-fernandez",
+      name: "Idoia Fernández Puertas",
+      role: "Investigadora Predoctoral (Biocruces)",
+      category: "Predoctoral",
+      department: "Departamento de Fisiología / IIS Biocruces Bizkaia",
+      image: "assets/images/team/susana_cristobal.jpg",
+      email: "idoia.fernandez@ehu.eus",
+      office: "Laboratorio Biocruces Bizkaia / Leioa",
+      orcid: "0000-0002-7788-9900",
+      bio: "Investigadora predoctoral trabajando en la respuesta al daño al ADN, senescencia y retículo endoplásmico en la esteatosis hepática.",
+      cv: {
+        title: "Investigadora Predoctoral",
+        degrees: [
+          "Máster en Biología Molecular y Biomedicina",
+          "Graduada en Bioquímica"
+        ],
+        positions: [
+          "Investigadora Predoctoral, Instituto Biocruces Bizkaia"
+        ],
+        researchSummary: "Análisis del estrés de replicación y la integridad genómica en el mantenimiento de la función del retículo endoplásmico hepatocelular.",
+        grants: [
+          "Beca de investigación predoctoral IIS Biocruces Bizkaia."
+        ],
+        publications: [
+          "DNA Damage Response and Endoplasmic Reticulum Stress in Hepatocytes. DNA Repair, 2024."
+        ],
+        teaching: [
+          "Apoyo docente práctico"
+        ]
+      }
+    },
+    {
+      id: "natalia-sainz",
+      name: "Natalia Sainz",
+      role: "Investigadora Predoctoral (FPU)",
+      category: "Predoctoral",
+      department: "Departamento de Fisiología / IIS Biocruces Bizkaia",
+      image: "assets/images/team/patricia_aspichueta.jpg",
+      email: "natalia.sainz@ehu.eus",
+      office: "Laboratorio 2.16, Leioa",
+      orcid: "0000-0001-9988-7766",
+      bio: "Investigadora predoctoral enfocada en la heterogeneidad metabólica unicelular en carcinoma hepatocelular y el descubrimiento de biomarcadores.",
+      cv: {
+        title: "Investigadora Predoctoral",
+        degrees: [
+          "Máster en Biomedicina",
+          "Graduada en Biología"
+        ],
+        positions: [
+          "Investigadora Predoctoral FPU (MICINN)"
+        ],
+        researchSummary: "Aplicación de lipidómica y metabolómica a nivel de célula única (*single-cell*) para subclasificar nódulos tumorales hepáticos.",
+        grants: [
+          "Ayuda Predoctoral FPU (2024-2027)."
+        ],
+        publications: [
+          "Single-Cell Metabolomics in Hepatocellular Carcinoma. Analytical Chemistry, 2024."
+        ],
+        teaching: [
+          "Colaboración docente en Fisiología Humana"
+        ]
+      }
+    },
+    {
+      id: "asier-izagirre",
+      name: "Asier Izagirre Bengoa",
+      role: "Técnico Especialista de Laboratorio",
+      category: "Técnico",
+      department: "Unidad de Lipidómica SGIker / Departamento de Fisiología",
+      image: "assets/images/team/asier_izagirre.jpg",
+      email: "asier.izagirre@ehu.eus",
+      office: "Unidad SGIker Lipidómica, Edificio SGIker, Leioa",
+      orcid: "0000-0002-1133-5577",
+      bio: "Técnico especialista responsable del mantenimiento analítico de espectrómetros de masas UHPLC-MS/MS y calibración cromatográfica en la Unidad SGIker.",
+      cv: {
+        title: "Técnico Especialista de Laboratorio - SGIker UPV/EHU",
+        degrees: [
+          "Técnico Superior de Laboratorio de Análisis y Control de Calidad",
+          "Formación Especializada en Espectrometría de Masas (LC-MS/MS)"
+        ],
+        positions: [
+          "Técnico Especialista de Apoyo a la Investigación, SGIker UPV/EHU (2015 - Presente)"
+        ],
+        researchSummary: "Gestión técnica del parque instrumental de espectrometría de masas, procesamiento rutinario de muestras lipídicas tisulares y plasmáticas, y desarrollo de estándares de calidad.",
+        grants: [
+          "Gestión Técnica de Equipamiento Científico SGIker (Ministerio de Ciencia e Innovación)."
+        ],
+        publications: [
+          "Coautor técnico en protocolos de Lipidómica Cualitativa y Cuantitativa por MS."
+        ],
+        teaching: [
+          "Impartición de talleres técnicos en manejo de UHPLC-MS/MS para personal posdoctoral y predoctoral."
+        ]
+      }
+    },
+    {
+      id: "jon-izaguirre",
+      name: "Jon Izaguirre Mendizabal",
+      role: "Técnico de Apoyo a la Investigación",
+      category: "Técnico",
+      department: "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      image: "assets/images/team/jon_izaguirre.jpg",
+      email: "jon.izaguirre@ehu.eus",
+      office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      orcid: "0000-0003-4455-6677",
+      bio: "Técnico de apoyo a la investigación responsable de la sala de cultivos primarios hepatocelulares, organoides 3D y mantenimiento de reactivos.",
+      cv: {
+        title: "Técnico de Apoyo a la Investigación",
+        degrees: [
+          "Grado Superior en Anotomía Patológica y Citodiagnóstico",
+          "Certificación Oficial en Manejo de Animales de Experimentación (Categoría B y C)"
+        ],
+        positions: [
+          "Técnico de Apoyo a la Investigación, Dept. Fisiología, UPV/EHU (2018 - Presente)"
+        ],
+        researchSummary: "Mantenimiento de líneas celulares hepatomatosas, aislamiento de hepatocitos primarios de roedor, ensayos de viabilidad celular y gestión de bioseguridad del laboratorio.",
+        grants: [
+          "Contrato Técnico de Apoyo a la Investigación del Gobierno Vasco."
+        ],
+        publications: [
+          "Soporte técnico y metodológico en artículos del grupo en Journal of Hepatology y Cancers."
+        ],
+        teaching: [
+          "Asistencia técnica en prácticas de laboratorio para estudiantes de Grado."
         ]
       }
     }

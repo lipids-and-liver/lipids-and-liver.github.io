@@ -75,6 +75,9 @@ function renderResearchLines() {
   `).join('');
 }
 
+let currentTeamCategory = 'ALL';
+let currentTeamSearch = '';
+
 function renderTeam(filterCategory = 'ALL', searchQuery = '') {
   const container = document.getElementById('team-grid');
   if (!container) return;
@@ -82,15 +85,26 @@ function renderTeam(filterCategory = 'ALL', searchQuery = '') {
   const query = searchQuery.toLowerCase().trim();
 
   const filtered = APP_DATA.teamMembers.filter(member => {
-    const matchesCategory = filterCategory === 'ALL' || member.category.includes(filterCategory);
+    let matchesCategory = false;
+    if (filterCategory === 'ALL') {
+      matchesCategory = true;
+    } else if (filterCategory === 'PDI') {
+      matchesCategory = member.category === 'Coordinadora' || member.category === 'Directora de Línea' || member.category === 'Investigador Senior' || member.category === 'PDI';
+    } else {
+      matchesCategory = member.category.toLowerCase().includes(filterCategory.toLowerCase());
+    }
+
     const matchesSearch = !query || 
       member.name.toLowerCase().includes(query) || 
-      member.role.toLowerCase().includes(query);
+      member.role.toLowerCase().includes(query) ||
+      member.category.toLowerCase().includes(query) ||
+      member.department.toLowerCase().includes(query);
+      
     return matchesCategory && matchesSearch;
   });
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--text-muted)">No se encontraron miembros con los criterios de búsqueda.</div>`;
+    container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2.5rem; color:var(--text-muted)">No se encontraron miembros para el filtro o búsqueda seleccionada.</div>`;
     return;
   }
 
@@ -224,11 +238,26 @@ function applyTranslations(lang) {
 
 function setupTeamSearchAndFilter() {
   const searchInput = document.getElementById('team-search');
+  const filterBtns = document.querySelectorAll('.team-filter-btn');
+
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
-      renderTeam('ALL', e.target.value);
+      currentTeamSearch = e.target.value;
+      renderTeam(currentTeamCategory, currentTeamSearch);
     });
   }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      const target = e.target.closest('.team-filter-btn');
+      if (target) {
+        target.classList.add('active');
+        currentTeamCategory = target.dataset.category;
+        renderTeam(currentTeamCategory, currentTeamSearch);
+      }
+    });
+  });
 }
 
 function setupThesesFilter() {
