@@ -1,0 +1,626 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { render } from 'astro:content';
+import stats from '../../data/stats.json';
+import ResearchCard from '../cards/ResearchCard.astro';
+import TeamCard from '../cards/TeamCard.astro';
+import ThesisCard from '../cards/ThesisCard.astro';
+import PublicationCard from '../cards/PublicationCard.astro';
+import TrainingCard from '../cards/TrainingCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const presentationEntries = await getLocalizedCollection('presentation', lang);
+presentationEntries.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const presentationTabs = await Promise.all(
+  presentationEntries.map(async (entry, index) => {
+    const { Content } = await render(entry);
+    return {
+      entry,
+      Content,
+      isActive: index === 0
+    };
+  })
+);
+
+const researchLines = await getLocalizedCollection('research', lang);
+researchLines.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+import { sortTheses } from '../../utils/theses';
+
+const teamMembers = await getLocalizedCollection('team', lang);
+teamMembers.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+const allTheses = await getLocalizedCollection('theses', lang);
+sortTheses(allTheses);
+const ongoingCount = allTheses.filter(t => t.data.status === 'ongoing').length;
+const completedCount = allTheses.filter(t => t.data.status === 'completed').length;
+
+const allPubs = await getLocalizedCollection('publications', lang);
+allPubs.sort((a, b) => Number(b.data.year) - Number(a.data.year));
+const latestPublications = allPubs.slice(0, 6);
+
+const trainings = await getLocalizedCollection('training', lang);
+trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<Layout currentPage="home" lang={lang}>
+  <!-- Institutional Hero Banner with Dynamic Interactive Network -->
+  <section class="institutional-hero" id="hero">
+    <!-- Interactive Background Canvas & Ambient Glowing Orbs -->
+    <div class="hero-canvas-wrap">
+      <canvas id="hero-particles-canvas"></canvas>
+    </div>
+    <div class="hero-ambient-orb hero-orb-1"></div>
+    <div class="hero-ambient-orb hero-orb-2"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-tag">
+          <span class="hero-pulse-badge">
+            <span class="hero-pulse-ring"></span>
+            <span class="hero-pulse-dot"></span>
+          </span>
+          <i class="fas fa-award"></i> {t.hero_tag || 'Grupo Consolidado del Gobierno Vasco (IT1560-22)'}
+        </span>
+        
+        <h1 class="hero-headline">
+          {t.hero_title}
+        </h1>
+
+        <p class="hero-lead">
+          {t.hero_subtitle}
+        </p>
+
+        <div class="hero-btn-group">
+          <a href={getLocalizedPath('/#lines', lang)} class="btn-inst-primary">
+            {t.cta_lines} <i class="fas fa-microscope"></i>
+          </a>
+          <a href={getLocalizedPath('/#team', lang)} class="btn-inst-secondary">
+            {t.cta_team} <i class="fas fa-user-friends"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-banner-img-box">
+        <img src="/assets/images/hero_outdoor_group.jpg" alt="Grupo de Investigación Lipids & Liver en Exteriores" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid" id="stats-grid">
+        {stats.map(stat => (
+          <div class="stat-box">
+            <div class="stat-val">{stat.number}</div>
+            <div class="stat-tit">{stat.label}</div>
+            <div class="stat-desc">{stat.subtext}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Presentación Section -->
+  <section class="page-section" id="about">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.about_title}</h2>
+          <span class="section-subtitle-inst">{t.about_subtitle}</span>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <div class="about-tabs" id="about-tabs-group">
+          {presentationTabs.map((tab) => (
+            <button
+              class={`tab-btn ${tab.isActive ? 'active' : ''}`}
+              data-tab={tab.entry.data.tabId}
+            >
+              {tab.entry.data.tabTitle}
+            </button>
+          ))}
+        </div>
+
+        {presentationTabs.map((tab) => {
+          const { entry, Content, isActive } = tab;
+          const { tabId, specialties, staffCompositionTitle, staffComposition } = entry.data;
+          const hasSidebar = (specialties && specialties.length > 0) || (staffComposition && staffComposition.length > 0);
+
+          return (
+            <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
+              {hasSidebar ? (
+                <div class="about-grid">
+                  <div class="about-text">
+                    <Content />
+                    {specialties && specialties.length > 0 && (
+                      <div class="specialty-list">
+                        {specialties.map((spec: string) => (
+                          <span class="specialty-chip"><i class="fas fa-check-circle"></i> {spec}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {staffComposition && staffComposition.length > 0 && (
+                    <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
+                      <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
+                        <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
+                      </h4>
+                      <ul style="list-style:none; line-height:2">
+                        {staffComposition.map((member: { count: string; role: string }) => (
+                          <li>
+                            <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div class="about-text">
+                  <Content />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Lines Section -->
+  <section class="page-section page-section-alt" id="lines">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.lines_title}</h2>
+          <span class="section-subtitle-inst">{t.lines_subtitle}</span>
+        </div>
+      </div>
+
+      <div class="research-grid-inst" id="lines-grid">
+        {researchLines.map(line => (
+          <ResearchCard line={line} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Personnel Section with Images & CV links -->
+  <section class="page-section" id="team">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.team_title}</h2>
+          <span class="section-subtitle-inst">{t.team_subtitle}</span>
+        </div>
+        <a href={getLocalizedPath('/curriculum', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-id-card"></i> {t.nav_cv_portal} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="team-filter-bar" id="team-category-filters">
+        <button class="team-filter-btn active" data-category="ALL"><i class="fas fa-users"></i> {t.team_all}</button>
+        <button class="team-filter-btn" data-category="PDI"><i class="fas fa-user-tie"></i> {t.team_pdi}</button>
+        <button class="team-filter-btn" data-category="Posdoctoral"><i class="fas fa-user-graduate"></i> {t.team_postdoc}</button>
+        <button class="team-filter-btn" data-category="Predoctoral"><i class="fas fa-book-reader"></i> {t.team_predoc}</button>
+        <button class="team-filter-btn" data-category="Técnico"><i class="fas fa-tools"></i> {t.team_tech}</button>
+      </div>
+
+
+      <div class="team-grid-inst" id="team-grid">
+        {teamMembers.map(member => (
+          <TeamCard member={member} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PhD Theses Section (Ongoing & Completed) with Refined Segmented Control -->
+  <section class="page-section page-section-alt" id="theses">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.theses_title}</h2>
+          <span class="section-subtitle-inst">{t.theses_subtitle}</span>
+        </div>
+        <a href={getLocalizedPath('/tesis', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-graduation-cap"></i> {t.theses_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <!-- Sleek Segmented Control Bar -->
+      <div style="display:flex; justify-content:center;">
+        <div class="segmented-control-bar">
+          <button class="segmented-btn active" data-type="ALL">
+            <i class="fas fa-layer-group"></i> {t.theses_all} <span class="segmented-count">{allTheses.length}</span>
+          </button>
+          <button class="segmented-btn" data-type="ONGOING">
+            <i class="fas fa-spinner fa-spin"></i> {t.theses_ongoing} <span class="segmented-count">{ongoingCount}</span>
+          </button>
+          <button class="segmented-btn" data-type="COMPLETED">
+            <i class="fas fa-check-circle"></i> {t.theses_completed} <span class="segmented-count">{completedCount}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="theses-grid-inst" id="theses-grid">
+        {allTheses.map(thesis => (
+          <ThesisCard thesis={thesis} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section (Latest only on Home) -->
+  <section class="page-section" id="publications">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.pubs_latest_title}</h2>
+          <span class="section-subtitle-inst">{t.pubs_latest_subtitle}</span>
+        </div>
+        <a href={getLocalizedPath('/publicaciones', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-book-open"></i> {t.pubs_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="pubs-list" id="pubs-list">
+        {latestPublications.map(pub => (
+          <PublicationCard pub={pub} />
+        ))}
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem; background:var(--bg-surface-alt); padding:2rem; border-radius:var(--radius-md); border:1px dashed var(--border-color);">
+        <p style="font-size:1rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+          <i class="fas fa-book-reader" style="color:var(--logo-green); margin-right:8px;"></i>
+          {t.pubs_archive_note}
+        </p>
+        <a href={getLocalizedPath('/publicaciones', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
+          <i class="fas fa-book-open"></i> {t.pubs_view_all_btn} ({allPubs.length}) <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Section -->
+  <section class="page-section page-section-alt" id="training">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.training_title}</h2>
+          <span class="section-subtitle-inst">{t.training_subtitle}</span>
+        </div>
+      </div>
+
+      <div class="training-bento-grid" id="training-bento-grid">
+        {trainings.map((tr, idx) => (
+          <TrainingCard training={tr} lang={lang} index={idx} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.contact_title}</h2>
+          <span class="section-subtitle-inst">{t.contact_subtitle}</span>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <h3 style="margin-bottom:1.5rem; font-size:1.3rem; color:var(--ehu-navy)">{t.contact_hq}</h3>
+          
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-university"></i></div>
+            <div class="info-text">
+              <h4>{t.contact_postal}</h4>
+              <p style="white-space:pre-line">{t.contact_postal_val}</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-user-check"></i></div>
+            <div class="info-text">
+              <h4>{t.contact_coord}</h4>
+              <p>Dra. Patricia Aspichueta Celaá<br />Catedrática de Fisiología (UPV/EHU)</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <h4>{t.contact_email_title}</h4>
+              <p>patricia.aspichueta@ehu.eus</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <h3 style="margin-bottom:1.5rem; font-size:1.3rem; color:var(--ehu-navy)">{t.contact_form_title}</h3>
+          
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="contact-name">{t.contact_form_name}</label>
+              <input type="text" id="contact-name" class="form-control" required placeholder="Ej. Dr. Juan Pérez" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">{t.contact_form_email}</label>
+              <input type="email" id="contact-email" class="form-control" required placeholder="juan.perez@ejemplo.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">{t.contact_form_subject}</label>
+              <input type="text" id="contact-subject" class="form-control" required placeholder="Consulta sobre Colaboración / Doctorado" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">{t.contact_form_msg}</label>
+              <textarea id="contact-message" class="form-control" required placeholder="Escriba aquí su mensaje..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-inst-primary" style="border:none; cursor:pointer">
+              {t.contact_form_send} <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Client-side Logic for Index Page (Tabs, Segmented Theses, Team Search) -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. About Tabs
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          const target = document.getElementById(btn.dataset.tab);
+          if (target) target.classList.add('active');
+        });
+      });
+
+      // 2. Theses Segmented Control Filter
+      const segBtns = document.querySelectorAll('.segmented-btn');
+      const thesisCards = document.querySelectorAll('.theses-grid-inst .thesis-card-inst');
+      segBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          segBtns.forEach(b => b.classList.remove('active'));
+          const targetBtn = e.target.closest('.segmented-btn');
+          if (targetBtn) {
+            targetBtn.classList.add('active');
+            const type = targetBtn.dataset.type;
+            thesisCards.forEach(card => {
+              if (type === 'ALL' || card.dataset.type === type) {
+                card.style.display = 'flex';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+
+      // 3. Team Filter Buttons
+      const teamFilterBtns = document.querySelectorAll('.team-filter-btn');
+      const teamCards = document.querySelectorAll('.team-grid-inst .team-card-inst');
+
+      let currentCategory = 'ALL';
+
+      function filterTeam() {
+        teamCards.forEach(card => {
+          const category = card.dataset.category || '';
+
+          let matchesCategory = false;
+          if (currentCategory === 'ALL') {
+            matchesCategory = true;
+          } else if (currentCategory === 'PDI') {
+            matchesCategory = category === 'Coordinadora' || category === 'Directora de Línea' || category === 'Investigador Senior' || category === 'PDI' || category.includes('Ramón y Cajal');
+          } else {
+            matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase());
+          }
+
+          card.style.display = matchesCategory ? 'flex' : 'none';
+        });
+      }
+
+      teamFilterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          teamFilterBtns.forEach(b => b.classList.remove('active'));
+          const target = e.target.closest('.team-filter-btn');
+          if (target) {
+            target.classList.add('active');
+            currentCategory = target.dataset.category;
+            filterTeam();
+          }
+        });
+      });
+
+
+
+      // 0. Hero Interactive Dynamic Effects
+      // A. Dynamic Molecular/Lipid Particle Network Simulation
+      const heroSection = document.getElementById('hero');
+      const heroCanvas = document.getElementById('hero-particles-canvas');
+
+      if (heroCanvas && heroSection) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (!prefersReducedMotion) {
+          const ctx = heroCanvas.getContext('2d');
+          let width = (heroCanvas.width = heroSection.offsetWidth);
+          let height = (heroCanvas.height = heroSection.offsetHeight);
+
+          let particles = [];
+          const particleCount = Math.min(Math.floor((width * height) / 18000), 55);
+          const mouse = { x: -1000, y: -1000, active: false };
+
+          class Particle {
+            constructor() {
+              this.reset(true);
+            }
+            reset(initial = false) {
+              this.x = initial ? Math.random() * width : (Math.random() > 0.5 ? 0 : width);
+              this.y = initial ? Math.random() * height : Math.random() * height;
+              this.vx = (Math.random() - 0.5) * 0.55;
+              this.vy = (Math.random() - 0.5) * 0.55;
+              this.radius = Math.random() * 2.8 + 1.2;
+              this.baseRadius = this.radius;
+              this.alpha = Math.random() * 0.45 + 0.2;
+              const isCyan = Math.random() > 0.55;
+              this.color = isCyan ? '56, 189, 248' : '138, 198, 63';
+              this.pulseAngle = Math.random() * Math.PI * 2;
+              this.pulseSpeed = 0.02 + Math.random() * 0.02;
+            }
+            update() {
+              this.pulseAngle += this.pulseSpeed;
+              this.radius = this.baseRadius + Math.sin(this.pulseAngle) * 0.6;
+
+              this.x += this.vx;
+              this.y += this.vy;
+
+              if (mouse.active) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 130) {
+                  const force = (130 - dist) / 130;
+                  this.x -= (dx / dist) * force * 1.5;
+                  this.y -= (dy / dist) * force * 1.5;
+                }
+              }
+
+              if (this.x < -20) this.x = width + 20;
+              if (this.x > width + 20) this.x = -20;
+              if (this.y < -20) this.y = height + 20;
+              if (this.y > height + 20) this.y = -20;
+            }
+            draw() {
+              ctx.beginPath();
+              ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
+              ctx.shadowColor = `rgba(${this.color}, 0.5)`;
+              ctx.shadowBlur = 6;
+              ctx.fill();
+              ctx.shadowBlur = 0;
+            }
+          }
+
+          for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+          }
+
+          let isHeroVisible = true;
+          let animId = null;
+
+          function animate() {
+            if (!isHeroVisible) return;
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+              const p1 = particles[i];
+              p1.update();
+              p1.draw();
+
+              for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p1.x - p2.x;
+                const dy = p1.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 110) {
+                  const connAlpha = (1 - dist / 110) * 0.18;
+                  ctx.beginPath();
+                  ctx.moveTo(p1.x, p1.y);
+                  ctx.lineTo(p2.x, p2.y);
+                  ctx.strokeStyle = `rgba(138, 198, 63, ${connAlpha})`;
+                  ctx.lineWidth = 1;
+                  ctx.stroke();
+                }
+              }
+
+              if (mouse.active) {
+                const mdx = p1.x - mouse.x;
+                const mdy = p1.y - mouse.y;
+                const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mdist < 140) {
+                  const mAlpha = (1 - mdist / 140) * 0.35;
+                  ctx.beginPath();
+                  ctx.moveTo(p1.x, p1.y);
+                  ctx.lineTo(mouse.x, mouse.y);
+                  ctx.strokeStyle = `rgba(56, 189, 248, ${mAlpha})`;
+                  ctx.lineWidth = 1.2;
+                  ctx.stroke();
+                }
+              }
+            }
+
+            animId = requestAnimationFrame(animate);
+          }
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              isHeroVisible = entry.isIntersecting;
+              if (isHeroVisible && !animId) {
+                animate();
+              } else if (!isHeroVisible && animId) {
+                cancelAnimationFrame(animId);
+                animId = null;
+              }
+            });
+          }, { threshold: 0.1 });
+          observer.observe(heroSection);
+
+          window.addEventListener('resize', () => {
+            width = heroCanvas.width = heroSection.offsetWidth;
+            height = heroCanvas.height = heroSection.offsetHeight;
+          }, { passive: true });
+
+          heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+            mouse.active = true;
+          });
+
+          heroSection.addEventListener('mouseleave', () => {
+            mouse.active = false;
+            mouse.x = -1000;
+            mouse.y = -1000;
+          });
+
+          animate();
+        }
+      }
+
+      // 6. Contact Form
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert("¡Muchas gracias! Su mensaje ha sido enviado correctamente al Grupo de Investigación Lipids & Liver.");
+          form.reset();
+        });
+      }
+    });
+  </script>
+</Layout>

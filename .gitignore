@@ -7,3 +7,9 @@
 .DS_Store
 Thumbs.db
 *.tmp
+
+# Astro & Node dependencies / build outputs
+node_modules/
+dist/
+.astro/
+

@@ -1,0 +1,13 @@
+---
+import ResearchDetailPage from '../../components/pages/ResearchDetailPage.astro';
+import { getAllSlugs } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  const slugs = await getAllSlugs('research');
+  return slugs.map(id => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+---
+
+<ResearchDetailPage id={id!} lang="es" />

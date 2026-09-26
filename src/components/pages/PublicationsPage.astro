@@ -1,0 +1,294 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, type Locale } from '../../utils/i18n';
+import PublicationCard from '../cards/PublicationCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const allPubs = await getLocalizedCollection('publications', lang);
+allPubs.sort((a, b) => Number(b.data.year) - Number(a.data.year));
+
+// Topic counts
+const counts = {
+  ALL: allPubs.length,
+  mafld: allPubs.filter(p => p.data.topic === 'mafld').length,
+  cancer: allPubs.filter(p => p.data.topic === 'cancer').length,
+  lipidomics: allPubs.filter(p => p.data.topic === 'lipidomics').length,
+  e2f: allPubs.filter(p => p.data.topic === 'e2f').length,
+  exposome: allPubs.filter(p => p.data.topic === 'exposome').length,
+  'spatial-omics': allPubs.filter(p => p.data.topic === 'spatial-omics').length,
+};
+---
+
+<Layout title={`${t.pubs_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="pubs" lang={lang}>
+  <!-- Page Header Banner -->
+  <div style="background: var(--ehu-navy); color: #ffffff; padding: 40px 0; margin-bottom: 2.5rem; border-bottom: 3px solid var(--logo-green);">
+    <div class="container">
+      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">
+        <i class="fas fa-book-open" style="color:var(--logo-green); margin-right:10px;"></i> {t.pubs_page_title}
+      </h1>
+      <p style="font-size: 1.05rem; opacity: 0.9;">{t.pubs_page_sub}</p>
+    </div>
+  </div>
+
+  <div class="container" style="margin-bottom: 4rem;">
+    <!-- Live Search Bar -->
+    <div class="pub-search-bar">
+      <i class="fas fa-search pub-search-icon"></i>
+      <input 
+        type="text" 
+        id="pub-search-input" 
+        class="pub-search-input" 
+        placeholder={t.pubs_search_placeholder}
+        autocomplete="off"
+      />
+      <button id="pub-search-clear" style="display:none; background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1rem;" title="Limpiar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Topic Filters -->
+    <div class="pub-filters" id="pub-filters" style="margin-bottom:1.5rem">
+      <button class="pub-filter-btn active" data-topic="ALL">
+        <i class="fas fa-layer-group"></i> {t.pubs_all} <span>({counts.ALL})</span>
+      </button>
+      <button class="pub-filter-btn" data-topic="mafld">
+        <i class="fas fa-notes-medical"></i> MAFLD / MASH <span>({counts.mafld})</span>
+      </button>
+      <button class="pub-filter-btn" data-topic="cancer">
+        <i class="fas fa-dna"></i> Cáncer Hepático <span>({counts.cancer})</span>
+      </button>
+      <button class="pub-filter-btn" data-topic="lipidomics">
+        <i class="fas fa-vial"></i> Lipidómica SGIker <span>({counts.lipidomics})</span>
+      </button>
+      <button class="pub-filter-btn" data-topic="e2f">
+        <i class="fas fa-chart-line"></i> Daño Hepático (E2F) <span>({counts.e2f})</span>
+      </button>
+      <button class="pub-filter-btn" data-topic="exposome">
+        <i class="fas fa-globe-americas"></i> Exposoma &amp; MDCs <span>({counts.exposome})</span>
+      </button>
+      <button class="pub-filter-btn" data-topic="spatial-omics">
+        <i class="fas fa-microscope"></i> Spatial Omics <span>({counts['spatial-omics']})</span>
+      </button>
+    </div>
+
+    <!-- Meta / Results Count Row -->
+    <div class="pub-results-meta" id="pub-results-meta">
+      <div>
+        <span id="pub-status-text">
+          {t.pubs_showing} <strong id="pub-count-visible">0</strong> {t.pubs_of} <strong id="pub-count-total">{allPubs.length}</strong> {t.pubs_results}
+        </span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <label for="pub-per-page" style="font-size:0.85rem; color:var(--text-secondary);">Por página:</label>
+        <select id="pub-per-page" style="padding:4px 8px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-surface); color:var(--text-primary); font-size:0.85rem; cursor:pointer;">
+          <option value="20" selected>20 (UPV/EHU)</option>
+          <option value="40">40</option>
+          <option value="ALL">{t.pubs_all_pages} ({allPubs.length})</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Publications List -->
+    <div class="pubs-list" id="pubs-list">
+      {allPubs.map(pub => (
+        <PublicationCard pub={pub} />
+      ))}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pub-pagination" id="pub-pagination"></div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('pub-search-input');
+      const searchClear = document.getElementById('pub-search-clear');
+      const filterBtns = document.querySelectorAll('.pub-filter-btn');
+      const perPageSelect = document.getElementById('pub-per-page');
+      const pubCards = Array.from(document.querySelectorAll('.pubs-list .pub-card'));
+      const paginationEl = document.getElementById('pub-pagination');
+      const countVisibleEl = document.getElementById('pub-count-visible');
+      const countTotalEl = document.getElementById('pub-count-total');
+
+      let currentTopic = 'ALL';
+      let searchQuery = '';
+      let currentPage = 1;
+      let pageSize = 20;
+
+      // Pre-extract searchable text for fast filtering
+      const cardData = pubCards.map(card => ({
+        el: card,
+        topic: card.dataset.topic || '',
+        text: (card.innerText || '').toLowerCase()
+      }));
+
+      function applyFilters() {
+        const query = searchQuery.trim().toLowerCase();
+
+        // 1. Filter cards matching topic & search
+        const matching = cardData.filter(item => {
+          const matchTopic = currentTopic === 'ALL' || item.topic === currentTopic;
+          const matchSearch = !query || item.text.includes(query);
+          return matchTopic && matchSearch;
+        });
+
+        const totalMatching = matching.length;
+        const totalPages = pageSize === 'ALL' ? 1 : Math.ceil(totalMatching / pageSize);
+
+        if (currentPage > totalPages) {
+          currentPage = Math.max(1, totalPages);
+        }
+
+        // 2. Hide all cards first
+        cardData.forEach(item => {
+          item.el.style.display = 'none';
+        });
+
+        // 3. Determine slice for pagination
+        let visibleItems = [];
+        if (pageSize === 'ALL') {
+          visibleItems = matching;
+        } else {
+          const startIdx = (currentPage - 1) * pageSize;
+          const endIdx = startIdx + pageSize;
+          visibleItems = matching.slice(startIdx, endIdx);
+        }
+
+        // 4. Show visible items
+        visibleItems.forEach(item => {
+          item.el.style.display = 'block';
+        });
+
+        // 5. Update counts
+        if (countVisibleEl) countVisibleEl.textContent = visibleItems.length;
+        if (countTotalEl) countTotalEl.textContent = totalMatching;
+
+        // 6. Render pagination buttons
+        renderPagination(totalPages);
+      }
+
+      function renderPagination(totalPages) {
+        if (!paginationEl) return;
+        paginationEl.innerHTML = '';
+
+        if (totalPages <= 1) {
+          paginationEl.style.display = 'none';
+          return;
+        }
+
+        paginationEl.style.display = 'flex';
+
+        // Prev button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'pub-page-btn';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => {
+          if (currentPage > 1) {
+            currentPage--;
+            applyFilters();
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+          }
+        });
+        paginationEl.appendChild(prevBtn);
+
+        // Page number buttons
+        for (let p = 1; p <= totalPages; p++) {
+          const btn = document.createElement('button');
+          btn.className = `pub-page-btn ${p === currentPage ? 'active' : ''}`;
+          btn.textContent = p;
+          btn.addEventListener('click', () => {
+            currentPage = p;
+            applyFilters();
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+          });
+          paginationEl.appendChild(btn);
+        }
+
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'pub-page-btn';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            applyFilters();
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+          }
+        });
+        paginationEl.appendChild(nextBtn);
+      }
+
+      // Event listeners
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          const target = e.target.closest('.pub-filter-btn');
+          if (target) {
+            target.classList.add('active');
+            currentTopic = target.dataset.topic;
+            currentPage = 1;
+            applyFilters();
+          }
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          if (searchClear) {
+            searchClear.style.display = searchQuery ? 'block' : 'none';
+          }
+          currentPage = 1;
+          applyFilters();
+        });
+      }
+
+      if (searchClear) {
+        searchClear.addEventListener('click', () => {
+          searchInput.value = '';
+          searchQuery = '';
+          searchClear.style.display = 'none';
+          currentPage = 1;
+          applyFilters();
+          searchInput.focus();
+        });
+      }
+
+      if (perPageSelect) {
+        perPageSelect.addEventListener('change', (e) => {
+          const val = e.target.value;
+          pageSize = val === 'ALL' ? 'ALL' : parseInt(val, 10);
+          currentPage = 1;
+          applyFilters();
+        });
+      }
+
+      // Check URL query param e.g. ?topic=mafld
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const requestedTopic = urlParams.get('topic');
+        if (requestedTopic) {
+          const targetBtn = document.querySelector(`.pub-filter-btn[data-topic="${requestedTopic}"]`);
+          if (targetBtn) {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            targetBtn.classList.add('active');
+            currentTopic = requestedTopic;
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      }
+
+      // Initial run
+      applyFilters();
+    });
+  </script>
+</Layout>

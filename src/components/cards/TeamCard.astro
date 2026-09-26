@@ -1,0 +1,56 @@
+---
+import { getLocalizedPath, type Locale } from '../../utils/i18n';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  member: CollectionEntry<'team'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { member, lang } = Astro.props;
+
+let catKey = 'pdi';
+let catBadge = '<i class="fas fa-user-graduate" style="margin-right:4px;"></i> PDI & Senior';
+
+if (member.data.category === 'Coordinadora') {
+  catKey = 'leadership';
+  catBadge = '<i class="fas fa-crown" style="margin-right:4px;"></i> Coordinación';
+} else if (member.data.category.includes('Ramón y Cajal') || member.data.category.includes('Ryb')) {
+  catKey = 'ryc';
+  catBadge = '<i class="fas fa-award" style="margin-right:4px;"></i> Ramón y Cajal';
+} else if (member.data.category.includes('Directora') || member.data.category.includes('Investigador Senior') || member.data.category === 'PDI') {
+  catKey = 'pdi';
+  catBadge = '<i class="fas fa-user-graduate" style="margin-right:4px;"></i> PDI & Senior';
+} else if (member.data.category.includes('Posdoctoral')) {
+  catKey = 'postdoc';
+  catBadge = '<i class="fas fa-microscope" style="margin-right:4px;"></i> Posdoctoral';
+} else if (member.data.category.includes('Predoctoral')) {
+  catKey = 'predoc';
+  catBadge = '<i class="fas fa-user-edit" style="margin-right:4px;"></i> Predoctoral';
+} else if (member.data.category.includes('Técnico')) {
+  catKey = 'tech';
+  catBadge = '<i class="fas fa-flask" style="margin-right:4px;"></i> Personal Técnico';
+}
+
+const currentSlug = member.slug;
+const searchIndex = `${member.data.name} ${member.data.role} ${member.data.category} ${member.data.department || ''}`.toLowerCase();
+const imageSrc = member.data.image ? (member.data.image.startsWith('/') ? member.data.image : `/${member.data.image}`) : '/assets/images/team/placeholder.jpg';
+---
+
+<div class={`team-card-inst team-card-${catKey}`} data-category={member.data.category} data-search={searchIndex}>
+  <div class={`team-photo-box photo-${catKey}`}>
+    <img src={imageSrc} alt={member.data.name} class="team-photo-img" />
+  </div>
+  <div class="team-card-info">
+    <h4 class="team-member-name">{member.data.name}</h4>
+    <div class="team-member-role">{member.data.role}</div>
+    <div class="team-member-dept">{member.data.department}</div>
+    
+    <div class="team-card-footer">
+      <span class={`team-category-badge badge-${catKey}`} set:html={catBadge} />
+      <a href={getLocalizedPath(`/curriculum/${currentSlug}`, lang)} class="team-cv-btn-icon" title="Ver Currículum Completo">
+        <i class="fas fa-id-card"></i> CV
+      </a>
+    </div>
+  </div>
+</div>

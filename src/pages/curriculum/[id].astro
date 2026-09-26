@@ -1,0 +1,13 @@
+---
+import CurriculumDetailPage from '../../components/pages/CurriculumDetailPage.astro';
+import { getAllSlugs } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  const slugs = await getAllSlugs('team');
+  return slugs.map(id => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+---
+
+<CurriculumDetailPage id={id!} lang="es" />

@@ -1,0 +1,20 @@
+{
+  "name": "lipid_and_liver",
+  "version": "1.0.0",
+  "description": "Official modernized website for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco IT1560-22) at the **University of the Basque Country (UPV/EHU)** and **IIS Biocruces Bizkaia**.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/smzlogoj/lipid_and_liver/issues"
+  },
+  "homepage": "https://github.com/smzlogoj/lipid_and_liver#readme",
+  "dependencies": {
+    "astro": "^7.3.5"
+  }
+}

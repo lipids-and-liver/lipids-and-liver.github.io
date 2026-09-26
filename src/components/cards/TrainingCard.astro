@@ -1,0 +1,64 @@
+---
+import { render } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  training: CollectionEntry<'training'> & { slug: string; locale: Locale };
+  lang: Locale;
+  index?: number;
+}
+
+const { training, lang, index = 0 } = Astro.props;
+const t = getTranslations(lang);
+const { Content } = await render(training);
+
+// Determine Bento span: frontmatter takes precedence, else alternate wide/compact
+const bentoSpanClass = training.data.bentoSpan 
+  ? `bento-${training.data.bentoSpan}` 
+  : (index % 4 === 0 || index % 4 === 3 ? 'bento-wide' : 'bento-compact');
+
+const iconClass = training.data.icon || 'fas fa-graduation-cap';
+---
+
+<div class={`training-bento-card ${bentoSpanClass}`}>
+  <!-- Decorative Watermark Icon in bottom-right corner -->
+  <i class={`${iconClass} bento-watermark-icon`} aria-hidden="true"></i>
+
+  <!-- Top Metadata & Badges -->
+  <div class="bento-card-top">
+    <div class="bento-icon-wrapper">
+      <i class={iconClass}></i>
+    </div>
+    <div class="bento-tags">
+      <span class="bento-type-badge">{training.data.type}</span>
+      {training.data.badge && <span class="bento-spec-badge">{training.data.badge}</span>}
+    </div>
+  </div>
+
+  <!-- Header Info -->
+  <div class="bento-header-info">
+    <h3 class="bento-title">{training.data.title}</h3>
+    {training.data.institution && (
+      <div class="bento-institution">
+        <i class="fas fa-university"></i>
+        <span>{training.data.institution}</span>
+      </div>
+    )}
+  </div>
+
+  <!-- Main Markdown Content -->
+  <div class="bento-body">
+    <Content />
+  </div>
+
+  <!-- Action Link / Button -->
+  {training.data.url && (
+    <div class="bento-footer">
+      <a href={training.data.url} target="_blank" rel="noopener" class="bento-link-btn">
+        <span>{t.training_link_label || 'Más información en UPV/EHU'}</span>
+        <i class="fas fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+  )}
+</div>

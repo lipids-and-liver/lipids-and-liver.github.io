@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import TeamCard from '../cards/TeamCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const teamMembers = await getLocalizedCollection('team', lang);
+teamMembers.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<Layout title={`${t.team_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="curriculum" lang={lang}>
+  <!-- Nav Extra: Member Dropdown Selector -->
+  <div slot="nav-extra" class="nav-quick-select-group">
+    <label for="member-select"><i class="fas fa-user-circle"></i> {t.team_select_label}</label>
+    <select id="member-select" data-lang={lang} class="nav-quick-select">
+      <option value="">{t.team_select_placeholder}</option>
+      {teamMembers.map(m => (
+        <option value={m.slug}>
+          {m.data.name}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h1 class="section-title-inst">{t.team_page_title}</h1>
+          <span class="section-subtitle-inst">{t.team_page_sub} &bull; {teamMembers.length} Miembros Activos</span>
+        </div>
+      </div>
+
+      <div class="team-filter-bar" id="team-category-filters">
+        <button class="team-filter-btn active" data-category="ALL"><i class="fas fa-users"></i> {t.team_all}</button>
+        <button class="team-filter-btn" data-category="PDI"><i class="fas fa-user-tie"></i> {t.team_pdi}</button>
+        <button class="team-filter-btn" data-category="Posdoctoral"><i class="fas fa-user-graduate"></i> {t.team_postdoc}</button>
+        <button class="team-filter-btn" data-category="Predoctoral"><i class="fas fa-book-reader"></i> {t.team_predoc}</button>
+        <button class="team-filter-btn" data-category="Técnico"><i class="fas fa-tools"></i> {t.team_tech}</button>
+      </div>
+
+      <div class="team-search-bar" style="margin-bottom:2rem">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" id="team-search" placeholder={t.team_search_placeholder} />
+      </div>
+
+      <div class="team-grid-inst" id="team-grid">
+        {teamMembers.map(member => (
+          <TeamCard member={member} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('member-select');
+      if (select) {
+        const lang = select.dataset.lang || 'es';
+        const prefix = lang === 'es' ? '' : '/' + lang;
+        select.addEventListener('change', (e) => {
+          if (e.target.value) {
+            window.location.href = prefix + '/curriculum/' + e.target.value;
+          }
+        });
+      }
+
+      const filterBtns = document.querySelectorAll('.team-filter-btn');
+      const searchInput = document.getElementById('team-search');
+      const teamCards = document.querySelectorAll('.team-grid-inst .team-card-inst');
+
+      let currentCategory = 'ALL';
+      let currentSearch = '';
+
+      function filterTeam() {
+        const query = currentSearch.toLowerCase().trim();
+        teamCards.forEach(card => {
+          const category = card.dataset.category || '';
+          const searchData = card.dataset.search || '';
+
+          let matchesCategory = false;
+          if (currentCategory === 'ALL') {
+            matchesCategory = true;
+          } else if (currentCategory === 'PDI') {
+            matchesCategory = category === 'Coordinadora' || category === 'Directora de Línea' || category === 'Investigador Senior' || category === 'PDI' || category.includes('Ramón y Cajal');
+          } else {
+            matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase());
+          }
+
+          const matchesSearch = !query || searchData.includes(query);
+
+          if (matchesCategory && matchesSearch) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          const target = e.target.closest('.team-filter-btn');
+          if (target) {
+            target.classList.add('active');
+            currentCategory = target.dataset.category;
+            filterTeam();
+          }
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentSearch = e.target.value;
+          filterTeam();
+        });
+      }
+    });
+  </script>
+</Layout>

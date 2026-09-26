@@ -1,0 +1,15 @@
+---
+import ThesesIndexPage from '../../../components/pages/ThesesIndexPage.astro';
+import type { Locale } from '../../../utils/i18n';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'eu' } },
+    { params: { lang: 'en' } }
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<ThesesIndexPage lang={lang as Locale} />

@@ -1,0 +1,37 @@
+---
+import { getLocalizedPath, getTranslations, type Locale } from '../../utils/i18n';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  thesis: CollectionEntry<'theses'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { thesis, lang } = Astro.props;
+const t = getTranslations(lang);
+
+const isOngoing = thesis.data.status === 'ongoing';
+const currentSlug = thesis.slug;
+const badgeText = thesis.data.badge || (isOngoing ? t.theses_ongoing : t.theses_completed);
+---
+
+<div class={`thesis-card-inst ${isOngoing ? 'ongoing' : ''}`} data-type={isOngoing ? 'ONGOING' : 'COMPLETED'}>
+  <span class={isOngoing ? 'thesis-badge-ongoing' : 'thesis-badge-completed'}>
+    <i class={isOngoing ? 'fas fa-spinner fa-spin' : 'fas fa-check-circle'}></i> {badgeText}
+  </span>
+  <h4 class="thesis-author">{thesis.data.author}</h4>
+  <div class="thesis-title-text">"{thesis.data.title}"</div>
+  <div class="thesis-meta-info">
+    <div class="thesis-meta-item">
+      <i class="fas fa-university"></i>
+      <span>{thesis.data.institution}</span>
+    </div>
+    <div class="thesis-meta-item">
+      <i class="fas fa-calendar-alt"></i>
+      <span>{thesis.data.year}</span>
+    </div>
+  </div>
+  <a href={getLocalizedPath(`/tesis/${currentSlug}`, lang)} class="thesis-detail-link">
+    <i class="fas fa-book-reader"></i> {t.theses_view_more}
+  </a>
+</div>

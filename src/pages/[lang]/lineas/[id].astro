@@ -1,0 +1,20 @@
+---
+import ResearchDetailPage from '../../../components/pages/ResearchDetailPage.astro';
+import { getAllSlugs, type Locale } from '../../../utils/i18n';
+
+export async function getStaticPaths() {
+  const slugs = await getAllSlugs('research');
+  const locales: Locale[] = ['eu', 'en'];
+  const paths = [];
+  for (const lang of locales) {
+    for (const id of slugs) {
+      paths.push({ params: { lang, id } });
+    }
+  }
+  return paths;
+}
+
+const { lang, id } = Astro.params;
+---
+
+<ResearchDetailPage id={id!} lang={lang as Locale} />

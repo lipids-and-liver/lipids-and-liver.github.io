@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lipids &amp; Liver | Portal Oficial en Construcción (UPV/EHU &amp; IIS Biocruces Bizkaia)</title>
+  <meta name="description" content="Página oficial en construcción del Grupo de Investigación Consolidado Lipids & Liver de la Universidad del País Vasco (UPV/EHU) e Instituto Sanitario Biocruces Bizkaia." />
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans (Prototipo 5) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --cinema-font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --cinema-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+      --cinema-bg: #07090e;
+      --cinema-bg-glow: rgba(0, 245, 155, 0.06);
+      --cinema-surface: rgba(18, 23, 34, 0.72);
+      --cinema-border: rgba(255, 255, 255, 0.1);
+
+      --cinema-text-primary: #ffffff;
+      --cinema-text-secondary: #a0aec0;
+      --cinema-text-muted: #64748b;
+
+      --cinema-mint: #00f59b;
+      --cinema-mint-glow: rgba(0, 245, 155, 0.35);
+      --cinema-cyan: #00d2ff;
+      --cinema-cyan-glow: rgba(0, 210, 255, 0.3);
+
+      --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: var(--cinema-bg);
+      color: var(--cinema-text-primary);
+      font-family: var(--cinema-font-sans);
+      overflow-x: hidden;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Background Canvas Particles */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.65;
+    }
+
+    /* Ambient Glow Orbs */
+    .cinema-ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .glow-1 {
+      width: 55vw;
+      height: 55vh;
+      top: -10%;
+      right: -10%;
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.13) 0%, transparent 70%);
+    }
+
+    .glow-2 {
+      width: 50vw;
+      height: 50vh;
+      bottom: -10%;
+      left: -10%;
+      background: radial-gradient(circle, rgba(0, 245, 155, 0.1) 0%, transparent 70%);
+    }
+
+    /* Top Floating Header */
+    .cinema-top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.25rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      background: linear-gradient(to bottom, rgba(7, 9, 14, 0.9) 0%, rgba(7, 9, 14, 0) 100%);
+      backdrop-filter: blur(10px);
+    }
+
+    .cinema-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .cinema-logo {
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .cinema-brand-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cinema-brand-name {
+      font-family: var(--cinema-font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, #ffffff 0%, var(--cinema-mint) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cinema-brand-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cinema-text-muted);
+    }
+
+    .cinema-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cinema-accred-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--cinema-border);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--cinema-text-secondary);
+      font-family: var(--cinema-font-display);
+      letter-spacing: 0.5px;
+    }
+
+    .cinema-accred-badge span {
+      color: var(--cinema-mint);
+      font-weight: 700;
+    }
+
+    .lang-switcher-cinema {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--cinema-border);
+      border-radius: 20px;
+      padding: 2px;
+      backdrop-filter: blur(8px);
+    }
+
+    .lang-btn-cinema {
+      border: none;
+      background: transparent;
+      color: var(--cinema-text-secondary);
+      font-family: var(--cinema-font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn-cinema.active {
+      background: var(--cinema-mint);
+      color: #07090e;
+      font-weight: 800;
+    }
+
+    .btn-drawer-trigger {
+      background: transparent;
+      border: 1px solid var(--cinema-mint);
+      color: var(--cinema-mint);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-family: var(--cinema-font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s;
+    }
+
+    .btn-drawer-trigger:hover {
+      background: var(--cinema-mint);
+      color: #07090e;
+      box-shadow: 0 0 16px var(--cinema-mint-glow);
+    }
+
+    /* Main Showcase Content */
+    .cinema-main-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 7.5rem 2rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cinema-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .chapter-number-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 245, 155, 0.08);
+      border: 1px solid rgba(0, 245, 155, 0.3);
+      color: var(--cinema-mint);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-family: var(--cinema-font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 20px rgba(0, 245, 155, 0.15);
+    }
+
+    .chapter-headline {
+      font-family: var(--cinema-font-display);
+      font-size: clamp(2.3rem, 3.8vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      color: #ffffff;
+    }
+
+    .highlight-mint {
+      background: linear-gradient(135deg, var(--cinema-mint) 0%, var(--cinema-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .chapter-lead-text {
+      font-size: 1.1rem;
+      color: var(--cinema-text-secondary);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      max-width: 620px;
+    }
+
+    /* Actions */
+    .cinema-action-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.25rem;
+    }
+
+    .btn-cinema-glow {
+      background: var(--cinema-mint);
+      color: #07090e;
+      border: none;
+      font-family: var(--cinema-font-sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 12px 26px;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      box-shadow: 0 0 20px var(--cinema-mint-glow);
+    }
+
+    .btn-cinema-glow:hover {
+      background: #26f8a8;
+      box-shadow: 0 0 30px rgba(0, 245, 155, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-cinema-glass {
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      border: 1px solid var(--cinema-border);
+      font-family: var(--cinema-font-sans);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s;
+    }
+
+    .btn-cinema-glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Progress Box */
+    .cinema-progress-card {
+      background: var(--cinema-surface);
+      border: 1px solid var(--cinema-border);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      backdrop-filter: blur(16px);
+      max-width: 620px;
+    }
+
+    .cinema-prog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .cinema-prog-title {
+      font-family: var(--cinema-font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .cinema-prog-pct {
+      font-family: var(--cinema-font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--cinema-mint);
+    }
+
+    .cinema-prog-bar-bg {
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .cinema-prog-bar-fill {
+      height: 100%;
+      width: 90%;
+      background: linear-gradient(90deg, var(--cinema-cyan) 0%, var(--cinema-mint) 100%);
+      box-shadow: 0 0 12px var(--cinema-mint-glow);
+    }
+
+    .cinema-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .cinema-step-item {
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cinema-step-item.done { color: var(--cinema-mint); }
+    .cinema-step-item.active { color: #fbbf24; }
+
+    /* Right Column Figure Card (Prototipo 5) */
+    .cinema-figure-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--cinema-border);
+      background: var(--cinema-surface);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+      transition: all 0.5s var(--ease-cinematic);
+    }
+
+    .cinema-figure-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      border-color: rgba(0, 245, 155, 0.35);
+      box-shadow: 0 30px 60px -12px rgba(0, 245, 155, 0.15);
+    }
+
+    .cinema-figure-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      filter: saturate(1.08) brightness(0.9);
+      transition: transform 1.2s var(--ease-cinematic);
+    }
+
+    .cinema-figure-card:hover .cinema-figure-img {
+      transform: scale(1.05);
+    }
+
+    .cinema-figure-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 2rem 1.75rem;
+      background: linear-gradient(to top, rgba(7, 9, 14, 0.95) 0%, rgba(7, 9, 14, 0.6) 60%, transparent 100%);
+    }
+
+    /* 4 Pillars Grid (Prototipo 5) */
+    .cinema-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .cinema-pillar-card {
+      background: var(--cinema-surface);
+      border: 1px solid var(--cinema-border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      backdrop-filter: blur(16px);
+      transition: all 0.35s var(--ease-cinematic);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cinema-pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: transparent;
+      transition: background 0.3s;
+    }
+
+    .cinema-pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 245, 155, 0.3);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .cinema-pillar-card:hover::before {
+      background: linear-gradient(90deg, var(--cinema-cyan), var(--cinema-mint));
+    }
+
+    .cinema-pi-badge {
+      font-family: var(--cinema-font-display);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--cinema-mint);
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .cinema-pi-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .cinema-pi-desc {
+      font-size: 0.85rem;
+      color: var(--cinema-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .cinema-footer {
+      border-top: 1px solid var(--cinema-border);
+      padding: 1.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--cinema-text-muted);
+    }
+
+    /* Modal / Drawer */
+    .cinema-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(14px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .cinema-modal.open {
+      display: flex;
+    }
+
+    .cinema-modal-card {
+      background: #0f1420;
+      border: 1px solid var(--cinema-border);
+      border-top: 4px solid var(--cinema-mint);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 580px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .cinema-modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--cinema-text-secondary);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .cinema-modal-close:hover {
+      color: #ffffff;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .cinema-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .cinema-figure-img {
+        height: 340px;
+      }
+      .cinema-pillars-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cinema-top-header {
+        padding: 1rem 1.5rem;
+      }
+      .cinema-accred-badge {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cinema-pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .cinema-steps-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Interactive Canvas Particle Simulation (Lipid Vesicles - Prototipo 5) -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="cinema-ambient-glow glow-1"></div>
+  <div class="cinema-ambient-glow glow-2"></div>
+
+  <!-- Minimalist Floating Header -->
+  <header class="cinema-top-header">
+    <div class="cinema-brand">
+      <img src="assets/ehu_logo_negatiboa.svg" alt="UPV/EHU" class="cinema-logo" onerror="this.src='/assets/images/logo/ehu_logo_negatiboa.svg'" />
+      <div style="width:1px; height:24px; background:var(--cinema-border);"></div>
+      <img src="assets/lipid_liver_logo.png" alt="Lipids & Liver" class="cinema-logo" style="filter: brightness(0) invert(1);" onerror="this.src='/assets/images/logo/lipid_liver_logo.png'" />
+      <div class="cinema-brand-title">
+        <span class="cinema-brand-name">Lipids &amp; Liver</span>
+        <span class="cinema-brand-tag" id="txt-header-tag">Grupo Consolidado IT1560-22</span>
+      </div>
+    </div>
+
+    <div class="cinema-top-actions">
+      <div class="cinema-accred-badge">
+        <span>UPV/EHU</span> &bull; BIOCRUCES BIZKAIA
+      </div>
+
+      <div class="lang-switcher-cinema">
+        <button class="lang-btn-cinema active" onclick="setCinemaLang('es')">ES</button>
+        <button class="lang-btn-cinema" onclick="setCinemaLang('eu')">EU</button>
+        <button class="lang-btn-cinema" onclick="setCinemaLang('en')">EN</button>
+      </div>
+
+      <button class="btn-drawer-trigger" onclick="toggleModal('contact', true)">
+        <i class="fas fa-envelope"></i> <span id="txt-btn-drawer">Contacto</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Showcase -->
+  <main class="cinema-main-container">
+
+    <div class="cinema-hero-grid">
+      <!-- Left Column: Narrative & Progress -->
+      <div>
+        <div class="chapter-number-pill">
+          <i class="fas fa-certificate"></i> <span id="txt-hero-pill">Portal Oficial &bull; En Construcción</span>
+        </div>
+
+        <h1 class="chapter-headline" id="txt-headline">
+          Decodificando el lenguaje oculto de los <span class="highlight-mint">lípidos</span> en el hígado.
+        </h1>
+
+        <p class="chapter-lead-text" id="txt-lead">
+          Desde 2007 desentrañando la fisiopatología hepática en la UPV/EHU y el IIS Biocruces Bizkaia. Estamos ultimando el nuevo portal digital oficial de divulgación científica, catálogo de publicaciones JCR y repositorio de tesis.
+        </p>
+
+        <!-- Actions (No development site link) -->
+        <div class="cinema-action-row">
+          <button class="btn-cinema-glow" onclick="toggleModal('contact', true)">
+            <i class="fas fa-paper-plane"></i> <span id="txt-btn-contact">Contactar con el Grupo</span>
+          </button>
+          <button class="btn-cinema-glass" onclick="toggleModal('dossier', true)">
+            <i class="fas fa-book-open"></i> <span id="txt-btn-dossier">Dossier Institucional</span>
+          </button>
+        </div>
+
+        <!-- Progress Box (Prototipo 5) -->
+        <div class="cinema-progress-card">
+          <div class="cinema-prog-header">
+            <div class="cinema-prog-title">
+              <i class="fas fa-tasks" style="color:var(--cinema-mint);"></i>
+              <span id="txt-prog-label">FASE DE DESARROLLO Y VALIDACIÓN</span>
+            </div>
+            <div class="cinema-prog-pct">90%</div>
+          </div>
+
+          <div class="cinema-prog-bar-bg">
+            <div class="cinema-prog-bar-fill"></div>
+          </div>
+
+          <div class="cinema-steps-grid">
+            <div class="cinema-step-item done">
+              <i class="fas fa-check-circle"></i>
+              <span id="txt-st1">Arquitectura</span>
+            </div>
+            <div class="cinema-step-item done">
+              <i class="fas fa-check-circle"></i>
+              <span id="txt-st2">Diseño UI</span>
+            </div>
+            <div class="cinema-step-item done">
+              <i class="fas fa-check-circle"></i>
+              <span id="txt-st3">JCR &amp; Tesis</span>
+            </div>
+            <div class="cinema-step-item active">
+              <i class="fas fa-spinner fa-spin"></i>
+              <span id="txt-st4">Despliegue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Figure Card -->
+      <div>
+        <div class="cinema-figure-card">
+          <img src="assets/hero_outdoor_group.jpg" alt="Lipids & Liver Research Group" class="cinema-figure-img" onerror="this.src='/assets/images/hero_outdoor_group.jpg'" />
+          <div class="cinema-figure-overlay">
+            <h3 style="font-family:var(--cinema-font-display); font-size:1.25rem; color:#fff; margin-bottom:4px;" id="txt-fig-title">Grupo Consolidado IT1560-22</h3>
+            <p style="font-size:0.85rem; color:var(--cinema-text-secondary);" id="txt-fig-sub">Departamento de Fisiología &bull; Facultad de Medicina y Enfermería &bull; Leioa</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Pillars Grid (Prototipo 5) -->
+    <div class="cinema-pillars-grid">
+      <div class="cinema-pillar-card">
+        <div class="cinema-pi-badge">01 // DIANAS MOLECULARES</div>
+        <div class="cinema-pi-title" id="txt-p1-title">Líneas de Investigación</div>
+        <div class="cinema-pi-desc" id="txt-p1-desc">MAFLD/MASH, carcinogénesis, factores de transcripción E2F, lipidómica y exposoma.</div>
+      </div>
+
+      <div class="cinema-pillar-card">
+        <div class="cinema-pi-badge">02 // IMPACTO INTERNACIONAL</div>
+        <div class="cinema-pi-title" id="txt-p2-title">Producción Científica JCR</div>
+        <div class="cinema-pi-desc" id="txt-p2-desc">Catálogo de más de 150 publicaciones en revistas científicas Q1 con acceso directo DOI.</div>
+      </div>
+
+      <div class="cinema-pillar-card">
+        <div class="cinema-pi-badge">03 // CANTERA DE INVESTIGACIÓN</div>
+        <div class="cinema-pi-title" id="txt-p3-title">Tesis Doctorales &amp; Posgrado</div>
+        <div class="cinema-pi-desc" id="txt-p3-desc">Repositorio de 15+ tesis defendidas y en curso, dirección académica y másteres oficiales.</div>
+      </div>
+
+      <div class="cinema-pillar-card">
+        <div class="cinema-pi-badge">04 // SEDES &amp; EQUIPAMIENTO</div>
+        <div class="cinema-pi-title" id="txt-p4-title">Instalaciones de Vanguardia</div>
+        <div class="cinema-pi-desc" id="txt-p4-desc">Laboratorios en Medicina y Edificio María Goyri (Parque Científico UPV/EHU).</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="cinema-footer">
+      <div>
+        <strong>Lipids &amp; Liver Research Group</strong> &bull; Universidad del País Vasco (UPV/EHU) &bull; IIS Biocruces Bizkaia
+      </div>
+      <div>
+        Grupo Consolidado del Gobierno Vasco IT1560-22
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Contact Modal -->
+  <div class="cinema-modal" id="modal-contact" onclick="if(event.target===this) toggleModal('contact', false)">
+    <div class="cinema-modal-card">
+      <button class="cinema-modal-close" onclick="toggleModal('contact', false)"><i class="fas fa-times"></i></button>
+      <h3 style="font-family:var(--cinema-font-display); font-size:1.5rem; color:var(--cinema-mint); margin-bottom:0.75rem;" id="txt-m-c-title">Contacto Directo</h3>
+      <p style="color:var(--cinema-text-secondary); font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;" id="txt-m-c-desc">
+        Durante el periodo de renovación del portal web, puedes contactar con la investigadora principal para asuntos académicos, colaboraciones científicas o doctorado:
+      </p>
+
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--cinema-border); border-radius:12px; padding:1.25rem; margin-bottom:1.5rem;">
+        <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:3px;">Dra. Patricia Aspichueta Celaya</h4>
+        <div style="color:var(--cinema-mint); font-size:0.85rem; font-weight:600; margin-bottom:12px;">Catedrática de Fisiología &bull; Investigadora Principal</div>
+        <div style="font-size:0.9rem; color:var(--cinema-text-secondary); margin-bottom:8px;">
+          <i class="fas fa-envelope" style="color:var(--cinema-cyan); width:20px;"></i> <a href="mailto:patricia.aspichueta@ehu.eus" style="color:#ffffff;">patricia.aspichueta@ehu.eus</a>
+        </div>
+        <div style="font-size:0.9rem; color:var(--cinema-text-secondary); margin-bottom:8px;">
+          <i class="fas fa-phone" style="color:var(--cinema-cyan); width:20px;"></i> +34 94 601 2828 / 5679
+        </div>
+        <div style="font-size:0.9rem; color:var(--cinema-text-secondary);">
+          <i class="fas fa-map-marker-alt" style="color:var(--cinema-cyan); width:20px;"></i> Dpto. Fisiología, Fac. Medicina y Enfermería, UPV/EHU (Leioa)
+        </div>
+      </div>
+
+      <button class="btn-cinema-glow" style="width:100%; justify-content:center; padding:10px;" onclick="toggleModal('contact', false)">
+        Cerrar
+      </button>
+    </div>
+  </div>
+
+  <!-- Dossier Modal -->
+  <div class="cinema-modal" id="modal-dossier" onclick="if(event.target===this) toggleModal('dossier', false)">
+    <div class="cinema-modal-card">
+      <button class="cinema-modal-close" onclick="toggleModal('dossier', false)"><i class="fas fa-times"></i></button>
+      <h3 style="font-family:var(--cinema-font-display); font-size:1.5rem; color:var(--cinema-cyan); margin-bottom:0.75rem;" id="txt-m-d-title">Dossier Institucional</h3>
+      <p style="color:var(--cinema-text-secondary); font-size:0.9rem; line-height:1.6; margin-bottom:1.25rem;" id="txt-m-d-desc">
+        El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y translacional:
+      </p>
+
+      <ul style="color:var(--cinema-text-secondary); font-size:0.88rem; line-height:1.8; padding-left:1.25rem; margin-bottom:1.5rem;">
+        <li><strong style="color:#fff;">Acreditación:</strong> Grupo Consolidado de Excelencia Tipo A (Gobierno Vasco IT1560-22).</li>
+        <li><strong style="color:#fff;">Sedes:</strong> Facultad de Medicina y Enfermería (UPV/EHU) y Centro María Goyri.</li>
+        <li><strong style="color:#fff;">Centros:</strong> UPV/EHU &amp; Instituto de Investigación Sanitaria Biocruces Bizkaia.</li>
+        <li><strong style="color:#fff;">Producción:</strong> +150 publicaciones en revistas científicas de primer cuartil (Q1 JCR).</li>
+        <li><strong style="color:#fff;">Formación:</strong> Dirección continuada de tesis doctorales y másteres oficiales.</li>
+      </ul>
+
+      <button class="btn-cinema-glass" style="width:100%; justify-content:center; padding:10px;" onclick="toggleModal('dossier', false)">
+        Cerrar
+      </button>
+    </div>
+  </div>
+
+  <!-- Interactive Canvas Particle Simulation (Lipid Vesicles) -->
+  <script>
+    // Canvas Particle Simulation
+    (function initParticles() {
+      const canvas = document.getElementById('particles-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const count = 48;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2.2 + 1,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          alpha: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      let mouseX = width / 2;
+      let mouseY = height / 2;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          // Subtle Mouse attraction/repulsion
+          const dx = mouseX - p.x;
+          const dy = mouseY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            p.x -= dx * 0.008;
+            p.y -= dy * 0.008;
+          }
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0, 245, 155, ${p.alpha})`;
+          ctx.fill();
+
+          // Interconnecting filaments
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist2 < 110) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(0, 210, 255, ${0.14 * (1 - dist2 / 110)})`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+
+    // Multilingual Translations
+    const translations = {
+      es: {
+        header_tag: "Grupo Consolidado IT1560-22",
+        btn_drawer: "Contacto",
+        hero_pill: "Portal Oficial • En Construcción",
+        headline: 'Decodificando el lenguaje oculto de los <span class="highlight-mint">lípidos</span> en el hígado.',
+        lead: "Desde 2007 desentrañando la fisiopatología hepática en la UPV/EHU y el IIS Biocruces Bizkaia. Estamos ultimando el nuevo portal digital oficial de divulgación científica, catálogo de publicaciones JCR y repositorio de tesis.",
+        btn_contact: "Contactar con el Grupo",
+        btn_dossier: "Dossier Institucional",
+        prog_label: "FASE DE DESARROLLO Y VALIDACIÓN",
+        st1: "Arquitectura",
+        st2: "Diseño UI",
+        st3: "JCR & Tesis",
+        st4: "Despliegue",
+        fig_title: "Grupo Consolidado IT1560-22",
+        fig_sub: "Departamento de Fisiología • Facultad de Medicina y Enfermería • Leioa",
+        p1_title: "Líneas de Investigación",
+        p1_desc: "MAFLD/MASH, carcinogénesis, factores de transcripción E2F, lipidómica y exposoma.",
+        p2_title: "Producción Científica JCR",
+        p2_desc: "Catálogo de más de 150 publicaciones en revistas científicas Q1 con acceso directo DOI.",
+        p3_title: "Tesis Doctorales & Posgrado",
+        p3_desc: "Repositorio de 15+ tesis defendidas y en curso, dirección académica y másteres oficiales.",
+        p4_title: "Instalaciones de Vanguardia",
+        p4_desc: "Laboratorios en Medicina y Edificio María Goyri (Parque Científico UPV/EHU)."
+      },
+      eu: {
+        header_tag: "Ikerketa Talde Finkatua IT1560-22",
+        btn_drawer: "Harremana",
+        hero_pill: "Atari Ofiziala • Eraikitzen",
+        headline: 'Gibeleko <span class="highlight-mint">lipidoen</span> ezkutuko hizkuntza deszifratzen.',
+        lead: "2007az geroztik gibeleko fisiopatologia ikertzen UPV/EHUn eta Biocruces Bizkaia Institutuan. Zientzia-dibulgazioko atari digital ofizial berria, JCR argitalpenen katalogoa eta tesien biltegia amaitzen ari gara.",
+        btn_contact: "Taldearekin Harremanetan Jarri",
+        btn_dossier: "Txosten Instituzionala",
+        prog_label: "GARAPEN ETA BALIDAZIO FASEA",
+        st1: "Arkitektura",
+        st2: "UI Diseinua",
+        st3: "JCR & Tesiak",
+        st4: "Hedapena",
+        fig_title: "IT1560-22 Talde Finkatua",
+        fig_sub: "Fisiologia Saila • Medikuntza eta Erizaintza Fakultatea • Leioa",
+        p1_title: "Ikerketa Lerroak",
+        p1_desc: "MAFLD/MASH, kartzinogenesi, E2F transkripzio-faktore, lipidomika eta esposoma.",
+        p2_title: "JCR Ekoizpen Zientifikoa",
+        p2_desc: "Q1 aldizkari zientifikoetako 150 argitalpen baino gehiagoko katalogoa DOI sarbidearekin.",
+        p3_title: "Doktore-tesiak & Graduondokoa",
+        p3_desc: "15 tesi baino gehiagoren biltegia, zuzendaritza akademikoa eta master ofizialak.",
+        p4_title: "Puntako Instalazioak",
+        p4_desc: "Medikuntza Fakultateko eta Maria Goyri eraikineko laborategiak (Zientzia Parkea)."
+      },
+      en: {
+        header_tag: "Consolidated Group IT1560-22",
+        btn_drawer: "Contact",
+        hero_pill: "Official Portal • Under Construction",
+        headline: 'Decoding the hidden language of <span class="highlight-mint">lipids</span> in the liver.',
+        lead: "Unraveling hepatic pathophysiology since 2007 at UPV/EHU and Biocruces Bizkaia Institute. We are putting the final touches on our new official website, JCR publication database, and PhD thesis repository.",
+        btn_contact: "Contact the Group",
+        btn_dossier: "Institutional Dossier",
+        prog_label: "DEVELOPMENT & VALIDATION STAGE",
+        st1: "Architecture",
+        st2: "UI Design",
+        st3: "JCR & Theses",
+        st4: "Deployment",
+        fig_title: "Consolidated Group IT1560-22",
+        fig_sub: "Department of Physiology • Faculty of Medicine and Nursing • Leioa",
+        p1_title: "Research Lines",
+        p1_desc: "MAFLD/MASH, carcinogenesis, E2F transcription networks, lipidomics, and exposome.",
+        p2_title: "JCR Scientific Output",
+        p2_desc: "Comprehensive database of 150+ Q1 peer-reviewed publications with direct DOI access.",
+        p3_title: "PhD Theses & Mentoring",
+        p3_desc: "Repository of 15+ defended and ongoing doctoral theses, academic mentoring, and master's degrees.",
+        p4_title: "Modern Facilities",
+        p4_desc: "State-of-the-art laboratories at Medicine and the Maria Goyri Building (Science Park)."
+      }
+    };
+
+    function setCinemaLang(lang) {
+      document.querySelectorAll('.lang-btn-cinema').forEach(b => b.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.lang-btn-cinema')).find(b => b.textContent.trim().toLowerCase() === lang);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const d = translations[lang] || translations.es;
+      document.getElementById('txt-header-tag').textContent = d.header_tag;
+      document.getElementById('txt-btn-drawer').textContent = d.btn_drawer;
+      document.getElementById('txt-hero-pill').textContent = d.hero_pill;
+      document.getElementById('txt-headline').innerHTML = d.headline;
+      document.getElementById('txt-lead').textContent = d.lead;
+      document.getElementById('txt-btn-contact').textContent = d.btn_contact;
+      document.getElementById('txt-btn-dossier').textContent = d.btn_dossier;
+      document.getElementById('txt-prog-label').textContent = d.prog_label;
+      document.getElementById('txt-st1').textContent = d.st1;
+      document.getElementById('txt-st2').textContent = d.st2;
+      document.getElementById('txt-st3').textContent = d.st3;
+      document.getElementById('txt-st4').textContent = d.st4;
+      document.getElementById('txt-fig-title').textContent = d.fig_title;
+      document.getElementById('txt-fig-sub').textContent = d.fig_sub;
+      document.getElementById('txt-p1-title').textContent = d.p1_title;
+      document.getElementById('txt-p1-desc').textContent = d.p1_desc;
+      document.getElementById('txt-p2-title').textContent = d.p2_title;
+      document.getElementById('txt-p2-desc').textContent = d.p2_desc;
+      document.getElementById('txt-p3-title').textContent = d.p3_title;
+      document.getElementById('txt-p3-desc').textContent = d.p3_desc;
+      document.getElementById('txt-p4-title').textContent = d.p4_title;
+      document.getElementById('txt-p4-desc').textContent = d.p4_desc;
+
+      document.documentElement.lang = lang;
+    }
+
+    function toggleModal(id, open) {
+      const modal = document.getElementById('modal-' + id);
+      if (modal) {
+        if (open) modal.classList.add('open');
+        else modal.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>

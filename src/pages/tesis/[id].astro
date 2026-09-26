@@ -1,0 +1,13 @@
+---
+import ThesisDetailPage from '../../components/pages/ThesisDetailPage.astro';
+import { getAllSlugs } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  const slugs = await getAllSlugs('theses');
+  return slugs.map(id => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+---
+
+<ThesisDetailPage id={id!} lang="es" />

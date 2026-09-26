@@ -1,0 +1,167 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { render } from 'astro:content';
+
+interface Props {
+  id: string;
+  lang: Locale;
+}
+
+const { id, lang } = Astro.props;
+const t = getTranslations(lang);
+
+const member = await getLocalizedEntry('team', id, lang);
+if (!member) {
+  throw new Error(`Team member with id "${id}" not found.`);
+}
+
+const allTeam = await getLocalizedCollection('team', lang);
+allTeam.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const currentSlug = member.slug;
+const cv = member.data.cv || {};
+const { Content } = await render(member);
+
+let catKey = 'pdi';
+let catBadge = 'PDI & Senior';
+if (member.data.category === 'Coordinadora') {
+  catKey = 'leadership';
+  catBadge = 'Coordinación';
+} else if (member.data.category.includes('Ramón y Cajal')) {
+  catKey = 'ryc';
+  catBadge = 'Ramón y Cajal';
+} else if (member.data.category.includes('Posdoctoral')) {
+  catKey = 'postdoc';
+  catBadge = 'Posdoctoral';
+} else if (member.data.category.includes('Predoctoral')) {
+  catKey = 'predoc';
+  catBadge = 'Predoctoral';
+} else if (member.data.category.includes('Técnico')) {
+  catKey = 'tech';
+  catBadge = 'Personal Técnico';
+}
+
+const imageSrc = member.data.image ? (member.data.image.startsWith('/') ? member.data.image : `/${member.data.image}`) : '/assets/images/team/placeholder.jpg';
+---
+
+<Layout title={`${member.data.name} - Currículum Vitae | Lipids & Liver`} currentPage="curriculum" lang={lang}>
+  <!-- Nav Extra: Member Dropdown Selector -->
+  <div slot="nav-extra" class="nav-quick-select-group">
+    <label for="member-select"><i class="fas fa-user-circle"></i> {t.team_select_label}</label>
+    <select id="member-select" data-lang={lang} class="nav-quick-select">
+      {allTeam.map(m => (
+        <option value={m.slug} selected={m.slug === currentSlug}>
+          {m.data.name}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  <div class={`container cv-container cv-category-${catKey}`} style="padding-top:2rem; padding-bottom:3rem;">
+    <div style="margin-bottom:1.5rem;">
+      <a href={getLocalizedPath('/curriculum', lang)} class="btn-inst-secondary" style="padding:6px 14px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
+        <i class="fas fa-arrow-left"></i> {t.team_back_dir}
+      </a>
+    </div>
+
+    <!-- Header Profile Card -->
+    <div class="cv-header-card">
+      <img src={imageSrc} alt={member.data.name} class={`cv-photo photo-${catKey}`} />
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px;">
+          <h1 class="cv-main-name" style="margin:0">{member.data.name}</h1>
+          <span class={`team-category-badge badge-${catKey}`} style="font-size:0.75rem; padding:4px 12px; border-radius:14px;">{catBadge}</span>
+        </div>
+        <div class="cv-main-title">{cv.title || member.data.role}</div>
+        
+        <!-- Bio rendered from Markdown -->
+        <div style="color:var(--text-secondary); margin-bottom:1.25rem; line-height:1.6;">
+          <Content />
+        </div>
+        
+        <div class="cv-meta-list">
+          <div class="cv-meta-item"><i class="fas fa-building"></i> {member.data.department}</div>
+          <div class="cv-meta-item"><i class="fas fa-door-open"></i> {member.data.office || 'Facultad de Medicina y Enfermería, Leioa'}</div>
+          <div class="cv-meta-item"><i class="fas fa-envelope"></i> <a href={`mailto:${member.data.email}`}>{member.data.email}</a></div>
+          {member.data.orcid && (
+            <div class="cv-meta-item"><i class="fas fa-id-badge"></i> ORCID: <a href={`https://orcid.org/${member.data.orcid}`} target="_blank" rel="noopener">{member.data.orcid}</a></div>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic Degrees -->
+    {cv.degrees && cv.degrees.length > 0 && (
+      <div class="cv-section-box">
+        <h3 class="cv-section-title"><i class="fas fa-graduation-cap"></i> {t.cv_degrees}</h3>
+        <ul class="cv-list">
+          {cv.degrees.map((d: string) => <li>{d}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <!-- Professional Positions -->
+    {cv.positions && cv.positions.length > 0 && (
+      <div class="cv-section-box">
+        <h3 class="cv-section-title"><i class="fas fa-briefcase"></i> {t.cv_positions}</h3>
+        <ul class="cv-list">
+          {cv.positions.map((p: string) => <li>{p}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <!-- Research Summary -->
+    {cv.researchSummary && (
+      <div class="cv-section-box">
+        <h3 class="cv-section-title"><i class="fas fa-microscope"></i> {t.cv_research}</h3>
+        <p style="color:var(--text-secondary); line-height:1.8; font-size:0.95rem;">
+          {cv.researchSummary}
+        </p>
+      </div>
+    )}
+
+    <!-- Grants -->
+    {cv.grants && cv.grants.length > 0 && (
+      <div class="cv-section-box">
+        <h3 class="cv-section-title"><i class="fas fa-file-contract"></i> {t.cv_grants}</h3>
+        <ul class="cv-list">
+          {cv.grants.map((g: string) => <li>{g}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <!-- Selected Publications -->
+    {cv.publications && cv.publications.length > 0 && (
+      <div class="cv-section-box">
+        <h3 class="cv-section-title"><i class="fas fa-book"></i> {t.cv_pubs}</h3>
+        <ul class="cv-list">
+          {cv.publications.map((pub: string) => <li>{pub}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <!-- Teaching -->
+    {cv.teaching && cv.teaching.length > 0 && (
+      <div class="cv-section-box">
+        <h3 class="cv-section-title"><i class="fas fa-chalkboard-teacher"></i> {t.cv_teaching}</h3>
+        <ul class="cv-list">
+          {cv.teaching.map((tc: string) => <li>{tc}</li>)}
+        </ul>
+      </div>
+    )}
+  </div>
+
+  <script is:inline>
+    const select = document.getElementById('member-select');
+    if (select) {
+      const lang = select.dataset.lang || 'es';
+      const prefix = lang === 'es' ? '' : '/' + lang;
+      select.addEventListener('change', (e) => {
+        if (e.target.value) {
+          window.location.href = prefix + '/curriculum/' + e.target.value;
+        }
+      });
+    }
+  </script>
+</Layout>
