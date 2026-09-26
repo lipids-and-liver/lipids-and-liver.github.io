@@ -52,7 +52,7 @@ const basePath = getPathWithoutLocale(currentPath);
         <a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener"><i class="fas fa-hospital-user"></i> IIS Biocruces Bizkaia</a>
       </div>
       <div class="top-bar-right">
-        <span>Departamento de Fisiología &bull; Facultad de Medicina y Enfermería</span>
+        <span>{t.top_bar_dept}</span>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ const basePath = getPathWithoutLocale(currentPath);
           </a>
           <div class="header-title-box">
             <span class="header-title-main">Lipids &amp; Liver</span>
-            <span class="header-title-sub">Grupo de Investigación Consolidado</span>
+            <span class="header-title-sub">{t.header_sub}</span>
           </div>
         </div>
 
@@ -85,8 +85,8 @@ const basePath = getPathWithoutLocale(currentPath);
           </div>
 
           <!-- Theme Toggle -->
-          <button class="theme-toggle-btn" id="theme-toggle" title="Cambiar tema claro/oscuro">
-            <i class="fas fa-moon"></i> <span class="theme-toggle-text">Modo Oscuro</span>
+          <button class="theme-toggle-btn" id="theme-toggle" title={t.theme_toggle_title} data-light={t.theme_light} data-dark={t.theme_dark}>
+            <i class="fas fa-moon"></i> <span class="theme-toggle-text">{t.theme_dark}</span>
           </button>
         </div>
       </div>
@@ -148,7 +148,7 @@ const basePath = getPathWithoutLocale(currentPath);
 
       <div class="footer-grid-inst">
         <div>
-          <h4>Grupo de Investigación Lipids &amp; Liver</h4>
+          <h4>{t.hero_title}</h4>
           <p set:html={t.footer_desc}></p>
         </div>
         <div>
@@ -204,9 +204,12 @@ const basePath = getPathWithoutLocale(currentPath);
         const icon = document.querySelector('#theme-toggle i');
         const text = document.querySelector('#theme-toggle .theme-toggle-text');
         const ehuLogo = document.getElementById('ehu-header-logo');
+        const themeBtn = document.getElementById('theme-toggle');
+        const lightText = themeBtn ? themeBtn.dataset.light || 'Modo Claro' : 'Modo Claro';
+        const darkText = themeBtn ? themeBtn.dataset.dark || 'Modo Oscuro' : 'Modo Oscuro';
 
         if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        if (text) text.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro';
+        if (text) text.textContent = theme === 'dark' ? lightText : darkText;
         if (ehuLogo) ehuLogo.src = theme === 'dark' 
           ? '/assets/images/logo/ehu_logo_negatiboa.svg' 
           : '/assets/images/logo/ehu_logo_positiboa.svg';

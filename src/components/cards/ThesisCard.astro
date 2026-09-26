@@ -1,5 +1,5 @@
 ---
-import { getLocalizedPath, getTranslations, type Locale } from '../../utils/i18n';
+import { getLocalizedPath, getTranslations, getThesisBadgeText, type Locale } from '../../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -12,7 +12,7 @@ const t = getTranslations(lang);
 
 const isOngoing = thesis.data.status === 'ongoing';
 const currentSlug = thesis.slug;
-const badgeText = thesis.data.badge || (isOngoing ? t.theses_ongoing : t.theses_completed);
+const badgeText = getThesisBadgeText(thesis, lang);
 ---
 
 <div class={`thesis-card-inst ${isOngoing ? 'ongoing' : ''}`} data-type={isOngoing ? 'ONGOING' : 'COMPLETED'}>

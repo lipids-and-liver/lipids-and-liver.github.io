@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, getTeamCategoryInfo, localizeTeamRole, localizeTeamDepartment, localizeTeamOffice, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
 
 interface Props {
@@ -23,29 +23,19 @@ const currentSlug = member.slug;
 const cv = member.data.cv || {};
 const { Content } = await render(member);
 
-let catKey = 'pdi';
-let catBadge = 'PDI & Senior';
-if (member.data.category === 'Coordinadora') {
-  catKey = 'leadership';
-  catBadge = 'Coordinación';
-} else if (member.data.category.includes('Ramón y Cajal')) {
-  catKey = 'ryc';
-  catBadge = 'Ramón y Cajal';
-} else if (member.data.category.includes('Posdoctoral')) {
-  catKey = 'postdoc';
-  catBadge = 'Posdoctoral';
-} else if (member.data.category.includes('Predoctoral')) {
-  catKey = 'predoc';
-  catBadge = 'Predoctoral';
-} else if (member.data.category.includes('Técnico')) {
-  catKey = 'tech';
-  catBadge = 'Personal Técnico';
-}
+const catInfo = getTeamCategoryInfo(member.data.category, lang);
+const catKey = catInfo.key;
+const catBadge = catInfo.label;
+
+const localizedRole = member.locale === lang ? member.data.role : localizeTeamRole(member.data.role, lang);
+const localizedCvTitle = member.locale === lang ? (cv.title || member.data.role) : localizeTeamRole(cv.title || member.data.role, lang);
+const localizedDept = member.locale === lang ? member.data.department : localizeTeamDepartment(member.data.department || '', lang);
+const localizedOffice = member.locale === lang ? member.data.office : localizeTeamOffice(member.data.office || '', lang);
 
 const imageSrc = member.data.image ? (member.data.image.startsWith('/') ? member.data.image : `/${member.data.image}`) : '/assets/images/team/placeholder.jpg';
 ---
 
-<Layout title={`${member.data.name} - Currículum Vitae | Lipids & Liver`} currentPage="curriculum" lang={lang}>
+<Layout title={`${member.data.name} - ${localizedCvTitle} | Lipids & Liver`} currentPage="curriculum" lang={lang}>
   <!-- Nav Extra: Member Dropdown Selector -->
   <div slot="nav-extra" class="nav-quick-select-group">
     <label for="member-select"><i class="fas fa-user-circle"></i> {t.team_select_label}</label>
@@ -73,7 +63,7 @@ const imageSrc = member.data.image ? (member.data.image.startsWith('/') ? member
           <h1 class="cv-main-name" style="margin:0">{member.data.name}</h1>
           <span class={`team-category-badge badge-${catKey}`} style="font-size:0.75rem; padding:4px 12px; border-radius:14px;">{catBadge}</span>
         </div>
-        <div class="cv-main-title">{cv.title || member.data.role}</div>
+        <div class="cv-main-title">{localizedCvTitle}</div>
         
         <!-- Bio rendered from Markdown -->
         <div style="color:var(--text-secondary); margin-bottom:1.25rem; line-height:1.6;">
@@ -81,8 +71,8 @@ const imageSrc = member.data.image ? (member.data.image.startsWith('/') ? member
         </div>
         
         <div class="cv-meta-list">
-          <div class="cv-meta-item"><i class="fas fa-building"></i> {member.data.department}</div>
-          <div class="cv-meta-item"><i class="fas fa-door-open"></i> {member.data.office || 'Facultad de Medicina y Enfermería, Leioa'}</div>
+          <div class="cv-meta-item"><i class="fas fa-building"></i> {localizedDept}</div>
+          <div class="cv-meta-item"><i class="fas fa-door-open"></i> {localizedOffice}</div>
           <div class="cv-meta-item"><i class="fas fa-envelope"></i> <a href={`mailto:${member.data.email}`}>{member.data.email}</a></div>
           {member.data.orcid && (
             <div class="cv-meta-item"><i class="fas fa-id-badge"></i> ORCID: <a href={`https://orcid.org/${member.data.orcid}`} target="_blank" rel="noopener">{member.data.orcid}</a></div>

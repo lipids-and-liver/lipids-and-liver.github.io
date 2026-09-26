@@ -33,7 +33,7 @@ teamMembers.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
       <div class="section-header-inst">
         <div>
           <h1 class="section-title-inst">{t.team_page_title}</h1>
-          <span class="section-subtitle-inst">{t.team_page_sub} &bull; {teamMembers.length} Miembros Activos</span>
+          <span class="section-subtitle-inst">{t.team_page_sub} &bull; {teamMembers.length} {t.team_active_members}</span>
         </div>
       </div>
 
@@ -82,15 +82,22 @@ teamMembers.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
         const query = currentSearch.toLowerCase().trim();
         teamCards.forEach(card => {
           const category = card.dataset.category || '';
+          const catKey = card.dataset.catkey || '';
           const searchData = card.dataset.search || '';
 
           let matchesCategory = false;
           if (currentCategory === 'ALL') {
             matchesCategory = true;
           } else if (currentCategory === 'PDI') {
-            matchesCategory = category === 'Coordinadora' || category === 'Directora de Línea' || category === 'Investigador Senior' || category === 'PDI' || category.includes('Ramón y Cajal');
+            matchesCategory = catKey === 'pdi' || catKey === 'leadership' || catKey === 'ryc' || category === 'Coordinadora' || category === 'Directora de Línea' || category === 'Investigador Senior' || category === 'PDI' || category.includes('Ramón y Cajal');
+          } else if (currentCategory === 'Posdoctoral') {
+            matchesCategory = catKey === 'postdoc' || category.toLowerCase().includes('posdoctoral');
+          } else if (currentCategory === 'Predoctoral') {
+            matchesCategory = catKey === 'predoc' || category.toLowerCase().includes('predoctoral');
+          } else if (currentCategory === 'Técnico') {
+            matchesCategory = catKey === 'tech' || category.toLowerCase().includes('técnico') || category.toLowerCase().includes('tecnico');
           } else {
-            matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase());
+            matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase()) || catKey === currentCategory.toLowerCase();
           }
 
           const matchesSearch = !query || searchData.includes(query);

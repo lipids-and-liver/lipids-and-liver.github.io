@@ -429,14 +429,21 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
       function filterTeam() {
         teamCards.forEach(card => {
           const category = card.dataset.category || '';
+          const catKey = card.dataset.catkey || '';
 
           let matchesCategory = false;
           if (currentCategory === 'ALL') {
             matchesCategory = true;
           } else if (currentCategory === 'PDI') {
-            matchesCategory = category === 'Coordinadora' || category === 'Directora de Línea' || category === 'Investigador Senior' || category === 'PDI' || category.includes('Ramón y Cajal');
+            matchesCategory = catKey === 'pdi' || catKey === 'leadership' || catKey === 'ryc' || category === 'Coordinadora' || category === 'Directora de Línea' || category === 'Investigador Senior' || category === 'PDI' || category.includes('Ramón y Cajal');
+          } else if (currentCategory === 'Posdoctoral') {
+            matchesCategory = catKey === 'postdoc' || category.toLowerCase().includes('posdoctoral');
+          } else if (currentCategory === 'Predoctoral') {
+            matchesCategory = catKey === 'predoc' || category.toLowerCase().includes('predoctoral');
+          } else if (currentCategory === 'Técnico') {
+            matchesCategory = catKey === 'tech' || category.toLowerCase().includes('técnico') || category.toLowerCase().includes('tecnico');
           } else {
-            matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase());
+            matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase()) || catKey === currentCategory.toLowerCase();
           }
 
           card.style.display = matchesCategory ? 'flex' : 'none';
