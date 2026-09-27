@@ -23,6 +23,7 @@ No necesitas saber programar ni formatear archivos. Puedes editar todo mediante 
    - **English Content:** PhD Theses, Personnel, Research Lines, Publications, Academic Training.
 4. **Crea, edita o elimina:**
    - Rellena los campos con validación automática (título, autor, fechas, enlaces, selector de estado).
+   - **Foto / Imagen**: puedes arrastrar o seleccionar una foto directamente desde tu ordenador (Keystatic la guarda y vincula automáticamente). Si no subes ninguna, se usará la silueta institucional por defecto.
    - Escribe el resumen o biografía en un editor de texto enriquecido (negritas, listas, enlaces).
    - Haz clic en **"Create"** o **"Save"**. ¡Keystatic guardará los cambios automáticamente en los archivos Markdown!
 5. **Para compilar la web final estática para el servidor UPV/EHU:**
@@ -135,7 +136,7 @@ name: "Dra. Laura González Martínez"
 role: "Investigadora Posdoctoral"
 category: "Posdoctoral" # Coordinadora | PDI | Ramón y Cajal | Posdoctoral | Predoctoral | Técnico
 department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
-image: "/assets/images/team/placeholder.jpg" # Foto en public/assets/images/team/
+# image: "/assets/images/team/laura-gonzalez/image.jpg" # Opcional (si usas Keystatic se sube automáticamente desde el botón de examinar)
 email: "laura.gonzalez@ehu.eus"
 office: "Despacho 2.10, Facultad de Medicina y Enfermería, Leioa"
 orcid: "0000-0002-XXXX-XXXX"

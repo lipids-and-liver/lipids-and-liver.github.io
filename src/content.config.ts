@@ -26,7 +26,7 @@ const team = defineCollection({
     role: z.string(),
     category: z.string(),
     department: z.string().optional(),
-    image: z.string().default('/assets/images/team/placeholder.jpg'),
+    image: z.string().nullable().optional().transform(val => val || '/assets/images/team/placeholder.jpg'),
     email: z.string().optional(),
     office: z.string().optional(),
     orcid: z.string().optional(),

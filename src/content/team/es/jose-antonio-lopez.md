@@ -4,7 +4,6 @@ name: "Jose Antonio López Gómez"
 role: "Técnico de Laboratorio"
 category: "Técnico"
 department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
-image: "/assets/images/team/placeholder.jpg"
 office: "Despacho 1.Q.11, Facultad de Medicina y Enfermería, Leioa"
 orcid: "0009-0000-7870-0929"
 order: 20

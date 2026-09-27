@@ -4,7 +4,6 @@ name: "Kendall Alonso Alfaro Jiménez"
 role: "Investigador Predoctoral (UPV/EHU)"
 category: "Predoctoral"
 department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
-image: "/assets/images/team/placeholder.jpg"
 email: "kendallalonso.alfaro@ehu.eus"
 office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
 order: 19

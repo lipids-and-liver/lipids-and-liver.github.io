@@ -10,7 +10,7 @@ name: "Dr. Nombre Apellido"
 role: "Puesto / Categoría"
 category: "PDI" # Opciones: Coordinadora | PDI | Ramón y Cajal | Posdoctoral | Predoctoral | Técnico
 department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
-image: "/assets/images/team/placeholder.jpg" # Foto en public/assets/images/team/
+# image: "/assets/images/team/nombre-apellido/image.jpg" # Opcional (si se usa Keystatic se sube automáticamente desde el panel)
 email: "nombre.apellido@ehu.eus"
 office: "Despacho X.XX, Facultad de Medicina y Enfermería, Leioa"
 orcid: "0000-0000-0000-0000"

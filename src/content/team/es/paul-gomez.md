@@ -4,7 +4,6 @@ name: "Paul Gómez Jáuregui"
 role: "Investigador Predoctoral (UPV/EHU)"
 category: "Predoctoral"
 department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
-image: "/assets/images/team/placeholder.jpg"
 email: "paul.gomez@ehu.eus"
 office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
 order: 17
