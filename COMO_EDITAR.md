@@ -1,8 +1,35 @@
 # Guía de Edición de Contenidos - Grupo Lipids & Liver
 
-¡Bienvenido/a! Esta web ha sido desarrollada con **Astro y arquitectura de contenidos multilingüe en Markdown**.
+¡Bienvenido/a! Esta web cuenta con dos formas de gestión:
+1. **Panel de Edición Visual (Keystatic CMS - Recomendado)**: interfaz web amigable con formularios, sin tocar archivos ni código.
+2. **Edición Manual de Archivos Markdown**: para usuarios avanzados o edición directa en texto plano.
 
-A partir de ahora, **no es necesario tocar código JavaScript ni arriesgarse a romper la web**. Cada tesis, miembro del equipo, línea de investigación y publicación tiene su propio archivo individual de texto plano (`.md`), organizado por idiomas.
+---
+
+## 🚀 Método Recomendado: Panel de Edición Visual (Keystatic)
+
+No necesitas saber programar ni formatear archivos. Puedes editar todo mediante formularios interactivos en tu navegador:
+
+1. **Inicia el panel de control:**
+   ```bash
+   ./iniciar_cms.sh
+   # (O alternativamente: npm run dev)
+   ```
+2. **Abre tu navegador en:**
+   👉 **`http://localhost:4321/keystatic`**
+3. **Elige la sección en el menú lateral:**
+   - **Contenido en Español:** Tesis Doctorales, Personal y Equipo, Líneas de Investigación, Publicaciones, Docencia, Presentación.
+   - **Edukiak Euskaraz:** Doktorego Tesiak, Taldea, Ikerketa Lerroak, Argitalpenak, Prestakuntza.
+   - **English Content:** PhD Theses, Personnel, Research Lines, Publications, Academic Training.
+4. **Crea, edita o elimina:**
+   - Rellena los campos con validación automática (título, autor, fechas, enlaces, selector de estado).
+   - Escribe el resumen o biografía en un editor de texto enriquecido (negritas, listas, enlaces).
+   - Haz clic en **"Create"** o **"Save"**. ¡Keystatic guardará los cambios automáticamente en los archivos Markdown!
+5. **Para compilar la web final estática para el servidor UPV/EHU:**
+   ```bash
+   ./construir_web.sh
+   # Genera la carpeta dist/ 100% lista para subir por FTP
+   ```
 
 ---
 
