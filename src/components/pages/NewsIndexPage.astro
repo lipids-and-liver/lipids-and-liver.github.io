@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, type Locale } from '../../utils/i18n';
+import NewsCard from '../cards/NewsCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const allNews = await getLocalizedCollection('news', lang);
+allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<Layout title={`${t.news_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="news" lang={lang}>
+  <div slot="nav-extra" class="nav-quick-select-group">
+    <span class="nav-sub-badge"><i class="fas fa-newspaper"></i> {t.news_title}</span>
+  </div>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h1 class="section-title-inst">{t.news_title} <span class="badge-new">{t.badge_new}</span></h1>
+          <span class="section-subtitle-inst">{t.news_subtitle}</span>
+        </div>
+      </div>
+
+      <p style="font-size:1.02rem; color:var(--text-secondary); max-width:840px; margin-bottom:2.5rem; line-height:1.6;">
+        {t.news_desc}
+      </p>
+
+      <div class="grid-3">
+        {allNews.map(item => (
+          <NewsCard item={item} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

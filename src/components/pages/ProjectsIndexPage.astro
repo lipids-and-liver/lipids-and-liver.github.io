@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, type Locale } from '../../utils/i18n';
+import ProjectCard from '../cards/ProjectCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const allProjects = await getLocalizedCollection('projects', lang);
+allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const ueCount = allProjects.filter(p => p.data.category === 'ue').length;
+const nacCount = allProjects.filter(p => p.data.category === 'nacional').length;
+const vascoCount = allProjects.filter(p => p.data.category === 'gobvasco').length;
+const fundCount = allProjects.filter(p => p.data.category === 'fundaciones').length;
+---
+
+<Layout title={`${t.projects_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="projects" lang={lang}>
+  <div slot="nav-extra" class="nav-quick-select-group">
+    <span class="nav-sub-badge"><i class="fas fa-file-invoice-dollar"></i> {t.projects_title}</span>
+  </div>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h1 class="section-title-inst">{t.projects_title} <span class="badge-new">{t.badge_new}</span></h1>
+          <span class="section-subtitle-inst">{t.projects_subtitle} &bull; {allProjects.length} {t.projects_filter_all}</span>
+        </div>
+      </div>
+
+      <p style="font-size:1.02rem; color:var(--text-secondary); max-width:840px; margin-bottom:2rem; line-height:1.6;">
+        {t.projects_desc}
+      </p>
+
+      <!-- Filter Buttons -->
+      <div class="filter-bar" id="project-filters">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-layer-group"></i> {t.projects_filter_all} ({allProjects.length})
+        </button>
+        <button class="filter-btn" data-filter="ue">
+          <i class="fas fa-globe-europe"></i> {t.projects_filter_ue} ({ueCount})
+        </button>
+        <button class="filter-btn" data-filter="nacional">
+          <i class="fas fa-landmark"></i> {t.projects_filter_nacional} ({nacCount})
+        </button>
+        <button class="filter-btn" data-filter="gobvasco">
+          <i class="fas fa-flag"></i> {t.projects_filter_gobvasco} ({vascoCount})
+        </button>
+        <button class="filter-btn" data-filter="fundaciones">
+          <i class="fas fa-heart"></i> {t.projects_filter_fundaciones} ({fundCount})
+        </button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid-2" id="projects-grid">
+        {allProjects.map(project => (
+          <ProjectCard project={project} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('#project-filters .filter-btn');
+      const cards = document.querySelectorAll('#projects-grid .project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.dataset.filter;
+          cards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</Layout>

@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  opp: CollectionEntry<'opportunities'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { opp, lang } = Astro.props;
+const t = getTranslations(lang);
+const { data, body } = opp;
+---
+
+<div class="card opp-card">
+  <span class="opp-badge" style={data.badgeStyle || ''}>
+    {data.badge}
+  </span>
+  
+  <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.5rem; line-height:1.4;">
+    {data.title}
+  </h4>
+  
+  <p style="font-size:0.86rem; color:var(--text-secondary); margin-bottom:0.75rem; line-height:1.5;">
+    {body}
+  </p>
+  
+  {data.highlights && data.highlights.length > 0 && (
+    <ul style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.25rem; list-style:inside; line-height:1.6;">
+      {data.highlights.map(h => (
+        <li>{h}</li>
+      ))}
+    </ul>
+  )}
+  
+  <a 
+    href={`mailto:patricia.aspichueta@ehu.eus?subject=${encodeURIComponent('Candidatura Lipids and Liver: ' + data.title)}`}
+    class="btn-inst-primary" 
+    style="font-size:0.82rem; padding:8px 14px; margin-top:auto; width:100%; justify-content:center;"
+  >
+    <i class="fas fa-paper-plane"></i> {data.actionText || t.opportunities_contact_btn}
+  </a>
+</div>

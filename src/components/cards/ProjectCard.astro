@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  project: CollectionEntry<'projects'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { project, lang } = Astro.props;
+const t = getTranslations(lang);
+const { data, body } = project;
+const highlightClass = data.highlightStyle || 'card-highlight';
+---
+
+<div class={`card project-card ${highlightClass}`} data-category={data.category}>
+  <div class="project-meta-row">
+    <span class="badge-tag">{data.badgeTag || data.agency}</span>
+    <span class="project-code">{data.code}</span>
+  </div>
+  
+  <h3 class="project-title">{data.title}</h3>
+  
+  <div class="project-ips">
+    <i class="fas fa-user-check"></i> {data.ips}
+  </div>
+  
+  <p class="project-desc">
+    {body}
+  </p>
+  
+  <div class="project-footer">
+    <span><i class="far fa-calendar-alt"></i> {data.period}</span>
+    <span class="project-budget"><i class="fas fa-coins" style="margin-right:4px;"></i> {data.budget}</span>
+  </div>
+</div>

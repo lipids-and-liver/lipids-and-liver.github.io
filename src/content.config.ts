@@ -102,11 +102,124 @@ const training = defineCollection({
   })
 });
 
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    agency: z.string(),
+    category: z.enum(['ue', 'nacional', 'gobvasco', 'fundaciones']),
+    code: z.string(),
+    period: z.string(),
+    budget: z.string(),
+    ips: z.string(),
+    badgeTag: z.string().optional(),
+    highlightStyle: z.string().optional().default('card-highlight'),
+    order: z.number().default(99)
+  })
+});
+
+const transfer = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/transfer" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    type: z.enum(['patent', 'service']),
+    badge: z.string().optional(),
+    status: z.enum(['granted', 'pending', 'active']).optional(),
+    statusLabel: z.string().optional(),
+    reference: z.string().optional(),
+    holder: z.string().optional(),
+    inventors: z.string().optional(),
+    order: z.number().default(99)
+  })
+});
+
+const alumni = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/alumni" }),
+  schema: z.object({
+    id: z.string().optional(),
+    name: z.string(),
+    period: z.string(),
+    thesisTitle: z.string(),
+    destinationRole: z.string(),
+    destinationOrg: z.string(),
+    icon: z.string().optional().default('fas fa-user'),
+    order: z.number().default(99)
+  })
+});
+
+const opportunities = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/opportunities" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    type: z.enum(['tfm', 'predoc', 'postdoc', 'other']),
+    badge: z.string(),
+    badgeStyle: z.string().optional(),
+    highlights: z.array(z.string()).default([]),
+    actionText: z.string().default('Solicitar Información'),
+    order: z.number().default(99)
+  })
+});
+
+const resources = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/resources" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    type: z.enum(['dataset', 'protocol', 'software']),
+    icon: z.string(),
+    links: z.array(z.object({
+      label: z.string(),
+      url: z.string(),
+      icon: z.string().optional()
+    })).default([]),
+    order: z.number().default(99)
+  })
+});
+
+const news = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/news" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    date: z.string(),
+    category: z.string(),
+    icon: z.string().default('fas fa-newspaper'),
+    gradient: z.string().optional().default('linear-gradient(135deg, #002b49, #1e3a5f)'),
+    source: z.string().optional(),
+    featured: z.boolean().default(false),
+    order: z.number().default(99)
+  })
+});
+
+const outreach = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/outreach" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    cardType: z.enum(['highlight', 'navy', 'cyan']).default('highlight'),
+    icon: z.string(),
+    badge: z.string().optional(),
+    actionText: z.string().optional(),
+    actionUrl: z.string().optional(),
+    order: z.number().default(99)
+  })
+});
+
 export const collections = {
   theses,
   team,
   research,
   publications,
   presentation,
-  training
+  training,
+  projects,
+  transfer,
+  alumni,
+  opportunities,
+  resources,
+  news,
+  outreach
 };

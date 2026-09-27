@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  resource: CollectionEntry<'resources'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { resource, lang } = Astro.props;
+const t = getTranslations(lang);
+const { data, body } = resource;
+---
+
+<div class="card resource-card">
+  <div class="resource-box">
+    <div class="resource-icon">
+      <i class={data.icon}></i>
+    </div>
+    <div>
+      <h4 style="color:var(--ehu-navy); font-size:1rem; margin-bottom:0.35rem; line-height:1.4;">
+        {data.title}
+      </h4>
+      <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.5; margin-bottom:0.75rem;">
+        {body}
+      </p>
+    </div>
+  </div>
+
+  {data.links && data.links.length > 0 && (
+    <div style="margin-top:auto; padding-top:0.75rem; border-top:1px solid var(--border-light); font-size:0.8rem; display:flex; flex-direction:column; gap:0.5rem;">
+      {data.links.map(link => (
+        <a 
+          href={link.url} 
+          class="download-link"
+          target={link.url.startsWith('http') ? '_blank' : '_self'}
+          rel={link.url.startsWith('http') ? 'noopener noreferrer' : ''}
+        >
+          <i class={link.icon || 'fas fa-external-link-alt'}></i> {link.label}
+        </a>
+      ))}
+    </div>
+  )}
+</div>

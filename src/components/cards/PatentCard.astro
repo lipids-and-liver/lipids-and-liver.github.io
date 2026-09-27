@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  item: CollectionEntry<'transfer'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { item, lang } = Astro.props;
+const t = getTranslations(lang);
+const { data, body } = item;
+const isPatent = data.type === 'patent';
+const statusBadgeClass = data.status === 'granted' ? 'status-granted' : data.status === 'pending' ? 'status-pending' : 'status-active';
+const statusText = data.statusLabel || (data.status === 'granted' ? t.transfer_status_granted : data.status === 'pending' ? t.transfer_status_pending : t.transfer_status_active);
+---
+
+<div class={`card patent-card ${isPatent ? '' : 'card-highlight'}`}>
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
+    <span class="badge-tag">
+      <i class={isPatent ? 'fas fa-certificate' : 'fas fa-handshake'}></i> {data.badge}
+    </span>
+    {data.status && (
+      <span class={`patent-badge-status ${statusBadgeClass}`}>
+        {statusText}
+      </span>
+    )}
+  </div>
+
+  <h3 style="color:var(--ehu-navy); font-size:1.1rem; margin-bottom:0.5rem; line-height:1.4;">
+    {data.title}
+  </h3>
+
+  {(data.reference || data.holder) && (
+    <div style="font-family:var(--font-mono, monospace); font-size:0.78rem; color:var(--text-muted); margin-bottom:0.75rem;">
+      {data.reference && <span><strong>{t.projects_period_label || 'Ref'}:</strong> {data.reference}</span>}
+      {data.holder && <span> | <strong>{t.transfer_holder_label}:</strong> {data.holder}</span>}
+    </div>
+  )}
+
+  <div style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1rem; flex-grow:1; line-height:1.6;" class="transfer-body">
+    {body}
+  </div>
+
+  {data.inventors && (
+    <div style="font-size:0.8rem; background:var(--bg-surface-alt); padding:0.6rem 0.8rem; border-radius:var(--radius-sm); color:var(--text-muted); border:1px solid var(--border-light);">
+      <strong>{t.transfer_inventors_label}:</strong> {data.inventors}
+    </div>
+  )}
+</div>

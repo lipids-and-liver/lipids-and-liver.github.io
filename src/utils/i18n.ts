@@ -62,9 +62,22 @@ export function getLocalizedPath(path: string, lang: Locale = DEFAULT_LOCALE): s
   return `${localized}${hashSuffix}`;
 }
 
-export type LocalizedItem<T> = T & { slug: string; locale: Locale };
+export type SupportedCollection =
+  | 'theses'
+  | 'team'
+  | 'research'
+  | 'publications'
+  | 'presentation'
+  | 'training'
+  | 'projects'
+  | 'transfer'
+  | 'alumni'
+  | 'opportunities'
+  | 'resources'
+  | 'news'
+  | 'outreach';
 
-export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training'>(
+export async function getLocalizedCollection<C extends SupportedCollection>(
   collectionName: C,
   lang: Locale = DEFAULT_LOCALE
 ): Promise<Array<CollectionEntry<C> & { slug: string; locale: Locale }>> {
@@ -110,7 +123,7 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
   return result;
 }
 
-export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training'>(
+export async function getLocalizedEntry<C extends SupportedCollection>(
   collectionName: C,
   slug: string,
   lang: Locale = DEFAULT_LOCALE
@@ -141,7 +154,7 @@ export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research'
   return Object.assign(chosen, { slug, locale: chosenLang });
 }
 
-export async function getAllSlugs<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training'>(
+export async function getAllSlugs<C extends SupportedCollection>(
   collectionName: C
 ): Promise<string[]> {
   const allEntries = await getCollection(collectionName);

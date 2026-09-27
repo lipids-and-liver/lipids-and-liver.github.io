@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, type Locale } from '../../utils/i18n';
+import OpportunityCard from '../cards/OpportunityCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const allOpportunities = await getLocalizedCollection('opportunities', lang);
+allOpportunities.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<Layout title={`${t.opportunities_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="opportunities" lang={lang}>
+  <div slot="nav-extra" class="nav-quick-select-group">
+    <span class="nav-sub-badge"><i class="fas fa-briefcase"></i> {t.opportunities_title}</span>
+  </div>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h1 class="section-title-inst">{t.opportunities_title} <span class="badge-new">{t.badge_new}</span></h1>
+          <span class="section-subtitle-inst">{t.opportunities_subtitle}</span>
+        </div>
+      </div>
+
+      <p style="font-size:1.02rem; color:var(--text-secondary); max-width:840px; margin-bottom:2.5rem; line-height:1.6;">
+        {t.opportunities_desc}
+      </p>
+
+      <div class="grid-3" style="margin-bottom:3rem;">
+        {allOpportunities.map(opp => (
+          <OpportunityCard opp={opp} lang={lang} />
+        ))}
+      </div>
+
+      <!-- Spontaneous application card -->
+      <div style="background:var(--bg-surface-alt); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;">
+        <div style="max-width:700px;">
+          <h3 style="color:var(--ehu-navy); font-size:1.2rem; margin-bottom:0.5rem; display:flex; align-items:center; gap:8px;">
+            <i class="fas fa-envelope-open-text" style="color:var(--logo-green);"></i> {t.opportunities_spontaneous_title}
+          </h3>
+          <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6;">
+            {t.opportunities_spontaneous_desc}
+          </p>
+        </div>
+        <a 
+          href="mailto:patricia.aspichueta@ehu.eus?subject=Candidatura%20Espontanea%20Grupo%20Lipids%20and%20Liver"
+          class="btn-inst-primary"
+          style="white-space:nowrap; padding:12px 24px;"
+        >
+          <i class="fas fa-paper-plane"></i> {t.opportunities_contact_btn}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

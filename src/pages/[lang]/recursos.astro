@@ -1,0 +1,15 @@
+---
+import ResourcesIndexPage from '../../components/pages/ResourcesIndexPage.astro';
+import type { Locale } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "eu" } },
+    { params: { lang: "en" } }
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<ResourcesIndexPage lang={lang as Locale} />

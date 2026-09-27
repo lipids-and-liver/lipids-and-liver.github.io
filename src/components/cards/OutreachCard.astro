@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  item: CollectionEntry<'outreach'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { item, lang } = Astro.props;
+const t = getTranslations(lang);
+const { data, body } = item;
+const cardClass = data.cardType === 'navy' ? 'card-highlight-navy' : data.cardType === 'cyan' ? 'card-highlight-cyan' : 'card-highlight';
+---
+
+<div class={`card outreach-card ${cardClass}`} style="display:flex; flex-direction:column;">
+  <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.6rem; display:flex; align-items:center; gap:8px;">
+    <i class={data.icon} style="color:var(--logo-green);"></i> {data.title}
+  </h4>
+  
+  <p style="font-size:0.86rem; color:var(--text-secondary); line-height:1.55; margin-bottom:1rem; flex-grow:1;">
+    {body}
+  </p>
+
+  {data.badge && (
+    <div style="font-size:0.78rem; color:var(--logo-green); font-weight:700; margin-bottom:0.75rem;">
+      <i class="fas fa-check-circle" style="margin-right:4px;"></i> {data.badge}
+    </div>
+  )}
+
+  {data.actionText && (
+    <a 
+      href={data.actionUrl || '#'} 
+      class="download-link"
+      target={data.actionUrl && data.actionUrl.startsWith('http') ? '_blank' : '_self'}
+      rel={data.actionUrl && data.actionUrl.startsWith('http') ? 'noopener noreferrer' : ''}
+      style="margin-top:auto; font-size:0.82rem; display:inline-flex; align-items:center; gap:6px;"
+    >
+      <i class="fas fa-arrow-circle-right"></i> {data.actionText}
+    </a>
+  )}
+</div>

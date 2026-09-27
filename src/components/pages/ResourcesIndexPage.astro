@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, type Locale } from '../../utils/i18n';
+import ResourceCard from '../cards/ResourceCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const allResources = await getLocalizedCollection('resources', lang);
+allResources.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<Layout title={`${t.resources_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="resources" lang={lang}>
+  <div slot="nav-extra" class="nav-quick-select-group">
+    <span class="nav-sub-badge"><i class="fas fa-database"></i> {t.resources_title}</span>
+  </div>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h1 class="section-title-inst">{t.resources_title} <span class="badge-new">{t.badge_new}</span></h1>
+          <span class="section-subtitle-inst">{t.resources_subtitle}</span>
+        </div>
+      </div>
+
+      <p style="font-size:1.02rem; color:var(--text-secondary); max-width:840px; margin-bottom:2.5rem; line-height:1.6;">
+        {t.resources_desc}
+      </p>
+
+      <div class="grid-3">
+        {allResources.map(resource => (
+          <ResourceCard resource={resource} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

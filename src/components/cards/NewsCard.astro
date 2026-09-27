@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  item: CollectionEntry<'news'> & { slug: string; locale: Locale };
+  lang: Locale;
+}
+
+const { item, lang } = Astro.props;
+const t = getTranslations(lang);
+const { data, body } = item;
+---
+
+<div class="card news-card" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
+  <div style={`background:${data.gradient || 'linear-gradient(135deg, #002b49, #1e3a5f)'}; height:140px; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:2.5rem;`}>
+    <i class={data.icon || 'fas fa-newspaper'}></i>
+  </div>
+  
+  <div style="padding:1.25rem; display:flex; flex-direction:column; flex-grow:1;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">
+      <span><i class="far fa-calendar-alt"></i> {data.date}</span>
+      <span class="badge-tag">{data.category}</span>
+    </div>
+    
+    <h4 style="color:var(--ehu-navy); font-size:1.02rem; margin-bottom:0.6rem; line-height:1.4;">
+      {data.title}
+    </h4>
+    
+    <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.55; margin-bottom:0.75rem; flex-grow:1;">
+      {body}
+    </p>
+
+    {data.source && (
+      <div style="font-size:0.78rem; color:var(--logo-green); font-weight:700; margin-top:auto; padding-top:0.5rem; border-top:1px dashed var(--border-light);">
+        <i class="fas fa-bookmark" style="margin-right:4px;"></i> {data.source}
+      </div>
+    )}
+  </div>
+</div>

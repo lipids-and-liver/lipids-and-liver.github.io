@@ -8,6 +8,13 @@ import TeamCard from '../cards/TeamCard.astro';
 import ThesisCard from '../cards/ThesisCard.astro';
 import PublicationCard from '../cards/PublicationCard.astro';
 import TrainingCard from '../cards/TrainingCard.astro';
+import ProjectCard from '../cards/ProjectCard.astro';
+import PatentCard from '../cards/PatentCard.astro';
+import AlumniCard from '../cards/AlumniCard.astro';
+import OpportunityCard from '../cards/OpportunityCard.astro';
+import ResourceCard from '../cards/ResourceCard.astro';
+import NewsCard from '../cards/NewsCard.astro';
+import OutreachCard from '../cards/OutreachCard.astro';
 
 interface Props {
   lang: Locale;
@@ -48,6 +55,92 @@ const latestPublications = allPubs.slice(0, 6);
 
 const trainings = await getLocalizedCollection('training', lang);
 trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const allProjects = await getLocalizedCollection('projects', lang);
+allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const allTransfer = await getLocalizedCollection('transfer', lang);
+allTransfer.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+const patents = allTransfer.filter(item => item.data.type === 'patent');
+const services = allTransfer.filter(item => item.data.type === 'service');
+
+const allAlumni = await getLocalizedCollection('alumni', lang);
+allAlumni.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const allOpportunities = await getLocalizedCollection('opportunities', lang);
+allOpportunities.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const allResources = await getLocalizedCollection('resources', lang);
+allResources.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const allNews = await getLocalizedCollection('news', lang);
+allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const allOutreach = await getLocalizedCollection('outreach', lang);
+allOutreach.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const collaborations = [
+  {
+    badge: lang === 'eu' ? 'Bikaintasun Sarea' : lang === 'en' ? 'Network of Excellence' : 'Red de Excelencia',
+    name: 'CIBERehd',
+    desc: lang === 'eu' 
+      ? 'Gibeleko eta Digestio Gaixotasunen Ikerketa Biomedikoko Sareko Zentroa (Instituto de Salud Carlos III).'
+      : lang === 'en'
+      ? 'Biomedical Research Networking Center in Hepatic and Digestive Diseases (Carlos III Health Institute).'
+      : 'Centro de Investigación Biomédica en Red de Enfermedades Hepáticas y Digestivas (Instituto de Salud Carlos III).',
+    field: lang === 'eu' ? 'MASLD eta zirrosi kohorteetan elkarlana' : lang === 'en' ? 'Collaboration in MASLD and cirrhosis cohorts' : 'Colaboración en cohortes de MASLD y cirrosis'
+  },
+  {
+    badge: lang === 'eu' ? 'Aliantza Klinikoa' : lang === 'en' ? 'Clinical Alliance' : 'Alianza Clínica',
+    name: 'Hospital Universitario de Cruces',
+    desc: lang === 'eu'
+      ? 'Digestio Aparatuko eta Kirurgia Orokorreko / Gibel Transplante Zerbitzuak. Balioztatze klinikoa biopsia edo erauzketak dituzten pazienteetan.'
+      : lang === 'en'
+      ? 'Digestive System and General Surgery / Liver Transplantation Services. Clinical validation in biopsied or resected patients.'
+      : 'Servicios de Aparato Digestivo y Cirugía General / Trasplante Hepático. Validación clínica en pacientes sometidos a biopsia o resección.',
+    field: lang === 'eu' ? 'Ex-vivo ikerketa traslazionalak' : lang === 'en' ? 'Ex-vivo translational studies' : 'Estudios traslacionales ex-vivo'
+  },
+  {
+    badge: lang === 'eu' ? 'Oinarrizko Ikerketa' : lang === 'en' ? 'Basic Research' : 'Investigación Básica',
+    name: 'CIC bioGUNE',
+    desc: lang === 'eu'
+      ? 'Elkarlan jarraitua Gibel Metabolismo eta Erresonantzia Magnetiko Nuklearreko laborategiekin Bizkaiko Parke Teknologikoan.'
+      : lang === 'en'
+      ? 'Continuous partnership with Hepatic Metabolism and Nuclear Magnetic Resonance labs at Bizkaia Technology Park.'
+      : 'Colaboración continuada con los laboratorios de Metabolismo Hepático y Resonancia Magnética Nuclear en el Parque Tecnológico de Bizkaia.',
+    field: lang === 'eu' ? 'Metabolomika eta Egiturazko Biologia' : lang === 'en' ? 'Metabolomics & Structural Biology' : 'Metabolómica y Biología Estructural'
+  },
+  {
+    badge: lang === 'eu' ? 'Nazioartekoa (Suedia)' : lang === 'en' ? 'International (Sweden)' : 'Internacional (Suecia)',
+    name: 'Karolinska Institutet',
+    desc: lang === 'eu'
+      ? 'Department of Laboratory Medicine (Stockholm). Doktoretza-aurreko ikertzaileen trukea eta esteatohepatitis ereduetako analisi lipidomikoa.'
+      : lang === 'en'
+      ? 'Department of Laboratory Medicine (Stockholm). Predoctoral researcher exchange and lipidomic analysis of steatohepatitis models.'
+      : 'Department of Laboratory Medicine (Estocolmo). Intercambio de investigadores predoctorales y análisis lipidómico de modelos de esteatohepatitis.',
+    field: lang === 'eu' ? 'JCR argitalpen bateratuak' : lang === 'en' ? 'Joint JCR publications' : 'Publicaciones conjuntas JCR'
+  },
+  {
+    badge: lang === 'eu' ? 'Nazioartekoa (Frantzia)' : lang === 'en' ? 'International (France)' : 'Internacional (Francia)',
+    name: 'INSERM U1016 (Institut Cochin)',
+    desc: lang === 'eu'
+      ? 'Paris. Europako partzuergoa seinaleztapen lipidikoan eta E2F transkripzio-faktoreetan hepatokartzinogenesian.'
+      : lang === 'en'
+      ? 'Paris. European consortium in lipid signaling and E2F transcription factors in hepatocarcinogenesis.'
+      : 'París. Consorcio europeo en señalización lipídica y factores de transcripción E2F en hepatocarcinogénesis.',
+    field: lang === 'eu' ? 'Horizon Europe proiektuak' : lang === 'en' ? 'Horizon Europe projects' : 'Proyectos Horizon Europe'
+  },
+  {
+    badge: lang === 'eu' ? 'Elkarte Zientifikoa' : lang === 'en' ? 'Scientific Society' : 'Sociedad Científica',
+    name: 'EASL & AEEH',
+    desc: lang === 'eu'
+      ? 'European Association for the Study of the Liver eta Asociación Española para el Estudio del Hígado.'
+      : lang === 'en'
+      ? 'European Association for the Study of the Liver and Spanish Association for the Study of the Liver.'
+      : 'European Association for the Study of the Liver y Asociación Española para el Estudio del Hígado.',
+    field: lang === 'eu' ? 'Batzorde eta gidetan parte-hartzea' : lang === 'en' ? 'Participation in committees and guidelines' : 'Participación en comités y guías'
+  }
+];
 ---
 
 <Layout currentPage="home" lang={lang}>
@@ -138,7 +231,27 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
           return (
             <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
-              {hasSidebar ? (
+              {tabId === 'tab-colaboraciones' ? (
+                <div>
+                  <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:1.5rem; line-height:1.6;">
+                    <span class="badge-new">{t.badge_new}</span> {t.collab_intro}
+                  </p>
+                  <div class="grid-3">
+                    {collaborations.map(collab => (
+                      <div class="card" style="display:flex; flex-direction:column;">
+                        <span class="badge-tag" style="align-self:flex-start; margin-bottom:0.75rem;">{collab.badge}</span>
+                        <h4 style="color:var(--ehu-navy); margin-bottom:0.4rem; font-size:1.05rem;">{collab.name}</h4>
+                        <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem; flex-grow:1; line-height:1.5;">
+                          {collab.desc}
+                        </p>
+                        <div style="font-size:0.78rem; font-weight:700; color:var(--logo-green); padding-top:0.5rem; border-top:1px dashed var(--border-light);">
+                          {collab.field}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : hasSidebar ? (
                 <div class="about-grid">
                   <div class="about-text">
                     <Content />
@@ -196,6 +309,92 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
     </div>
   </section>
 
+  <!-- Funded Research Projects Section (NUEVO) -->
+  <section class="page-section" id="projects">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.projects_title} <span class="badge-new">{t.badge_new}</span></h2>
+          <span class="section-subtitle-inst">{t.projects_subtitle} &bull; {allProjects.length} {t.projects_filter_all}</span>
+        </div>
+        <a href={getLocalizedPath('/proyectos', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-file-invoice-dollar"></i> {t.projects_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <p style="font-size:1rem; color:var(--text-secondary); max-width:840px; margin-bottom:1.75rem; line-height:1.6;">
+        {t.projects_desc}
+      </p>
+
+      <div class="filter-bar" id="home-project-filters">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> {t.projects_filter_all} ({allProjects.length})</button>
+        <button class="filter-btn" data-filter="ue"><i class="fas fa-globe-europe"></i> {t.projects_filter_ue}</button>
+        <button class="filter-btn" data-filter="nacional"><i class="fas fa-landmark"></i> {t.projects_filter_nacional}</button>
+        <button class="filter-btn" data-filter="gobvasco"><i class="fas fa-flag"></i> {t.projects_filter_gobvasco}</button>
+        <button class="filter-btn" data-filter="fundaciones"><i class="fas fa-heart"></i> {t.projects_filter_fundaciones}</button>
+      </div>
+
+      <div class="grid-2" id="home-projects-grid">
+        {allProjects.map(project => (
+          <ProjectCard project={project} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Transfer & Innovation Section (NUEVO) -->
+  <section class="page-section page-section-alt" id="transfer">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.transfer_title} <span class="badge-new">{t.badge_new}</span></h2>
+          <span class="section-subtitle-inst">{t.transfer_subtitle}</span>
+        </div>
+        <a href={getLocalizedPath('/transferencia', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-lightbulb"></i> {t.transfer_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <p style="font-size:1rem; color:var(--text-secondary); max-width:840px; margin-bottom:2rem; line-height:1.6;">
+        {t.transfer_desc}
+      </p>
+
+      <!-- Patentes -->
+      <div style="margin-bottom:2.5rem;">
+        <h3 style="font-size:1.3rem; color:var(--ehu-navy); margin-bottom:1rem; display:flex; align-items:center; gap:8px;">
+          <i class="fas fa-certificate" style="color:var(--logo-green);"></i> {t.transfer_patents_title}
+        </h3>
+        <div class="grid-2">
+          {patents.map(item => (
+            <PatentCard item={item} lang={lang} />
+          ))}
+        </div>
+      </div>
+
+      <!-- Servicios a Empresa / OTRI -->
+      <div class="card card-highlight" style="margin-top:2rem;">
+        <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;"><i class="fas fa-handshake"></i> {t.transfer_services_title}</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem; line-height:1.5;">
+          {t.transfer_services_desc}
+        </p>
+        <div class="grid-3" style="margin-top:1rem;">
+          <div style="background:var(--bg-surface-alt); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.88rem; margin-bottom:0.3rem;"><i class="fas fa-vial" style="color:var(--logo-green); margin-right:4px;"></i> {t.transfer_service1_title}</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">{t.transfer_service1_desc}</div>
+          </div>
+          <div style="background:var(--bg-surface-alt); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.88rem; margin-bottom:0.3rem;"><i class="fas fa-chart-line" style="color:var(--logo-green); margin-right:4px;"></i> {t.transfer_service2_title}</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">{t.transfer_service2_desc}</div>
+          </div>
+          <div style="background:var(--bg-surface-alt); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.88rem; margin-bottom:0.3rem;"><i class="fas fa-stethoscope" style="color:var(--logo-green); margin-right:4px;"></i> {t.transfer_service3_title}</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">{t.transfer_service3_desc}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Team Personnel Section with Images & CV links -->
   <section class="page-section" id="team">
     <div class="container">
@@ -222,6 +421,63 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
         {teamMembers.map(member => (
           <TeamCard member={member} lang={lang} />
         ))}
+      </div>
+
+      <!-- Subsección Alumni (NUEVO) -->
+      <div id="alumni" style="margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border-color);">
+        <div class="section-header-inst" style="margin-bottom:1.5rem;">
+          <div>
+            <h3 style="font-size:1.5rem; color:var(--ehu-navy); margin-bottom:0.3rem;">
+              <i class="fas fa-user-graduate" style="color:var(--logo-green); margin-right:6px;"></i> {t.alumni_title} <span class="badge-new">{t.badge_new}</span>
+            </h3>
+            <span class="section-subtitle-inst">{t.alumni_subtitle}</span>
+          </div>
+        </div>
+        <p style="font-size:0.95rem; color:var(--text-secondary); max-width:800px; margin-bottom:1.5rem;">
+          {t.alumni_desc}
+        </p>
+        <div class="grid-4">
+          {allAlumni.map(alumniItem => (
+            <AlumniCard alumni={alumniItem} lang={lang} />
+          ))}
+        </div>
+      </div>
+
+      <!-- Subsección Oportunidades / Trabaja con Nosotros (NUEVO) -->
+      <div id="opportunities" style="margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border-color);">
+        <div class="section-header-inst" style="margin-bottom:1.5rem;">
+          <div>
+            <h3 style="font-size:1.5rem; color:var(--ehu-navy); margin-bottom:0.3rem;">
+              <i class="fas fa-briefcase" style="color:var(--logo-green); margin-right:6px;"></i> {t.opportunities_title} <span class="badge-new">{t.badge_new}</span>
+            </h3>
+            <span class="section-subtitle-inst">{t.opportunities_subtitle}</span>
+          </div>
+          <a href={getLocalizedPath('/oportunidades', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+            <i class="fas fa-paper-plane"></i> {t.opportunities_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+          </a>
+        </div>
+        <p style="font-size:0.95rem; color:var(--text-secondary); max-width:800px; margin-bottom:1.5rem;">
+          {t.opportunities_desc}
+        </p>
+        <div class="grid-3" style="margin-bottom:2rem;">
+          {allOpportunities.map(opp => (
+            <OpportunityCard opp={opp} lang={lang} />
+          ))}
+        </div>
+
+        <div style="background:var(--bg-surface-alt); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem 1.75rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.25rem;">
+              <i class="fas fa-info-circle" style="color:var(--logo-green);"></i> {t.opportunities_spontaneous_title}
+            </div>
+            <div style="font-size:0.85rem; color:var(--text-secondary);">
+              {t.opportunities_spontaneous_desc}
+            </div>
+          </div>
+          <a href="mailto:patricia.aspichueta@ehu.eus?subject=Candidatura%20Espontanea%20Grupo%20Lipids%20and%20Liver" class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:24px;">
+            <i class="fas fa-envelope"></i> {t.opportunities_contact_btn}
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -290,6 +546,29 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
           <i class="fas fa-book-open"></i> {t.pubs_view_all_btn} ({allPubs.length}) <i class="fas fa-arrow-right"></i>
         </a>
       </div>
+
+      <!-- Subsección Recursos en Abierto / FAIR (NUEVO) -->
+      <div id="recursos" style="margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border-color);">
+        <div class="section-header-inst" style="margin-bottom:1.5rem;">
+          <div>
+            <h3 style="font-size:1.5rem; color:var(--ehu-navy); margin-bottom:0.3rem;">
+              <i class="fas fa-database" style="color:var(--logo-green); margin-right:6px;"></i> {t.resources_title} <span class="badge-new">{t.badge_new}</span>
+            </h3>
+            <span class="section-subtitle-inst">{t.resources_subtitle}</span>
+          </div>
+          <a href={getLocalizedPath('/recursos', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+            <i class="fas fa-external-link-alt"></i> {t.resources_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+          </a>
+        </div>
+        <p style="font-size:0.95rem; color:var(--text-secondary); max-width:800px; margin-bottom:1.5rem;">
+          {t.resources_desc}
+        </p>
+        <div class="grid-3">
+          {allResources.map(resource => (
+            <ResourceCard resource={resource} lang={lang} />
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -311,8 +590,88 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
     </div>
   </section>
 
+  <!-- Section: Actualidad, Noticias y Divulgación (NUEVO) -->
+  <section class="page-section" id="noticias">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.news_title} <span class="badge-new">{t.badge_new}</span></h2>
+          <span class="section-subtitle-inst">{t.news_subtitle}</span>
+        </div>
+        <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-newspaper"></i> {t.news_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <p style="font-size:1rem; color:var(--text-secondary); max-width:840px; margin-bottom:2rem; line-height:1.6;">
+        {t.news_desc}
+      </p>
+
+      <!-- Noticias Grid -->
+      <div class="grid-3" style="margin-bottom:3.5rem;">
+        {allNews.map(item => (
+          <NewsCard item={item} lang={lang} />
+        ))}
+      </div>
+
+      <!-- DOCENCIA & FORMACIÓN ACADÉMICA -->
+      <div id="docencia" style="margin-bottom:3.5rem; padding-top:2.5rem; border-top:1px solid var(--border-color);">
+        <h3 style="font-size:1.4rem; color:var(--ehu-navy); margin-bottom:1rem; display:flex; align-items:center; gap:8px;">
+          <i class="fas fa-chalkboard-teacher" style="color:var(--logo-green);"></i> {t.docencia_title}
+        </h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.5rem;"><i class="fas fa-graduation-cap" style="color:var(--logo-green); margin-right:6px;"></i> {t.docencia_masters_title}</h4>
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:0.75rem; line-height:1.5;">
+              {t.docencia_masters_desc}
+            </p>
+            <ul style="font-size:0.82rem; color:var(--text-muted); list-style:inside; line-height:1.6;">
+              <li>{t.docencia_masters_item1}</li>
+              <li>{t.docencia_masters_item2}</li>
+              <li>{t.docencia_masters_item3}</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.5rem;"><i class="fas fa-university" style="color:var(--logo-green); margin-right:6px;"></i> {t.docencia_degrees_title}</h4>
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:0.75rem; line-height:1.5;">
+              {t.docencia_degrees_desc}
+            </p>
+            <ul style="font-size:0.82rem; color:var(--text-muted); list-style:inside; line-height:1.6;">
+              <li>{t.docencia_degrees_item1}</li>
+              <li>{t.docencia_degrees_item2}</li>
+              <li>{t.docencia_degrees_item3}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divulgación y Compromiso Social (NUEVO) -->
+      <div id="divulgacion" style="padding-top:2.5rem; border-top:1px solid var(--border-color);">
+        <div class="section-header-inst" style="margin-bottom:1.5rem;">
+          <div>
+            <h3 style="font-size:1.5rem; color:var(--ehu-navy); margin-bottom:0.3rem;">
+              <i class="fas fa-heartbeat" style="color:var(--logo-green); margin-right:6px;"></i> {t.outreach_title} <span class="badge-new">{t.badge_new}</span>
+            </h3>
+            <span class="section-subtitle-inst">{t.outreach_subtitle}</span>
+          </div>
+          <a href={getLocalizedPath('/divulgacion', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+            <i class="fas fa-users"></i> {t.outreach_page_title} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+          </a>
+        </div>
+        <p style="font-size:0.95rem; color:var(--text-secondary); max-width:800px; margin-bottom:1.5rem;">
+          {t.outreach_desc}
+        </p>
+        <div class="grid-3">
+          {allOutreach.map(item => (
+            <OutreachCard item={item} lang={lang} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
-  <section class="page-section" id="contact">
+  <section class="page-section page-section-alt" id="contact">
     <div class="container">
       <div class="section-header-inst">
         <div>
@@ -389,15 +748,31 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
       // 1. About Tabs
       const tabBtns = document.querySelectorAll('.tab-btn');
       const tabContents = document.querySelectorAll('.tab-content');
+      function activateTab(tabId) {
+        tabBtns.forEach(b => {
+          if (b.dataset.tab === tabId) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+        tabContents.forEach(c => {
+          if (c.id === tabId) c.classList.add('active');
+          else c.classList.remove('active');
+        });
+      }
+
       tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          tabBtns.forEach(b => b.classList.remove('active'));
-          tabContents.forEach(c => c.classList.remove('active'));
-          btn.classList.add('active');
-          const target = document.getElementById(btn.dataset.tab);
-          if (target) target.classList.add('active');
+          activateTab(btn.dataset.tab);
         });
       });
+
+      function checkHashTab() {
+        const hash = window.location.hash;
+        if (hash === '#colaboraciones' || hash === '#tab-colaboraciones') {
+          activateTab('tab-colaboraciones');
+        }
+      }
+      checkHashTab();
+      window.addEventListener('hashchange', checkHashTab);
 
       // 2. Theses Segmented Control Filter
       const segBtns = document.querySelectorAll('.segmented-btn');
@@ -459,6 +834,24 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
             currentCategory = target.dataset.category;
             filterTeam();
           }
+        });
+      });
+
+      // 4. Project Filters on Home
+      const projFilterBtns = document.querySelectorAll('#home-project-filters .filter-btn');
+      const projCards = document.querySelectorAll('#home-projects-grid .project-card');
+      projFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          projFilterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          projCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
         });
       });
 

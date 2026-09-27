@@ -93,22 +93,105 @@ const basePath = getPathWithoutLocale(currentPath);
     </div>
 
     <!-- Main Navigation Bar -->
-    <!-- Main Navigation Bar -->
+    <!-- Main Navigation Bar with Dropdowns -->
     <nav class="nav-bar-row">
       <div class="container">
         <ul class="nav-menu" id="main-nav-links">
-          <li class="nav-menu-item"><a href={getLocalizedPath('/', lang)} class={currentPage === 'home' ? 'active' : ''}>{t.nav_home}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/tesis', lang)} class={currentPage === 'theses' ? 'active' : ''}>{t.nav_theses}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/publicaciones', lang)} class={currentPage === 'pubs' ? 'active' : ''}>{t.nav_pubs}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#training', lang)}>{t.nav_training}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#contact', lang)}>{t.nav_contact}</a></li>
-          <li class="nav-menu-item" style="margin-left:auto"><a href={getLocalizedPath('/curriculum', lang)} class={currentPage === 'curriculum' ? 'active' : ''}><i class="fas fa-id-card"></i> {t.nav_cv_portal}</a></li>
+          <li class="nav-menu-item">
+            <a href={getLocalizedPath('/', lang)} class={currentPage === 'home' ? 'active' : ''}>
+              <i class="fas fa-home"></i> {t.nav_home}
+            </a>
+          </li>
+
+          <!-- Sobre Nosotros -->
+          <li class="nav-menu-item">
+            <a href={getLocalizedPath('/#about', lang)}>
+              {t.nav_about_menu} <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href={getLocalizedPath('/#about', lang)}><i class="fas fa-university"></i> {t.nav_about_pres}</a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/#about', lang)}><i class="fas fa-microscope"></i> {t.nav_about_biocruces}</a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/#colaboraciones', lang)}><i class="fas fa-handshake"></i> {t.nav_about_collab} <span class="badge-new">{t.badge_new}</span></a></li>
+            </ul>
+          </li>
+
+          <!-- Investigación -->
+          <li class="nav-menu-item">
+            <a href={getLocalizedPath('/#lines', lang)} class={currentPage === 'lines' || currentPage === 'projects' || currentPage === 'transfer' ? 'active' : ''}>
+              {t.nav_research_menu} <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href={getLocalizedPath('/#lines', lang)}><i class="fas fa-flask"></i> {t.nav_research_lines}</a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/proyectos', lang)}><i class="fas fa-file-invoice-dollar"></i> {t.nav_research_projects} <span class="badge-new">{t.badge_new}</span></a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/transferencia', lang)}><i class="fas fa-lightbulb"></i> {t.nav_research_transfer} <span class="badge-new">{t.badge_new}</span></a></li>
+            </ul>
+          </li>
+
+          <!-- Personas -->
+          <li class="nav-menu-item">
+            <a href={getLocalizedPath('/#team', lang)} class={currentPage === 'team' || currentPage === 'opportunities' || currentPage === 'curriculum' ? 'active' : ''}>
+              {t.nav_people_menu} <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href={getLocalizedPath('/#team', lang)}><i class="fas fa-users"></i> {t.nav_people_team}</a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/#alumni', lang)}><i class="fas fa-user-graduate"></i> {t.nav_people_alumni} <span class="badge-new">{t.badge_new}</span></a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/oportunidades', lang)}><i class="fas fa-briefcase"></i> {t.nav_people_opp} <span class="badge-new">{t.badge_new}</span></a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/curriculum', lang)}><i class="fas fa-id-card"></i> {t.nav_cv_portal}</a></li>
+            </ul>
+          </li>
+
+          <!-- Producción Científica -->
+          <li class="nav-menu-item">
+            <a href={getLocalizedPath('/publicaciones', lang)} class={currentPage === 'pubs' || currentPage === 'theses' || currentPage === 'resources' ? 'active' : ''}>
+              {t.nav_science_menu} <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href={getLocalizedPath('/publicaciones', lang)}><i class="fas fa-book-open"></i> {t.nav_science_pubs}</a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/tesis', lang)}><i class="fas fa-graduation-cap"></i> {t.nav_science_theses}</a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/recursos', lang)}><i class="fas fa-database"></i> {t.nav_science_resources} <span class="badge-new">{t.badge_new}</span></a></li>
+            </ul>
+          </li>
+
+          <!-- Actualidad y Sociedad -->
+          <li class="nav-menu-item">
+            <a href={getLocalizedPath('/noticias', lang)} class={currentPage === 'news' || currentPage === 'outreach' ? 'active' : ''}>
+              {t.nav_society_menu} <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href={getLocalizedPath('/noticias', lang)}><i class="fas fa-newspaper"></i> {t.nav_society_news} <span class="badge-new">{t.badge_new}</span></a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/#docencia', lang)}><i class="fas fa-chalkboard-teacher"></i> {t.nav_society_training}</a></li>
+              <li class="dropdown-item"><a href={getLocalizedPath('/divulgacion', lang)}><i class="fas fa-heartbeat"></i> {t.nav_society_outreach} <span class="badge-new">{t.badge_new}</span></a></li>
+            </ul>
+          </li>
+
+          <li class="nav-menu-item">
+            <a href={getLocalizedPath('/#contact', lang)}><i class="fas fa-envelope"></i> {t.nav_contact}</a>
+          </li>
+
+          <li class="nav-menu-item" style="margin-left:auto">
+            <a href={getLocalizedPath('/curriculum', lang)} class={currentPage === 'curriculum' ? 'active' : ''}>
+              <i class="fas fa-id-card"></i> {t.nav_cv_portal}
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
+
+    <!-- Quick Jump Sticky Sub-bar for New Modules -->
+    <div class="quick-jump-bar">
+      <div class="container quick-jump-container">
+        <span class="quick-jump-title"><i class="fas fa-bolt"></i> {t.quick_jump_title}</span>
+        <div class="quick-jump-pills">
+          <a href={getLocalizedPath('/proyectos', lang)} class="jump-pill is-new"><i class="fas fa-euro-sign"></i> {t.nav_projects}</a>
+          <a href={getLocalizedPath('/transferencia', lang)} class="jump-pill is-new"><i class="fas fa-certificate"></i> {t.nav_transfer}</a>
+          <a href={getLocalizedPath('/#alumni', lang)} class="jump-pill is-new"><i class="fas fa-user-graduate"></i> {t.nav_alumni}</a>
+          <a href={getLocalizedPath('/oportunidades', lang)} class="jump-pill is-new"><i class="fas fa-door-open"></i> {t.nav_opportunities}</a>
+          <a href={getLocalizedPath('/recursos', lang)} class="jump-pill is-new"><i class="fas fa-share-alt"></i> {t.nav_resources}</a>
+          <a href={getLocalizedPath('/noticias', lang)} class="jump-pill is-new"><i class="fas fa-newspaper"></i> {t.nav_news}</a>
+          <a href={getLocalizedPath('/divulgacion', lang)} class="jump-pill is-new"><i class="fas fa-heartbeat"></i> {t.nav_outreach}</a>
+        </div>
+      </div>
+    </div>
 
     <!-- Contextual Utility Sub-Bar for Quick Selectors -->
     {Astro.slots.has('nav-extra') && (
@@ -123,6 +206,24 @@ const basePath = getPathWithoutLocale(currentPath);
             )}
             {currentPage === 'lines' && (
               <span class="nav-sub-badge"><i class="fas fa-microscope"></i> {t.lines_title}</span>
+            )}
+            {currentPage === 'projects' && (
+              <span class="nav-sub-badge"><i class="fas fa-file-invoice-dollar"></i> {t.projects_title}</span>
+            )}
+            {currentPage === 'transfer' && (
+              <span class="nav-sub-badge"><i class="fas fa-lightbulb"></i> {t.transfer_title}</span>
+            )}
+            {currentPage === 'opportunities' && (
+              <span class="nav-sub-badge"><i class="fas fa-briefcase"></i> {t.opportunities_title}</span>
+            )}
+            {currentPage === 'resources' && (
+              <span class="nav-sub-badge"><i class="fas fa-database"></i> {t.resources_title}</span>
+            )}
+            {currentPage === 'news' && (
+              <span class="nav-sub-badge"><i class="fas fa-newspaper"></i> {t.news_title}</span>
+            )}
+            {currentPage === 'outreach' && (
+              <span class="nav-sub-badge"><i class="fas fa-heartbeat"></i> {t.outreach_title}</span>
             )}
           </div>
           <div class="nav-sub-action">
@@ -157,10 +258,15 @@ const basePath = getPathWithoutLocale(currentPath);
             <li><a href={getLocalizedPath('/', lang)}>{t.nav_home}</a></li>
             <li><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
             <li><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
+            <li><a href={getLocalizedPath('/proyectos', lang)}>{t.nav_projects}</a></li>
+            <li><a href={getLocalizedPath('/transferencia', lang)}>{t.nav_transfer}</a></li>
             <li><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
-            <li><a href={getLocalizedPath('/#theses', lang)}>{t.nav_theses}</a></li>
+            <li><a href={getLocalizedPath('/oportunidades', lang)}>{t.nav_opportunities}</a></li>
             <li><a href={getLocalizedPath('/tesis', lang)}>{t.theses_page_title}</a></li>
             <li><a href={getLocalizedPath('/publicaciones', lang)}>{t.pubs_title}</a></li>
+            <li><a href={getLocalizedPath('/recursos', lang)}>{t.nav_resources}</a></li>
+            <li><a href={getLocalizedPath('/noticias', lang)}>{t.nav_news}</a></li>
+            <li><a href={getLocalizedPath('/divulgacion', lang)}>{t.nav_outreach}</a></li>
             <li><a href={getLocalizedPath('/curriculum', lang)}>{t.nav_cv_portal}</a></li>
           </ul>
         </div>
