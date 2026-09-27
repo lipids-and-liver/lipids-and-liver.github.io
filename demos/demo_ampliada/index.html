@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEMO AMPLIADA | Grupo de Investigación Lipids &amp; Liver (UPV/EHU &amp; Biocruces Bizkaia)</title>
+  <meta name="description" content="Propuesta de arquitectura web ampliada para el Grupo de Investigación Lipids & Liver (Gobierno Vasco Tipo A - IT1560-22). Demostración con datos de prueba realistas.">
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Demo Announcement Bar -->
+  <div class="demo-top-notice">
+    <div class="container demo-notice-content">
+      <span class="demo-notice-tag"><i class="fas fa-flask"></i> ENTORNO DE DEMOSTRACIÓN</span>
+      <span>Esta versión simula la <strong>propuesta de estructura ampliada</strong> con datos de prueba realistas para nuevos apartados científicos.</span>
+    </div>
+    <div class="demo-notice-actions">
+      <a href="#proyectos" class="demo-notice-btn"><i class="fas fa-arrow-down"></i> Ver Nuevos Módulos</a>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="header-main-row">
+        <!-- Brand Logos -->
+        <div class="brand-logos-container">
+          <div class="brand-logos-wrapper">
+            <a href="#hero">
+              <img src="assets/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="ehu-logo-img">
+            </a>
+            <div class="brand-divider"></div>
+            <a href="#hero">
+              <img src="assets/logo/lipid_liver_logo.png" alt="Lipids & Liver Logo" class="group-logo-img">
+            </a>
+          </div>
+          <div class="header-title-box">
+            <span class="header-title-main">Lipids &amp; Liver</span>
+            <span class="header-title-sub">Grupo Consolidado del Gobierno Vasco (Tipo A — IT1560-22) | UPV/EHU &amp; IIS Biocruces Bizkaia</span>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <button class="theme-toggle-btn" id="theme-toggle" title="Alternar modo claro/oscuro">
+            <i class="fas fa-moon"></i> <span class="theme-text">Modo Oscuro</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar with Dropdowns -->
+    <nav class="nav-bar-row">
+      <div class="container nav-container">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#hero" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+          </li>
+
+          <!-- Sobre Nosotros -->
+          <li class="nav-item">
+            <a href="#sobre-nosotros" class="nav-link">
+              Sobre Nosotros <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#sobre-nosotros"><i class="fas fa-university"></i> Presentación y Dirección</a></li>
+              <li class="dropdown-item"><a href="#instalaciones"><i class="fas fa-microscope"></i> Biocruces &amp; Unidad SGIker</a></li>
+              <li class="dropdown-item"><a href="#colaboraciones"><i class="fas fa-handshake"></i> Red de Colaboraciones <span class="badge-new">NUEVO</span></a></li>
+            </ul>
+          </li>
+
+          <!-- Investigación -->
+          <li class="nav-item">
+            <a href="#lineas" class="nav-link">
+              Investigación <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#lineas"><i class="fas fa-dna"></i> Líneas de Investigación</a></li>
+              <li class="dropdown-item"><a href="#proyectos"><i class="fas fa-file-contract"></i> Proyectos Financiados I+D <span class="badge-new">NUEVO</span></a></li>
+              <li class="dropdown-item"><a href="#transferencia"><i class="fas fa-lightbulb"></i> Transferencia &amp; Patentes <span class="badge-new">NUEVO</span></a></li>
+            </ul>
+          </li>
+
+          <!-- Personas -->
+          <li class="nav-item">
+            <a href="#equipo" class="nav-link">
+              Personas <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#equipo"><i class="fas fa-users"></i> Miembros Actuales</a></li>
+              <li class="dropdown-item"><a href="#alumni"><i class="fas fa-user-graduate"></i> Antiguos Miembros (Alumni) <span class="badge-new">NUEVO</span></a></li>
+              <li class="dropdown-item"><a href="#oportunidades"><i class="fas fa-briefcase"></i> Trabaja con Nosotros <span class="badge-new">NUEVO</span></a></li>
+            </ul>
+          </li>
+
+          <!-- Producción Científica -->
+          <li class="nav-item">
+            <a href="#publicaciones" class="nav-link">
+              Producción Científica <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#publicaciones"><i class="fas fa-book-open"></i> Artículos JCR</a></li>
+              <li class="dropdown-item"><a href="#tesis"><i class="fas fa-graduation-cap"></i> Tesis Doctorales</a></li>
+              <li class="dropdown-item"><a href="#recursos"><i class="fas fa-database"></i> Datos Abiertos &amp; Protocolos <span class="badge-new">NUEVO</span></a></li>
+            </ul>
+          </li>
+
+          <!-- Actualidad y Sociedad -->
+          <li class="nav-item">
+            <a href="#noticias" class="nav-link">
+              Actualidad y Sociedad <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#noticias"><i class="fas fa-newspaper"></i> Noticias y Medios <span class="badge-new">NUEVO</span></a></li>
+              <li class="dropdown-item"><a href="#docencia"><i class="fas fa-chalkboard-teacher"></i> Formación Universitaria</a></li>
+              <li class="dropdown-item"><a href="#divulgacion"><i class="fas fa-heartbeat"></i> Divulgación y Pacientes <span class="badge-new">NUEVO</span></a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#contacto" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Quick Jump Bar for New Modules -->
+    <div class="quick-jump-bar">
+      <div class="container quick-jump-container">
+        <span class="quick-jump-title"><i class="fas fa-bolt"></i> Explorar Módulos Nuevos:</span>
+        <div class="quick-jump-pills">
+          <a href="#proyectos" class="jump-pill is-new"><i class="fas fa-euro-sign"></i> Proyectos I+D</a>
+          <a href="#transferencia" class="jump-pill is-new"><i class="fas fa-certificate"></i> Patentes &amp; Transferencia</a>
+          <a href="#alumni" class="jump-pill is-new"><i class="fas fa-user-graduate"></i> Red Alumni</a>
+          <a href="#oportunidades" class="jump-pill is-new"><i class="fas fa-door-open"></i> Trabaja con Nosotros</a>
+          <a href="#recursos" class="jump-pill is-new"><i class="fas fa-share-alt"></i> Open Data &amp; Protocolos</a>
+          <a href="#noticias" class="jump-pill is-new"><i class="fas fa-newspaper"></i> Noticias</a>
+          <a href="#colaboraciones" class="jump-pill is-new"><i class="fas fa-network-wired"></i> Colaboraciones</a>
+          <a href="#divulgacion" class="jump-pill is-new"><i class="fas fa-heart"></i> Divulgación Pacientes</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="pulse-dot"></span> Grupo Consolidado del Gobierno Vasco (Tipo A — IT1560-22)
+        </div>
+        <h1 class="hero-title">Lípidos, Metabolismo y <span>Enfermedad Hepática</span></h1>
+        <p class="hero-description">
+          Investigación molecular y traslacional de excelencia en la Universidad del País Vasco (UPV/EHU) y el Instituto de Investigación Sanitaria Biocruces Bizkaia. Dirigido por la <strong>Dra. Patricia Aspichueta</strong>.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#lineas" class="btn-primary"><i class="fas fa-microscope"></i> Nuestras Líneas de Investigación</a>
+          <a href="#proyectos" class="btn-secondary"><i class="fas fa-file-contract"></i> Ver Proyectos Financiados</a>
+          <a href="#oportunidades" class="btn-secondary"><i class="fas fa-user-plus"></i> Unirse al Laboratorio</a>
+        </div>
+      </div>
+
+      <div class="hero-image-box">
+        <img src="assets/hero_outdoor_group.jpg" alt="Equipo de Investigación Lipids &amp; Liver">
+        <div class="hero-image-caption">
+          <i class="fas fa-camera"></i> Miembros del equipo Lipids &amp; Liver en el Campus de Leioa (UPV/EHU).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Bar -->
+  <section class="stats-row">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">2007</div>
+        <div class="stat-label">Año de Fundación del Grupo</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">12+</div>
+        <div class="stat-label">Proyectos Nacionales y Europeos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Tesis Doctorales Dirigidas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">SGIker</div>
+        <div class="stat-label">Servicio Central de Lipidómica UPV/EHU</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Sobre Nosotros & Colaboraciones -->
+  <section class="section" id="sobre-nosotros">
+    <div class="container tab-wrapper">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-university"></i> Institución y Alianzas</div>
+        <h2 class="section-title">Sobre el Grupo Lipids &amp; Liver</h2>
+        <p class="section-description">
+          Grupo multidisciplinar de biólogos, bioquímicos, médicos y bioinformáticos dedicados a desentrañar los mecanismos metabólicos del hígado sano y enfermo.
+        </p>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab-target="tab-presentacion"><i class="fas fa-info-circle"></i> Presentación y Dirección</button>
+        <button class="tab-btn" data-tab-target="tab-instalaciones"><i class="fas fa-hospital"></i> Biocruces &amp; SGIker</button>
+        <button class="tab-btn" data-tab-target="tab-colaboraciones"><i class="fas fa-network-wired"></i> Red de Colaboraciones y Alianzas <span class="badge-new">NUEVO</span></button>
+      </div>
+
+      <!-- Tab Content 1: Presentación -->
+      <div class="tab-content active" id="tab-presentacion">
+        <div class="grid-2">
+          <div class="card card-highlight">
+            <h3 style="color:var(--ehu-navy); margin-bottom:1rem;"><i class="fas fa-user-tie"></i> Dirección Científica</h3>
+            <p style="margin-bottom:0.8rem;">
+              La <strong>Dra. Patricia Aspichueta</strong> es Catedrática de Fisiología en la Facultad de Medicina y Enfermería de la UPV/EHU, Investigadora Principal del Grupo Consolidado IT1560-22 y Responsable del Área de Metabolismo y Cáncer en el Instituto de Investigación Sanitaria Biocruces Bizkaia.
+            </p>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+              Su trayectoria científica se centra en el estudio del metabolismo lipídico hepático, su reprogramación en la enfermedad del hígado graso asociada a disfunción metabólica (MASLD/MASH) y la progresión hacia el hepatocarcinoma y colangiocarcinoma.
+            </p>
+          </div>
+          <div class="card card-highlight-navy">
+            <h3 style="color:var(--ehu-navy); margin-bottom:1rem;"><i class="fas fa-bullseye"></i> Misión y Visión</h3>
+            <p style="margin-bottom:0.8rem;">
+              Nuestra misión es generar conocimiento biológico fundamental de máxima calidad y traducirlo en herramientas clínicas útiles: biomarcadores precoces y dianas farmacológicas para combatir patologías metabólicas y oncológicas con un impacto directo en la sociedad.
+            </p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="badge-tag"><i class="fas fa-check"></i> Medicina de Precisión</span>
+              <span class="badge-tag"><i class="fas fa-check"></i> Lipidómica Cuantitativa</span>
+              <span class="badge-tag"><i class="fas fa-check"></i> Ómicas Espaciales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: Instalaciones -->
+      <div class="tab-content" id="tab-instalaciones">
+        <div class="grid-2" id="instalaciones">
+          <div class="card">
+            <h3 style="color:var(--ehu-navy); margin-bottom:0.8rem;"><i class="fas fa-hospital-alt"></i> IIS Biocruces Bizkaia</h3>
+            <p style="font-size:0.92rem; color:var(--text-secondary); margin-bottom:1rem;">
+              Integrados en el Hospital Universitario de Cruces, facilitando el acceso a muestras biológicas humanas, cohortes clínicas bien fenotipadas y la colaboración directa con cirujanos y hepatólogos para estudios traslacionales.
+            </p>
+            <ul style="list-style:inside; font-size:0.85rem; color:var(--text-muted);">
+              <li>Biobanco Vasco para la Investigación Biomédica</li>
+              <li>Salas de cultivo celular y microscopía avanzada</li>
+              <li>Unidad de Ensayos Clínicos en Fase Temprana</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="color:var(--ehu-navy); margin-bottom:0.8rem;"><i class="fas fa-cogs"></i> Unidad de Lipidómica SGIker (UPV/EHU)</h3>
+            <p style="font-size:0.92rem; color:var(--text-secondary); margin-bottom:1rem;">
+              Servicios Generales de Investigación de la UPV/EHU, dirigidos científicamente por la Dra. Patricia Aspichueta, ofreciendo espectrometría de masas avanzada para investigadores públicos y empresas privadas.
+            </p>
+            <ul style="list-style:inside; font-size:0.85rem; color:var(--text-muted);">
+              <li>UPLC-QToF de alta resolución para lipidómica no dirigida</li>
+              <li>Triple Cuadrupolo para cuantificación absoluta de ceramidas y esfingolípidos</li>
+              <li>Soporte bioinformático para estadística multivariante</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 3: Colaboraciones (NUEVO) -->
+      <div class="tab-content" id="tab-colaboraciones">
+        <div id="colaboraciones">
+          <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:1.5rem;">
+            <span class="badge-new">MÓDULO NUEVO</span> El grupo mantiene alianzas estratégicas con centros de investigación, redes temáticas y servicios hospitalarios de referencia a nivel autonómico, nacional e internacional:
+          </p>
+
+          <div class="grid-3">
+            <div class="card">
+              <span class="badge-tag" style="align-self:flex-start; margin-bottom:0.75rem;">Red de Excelencia</span>
+              <h4 style="color:var(--ehu-navy); margin-bottom:0.4rem;">CIBERehd</h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                Centro de Investigación Biomédica en Red de Enfermedades Hepáticas y Digestivas (Instituto de Salud Carlos III).
+              </p>
+              <div style="font-size:0.78rem; font-weight:700; color:var(--logo-green);">Colaboración en cohortes de MASLD y cirrosis</div>
+            </div>
+
+            <div class="card">
+              <span class="badge-tag" style="align-self:flex-start; margin-bottom:0.75rem;">Alianza Clínica</span>
+              <h4 style="color:var(--ehu-navy); margin-bottom:0.4rem;">Hospital Universitario de Cruces</h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                Servicios de Aparato Digestivo y Cirugía General / Trasplante Hepático. Validación clínica en pacientes sometidos a biopsia o resección.
+              </p>
+              <div style="font-size:0.78rem; font-weight:700; color:var(--logo-green);">Estudios traslacionales ex-vivo</div>
+            </div>
+
+            <div class="card">
+              <span class="badge-tag" style="align-self:flex-start; margin-bottom:0.75rem;">Investigación Básica</span>
+              <h4 style="color:var(--ehu-navy); margin-bottom:0.4rem;">CIC bioGUNE</h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                Colaboración continuada con los laboratorios de Metabolismo Hepático y Resonancia Magnética Nuclear en el Parque Tecnológico de Bizkaia.
+              </p>
+              <div style="font-size:0.78rem; font-weight:700; color:var(--logo-green);">Metabolómica y Biología Estructural</div>
+            </div>
+
+            <div class="card">
+              <span class="badge-tag" style="align-self:flex-start; margin-bottom:0.75rem;">Internacional (Suecia)</span>
+              <h4 style="color:var(--ehu-navy); margin-bottom:0.4rem;">Karolinska Institutet</h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                Department of Laboratory Medicine (Estocolmo). Intercambio de investigadores predoctorales y análisis lipidómico de modelos de esteatohepatitis.
+              </p>
+              <div style="font-size:0.78rem; font-weight:700; color:var(--logo-green);">Publicaciones conjuntas JCR</div>
+            </div>
+
+            <div class="card">
+              <span class="badge-tag" style="align-self:flex-start; margin-bottom:0.75rem;">Internacional (Francia)</span>
+              <h4 style="color:var(--ehu-navy); margin-bottom:0.4rem;">INSERM U1016 (Institut Cochin)</h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                París. Consorcio europeo en señalización lipídica y factores de transcripción E2F en hepatocarcinogénesis.
+              </p>
+              <div style="font-size:0.78rem; font-weight:700; color:var(--logo-green);">Proyectos Horizon Europe</div>
+            </div>
+
+            <div class="card">
+              <span class="badge-tag" style="align-self:flex-start; margin-bottom:0.75rem;">Sociedad Científica</span>
+              <h4 style="color:var(--ehu-navy); margin-bottom:0.4rem;">EASL &amp; AEEH</h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                European Association for the Study of the Liver y Asociación Española para el Estudio del Hígado.
+              </p>
+              <div style="font-size:0.78rem; font-weight:700; color:var(--logo-green);">Participación en comités y guías</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Líneas de Investigación -->
+  <section class="section section-alt" id="lineas">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-flask"></i> Fronteras de Conocimiento</div>
+        <h2 class="section-title">Líneas de Investigación Activas</h2>
+        <p class="section-description">
+          Abordamos la patología hepática desde la biofísica de membranas y la regulación génica hasta la validación en biopsias de pacientes.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Card Linea 1 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img src="assets/mafld.jpg" alt="MAFLD" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.25rem;">
+            <span class="badge-tag" style="margin-bottom:0.5rem;">Metabolismo Hepático</span>
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;">Enfermedad Esteatósica (MASLD/MASH)</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+              Mecanismos moleculares de lipotoxicidad, acumulación de triacilgliceroles y ceramidas en la progresión a esteatohepatitis y fibrosis.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card Linea 2 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img src="assets/cancer.jpg" alt="Cáncer Hepático" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.25rem;">
+            <span class="badge-tag" style="margin-bottom:0.5rem;">Oncología Traslacional</span>
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;">Reprogramación Metabólica en Cáncer</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+              Vulnerabilidades lipídicas en carcinoma hepatocelular y colangiocarcinoma para sensibilización a quimioterapia e inmunoterapia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card Linea 3 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img src="assets/spatial_omics.jpg" alt="Spatial Omics" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.25rem;">
+            <span class="badge-tag" style="margin-bottom:0.5rem;">Tecnología Disruptiva</span>
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;">Ómicas Espaciales &amp; MALDI-MSI</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+              Mapeo de la distribución espacial de lípidos y perfiles transcriptómicos en el microambiente tumoral a resolución celular.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card Linea 4 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img src="assets/e2f.jpg" alt="E2F" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.25rem;">
+            <span class="badge-tag" style="margin-bottom:0.5rem;">Regulación Génica</span>
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;">Factores de Transcripción E2F</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+              Regulación del ciclo celular y modulación del metabolismo de fosfolípidos y colesterol por factores no canónicos E2F.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card Linea 5 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img src="assets/exposome.jpg" alt="Exposome" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.25rem;">
+            <span class="badge-tag" style="margin-bottom:0.5rem;">Salud Ambiental</span>
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;">Exposoma y Disruptores Endocrinos</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+              Impacto de contaminantes ambientales y microplásticos en la homeostasis lipídica hepática y su contribución al hígado graso.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card Linea 6 -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img src="assets/lipidomics.jpg" alt="Lipidomics SGIker" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.25rem;">
+            <span class="badge-tag" style="margin-bottom:0.5rem;">Plataforma Analítica</span>
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;">Lipidómica Funcional SGIker</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+              Desarrollo metodológico para la identificación inequívoca y cuantificación de especies moleculares de lípidos complejos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Proyectos Financiados (NUEVO) -->
+  <section class="section" id="proyectos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-file-invoice-dollar"></i> Financiación Competitiva de I+D+i</div>
+        <h2 class="section-title">Proyectos de Investigación Financiados <span class="badge-new">NUEVO</span></h2>
+        <p class="section-description">
+          Relación exhaustiva de proyectos competitivos adjudicados al grupo por agencias internacionales, estatales y autonómicas.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar">
+        <button class="filter-btn project-filter-btn active" data-filter="all">Todos los Proyectos (5)</button>
+        <button class="filter-btn project-filter-btn" data-filter="ue">Horizon Europe / UE (1)</button>
+        <button class="filter-btn project-filter-btn" data-filter="nacional">Plan Estatal / ISCIII (2)</button>
+        <button class="filter-btn project-filter-btn" data-filter="gobvasco">Gobierno Vasco (1)</button>
+        <button class="filter-btn project-filter-btn" data-filter="fundaciones">Fundaciones Científicas (1)</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid-2">
+        <!-- Proyecto 1 (UE) -->
+        <div class="card project-card card-highlight" data-category="ue">
+          <div class="project-meta-row">
+            <span class="badge-tag" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd;">Horizon Europe Health</span>
+            <span class="project-code">HORIZON-HLTH-2023-101136420</span>
+          </div>
+          <h3 class="project-title">LIPID-TUMOR-TARGET: Spatial Multi-Omics Profiling of Lipid Metabolism for Stratified Immunotherapy in Liver Cancer</h3>
+          <div class="project-ips"><i class="fas fa-user-check"></i> IP Principal (Consorcio Bilbao): Dra. Patricia Aspichueta</div>
+          <p class="project-desc">
+            Consorcio multicéntrico europeo para cartografiar con resolución unicelular la remodelación del microentorno lipídico en carcinoma hepatocelular resistente a inhibidores de punto de control inmunitario (anti-PD1/PD-L1).
+          </p>
+          <div class="project-footer">
+            <span><i class="far fa-calendar-alt"></i> 2024 – 2027</span>
+            <span class="project-budget">485.000 € (Nodo UPV/EHU)</span>
+          </div>
+        </div>
+
+        <!-- Proyecto 2 (Plan Estatal) -->
+        <div class="card project-card card-highlight-navy" data-category="nacional">
+          <div class="project-meta-row">
+            <span class="badge-tag" style="background:#fef3c7; color:#92400e; border-color:#fde68a;">Plan Estatal I+D+i (MICIU / AEI)</span>
+            <span class="project-code">PID2023-148902OB-I00</span>
+          </div>
+          <h3 class="project-title">LIPOMET-MASLD: Mecanismos de reprogramación lipídica mitocondrial en la transición de esteatosis simple a esteatohepatitis no alcohólica</h3>
+          <div class="project-ips"><i class="fas fa-user-check"></i> IPs: Dra. Patricia Aspichueta / Dr. Xabier Buqué</div>
+          <p class="project-desc">
+            Estudio mecanicista centrado en el papel del tráfico intracelular de esfingolípidos y cardiolipinas como desencadenantes de estrés oxidativo y apoptosis de hepatocitos.
+          </p>
+          <div class="project-footer">
+            <span><i class="far fa-calendar-alt"></i> 2024 – 2027</span>
+            <span class="project-budget">240.000 €</span>
+          </div>
+        </div>
+
+        <!-- Proyecto 3 (ISCIII - FIS) -->
+        <div class="card project-card card-highlight-cyan" data-category="nacional">
+          <div class="project-meta-row">
+            <span class="badge-tag" style="background:#e0e7ff; color:#3730a3; border-color:#c7d2fe;">ISCIII - Proyectos FIS</span>
+            <span class="project-code">PI22/00845</span>
+          </div>
+          <h3 class="project-title">Identificación y validación de una firma de lipidoma sérico para el diagnóstico precoz del colangiocarcinoma en pacientes con colangitis esclerosante primaria</h3>
+          <div class="project-ips"><i class="fas fa-user-check"></i> IP: Dra. Patricia Aspichueta (Colaboración IIS Biocruces Bizkaia)</div>
+          <p class="project-desc">
+            Estudio clínico-traslacional prospectivo en colaboración con el Servicio de Aparato Digestivo del Hospital Universitario de Cruces para desarrollar una biopsia líquida metabolómica no invasiva.
+          </p>
+          <div class="project-footer">
+            <span><i class="far fa-calendar-alt"></i> 2023 – 2025</span>
+            <span class="project-budget">152.000 €</span>
+          </div>
+        </div>
+
+        <!-- Proyecto 4 (Gobierno Vasco) -->
+        <div class="card project-card card-highlight" data-category="gobvasco">
+          <div class="project-meta-row">
+            <span class="badge-tag" style="background:#dcfce7; color:#15803d; border-color:#86efac;">Gobierno Vasco (Grupos Consolidados Tipo A)</span>
+            <span class="project-code">IT1560-22</span>
+          </div>
+          <h3 class="project-title">Grupo de Investigación Consolidado en Fisiología Metabólica Hepática y Lipidómica Traslacional (Lipids &amp; Liver)</h3>
+          <div class="project-ips"><i class="fas fa-user-check"></i> IP: Dra. Patricia Aspichueta</div>
+          <p class="project-desc">
+            Financiación troncal para el mantenimiento de líneas prioritarias, contratación de personal investigador en formación y cofinanciación de infraestructuras analíticas de alto rendimiento.
+          </p>
+          <div class="project-footer">
+            <span><i class="far fa-calendar-alt"></i> 2022 – 2025</span>
+            <span class="project-budget">292.500 €</span>
+          </div>
+        </div>
+
+        <!-- Proyecto 5 (Fundación AECC) -->
+        <div class="card project-card card-highlight-navy" data-category="fundaciones">
+          <div class="project-meta-row">
+            <span class="badge-tag" style="background:#fce7f3; color:#9d174d; border-color:#fbcfe8;">Fundación Científica AECC</span>
+            <span class="project-code">LAB-AECC-2023-BILBAO</span>
+          </div>
+          <h3 class="project-title">Dianas lipídicas para revertir la resistencia farmacológica a Sorafenib y Lenvatinib en cáncer de hígado</h3>
+          <div class="project-ips"><i class="fas fa-user-check"></i> IP: Dra. Patricia Aspichueta</div>
+          <p class="project-desc">
+            Desarrollo de estrategias terapéuticas combinadas basadas en la modulación del enzima ceramida sintasa para restablecer la apoptosis en células tumorales hepáticas resistentes.
+          </p>
+          <div class="project-footer">
+            <span><i class="far fa-calendar-alt"></i> 2023 – 2026</span>
+            <span class="project-budget">160.000 €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Transferencia e Innovación (NUEVO) -->
+  <section class="section section-alt" id="transferencia">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-lightbulb"></i> Impacto Clínico y Tecnológico</div>
+        <h2 class="section-title">Transferencia e Innovación (I+D) <span class="badge-new">NUEVO</span></h2>
+        <p class="section-description">
+          Convertimos los hallazgos de ciencia básica en soluciones tangibles: patentes registradas, biomarcadores licenciables y servicios especializados a la industria.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Patente 1 -->
+        <div class="card patent-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <span class="badge-tag"><i class="fas fa-certificate"></i> Patente Internacional PCT</span>
+            <span class="patent-badge-status status-pending">Solicitud PCT Publicada</span>
+          </div>
+          <h3 style="color:var(--ehu-navy); font-size:1.1rem; margin-bottom:0.5rem;">
+            Biomarcadores lipídicos séricos para diagnóstico no invasivo y estratificación de la esteatohepatitis no alcohólica (MASH)
+          </h3>
+          <div style="font-family:var(--font-mono); font-size:0.78rem; color:var(--text-muted); margin-bottom:0.75rem;">
+            Referencia: PCT/ES2023/070124 | Titular: UPV/EHU &amp; IIS Biocruces Bizkaia
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1rem; flex-grow:1;">
+            Panel de relación de esfingolípidos y diacilgliceroles cuantificados por espectrometría de masas que predice con AUC &gt; 0.92 la presencia de esteatohepatitis activa y fibrosis avanzada (F &ge; 2) evitando la biopsia hepática invasiva.
+          </p>
+          <div style="font-size:0.8rem; background:var(--bg-surface-alt); padding:0.6rem; border-radius:var(--radius-sm); color:var(--text-muted);">
+            <strong>Inventores:</strong> P. Aspichueta, X. Buqué, M. Martínez, et al.
+          </div>
+        </div>
+
+        <!-- Patente 2 -->
+        <div class="card patent-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <span class="badge-tag"><i class="fas fa-certificate"></i> Patente Española</span>
+            <span class="patent-badge-status status-granted">Concedida con Examen</span>
+          </div>
+          <h3 style="color:var(--ehu-navy); font-size:1.1rem; margin-bottom:0.5rem;">
+            Inhibidores de la síntesis de novo de esfingomielina para sensibilización tumoral a terapias antiangiogénicas en hepatocarcinoma
+          </h3>
+          <div style="font-family:var(--font-mono); font-size:0.78rem; color:var(--text-muted); margin-bottom:0.75rem;">
+            Referencia: P202230451 | Titular: UPV/EHU &amp; CIBER
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1rem; flex-grow:1;">
+            Método y composición farmacéutica basada en el silenciamiento o modulación química de enzimas de la síntesis lipídica para restaurar la sensibilidad tumoral a inhibidores tirosina quinasa (TKIs).
+          </p>
+          <div style="font-size:0.8rem; background:var(--bg-surface-alt); padding:0.6rem; border-radius:var(--radius-sm); color:var(--text-muted);">
+            <strong>Inventores:</strong> P. Aspichueta, et al. (Disponible para licencia comercial).
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicios a Empresa / OTRI -->
+      <div style="margin-top:2rem;" class="card card-highlight">
+        <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:0.5rem;"><i class="fas fa-handshake"></i> Servicios de I+D y Contratos con la Industria (OTRI / Art. 60 LOSU)</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;">
+          Ponemos nuestra experiencia metodológica y la infraestructura SGIker al servicio del sector farmacéutico, biotecnológico, nutracéutico y cosmético:
+        </p>
+        <div class="grid-3" style="margin-top:1rem;">
+          <div style="background:var(--bg-surface-alt); padding:1rem; border-radius:var(--radius-md);">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.88rem; margin-bottom:0.3rem;"><i class="fas fa-vial"></i> Cribado Preclínico</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Ensayos de eficacia y toxicidad lipídica en hepatocitos humanos primarios y organoides hepáticos 3D.</div>
+          </div>
+          <div style="background:var(--bg-surface-alt); padding:1rem; border-radius:var(--radius-md);">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.88rem; margin-bottom:0.3rem;"><i class="fas fa-chart-line"></i> Perfilado Lipidómico</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Cuantificación absoluta por LC-MS/MS de más de 400 especies lipídicas en plasma, tejido o sobrenadantes.</div>
+          </div>
+          <div style="background:var(--bg-surface-alt); padding:1rem; border-radius:var(--radius-md);">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.88rem; margin-bottom:0.3rem;"><i class="fas fa-stethoscope"></i> Validación de Biomarcadores</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Estudios de validación clínica cruzada en muestras humanas vinculadas al Biobanco Vasco.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Personas & Equipo -->
+  <section class="section" id="equipo">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-users"></i> Capital Humano</div>
+        <h2 class="section-title">Equipo de Investigadores y Personal Científico</h2>
+        <p class="section-description">
+          Composición del personal docente, investigador, postdoctoral, predoctoral y de apoyo técnico adscrito al grupo.
+        </p>
+      </div>
+
+      <!-- Equipo Actual Muestreo -->
+      <div class="grid-4" style="margin-bottom:3rem;">
+        <div class="card" style="text-align:center;">
+          <div class="alumni-avatar" style="background:#002b49; margin:0 auto 0.75rem auto;"><i class="fas fa-user-tie"></i></div>
+          <h4 style="color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.2rem;">Dra. Patricia Aspichueta</h4>
+          <span style="font-size:0.75rem; color:var(--logo-green); font-weight:700;">Catedrática / IP Principal</span>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.4rem;">Dpto. Fisiología | IIS Biocruces Bizkaia</p>
+        </div>
+
+        <div class="card" style="text-align:center;">
+          <div class="alumni-avatar" style="background:#1e3a5f; margin:0 auto 0.75rem auto;"><i class="fas fa-user"></i></div>
+          <h4 style="color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.2rem;">Paul Gómez Jáuregui</h4>
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Investigador Predoctoral</span>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.4rem;">Línea: Regulación E2F y Metabolismo</p>
+        </div>
+
+        <div class="card" style="text-align:center;">
+          <div class="alumni-avatar" style="background:#1e3a5f; margin:0 auto 0.75rem auto;"><i class="fas fa-user"></i></div>
+          <h4 style="color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.2rem;">Ane Ortiz Palma</h4>
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Investigadora Predoctoral</span>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.4rem;">Línea: Spatial Omics &amp; MAFLD</p>
+        </div>
+
+        <div class="card" style="text-align:center;">
+          <div class="alumni-avatar" style="background:#1e3a5f; margin:0 auto 0.75rem auto;"><i class="fas fa-user"></i></div>
+          <h4 style="color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.2rem;">Kendall Alonso Alfaro</h4>
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Investigador Predoctoral</span>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.4rem;">Línea: Reprogramación lipídica en Cáncer</p>
+        </div>
+      </div>
+
+      <!-- SUB-SECCIÓN: ALUMNI (NUEVO) -->
+      <div id="alumni" style="padding-top:1rem;">
+        <div class="section-header" style="margin-bottom:1.5rem;">
+          <div class="section-pretitle"><i class="fas fa-user-graduate"></i> Trayectoria y Prestigio</div>
+          <h3 style="font-size:1.6rem; color:var(--ehu-navy); margin-bottom:0.4rem;">Red de Antiguos Miembros (Alumni) <span class="badge-new">NUEVO</span></h3>
+          <p style="font-size:0.95rem; color:var(--text-secondary);">
+            Los investigadores y doctores formados en nuestro laboratorio ocupan hoy puestos de liderazgo en universidades, institutos internacionales y compañías biotecnológicas.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <!-- Alumni 1 -->
+          <div class="card alumni-card">
+            <div class="alumni-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="alumni-name">Dra. Nerea B.</h4>
+            <div class="alumni-period">Tesis Doctoral (2018–2022)</div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.75rem;">
+              "Dianas lipídicas en la reversión de la esteatohepatitis no alcohólica" (Premio Extraordinario)
+            </p>
+            <div class="alumni-destination">
+              <i class="fas fa-briefcase"></i> <strong>Senior Scientist</strong><br>Novartis Institutes (Basilea, Suiza)
+            </div>
+          </div>
+
+          <!-- Alumni 2 -->
+          <div class="card alumni-card">
+            <div class="alumni-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="alumni-name">Dr. Asier M.</h4>
+            <div class="alumni-period">Tesis Doctoral (2017–2021)</div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.75rem;">
+              "Alteraciones mitocondriales en el metabolismo de cardiolipinas"
+            </p>
+            <div class="alumni-destination">
+              <i class="fas fa-flask"></i> <strong>Postdoctoral Fellow</strong><br>Karolinska Institutet (Suecia)
+            </div>
+          </div>
+
+          <!-- Alumni 3 -->
+          <div class="card alumni-card">
+            <div class="alumni-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="alumni-name">Dra. Leire G.</h4>
+            <div class="alumni-period">Tesis Doctoral (2016–2020)</div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.75rem;">
+              "Vías lipogénicas en el colangiocarcinoma: modulación farmacológica"
+            </p>
+            <div class="alumni-destination">
+              <i class="fas fa-graduation-cap"></i> <strong>Profesora Adjunta</strong><br>Fac. Medicina UPV/EHU
+            </div>
+          </div>
+
+          <!-- Alumni 4 -->
+          <div class="card alumni-card">
+            <div class="alumni-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="alumni-name">M.Sc. Jon K.</h4>
+            <div class="alumni-period">Bioinformático (2019–2023)</div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.75rem;">
+              Desarrollo de pipelines de transcriptómica unicelular y lipidómica.
+            </p>
+            <div class="alumni-destination">
+              <i class="fas fa-laptop-code"></i> <strong>Bioinformático Senior</strong><br>CIC bioGUNE (Bizkaia)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-SECCIÓN: TRABAJA CON NOSOTROS (NUEVO) -->
+      <div id="oportunidades" style="margin-top:3.5rem;">
+        <div class="section-header" style="margin-bottom:1.5rem;">
+          <div class="section-pretitle"><i class="fas fa-briefcase"></i> Captación de Talento</div>
+          <h3 style="font-size:1.6rem; color:var(--ehu-navy); margin-bottom:0.4rem;">Trabaja con Nosotros / Oportunidades <span class="badge-new">NUEVO</span></h3>
+          <p style="font-size:0.95rem; color:var(--text-secondary);">
+            Buscamos personas motivadas por la ciencia biomédica, el metabolismo y la bioinformática para incorporarse a nuestros proyectos activos.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Oportunidad 1 -->
+          <div class="card opp-card">
+            <span class="opp-badge">TFM / TFG · 2 Plazas</span>
+            <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.4rem;">
+              Trabajos de Fin de Máster / Grado (Curso 2025–2026)
+            </h4>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem;">
+              Proyectos experimentales en cultivo celular, microscopía confocal y análisis lipidómico para estudiantes del Máster en Biología Molecular y Biomedicina o grados biosanitarios.
+            </p>
+            <ul style="font-size:0.78rem; color:var(--text-muted); margin-bottom:1rem; list-style:inside;">
+              <li>Tutorización personalizada por investigadores seniors</li>
+              <li>Posibilidad de enlace directo a contrato predoctoral</li>
+            </ul>
+            <button class="btn-primary" style="font-size:0.8rem; padding:0.4rem 0.8rem; margin-top:auto;" onclick="simularSolicitud('TFM/TFG 2025')">
+              <i class="fas fa-paper-plane"></i> Solicitar Información
+            </button>
+          </div>
+
+          <!-- Oportunidad 2 -->
+          <div class="card opp-card">
+            <span class="opp-badge" style="background:#fef3c7; color:#92400e;">Doctorado · FPU / GV</span>
+            <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.4rem;">
+              Candidaturas a Contratos Predoctorales
+            </h4>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem;">
+              Apoyo integral para la concurrencia a convocatorias competitivas oficiales (Gobierno Vasco, FPU, FPI, UPV/EHU) para expedientes con nota media &ge; 8.5.
+            </p>
+            <ul style="font-size:0.78rem; color:var(--text-muted); margin-bottom:1rem; list-style:inside;">
+              <li>Proyecto asignado en línea de Spatial Omics o Cáncer</li>
+              <li>Estancia internacional financiada incluida en el programa</li>
+            </ul>
+            <button class="btn-primary" style="font-size:0.8rem; padding:0.4rem 0.8rem; margin-top:auto;" onclick="simularSolicitud('Contrato Predoctoral')">
+              <i class="fas fa-paper-plane"></i> Presentar Candidatura
+            </button>
+          </div>
+
+          <!-- Oportunidad 3 -->
+          <div class="card opp-card">
+            <span class="opp-badge" style="background:#e0f2fe; color:#0369a1;">Postdoc · Horizon Europe</span>
+            <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.4rem;">
+              Investigador/a Postdoctoral en Bioinformática / Lipidómica
+            </h4>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem;">
+              Contrato de 3 años asociado al consorcio europeo LIPID-TUMOR-TARGET. Experiencia requerida en integración de datos transcriptómicos unicelulares y espaciales en R/Python.
+            </p>
+            <ul style="font-size:0.78rem; color:var(--text-muted); margin-bottom:1rem; list-style:inside;">
+              <li>Salario competitivo según baremos europeos</li>
+              <li>Colaboración activa con centros en Suecia y Francia</li>
+            </ul>
+            <button class="btn-primary" style="font-size:0.8rem; padding:0.4rem 0.8rem; margin-top:auto;" onclick="simularSolicitud('Postdoc Horizon Europe')">
+              <i class="fas fa-paper-plane"></i> Ver Requisitos y Aplicar
+            </button>
+          </div>
+        </div>
+
+        <!-- Instrucciones de postulación -->
+        <div style="background:var(--bg-surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:1rem 1.5rem; margin-top:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.9rem;"><i class="fas fa-info-circle"></i> ¿Cómo enviar tu candidatura espontánea?</div>
+            <div style="font-size:0.82rem; color:var(--text-muted);">Remite tu CV actualizado (formato CVI/CVA), certificado de notas y carta de motivación de 1 página a la IP del grupo.</div>
+          </div>
+          <a href="mailto:patricia.aspichueta@ehu.eus?subject=Candidatura%20Laboratorio%20Lipids%20and%20Liver" class="btn-secondary" style="background:var(--ehu-navy); color:#fff; border:none; font-size:0.82rem; padding:0.5rem 1rem;">
+            <i class="fas fa-envelope"></i> Contactar con la Dirección
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Producción Científica & Open Science -->
+  <section class="section section-alt" id="publicaciones">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-book-open"></i> Difusión del Conocimiento</div>
+        <h2 class="section-title">Producción Científica y Tesis</h2>
+        <p class="section-description">
+          Publicaciones en revistas indexadas en el primer cuartil (Q1) del JCR y programa continuo de formación doctoral.
+        </p>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:3rem;">
+        <!-- Publicaciones Destacadas -->
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem;"><i class="fas fa-newspaper"></i> Artículos JCR Seleccionados</h3>
+            <span class="badge-tag">Últimos Hitos</span>
+          </div>
+
+          <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border-light);">
+            <div style="font-size:0.75rem; color:var(--logo-green); font-weight:700;">Nature Communications (2025) · D1</div>
+            <div style="font-size:0.9rem; font-weight:700; color:var(--ehu-navy);">
+              Spatial lipidomics unveils a ceramide-rich barrier limiting cytotoxic T cell infiltration in hepatocellular carcinoma
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:2px;">Autores: Gómez-Jáuregui P, Ortiz-Palma A, ... Aspichueta P.</div>
+            <div style="font-size:0.75rem; font-family:var(--font-mono); color:var(--accent-cyan); margin-top:2px;">doi: 10.1038/s41467-025-XXXXX</div>
+          </div>
+
+          <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border-light);">
+            <div style="font-size:0.75rem; color:var(--logo-green); font-weight:700;">Journal of Hepatology (2024) · Q1 / Top 1%</div>
+            <div style="font-size:0.9rem; font-weight:700; color:var(--ehu-navy);">
+              Circulating sphingolipid signature for risk stratification in biopsy-proven MASLD: a multicentre prospective cohort
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:2px;">Autores: Buqué X, Martínez M, ... Aspichueta P.</div>
+            <div style="font-size:0.75rem; font-family:var(--font-mono); color:var(--accent-cyan); margin-top:2px;">doi: 10.1016/j.jhep.2024.03.018</div>
+          </div>
+
+          <div style="margin-bottom:0.5rem;">
+            <div style="font-size:0.75rem; color:var(--logo-green); font-weight:700;">Hepatology (2023) · Q1</div>
+            <div style="font-size:0.9rem; font-weight:700; color:var(--ehu-navy);">
+              E2F1 non-canonical modulation of de novo lipogenesis promotes malignant progression in chronic liver injury
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:2px;">Autores: Alonso-Alfaro K, ... Aspichueta P.</div>
+          </div>
+        </div>
+
+        <!-- Tesis Doctorales -->
+        <div class="card" id="tesis">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <h3 style="color:var(--ehu-navy); font-size:1.15rem;"><i class="fas fa-graduation-cap"></i> Tesis Doctorales</h3>
+            <span class="badge-tag">15+ Tesis Dirigidas</span>
+          </div>
+
+          <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border-light);">
+            <span class="badge-tag" style="background:#dcfce7; color:#15803d; font-size:0.7rem;">En Curso (2023–2026)</span>
+            <div style="font-size:0.9rem; font-weight:700; color:var(--ehu-navy); margin-top:4px;">
+              Mapeo de lipidoma espacial y transcriptómica unicelular en modelos murinos de esteatohepatitis y carcinoma hepatocelular
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Doctorando: Paul Gómez Jáuregui | Dir: Dra. Patricia Aspichueta</div>
+          </div>
+
+          <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border-light);">
+            <span class="badge-tag" style="background:#dcfce7; color:#15803d; font-size:0.7rem;">En Curso (2024–2027)</span>
+            <div style="font-size:0.9rem; font-weight:700; color:var(--ehu-navy); margin-top:4px;">
+              Impacto de la exposición crónica a contaminantes orgánicos persistentes en la lipogénesis hepática de novo
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Doctoranda: Ane Ortiz Palma | Dir: Dra. Patricia Aspichueta</div>
+          </div>
+
+          <div>
+            <span class="badge-tag" style="background:#e0f2fe; color:#0369a1; font-size:0.7rem;">Defendida (2022) · Sobresaliente Cum Laude</span>
+            <div style="font-size:0.9rem; font-weight:700; color:var(--ehu-navy); margin-top:4px;">
+              Reprogramación del metabolismo de esfingolípidos en colangiocarcinoma humano
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Doctoranda: Dra. Nerea B. | Mención Internacional</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-SECCIÓN: OPEN SCIENCE & RECURSOS (NUEVO) -->
+      <div id="recursos">
+        <div class="section-header" style="margin-bottom:1.5rem;">
+          <div class="section-pretitle"><i class="fas fa-database"></i> Ciencia Abierta y Reproducibilidad</div>
+          <h3 style="font-size:1.6rem; color:var(--ehu-navy); margin-bottom:0.4rem;">Recursos en Abierto, Datos y Protocolos (FAIR) <span class="badge-new">NUEVO</span></h3>
+          <p style="font-size:0.95rem; color:var(--text-secondary);">
+            Comprometidos con los principios FAIR: compartimos datasets ómicos procesados, procedimientos operativos estandarizados (SOPs) y software bioinformático.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Datasets -->
+          <div class="card">
+            <div class="resource-box">
+              <div class="resource-icon"><i class="fas fa-server"></i></div>
+              <div>
+                <h4 style="color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.25rem;">Datasets Ómicos Públicos</h4>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.5rem;">
+                  Matrices de expresión y perfiles de espectrometría depositados en repositorios mundiales indexados.
+                </p>
+              </div>
+            </div>
+            <div style="margin-top:0.75rem; font-size:0.78rem; display:flex; flex-direction:column; gap:0.4rem;">
+              <a href="javascript:void(0)" onclick="simularDescarga('Dataset GEO GSE218491')" class="download-link">
+                <i class="fas fa-external-link-alt"></i> GEO: GSE218491 (Spatial transcriptomics liver)
+              </a>
+              <a href="javascript:void(0)" onclick="simularDescarga('Dataset MetaboLights MTBLS4892')" class="download-link">
+                <i class="fas fa-external-link-alt"></i> MetaboLights: MTBLS4892 (LC-MS Lipidome MASLD)
+              </a>
+            </div>
+          </div>
+
+          <!-- Protocolos SOP -->
+          <div class="card">
+            <div class="resource-box">
+              <div class="resource-icon"><i class="fas fa-file-pdf"></i></div>
+              <div>
+                <h4 style="color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.25rem;">Protocolos de Laboratorio (SOPs)</h4>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.5rem;">
+                  Procedimientos experimentales validados en nuestro laboratorio y optimizados para tejido hepático.
+                </p>
+              </div>
+            </div>
+            <div style="margin-top:0.75rem; font-size:0.78rem; display:flex; flex-direction:column; gap:0.4rem;">
+              <a href="javascript:void(0)" onclick="simularDescarga('SOP-01_Extraccion_Lipidos_Folch_Modificado.pdf')" class="download-link">
+                <i class="fas fa-file-download"></i> SOP-01: Extracción lipídica Folch modificada
+              </a>
+              <a href="javascript:void(0)" onclick="simularDescarga('SOP-02_Cuantificacion_Ceramidas_LCMSMS.pdf')" class="download-link">
+                <i class="fas fa-file-download"></i> SOP-02: Cuantificación de ceramidas por LC-MS/MS
+              </a>
+              <a href="javascript:void(0)" onclick="simularDescarga('SOP-03_Aislamiento_Vesiculas_Extracelulares.pdf')" class="download-link">
+                <i class="fas fa-file-download"></i> SOP-03: Aislamiento de vesículas extracelulares
+              </a>
+            </div>
+          </div>
+
+          <!-- Código y Bioinformática -->
+          <div class="card">
+            <div class="resource-box">
+              <div class="resource-icon"><i class="fab fa-github"></i></div>
+              <div>
+                <h4 style="color:var(--ehu-navy); font-size:0.95rem; margin-bottom:0.25rem;">Software &amp; Pipelines</h4>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.5rem;">
+                  Repositorios de código abierto para procesamiento reproducible de datos ómicos y espectrométricos.
+                </p>
+              </div>
+            </div>
+            <div style="margin-top:0.75rem; font-size:0.78rem; display:flex; flex-direction:column; gap:0.4rem;">
+              <a href="javascript:void(0)" onclick="simularDescarga('GitHub Repo LipidLiver-SpatialPipe')" class="download-link">
+                <i class="fab fa-github-alt"></i> LipidLiver-SpatialPipe (Paquete R para MALDI-MSI)
+              </a>
+              <a href="javascript:void(0)" onclick="simularDescarga('GitHub Repo SphingoQuant-Analysis')" class="download-link">
+                <i class="fab fa-github-alt"></i> SphingoQuant (Scripts para análisis multivariante)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Actualidad, Formación & Divulgación -->
+  <section class="section" id="noticias">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-bullhorn"></i> Impacto en la Sociedad</div>
+        <h2 class="section-title">Actualidad, Docencia y Divulgación</h2>
+        <p class="section-description">
+          Conectamos la investigación de frontera con la formación de futuros profesionales y la divulgación a pacientes y ciudadanía.
+        </p>
+      </div>
+
+      <!-- NOTICIAS Y MEDIOS (NUEVO) -->
+      <div style="margin-bottom:3.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <h3 style="font-size:1.4rem; color:var(--ehu-navy);"><i class="fas fa-newspaper"></i> Noticias y Medios de Comunicación <span class="badge-new">NUEVO</span></h3>
+        </div>
+
+        <div class="grid-3">
+          <!-- Noticia 1 -->
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="background:linear-gradient(135deg, #002b49, #1e3a5f); height:140px; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:2.5rem;">
+              <i class="fas fa-dna"></i>
+            </div>
+            <div style="padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem;">
+                <span><i class="far fa-calendar"></i> 14 Septiembre 2025</span>
+                <span class="badge-tag">Investigación</span>
+              </div>
+              <h4 style="color:var(--ehu-navy); font-size:1rem; margin-bottom:0.5rem; line-height:1.3;">
+                Descubierta una barrera lipídica tumoral que impide la respuesta a la inmunoterapia en cáncer hepático
+              </h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.5;">
+                El estudio, coordinado por la Dra. Patricia Aspichueta y publicado en <em>Nature Communications</em>, abre la puerta a fármacos moduladores de ceramidas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Noticia 2 -->
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="background:linear-gradient(135deg, #689f38, #33691e); height:140px; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:2.5rem;">
+              <i class="fas fa-microphone-alt"></i>
+            </div>
+            <div style="padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem;">
+                <span><i class="far fa-calendar"></i> 22 Junio 2025</span>
+                <span class="badge-tag">Congreso Internacional</span>
+              </div>
+              <h4 style="color:var(--ehu-navy); font-size:1rem; margin-bottom:0.5rem; line-height:1.3;">
+                La Dra. Patricia Aspichueta imparte una ponencia magistral en el Congreso Europeo del Hígado (EASL)
+              </h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.5;">
+                Celebrado en Milán, la sesión plenaria abordó la aplicación clínica de la lipidómica no invasiva en el diagnóstico temprano del esteatohepatitis (MASH).
+              </p>
+            </div>
+          </div>
+
+          <!-- Noticia 3 -->
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="background:linear-gradient(135deg, #0284c7, #075985); height:140px; display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:2.5rem;">
+              <i class="fas fa-tv"></i>
+            </div>
+            <div style="padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem;">
+                <span><i class="far fa-calendar"></i> 10 Mayo 2025</span>
+                <span class="badge-tag">Divulgación / Medios</span>
+              </div>
+              <h4 style="color:var(--ehu-navy); font-size:1rem; margin-bottom:0.5rem; line-height:1.3;">
+                Reportaje en EITB y El Correo: "Hígado graso, la epidemia silenciosa del siglo XXI"
+              </h4>
+              <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.5;">
+                Entrevista divulgativa sobre la estrecha relación entre dieta hipercalórica, sedentarismo y reprogramación metabólica hepática en la población vasca.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCENCIA & FORMACIÓN ACADÉMICA -->
+      <div id="docencia" style="margin-bottom:3.5rem;">
+        <h3 style="font-size:1.4rem; color:var(--ehu-navy); margin-bottom:1rem;"><i class="fas fa-chalkboard-teacher"></i> Formación Universitaria y Programas Académicos</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.5rem;"><i class="fas fa-graduation-cap"></i> Másteres Oficiales UPV/EHU</h4>
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:0.75rem;">
+              Los miembros docentes del grupo coordinan e imparten docencia especializada en los principales másteres de posgrado biosanitarios:
+            </p>
+            <ul style="font-size:0.82rem; color:var(--text-muted); list-style:inside; line-height:1.6;">
+              <li>Máster Universitario en Biología Molecular y Biomedicina</li>
+              <li>Máster Universitario en Investigación Biomédica</li>
+              <li>Máster en Farmacología, Desarrollo, Evaluación y Utilización Racional de Medicamentos</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4 style="color:var(--ehu-navy); font-size:1.05rem; margin-bottom:0.5rem;"><i class="fas fa-university"></i> Grados de Ciencias de la Salud</h4>
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:0.75rem;">
+              Docencia reglada en el Departamento de Fisiología en la Facultad de Medicina y Enfermería (Campus de Leioa):
+            </p>
+            <ul style="font-size:0.82rem; color:var(--text-muted); list-style:inside; line-height:1.6;">
+              <li>Grado en Medicina (Fisiología Humana, Fisiología Médica)</li>
+              <li>Grado en Enfermería y Fisioterapia</li>
+              <li>Tutorización activa de TFGs en Biomedicina y Bioquímica</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVULGACIÓN Y PACIENTES (NUEVO) -->
+      <div id="divulgacion">
+        <div class="section-header" style="margin-bottom:1.5rem;">
+          <div class="section-pretitle"><i class="fas fa-heartbeat"></i> Ciencia Para Todos</div>
+          <h3 style="font-size:1.6rem; color:var(--ehu-navy); margin-bottom:0.4rem;">Divulgación, Pacientes y Compromiso Social <span class="badge-new">NUEVO</span></h3>
+          <p style="font-size:0.95rem; color:var(--text-secondary);">
+            Acercamos la ciencia del hígado y la nutrición a la sociedad civil, las escuelas y las asociaciones de personas afectadas.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card card-highlight">
+            <h4 style="color:var(--ehu-navy); font-size:1rem; margin-bottom:0.5rem;"><i class="fas fa-info-circle"></i> ¿Qué es el Hígado Graso (MASLD)?</h4>
+            <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.5;">
+              Infografía y guía divulgativa en lenguaje sencillo sobre cómo los lípidos se acumulan en el hepatocito, por qué no produce síntomas iniciales y cómo la actividad física y la dieta mediterránea protegen el hígado.
+            </p>
+            <button class="download-link" style="background:none; border:none; cursor:pointer;" onclick="simularDescarga('Guia_Informativa_Higado_Graso_Pacientes.pdf')">
+              <i class="fas fa-download"></i> Descargar Guía para Pacientes (PDF)
+            </button>
+          </div>
+
+          <div class="card card-highlight-navy">
+            <h4 style="color:var(--ehu-navy); font-size:1rem; margin-bottom:0.5rem;"><i class="fas fa-hands-helping"></i> Alianza con Asociaciones</h4>
+            <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.5;">
+              Colaboración activa con <strong>FNETH</strong> (Federación Nacional de Enfermos y Trasplantados Hepáticos) para impartir charlas sobre avances terapéuticos y responder dudas de los pacientes sobre ensayos clínicos.
+            </p>
+            <div style="font-size:0.75rem; color:var(--logo-green); font-weight:700; margin-top:auto;">
+              <i class="fas fa-check-circle"></i> Charlas periódicas y jornadas abiertas
+            </div>
+          </div>
+
+          <div class="card card-highlight-cyan">
+            <h4 style="color:var(--ehu-navy); font-size:1rem; margin-bottom:0.5rem;"><i class="fas fa-flask"></i> Zientzia Astea &amp; 11-F</h4>
+            <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.5;">
+              Talleres experimentales en la Semana de la Ciencia (UPV/EHU) y actividades en el <em>Día Internacional de la Mujer y la Niña en la Ciencia</em> para fomentar vocaciones investigadoras en centros escolares de Bizkaia.
+            </p>
+            <div style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700; margin-top:auto;">
+              <i class="fas fa-users"></i> &gt; 500 estudiantes participantes cada año
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Contacto e Instalaciones -->
+  <section class="section section-alt" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle"><i class="fas fa-envelope-open-text"></i> Canales Oficiales</div>
+        <h2 class="section-title">Contacto e Instalaciones</h2>
+        <p class="section-description">
+          Estamos a tu disposición para consultas científicas, colaboraciones académicas, solicitudes de servicios o candidaturas.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Sedes e Info -->
+        <div class="card">
+          <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:1rem;"><i class="fas fa-map-marker-alt"></i> Sedes de Trabajo</h3>
+          
+          <div style="margin-bottom:1.25rem;">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.92rem;"><i class="fas fa-university"></i> Facultad de Medicina y Enfermería (UPV/EHU)</div>
+            <div style="font-size:0.85rem; color:var(--text-muted);">
+              Departamento de Fisiología, Edificio de Medicina.<br>
+              Barrio Sarriena s/n, 48940 Leioa (Bizkaia, España).
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.25rem;">
+            <div style="font-weight:700; color:var(--ehu-navy); font-size:0.92rem;"><i class="fas fa-hospital"></i> IIS Biocruces Bizkaia</div>
+            <div style="font-size:0.85rem; color:var(--text-muted);">
+              Plaza de Cruces s/n, 48903 Barakaldo (Bizkaia, España).<br>
+              Área de Metabolismo y Cáncer.
+            </div>
+          </div>
+
+          <div style="border-top:1px solid var(--border-light); padding-top:1rem; font-size:0.88rem;">
+            <div style="margin-bottom:0.4rem;">
+              <strong>Email de Dirección:</strong> <a href="mailto:patricia.aspichueta@ehu.eus" style="color:var(--logo-green); text-decoration:none;">patricia.aspichueta@ehu.eus</a>
+            </div>
+            <div>
+              <strong>Acreditación Oficial:</strong> Grupo Consolidado Gobierno Vasco Tipo A (IT1560-22)
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="card">
+          <h3 style="color:var(--ehu-navy); font-size:1.15rem; margin-bottom:1rem;"><i class="fas fa-paper-plane"></i> Formulario de Contacto</h3>
+          <form onsubmit="event.preventDefault(); alert('[DEMO]: Mensaje enviado correctamente en el entorno de demostración.');">
+            <div style="margin-bottom:0.75rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:0.25rem;">Nombre y Apellidos</label>
+              <input type="text" required placeholder="Tu nombre..." style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-family:var(--font-sans); background:var(--bg-surface);">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:0.25rem;">Correo Electrónico</label>
+              <input type="email" required placeholder="tu.correo@institucion.org" style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-family:var(--font-sans); background:var(--bg-surface);">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:0.25rem;">Motivo del Contacto</label>
+              <select style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-family:var(--font-sans); background:var(--bg-surface);">
+                <option>Colaboración Científica / Consorcios</option>
+                <option>Candidatura / Tesis / Posición abierta</option>
+                <option>Servicios de Lipidómica SGIker</option>
+                <option>Divulgación / Pacientes</option>
+                <option>Otro motivo</option>
+              </select>
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:0.25rem;">Mensaje</label>
+              <textarea rows="3" required placeholder="Describe brevemente tu consulta..." style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-family:var(--font-sans); background:var(--bg-surface);"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+              <i class="fas fa-paper-plane"></i> Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
+            <img src="assets/logo/ehu_logo_negatiboa.svg" alt="UPV/EHU" style="height:32px; filter:brightness(0) invert(1);">
+            <div style="font-weight:800; color:#fff; font-size:1.1rem;">Lipids &amp; Liver</div>
+          </div>
+          <p style="font-size:0.82rem; color:#94a3b8; line-height:1.5;">
+            Grupo Consolidado del Gobierno Vasco (Tipo A — IT1560-22). Investigación de excelencia en metabolismo lipídico, hepatología molecular y medicina traslacional.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Investigación &amp; I+D</h4>
+          <ul class="footer-links">
+            <li><a href="#lineas">Líneas de Investigación</a></li>
+            <li><a href="#proyectos">Proyectos Financiados (I+D) <span class="badge-new">NUEVO</span></a></li>
+            <li><a href="#transferencia">Patentes &amp; Transferencia <span class="badge-new">NUEVO</span></a></li>
+            <li><a href="#instalaciones">Unidad SGIker de Lipidómica</a></li>
+            <li><a href="#colaboraciones">Red de Colaboraciones <span class="badge-new">NUEVO</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Comunidad &amp; Talento</h4>
+          <ul class="footer-links">
+            <li><a href="#equipo">Miembros del Laboratorio</a></li>
+            <li><a href="#alumni">Antiguos Miembros (Alumni) <span class="badge-new">NUEVO</span></a></li>
+            <li><a href="#oportunidades">Trabaja con Nosotros <span class="badge-new">NUEVO</span></a></li>
+            <li><a href="#recursos">Datos Abiertos &amp; Protocolos <span class="badge-new">NUEVO</span></a></li>
+            <li><a href="#divulgacion">Divulgación y Pacientes <span class="badge-new">NUEVO</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Instituciones</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.ehu.eus" target="_blank" rel="noopener">UPV/EHU</a></li>
+            <li><a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener">IIS Biocruces Bizkaia</a></li>
+            <li><a href="https://www.euskadi.eus" target="_blank" rel="noopener">Gobierno Vasco / Eusko Jaurlaritza</a></li>
+            <li><a href="https://www.ciberinterface.es" target="_blank" rel="noopener">CIBERehd (ISCIII)</a></li>
+            <li><a href="#contacto">Contacto Institucional</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Grupo de Investigación Lipids &amp; Liver (IT1560-22). Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU).
+        </div>
+        <div style="display:flex; gap:1rem;">
+          <span class="badge-new">DEMO AMPLIADA AUTÓNOMA</span>
+          <a href="#hero" style="color:#94a3b8; text-decoration:none;"><i class="fas fa-arrow-up"></i> Volver arriba</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
