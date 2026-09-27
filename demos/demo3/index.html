@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lipids &amp; Liver | Editorial Suizo (Prototipo 3) - UPV/EHU &amp; Biocruces</title>
+  <meta name="description" content="Prototipo 3 del Grupo de Investigación Lipids & Liver (IT1560-22). Fisiología celular, lipidómica de precisión y medicina translacional." />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Editorial Stylesheet -->
+  <link rel="stylesheet" href="assets/css/editorial.css" />
+</head>
+<body>
+
+  <!-- Top Institutional Strip -->
+  <div class="ed-switcher-bar">
+    <div class="container ed-switcher-inner">
+      <div>
+        <i class="fas fa-university"></i> UPV/EHU &bull; IIS Biocruces Bizkaia &bull; Facultad de Medicina y Enfermería
+      </div>
+      <div>
+        <span style="font-size:0.75rem; font-family:var(--ed-font-mono); color:var(--ed-ink-secondary);">IT1560-22 &bull; DEPARTAMENTO DE FISIOLOGÍA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editorial Masthead Header -->
+  <header class="ed-masthead">
+    <div class="container">
+      <div class="ed-masthead-top">
+        <div class="ed-brand-group">
+          <img src="assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU" class="ed-ehu-logo" id="ed-ehu-logo" />
+          <div style="width:1px; height:32px; background:var(--ed-border);"></div>
+          <img src="assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver" class="ed-brand-logo" />
+          <div class="ed-brand-titles">
+            <span class="ed-brand-main">Lipids &amp; Liver</span>
+            <span class="ed-brand-sub">Grupo de Investigación Consolidado &bull; IT1560-22</span>
+          </div>
+        </div>
+
+        <div class="ed-masthead-actions">
+          <div class="ed-lang-group">
+            <button class="ed-lang-btn active" data-lang="es">ES</button>
+            <button class="ed-lang-btn" data-lang="eu">EU</button>
+            <button class="ed-lang-btn" data-lang="en">EN</button>
+          </div>
+
+          <button class="ed-theme-btn" id="theme-toggle-btn" title="Alternar tema claro/oscuro">
+            <i class="fas fa-moon"></i> <span class="theme-text">Modo Oscuro</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Clean Navigation Menu -->
+      <nav>
+        <ul class="ed-nav-menu">
+          <li><a href="#hero" class="active" data-i18n="nav_home">Inicio</a></li>
+          <li><a href="#about" data-i18n="nav_about">El Grupo</a></li>
+          <li><a href="#lines" data-i18n="nav_lines">Líneas de Investigación</a></li>
+          <li><a href="#team" data-i18n="nav_team">Personal</a></li>
+          <li><a href="#theses" data-i18n="nav_theses">Tesis Doctorales</a></li>
+          <li><a href="#publications" data-i18n="nav_pubs">Publicaciones</a></li>
+          <li><a href="#training" data-i18n="nav_training">Formación</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
+          <li><a href="curriculum.html" style="color:var(--ed-accent);"><i class="fas fa-id-card"></i> Dossier de CVs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="ed-hero" id="hero">
+      <div class="container ed-hero-grid">
+        <div>
+          <span class="ed-eyebrow">
+            <i class="fas fa-certificate"></i> Gobierno Vasco IT1560-22 &bull; Departamento de Fisiología
+          </span>
+
+          <h1 class="ed-hero-headline" data-i18n="hero_title">
+            Mecanismos moleculares del <em>metabolismo lipídico</em> en la patología hepática.
+          </h1>
+
+          <p class="ed-hero-lead" data-i18n="hero_subtitle">
+            Integrando la investigación fisiológica básica en la Universidad del País Vasco con la medicina translacional en el IIS Biocruces Bizkaia para identificar nuevas dianas terapéuticas y biomarcadores en esteatohepatitis y cáncer de hígado.
+          </p>
+
+          <div class="ed-hero-actions">
+            <a href="#lines" class="btn-ed-primary" data-i18n="cta_lines">
+              Líneas de Investigación <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#team" class="btn-ed-outline" data-i18n="cta_team">
+              Personal Investigador
+            </a>
+            <a href="curriculum.html" class="btn-ed-outline">
+              <i class="fas fa-id-card"></i> Portal de CVs
+            </a>
+          </div>
+        </div>
+
+        <div class="ed-hero-figure">
+          <img src="assets/images/hero_outdoor_group.jpg" alt="Lipids & Liver Research Group" class="ed-hero-img" />
+          <div class="ed-hero-caption">
+            <span>Grupo de Investigación Lipids & Liver en la UPV/EHU</span>
+            <span>Campus de Leioa &bull; Bizkaia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="container">
+      <div class="ed-stats-strip" id="ed-stats-strip">
+        <!-- Injected dynamically -->
+      </div>
+    </section>
+
+    <!-- SECTION 01: EL GRUPO -->
+    <section class="ed-section" id="about">
+      <div class="container">
+        <div class="ed-section-header">
+          <div class="ed-section-num">01</div>
+          <h2 class="ed-section-title" data-i18n="about_title">Perfil Institucional del Grupo</h2>
+          <p class="ed-section-desc">
+            Acreditación oficial continuada como Grupo Consolidado del Sistema Universitario Vasco (IT1560-22).
+          </p>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="ed-tabs-nav" id="ed-about-tabs-nav">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Tabs Content Panels -->
+        <div id="ed-about-panels">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: LÍNEAS DE INVESTIGACIÓN -->
+    <section class="ed-section" id="lines">
+      <div class="container">
+        <div class="ed-section-header">
+          <div class="ed-section-num">02</div>
+          <h2 class="ed-section-title" data-i18n="lines_title">Líneas de Investigación Estratégicas</h2>
+          <div>
+            <a href="lineas.html" class="btn-ed-primary">
+              <i class="fas fa-microscope"></i> Catálogo Completo de Líneas
+            </a>
+          </div>
+        </div>
+
+        <div class="ed-lines-grid" id="ed-lines-grid">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: PERSONAL INVESTIGADOR -->
+    <section class="ed-section" id="team">
+      <div class="container">
+        <div class="ed-section-header">
+          <div class="ed-section-num">03</div>
+          <h2 class="ed-section-title" data-i18n="team_title">Personal Investigador y Docente</h2>
+          <div>
+            <a href="curriculum.html" class="btn-ed-primary">
+              <i class="fas fa-id-card"></i> Dossier Completo de CVs
+            </a>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="ed-roster-controls">
+          <ul class="ed-filter-list">
+            <li><button class="ed-filter-btn active" data-category="ALL">Todos (23)</button></li>
+            <li><button class="ed-filter-btn" data-category="PDI">PDI &amp; Senior</button></li>
+            <li><button class="ed-filter-btn" data-category="Posdoctoral">Posdoctoral</button></li>
+            <li><button class="ed-filter-btn" data-category="Predoctoral">Predoctoral</button></li>
+            <li><button class="ed-filter-btn" data-category="Técnico">Técnico</button></li>
+          </ul>
+
+          <input type="text" class="ed-search-input" id="ed-team-search" placeholder="Filtrar por nombre o área..." />
+        </div>
+
+        <div class="ed-team-grid" id="ed-team-grid">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: TESIS DOCTORALES -->
+    <section class="ed-section" id="theses">
+      <div class="container">
+        <div class="ed-section-header">
+          <div class="ed-section-num">04</div>
+          <h2 class="ed-section-title" data-i18n="theses_title">Tesis Doctorales: En Curso y Defendidas</h2>
+          <div>
+            <a href="tesis.html" class="btn-ed-primary">
+              <i class="fas fa-graduation-cap"></i> Catálogo Completo de Tesis
+            </a>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+          <ul class="ed-filter-list">
+            <li><button class="ed-filter-btn ed-theses-filter-btn active" data-type="ALL">Todas las Tesis (15)</button></li>
+            <li><button class="ed-filter-btn ed-theses-filter-btn" data-type="ONGOING">En Curso (6)</button></li>
+            <li><button class="ed-filter-btn ed-theses-filter-btn" data-type="COMPLETED">Defendidas (9)</button></li>
+          </ul>
+        </div>
+
+        <div class="ed-index-list" id="ed-theses-list">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: PUBLICACIONES CIENTÍFICAS -->
+    <section class="ed-section" id="publications">
+      <div class="container">
+        <div class="ed-section-header">
+          <div class="ed-section-num">05</div>
+          <h2 class="ed-section-title" data-i18n="pubs_title">Publicaciones Científicas en Revistas JCR</h2>
+          <div>
+            <a href="publicaciones.html" class="btn-ed-primary">
+              <i class="fas fa-book-open"></i> Catálogo Completo (155)
+            </a>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+          <ul class="ed-filter-list">
+            <li><button class="ed-filter-btn ed-pub-filter-btn active" data-topic="ALL">Todas</button></li>
+            <li><button class="ed-filter-btn ed-pub-filter-btn" data-topic="mafld">MAFLD / NASH</button></li>
+            <li><button class="ed-filter-btn ed-pub-filter-btn" data-topic="cancer">Cáncer Hepático</button></li>
+            <li><button class="ed-filter-btn ed-pub-filter-btn" data-topic="lipidomics">Lipidómica SGIker</button></li>
+            <li><button class="ed-filter-btn ed-pub-filter-btn" data-topic="e2f">E2F Daño</button></li>
+            <li><button class="ed-filter-btn ed-pub-filter-btn" data-topic="exposome">Exposoma</button></li>
+          </ul>
+        </div>
+
+        <div class="ed-index-list" id="ed-pubs-list">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div style="margin-top:2.5rem; text-align:center;">
+          <a href="publicaciones.html" class="btn-ed-primary" style="padding:14px 28px;">
+            Ver las 155 Publicaciones del Grupo <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: FORMACIÓN Y DOCENCIA -->
+    <section class="ed-section" id="training">
+      <div class="container">
+        <div class="ed-section-header">
+          <div class="ed-section-num">06</div>
+          <h2 class="ed-section-title" data-i18n="nav_training">Formación y Docencia Universitaria</h2>
+          <p class="ed-section-desc">
+            Compromiso continuado con la formación de excelencia en grados de Ciencias de la Salud, másteres oficiales y doctorado.
+          </p>
+        </div>
+
+        <div class="ed-training-grid" id="ed-training-grid">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07: CONTACTO -->
+    <section class="ed-section" id="contact" style="border-bottom:none;">
+      <div class="container">
+        <div class="ed-section-header">
+          <div class="ed-section-num">07</div>
+          <h2 class="ed-section-title" data-i18n="contact_title">Contacto &amp; Filiación Académica</h2>
+          <p class="ed-section-desc">
+            Consultas académicas, proyectos de colaboración institucional y solicitudes de tesis doctorales.
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:3.5rem;">
+          <div>
+            <h3 style="font-family:var(--font-serif); font-size:1.5rem; margin-bottom:1.5rem; color:var(--ed-ink-primary);">
+              Sede e Instalaciones
+            </h3>
+            <div style="display:flex; flex-direction:column; gap:18px; font-size:0.95rem; color:var(--ed-ink-secondary);">
+              <div>
+                <strong>Universidad del País Vasco (UPV/EHU)</strong><br />
+                Departamento de Fisiología &bull; Facultad de Medicina y Enfermería<br />
+                Barrio Sarriena s/n, 48940 Leioa, Bizkaia
+              </div>
+              <div>
+                <strong>Instituto de Investigación Sanitaria Biocruces Bizkaia</strong><br />
+                Plaza de Cruces s/n, 48903 Barakaldo, Bizkaia
+              </div>
+              <div>
+                <strong>Coordinación Principal:</strong><br />
+                Dra. Patricia Aspichueta Celaá &bull; <a href="mailto:patricia.aspichueta@ehu.eus" style="color:var(--ed-accent); text-decoration:none;">patricia.aspichueta@ehu.eus</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-serif); font-size:1.5rem; margin-bottom:1.5rem; color:var(--ed-ink-primary);">
+              Envío de Mensaje
+            </h3>
+            <form id="ed-contact-form" style="display:flex; flex-direction:column; gap:12px;">
+              <input type="text" placeholder="Nombre completo" required style="padding:10px 14px; border:1px solid var(--ed-border); background:var(--ed-surface); font-family:var(--font-sans); color:var(--ed-ink-primary);" />
+              <input type="email" placeholder="Correo electrónico" required style="padding:10px 14px; border:1px solid var(--ed-border); background:var(--ed-surface); font-family:var(--font-sans); color:var(--ed-ink-primary);" />
+              <textarea rows="4" placeholder="Consulta o propuesta de colaboración..." required style="padding:10px 14px; border:1px solid var(--ed-border); background:var(--ed-surface); font-family:var(--font-sans); color:var(--ed-ink-primary);"></textarea>
+              <button type="submit" class="btn-ed-primary" style="align-self:flex-start;">
+                Transmitir Mensaje <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div class="ed-modal-backdrop" id="ed-modal-backdrop">
+    <div class="ed-modal-box">
+      <button class="ed-modal-close" id="ed-modal-close"><i class="fas fa-times"></i></button>
+      <h3 id="ed-modal-title" style="font-family:var(--font-serif); font-size:1.75rem; margin-bottom:1.25rem; color:var(--ed-accent);"></h3>
+      <div id="ed-modal-body" style="font-size:1.05rem; line-height:1.8; color:var(--ed-ink-secondary);"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ed-footer">
+    <div class="container">
+      <div class="ed-footer-grid">
+        <div>
+          <h4 style="font-family:var(--font-serif); font-size:1.25rem; margin-bottom:0.75rem;">Grupo de Investigación Lipids &amp; Liver</h4>
+          <p style="font-size:0.88rem; color:var(--ed-ink-muted); max-width:440px;">
+            Grupo Consolidado del Gobierno Vasco (IT1560-22). Fisiología celular, lipidómica de alta resolución y medicina traslacional en la UPV/EHU y el IIS Biocruces Bizkaia.
+          </p>
+        </div>
+
+        <div>
+          <h5 style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.85rem;">Páginas del Portal</h5>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px; font-size:0.85rem;">
+            <li><a href="index.html#hero" style="color:var(--ed-ink-secondary); text-decoration:none;">Inicio</a></li>
+            <li><a href="lineas.html" style="color:var(--ed-ink-secondary); text-decoration:none;">Líneas de Investigación</a></li>
+            <li><a href="curriculum.html" style="color:var(--ed-ink-secondary); text-decoration:none;">Portal de CVs</a></li>
+            <li><a href="tesis.html" style="color:var(--ed-ink-secondary); text-decoration:none;">Tesis Doctorales</a></li>
+            <li><a href="publicaciones.html" style="color:var(--ed-ink-secondary); text-decoration:none;">Publicaciones (155)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.85rem;">Centros Adscritos</h5>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px; font-size:0.85rem;">
+            <li><a href="https://www.ehu.eus" target="_blank" rel="noopener" style="color:var(--ed-ink-secondary); text-decoration:none;">UPV / EHU</a></li>
+            <li><a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener" style="color:var(--ed-ink-secondary); text-decoration:none;">IIS Biocruces Bizkaia</a></li>
+            <li><a href="https://www.ehu.eus/es/web/sgiker" target="_blank" rel="noopener" style="color:var(--ed-ink-secondary); text-decoration:none;">SGIker UPV/EHU</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ed-footer-bottom">
+        <div>&copy; 2026 Lipids &amp; Liver &bull; Universidad del País Vasco / Euskal Herriko Unibertsitatea</div>
+        <div>Facultad de Medicina y Enfermería &bull; Campus de Leioa</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/editorial.js"></script>
+</body>
+</html>

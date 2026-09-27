@@ -1,0 +1,848 @@
+/* ==========================================================================
+   DEMO 5: NORDIC MINIMALIST ACADEMIC JOURNAL
+   Aesthetic: Clean Scandinavian editorial, serif titles, warm paper tones,
+   structured index rail, refined typography, and high-readability research layout.
+   ========================================================================== */
+
+:root {
+  --nordic-bg: #FBFBF9;
+  --nordic-surface: #FFFFFF;
+  --nordic-border: #E8E6DF;
+  --nordic-border-subtle: #F0EEE9;
+  --nordic-ink: #191816;
+  --nordic-ink-muted: #57554E;
+  --nordic-ink-faint: #8C8A82;
+  --nordic-primary: #002B49; /* UPV/EHU Navy */
+  --nordic-accent: #2E5C38;  /* Forest Sage */
+  --nordic-accent-light: #EBF3ED;
+  --nordic-tag-bg: #F2EFE9;
+  
+  --font-serif: "Newsreader", "Charter", "Merriweather", "Georgia", serif;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--nordic-bg);
+  color: var(--nordic-ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base links and buttons */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* TOP STATUS BAR */
+.nordic-top-bar {
+  background: var(--nordic-primary);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.04em;
+}
+
+.nordic-top-bar span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #4ADE80;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* HEADER */
+.nordic-header {
+  background: var(--nordic-surface);
+  border-bottom: 1px solid var(--nordic-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nordic-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nordic-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nordic-brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nordic-brand-logos img {
+  height: 38px;
+  object-fit: contain;
+}
+
+.nordic-brand-text {
+  border-left: 1px solid var(--nordic-border);
+  padding-left: 16px;
+}
+
+.nordic-brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--nordic-primary);
+  letter-spacing: -0.01em;
+}
+
+.nordic-brand-sub {
+  font-size: 0.75rem;
+  color: var(--nordic-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* MAIN LAYOUT WITH TWO COLUMNS (INDEX RAIL + CONTENT) */
+.nordic-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* SIDEBAR RAIL */
+.nordic-rail {
+  position: sticky;
+  top: 96px;
+  background: var(--nordic-surface);
+  border: 1px solid var(--nordic-border);
+  border-radius: 6px;
+  padding: 24px 20px;
+}
+
+.rail-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nordic-ink-faint);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.rail-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rail-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: var(--nordic-ink-muted);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.rail-nav a:hover,
+.rail-nav a.active {
+  background: var(--nordic-accent-light);
+  color: var(--nordic-accent);
+  font-weight: 600;
+}
+
+.rail-nav .counter {
+  font-size: 0.75rem;
+  background: var(--nordic-tag-bg);
+  padding: 2px 7px;
+  border-radius: 12px;
+  color: var(--nordic-ink-muted);
+}
+
+.rail-nav a.active .counter {
+  background: var(--nordic-accent);
+  color: #FFFFFF;
+}
+
+.rail-cta {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--nordic-border);
+  font-size: 0.82rem;
+  color: var(--nordic-ink-muted);
+}
+
+/* CONTENT SECTIONS */
+.nordic-content {
+  min-width: 0;
+}
+
+.nordic-section {
+  background: var(--nordic-surface);
+  border: 1px solid var(--nordic-border);
+  border-radius: 8px;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nordic-accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--nordic-primary);
+  margin-bottom: 24px;
+  line-height: 1.25;
+}
+
+/* HERO SECTION */
+.nordic-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.hero-quote {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  line-height: 1.35;
+  color: var(--nordic-primary);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.hero-lead {
+  font-size: 1.05rem;
+  color: var(--nordic-ink-muted);
+  margin-bottom: 28px;
+}
+
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--nordic-border);
+}
+
+.hero-stat-card {
+  padding: 12px;
+  background: var(--nordic-bg);
+  border-radius: 4px;
+  border-left: 3px solid var(--nordic-accent);
+}
+
+.hero-stat-num {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--nordic-primary);
+}
+
+.hero-stat-label {
+  font-size: 0.75rem;
+  color: var(--nordic-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.hero-img-box {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--nordic-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.hero-img-box img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-img-caption {
+  padding: 12px 16px;
+  background: var(--nordic-surface);
+  font-size: 0.8rem;
+  color: var(--nordic-ink-muted);
+  border-top: 1px solid var(--nordic-border);
+}
+
+/* PRESENTATION TABS */
+.tab-pills {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--nordic-border);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.tab-pill {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--nordic-ink-muted);
+  background: var(--nordic-bg);
+  border: 1px solid var(--nordic-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-pill.active {
+  background: var(--nordic-primary);
+  color: #FFFFFF;
+  border-color: var(--nordic-primary);
+}
+
+.tab-panel {
+  display: none;
+  font-size: 0.95rem;
+  color: var(--nordic-ink-muted);
+  line-height: 1.7;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* RESEARCH LINES GRID */
+.lines-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.line-card {
+  border: 1px solid var(--nordic-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--nordic-surface);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.line-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.line-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.line-body {
+  padding: 24px;
+}
+
+.line-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--nordic-accent);
+  background: var(--nordic-accent-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.line-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--nordic-primary);
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.line-desc {
+  font-size: 0.88rem;
+  color: var(--nordic-ink-muted);
+  margin-bottom: 18px;
+}
+
+.line-details-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nordic-accent);
+  cursor: pointer;
+}
+
+.line-extra-content {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--nordic-border-subtle);
+  font-size: 0.82rem;
+  display: none;
+}
+
+.line-extra-content.open {
+  display: block;
+}
+
+/* TEAM SECTION */
+.team-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  background: var(--nordic-bg);
+  border: 1px solid var(--nordic-border);
+  color: var(--nordic-ink-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background: var(--nordic-primary);
+  color: #FFFFFF;
+  border-color: var(--nordic-primary);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.member-card {
+  border: 1px solid var(--nordic-border);
+  border-radius: 6px;
+  padding: 20px;
+  background: var(--nordic-surface);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.member-card:hover {
+  border-color: var(--nordic-primary);
+}
+
+.member-top {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.member-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--nordic-border);
+  flex-shrink: 0;
+}
+
+.member-info {
+  min-width: 0;
+}
+
+.member-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--nordic-primary);
+  line-height: 1.3;
+}
+
+.member-role {
+  font-size: 0.78rem;
+  color: var(--nordic-accent);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.member-affil {
+  font-size: 0.75rem;
+  color: var(--nordic-ink-faint);
+  margin-top: 2px;
+}
+
+.member-meta {
+  font-size: 0.8rem;
+  color: var(--nordic-ink-muted);
+  border-top: 1px solid var(--nordic-border-subtle);
+  padding-top: 12px;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-open-cv {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--nordic-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* THESES SECTION */
+.theses-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.theses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.thesis-row {
+  border: 1px solid var(--nordic-border);
+  border-radius: 6px;
+  padding: 20px;
+  background: var(--nordic-surface);
+  border-left: 4px solid var(--nordic-primary);
+}
+
+.thesis-row.ongoing {
+  border-left-color: var(--nordic-accent);
+  background: #FCFDF9;
+}
+
+.thesis-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.thesis-status-badge.ongoing {
+  background: var(--nordic-accent-light);
+  color: var(--nordic-accent);
+}
+
+.thesis-status-badge.completed {
+  background: #E8F0F8;
+  color: var(--nordic-primary);
+}
+
+.thesis-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--nordic-primary);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.thesis-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--nordic-ink-muted);
+  border-top: 1px solid var(--nordic-border-subtle);
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.thesis-meta-item strong {
+  color: var(--nordic-ink);
+}
+
+/* PUBLICATIONS SECTION */
+.pub-search-bar {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.pub-input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--nordic-border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: var(--nordic-bg);
+}
+
+.pub-select {
+  padding: 10px 16px;
+  border: 1px solid var(--nordic-border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: var(--nordic-bg);
+  cursor: pointer;
+}
+
+.pub-count-label {
+  font-size: 0.82rem;
+  color: var(--nordic-ink-muted);
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+}
+
+.pubs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 800px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.pub-card {
+  padding: 18px;
+  border: 1px solid var(--nordic-border);
+  border-radius: 4px;
+  background: var(--nordic-surface);
+  transition: all 0.2s ease;
+}
+
+.pub-card:hover {
+  border-color: var(--nordic-accent);
+}
+
+.pub-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--nordic-primary);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.pub-authors {
+  font-size: 0.82rem;
+  color: var(--nordic-ink-muted);
+  margin-bottom: 6px;
+}
+
+.pub-journal-line {
+  font-size: 0.78rem;
+  color: var(--nordic-accent);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pub-doi-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--nordic-primary);
+  text-decoration: underline;
+}
+
+/* TRAINING & SGIKER */
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.training-card {
+  border: 1px solid var(--nordic-border);
+  border-radius: 6px;
+  padding: 20px;
+  background: var(--nordic-bg);
+}
+
+.training-type {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--nordic-accent);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.training-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--nordic-primary);
+  margin-bottom: 8px;
+}
+
+.training-desc {
+  font-size: 0.82rem;
+  color: var(--nordic-ink-muted);
+}
+
+/* MODAL SYSTEM FOR COMPLETE CV */
+.nordic-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.nordic-modal-backdrop.open {
+  display: flex;
+}
+
+.nordic-modal {
+  background: var(--nordic-surface);
+  border: 1px solid var(--nordic-border);
+  border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 36px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.nordic-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.4rem;
+  color: var(--nordic-ink-muted);
+  cursor: pointer;
+}
+
+/* FOOTER */
+.nordic-footer {
+  background: var(--nordic-primary);
+  color: #FFFFFF;
+  padding: 60px 32px 30px;
+  margin-top: 60px;
+}
+
+.nordic-footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+}
+
+.footer-col p, .footer-col li {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nordic-footer-bottom {
+  max-width: 1400px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .nordic-layout {
+    grid-template-columns: 1fr;
+  }
+  .nordic-rail {
+    display: none;
+  }
+  .nordic-hero {
+    grid-template-columns: 1fr;
+  }
+  .lines-grid, .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,3664 @@
+/**
+ * Lipids & Liver Research Group - Complete Structured Data & Multi-language Dictionary
+ * Compiled with 100% of website content & structure for Prototipo 3 (Editorial Suizo)
+ */
+
+const APP_DATA = {
+  "stats": [
+    {
+      "number": "2007",
+      "label": "Grupo Consolidado",
+      "subtext": "Reconocido por el Gobierno Vasco"
+    },
+    {
+      "number": "10+",
+      "label": "PDI y Catedráticos",
+      "subtext": "Facultad de Medicina y Enfermería"
+    },
+    {
+      "number": "15+",
+      "label": "Tesis Doctorales",
+      "subtext": "Defendidas y en curso de investigación"
+    },
+    {
+      "number": "SGIker",
+      "label": "Unidad de Lipidómica",
+      "subtext": "Servicios Generales UPV/EHU"
+    }
+  ],
+  "leadership": {
+    "coordinator": {
+      "id": "patricia-aspichueta",
+      "name": "Dra. Patricia Aspichueta Celaá",
+      "role": "Coordinadora Principal del Grupo",
+      "affiliation": "Catedrática de Fisiología, UPV/EHU | IIS Biocruces Bizkaia",
+      "email": "patricia.aspichueta@ehu.eus",
+      "image": "/assets/images/team/patricia_aspichueta.jpg"
+    }
+  },
+  "translations": {
+    "es": {
+      "nav_home": "Inicio",
+      "nav_about": "Presentación",
+      "nav_lines": "Investigación",
+      "nav_team": "Personal",
+      "nav_theses": "Tesis Doctorales",
+      "nav_pubs": "Publicaciones",
+      "nav_training": "Formación",
+      "nav_contact": "Contacto",
+      "nav_cv_portal": "Portal de CVs",
+      "top_bar_dept": "Departamento de Fisiología • Facultad de Medicina y Enfermería",
+      "header_sub": "Grupo de Investigación Consolidado",
+      "theme_dark": "Modo Oscuro",
+      "theme_light": "Modo Claro",
+      "theme_toggle_title": "Cambiar tema claro/oscuro",
+      "hero_tag": "Grupo Consolidado del Gobierno Vasco (IT1560-22)",
+      "hero_title": "Grupo de Investigación Lipids & Liver",
+      "hero_subtitle": "Departamento de Fisiología | Facultad de Medicina y Enfermería | Universidad del País Vasco (UPV/EHU) & Instituto de Investigación Sanitaria Biocruces Bizkaia.",
+      "hero_badge_1_title": "Metabolismo & MAFLD",
+      "hero_badge_1_sub": "Dianas moleculares y lipidómica",
+      "hero_badge_2_title": "Excelencia Investigadora",
+      "hero_badge_2_sub": "UPV/EHU • IIS Biocruces Bizkaia",
+      "cta_lines": "Líneas de Investigación",
+      "cta_team": "Conocer el Personal",
+      "about_title": "Presentación",
+      "about_subtitle": "Facultad de Medicina y Enfermería • Campus de Leioa",
+      "about_tab_profile": "Presentación del Grupo",
+      "about_tab_objectives": "Red Traslacional & Biocruces",
+      "about_tab_infra": "Unidad de Lipidómica SGIker",
+      "about_tab_facilities": "Instalaciones",
+      "lines_title": "Líneas de Investigación",
+      "lines_subtitle": "Proyectos científicos activos del grupo",
+      "research_btn_modal": "Ver Línea de Investigación",
+      "research_btn_page": "Ver Línea de Investigación",
+      "lines_back": "Líneas de Investigación",
+      "lines_select_label": "Línea:",
+      "lines_desc_title": "Descripción y Objetivos Científicos",
+      "lines_related_pubs": "Publicaciones Científicas del Área",
+      "lines_recent_pubs": "Publicaciones Destacadas de la Línea",
+      "lines_view_all_pubs": "Ver todas las publicaciones de esta línea",
+      "lines_no_pubs": "No hay publicaciones asociadas a esta área actualmente.",
+      "lines_affiliation_title": "Marco Institucional y Colaboración",
+      "lines_affiliation_val": "Línea desarrollada en el Departamento de Fisiología (Facultad de Medicina y Enfermería, UPV/EHU) y vinculada al Instituto de Investigación Sanitaria Biocruces Bizkaia.",
+      "team_title": "Personal Investigador y Docente",
+      "team_subtitle": "Miembros y responsables de líneas de investigación",
+      "team_all": "Todos",
+      "team_pdi": "PDI & Seniors",
+      "team_postdoc": "Personal Posdoctoral",
+      "team_predoc": "Personal Predoctoral",
+      "team_tech": "Personal Técnico",
+      "team_search_placeholder": "Buscar personal por nombre, cargo o departamento...",
+      "team_badge_leadership": "Coordinación",
+      "team_badge_ryc": "Ramón y Cajal",
+      "team_badge_pdi": "PDI & Senior",
+      "team_badge_postdoc": "Posdoctoral",
+      "team_badge_predoc": "Predoctoral",
+      "team_badge_tech": "Personal Técnico",
+      "team_active_members": "Miembros Activos",
+      "team_view_cv": "Ver Currículum Completo",
+      "theses_title": "Tesis Doctorales: En Curso y Defendidas",
+      "theses_subtitle": "Proyectos de investigación doctoral tutorizados en la UPV/EHU",
+      "theses_page_title": "Catálogo de Tesis Doctorales",
+      "theses_page_sub": "Investigación formativa",
+      "theses_all": "Todas las Tesis",
+      "theses_ongoing": "En Curso",
+      "theses_completed": "Defendidas",
+      "theses_badge_ongoing": "En Curso",
+      "theses_badge_completed": "Defendida",
+      "theses_select_label": "Seleccionar Tesis:",
+      "theses_select_placeholder": "-- Seleccionar Tesis --",
+      "theses_view_more": "Ver Información Ampliada",
+      "theses_back_catalog": "Catálogo Completo de Tesis",
+      "theses_phd_candidate": "Doctorando/a:",
+      "theses_institution": "Institución:",
+      "theses_directors": "Dirección:",
+      "theses_program": "Programa:",
+      "theses_status_year": "Estado / Año:",
+      "theses_abstract_title": "Resumen de la Investigación Doctoral",
+      "theses_keywords_title": "Palabras Clave & Descriptores",
+      "theses_affiliation_title": "Filiación y Acreditación Académica",
+      "theses_dept": "Departamento:",
+      "theses_dept_val": "Departamento de Fisiología, Facultad de Medicina y Enfermería (Leioa).",
+      "theses_inst": "Instituto Sanitario:",
+      "theses_inst_val": "Instituto de Investigación Sanitaria Biocruces Bizkaia.",
+      "theses_group": "Grupo de Investigación:",
+      "theses_group_val": "Grupo Consolidado Lipids & Liver (IT1560-22).",
+      "team_page_title": "Portal de Currículum e Investigadores",
+      "team_page_sub": "Directorio del equipo científico",
+      "team_select_label": "Investigador/a:",
+      "team_select_placeholder": "-- Seleccionar Investigador/a --",
+      "team_back_dir": "Directorio del Personal",
+      "cv_degrees": "Titulación y Formación Académica",
+      "cv_positions": "Cargos y Puestos Desempeñados",
+      "cv_research": "Resumen de Línea de Investigación",
+      "cv_grants": "Proyectos de Investigación y Financiación",
+      "cv_pubs": "Publicaciones Seleccionadas",
+      "cv_teaching": "Actividad Docente",
+      "pubs_title": "Publicaciones Científicas",
+      "pubs_subtitle": "Artículos en revistas científicas indexadas (JCR)",
+      "pubs_latest_title": "Últimas Publicaciones Científicas",
+      "pubs_latest_subtitle": "Artículos recientes en revistas científicas internacionales de alto impacto (JCR)",
+      "pubs_latest_badge": "Publicaciones Recientes",
+      "pubs_view_all_btn": "Ver catálogo completo de publicaciones",
+      "pubs_archive_note": "El grupo cuenta con 155 artículos científicos indexados en JCR / PubMed con buscador y filtros por línea de investigación.",
+      "pubs_page_title": "Catálogo Completo de Publicaciones Científicas",
+      "pubs_page_sub": "Artículos científicos en revistas de alto impacto internacional indexadas en JCR / PubMed",
+      "pubs_all": "Todas las Áreas",
+      "pubs_search_placeholder": "Buscar por título, autor, revista o año...",
+      "pubs_showing": "Mostrando",
+      "pubs_of": "de",
+      "pubs_results": "publicaciones",
+      "pubs_prev": "Anterior",
+      "pubs_next": "Siguiente",
+      "pubs_page": "Página",
+      "pubs_all_pages": "Todas",
+      "training_title": "Formación Académica y Doctorado",
+      "training_subtitle": "Docencia en Grados, Másteres Oficiales y Programas de Doctorado",
+      "training_link_label": "Más información en UPV/EHU",
+      "contact_title": "Contacto y Localización",
+      "contact_subtitle": "Departamento de Fisiología • Facultad de Medicina y Enfermería",
+      "contact_hq": "Sede del Grupo de Investigación",
+      "contact_postal": "Dirección Postal",
+      "contact_postal_val": "Departamento de Fisiología\nFacultad de Medicina y Enfermería (UPV/EHU)\nBarrio Sarriena SN, 48940 Leioa, Bizkaia, España",
+      "contact_coord": "Coordinadora del Grupo",
+      "contact_email_title": "Correo Electrónico Oficial",
+      "contact_form_title": "Envío de Consultas e Interés Académico",
+      "contact_form_name": "Nombre y Apellidos *",
+      "contact_form_email": "Correo Electrónico *",
+      "contact_form_subject": "Asunto *",
+      "contact_form_msg": "Mensaje *",
+      "contact_form_send": "Enviar Consulta",
+      "footer_desc": "Grupo Consolidado del Gobierno Vasco (IT1560-22)<br />Departamento de Fisiología, Facultad de Medicina y Enfermería (UPV/EHU)<br />Instituto de Investigación Sanitaria Biocruces Bizkaia",
+      "footer_nav": "Navegación",
+      "footer_interest": "Enlaces de Interés",
+      "footer_copy": "Grupo de Investigación Lipids & Liver - Universidad del País Vasco / Euskal Herriko Unibertsitatea",
+      "footer_location": "Facultad de Medicina y Enfermería | Campus de Leioa"
+    },
+    "eu": {
+      "nav_home": "Hasiera",
+      "nav_about": "Aurkezpena",
+      "nav_lines": "Ikerketa",
+      "nav_team": "Pertsonala",
+      "nav_theses": "Doktorego Tesiak",
+      "nav_pubs": "Argitalpenak",
+      "nav_training": "Prestakuntza",
+      "nav_contact": "Harremana",
+      "nav_cv_portal": "CVen Ataria",
+      "top_bar_dept": "Fisiologia Saila • Medikuntza eta Erizaintza Fakultatea",
+      "header_sub": "Ikerketa Talde Finkatua",
+      "theme_dark": "Modu Iluna",
+      "theme_light": "Modu Argia",
+      "theme_toggle_title": "Aldatu gai argia/iluna",
+      "hero_tag": "Eusko Jaurlaritzako Talde Finkatua (IT1560-22)",
+      "hero_title": "Lipids & Liver Ikerketa Taldea",
+      "hero_subtitle": "Fisiologia Saila | Medikuntza eta Erizaintza Fakultatea | Euskal Herriko Unibertsitatea (UPV/EHU) & Biocruces Bizkaia Osasun Ikerketa Institutua.",
+      "hero_badge_1_title": "Metabolismoa & MAFLD",
+      "hero_badge_1_sub": "Helburu molekularrak eta lipidomika",
+      "hero_badge_2_title": "Ikerketa Bikaintasuna",
+      "hero_badge_2_sub": "UPV/EHU • IIS Biocruces Bizkaia",
+      "cta_lines": "Ikerketa Lerroak",
+      "cta_team": "Taldea Ezagutu",
+      "about_title": "Aurkezpena",
+      "about_subtitle": "Medikuntza eta Erizaintza Fakultatea • Leioako Campusa",
+      "about_tab_profile": "Taldearen Aurkezpena",
+      "about_tab_objectives": "Sare Translazionala & Biocruces",
+      "about_tab_infra": "SGIker Lipidomika Unitatea",
+      "about_tab_facilities": "Instalazioak",
+      "lines_title": "Ikerketa Lerroak",
+      "lines_subtitle": "Taldearen ikerketa-proiektu aktiboak",
+      "research_btn_modal": "Ikerketa Lerroa Ikusi",
+      "research_btn_page": "Ikerketa Lerroa Ikusi",
+      "lines_back": "Ikerketa Lerroak",
+      "lines_select_label": "Lerroa:",
+      "lines_desc_title": "Deskribapena eta Helburu Zientifikoak",
+      "lines_related_pubs": "Arloko Argitalpen Zientifikoak",
+      "lines_recent_pubs": "Ikerketa Lerroko Argitalpen Nabarmenduak",
+      "lines_view_all_pubs": "Ikerketa-lerro honetako argitalpen guztiak ikusi",
+      "lines_no_pubs": "Ez dago arlo honi lotutako argitalpenik une honetan.",
+      "lines_affiliation_title": "Erakunde-esparrua eta Lankidetza",
+      "lines_affiliation_val": "Fisiologia Sailean (Medikuntza eta Erizaintza Fakultatea, UPV/EHU) garatutako lerroa, Biocruces Bizkaia Osasun Ikerketa Institutuari atxikia.",
+      "team_title": "Irakasleak eta Ikertzaileak",
+      "team_subtitle": "Kideak eta ikerketa-lerroen arduradunak",
+      "team_all": "Guztiak",
+      "team_pdi": "PDI & Seniorrak",
+      "team_postdoc": "Doktoretza-ostekoak",
+      "team_predoc": "Doktorego-aurrekoak",
+      "team_tech": "Teknikariak",
+      "team_search_placeholder": "Bilatu pertsonala izenaren, karguaren edo sailaren arabera...",
+      "team_badge_leadership": "Koordinazioa",
+      "team_badge_ryc": "Ramón y Cajal",
+      "team_badge_pdi": "PDI & Senior",
+      "team_badge_postdoc": "Doktoretza-ostekoa",
+      "team_badge_predoc": "Doktorego-aurrekoa",
+      "team_badge_tech": "Pertsonal Teknikoa",
+      "team_active_members": "Kide Aktibo",
+      "team_view_cv": "Curriculum Osoa Ikusi",
+      "theses_title": "Doktorego Tesiak: Bidean eta Defendatuak",
+      "theses_subtitle": "UPV/EHUn zuzendutako doktorego-ikerketako proiektuak",
+      "theses_page_title": "Doktorego Tesien Katalogoa",
+      "theses_page_sub": "Ikerketa hezitzailea",
+      "theses_all": "Tesi Guztiak",
+      "theses_ongoing": "Bidean",
+      "theses_completed": "Defendatuak",
+      "theses_badge_ongoing": "Bidean",
+      "theses_badge_completed": "Defendatua",
+      "theses_select_label": "Hautatu Tesia:",
+      "theses_select_placeholder": "-- Hautatu Tesia --",
+      "theses_view_more": "Informazio Gehiago Ikusi",
+      "theses_back_catalog": "Tesien Katalogo Osoa",
+      "theses_phd_candidate": "Doktoragaia:",
+      "theses_institution": "Erakundea:",
+      "theses_directors": "Zuzendaritza:",
+      "theses_program": "Programa:",
+      "theses_status_year": "Egoera / Urtea:",
+      "theses_abstract_title": "Doktorego Ikerketaren Laburpena",
+      "theses_keywords_title": "Gako-hitzak & Deskribatzaileak",
+      "theses_affiliation_title": "Afiliazioa eta Egiaztapen Akademikoa",
+      "theses_dept": "Saila:",
+      "theses_dept_val": "Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea (Leioa).",
+      "theses_inst": "Osasun Institutua:",
+      "theses_inst_val": "Biocruces Bizkaia Osasun Ikerketa Institutua.",
+      "theses_group": "Ikerketa Taldea:",
+      "theses_group_val": "Lipids & Liver Talde Finkatua (IT1560-22).",
+      "team_page_title": "Curriculum eta Ikertzaileen Ataria",
+      "team_page_sub": "Talde zientifikoaren direktorioa",
+      "team_select_label": "Ikertzailea:",
+      "team_select_placeholder": "-- Hautatu Ikertzailea --",
+      "team_back_dir": "Pertsonalaren Direktorioa",
+      "cv_degrees": "Titulazioa eta Prestakuntza Akademikoa",
+      "cv_positions": "Betetako Karguak eta Postuak",
+      "cv_research": "Ikerketa Lerroaren Laburpena",
+      "cv_grants": "Ikerketa Proiektuak eta Finantzaketa",
+      "cv_pubs": "Aukeratutako Argitalpenak",
+      "cv_teaching": "Irakaskuntza Jarduera",
+      "pubs_title": "Argitalpen Zientifikoak",
+      "pubs_subtitle": "Zientzia-aldizkari indexatuetako artikuluak (JCR)",
+      "pubs_latest_title": "Azken Argitalpen Zientifikoak",
+      "pubs_latest_subtitle": "Nazioarteko inpaktu handiko zientzia-aldizkarietako azken artikuluak (JCR)",
+      "pubs_latest_badge": "Azken Argitalpenak",
+      "pubs_view_all_btn": "Argitalpenen katalogo osoa ikusi",
+      "pubs_archive_note": "Taldeak JCR / PubMed-en indexatutako 155 zientzia-artikulu ditu, bilatzailearekin eta ikerketa-lerroen araberako iragazkiekin.",
+      "pubs_page_title": "Argitalpen Zientifikoen Katalogo Osoa",
+      "pubs_page_sub": "Nazioarteko inpaktu handiko zientzia-aldizkarietako artikuluak, JCR / PubMed-en indexatuak",
+      "pubs_all": "Arlo Guztiak",
+      "pubs_search_placeholder": "Bilatu izenburuaren, egilearen, aldizkariaren edo urtearen arabera...",
+      "pubs_showing": "Erakusten",
+      "pubs_of": "-(e)tik",
+      "pubs_results": "argitalpen",
+      "pubs_prev": "Aurrekoa",
+      "pubs_next": "Hurrengoa",
+      "pubs_page": "Orrialdea",
+      "pubs_all_pages": "Guztiak",
+      "training_title": "Irakaskuntza eta Doktoregoa",
+      "training_subtitle": "Graduko Irakaskuntza, Master Ofizialak eta Doktorego Programak",
+      "training_link_label": "Informazio gehiago UPV/EHUn",
+      "contact_title": "Harremana eta Kokapena",
+      "contact_subtitle": "Fisiologia Saila • Medikuntza eta Erizaintza Fakultatea",
+      "contact_hq": "Ikerketa Taldearen Egoitza",
+      "contact_postal": "Helbide Postala",
+      "contact_postal_val": "Fisiologia Saila\nMedikuntza eta Erizaintza Fakultatea (UPV/EHU)\nSarriena auzoa z/g, 48940 Leioa, Bizkaia, Espainia",
+      "contact_coord": "Taldeko Koordinatzailea",
+      "contact_email_title": "Helbide Elektroniko Ofiziala",
+      "contact_form_title": "Kontsultak eta Interes Akademikoa",
+      "contact_form_name": "Izen-abizenak *",
+      "contact_form_email": "Posta Elektronikoa *",
+      "contact_form_subject": "Gaia *",
+      "contact_form_msg": "Mezua *",
+      "contact_form_send": "Mezua Bidali",
+      "footer_desc": "Eusko Jaurlaritzako Talde Finkatua (IT1560-22)<br />Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea (UPV/EHU)<br />Biocruces Bizkaia Osasun Ikerketa Institutua",
+      "footer_nav": "Nabigazioa",
+      "footer_interest": "Intereseko Estekak",
+      "footer_copy": "Lipids & Liver Ikerketa Taldea - Euskal Herriko Unibertsitatea (UPV/EHU)",
+      "footer_location": "Medikuntza eta Erizaintza Fakultatea | Leioako Campusa"
+    },
+    "en": {
+      "nav_home": "Home",
+      "nav_about": "Presentation",
+      "nav_lines": "Research Lines",
+      "nav_team": "Personnel",
+      "nav_theses": "PhD Theses",
+      "nav_pubs": "Publications",
+      "nav_training": "Training",
+      "nav_contact": "Contact",
+      "nav_cv_portal": "CV Portal",
+      "top_bar_dept": "Department of Physiology • Faculty of Medicine and Nursing",
+      "header_sub": "Consolidated Research Group",
+      "theme_dark": "Dark Mode",
+      "theme_light": "Light Mode",
+      "theme_toggle_title": "Toggle light/dark theme",
+      "hero_tag": "Basque Government Consolidated Group (IT1560-22)",
+      "hero_title": "Lipids & Liver Research Group",
+      "hero_subtitle": "Department of Physiology | Faculty of Medicine and Nursing | University of the Basque Country (UPV/EHU) & Biocruces Bizkaia Health Research Institute.",
+      "hero_badge_1_title": "Metabolism & MAFLD",
+      "hero_badge_1_sub": "Molecular targets & lipidomics",
+      "hero_badge_2_title": "Research Excellence",
+      "hero_badge_2_sub": "UPV/EHU • IIS Biocruces Bizkaia",
+      "cta_lines": "Research Lines",
+      "cta_team": "Meet Personnel",
+      "about_title": "Presentation",
+      "about_subtitle": "Faculty of Medicine and Nursing • Leioa Campus",
+      "about_tab_profile": "Group Presentation",
+      "about_tab_objectives": "Translational Network & Biocruces",
+      "about_tab_infra": "SGIker Lipidomics Unit",
+      "about_tab_facilities": "Facilities",
+      "lines_title": "Research Lines",
+      "lines_subtitle": "Active scientific research projects of the group",
+      "research_btn_modal": "View Research Line",
+      "research_btn_page": "View Research Line",
+      "lines_back": "Research Lines",
+      "lines_select_label": "Line:",
+      "lines_desc_title": "Description & Scientific Objectives",
+      "lines_related_pubs": "Related Scientific Publications",
+      "lines_recent_pubs": "Featured Line Publications",
+      "lines_view_all_pubs": "View all publications for this line",
+      "lines_no_pubs": "No publications directly associated with this topic at present.",
+      "lines_affiliation_title": "Institutional Framework & Collaboration",
+      "lines_affiliation_val": "Research line developed at the Department of Physiology (Faculty of Medicine and Nursing, UPV/EHU) and affiliated with the Biocruces Bizkaia Health Research Institute.",
+      "team_title": "Research & Teaching Faculty",
+      "team_subtitle": "Group members and research line leaders",
+      "team_all": "All",
+      "team_pdi": "Faculty & Seniors",
+      "team_postdoc": "Postdoctoral Researchers",
+      "team_predoc": "Predoctoral Researchers",
+      "team_tech": "Technical Staff",
+      "team_search_placeholder": "Search personnel by name, role or department...",
+      "team_badge_leadership": "Coordination",
+      "team_badge_ryc": "Ramón y Cajal",
+      "team_badge_pdi": "Faculty & Senior",
+      "team_badge_postdoc": "Postdoctoral",
+      "team_badge_predoc": "Predoctoral",
+      "team_badge_tech": "Technical Staff",
+      "team_active_members": "Active Members",
+      "team_view_cv": "View Full CV",
+      "theses_title": "PhD Theses: Ongoing and Completed",
+      "theses_subtitle": "Doctoral research projects supervised at UPV/EHU",
+      "theses_page_title": "PhD Theses Catalog",
+      "theses_page_sub": "Formative research",
+      "theses_all": "All Theses",
+      "theses_ongoing": "In Progress",
+      "theses_completed": "Completed",
+      "theses_badge_ongoing": "In Progress",
+      "theses_badge_completed": "Completed",
+      "theses_select_label": "Select Thesis:",
+      "theses_select_placeholder": "-- Select Thesis --",
+      "theses_view_more": "View Extended Info",
+      "theses_back_catalog": "Full Theses Catalog",
+      "theses_phd_candidate": "PhD Candidate:",
+      "theses_institution": "Institution:",
+      "theses_directors": "Supervisors:",
+      "theses_program": "Program:",
+      "theses_status_year": "Status / Year:",
+      "theses_abstract_title": "Doctoral Research Summary",
+      "theses_keywords_title": "Keywords & Descriptors",
+      "theses_affiliation_title": "Affiliation & Academic Accreditation",
+      "theses_dept": "Department:",
+      "theses_dept_val": "Department of Physiology, Faculty of Medicine and Nursing (Leioa).",
+      "theses_inst": "Health Institute:",
+      "theses_inst_val": "Biocruces Bizkaia Health Research Institute.",
+      "theses_group": "Research Group:",
+      "theses_group_val": "Lipids & Liver Consolidated Group (IT1560-22).",
+      "team_page_title": "CV & Researchers Portal",
+      "team_page_sub": "Scientific team directory",
+      "team_select_label": "Researcher:",
+      "team_select_placeholder": "-- Select Researcher --",
+      "team_back_dir": "Personnel Directory",
+      "cv_degrees": "Degrees & Academic Background",
+      "cv_positions": "Professional Positions",
+      "cv_research": "Research Line Summary",
+      "cv_grants": "Research Projects & Grants",
+      "cv_pubs": "Selected Publications",
+      "cv_teaching": "Teaching Activity",
+      "pubs_title": "Scientific Publications",
+      "pubs_subtitle": "Peer-reviewed scientific journal articles (JCR)",
+      "pubs_latest_title": "Latest Scientific Publications",
+      "pubs_latest_subtitle": "Recent articles in high-impact international scientific journals (JCR)",
+      "pubs_latest_badge": "Recent Publications",
+      "pubs_view_all_btn": "View complete publications catalog",
+      "pubs_archive_note": "The group features 155 scientific articles indexed in JCR / PubMed with live search and topic filters.",
+      "pubs_page_title": "Complete Scientific Publications Catalog",
+      "pubs_page_sub": "Scientific articles in high-impact international journals indexed in JCR / PubMed",
+      "pubs_all": "All Areas",
+      "pubs_search_placeholder": "Search by title, author, journal, or year...",
+      "pubs_showing": "Showing",
+      "pubs_of": "of",
+      "pubs_results": "publications",
+      "pubs_prev": "Previous",
+      "pubs_next": "Next",
+      "pubs_page": "Page",
+      "pubs_all_pages": "All",
+      "training_title": "Academic Training & PhD",
+      "training_subtitle": "Undergraduate Teaching, Official Master's Degrees & PhD Programmes",
+      "training_link_label": "More information at UPV/EHU",
+      "contact_title": "Contact & Location",
+      "contact_subtitle": "Department of Physiology • Faculty of Medicine and Nursing",
+      "contact_hq": "Research Group Headquarters",
+      "contact_postal": "Postal Address",
+      "contact_postal_val": "Department of Physiology\nFaculty of Medicine and Nursing (UPV/EHU)\nBarrio Sarriena SN, 48940 Leioa, Bizkaia, Spain",
+      "contact_coord": "Group Coordinator",
+      "contact_email_title": "Official Email Address",
+      "contact_form_title": "Inquiries & Academic Interest",
+      "contact_form_name": "Full Name *",
+      "contact_form_email": "Email Address *",
+      "contact_form_subject": "Subject *",
+      "contact_form_msg": "Message *",
+      "contact_form_send": "Send Inquiry",
+      "footer_desc": "Consolidated Research Government of the Basque Country (IT1560-22)<br />Department of Physiology, Faculty of Medicine and Nursing (UPV/EHU)<br />Biocruces Bizkaia Health Research Institute",
+      "footer_nav": "Navigation",
+      "footer_interest": "Useful Links",
+      "footer_copy": "Lipids & Liver Research Group - University of the Basque Country (UPV/EHU)",
+      "footer_location": "Faculty of Medicine and Nursing | Leioa Campus"
+    }
+  },
+  "presentation": [
+    {
+      "id": "perfil",
+      "tabTitle": "Presentación del Grupo",
+      "tabId": "tab-perfil",
+      "order": 1,
+      "specialties": [
+        "Bioquímica",
+        "Metabolismo Lipídico",
+        "Biología Molecular y Celular",
+        "Hepatología",
+        "Proteómica",
+        "Lipidómica"
+      ],
+      "staffCompositionTitle": "Composición del Personal",
+      "staffComposition": [
+        {
+          "count": "10",
+          "role": "Personal Docente e Investigador (PDI)"
+        },
+        {
+          "count": "1",
+          "role": "Investigadora Ikerbasque"
+        },
+        {
+          "count": "6",
+          "role": "Personal Investigador Predoctoral"
+        },
+        {
+          "count": "2",
+          "role": "Personal Investigador Posdoctoral"
+        },
+        {
+          "count": "2",
+          "role": "Personal Técnico de Apoyo"
+        }
+      ],
+      "contentHtml": "<p>Desarrollamos nuestra actividad investigadora en el <strong>Departamento de Fisiología de la Facultad de Medicina y Enfermería (UPV/EHU)</strong>. En paralelo a la investigación científica de frontera, contribuimos activamente a la enseñanza superior y a la formación de nuevo personal investigador en el ámbito de la Biomedicina.</p>\n<p>El equipo ha sido acreditado ininterrumpidamente como <strong>\"Grupo Consolidado\"</strong> por el Departamento de Educación del Gobierno Vasco desde 2007.</p>"
+    },
+    {
+      "id": "objetivos",
+      "tabTitle": "Red Traslacional & Biocruces",
+      "tabId": "tab-objetivos",
+      "order": 2,
+      "contentHtml": "<p>Con ánimo de impulsar la investigación traslacional de impacto clínico, el grupo se halla integrado en el <strong>Instituto de Investigación Sanitaria Biocruces Bizkaia</strong>, conectando el análisis molecular de laboratorio con la atención de patologías hepáticas humanas.</p>\n<p>Nuestra actividad se encuadra en la línea estratégica <em>\"Salud y Calidad de Vida\"</em> del Ministerio de Ciencia e Innovación y en el marco de <em>\"Envejecimiento Saludable\"</em> de Euskampus.</p>"
+    },
+    {
+      "id": "infraestructura",
+      "tabTitle": "Unidad de Lipidómica SGIker",
+      "tabId": "tab-infraestructura",
+      "order": 3,
+      "contentHtml": "<p>El grupo <em>Lipids & Liver</em> ha sido pionero en la creación y consolidación de la <strong>Unidad de Lipidómica de los Servicios Generales de Investigación (SGIker)</strong> de la UPV/EHU.</p>\n<p>Esta plataforma tecnológica ofrece capacidades analíticas por espectrometría de masas para dar servicio a grupos de investigación autonómicos, nacionales e internacionales.</p>"
+    },
+    {
+      "id": "instalaciones",
+      "tabTitle": "Instalaciones",
+      "tabId": "tab-instalaciones",
+      "order": 4,
+      "contentHtml": "El grupo de investigación **Lipids & Liver** dispone de infraestructuras científicas y experimentales especializadas, distribuidas estratégicamente en el Campus de Leioa de la Universidad del País Vasco (UPV/EHU) para articular la actividad docente universitaria, la formación predoctoral y posdoctoral, y la investigación biomédica de vanguardia:\n\n<div class=\"facilities-grid\">\n  <div class=\"facility-card\">\n    <div class=\"facility-card-image-box\">\n      <img src=\"/assets/images/facilities/facultad_medicina.jpg\" alt=\"Facultad de Medicina y Enfermería UPV/EHU\" class=\"facility-card-img\" loading=\"lazy\" />\n    </div>\n    <div class=\"facility-card-header\">\n      <div class=\"facility-card-icon\">\n        <i class=\"fas fa-flask-vial\"></i>\n      </div>\n      <div class=\"facility-card-header-info\">\n        <h3 class=\"facility-card-title\">Laboratorios en la Facultad de Medicina y Enfermería</h3>\n        <span class=\"facility-card-location\"><i class=\"fas fa-map-marker-alt\"></i> Dpto. de Fisiología • Planta 2 (Campus de Leioa)</span>\n      </div>\n    </div>\n    <p class=\"facility-card-desc\">\n      Sede fundamental para la experimentación biomédica en fisiología celular y metabólica, la docencia de grado y posgrado, y el desarrollo de proyectos doctorales.\n    </p>\n    <ul class=\"facility-features\">\n      <li><i class=\"fas fa-check-circle\"></i> <strong>Laboratorios de Fisiología y Bioquímica Hepática:</strong> Espacios acondicionados para estudios metabólicos, ensayos enzimáticos y análisis moleculares (Laboratorio 2.16 y áreas anexas).</li>\n      <li><i class=\"fas fa-check-circle\"></i> <strong>Cultivos Celulares y Biología Molecular:</strong> Salas con campanas de flujo laminar, incubadores y equipamiento para el mantenimiento de líneas celulares y modelos de patología hepática in vitro.</li>\n      <li><i class=\"fas fa-check-circle\"></i> <strong>Espacios de Trabajo y Despachos:</strong> Despachos del personal docente e investigador (PDI) y puestos de trabajo para personal investigador predoctoral y posdoctoral.</li>\n    </ul>\n  </div>\n\n  <div class=\"facility-card\">\n    <div class=\"facility-card-image-box\">\n      <img src=\"/assets/images/facilities/edificio_maria_goyri.jpg\" alt=\"Edificio María Goyri - Parque Científico UPV/EHU\" class=\"facility-card-img\" loading=\"lazy\" />\n    </div>\n    <div class=\"facility-card-header\">\n      <div class=\"facility-card-icon\">\n        <i class=\"fas fa-building\"></i>\n      </div>\n      <div class=\"facility-card-header-info\">\n        <h3 class=\"facility-card-title\">Instalaciones en el Edificio María Goyri</h3>\n        <span class=\"facility-card-location\"><i class=\"fas fa-map-marker-alt\"></i> Parque Científico de la UPV/EHU (Campus de Leioa)</span>\n      </div>\n    </div>\n    <p class=\"facility-card-desc\">\n      Centro de investigación de excelencia y transferencia donde se articulan plataformas tecnológicas biomédicas punteras y proyectos científicos transversales.\n    </p>\n    <ul class=\"facility-features\">\n      <li><i class=\"fas fa-check-circle\"></i> <strong>Plataformas Tecnológicas y SGIker:</strong> Espacio de estrecha integración y sinergia con la Unidad de Lipidómica de los Servicios Generales de Investigación (SGIker).</li>\n      <li><i class=\"fas fa-check-circle\"></i> <strong>Espectrometría de Masas de Alta Resolución:</strong> Infraestructura avanzada para la cuantificación y caracterización exhaustiva de perfiles lipídicos y metabolitos.</li>\n      <li><i class=\"fas fa-check-circle\"></i> <strong>Ecosistema Científico Biomédico:</strong> Interconexión directa con institutos de investigación de vanguardia del Parque Científico y la red colaborativa de Biocruces Bizkaia.</li>\n    </ul>\n  </div>\n</div>"
+    }
+  ],
+  "researchLines": [
+    {
+      "id": "mafld",
+      "title": "Obesidad, Esteatosis Hepática Metabólica (MAFLD/MASLD) y Enfermedad Cardiovascular",
+      "shortDesc": "Estudio de agentes metabólicos, dianas terapéuticas y biomarcadores lipidómicos no invasivos para la diferenciación de NAFL y NASH.",
+      "image": "assets/images/mafld.jpg",
+      "badge": "MAFLD / MASLD",
+      "order": 1,
+      "affiliation": "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU — Instituto de Investigación Sanitaria Biocruces Bizkaia (IIS Biocruces Bizkaia). Grupo Consolidado del Gobierno Vasco IT1560-22. Financiación: Ministerio de Ciencia e Innovación, Instituto de Salud Carlos III (ISCIII), Gobierno Vasco.",
+      "contentHtml": "<p>La prevalencia de la obesidad y la diabetes mellitus tipo II ha aumentado exponencialmente, convirtiéndose en un desafío sanitario prioritario. Alrededor del 70-80% de estos pacientes desarrollan <strong>Esteatosis Hepática Metabólica (MAFLD / MASLD)</strong>, la principal causa de enfermedad hepática crónicamente progresiva.</p>\n        <p>El grupo investiga la progresión de la hepatoesteatosis simple (NAFL) a esteatohepatitis (NASH), caracterizada por inflamación, necrosis hepatocelular y desarrollo de fibrosis y cirrosis.</p>\n        <h4>Objetivos Clave:</h4>\n        <ul>\n          <li><strong>Biomarcadores Séricos No Invasivos:</strong> Paneles lipidómicos mediante espectrometría de masas para diagnóstico diferencial de NASH.</li>\n          <li><strong>Dianas Terapéuticas:</strong> Regulación de enzimas del metabolismo lipídico y receptores nucleares.</li>\n          <li><strong>Investigación Traslacional:</strong> Integración en el Instituto de Investigación Sanitaria Biocruces Bizkaia.</li>\n        </ul>"
+    },
+    {
+      "id": "cancer",
+      "title": "Cáncer Hepático: Carcinoma Hepatocelular, Colangiocarcinoma y Metástasis Colorrectal",
+      "shortDesc": "Análisis de la reprogramación metabólica energética y lipídica en el microambiente tumoral hepático.",
+      "image": "assets/images/cancer.jpg",
+      "badge": "Oncología Metabólica",
+      "order": 2,
+      "affiliation": "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU — Instituto de Investigación Sanitaria Biocruces Bizkaia (IIS Biocruces Bizkaia). Colaboración con el Servicio de Oncología del Hospital Universitario Cruces. Grupo Consolidado IT1560-22, Gobierno Vasco.",
+      "contentHtml": "<p>El desarrollo tumoral en el hígado implica profundas modificaciones de las rutas biosintéticas de ácidos grasos y fosfolípidos. La epidemia de MAFLD y obesidad ha incrementado la incidencia de Carcinoma Hepatocelular (HCC) y Colangiocarcinoma (iCCA).</p>\n        <h4>Ejes de Investigación:</h4>\n        <ul>\n          <li><strong>Desensibilización y Reprogramación:</strong> Identificación de vulnerabilidades metabólicas en la síntesis de triglicéridos y lipogénesis de novo.</li>\n          <li><strong>Combinaciones Terapéuticas:</strong> Moduladores enzimáticos en combinación con sorafenib/atezolizumab para revertir resistencias.</li>\n        </ul>"
+    },
+    {
+      "id": "e2f",
+      "title": "Mecanismos de Daño Hepático y Factores de Transcripción E2Fs",
+      "shortDesc": "Papel del estrés oxidativo, desregulación de lípidos y factores E2F en el daño hepático farmacológico (DILI) y regeneración.",
+      "image": "assets/images/e2f.jpg",
+      "badge": "Regeneración & DILI",
+      "order": 3,
+      "affiliation": "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU — Instituto de Investigación Sanitaria Biocruces Bizkaia (IIS Biocruces Bizkaia). Colaboración con el Centro de Investigación Biomédica en Red de Enfermedades Hepáticas y Digestivas (CIBERehd). Grupo Consolidado IT1560-22, Gobierno Vasco.",
+      "contentHtml": "<p>El daño hepático inducido por fármacos (DILI) activa rutas de regeneración donde los hepatocitos acumulan temporalmente triglicéridos. Investigamos el papel de los factores de transcripción E2Fs en este acoplamiento fenotípico.</p>"
+    },
+    {
+      "id": "lipidomics",
+      "title": "Lipidómica e Integración Computacional (SGIker UPV/EHU)",
+      "shortDesc": "Desarrollo metodológico de espectrometría de masas y modelos de Deep Learning para el procesamiento de lipidomas clínicos.",
+      "image": "assets/images/lipidomics.jpg",
+      "badge": "SGIker & Deep Learning",
+      "order": 4,
+      "affiliation": "Unidad de Lipidómica, Servicios Generales de Investigación (SGIker), UPV/EHU — Departamento de Fisiología, Facultad de Medicina y Enfermería. Nodo de infraestructura analítica del Grupo Consolidado IT1560-22, Gobierno Vasco.",
+      "contentHtml": "<p>Como impulsores de la <strong>Unidad de Lipidómica de los SGIker de la UPV/EHU</strong>, aplicamos espectrometría de masas (UHPLC-MS/MS) y modelos computacionales para la medicina personalizada de precisión.</p>"
+    },
+    {
+      "id": "exposome",
+      "title": "Exposoma Ambiental y Compuestos Disruptores Metabólicos (MDCs)",
+      "shortDesc": "Identificación por proteómica de adductos y dianas en hepatocitos expuestos a contaminantes ambientales que alteran el metabolismo.",
+      "image": "assets/images/exposome.jpg",
+      "badge": "Exposoma",
+      "order": 5,
+      "affiliation": "Departamento de Bioquímica y Biología Molecular, Facultad de Ciencia y Tecnología, UPV/EHU — Instituto de Investigación Sanitaria Biocruces Bizkaia (IIS Biocruces Bizkaia). Colaboración con el Consorcio Europeo HELIX (exposoma en infancia). Grupo Consolidado IT1560-22, Gobierno Vasco.",
+      "contentHtml": "<p>Estudio del impacto de la contaminación ambiental en el metabolismo lipídico humano y la predisposición a enfermedades hepáticas crónicas.</p>"
+    },
+    {
+      "id": "spatial-omics",
+      "title": "Ómicas Espaciales y Multi-ómica de Resolución Celular (Spatial Omics)",
+      "shortDesc": "Mapeo espacial de alta resolución de la zonación metabólica, microambiente tumoral y lipidómica in situ en patología hepática.",
+      "image": "assets/images/spatial_omics.jpg",
+      "badge": "Spatial Multi-Omics",
+      "order": 6,
+      "affiliation": "Unidad de Lipidómica SGIker UPV/EHU — Instituto de Investigación Sanitaria Biocruces Bizkaia (IIS Biocruces Bizkaia). Plataforma de Ómicas Espaciales, con acceso a tecnologías 10x Genomics Visium, MALDI-MSI y Xenium. Grupo Consolidado IT1560-22, Gobierno Vasco.",
+      "contentHtml": "<p>\nLas tecnologías de <b>Ómicas Espaciales (Spatial Omics)</b> representan una revolución conceptual y metodológica en la investigación biomédica, permitiendo interrogar la expresión génica, la abundancia proteica y las especies lipídicas preservando la arquitectura tisular y la ubicación espacial celular nativa.\n</p>\n<p>\nEn el hígado, donde la función metabólica está intrínsecamente organizada a lo largo del eje porto-central (**zonación hepática**), las ómicas espaciales resultan determinantes para desentrañar los mecanismos de la esteatohepatitis (MASLD/MASH), la fibrosis progresiva y la carcinogénesis hepatobiliar.\n</p>\n<br>\n<h3> Ejes y Objetivos Científicos:</h3>\n<br>\n<ul>\n<li><b>Zonación Metabólica y Lipotoxicidad Espacial:</b> Caracterización de gradientes de acumulación de triglicéridos, ceramidas y especies fosfolipídicas entre los hepatocitos periportales y pericentrales mediante espectrometría de masas por imagen (MALDI-MSI).\n</li>\n<li><b>Microambiente Tumoral y Nicho Pre-metastásico:</b> Mapeo de transcriptómica espacial en biopsias de carcinoma hepatocelular (HCC) y colangiocarcinoma (CCA) para analizar la heterogeneidad tumoral, la infiltración inmune y los nichos celulares metabólicamente reprogramados.\n</li>\n<li><b>Integración Multi-ómica Computacional:</b> Fusión bioinformática de datos unicelulares (scRNA-seq), transcriptómica espacial y perfiles lipidómicos cuantitativos generados en colaboración con la Unidad SGIker de la UPV/EHU y el IIS Biocruces Bizkaia.\n</li>\n</ul>"
+    }
+  ],
+  "teamMembers": [
+    {
+      "id": "patricia-aspichueta",
+      "name": "Dra. Patricia Aspichueta Celaá",
+      "role": "Catedrática de Fisiología",
+      "category": "Coordinadora",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/patricia_aspichueta.jpg",
+      "email": "patricia.aspichueta@ehu.eus",
+      "office": "Despacho 2.14, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0002-8921-9421",
+      "order": 1,
+      "cv": {
+        "title": "Catedrática de Fisiología - Coordinadora del Grupo Lipids & Liver",
+        "researchSummary": "La investigación de la Dra. Aspichueta se enfoca en el estudio del metabolismo lipídico hepático y su alteración en condiciones patológicas como la Esteatosis Hepática Metabólica (MAFLD/MASLD), el Daño Hepático y el Cáncer Hepático. Es autora de más de 70 publicaciones en revistas JCR internacionales de alto impacto y ha liderado múltiples proyectos del Plan Nacional de R+D+i y del Gobierno Vasco.",
+        "degrees": [
+          "Doctora en Biología / Bioquímica (UPV/EHU, 2002)",
+          "Licenciada en Ciencias Biológicas (UPV/EHU, 1997)",
+          "Acreditación Nacional como Catedrática de Universidad (ANECA)"
+        ],
+        "positions": [
+          "Catedrática de Fisiología, Departamento de Fisiología, UPV/EHU (2018 - Presente)",
+          "Investigadora Principal, Área de Hepato-gastroenterología, IIS Biocruces Bizkaia",
+          "Coordinadora del Grupo Consolidado Lipids & Liver (Gobierno Vasco)",
+          "Profesora Titular de Universidad, UPV/EHU (2009 - 2018)"
+        ],
+        "grants": [
+          "PID2021-124592OB-I00: Nuevas dianas metabólicas y biomarcadores lipidómicos en MAFLD y Cáncer Hepático (MICINN, 2022-2025).",
+          "IT1560-22: Grupo Consolidado Lipids & Liver (Gobierno Vasco, 2022-2025).",
+          "RICORS-HEPATIS: Red de Investigación en Enfermedades Hepáticas (Instituto de Salud Carlos III)."
+        ],
+        "publications": [
+          "Integrative Lipidomics Identifies Plasma Phospholipid Signatures for Non-invasive Discrimination of NASH. Journal of Hepatology, 2024.",
+          "Targeting Stearoyl-CoA Desaturase 1 in Hepatocellular Carcinoma. Cancers, 2023.",
+          "Hepatic Lipid Metabolism in Health and Fatty Liver Disease. Trends in Endocrinology & Metabolism, 2021."
+        ],
+        "teaching": [
+          "Fisiología Humana (Grado en Medicina, UPV/EHU)",
+          "Fisiopatología del Metabolismo Lipídico (Máster en Biología Molecular y Biomedicina)",
+          "Tutorización de Trabajos de Fin de Grado, Máster y Dirección de Tesis Doctorales."
+        ]
+      },
+      "bio": "Catedrática de Universidad en el Departamento de Fisiología de la UPV/EHU e investigadora principal en el Instituto de Investigación Sanitaria Biocruces Bizkaia. Líder del grupo Lipids & Liver.",
+      "bioHtml": "<p>Catedrática de Universidad en el Departamento de Fisiología de la UPV/EHU e investigadora principal en el Instituto de Investigación Sanitaria Biocruces Bizkaia. Líder del grupo Lipids & Liver.</p>"
+    },
+    {
+      "id": "juanluis-garcia",
+      "name": "Dr. Juan Luis García Rodríguez",
+      "role": "Investigador Ramón y Cajal",
+      "category": "Ramón y Cajal",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biocruces",
+      "image": "assets/images/team/juanluis_garcia.jpeg",
+      "email": "juanluis.garcia@ehu.eus",
+      "office": "Despacho 2.13, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0002-7654-3210",
+      "order": 2,
+      "cv": {
+        "title": "Investigador Ramón y Cajal - Grupo Lipids & Liver",
+        "researchSummary": "Su línea de investigación se centra en la caracterización de redes reguladoras de transcripción genómica, sensores lipídicos y receptores nucleares en la esteatosis hepática metabólica y oncología hepática.",
+        "degrees": [
+          "Doctor en Biomedicina / Bioquímica (UPV/EHU, Mención Internacional)",
+          "Licenciado en Bioquímica (UPV/EHU)",
+          "Contrato de Excelencia Investigadora Ramón y Cajal (MICINN)"
+        ],
+        "positions": [
+          "Investigador Ramón y Cajal, Dept. Fisiología, UPV/EHU (2024 - Presente)",
+          "Investigador Posdoctoral Senior en centros internacionales de prestigio",
+          "Miembro de la Sociedad Española de Bioquímica y Biología Molecular (SEBBM)"
+        ],
+        "grants": [
+          "RYC2023-038921-I: Programa Ramón y Cajal (Ministerio de Ciencia e Innovación, 2024-2029).",
+          "PROJ-RYC-24: Regulación de sensores lipídicos y receptores nucleares en hepatopatías metabólicas."
+        ],
+        "publications": [
+          "Nuclear Receptor Signaling and Lipid Sensing in Metabolic Dysfunction-Associated Steatotic Liver Disease. Hepatology, 2024.",
+          "Metabolic Flexibility and Transcriptional Networks in Liver Physiology. Cell Metabolism, 2023."
+        ]
+      },
+      "bio": "Investigador Ramón y Cajal en el Departamento de Fisiología de la UPV/EHU e IIS Biocruces Bizkaia. Especializado en reprogramación metabólica, sensores lipídicos y receptores nucleares.",
+      "bioHtml": "<p>Investigador Ramón y Cajal en el Departamento de Fisiología de la UPV/EHU e IIS Biocruces Bizkaia. Especializado en reprogramación metabólica, sensores lipídicos y receptores nucleares.</p>"
+    },
+    {
+      "id": "olatz-fresnedo",
+      "name": "Dra. M. Olatz Fresnedo Aranguren",
+      "role": "Profesora Titular de Universidad",
+      "category": "Directora de Línea",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/olatz_fresnedo.jpg",
+      "email": "olatz.fresnedo@ehu.eus",
+      "office": "Despacho 2.10, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0001-7893-4521",
+      "order": 3,
+      "cv": {
+        "title": "Profesora Titular de Universidad - Directora de Línea de Investigación",
+        "researchSummary": "Especializada en la purificación y caracterización kinetico-metabólica de enzimas sintéticas de triacilgliceroles y aciltransferasas en tejido hepático. Desarrolladora de protocolos estándar de extracción y análisis de lípidos por MS.",
+        "degrees": [
+          "Doctora en Ciencias (UPV/EHU)",
+          "Licenciada en Bioquímica (UPV/EHU)"
+        ],
+        "positions": [
+          "Profesora Titular de Universidad, Dept. Fisiología, UPV/EHU",
+          "Directora de Línea en Lipidómica y Enzimología Hepática, Grupo Lipids & Liver",
+          "Asesora Técnica de la Unidad de Lipidómica SGIker (UPV/EHU)"
+        ],
+        "grants": [
+          "Desarrollo de métodos cualitativos y cuantitativos para lipidómica tisular (SGIker-UPV/EHU).",
+          "Financiación de investigación en Lipidómica por el Departamento de Educación del Gobierno Vasco."
+        ],
+        "publications": [
+          "Quantification of Triacylglycerol Species in Fatty Liver Disease by LC-MS/MS. Metabolomics, 2022.",
+          "Lipid droplets and enzymatic regulations in hepatocytes. Biochimica et Biophysica Acta, 2020."
+        ],
+        "teaching": [
+          "Fisiología Humana (Grados de Medicina y Odontología, UPV/EHU)",
+          "Técnicas Avanzadas en Lipidómica (Posgrado y Máster)"
+        ]
+      },
+      "bio": "Directora de la línea de investigación en Metabolismo Enzimático Lipídico y responsable de desarrollo técnico en la Unidad de Lipidómica de los SGIker UPV/EHU.",
+      "bioHtml": "<p>Directora de la línea de investigación en Metabolismo Enzimático Lipídico y responsable de desarrollo técnico en la Unidad de Lipidómica de los SGIker UPV/EHU.</p>"
+    },
+    {
+      "id": "susana-cristobal",
+      "name": "Dra. Susana Cristobal",
+      "role": "Investigadora Ikerbasque Professor",
+      "category": "Directora de Línea",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/susana_cristobal.jpg",
+      "email": "susana.cristobal@ehu.eus",
+      "office": "Despacho 2.18, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0003-4412-9011",
+      "order": 4,
+      "cv": {
+        "title": "Ikerbasque Research Professor",
+        "researchSummary": "Líder internacional en el estudio del organelo peroxisomal y en la aplicación de la espectrometría de masas para identificar el impacto de contaminantes ambientales (Exposoma) en la salud metabólica humana.",
+        "degrees": [
+          "Doctora en Bioquímica y Biología Molecular",
+          "Postdoctorado en Estocolmo y Uppsala (Suecia)"
+        ],
+        "positions": [
+          "Ikerbasque Research Professor, UPV/EHU",
+          "Directora de la Línea de Proteómica y Exposoma, Grupo Lipids & Liver",
+          "Miembro de la Sociedad Española de Proteómica (SEProt)"
+        ],
+        "grants": [
+          "Plan Nacional de I+D+i en Toxicología Proteómica y Compuestos Disruptores Endocrinos.",
+          "Proyectos Internacionales UE Horizon Europe en Salud Ambiental."
+        ],
+        "publications": [
+          "Environmental Proteomics for MDCs Identification. Environ. Health Perspect., 2022.",
+          "Peroxisomal membrane proteome and lipid alterations. Proteomics, 2021."
+        ],
+        "teaching": [
+          "Proteómica y Espectrometría de Masas (Máster en Biología Molecular y Biomedicina)"
+        ]
+      },
+      "bio": "Investigadora Ikerbasque especialista en Proteómica, Peroxisomas, Toxicología Ambiental y Exposoma metabólico.",
+      "bioHtml": "<p>Investigadora Ikerbasque especialista en Proteómica, Peroxisomas, Toxicología Ambiental y Exposoma metabólico.</p>"
+    },
+    {
+      "id": "andres-valdivieso",
+      "name": "Dr. Andrés Valdivieso López",
+      "role": "Profesor Titular de Universidad",
+      "category": "Investigador Senior",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/andres_valdivieso.jpg",
+      "email": "andres.valdivieso@ehu.eus",
+      "office": "Despacho 2.08, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0002-1144-8890",
+      "order": 5,
+      "cv": {
+        "title": "Profesor Titular de Universidad",
+        "researchSummary": "Experto en hemodinámica hepática, microcirculación sinusoidal y modelos animales de esteatosis y cirrosis hepática.",
+        "degrees": [
+          "Doctor en Medicina (UPV/EHU)",
+          "Licenciado en Medicina y Cirugía"
+        ],
+        "positions": [
+          "Profesor Titular, Departamento de Fisiología, UPV/EHU",
+          "Investigador Senior en Fisiopatología Hepática In Vivo"
+        ],
+        "grants": [
+          "Proyectos de investigación en hemodinámica y microcirculación sinusoidal hepática."
+        ],
+        "publications": [
+          "Microvascular dysfunction in non-alcoholic fatty liver disease. Microvascular Research, 2021."
+        ],
+        "teaching": [
+          "Fisiología Médica (Grado en Medicina)"
+        ]
+      },
+      "bio": "Profesor Titular especialista en fisiología vascular hepática, permeabilidad endotelial e interacción fisiopatológica in vivo.",
+      "bioHtml": "<p>Profesor Titular especialista en fisiología vascular hepática, permeabilidad endotelial e interacción fisiopatológica in vivo.</p>"
+    },
+    {
+      "id": "beatriz-gomez",
+      "name": "Dra. Beatriz Gómez Santos",
+      "role": "Profesora Agregada",
+      "category": "Investigadora Senior",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/beatriz_gomez.jpg",
+      "email": "beatriz.gomez@ehu.eus",
+      "office": "Despacho 2.12, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0002-9988-3412",
+      "order": 6,
+      "cv": {
+        "title": "Profesora Agregada de Universidad",
+        "researchSummary": "Investigación orientada a la caracterización del lipidoma plasmático y celular en modelos nutricionales de obesesidad y MAFLD.",
+        "degrees": [
+          "Doctora en Biología (UPV/EHU)",
+          "Licenciada en Bioquímica"
+        ],
+        "positions": [
+          "Profesora Agregada, Dept. Fisiología, UPV/EHU",
+          "Investigadora Senior, Grupo Lipids & Liver"
+        ],
+        "grants": [
+          "Subvención de investigación del Gobierno Vasco para jóvenes investigadores consolidados."
+        ],
+        "publications": [
+          "Phospholipid Profiling in Steatohepatitis. Journal of Lipid Research, 2023."
+        ],
+        "teaching": [
+          "Fisiología Humana (Grado en Enfermería y Medicina)"
+        ]
+      },
+      "bio": "Investigadora centrada en la señalización lipídica hepatocelular, receptores nucleares y bioenergética mitocondrial en MAFLD.",
+      "bioHtml": "<p>Investigadora centrada en la señalización lipídica hepatocelular, receptores nucleares y bioenergética mitocondrial en MAFLD.</p>"
+    },
+    {
+      "id": "xabier-buque",
+      "name": "Dr. Xabier Buqué García",
+      "role": "Profesor Titular de Universidad",
+      "category": "PDI",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/xabier_buque.jpg",
+      "email": "xabier.buque@ehu.eus",
+      "office": "Despacho 2.11, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0002-3344-5566",
+      "order": 7,
+      "cv": {
+        "title": "Profesor Titular de Universidad",
+        "researchSummary": "Estudio de las rutas metabólicas desreguladas en oncología hepática, con énfasis en el colangiocarcinoma intrahepático y la resistencia a fármacos antineoplásicos.",
+        "degrees": [
+          "Doctor en Biología / Bioquímica (UPV/EHU)",
+          "Licenciado en Bioquímica (UPV/EHU)"
+        ],
+        "positions": [
+          "Profesor Titular, Dept. Fisiología, UPV/EHU",
+          "Investigador Senior, Grupo Lipids & Liver"
+        ],
+        "grants": [
+          "Proyectos de investigación en desregulación metabólica tumoral hepática."
+        ],
+        "publications": [
+          "Targeting Stearoyl-CoA Desaturase 1 in Hepatocellular Carcinoma. Cancers, 2023."
+        ],
+        "teaching": [
+          "Fisiología Humana (Grados en Medicina y Enfermería)"
+        ]
+      },
+      "bio": "Profesor Titular de Universidad especialista en bioenergética tumoral, reprogramación lipídica en colangiocarcinoma y metabolómica.",
+      "bioHtml": "<p>Profesor Titular de Universidad especialista en bioenergética tumoral, reprogramación lipídica en colangiocarcinoma y metabolómica.</p>"
+    },
+    {
+      "id": "mariajose-martinez",
+      "name": "Dra. María José Martínez González",
+      "role": "Profesora Titular de Universidad",
+      "category": "PDI",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/mariajose_martinez.jpg",
+      "email": "mariajose.martinez@ehu.eus",
+      "office": "Despacho 2.09, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0003-2211-9988",
+      "order": 8,
+      "cv": {
+        "title": "Profesora Titular de Universidad",
+        "researchSummary": "Investigación sobre el ensamblaje de lipoproteínas de muy baja densidad (VLDL) y la dinámica de gotas lipídicas en modelos celulares de esteatosis.",
+        "degrees": [
+          "Doctora en Ciencias Biológicas (UPV/EHU)",
+          "Licenciada en Biología"
+        ],
+        "positions": [
+          "Profesora Titular, Dept. Fisiología, UPV/EHU",
+          "Investigadora Senior, Grupo Lipids & Liver"
+        ],
+        "grants": [
+          "Proyectos en transporte lipídico y fisiología celular hepática."
+        ],
+        "publications": [
+          "Lipid droplet dynamics and lipoprotein assembly in hepatocytes. Biochim. Biophys. Acta, 2021."
+        ],
+        "teaching": [
+          "Fisiología Celular y Humana (Grado en Medicina)"
+        ]
+      },
+      "bio": "Profesora Titular especializada en biología celular de hepatocitos, transporte de lipoproteínas y señalización metabólica.",
+      "bioHtml": "<p>Profesora Titular especializada en biología celular de hepatocitos, transporte de lipoproteínas y señalización metabólica.</p>"
+    },
+    {
+      "id": "mariajose-martinez",
+      "name": "Dra. Yolanda Chico",
+      "role": "Profesora Titular de Universidad",
+      "category": "PDI",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/yolanda_chico.jpg",
+      "email": "yolanda.chico@ehu.eus",
+      "office": "Despacho 2.09, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0003-2211-9988",
+      "order": 8,
+      "cv": {
+        "title": "Profesora Titular de Universidad",
+        "researchSummary": "Investigación sobre el ensamblaje de lipoproteínas de muy baja densidad (VLDL) y la dinámica de gotas lipídicas en modelos celulares de esteatosis.",
+        "degrees": [
+          "Doctora en Ciencias Biológicas (UPV/EHU)",
+          "Licenciada en Biología"
+        ],
+        "positions": [
+          "Profesora Titular, Dept. Fisiología, UPV/EHU",
+          "Investigadora Senior, Grupo Lipids & Liver"
+        ],
+        "grants": [
+          "Proyectos en transporte lipídico y fisiología celular hepática."
+        ],
+        "publications": [
+          "Lipid droplet dynamics and lipoprotein assembly in hepatocytes. Biochim. Biophys. Acta, 2021."
+        ],
+        "teaching": [
+          "Fisiología Celular y Humana (Grado en Medicina)"
+        ]
+      },
+      "bio": "Profesora Titular especializada en biología celular de hepatocitos, transporte de lipoproteínas y señalización metabólica.",
+      "bioHtml": "<p>Profesora Titular especializada en biología celular de hepatocitos, transporte de lipoproteínas y señalización metabólica.</p>"
+    },
+    {
+      "id": "yuri-rueda",
+      "name": "Dr Yuri Rueda Estévez",
+      "role": "Profesor Titular de Universidad",
+      "category": "PDI",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/yuri_rueda.jpg",
+      "email": "yuri.rueda@ehu.eus",
+      "office": "Despacho 2.09, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0003-2211-9988",
+      "order": 8,
+      "cv": {
+        "title": "Profesora Titular de Universidad",
+        "degrees": [
+          "Doctor en Ciencias Biológicas (UPV/EHU)",
+          "Licenciada en Bioquímica"
+        ],
+        "positions": [
+          "Profesora Titular, Dept. Fisiología, UPV/EHU",
+          "Investigador Senior, Grupo Lipids & Liver"
+        ],
+        "teaching": [
+          "Giza Fisiologia (Fisiología Humana). 1º del Grado en Fisioterapia",
+          "Medical Biochemistry (Bioquímica Médica). 1º del Grado en Medicina",
+          "Proyecto de Investigación. 3º del Grado en Medicina",
+          "Tecnología Molecular en Biomedicina. Máster en Investigación Biomédica"
+        ]
+      },
+      "bio": "Profesora Titular",
+      "bioHtml": "<p>Profesora Titular</p>"
+    },
+    {
+      "id": "francisco-gonzalez",
+      "name": "Dr. Francisco González Romero",
+      "role": "Investigador Posdoctoral",
+      "category": "Posdoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biocruces",
+      "image": "assets/images/team/asier_izagirre.jpg",
+      "email": "francisco.gonzalezr@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0002-4455-6677",
+      "order": 9,
+      "cv": {
+        "title": "Investigador Posdoctoral",
+        "researchSummary": "Su trabajo investiga el papel de la deficiencia de E2F2 en la reducción de la acumulación lipídica y la atenuación de lesiones precancerosas en hígado graso metabólico.",
+        "degrees": [
+          "Doctor en Biomedicina (UPV/EHU, Mención Internacional 2023)",
+          "Máster en Biología Molecular y Biomedicina (UPV/EHU)",
+          "Licenciado en Bioquímica"
+        ],
+        "positions": [
+          "Investigador Posdoctoral, Grupo Lipids & Liver / IIS Biocruces Bizkaia",
+          "Estancia investigadora posdoctoral en centros internacionales"
+        ],
+        "grants": [
+          "Contrato Posdoctoral de Formación de Personal Investigador."
+        ],
+        "publications": [
+          "E2F2 transcription factor controls hepatic fatty acid desaturation and NASH progression. Journal of Hepatology, 2023."
+        ],
+        "teaching": [
+          "Docencia colaborativa en prácticas de Fisiología Humana (UPV/EHU)"
+        ]
+      },
+      "bio": "Investigador posdoctoral especializado en modelos animales de esteatohepatitis metabólica (MAFLD/NASH) y factores transcripcionales E2F.",
+      "bioHtml": "<p>Investigador posdoctoral especializado en modelos animales de esteatohepatitis metabólica (MAFLD/NASH) y factores transcripcionales E2F.</p>"
+    },
+    {
+      "id": "diego-saenz",
+      "name": "Dr. Diego Sáenz de Urturi",
+      "role": "Investigador Posdoctoral",
+      "category": "Posdoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/jon_izaguirre.jpg",
+      "email": "diego.saenzdeurturi@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0001-8899-7766",
+      "order": 10,
+      "cv": {
+        "title": "Investigador Posdoctoral",
+        "researchSummary": "Evaluación de estrategias de silenciamiento génico mediante oligonucleótidos para modular el contenido de triglicéridos e inflamación en la esteatopatía hepática.",
+        "degrees": [
+          "Doctor en Biomedicina (UPV/EHU, 2021)",
+          "Licenciado en Biotecnología"
+        ],
+        "positions": [
+          "Investigador Posdoctoral, Grupo Lipids & Liver (UPV/EHU)"
+        ],
+        "grants": [
+          "Contrato posdoctoral de investigación biomédica."
+        ],
+        "publications": [
+          "Targeting Methionine Adenosyltransferase 1A in Fatty Liver Disease. Molecular Therapy, 2022."
+        ],
+        "teaching": [
+          "Apoyo docente en Fisiología Humana"
+        ]
+      },
+      "bio": "Investigador posdoctoral centrado en terapia génica, silenciamiento de MAT1A y metabolismo de monocarbonos en la obesidad.",
+      "bioHtml": "<p>Investigador posdoctoral centrado en terapia génica, silenciamiento de MAT1A y metabolismo de monocarbonos en la obesidad.</p>"
+    },
+    {
+      "id": "maider-apodaka",
+      "name": "Maider Apodaka Biguri",
+      "role": "Investigadora Predoctoral (FPU)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/maider_apodaka.jpg",
+      "email": "maider.apodaka@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0003-1122-3344",
+      "order": 11,
+      "cv": {
+        "title": "Investigadora Predoctoral (Contrato FPU)",
+        "researchSummary": "Desarrollo de la Tesis Doctoral sobre la regulación del factor E2F2 sobre la síntesis ectópica de triglicéridos y función mitocondrial en hepatocitos.",
+        "degrees": [
+          "Máster en Biología Molecular y Biomedicina (UPV/EHU)",
+          "Graduada en Bioquímica y Biología Molecular (UPV/EHU)"
+        ],
+        "positions": [
+          "Investigadora Predoctoral FPU, Ministerio de Ciencia e Innovación, UPV/EHU"
+        ],
+        "grants": [
+          "Ayuda FPU para la Formación de Profesorado Universitario (MICINN)."
+        ],
+        "publications": [
+          "Lipidomic Remodeling in Metabolic Dysfunction-Associated Steatotic Liver Disease. Frontiers in Physiology, 2024."
+        ],
+        "teaching": [
+          "Prácticas de Fisiología Humana (Grado en Medicina)"
+        ]
+      },
+      "bio": "Investigadora predoctoral en formación (Beca FPU). Estudio del factor E2F2 y la remodelación lipídica en la progresión de la enfermedad hepática metabólica.",
+      "bioHtml": "<p>Investigadora predoctoral en formación (Beca FPU). Estudio del factor E2F2 y la remodelación lipídica en la progresión de la enfermedad hepática metabólica.</p>"
+    },
+    {
+      "id": "enara-markaide",
+      "name": "Enara Markaide Garcia",
+      "role": "Investigadora Predoctoral (Gobierno Vasco)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología, UPV/EHU / IIS Biocruces",
+      "image": "assets/images/team/placeholder.jpg",
+      "email": "enara.markaide@ehu.eus",
+      "office": "Laboratorio 2.16, Leioa / Biocruces Bizkaia",
+      "orcid": "0000-0002-9911-2233",
+      "order": 12,
+      "cv": {
+        "title": "Investigadora Predoctoral",
+        "researchSummary": "Investigación sobre la reprogramación glucolítica y biosíntesis de lípidos en colangiocitos císticos como diana farmacológica no quirúrgica.",
+        "degrees": [
+          "Máster en Biomedicina Evaluativa",
+          "Graduada en Biología (UPV/EHU)"
+        ],
+        "positions": [
+          "Investigadora Predoctoral, Beca del Departamento de Educación del Gobierno Vasco"
+        ],
+        "grants": [
+          "Beca Predoctoral del Gobierno Vasco (2024-2027)."
+        ],
+        "publications": [
+          "Bioenergetic Alterations in Polycystic Liver Disease. Liver International, 2024."
+        ],
+        "teaching": [
+          "Tutorización de prácticas de laboratorio"
+        ]
+      },
+      "bio": "Investigadora predoctoral en formación sobre metabolismo energético y nuevas estrategias terapéuticas en la enfermedad hepática poliquística.",
+      "bioHtml": "<p>Investigadora predoctoral en formación sobre metabolismo energético y nuevas estrategias terapéuticas en la enfermedad hepática poliquística.</p>"
+    },
+    {
+      "id": "mikel-ruiz-de-gauna",
+      "name": "Mikel Ruiz de Gauna Madariaga",
+      "role": "Investigador Predoctoral (FPI)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/asier_izagirre.jpg",
+      "email": "mikel.ruizdegauna@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0001-4433-2211",
+      "order": 13,
+      "cv": {
+        "title": "Investigador Predoctoral",
+        "researchSummary": "Caracterización de las rutas de insaturación de ácidos grasos y evaluación de inhibidores enzimáticos en organoides tumorales.",
+        "degrees": [
+          "Máster en Biología Molecular y Biomedicina",
+          "Graduado en Biotecnología"
+        ],
+        "positions": [
+          "Investigador Predoctoral FPI, Plan Nacional de I+D+i"
+        ],
+        "grants": [
+          "Contrato Predoctoral FPI (MICINN)."
+        ],
+        "publications": [
+          "Mass Spectrometry Profiling of Intrahepatic Cholangiocarcinoma Organoids. Cancers, 2024."
+        ],
+        "teaching": [
+          "Colaboración en seminarios de Fisiología"
+        ]
+      },
+      "bio": "Investigador predoctoral en formación (Beca FPI). Análisis del perfil lipidómico en biopsias y organoides de colangiocarcinoma por UHPLC-MS/MS.",
+      "bioHtml": "<p>Investigador predoctoral en formación (Beca FPI). Análisis del perfil lipidómico en biopsias y organoides de colangiocarcinoma por UHPLC-MS/MS.</p>"
+    },
+    {
+      "id": "ane-nieva",
+      "name": "Ane Nieva Zuluaga",
+      "role": "Investigadora Predoctoral (UPV/EHU)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/ane_nieva.jpeg",
+      "email": "ane.nieva@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0000-0003-8877-6655",
+      "order": 14,
+      "cv": {
+        "title": "Investigadora Predoctoral",
+        "researchSummary": "Estudio del microambiente hepático esteatósico y su acondicionamiento endotelial para el prendimiento de metástasis tumorales.",
+        "degrees": [
+          "Máster en Investigación Biomédica",
+          "Graduada en Farmacia (UPV/EHU)"
+        ],
+        "positions": [
+          "Investigadora Predoctoral, Convocatoria Predoctoral UPV/EHU"
+        ],
+        "grants": [
+          "Beca Predoctoral UPV/EHU."
+        ],
+        "publications": [
+          "Pre-metastatic Niche Conditioning in Fatty Liver. Cancer Research, 2023."
+        ],
+        "teaching": [
+          "Prácticas de laboratorio en Fisiología"
+        ]
+      },
+      "bio": "Investigadora predoctoral estudiando la implicación de la obesidad y la lipotoxicidad hepática en el desarrollo del nicho pre-metastásico de cáncer de colon.",
+      "bioHtml": "<p>Investigadora predoctoral estudiando la implicación de la obesidad y la lipotoxicidad hepática en el desarrollo del nicho pre-metastásico de cáncer de colon.</p>"
+    },
+    {
+      "id": "idoia-fernandez",
+      "name": "Idoia Fernández Puertas",
+      "role": "Investigadora Predoctoral (Biocruces)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología / IIS Biocruces Bizkaia",
+      "image": "assets/images/team/placeholder.jpg",
+      "email": "idoia.fernandez@ehu.eus",
+      "office": "Laboratorio Biocruces Bizkaia / Leioa",
+      "orcid": "0000-0002-7788-9900",
+      "order": 15,
+      "cv": {
+        "title": "Investigadora Predoctoral",
+        "researchSummary": "Análisis del estrés de replicación y la integridad genómica en el mantenimiento de la función del retículo endoplásmico hepatocelular.",
+        "degrees": [
+          "Máster en Biología Molecular y Biomedicina",
+          "Graduada en Bioquímica"
+        ],
+        "positions": [
+          "Investigadora Predoctoral, Instituto Biocruces Bizkaia"
+        ],
+        "grants": [
+          "Beca de investigación predoctoral IIS Biocruces Bizkaia."
+        ],
+        "publications": [
+          "DNA Damage Response and Endoplasmic Reticulum Stress in Hepatocytes. DNA Repair, 2024."
+        ],
+        "teaching": [
+          "Apoyo docente práctico"
+        ]
+      },
+      "bio": "Investigadora predoctoral trabajando en la respuesta al daño al ADN, senescencia y retículo endoplásmico en la esteatosis hepática.",
+      "bioHtml": "<p>Investigadora predoctoral trabajando en la respuesta al daño al ADN, senescencia y retículo endoplásmico en la esteatosis hepática.</p>"
+    },
+    {
+      "id": "natalia-sainz",
+      "name": "Natalia Sainz",
+      "role": "Investigadora Predoctoral (FPU)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología / IIS Biocruces Bizkaia",
+      "image": "assets/images/team/natalia_sainz.jpeg",
+      "email": "natalia.sainz@ehu.eus",
+      "office": "Laboratorio 2.16, Leioa",
+      "orcid": "0000-0001-9988-7766",
+      "order": 16,
+      "cv": {
+        "title": "Investigadora Predoctoral",
+        "researchSummary": "Aplicación de lipidómica y metabolómica a nivel de célula única (*single-cell*) para subclasificar nódulos tumorales hepáticos.",
+        "degrees": [
+          "Máster en Biomedicina",
+          "Graduada en Biología"
+        ],
+        "positions": [
+          "Investigadora Predoctoral FPU (MICINN)"
+        ],
+        "grants": [
+          "Ayuda Predoctoral FPU (2024-2027)."
+        ],
+        "publications": [
+          "Single-Cell Metabolomics in Hepatocellular Carcinoma. Analytical Chemistry, 2024."
+        ],
+        "teaching": [
+          "Colaboración docente en Fisiología Humana"
+        ]
+      },
+      "bio": "Investigadora predoctoral enfocada en la heterogeneidad metabólica unicelular en carcinoma hepatocelular y el descubrimiento de biomarcadores.",
+      "bioHtml": "<p>Investigadora predoctoral enfocada en la heterogeneidad metabólica unicelular en carcinoma hepatocelular y el descubrimiento de biomarcadores.</p>"
+    },
+    {
+      "id": "paul-gomez",
+      "name": "Paul Gómez Jáuregui",
+      "role": "Investigador Predoctoral (UPV/EHU)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/placeholder.jpg",
+      "email": "paul.gomez@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "order": 17,
+      "cv": {
+        "title": "Investigador Predoctoral",
+        "researchSummary": "Bases moleculares y fisiopatológicas en la progresión de la esteatosis hepática metabólica (MASLD/MASH), estudio del factor de transcripción E2F2 y regulación del metabolismo hepatobiliar por microARNs (miR-34a-5p).",
+        "degrees": [
+          "Máster en Investigación Biomédica",
+          "Graduado en Bioquímica y Biología Molecular (UPV/EHU)"
+        ],
+        "positions": [
+          "Investigador Predoctoral en Formación, Grupo Lipids & Liver, Departamento de Fisiología (UPV/EHU)"
+        ],
+        "grants": [
+          "Contrato Predoctoral de Formación de Personal Investigador (FPI / UPV/EHU)"
+        ],
+        "publications": [
+          "E2F2 transcription factor promotes a cholestatic MASH phenotype by regulating hepatobiliary metabolism through miR-34a-5p. Hepatology, 2026.",
+          "Implication of cell cycle regulators and PPAR agonists in hepatic lipid homeostasis."
+        ],
+        "teaching": [
+          "Apoyo docente en prácticas de laboratorio en Fisiología Humana (UPV/EHU)"
+        ]
+      },
+      "bio": "Investigador predoctoral en el Grupo Lipids & Liver (UPV/EHU). Su labor investigadora se centra en desentrañar las bases moleculares que gobiernan el avance de la esteatosis hepática metabólica (MASLD/MASH), investigando específicamente el papel del factor de transcripción E2F2 y el microARN miR-34a-5p en el metabolismo de lípidos y ácidos biliares, así como su potencial como dianas terapéuticas y biomarcadores pronósticos.",
+      "bioHtml": "<p>Investigador predoctoral en el Grupo Lipids & Liver (UPV/EHU). Su labor investigadora se centra en desentrañar las bases moleculares que gobiernan el avance de la esteatosis hepática metabólica (MASLD/MASH), investigando específicamente el papel del factor de transcripción E2F2 y el microARN miR-34a-5p en el metabolismo de lípidos y ácidos biliares, así como su potencial como dianas terapéuticas y biomarcadores pronósticos.</p>"
+    },
+    {
+      "id": "ane-ortiz",
+      "name": "Ane Ortiz Palma",
+      "role": "Investigadora Predoctoral (UPV/EHU)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/placeholder.jpg",
+      "email": "ane.ortiz@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "order": 18,
+      "cv": {
+        "title": "Investigadora Predoctoral",
+        "researchSummary": "Alteraciones del metabolismo lipídico hepático en esteatohepatitis asociada a disfunción metabólica (MASH), vesículas extracelulares en la comunicación intercelular y regulación génica mediada por E2F2.",
+        "degrees": [
+          "Máster en Investigación Biomédica (UPV/EHU)",
+          "Graduada en Biotecnología / Bioquímica (UPV/EHU)"
+        ],
+        "positions": [
+          "Investigadora Predoctoral, Grupo Lipids & Liver, Departamento de Fisiología (UPV/EHU)"
+        ],
+        "grants": [
+          "Contrato Predoctoral de Formación de Investigadores (Gobierno Vasco / UPV/EHU)"
+        ],
+        "publications": [
+          "E2F2 transcription factor promotes a cholestatic MASH phenotype by regulating hepatobiliary metabolism through miR-34a-5p. Hepatology, 2026.",
+          "Extracellular vesicles and metabolic inter-organ crosstalk in steatotic liver disease."
+        ],
+        "teaching": [
+          "Apoyo en prácticas de laboratorio en el Grado de Medicina y Enfermería (UPV/EHU)"
+        ]
+      },
+      "bio": "Investigadora predoctoral en el Grupo Lipids & Liver de la UPV/EHU. Desarrolla su actividad científica investigando las alteraciones del metabolismo lipídico en el hígado esteatósico, el papel de las vesículas extracelulares en la comunicación intercelular hepática y los mecanismos de regulación génica mediados por factores de transcripción en la transición entre esteatosis simple, esteatohepatitis y carcinogénesis.",
+      "bioHtml": "<p>Investigadora predoctoral en el Grupo Lipids & Liver de la UPV/EHU. Desarrolla su actividad científica investigando las alteraciones del metabolismo lipídico en el hígado esteatósico, el papel de las vesículas extracelulares en la comunicación intercelular hepática y los mecanismos de regulación génica mediados por factores de transcripción en la transición entre esteatosis simple, esteatohepatitis y carcinogénesis.</p>"
+    },
+    {
+      "id": "kendall-alfaro",
+      "name": "Kendall Alonso Alfaro Jiménez",
+      "role": "Investigador Predoctoral (UPV/EHU)",
+      "category": "Predoctoral",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/placeholder.jpg",
+      "email": "kendallalonso.alfaro@ehu.eus",
+      "office": "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa",
+      "order": 19,
+      "cv": {
+        "title": "Investigador Predoctoral",
+        "researchSummary": "Fisiopatología hepática, regulación transcripcional de la homeostasis mitocondrial y lipídica en MASLD/MASH, y mecanismos oncogénicos en colangiocarcinoma.",
+        "degrees": [
+          "Máster en Investigación Biomédica",
+          "Graduado en Ciencias Biomédicas"
+        ],
+        "positions": [
+          "Investigador Predoctoral, Grupo Lipids & Liver, Departamento de Fisiología (UPV/EHU)",
+          "Miembro de la Red Europea COST Action CA22125 (Precision-BTC)"
+        ],
+        "grants": [
+          "Contrato Predoctoral de Formación de Personal Investigador (UPV/EHU)"
+        ],
+        "publications": [
+          "E2F2 transcription factor promotes a cholestatic MASH phenotype by regulating hepatobiliary metabolism through miR-34a-5p. Hepatology, 2026.",
+          "Mitochondrial metabolic alterations and transcriptional networks in biliary tract cancer."
+        ],
+        "teaching": [
+          "Apoyo docente en prácticas de laboratorio de Fisiología (UPV/EHU)"
+        ]
+      },
+      "bio": "Investigador predoctoral en el Grupo Lipids & Liver de la UPV/EHU y colaborador en la red europea COST Action Precision-BTC. Su investigación se enfoca en desentrañar las alteraciones metabólicas mitocondriales y los circuitos transcripcionales dependientes de E2F1 y E2F2 en el hígado graso metabólico, la fibrosis hepática y el colangiocarcinoma, con el objetivo de identificar biomarcadores diagnósticos y dianas terapéuticas innovadoras.",
+      "bioHtml": "<p>Investigador predoctoral en el Grupo Lipids & Liver de la UPV/EHU y colaborador en la red europea COST Action Precision-BTC. Su investigación se enfoca en desentrañar las alteraciones metabólicas mitocondriales y los circuitos transcripcionales dependientes de E2F1 y E2F2 en el hígado graso metabólico, la fibrosis hepática y el colangiocarcinoma, con el objetivo de identificar biomarcadores diagnósticos y dianas terapéuticas innovadoras.</p>"
+    },
+    {
+      "id": "jose-antonio-lopez",
+      "name": "Jose Antonio López Gómez",
+      "role": "Técnico de Laboratorio",
+      "category": "Técnico",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería",
+      "image": "assets/images/team/placeholder.jpg",
+      "office": "Despacho 1.Q.11, Facultad de Medicina y Enfermería, Leioa",
+      "orcid": "0009-0000-7870-0929",
+      "order": 20,
+      "cv": {
+        "title": "Técnico especialista de Laboratorio (Sanitario/Animalario)",
+        "degrees": [
+          "Licenciado en Ciencias Químicas",
+          "Técnico Superior en Prevencion de Riesgos Laborales",
+          "Técnico Superior en Laboratorio Clínico y Biomédico"
+        ],
+        "positions": [
+          "Oficial de Laboratorio, Escuela Enfermería - UPV/EHU. Donostia (2004-2007)",
+          "Técncio Especialista de Laboratorio. Dpto. Fisiología - UPV/EHU. Leioa (2007- actualidad)"
+        ],
+        "grants": [],
+        "publications": [
+          "Adaptations of lipid metabolism in low-grade clear cell renal cell carcinoma are linked to cholesteryl ester accumulation. 2025"
+        ],
+        "teaching": []
+      },
+      "bio": "Técnico de laboratorio del laboratorio de Bioquímica. Dpto. Fisiología. UPV/EHU",
+      "bioHtml": "<p>Técnico de laboratorio del laboratorio de Bioquímica. Dpto. Fisiología. UPV/EHU</p>"
+    },
+    {
+      "id": "carlos-ceniceros",
+      "name": "Carlos Ceniceros Rodríguez",
+      "role": "Técnico de Laboratorio",
+      "category": "Técnico",
+      "department": "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU",
+      "image": "assets/images/team/placeholder.jpg",
+      "order": 21,
+      "cv": {
+        "title": "Técnico de Laboratorio",
+        "degrees": [
+          "Licenciado en Ciencias Químicas"
+        ],
+        "positions": [],
+        "grants": [],
+        "publications": [],
+        "teaching": []
+      },
+      "bio": "Técnico de laboratorio del Grupo de Investigación Lipids & Liver, Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU.",
+      "bioHtml": "<p>Técnico de laboratorio del Grupo de Investigación Lipids & Liver, Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU.</p>"
+    }
+  ],
+  "theses": {
+    "ongoing": [
+      {
+        "id": "tesis-2",
+        "author": "Enara Markaide Garcia",
+        "status": "ongoing",
+        "title": "Papel del metabolismo energético en la patogenia de la enfermedad hepática poliquística: nueva estrategia terapéutica",
+        "institution": "UPV/EHU - IIS Biocruces Bizkaia",
+        "year": "En desarrollo (2024-2027)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dra. Beatriz Gómez Santos"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Enfermedad Poliquística Hepática",
+          "Metabolismo Energético",
+          "Glucólisis",
+          "Dianas Terapéuticas"
+        ],
+        "order": 2,
+        "abstract": "La enfermedad hepática poliquística (PLD) se caracteriza por la proliferación descontrolada de colangiocitos císticos y la alteración de la bioenergética celular. Esta investigación explora la hipótesis de que los quistes hepáticos reprograman su metabolismo hacia un perfil dependiente de la glucólisis y la biosíntesis de lípidos. La tesis evalúa la eficacia de moduladores metabólicos como nueva alternativa farmacológica no quirúrgica.",
+        "abstractHtml": "<p>La enfermedad hepática poliquística (PLD) se caracteriza por la proliferación descontrolada de colangiocitos císticos y la alteración de la bioenergética celular. Esta investigación explora la hipótesis de que los quistes hepáticos reprograman su metabolismo hacia un perfil dependiente de la glucólisis y la biosíntesis de lípidos. La tesis evalúa la eficacia de moduladores metabólicos como nueva alternativa farmacológica no quirúrgica.</p>"
+      },
+      {
+        "id": "tesis-6",
+        "author": "Natalia Sainz",
+        "status": "ongoing",
+        "title": "Heterogeneidad metabólica en carcinoma hepatocelular: un papel para el factor de transcripción E2F2",
+        "institution": "UPV/EHU - Instituto Biocruces Bizkaia",
+        "year": "En desarrollo (2024-2027)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Carcinoma Hepatocelular",
+          "Heterogeneidad Tumoral",
+          "Single-Cell",
+          "E2F2",
+          "Biomarcadores"
+        ],
+        "order": 6,
+        "abstract": "El carcinoma hepatocelular manifiesta una elevada heterogeneidad intratumoral. Mediante aproximaciones de metabolómica y lipidómica a nivel unicelular, esta tesis mapea las subpoblaciones celulares hepatomatosas dependientes de E2F2 para el diseño de terapias personalizadas.",
+        "abstractHtml": "<p>El carcinoma hepatocelular manifiesta una elevada heterogeneidad intratumoral. Mediante aproximaciones de metabolómica y lipidómica a nivel unicelular, esta tesis mapea las subpoblaciones celulares hepatomatosas dependientes de E2F2 para el diseño de terapias personalizadas.</p>"
+      },
+      {
+        "id": "tesis-1",
+        "author": "Maider Apodaka Biguri",
+        "status": "ongoing",
+        "title": "Entorno lipídico y progresión de la enfermedad hepática: un papel metabólico para el factor de transcripción E2F2",
+        "institution": "UPV/EHU - Departamento de Fisiología",
+        "year": "En desarrollo (2023-2026)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dr. Igotz Delgado Balzategui"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "E2F2",
+          "Metabolismo Lipídico",
+          "MAFLD",
+          "Fibrosis Hepática",
+          "Lipidómica"
+        ],
+        "order": 1,
+        "abstract": "La Esteatosis Hepática Metabólica (MAFLD) progresa desde hepatoesteatosis simple hacia esteatohepatitis y cirrosis mediante complejos cambios en la remodelación lipídica celular. La presente tesis doctoral evalúa el papel regulador del factor de transcripción E2F2 sobre la síntesis ectópica de triglicéridos y la función mitocondrial en hepatocitos sometidos a sobrecarga lipídica. Los resultados preliminares muestran que la modulación de E2F2 altera la composición de fosfolípidos de membrana y previene el estrés oxidativo tisular.",
+        "abstractHtml": "<p>La Esteatosis Hepática Metabólica (MAFLD) progresa desde hepatoesteatosis simple hacia esteatohepatitis y cirrosis mediante complejos cambios en la remodelación lipídica celular. La presente tesis doctoral evalúa el papel regulador del factor de transcripción E2F2 sobre la síntesis ectópica de triglicéridos y la función mitocondrial en hepatocitos sometidos a sobrecarga lipídica. Los resultados preliminares muestran que la modulación de E2F2 altera la composición de fosfolípidos de membrana y previene el estrés oxidativo tisular.</p>"
+      },
+      {
+        "id": "tesis-3",
+        "author": "Mikel Ruiz de Gauna Madariaga",
+        "status": "ongoing",
+        "title": "Desregulación metabólica en colangiocarcinoma: en busca de nuevas dianas terapéuticas",
+        "institution": "UPV/EHU - Facultad de Medicina y Enfermería",
+        "year": "En desarrollo (2023-2026)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dr. Xabier Buqué García"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Colangiocarcinoma",
+          "Reprogramación Lipídica",
+          "SCD1",
+          "Espectrometría de Masas"
+        ],
+        "order": 3,
+        "abstract": "El colangiocarcinoma intrahepático (iCCA) es un adenocarcinoma agresivo con opciones terapéuticas limitadas. En esta tesis doctoral se analiza el perfil lipidómico tisular de biopsias de iCCA mediante espectrometría de masas (UHPLC-MS/MS). Se investigan las rutas desreguladas de insaturación de ácidos grasos y el potencial de inhibidores metabólicos en organoides de colangiocarcinoma.",
+        "abstractHtml": "<p>El colangiocarcinoma intrahepático (iCCA) es un adenocarcinoma agresivo con opciones terapéuticas limitadas. En esta tesis doctoral se analiza el perfil lipidómico tisular de biopsias de iCCA mediante espectrometría de masas (UHPLC-MS/MS). Se investigan las rutas desreguladas de insaturación de ácidos grasos y el potencial de inhibidores metabólicos en organoides de colangiocarcinoma.</p>"
+      },
+      {
+        "id": "tesis-5",
+        "author": "Idoia Fernández Puertas",
+        "status": "ongoing",
+        "title": "Papel del factor de transcripción E2F2 en la modulación de la respuesta al daño al DNA en la progresión de la enfermedad hepática metabólica y dislipemias asociadas",
+        "institution": "UPV/EHU - Facultad de Medicina y Enfermería",
+        "year": "En desarrollo (2023-2026)",
+        "badge": "En Curso",
+        "directors": [
+          "Dr. Igotz Delgado Balzategui",
+          "Dra. Yolanda Chico"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Daño al ADN",
+          "E2F2",
+          "Dislipemia",
+          "Estrés Oxidativo",
+          "Hepatocitos"
+        ],
+        "order": 5,
+        "abstract": "Estudio integrativo que relaciona el estrés replicativo y el daño al genoma hepatocelular con las desregulaciones del metabolismo lipídico. El trabajo indaga la función de E2F2 en la senescencia hepática y el mantenimiento del retículo endoplásmico.",
+        "abstractHtml": "<p>Estudio integrativo que relaciona el estrés replicativo y el daño al genoma hepatocelular con las desregulaciones del metabolismo lipídico. El trabajo indaga la función de E2F2 en la senescencia hepática y el mantenimiento del retículo endoplásmico.</p>"
+      },
+      {
+        "id": "tesis-4",
+        "author": "Ane Nieva Zuluaga",
+        "status": "ongoing",
+        "title": "Obesidad y desarrollo de metástasis hepáticas de cáncer de colon: implicación del factor de transcripción E2F2",
+        "institution": "UPV/EHU - Departamento de Fisiología",
+        "year": "En desarrollo (2022-2025)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dr. Igotz Delgado Balzategui"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Metástasis Hepática",
+          "Cáncer Colorrectal",
+          "Obesidad",
+          "Nicho Pre-metastásico",
+          "E2F2"
+        ],
+        "order": 4,
+        "abstract": "El tejido hepático graso derivado de la obesidad crea un microambiente inflamatorio y lipotóxico que favorece el prendimiento de células tumorales metastásicas procedentes del colon. Esta investigación examina el rol del factor transcripcional E2F2 en el acondicionamiento del nicho pre-metastásico hepático y la colonización endotelial sinusoidal.",
+        "abstractHtml": "<p>El tejido hepático graso derivado de la obesidad crea un microambiente inflamatorio y lipotóxico que favorece el prendimiento de células tumorales metastásicas procedentes del colon. Esta investigación examina el rol del factor transcripcional E2F2 en el acondicionamiento del nicho pre-metastásico hepático y la colonización endotelial sinusoidal.</p>"
+      }
+    ],
+    "completed": [
+      {
+        "id": "tesis-7",
+        "author": "Dr. Francisco González Romero",
+        "status": "completed",
+        "title": "Obesidad y Enfermedad Hepática: papel del factor de transcripción E2F2 en la progresión de hígado graso a hepatocarcinoma",
+        "institution": "UPV/EHU - Departamento de Fisiología",
+        "year": "2023",
+        "badge": "Terminada (2023)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina (Mención Internacional)",
+        "keywords": [
+          "E2F2",
+          "MAFLD",
+          "Hepatocarcinoma",
+          "Metabolismo Triglicéridos"
+        ],
+        "order": 7,
+        "abstract": "Tesis doctoral que demostró por primera vez cómo la deficiencia del factor transcripcional E2F2 atenúa la acumulación lipídica y reduce la incidencia de lesiones precancerosas en modelos animales de esteatohepatitis metabólica (NASH) impulsados por dietas hipercalóricas.",
+        "abstractHtml": "<p>Tesis doctoral que demostró por primera vez cómo la deficiencia del factor transcripcional E2F2 atenúa la acumulación lipídica y reduce la incidencia de lesiones precancerosas en modelos animales de esteatohepatitis metabólica (NASH) impulsados por dietas hipercalóricas.</p>"
+      },
+      {
+        "id": "tesis-8",
+        "author": "Dra. Teresa Caro Ordieres",
+        "status": "completed",
+        "title": "Desarrollo de nuevos medicamentos para el tratamiento de complicaciones asociadas al síndrome metabólico. Nuevas aplicaciones terapéuticas de un flavonoide y un derivado de la vitamina D",
+        "institution": "UPV/EHU - Facultad de Medicina y Enfermería",
+        "year": "2022",
+        "badge": "Terminada (2022)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Flavonoides",
+          "Vitamina D",
+          "Síndrome Metabólico",
+          "Farmacología Hepática"
+        ],
+        "order": 8,
+        "abstract": "Evaluación farmacológica de principios activos polifenólicos y derivados de secosteroides sobre la secreción de VLDL y la sensibilidad a la insulina en hepatocitos primarios.",
+        "abstractHtml": "<p>Evaluación farmacológica de principios activos polifenólicos y derivados de secosteroides sobre la secreción de VLDL y la sensibilidad a la insulina en hepatocitos primarios.</p>"
+      },
+      {
+        "id": "tesis-9",
+        "author": "Dra. Daniela Constanza Mestre Congregado",
+        "status": "completed",
+        "title": "Involvement of transcription factors E2F1 and E2F2 in the development of obesity-related hepatocarcinoma",
+        "institution": "UPV/EHU",
+        "year": "2021",
+        "badge": "Terminada (2021)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "E2F1",
+          "E2F2",
+          "HCC",
+          "Lipotoxicidad"
+        ],
+        "order": 9,
+        "abstract": "Análisis comparativo entre los factores E2F1 y E2F2 en el acoplamiento entre proliferación celular y síntesis de lipoproteínas de muy baja densidad (VLDL) en nódulos de hepatocarcinoma.",
+        "abstractHtml": "<p>Análisis comparativo entre los factores E2F1 y E2F2 en el acoplamiento entre proliferación celular y síntesis de lipoproteínas de muy baja densidad (VLDL) en nódulos de hepatocarcinoma.</p>"
+      },
+      {
+        "id": "tesis-10",
+        "author": "Dr. Diego Sáenz de Urturi Indart",
+        "status": "completed",
+        "title": "Targeting Methionine adenosyltransferase 1 alpha gene to treat obesity and the associated comorbidities",
+        "institution": "UPV/EHU",
+        "year": "2021",
+        "badge": "Terminada (2021)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "MAT1A",
+          "Metionina",
+          "Obesidad",
+          "Metabolismo Lipídico"
+        ],
+        "order": 10,
+        "abstract": "Estudio de la silenciamiento génico dirigida a MAT1A como estrategia terapéutica para la modulacion del contenido de triglicéridos e inflamación en modelos de esteatopatía.",
+        "abstractHtml": "<p>Estudio de la silenciamiento génico dirigida a MAT1A como estrategia terapéutica para la modulacion del contenido de triglicéridos e inflamación en modelos de esteatopatía.</p>"
+      },
+      {
+        "id": "tesis-11",
+        "author": "Dr. Jorge Simón Espinosa",
+        "status": "completed",
+        "title": "Targeting metabolism for resolving non-alcoholic steatohepatitis",
+        "institution": "UPV/EHU",
+        "year": "2020",
+        "badge": "Terminada (2020)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "NASH",
+          "Targeting Metabólico",
+          "Biomarcadores",
+          "Lipidómica"
+        ],
+        "order": 11,
+        "abstract": "Caracterización de alteraciones metabólicas clave en la transición de esteatosis a esteatohepatitis y evaluación preclínica de candidatos terapéuticos en NASH.",
+        "abstractHtml": "<p>Caracterización de alteraciones metabólicas clave en la transición de esteatosis a esteatohepatitis y evaluación preclínica de candidatos terapéuticos en NASH.</p>"
+      },
+      {
+        "id": "tesis-12",
+        "author": "Dra. Beatriz Gómez Santos",
+        "status": "completed",
+        "title": "Osteopontin role in lipid metabolism: involvement in age-related hepatosteatosis",
+        "institution": "UPV/EHU",
+        "year": "2019",
+        "badge": "Terminada (2019)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Osteopontina",
+          "Envejecimiento",
+          "Esteatosis Hepática"
+        ],
+        "order": 12,
+        "abstract": "Investigación sobre el papel proinflamatorio y regulador de la citoquina osteopontina en la acumulación de gotas lipídicas relacionada con la edad.",
+        "abstractHtml": "<p>Investigación sobre el papel proinflamatorio y regulador de la citoquina osteopontina en la acumulación de gotas lipídicas relacionada con la edad.</p>"
+      },
+      {
+        "id": "tesis-13",
+        "author": "Dra. Hiart Navarro Imaz",
+        "status": "completed",
+        "title": "The effects of SND1 overexpression on hepatoma cells: lipid metabolism and tumor development",
+        "institution": "UPV/EHU",
+        "year": "2018",
+        "badge": "Terminada (2018)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "SND1",
+          "Hepatoma",
+          "Lipid Metabolismo"
+        ],
+        "order": 13,
+        "abstract": "Demostración del papel del coactivador transcripcional SND1 en el estímulo de la lipogénesis de novo y la supervivencia celular en hepatocarcinoma.",
+        "abstractHtml": "<p>Demostración del papel del coactivador transcripcional SND1 en el estímulo de la lipogénesis de novo y la supervivencia celular en hepatocarcinoma.</p>"
+      },
+      {
+        "id": "tesis-14",
+        "author": "Dr. Pablo Fernández Tussy",
+        "status": "completed",
+        "title": "MicroRNAs in liver disease",
+        "institution": "UPV/EHU",
+        "year": "2018",
+        "badge": "Terminada (2018)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "miRNAs",
+          "Enfermedades Hepáticas",
+          "Regulación Postranscripcional"
+        ],
+        "order": 14,
+        "abstract": "Identificación de firmas de microRNAs circulantes como reguladores del aclaramiento hepático de lípidos.",
+        "abstractHtml": "<p>Identificación de firmas de microRNAs circulantes como reguladores del aclaramiento hepático de lípidos.</p>"
+      },
+      {
+        "id": "tesis-15",
+        "author": "Dra. Larraitz Fernández Ares",
+        "status": "completed",
+        "title": "Papel de la ácido graso translocasa CD36 en la homeostasis de retículo endoplásmico hepático",
+        "institution": "UPV/EHU",
+        "year": "2017",
+        "badge": "Terminada (2017)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "CD36",
+          "Retículo Endoplásmico",
+          "Captación de Ácidos Grasos"
+        ],
+        "order": 15,
+        "abstract": "Estudio de la translocasa CD36 y su acoplamiento con la respuesta a proteínas mal plegadas (UPR) en hepatocitos cargados con palmitato.",
+        "abstractHtml": "<p>Estudio de la translocasa CD36 y su acoplamiento con la respuesta a proteínas mal plegadas (UPR) en hepatocitos cargados con palmitato.</p>"
+      }
+    ],
+    "all": [
+      {
+        "id": "tesis-2",
+        "author": "Enara Markaide Garcia",
+        "status": "ongoing",
+        "title": "Papel del metabolismo energético en la patogenia de la enfermedad hepática poliquística: nueva estrategia terapéutica",
+        "institution": "UPV/EHU - IIS Biocruces Bizkaia",
+        "year": "En desarrollo (2024-2027)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dra. Beatriz Gómez Santos"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Enfermedad Poliquística Hepática",
+          "Metabolismo Energético",
+          "Glucólisis",
+          "Dianas Terapéuticas"
+        ],
+        "order": 2,
+        "abstract": "La enfermedad hepática poliquística (PLD) se caracteriza por la proliferación descontrolada de colangiocitos císticos y la alteración de la bioenergética celular. Esta investigación explora la hipótesis de que los quistes hepáticos reprograman su metabolismo hacia un perfil dependiente de la glucólisis y la biosíntesis de lípidos. La tesis evalúa la eficacia de moduladores metabólicos como nueva alternativa farmacológica no quirúrgica.",
+        "abstractHtml": "<p>La enfermedad hepática poliquística (PLD) se caracteriza por la proliferación descontrolada de colangiocitos císticos y la alteración de la bioenergética celular. Esta investigación explora la hipótesis de que los quistes hepáticos reprograman su metabolismo hacia un perfil dependiente de la glucólisis y la biosíntesis de lípidos. La tesis evalúa la eficacia de moduladores metabólicos como nueva alternativa farmacológica no quirúrgica.</p>"
+      },
+      {
+        "id": "tesis-6",
+        "author": "Natalia Sainz",
+        "status": "ongoing",
+        "title": "Heterogeneidad metabólica en carcinoma hepatocelular: un papel para el factor de transcripción E2F2",
+        "institution": "UPV/EHU - Instituto Biocruces Bizkaia",
+        "year": "En desarrollo (2024-2027)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Carcinoma Hepatocelular",
+          "Heterogeneidad Tumoral",
+          "Single-Cell",
+          "E2F2",
+          "Biomarcadores"
+        ],
+        "order": 6,
+        "abstract": "El carcinoma hepatocelular manifiesta una elevada heterogeneidad intratumoral. Mediante aproximaciones de metabolómica y lipidómica a nivel unicelular, esta tesis mapea las subpoblaciones celulares hepatomatosas dependientes de E2F2 para el diseño de terapias personalizadas.",
+        "abstractHtml": "<p>El carcinoma hepatocelular manifiesta una elevada heterogeneidad intratumoral. Mediante aproximaciones de metabolómica y lipidómica a nivel unicelular, esta tesis mapea las subpoblaciones celulares hepatomatosas dependientes de E2F2 para el diseño de terapias personalizadas.</p>"
+      },
+      {
+        "id": "tesis-1",
+        "author": "Maider Apodaka Biguri",
+        "status": "ongoing",
+        "title": "Entorno lipídico y progresión de la enfermedad hepática: un papel metabólico para el factor de transcripción E2F2",
+        "institution": "UPV/EHU - Departamento de Fisiología",
+        "year": "En desarrollo (2023-2026)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dr. Igotz Delgado Balzategui"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "E2F2",
+          "Metabolismo Lipídico",
+          "MAFLD",
+          "Fibrosis Hepática",
+          "Lipidómica"
+        ],
+        "order": 1,
+        "abstract": "La Esteatosis Hepática Metabólica (MAFLD) progresa desde hepatoesteatosis simple hacia esteatohepatitis y cirrosis mediante complejos cambios en la remodelación lipídica celular. La presente tesis doctoral evalúa el papel regulador del factor de transcripción E2F2 sobre la síntesis ectópica de triglicéridos y la función mitocondrial en hepatocitos sometidos a sobrecarga lipídica. Los resultados preliminares muestran que la modulación de E2F2 altera la composición de fosfolípidos de membrana y previene el estrés oxidativo tisular.",
+        "abstractHtml": "<p>La Esteatosis Hepática Metabólica (MAFLD) progresa desde hepatoesteatosis simple hacia esteatohepatitis y cirrosis mediante complejos cambios en la remodelación lipídica celular. La presente tesis doctoral evalúa el papel regulador del factor de transcripción E2F2 sobre la síntesis ectópica de triglicéridos y la función mitocondrial en hepatocitos sometidos a sobrecarga lipídica. Los resultados preliminares muestran que la modulación de E2F2 altera la composición de fosfolípidos de membrana y previene el estrés oxidativo tisular.</p>"
+      },
+      {
+        "id": "tesis-3",
+        "author": "Mikel Ruiz de Gauna Madariaga",
+        "status": "ongoing",
+        "title": "Desregulación metabólica en colangiocarcinoma: en busca de nuevas dianas terapéuticas",
+        "institution": "UPV/EHU - Facultad de Medicina y Enfermería",
+        "year": "En desarrollo (2023-2026)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dr. Xabier Buqué García"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Colangiocarcinoma",
+          "Reprogramación Lipídica",
+          "SCD1",
+          "Espectrometría de Masas"
+        ],
+        "order": 3,
+        "abstract": "El colangiocarcinoma intrahepático (iCCA) es un adenocarcinoma agresivo con opciones terapéuticas limitadas. En esta tesis doctoral se analiza el perfil lipidómico tisular de biopsias de iCCA mediante espectrometría de masas (UHPLC-MS/MS). Se investigan las rutas desreguladas de insaturación de ácidos grasos y el potencial de inhibidores metabólicos en organoides de colangiocarcinoma.",
+        "abstractHtml": "<p>El colangiocarcinoma intrahepático (iCCA) es un adenocarcinoma agresivo con opciones terapéuticas limitadas. En esta tesis doctoral se analiza el perfil lipidómico tisular de biopsias de iCCA mediante espectrometría de masas (UHPLC-MS/MS). Se investigan las rutas desreguladas de insaturación de ácidos grasos y el potencial de inhibidores metabólicos en organoides de colangiocarcinoma.</p>"
+      },
+      {
+        "id": "tesis-5",
+        "author": "Idoia Fernández Puertas",
+        "status": "ongoing",
+        "title": "Papel del factor de transcripción E2F2 en la modulación de la respuesta al daño al DNA en la progresión de la enfermedad hepática metabólica y dislipemias asociadas",
+        "institution": "UPV/EHU - Facultad de Medicina y Enfermería",
+        "year": "En desarrollo (2023-2026)",
+        "badge": "En Curso",
+        "directors": [
+          "Dr. Igotz Delgado Balzategui",
+          "Dra. Yolanda Chico"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Daño al ADN",
+          "E2F2",
+          "Dislipemia",
+          "Estrés Oxidativo",
+          "Hepatocitos"
+        ],
+        "order": 5,
+        "abstract": "Estudio integrativo que relaciona el estrés replicativo y el daño al genoma hepatocelular con las desregulaciones del metabolismo lipídico. El trabajo indaga la función de E2F2 en la senescencia hepática y el mantenimiento del retículo endoplásmico.",
+        "abstractHtml": "<p>Estudio integrativo que relaciona el estrés replicativo y el daño al genoma hepatocelular con las desregulaciones del metabolismo lipídico. El trabajo indaga la función de E2F2 en la senescencia hepática y el mantenimiento del retículo endoplásmico.</p>"
+      },
+      {
+        "id": "tesis-4",
+        "author": "Ane Nieva Zuluaga",
+        "status": "ongoing",
+        "title": "Obesidad y desarrollo de metástasis hepáticas de cáncer de colon: implicación del factor de transcripción E2F2",
+        "institution": "UPV/EHU - Departamento de Fisiología",
+        "year": "En desarrollo (2022-2025)",
+        "badge": "En Curso",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá",
+          "Dr. Igotz Delgado Balzategui"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Metástasis Hepática",
+          "Cáncer Colorrectal",
+          "Obesidad",
+          "Nicho Pre-metastásico",
+          "E2F2"
+        ],
+        "order": 4,
+        "abstract": "El tejido hepático graso derivado de la obesidad crea un microambiente inflamatorio y lipotóxico que favorece el prendimiento de células tumorales metastásicas procedentes del colon. Esta investigación examina el rol del factor transcripcional E2F2 en el acondicionamiento del nicho pre-metastásico hepático y la colonización endotelial sinusoidal.",
+        "abstractHtml": "<p>El tejido hepático graso derivado de la obesidad crea un microambiente inflamatorio y lipotóxico que favorece el prendimiento de células tumorales metastásicas procedentes del colon. Esta investigación examina el rol del factor transcripcional E2F2 en el acondicionamiento del nicho pre-metastásico hepático y la colonización endotelial sinusoidal.</p>"
+      },
+      {
+        "id": "tesis-7",
+        "author": "Dr. Francisco González Romero",
+        "status": "completed",
+        "title": "Obesidad y Enfermedad Hepática: papel del factor de transcripción E2F2 en la progresión de hígado graso a hepatocarcinoma",
+        "institution": "UPV/EHU - Departamento de Fisiología",
+        "year": "2023",
+        "badge": "Terminada (2023)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina (Mención Internacional)",
+        "keywords": [
+          "E2F2",
+          "MAFLD",
+          "Hepatocarcinoma",
+          "Metabolismo Triglicéridos"
+        ],
+        "order": 7,
+        "abstract": "Tesis doctoral que demostró por primera vez cómo la deficiencia del factor transcripcional E2F2 atenúa la acumulación lipídica y reduce la incidencia de lesiones precancerosas en modelos animales de esteatohepatitis metabólica (NASH) impulsados por dietas hipercalóricas.",
+        "abstractHtml": "<p>Tesis doctoral que demostró por primera vez cómo la deficiencia del factor transcripcional E2F2 atenúa la acumulación lipídica y reduce la incidencia de lesiones precancerosas en modelos animales de esteatohepatitis metabólica (NASH) impulsados por dietas hipercalóricas.</p>"
+      },
+      {
+        "id": "tesis-8",
+        "author": "Dra. Teresa Caro Ordieres",
+        "status": "completed",
+        "title": "Desarrollo de nuevos medicamentos para el tratamiento de complicaciones asociadas al síndrome metabólico. Nuevas aplicaciones terapéuticas de un flavonoide y un derivado de la vitamina D",
+        "institution": "UPV/EHU - Facultad de Medicina y Enfermería",
+        "year": "2022",
+        "badge": "Terminada (2022)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Flavonoides",
+          "Vitamina D",
+          "Síndrome Metabólico",
+          "Farmacología Hepática"
+        ],
+        "order": 8,
+        "abstract": "Evaluación farmacológica de principios activos polifenólicos y derivados de secosteroides sobre la secreción de VLDL y la sensibilidad a la insulina en hepatocitos primarios.",
+        "abstractHtml": "<p>Evaluación farmacológica de principios activos polifenólicos y derivados de secosteroides sobre la secreción de VLDL y la sensibilidad a la insulina en hepatocitos primarios.</p>"
+      },
+      {
+        "id": "tesis-9",
+        "author": "Dra. Daniela Constanza Mestre Congregado",
+        "status": "completed",
+        "title": "Involvement of transcription factors E2F1 and E2F2 in the development of obesity-related hepatocarcinoma",
+        "institution": "UPV/EHU",
+        "year": "2021",
+        "badge": "Terminada (2021)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "E2F1",
+          "E2F2",
+          "HCC",
+          "Lipotoxicidad"
+        ],
+        "order": 9,
+        "abstract": "Análisis comparativo entre los factores E2F1 y E2F2 en el acoplamiento entre proliferación celular y síntesis de lipoproteínas de muy baja densidad (VLDL) en nódulos de hepatocarcinoma.",
+        "abstractHtml": "<p>Análisis comparativo entre los factores E2F1 y E2F2 en el acoplamiento entre proliferación celular y síntesis de lipoproteínas de muy baja densidad (VLDL) en nódulos de hepatocarcinoma.</p>"
+      },
+      {
+        "id": "tesis-10",
+        "author": "Dr. Diego Sáenz de Urturi Indart",
+        "status": "completed",
+        "title": "Targeting Methionine adenosyltransferase 1 alpha gene to treat obesity and the associated comorbidities",
+        "institution": "UPV/EHU",
+        "year": "2021",
+        "badge": "Terminada (2021)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "MAT1A",
+          "Metionina",
+          "Obesidad",
+          "Metabolismo Lipídico"
+        ],
+        "order": 10,
+        "abstract": "Estudio de la silenciamiento génico dirigida a MAT1A como estrategia terapéutica para la modulacion del contenido de triglicéridos e inflamación en modelos de esteatopatía.",
+        "abstractHtml": "<p>Estudio de la silenciamiento génico dirigida a MAT1A como estrategia terapéutica para la modulacion del contenido de triglicéridos e inflamación en modelos de esteatopatía.</p>"
+      },
+      {
+        "id": "tesis-11",
+        "author": "Dr. Jorge Simón Espinosa",
+        "status": "completed",
+        "title": "Targeting metabolism for resolving non-alcoholic steatohepatitis",
+        "institution": "UPV/EHU",
+        "year": "2020",
+        "badge": "Terminada (2020)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "NASH",
+          "Targeting Metabólico",
+          "Biomarcadores",
+          "Lipidómica"
+        ],
+        "order": 11,
+        "abstract": "Caracterización de alteraciones metabólicas clave en la transición de esteatosis a esteatohepatitis y evaluación preclínica de candidatos terapéuticos en NASH.",
+        "abstractHtml": "<p>Caracterización de alteraciones metabólicas clave en la transición de esteatosis a esteatohepatitis y evaluación preclínica de candidatos terapéuticos en NASH.</p>"
+      },
+      {
+        "id": "tesis-12",
+        "author": "Dra. Beatriz Gómez Santos",
+        "status": "completed",
+        "title": "Osteopontin role in lipid metabolism: involvement in age-related hepatosteatosis",
+        "institution": "UPV/EHU",
+        "year": "2019",
+        "badge": "Terminada (2019)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "Osteopontina",
+          "Envejecimiento",
+          "Esteatosis Hepática"
+        ],
+        "order": 12,
+        "abstract": "Investigación sobre el papel proinflamatorio y regulador de la citoquina osteopontina en la acumulación de gotas lipídicas relacionada con la edad.",
+        "abstractHtml": "<p>Investigación sobre el papel proinflamatorio y regulador de la citoquina osteopontina en la acumulación de gotas lipídicas relacionada con la edad.</p>"
+      },
+      {
+        "id": "tesis-13",
+        "author": "Dra. Hiart Navarro Imaz",
+        "status": "completed",
+        "title": "The effects of SND1 overexpression on hepatoma cells: lipid metabolism and tumor development",
+        "institution": "UPV/EHU",
+        "year": "2018",
+        "badge": "Terminada (2018)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "SND1",
+          "Hepatoma",
+          "Lipid Metabolismo"
+        ],
+        "order": 13,
+        "abstract": "Demostración del papel del coactivador transcripcional SND1 en el estímulo de la lipogénesis de novo y la supervivencia celular en hepatocarcinoma.",
+        "abstractHtml": "<p>Demostración del papel del coactivador transcripcional SND1 en el estímulo de la lipogénesis de novo y la supervivencia celular en hepatocarcinoma.</p>"
+      },
+      {
+        "id": "tesis-14",
+        "author": "Dr. Pablo Fernández Tussy",
+        "status": "completed",
+        "title": "MicroRNAs in liver disease",
+        "institution": "UPV/EHU",
+        "year": "2018",
+        "badge": "Terminada (2018)",
+        "directors": [
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "miRNAs",
+          "Enfermedades Hepáticas",
+          "Regulación Postranscripcional"
+        ],
+        "order": 14,
+        "abstract": "Identificación de firmas de microRNAs circulantes como reguladores del aclaramiento hepático de lípidos.",
+        "abstractHtml": "<p>Identificación de firmas de microRNAs circulantes como reguladores del aclaramiento hepático de lípidos.</p>"
+      },
+      {
+        "id": "tesis-15",
+        "author": "Dra. Larraitz Fernández Ares",
+        "status": "completed",
+        "title": "Papel de la ácido graso translocasa CD36 en la homeostasis de retículo endoplásmico hepático",
+        "institution": "UPV/EHU",
+        "year": "2017",
+        "badge": "Terminada (2017)",
+        "directors": [
+          "Dra. M. Olatz Fresnedo Aranguren",
+          "Dra. Patricia Aspichueta Celaá"
+        ],
+        "program": "Programa de Doctorado en Biomedicina",
+        "keywords": [
+          "CD36",
+          "Retículo Endoplásmico",
+          "Captación de Ácidos Grasos"
+        ],
+        "order": 15,
+        "abstract": "Estudio de la translocasa CD36 y su acoplamiento con la respuesta a proteínas mal plegadas (UPR) en hepatocitos cargados con palmitato.",
+        "abstractHtml": "<p>Estudio de la translocasa CD36 y su acoplamiento con la respuesta a proteínas mal plegadas (UPR) en hepatocitos cargados con palmitato.</p>"
+      }
+    ]
+  },
+  "publications": [
+    {
+      "id": "pub-001",
+      "year": "2026",
+      "title": "Alcohol consumption in metabolic dysfunction-associated steatotic liver disease (MASLD): understanding the gut-liver crosstalk for clinical translation.",
+      "authors": "Benedé-Ubieto R, Estévez-Vázquez O, Acar R, Leal-Lassalle H, Gutierrez AH, Redondo-Urzainqui A, Iborra S, Odintsova VE, Tyakht A, Herranz JM, Firat Z, Basol M, Korkmaz B, Sanz-García C, Juanola O, Caparrós E, Francés R, Ciudin A, Pericàs JM, Gómez-Santos B, Aspichueta P, Treichel N, Clavel T, Reißing J, Bruns T, Bartneck M, Mazariegos MS, Wolters JC, Jorquera G, Liedtke C, Vaquero J, Bañares R, Cakan-Akdogan G, Ávila MA, Konu O, Cubero FJ, Nevzorova YA.",
+      "journal": "Gut Microbes",
+      "topic": "mafld",
+      "doi": "10.1080/19490976.2026.2631834",
+      "abstract": "ObjectiveIn the present study, we investigated the role of the gut-liver crosstalk in the pathogenesis of steatotic liver disease (SLD) induced by the compounding and deleterious effects of alcohol and metabolic risk factors, and explored the potential translational aspects of microbiome-based interventions.DesignThe effects of combined exposure to alcohol and a high-fat, high-cholesterol diet (HFHC) Western diet (WD) were tested in a dietary mouse DUAL model and compared to mice fed only with WD. Liver and gut phenotypes were evaluated via histochemistry, flow cytometry, gene expression, proteomic, and metabolomic analyses. The effects on the gut microbiota were studied in both DUAL mice and MASLD patients with a history of alcohol consumption. Antibiotic-induced microbiota depletion (AIMD) and microbiota modulation therapies (probiotics and fecal microbiota transplant (FMT)) were performed in mice. Primary human hepatocytes and HepG2 cells were used to study the underlying mechanisms. Zebrafish larvae exposed to alcohol and a HFHC diet were used as a validation model.ResultsAlcohol in combination with WD synergistically exacerbated SLD. DUAL-diet-induced disruption of the intestinal barrier led to LPS leakage into the bloodstream and subsequent TLR4-mediated hepatic inflammation. This, together with enhanced intestinal fat absorption, and impaired intrahepatic lipid oxidation - particularly due to insufficient CPT-1 activity - contributed to prominent steatohepatitis. The DUAL-induced changes in the gut microbiota showed similarities to human dysbiosis in MASLD patients who consumed alcohol, including an increase in Bacteroides and Alistipes. AIMD improved pathology, indicating a causal role of the microbiota in the pathophysiology of DUAL steatohepatitis, whilst early microbiome modulation via FMT induced mild improvements in liver and gut physiology.ConclusionsThese results indicated that the microbiota‒gut‒liver axis plays a crucial role in the progression of SLD intensified by alcohol and concurrent metabolic risk factors, thus providing a promising translational target for potential therapeutic interventions."
+    },
+    {
+      "id": "pub-002",
+      "year": "2026",
+      "title": "Lipidomics uncovers metabolic manifestations related to liver steatosis and low-grade systemic inflammation in diet-treated hereditary fructose intolerance patients.",
+      "authors": "Heras JL, Suarez MU, Mercado-Gómez M, Gracianteparaluceta LU, Buqué X, Alonso C, Serrano-Macia M, Alcalde C, Cano A, González-Recio I, Goikoetxea-Usandizaga N, Mora E, Belanger-Quintana A, Cañedo-Villarroya E, Ceberio L, Chumillas-Calzada S, Correcher P, García-Arenas D, Gómez I, Hernández T, Izquierdo-García E, Chicano DM, Morales M, Pedrón-Giner C, Jáuregui EP, Peña-Quintana L, Sánchez-Pintos P, Serrano-Nieto J, Serrano-Gonzalo I, Miñana IV, Larena JA, Couce ML, Martínez-Chantar ML, Aspichueta P, Delgado TC.",
+      "journal": "Clin Nutr",
+      "topic": "lipidomics",
+      "doi": "10.1016/j.clnu.2026.106608",
+      "abstract": "Background and aimsHereditary Fructose Intolerance (HFI), a rare autosomal recessive metabolic disorder, has historically been considered benign when treated with a lifelong fructose-, sucrose and sorbitol-restricted diet. However, adverse metabolic manifestations have recently been reported in treated HFI patients. As serum metabolomics offers a valuable tool for assessing metabolic manifestations underlying inherited metabolic disorders, we aim to compare the serum lipidomic profile of HFI-treated patients with age-, gender-, and body mass index-matched healthy controls.MethodsLong-term dietary-treated HFI patients (n = 32) were compared to age-, sex-, and BMI-matched healthy controls (n = 28) using serum lipidomic analysis by tandem mass spectrometry, followed by pathway enrichment analysis. Furthermore, liver magnetic resonance imaging/spectroscopy (MRI/MRS), plasma lipoprotein and glycoprotein profiling using the LiposcaleⓇ, a two-dimensional proton nuclear magnetic resonance (2D-1H NMR) spectroscopy test, sialotransferrin analysis, and serum multiplex analysis of cytokines/chemokines were performed.ResultsThe HFI patients exhibited a distinct serum lipidomic profile showing separate clusters in the multivariate analysis between these patients and the healthy controls. Top-interacting network analysis revealed abnormalities in lipid metabolism and inflammation as hallmarks of HFI. Indeed, significant liver steatosis, assessed by MRS proton density fat fraction (MRS-PDFF), was present in 75 % of HFI patients compared to 7 % in the control group. Moreover, low-grade systemic inflammation was highly prevalent in HFI patients, exhibiting elevated serum cytokines, C-reactive protein, acute phase proteins such as fibrinogen and ferritin, and increased low-grade inflammation score. Additionally, circulating glycoprotein acetyls (GlycA), a novel serum marker for low-grade inflammation, was significantly elevated in the HFI patients and associated with their lipidomic profile and markers of altered intestinal permeability, such as serum lipopolysaccharide binding protein. Furthermore, increased GlycA concentration in the HFI patients was associated with elevation of blood pressure and an altered serum lipoprotein profile, early factors of cardiovascular risk.ConclusionsSerum lipidomic study revealed previously unknown metabolic complications of HFI-treated patients. Notably, we have found that low-grade systemic inflammation is highly prevalent in the cohort of HFI patients and correlates with early factors of cardiovascular risk. Expanding our current understanding of the metabolic consequences in HFI-treated patients will provide the best care for patients."
+    },
+    {
+      "id": "pub-003",
+      "year": "2026",
+      "title": "Statins halt polycystic liver disease by reprogramming metabolism and normalizing mitochondrial bioenergetics in cystic cholangiocytes.",
+      "authors": "Markaide E, Izquierdo-Sanchez L, Olaizola I, Urretabizkaia-Garmendia J, Ruiz de Gauna M, Buqué X, Lasa-Elosegi I, Lapitz A, Bais T, Val B, Rodrigues PM, Castro RE, Perugorria MJ, Bujanda L, Gansevoort R, Drenth JPH, Aspichueta P, Banales JM.",
+      "journal": "Hepatology",
+      "topic": "mafld",
+      "doi": "10.1097/hep.0000000000001711",
+      "abstract": "Background and aimPolycystic liver disease (PLD) is a hereditary disorder characterized by the progressive development and enlargement of intrahepatic biliary cysts, which can lead to significant morbidity. Liver transplantation remains the only curative treatment. Mutations in endoplasmic reticulum (ER)-related genes contribute to ER stress in cystic cholangiocytes, promoting disease progression. Given the functional interplay between ER and mitochondria, we investigated mitochondrial dynamics and metabolism in cystic cholangiocytes from both PLD patients and Pkhd1mut rats to identify novel therapeutic targets.Approach and resultsCystic cholangiocytes exhibited increased mitochondrial mass, membrane potential, and superoxide levels, along with enhanced bioenergetic capacity and ATP production compared with normal cholangiocytes. These alterations were linked to the upregulation of electron transport chain protein complexes. Metabolic reprogramming involved enhanced oxidation of glucose, glutamine, and/or fatty acids, as well as increased denovo cholesterol synthesis and accumulation. Chronic treatment with pravastatin, a cholesterol synthesis inhibitor, significantly reduced hepatomegaly, cyst volume, and fibrosis in Pkhd1mut rats. It also normalized mitochondrial hyperactivity and reduced the proliferation of cystic cholangiocytes in culture, effects that were similarly observed with other statins such as atorvastatin and simvastatin. Importantly, a case-control study in PLD patients showed that statin use was associated with reduced liver growth, further supporting its potential therapeutic role.ConclusionsMitochondrial and metabolic dysregulation are central to the pathogenesis of PLD. Targeting cholesterol metabolism with statins represents a promising therapeutic strategy to slow disease progression and reduce cyst burden."
+    },
+    {
+      "id": "pub-004",
+      "year": "2026",
+      "title": "Cholangiocarcinoma 2026: status quo, unmet needs and priorities.",
+      "authors": "Banales JM, Rodrigues PM, Affò S, Andersen JB, Aspichueta P, Boulter L, Bridgewater J, Calvisi DF, Cardenas A, Cardinale V, Carpino G, Coulouarn C, Dopazo C, Edeline J, Fabris L, Folseraas T, Forner A, Goeppert B, Heikenwalder M, Kendall TJ, Khan SA, Klümpen HJ, Koerkamp BG, Lamarca A, Lindsey S, Lleo A, Luedde T, Macias RIR, Morement H, Nault JC, Olaizola P, Perugorria MJ, Raggi C, Rimassa L, Saborowski A, Valle JW, Vithayathil M, Vogel A, Braconi C; International CCA Consensus Consortium.",
+      "journal": "Nat Rev Gastroenterol Hepatol",
+      "topic": "cancer",
+      "doi": "10.1038/s41575-025-01153-w",
+      "abstract": "Cholangiocarcinoma (CCA) is a cancer that originates within the bile ducts. Traditionally considered to be a rare neoplasm, increased awareness of CCA alongside advancements in diagnosis and the rising prevalence of certain risk factors have contributed to a global increase in incidence and mortality. CCAs are highly heterogeneous from the clinical, histomorphological and molecular perspectives but commonly share a poor prognosis. These tumours usually develop and progress silently; by the time they are detected, it is often too late for curative surgical intervention. In such cases, current therapeutic approaches offer modest survival improvements and are generally considered palliative. Although well-known risk factors predispose individuals to developing CCA, the majority of cases are considered sporadic, occurring without any identifiable underlying condition. Over the past decade, substantial collaborative efforts have been made to improve our understanding of the aetiopathogenesis of these tumours, aiming to identify novel biomarkers and therapeutic targets to develop more effective treatments. The ultimate goal is to improve patient outcomes and overall well-being. However, there are significant gaps in our understanding of the molecular mechanisms that drive cholangiocarcinogenesis. In this international Consensus Statement, which is endorsed by the European Network for the Study of Cholangiocarcinoma, we provide a critical overview of the latest advancements in the field of CCA. We highlight the key aspects of CCA aetiopathogenesis and clinical management and provide insights into promising new treatments. Finally, we provide a set of consensus recommendations and future research priorities for CCA based on a Delphi panel questionnaire involving international experts."
+    },
+    {
+      "id": "pub-005",
+      "year": "2025",
+      "title": "Relationship between depression and chronic liver disease: Potential role of antidepressants in modulating liver fibrosis.",
+      "authors": "Nasir AB, Zouridis S, Aspichueta P, Manka P, Syn WK.",
+      "journal": "Am J Med Sci",
+      "topic": "mafld",
+      "doi": "10.1016/j.amjms.2025.07.018",
+      "abstract": "Depression is a frequent comorbidity in chronic liver disease (CLD), including Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD), viral hepatitis, autoimmune hepatitis (AIH), primary sclerosing cholangitis (PSC), primary biliary cholangitis (PBC), hemochromatosis, and Wilson's disease. It is associated with worse outcomes, accelerated disease progression, increased hospitalizations, and higher mortality. While antidepressants are commonly prescribed, their effects on liver disease, particularly on liver fibrosis, remain underexplored. This narrative review examines the relationship between depression, CLD, and antidepressants through a literature review of studies published between 2010 and 2024. Some evidence suggests that antidepressants may have antifibrotic properties, as seen in pulmonary fibrosis, but liver-specific data are limited. Understanding their potential role in both mental health and liver disease management could improve patient outcomes. However, significant research gaps remain, and further clinical trials are needed to determine whether antidepressants influence liver fibrosis, disease progression, and overall prognosis in CLD."
+    },
+    {
+      "id": "pub-006",
+      "year": "2025",
+      "title": "Targeting protein hyper-SUMOylation halts cholangiocarcinoma progression by impairing cancer cell viability and tumor-stroma cross talk.",
+      "authors": "Olaizola P, Olaizola I, Fernandez de Ara M, Lapitz A, Val B, Izquierdo-Sanchez L, Fernandez-Barrena MG, Alvarez L, O'Rourke CJ, Lee-Law PY, Davies K, Gradinaru A, Jimenez-Agüero R, La Casta A, Riaño I, Macias RIR, Marin JJG, Martinez-Chantar ML, Avila MA, Aspichueta P, Andersen JB, Boulter L, Bujanda L, Rodrigues PM, Perugorria MJ, Banales JM.",
+      "journal": "Hepatology",
+      "topic": "cancer",
+      "doi": "10.1097/hep.0000000000001259",
+      "abstract": "Background and aimsCholangiocarcinoma (CCA) includes a diverse group of biliary malignancies with poor prognosis. Alterations in post-translational modifications contribute to disrupted protein dynamics, cellular disturbances, and disease. This study investigates the role of protein SUMOylation in cholangiocarcinogenesis and its potential as a therapeutic target.Approach and resultsAnalysis of CCA tumors from 4 patient cohorts and CCA cell lines, revealed increased expression of the SUMOylation machinery genes SUMO activating enzyme 1 ( SAE1 ) and the SUMO conjugating enzyme UBE2I , regardless of the tumor's molecular profile, resulting in elevated levels of SUMO1-conjugated proteins. Higher SAE1 and UBE2I levels were both indicative of unfavorable clinical outcomes. Deregulated SUMOylated proteins in CCA, mostly linked to cell proliferation, survival, and homeostasis, were identified through immunoprecipitation and mass spectrometry. Genetic ( UBE2I -knockdown) and pharmacological (ML792 and S-adenosyl-methionine) inhibition of SUMOylation effectively suppressed tumorigenesis in subcutaneous and oncogene-driven CCA models, reducing the presence of cancer-associated fibroblasts and increasing the recruitment of antitumor immune cells. In vitro, targeting SUMOylation induced CCA cell death and reduced cell proliferation, colony formation, and spheroid growth. Importantly, ML792 and S-adenosyl-methionine did not adversely affect normal human cholangiocytes. Moreover, co-culture of wild-type or UBE2I -knockdown CCA cells with cancer-associated fibroblasts revealed that depleting SUMOylation in CCA cells impaired cancer-associated fibroblast cell growth and altered their protein secretome, ultimately disrupting CCA growth through a regulatory feedback loop.ConclusionsAberrant SUMOylation drives CCA progression by enhancing cell survival, proliferation, and shaping the tumor microenvironment. Targeting SUMOylation shows potential in inhibiting CCA growth, representing a promising therapeutic strategy."
+    },
+    {
+      "id": "pub-007",
+      "year": "2025",
+      "title": "E2F2 transcription factor promotes a cholestatic MASH phenotype by regulating hepatobiliary metabolism through miR-34a-5p.",
+      "authors": "Apodaka-Biguri M, Simão AL, González-Romero F, Mestre D, Rodrigues PM, Aurrekoetxea I, Gómez-Santos B, Buqué X, Nieva-Zuluaga A, de Gauna MR, Fernandez-Puertas I, Gomez-Jauregui P, Sainz-Ramirez N, Alfaro-Jiménez K, Ortiz-Palma A, Castillero E, Iglesias-Ara A, Mitxelena J, Eriz A, Aransay AM, Lozano JJ, Marin JJG, Izquierdo-Sanchez L, Perugorria MJ, Bujanda L, Banales JM, Martín C, Mosteiro L, Errazti G, Syn WK, Castaño L, Zubiaga AM, Castro RE, Aspichueta P.",
+      "journal": "Hepatology",
+      "topic": "e2f",
+      "doi": "10.1097/hep.0000000000001461",
+      "abstract": "Background and aimsMetabolic dysfunction-associated steatotic liver disease (MASLD) affects a heterogeneous group of patients. Among them, those with a cholestatic profile show worse outcomes. Here, we investigated whether E2F2 is involved in MASLD-associated cholestasis and, if so, the role of miRNAs.Approach and resultsE2f2 -knockout ( E2f2-/- ) and wild-type (WT) mice were fed a choline-deficient high-fat diet (ChD-HFD) or an HFD after injection of diethylnitrosamine (DEN-HFD) to induce metabolic dysfunction-associated steatohepatitis (MASH). E2F2 was overexpressed in the liver by AAV8. Cholestasis was induced by bile duct ligation or by a 3,5-diethoxycarbonyl-1,4-dihydrocollidine-enriched diet. microRNA sequencing was performed. Two biopsy-proven MASLD patient cohorts were used. E2F2 deficiency resulted in increased synthesis and excretion of cholesterol, phosphatidylcholine, and bile acids, reducing their storage in the liver while increasing their presence in feces. This was consistent with increased expression of genes involved in biliary lipid metabolism, reduced inflammation and fibrosis, and the generation of a distinct miRNA profile, thereby preventing MASH. Liver-specific induction of E2F2 in vivo hampered the transcriptional program involved in biliary lipid metabolism and upregulated miR-34a-5p, which was downregulated in E2f2-/- mice. The protective effects observed in E2f2-/- mice were lost when a miR-34a-5p mimic was used. Hepatic miR-34a-5p levels were elevated in patients with advanced fibrosis, inflammation, steatosis score, cholelithiasis, and increased serum bile acids and biliary lipids. E2f2 deficiency conferred protection against cholestatic liver injury.ConclusionsE2F2 deficiency protects against MASH and cholestasis, preventing cholesterol accumulation, fibrosis, and inflammation through modulation of miR-34a-5p. This could provide therapeutic benefits for patients with cholestatic MASH."
+    },
+    {
+      "id": "pub-008",
+      "year": "2025",
+      "title": "Metabolic Signature in Combination with Fecal Immunochemical Test as a Non-Invasive Tool for Advanced Colorectal Neoplasia Diagnosis.",
+      "authors": "Albóniga OE, Cubiella J, Bujanda L, Aspichueta P, Blanco ME, Lanza B, Alonso C, Falcón-Pérez JM.",
+      "journal": "Cancers (Basel)",
+      "topic": "cancer",
+      "doi": "10.3390/cancers17142339",
+      "abstract": "Background/Objectives: Colorectal cancer (CRC) is one of the most prevalent cancers worldwide. Even though the screening programs have decreased the incidence rates, the prognosis for CRC varies depending on the stage at diagnosis. Thus, early diagnosis is still a big challenge due to screening methods, and subsequent diagnosis is not very sensitive. Methods: In this work, LC-MS-based metabolomics, a powerful and sensitive tool to study complex dynamic changes, was used to analyze 211 human fecal samples from control individuals (CTRL), adenoma (AA), and CRC patients. Results: Multivariate and univariate statistical analysis highlighted cholesteryl esters (CEs) and fecal haemoglobin, quantified by fecal immunochemical test (FIT), as relevant biomarkers that clearly differentiate CRC from AA and CTRL. Predictive models based on random forest and the area under the curve (AUC) of the receiver operating characteristic curve (ROC) demonstrate that CEs, together with FIT measurement, improved the CRC and CTRL classification, but not AA. This study revealed that the AA group is a transitional stage with high heterogeneity. The increased tendency observed in CEs from CTRL to CRC might be related to the imbalance of cholesterol homeostasis due to cancer cells requiring a high cholesterol level for cell development and proliferation. The free cholesterol is probably obtained from CEs, as it is the most cost/effective way to obtain the needed cholesterol. Conclusions: The accumulation of CEs is produced by two possible approaches: (1) dysfunction of cholesterol absorption in the small intestine and/or (2) transported inside exosomes from cell to cell to promote proliferation."
+    },
+    {
+      "id": "pub-009",
+      "year": "2025",
+      "title": "Genetic Analysis and Predictive Modeling of COVID-19 Severity in a Hospital-Based Patient Cohort.",
+      "authors": "Alloza-Moral I, Aldekoa-Etxabe A, Tulloch-Navarro R, Fiat-Arriola A, Mar C, Urrechaga E, Ponga C, Artiga-Folch I, Garcia-Bediaga N, Aspichueta P, Martin C, Zarandona-Garai A, Pérez-Fernández S, Arana-Arri E, Triviño JC, Uranga A, España PP, Vandenbroeck-van-Caeckenbergh K.",
+      "journal": "Biomolecules",
+      "topic": "mafld",
+      "doi": "10.3390/biom15030393",
+      "abstract": "The COVID-19 pandemic has had a devastating impact, with more than 7 million deaths worldwide. Advanced age and comorbidities partially explain severe cases of the disease, but genetic factors also play a significant role. Genome-wide association studies (GWASs) have been instrumental in identifying loci associated with SARS-CoV-2 infection. Here, we report the results from a >820 K variant GWAS in a COVID-19 patient cohort from the hospitals associated with IIS Biobizkaia. We compared intensive care unit (ICU)-hospitalized patients with non-ICU-hospitalized patients. The GWAS was complemented with an integrated phenotype and genetic modeling analysis using HLA genotypes, a previously identified COVID-19 polygenic risk score (PRS) and clinical data. We identified four variants associated with COVID-19 severity with genome-wide significance (rs58027632 in KIF19; rs736962 in HTRA1; rs77927946 in DMBT1; and rs115020813 in LINC01283). In addition, we designed a multivariate predictive model including HLA, PRS and clinical data which displayed an area under the curve (AUC) value of 0.79. Our results combining human genetic information with clinical data may help to improve risk assessment for the development of a severe outcome of COVID-19."
+    },
+    {
+      "id": "pub-010",
+      "year": "2025",
+      "title": "Absence of MCJ/DnaJC15 promotes brown adipose tissue thermogenesis.",
+      "authors": "Cicuéndez B, Mora A, López JA, Curtabbi A, Pérez-García J, Porteiro B, Jimenez-Blasco D, Latorre-Muro P, Vo P, Jerome M, Gómez-Santos B, Romero-Becerra R, Leiva M, Rodríguez E, León M, Leiva-Vega L, Gómez-Lado N, Torres JL, Hernández-Cosido L, Aguiar P, Marcos M, Jastroch M, Daiber A, Aspichueta P, Bolaños JP, Spinelli JB, Puigserver P, Enriquez JA, Vázquez J, Folgueira C, Sabio G.",
+      "journal": "Nat Commun",
+      "topic": "mafld",
+      "doi": "10.1038/s41467-024-54353-4",
+      "abstract": "Obesity poses a global health challenge, demanding a deeper understanding of adipose tissue (AT) and its mitochondria. This study describes the role of the mitochondrial protein Methylation-controlled J protein (MCJ/DnaJC15) in orchestrating brown adipose tissue (BAT) thermogenesis. Here we show how MCJ expression decreases during obesity, as evident in human and mouse adipose tissue samples. MCJKO mice, even without UCP1, a fundamental thermogenic protein, exhibit elevated BAT thermogenesis. Electron microscopy unveils changes in mitochondrial morphology resembling BAT activation. Proteomic analysis confirms these findings and suggests involvement of the eIF2α mediated stress response. The pivotal role of eIF2α is scrutinized by in vivo CRISPR deletion of eIF2α in MCJKO mice, abrogating thermogenesis. These findings uncover the importance of MCJ as a regulator of BAT thermogenesis, presenting it as a promising target for obesity therapy."
+    },
+    {
+      "id": "pub-011",
+      "year": "2024",
+      "title": "A functional genomic framework to elucidate novel causal metabolic dysfunction-associated fatty liver disease genes",
+      "authors": "Saliba-Gustafsson P, Justesen JM, Ranta A, Sharma D, Bielczyk-Maczynska E, Li J, Najmi LA, Apodaka M, Aspichueta P, Björck HM, Eriksson P, Schurr TM, Franco-Cereceda A, Gloudemans M, Mujica E, den Hoed M, Assimes TL, Quertermous T, Carcamo-Orive I, Park CY, Knowles JW.",
+      "journal": "Hepatology",
+      "topic": "mafld",
+      "doi": "10.1097/hep.0000000000001066",
+      "abstract": "Background and aimsMetabolic dysfunction-associated fatty liver disease (MASLD) is the most prevalent chronic liver pathology in western countries, with serious public health consequences. Efforts to identify causal genes for MASLD have been hampered by the relative paucity of human data from gold standard magnetic resonance quantification of hepatic fat. To overcome insufficient sample size, genome-wide association studies using MASLD surrogate phenotypes have been used, but only a small number of loci have been identified to date. In this study, we combined genome-wide association studies of MASLD composite surrogate phenotypes with genetic colocalization studies followed by functional in vitro screens to identify bona fide causal genes for MASLD.Approach and resultsWe used the UK Biobank to explore the associations of our novel MASLD score, and genetic colocalization to prioritize putative causal genes for in vitro validation. We created a functional genomic framework to study MASLD genes in vitro using CRISPRi. Our data identify VKORC1 , TNKS , LYPLAL1 , and GPAM as regulators of lipid accumulation in hepatocytes and suggest the involvement of VKORC1 in the lipid storage related to the development of MASLD.ConclusionsComplementary genetic and genomic approaches are useful for the identification of MASLD genes. Our data supports VKORC1 as a bona fide MASLD gene. We have established a functional genomic framework to study at scale putative novel MASLD genes from human genetic association studies."
+    },
+    {
+      "id": "pub-012",
+      "year": "2024",
+      "title": "Osteopontin Promotes Cholangiocyte Secretion of Chemokines to Support Macrophage Recruitment and Fibrosis in MASH",
+      "authors": "Coombes JD, Manka PP, Swiderska-Syn M, Vannan DT, Riva A, Claridge LC, Moylan C, Suzuki A, Briones-Orta MA, Younis R, Kitamura N, Sydor S, Bittencourt S, Mi Z, Kuo PC, Diehl AM, van Grunsven LA, Chokshi S, Canbay A, Abdelmalek MF, Aspichueta P, Papa S, Eksteen B, Syn WK",
+      "journal": "Liver Int",
+      "topic": "mafld",
+      "doi": "10.1111/liv.16131",
+      "abstract": "Background and aimsOsteopontin (OPN) promotes the ductular reaction and is a major driver of chronic liver disease (CLD) progression. Although CLD is characterised by the accumulation of inflammatory cells including macrophages around the peri-portal regions, the influence of OPN on recruitment is unclear. We investigated the role of OPN in cholangiocyte chemokine production and macrophage recruitment by combining in vivo, in vitro, and in silico approaches.MethodsThe effects of OPN on cholangiocyte chemokine production and macrophage migration were assessed in culture, alongside RNA-sequencing to identify genes and pathways affected by OPN depletion. Murine liver injury models were used to assess liver chemokine expression and liver macrophage/monocyte recruitment. OPN and chemokine expression were analysed in liver tissue and plasma from biopsy-proven metabolic dysfunction-associated alcoholic steatohepatitis (MASH) patients.ResultsOPN-knockdown in cholangiocytes reduced chemokine secretion. RNA-sequencing showed OPN-related effects clustered around immunity, chemotaxis and chemokine production. Macrophage exposure to cholangiocyte-conditioned media showed OPN-supported migration via chemokines chemokine (C-C motif) ligand (CCL)2, CCL5 and chemokine (C-X-C motif) ligand (CXCL)1. These effects were related to NF-κB signalling. Murine liver fibrosis was accompanied by upregulated liver OPN, CCL2, CCL5 and CXCL1 mRNA, and accumulation of liver cluster of differentiation (CD)11b/F4/80+CC chemokine receptors (CCR2)high macrophages but treatment with OPN-specific neutralising aptamers reduced fibrosis, chemokine mRNAs and accumulation of liver CD11b/F4/80+CCR2high/lymphocyte antigen 6 complexhigh inflammatory monocytes. In human MASH, liver OPN correlated with chemokines CCL2 and IL8 in association with portal injury and fibrosis. Plasma OPN, serum CCL2 and IL8 also increased with fibrosis stage.ConclusionsOPN promotes cholangiocyte chemokine secretion and the accumulation of pro-inflammatory monocytes. These data support neutralisation of OPN as an anti-inflammatory and anti-fibrotic strategy."
+    },
+    {
+      "id": "pub-013",
+      "year": "2024",
+      "title": "Loss of Cdkn1a protects against MASLD alone or with alcohol intake by preserving lipid homeostasis",
+      "authors": "Lamas-Paz A, Hionides-Gutiérrez A, Guo F, Jorquera G, Morán-Blanco L, Benedé-Ubieto R, Mesquita M, Estévez-Vázquez O, Zheng K, Mazariegos M, Vázquez-Ogando E, Blázquez-López E, Asensio I, Mutlu B, Gomez-Santos B, Peligros MI, Vaquero J, Bañares R, Delgado TC, Martínez-Chantar ML, Martínez-Naves E, Sanz-García C, Mohamed MR, Tesolato S, Iniesta P, Gallego-Durán R, Maya-Miles D, Ampuero J, Romero-Gómez M, Martínez-Alcocer A, Sanfeliu-Redondo D, Fernández-Iglesias A, Gracia-Sancho J, Coll M, Graupera I, Ginès P, Ciudin A, Rivera-Esteban J, Pericàs JM, Ávila MA, Frutos MD, Martínez-Cáceres CM, Ramos-Molina B, Aspichueta P, Puigserver P, Nevzorova YA, Cubero FJ.",
+      "journal": "JHEP Rep",
+      "topic": "e2f",
+      "doi": "10.1016/j.jhepr.2024.101230",
+      "abstract": "Background & aimsExpression of P21, encoded by the CDKN1A gene, has been associated with fibrosis progression in steatotic liver disease (SLD); however, the underlying mechanisms remain unknown. In the present study, we investigated the function of CDKN1A in SLD.MethodsCDKN1A expression levels were evaluated in different patient cohorts with SLD, fibrosis, and advanced chronic liver disease (ACLD). Cdkn1a -/- and Cdkn1a +/+ mice were fed with either a Western diet (WD), a Lieber-DeCarli (LdC) diet plus multiple EtOH (ethanol) binges, or a DuAL diet (metabolic dysfunction-associated fatty liver disease and alcohol-related liver). Primary hepatocytes were isolated and functional assays performed.ResultsA significant increase in CDKN1A expression was observed in patients with steatohepatitis and fibrosis (with a positive correlation with both NAFLD Activity Score and fibrosis staging scores), cirrhosis and ACLD. Cdkn1a +/+ mice, fed a DuAL diet exhibited liver injury and cell death increased reactive oxygen species (ROS), and markers of senescence (γH2AX, β-GAL, Cdkn1a/p53) contributing to steatosis and inflammation. In contrast, Cdkn1a -/- mutant mice showed a significant decrease in senescence-associated markers as well as in markers of liver injury, hepatic steatosis and an increase in fatty acid oxidation and reduction in free fatty acid uptake as well as de novo lipogenesis. Mechanistically, activation of the AMPK-SIRT3 was observed in Cdkn1a-deleted animals.ConclusionsCdkn1a deletion protected against preclinical SLD by promoting fatty acid oxidation and preventing free fatty acid uptake and de novo lipogenesis via the AMPK-SIRT3 axis. CDKN1A expression was found to be directly correlated with increased severity of NAFLD Activity Score and fibrosis in patients with SLD. CDKN1A could be a potential theragnostic target for the treatment of metabolic dysregulation in patients with SLD, with and without alcohol consumption.Impact and implicationsExpression of p21, encoded by the CDKN1A gene, has been associated with fibrosis progression in steatotic liver disease (SLD), but the molecular mechanisms remain elusive. Interestingly, in this study we found that Cdkn1a deletion protected against preclinical SLD by promoting fatty acid oxidation and preventing free fatty acid uptake and de novo lipogenesis, via the AMPK-SIRT3 axis. Translationally, Cdkn1a expression was found to be directly correlated with increased severity of NAFLD Activity Score (NAS) and fibrosis in SLD patients, and therefore, CDKN1A might be used potential theragnostic target for the treatment of metabolically induced SLD, with and without alcohol consumption."
+    },
+    {
+      "id": "pub-014",
+      "year": "2024",
+      "title": "Lipotoxicity-driven metabolic dysfunction-associated steatotic liver disease (MASLD)",
+      "authors": "Iturbe-Rey S, Maccali C, Arrese M, Aspichueta P, Oliveira CP, Castro RE, Lapitz A, Izquierdo-Sanchez L, Bujanda L, Perugorria MJ, Banales JM, Rodrigues PM.",
+      "journal": "Atherosclerosis",
+      "topic": "cancer",
+      "doi": "10.1016/j.atherosclerosis.2024.119053",
+      "abstract": "Metabolic dysfunction-associated steatotic liver disease (MASLD) encompasses a spectrum of liver lesions, ranging from simple steatosis to metabolic dysfunction-associated steatohepatitis (MASH), that may further progress to cirrhosis. MASLD is estimated to affect more than one third of the general population and it represents a risk factor for end-stage liver failure and liver cancer, substantially contributing to liver-related morbidity and mortality. Although the pathogenesis of MASLD is incompletely understood, it is known to consist of a multifactorial process influenced by extrinsic and intrinsic factors such as metabolic, environmental and demographic features, gut microbiota and genetics. Dysregulation of both extracellular and intracellular lipid composition is known to promote the generation of toxic lipid species, thereby triggering lipotoxicity and cellular stress. These events ultimately lead to the activation of distinct cell death pathways, resulting in inflammation, fibrogenesis and, eventually, carcinogenesis. In this manuscript, we provide a comprehensive review of the role of lipotoxicity during MASLD pathogenesis, discussing the most relevant lipid species and related molecular mechanisms, summarizing the cell type-specific effects and highlighting the most promising putative therapeutic strategies for modulating lipotoxicity and lipid metabolism in MASLD."
+    },
+    {
+      "id": "pub-015",
+      "year": "2024",
+      "title": "The Link between Metabolic Syndrome and the Brain",
+      "authors": "Zouridis S, Nasir AB, Aspichueta P, Syn WK.",
+      "journal": "Digestion",
+      "topic": "mafld",
+      "doi": "10.1159/000541696",
+      "abstract": "BackgroundMetabolic syndrome (MetS) is a cluster of cardiometabolic conditions that has been linked to high risk for cardiovascular disease, liver complications, and several malignancies. More recently, MetS has been associated with cognitive dysfunction.SummaryStudies have shown an association with minimal cognitive impairment, progression to vascular dementia, and even Alzheimer's disease. MetS components have been individually explored, and glucose intolerance has the strongest association with impairment in several cognitive domains. Several hypotheses have been proposed regarding the pathophysiology underlying the MetS-cognitive dysfunction association, and even though insulin resistance plays a major role, more studies are needed to elucidate this topic. Moreover, several other factors contributing to this association have been identified. Liver disease and more specifically metabolic dysfunction-associated steatotic liver disease can on its own contribute to cognitive decline through systemic inflammation and higher ammonia levels. Gut dysbiosis that has also been identified in MetS can also lead to cognitive impairment through several mechanisms that result in neurotoxicity. Finally, there are several other factors that may modify the MetS-cognitive dysfunction relationship, such as lifestyle, diet, education status, and age. More recently, circadian syndrome was explored and was found to be even more strongly associated with cognitive impairment.Key messageMetS is associated with cognitive decline. Certain cardiometabolic risk factors have a stronger association with cognitive impairment, and there are several factors that may modify this relationship. The aim of this review was to assess and summarize the existing body of evidence on the association between MetS and cognitive impairment and identify areas that necessitate further investigation."
+    },
+    {
+      "id": "pub-016",
+      "year": "2024",
+      "title": "Protein kinase D2 modulates hepatic insulin sensitivity in male mice",
+      "authors": "Rada P, Carceller-López E, Hitos AB, Gómez-Santos B, Fernández-Hernández C, Rey E, Pose-Utrilla J, García-Monzón C, González-Rodríguez Á, Sabio G, García A, Aspichueta P, Iglesias T, Valverde ÁM.",
+      "journal": "Mol Metab",
+      "topic": "mafld",
+      "doi": "10.1016/j.molmet.2024.102045",
+      "abstract": "ObjectivesProtein kinase D (PKD) family is emerging as relevant regulator of metabolic homeostasis. However, the precise role of PKD2 in modulating hepatic insulin signaling has not been fully elucidated and it is the aim of this study.MethodsPKD inhibition was analyzed for insulin signaling in mouse and human hepatocytes. PKD2 was overexpressed in Huh7 hepatocytes and mouse liver, and insulin responses were evaluated. Mice with hepatocyte-specific PKD2 depletion (PKD2ΔHep) and PKD2fl/fl mice were fed a chow (CHD) or high fat diet (HFD) and glucose homeostasis and lipid metabolism were investigated.ResultsPKD2 silencing enhanced insulin signaling in hepatocytes, an effect also found in primary hepatocytes from PKD2ΔHep mice. Conversely, a constitutively active PKD2 mutant reduced insulin-stimulated AKT phosphorylation. A more in-depth analysis revealed reduced IRS1 serine phosphorylation under basal conditions and increased IRS1 tyrosine phosphorylation in PKD2ΔHep primary hepatocytes upon insulin stimulation and, importantly PKD co-immunoprecipitates with IRS1. In vivo constitutively active PKD2 overexpression resulted in a moderate impairment of glucose homeostasis and reduced insulin signaling in the liver. On the contrary, HFD-fed PKD2ΔHep male mice displayed improved glucose and pyruvate tolerance, as well as higher peripheral insulin tolerance and enhanced hepatic insulin signaling compared to control PKD2fl/fl mice. Despite of a remodeling of hepatic lipid metabolism in HFD-fed PKD2ΔHep mice, similar steatosis grade was found in both genotypes.ConclusionsResults herein have unveiled an unknown role of PKD2 in the control of insulin signaling in the liver at the level of IRS1 and point PKD2 as a therapeutic target for hepatic insulin resistance."
+    },
+    {
+      "id": "pub-017",
+      "year": "2024",
+      "title": "The dual GLP-1/glucagon receptor agonist G49 mimics bariatric surgery effects by inducing metabolic rewiring and inter-organ crosstalk",
+      "authors": "Valdecantos MP, Ruiz L, Folgueira C, Rada P, Gomez-Santos B, Solas M, Hitos AB, Field J, Francisco V, Escalona-Garrido C, Zagmutt S, Calderon-Dominguez M, Mera P, Garcia-Martinez I, Maymó-Masip E, Grajales D, Alen R, Mora A, Sáinz N, Vides-Urrestarazu I, Vilarrasa N, Arbones-Mainar JM, Zaragoza C, Moreno-Aliaga MJ, Aspichueta P, Fernández-Veledo S, Vendrell J, Serra D, Herrero L, Schreiber R, Zechner R, Sabio G, Hornigold D, Rondinone CM, Jermutus L, Grimsby J, Valverde ÁM.",
+      "journal": "Nat Commun",
+      "topic": "mafld",
+      "doi": "10.1038/s41467-024-54080-w",
+      "abstract": "Bariatric surgery is effective for the treatment and remission of obesity and type 2 diabetes, but pharmacological approaches which exert similar metabolic adaptations are needed to avoid post-surgical complications. Here we show how G49, an oxyntomodulin (OXM) analog and dual glucagon/glucagon-like peptide-1 receptor (GCGR/GLP-1R) agonist, triggers an inter-organ crosstalk between adipose tissue, pancreas, and liver which is initiated by a rapid release of free fatty acids (FFAs) by white adipose tissue (WAT) in a GCGR-dependent manner. This interactome leads to elevations in adiponectin and fibroblast growth factor 21 (FGF21), causing WAT beiging, brown adipose tissue (BAT) activation, increased energy expenditure (EE) and weight loss. Elevation of OXM, under basal and postprandial conditions, and similar metabolic adaptations after G49 treatment were found in plasma from patients with obesity early after metabolic bariatric surgery. These results identify G49 as a potential pharmacological alternative sharing with bariatric surgery hormonal and metabolic pathways."
+    },
+    {
+      "id": "pub-018",
+      "year": "2024",
+      "title": "Targeting mitochondrial metabolism by the mitotoxin bromoxib in leukemia and lymphoma cells",
+      "authors": "Schmitt L, Krings KS, Wolsing A, Buque X, Zimmermann M, Flores-Romero H, Lenz T, Lechtenberg I, Peter C, Stork B, Teusch N, Proksch P, Stühler K, García-Sáez AJ, Reichert AS, Aspichueta P, Bhatia S, Wesselborg S.",
+      "journal": "Cell Commun Signal",
+      "topic": "cancer",
+      "doi": "10.1186/s12964-024-01913-2",
+      "abstract": "Targeting mitochondrial metabolism represents a promising approach for cancer treatment. Here, we investigated the mitotoxic potential of the polybrominated diphenyl ether bromoxib, a natural compound isolated from the marine sponge Dysidea family. We could show that bromoxib comprised strong cytotoxicity in different leukemia and lymphoma cell lines (such as HL60, HPBALL, Jurkat, K562, KOPTK1, MOLT4, SUPB15 and Ramos), but also in solid tumor cell lines (such as glioblastoma cell lines SJ-GBM2 and TP365MG). Bromoxib activated the mitochondrial death pathway as evidenced by the rapid translocation of Bax to the mitochondria and the subsequent mitochondrial release of Smac. Accordingly, bromoxib-induced apoptosis was blocked in caspase 9 deficient Jurkat cells and Jurkat cells overexpressing the antiapoptotic protein Bcl-2. In addition, we could show that bromoxib functioned as an uncoupler of the electron transport chain with similar rapid kinetics as CCCP in terms of dissipation of the mitochondrial membrane potential (ΔΨm), processing of the dynamin-like GTPase OPA1 and subsequent fragmentation of mitochondria. Beyond that, bromoxib strongly abrogated ATP production via glycolysis as well as oxidative phosphorylation (OXPHOS) by targeting electron transport chain complexes II, III, and V (ATP-synthase) in Ramos lymphoma cells. Thus, bromoxib's potential to act on both cytosolic glycolysis and mitochondrial respiration renders it a promising agent for the treatment of leukemia and lymphoma."
+    },
+    {
+      "id": "pub-019",
+      "year": "2024",
+      "title": "The biochemical pattern defines MASLD phenotypes linked to distinct histology and prognosis",
+      "authors": "Ampuero J, Aller R, Gallego-Durán R, Crespo J, Calleja JL, García-Monzón C, Gómez-Camarero J, Caballería J, Lo Iacono O, Ibañez L, García-Samaniego J, Albillos A, Francés R, Fernández-Rodríguez C, Maya-Miles D, Diago M, Poca M, Andrade RJ, Latorre R, Jorquera F, Morillas RM, Escudero D, Hernández-Guerra M, Pareja-Megia MJ, Banales JM, Aspichueta P, Benlloch S, Rosales JM, Turnes J, Romero-Gómez M; HEPAmet Registry.",
+      "journal": "J Gastroenterol",
+      "topic": "mafld",
+      "doi": "doi: 10.1007/s00535-024-02098-8",
+      "abstract": "BackgroundMASLD can manifest as hepatocellular damage, which can result in mild elevation of aminotransferases. However, in some patients, MASLD presents with cholestatic pattern.ObjectiveTo assess the impact of the biochemical pattern on the natural course of MASLD, including liver damage in histology, the accuracy of non-invasive tests(NITs), and prognosis.MethodsMulticenter study enrolling 2156 patients with biopsy-proven MASLD, who were classified based on their[ALT/ULN)]/[(ALP/ULN)] levels at the time of biopsy: (a) hepatocellular pattern(H), > 5; (b) mixed pattern(M),2-5; (c) cholestatic pattern(C), Outcomes(a) histological evaluation of the single components of NAS, MASH, and fibrosis; (b) NITs and transient elastography assessing advanced fibrosis; (c) prognosis determined by the appearance of decompensated cirrhosis and death.ResultsOut of the 2156 patients, 22.9% exhibited the H-pattern, whilst 31.7% exhibited the C-pattern. Severe steatosis, ballooning, lobular inflammation, and MASH (56.4% H vs. 41.9% M vs. 31.9% C) were more common in H-pattern (p = 0.0001),whilst C-pattern was linked to cirrhosis (5.8% H vs. 5.6% M vs. 10.9% C; p = 0.0001). FIB-4(0.74(95% CI 0.69-0.79) vs. 0.83 (95% CI 0.80-0.85); p = 0.005) and Hepamet Fibrosis Score(0.77 (95% CI 0.69-0.85) vs. 0.84 (95% CI 0.80-0.87); p = 0.044)exhibited lower AUROCs in the H-pattern. The C-pattern[HR 2.37 (95% CI 1.12-5.02); p = 0.024], along with age, diabetes, and cirrhosis were independently associated with mortality. Most patients maintained their initial biochemical pattern during the second evaluation.ConclusionsThe H-pattern exhibited greater necro-inflammation in the histology than the C-pattern, whereas the latter showed more cirrhosis. The accuracy of NITs in detecting fibrosis was decreased in H-pattern. The occurrence of decompensated events and mortality was predominant in C-pattern. Therefore, identifying MASLD phenotypes based on the biochemical presentation could be relevant for clinical practice."
+    },
+    {
+      "id": "pub-020",
+      "year": "2024",
+      "title": "Serum identification of at-risk MASH: The metabolomics-advanced steatohepatitis fibrosis score (MASEF)",
+      "authors": "Noureddin M, Truong E, Mayo R, Martínez-Arranz I, Mincholé I, Banales JM, Arrese M, Cusi K, Arias-Loste MT, Bruha R, Romero-Gómez M, Iruzubieta P, Aller R, Ampuero J, Calleja JL, Ibañez-Samaniego L, Aspichueta P, Martín-Duce A, Kushner T, Ortiz P, Harrison SA, Anstee QM, Crespo J, Mato JM, Sanyal AJ.",
+      "journal": "Hepatology",
+      "topic": "lipidomics",
+      "doi": "10.1097/hep.0000000000001061",
+      "abstract": ""
+    },
+    {
+      "id": "pub-021",
+      "year": "2024",
+      "title": "Thyroid hormone receptor alpha modulates fibrogenesis in hepatic stellate cells",
+      "authors": "Manka P, Coombes JD, Sydor S, Swiderska-Syn MK, Best J, Gauthier K, van Grunsven LA, Oo YH, Wang C, Diehl AM, Hönes GS, Moeller LC, Figge A, Boosman RJ, Faber KN, Tannapfel A, Goetze O, Aspichueta P, Lange CM, Canbay A, Syn WK.",
+      "journal": "Liver Int",
+      "topic": "mafld",
+      "doi": "10.1111/liv.15759",
+      "abstract": "ObjectiveProgressive hepatic fibrosis can be considered the final stage of chronic liver disease. Hepatic stellate cells (HSC) play a central role in liver fibrogenesis. Thyroid hormones (TH, e.g. thyroxine; T4 and triiodothyronine; T3) significantly affect development, growth, cell differentiation and metabolism through activation of TH receptor α and/or β (TRα/β). Here, we evaluated the influence of TH in hepatic fibrogenesis.DesignHuman liver tissue was obtained from explanted livers following transplantation. TRα-deficient (TRα-KO) and wild-type (WT) mice were fed a control or a profibrogenic methionine-choline deficient (MCD) diet. Liver tissue was assessed by qRT-PCR for fibrogenic gene expression. In vitro, HSC were treated with TGFβ in the presence or absence of T3. HSC with stable TRα knockdown and TRα deficient mouse embryonic fibroblasts (MEF) were used to determine receptor-specific function. Activation of HSC and MEF was assessed using the wound healing assay, Western blotting, and qRT-PCR.ResultsTRα and TRβ expression is downregulated in the liver during hepatic fibrogenesis in humans and mice. TRα represents the dominant isoform in HSC. In vitro, T3 blunted TGFβ-induced expression of fibrogenic genes in HSC and abrogated wound healing by modulating TGFβ signalling, which depended on TRα presence. In vivo, TRα-KO enhanced MCD diet-induced liver fibrogenesis.ConclusionThese observations indicate that TH action in non-parenchymal cells is highly relevant. The interaction of TRα with TH regulates the phenotype of HSC via the TGFβ signalling pathway. Thus, the TH-TR axis may be a valuable target for future therapy of liver fibrosis."
+    },
+    {
+      "id": "pub-022",
+      "year": "2023",
+      "title": "Hepatic levels of S-adenosylmethionine regulate the adaptive response to fasting",
+      "authors": "Capelo-Diz A, Lachiondo-Ortega S, Fernández-Ramos D, Cañas-Martín J, Goikoetxea-Usandizaga N, Serrano-Maciá M, González-Rellan MJ, Mosca L, Blazquez-Vicens J, Tinahones-Ruano A, Fondevila MF, Buyan M, Delgado TC, Gutierrez de Juan V, Ayuso-García P, Sánchez-Rueda A, Velasco-Avilés S, Fernández-Susavila H, Riobello-Suárez C, Dziechciarz B, Montiel-Duarte C, Lopitz-Otsoa F, Bizkarguenaga M, Bilbao-García J, Bernardo-Seisdedos G, Senra A, Soriano-Navarro M, Millet O, Díaz-Lagares Á, Crujeiras AB, Bao-Caamano A, Cabrera D, van Liempd S, Tamayo-Carro M, Borzacchiello L, Gomez-Santos B, Buqué X, Sáenz de Urturi D, González-Romero F, Simon J, Rodríguez-Agudo R, Ruiz A, Matute C, Beiroa D, Falcon-Perez JM, Aspichueta P, Rodríguez-Cuesta J, Porcelli M, Pajares MA, Ameneiro C, Fidalgo M, Aransay AM, Lama-Díaz T, Blanco MG, López M, Villa-Bellosta R, Müller TD, Nogueiras R, Woodhoo A, Martínez-Chantar ML, Varela-Rey M.",
+      "journal": "Cell Metab",
+      "topic": "mafld",
+      "doi": "10.1016/j.cmet.2023.07.002",
+      "abstract": "There has been an intense focus to uncover the molecular mechanisms by which fasting triggers the adaptive cellular responses in the major organs of the body. Here, we show that in mice, hepatic S-adenosylmethionine (SAMe)-the principal methyl donor-acts as a metabolic sensor of nutrition to fine-tune the catabolic-fasting response by modulating phosphatidylethanolamine N-methyltransferase (PEMT) activity, endoplasmic reticulum-mitochondria contacts, β-oxidation, and ATP production in the liver, together with FGF21-mediated lipolysis and thermogenesis in adipose tissues. Notably, we show that glucagon induces the expression of the hepatic SAMe-synthesizing enzyme methionine adenosyltransferase α1 (MAT1A), which translocates to mitochondria-associated membranes. This leads to the production of this metabolite at these sites, which acts as a brake to prevent excessive β-oxidation and mitochondrial ATP synthesis and thereby endoplasmic reticulum stress and liver injury. This work provides important insights into the previously undescribed function of SAMe as a new arm of the metabolic adaptation to fasting."
+    },
+    {
+      "id": "pub-023",
+      "year": "2023",
+      "title": "miR-21p-5p coordinates biological pathways to promote MASLD progression",
+      "authors": "Aspichueta P, Zeisel MB.",
+      "journal": "Liver Int",
+      "topic": "mafld",
+      "doi": "10.1111/liv.15740",
+      "abstract": ""
+    },
+    {
+      "id": "pub-024",
+      "year": "2023",
+      "title": "Protective effects of the succinate/SUCNR1 axis on damaged hepatocytes in NAFLD",
+      "authors": "Marsal-Beltran A, Rodríguez-Castellano A, Astiarraga B, Calvo E, Rada P, Madeira A, Rodríguez-Peña MM, Llauradó G, Núñez-Roa C, Gómez-Santos B, Maymó-Masip E, Bosch R, Frutos MD, Moreno-Navarrete JM, Ramos-Molina B, Aspichueta P, Joven J, Fernández-Real JM, Quer JC, Valverde ÁM, Pardo A, Vendrell J, Ceperuelo-Mallafré V, Fernández-Veledo S.",
+      "journal": "Metabolism",
+      "topic": "mafld",
+      "doi": "10.1016/j.metabol.2023.155630",
+      "abstract": "ObjectiveSuccinate and succinate receptor 1 (SUCNR1) are linked to fibrotic remodeling in models of non-alcoholic fatty liver disease (NAFLD), but whether they have roles beyond the activation of hepatic stellate cells remains unexplored. We investigated the succinate/SUCNR1 axis in the context of NAFLD specifically in hepatocytes.MethodsWe studied the phenotype of wild-type and Sucnr1-/- mice fed a choline-deficient high-fat diet to induce non-alcoholic steatohepatitis (NASH), and explored the function of SUCNR1 in murine primary hepatocytes and human HepG2 cells treated with palmitic acid. Lastly, plasma succinate and hepatic SUCNR1 expression were analyzed in four independent cohorts of patients in different NAFLD stages.ResultsSucnr1 was upregulated in murine liver and primary hepatocytes in response to diet-induced NASH. Sucnr1 deficiency provoked both beneficial (reduced fibrosis and endoplasmic reticulum stress) and detrimental (exacerbated steatosis and inflammation and reduced glycogen content) effects in the liver, and disrupted glucose homeostasis. Studies in vitro revealed that hepatocyte injury increased Sucnr1 expression, which when activated improved lipid and glycogen homeostasis in damaged hepatocytes. In humans, SUCNR1 expression was a good determinant of NAFLD progression to advanced stages. In a population at risk of NAFLD, circulating succinate was elevated in patients with a fatty liver index (FLI) ≥60. Indeed, succinate had good predictive value for steatosis diagnosed by FLI, and improved the prediction of moderate/severe steatosis through biopsy when added to an FLI algorithm.ConclusionsWe identify hepatocytes as target cells of extracellular succinate during NAFLD progression and uncover a hitherto unknown function for SUCNR1 as a regulator of hepatocyte glucose and lipid metabolism. Our clinical data highlight the potential of succinate and hepatic SUCNR1 expression as markers to diagnose fatty liver and NASH, respectively."
+    },
+    {
+      "id": "pub-025",
+      "year": "2023",
+      "title": "In Vivo Tissue Lipid Uptake in Antisense Oligonucleotide (ASO)-Treated Mice",
+      "authors": "Aurrekoetxea I, Gomez-Santos B, Apodaka-Biguri M, Ruiz de Gauna M, Gonzalez-Romero F, Buqué X, Aspichueta P.",
+      "journal": "Methods Mol Biol",
+      "topic": "mafld",
+      "doi": "10.1007/978-1-0716-3247-5_1",
+      "abstract": "The prevalence of obesity has increased to pandemic levels over the past years. Associated comorbidities linked with the accumulation of lipids in different tissues and blood are responsible for the high mortality in these patients. The increased dietary lipid uptake contributes to these metabolic diseases. Identifying which pathways might be dysregulated in these patients will contribute to find new therapeutic targets. Thus, here, a protocol to follow up the distribution of dietary lipids in blood and tissues is provided. For this, radiolabeled triglyceride in olive oil is administered by oral gavage. To ascertain more precisely the capacity of each tissue for fatty acid uptake, not considering the intestinal barrier, the intravenous (IV) administration of radiolabeled lipids is also described."
+    },
+    {
+      "id": "pub-026",
+      "year": "2023",
+      "title": "In Vivo Hepatic Triglyceride Secretion Rate in Antisense Oligonucleotide (ASO)-Treated Mice",
+      "authors": "Gomez-Santos B, Saenz de Urturi D, Buqué X, Aurrekoetxea I, Nieva A, Fernández-Puertas I, Aspichueta P.",
+      "journal": "Methods Mol Biol",
+      "topic": "mafld",
+      "doi": "10.1007/978-1-0716-3247-5_2",
+      "abstract": "The liver is a central organ in regulating the whole body metabolic homeostasis, and, among many other processes, it plays a crucial role in lipoprotein metabolism. The liver controls the secretion of very-low-density lipoproteins (VLDLs), particles specialized in the transport of liver lipids, mainly triglycerides (TGs), to the adipose tissue, heart, and muscle, among other tissues, providing fatty acids to be stored or to be used as an energy source. The analysis of this metabolic process provides relevant information about the crosstalk between the liver and other organs. It also helps to identify how the liver is able to secrete lipids to reduce its accumulation. This protocol shows how to analyze the liver TG secretion rate blocking the VLDL clearance from the blood by the administration of poloxamer 407. In addition, it shows how to isolate the VLDL produced by the liver at the end of the experiment, so that the apolipoprotein and lipid content and size can be measured. Using antisense oligonucleotides (ASOs) for silencing target proteins involved in metabolic diseases has emerged as a new promising therapeutic approach. Thus, the usage of ASOs has also been included in this protocol. As a conclusion, evaluation of TG secretion rate in mice provides key information to understand the organ crosstalk in metabolic diseases and the capacity of the liver to secrete lipids to blood."
+    },
+    {
+      "id": "pub-027",
+      "year": "2023",
+      "title": "A functional genomic framework to elucidate novel causal non-alcoholic fatty liver disease genes",
+      "authors": "Saliba-Gustafsson P, Justesen JM, Ranta A, Sharma D, Bielczyk-Maczynska E, Li J, Najmi LA, Apodaka M, Aspichueta P, Björck HM, Eriksson P, Franco-Cereceda A, Gloudemans M, Mujica E, den Hoed M, Assimes TL, Quertermous T, Carcamo-Orive I, Park CY, Knowles JW.",
+      "journal": "medRxiv",
+      "topic": "mafld",
+      "doi": "10.1101/2024.02.03.24302258",
+      "abstract": "Background & Aims Non-alcoholic fatty liver disease (NAFLD) is the most prevalent chronic liver pathology in western countries, with serious public health consequences. Efforts to identify causal genes for NAFLD have been hampered by the relative paucity of human data from gold-standard magnetic resonance quantification of hepatic fat. To overcome insufficient sample size, genome-wide association studies using NAFLD surrogate phenotypes have been used, but only a small number of loci have been identified to date. In this study, we combined GWAS of NAFLD composite surrogate phenotypes with genetic colocalization studies followed by functional in vitro screens to identify bona fide causal genes for NAFLD. Approach & Results We used the UK Biobank to explore the associations of our novel NAFLD score, and genetic colocalization to prioritize putative causal genes for in vitro validation. We created a functional genomic framework to study NAFLD genes in vitro using CRISPRi. Our data identify VKORC1, TNKS, LYPLAL1 and GPAM as regulators of lipid accumulation in hepatocytes and suggest the involvement of VKORC1 in the lipid storage related to the development of NAFLD. Conclusions Complementary genetic and genomic approaches are useful for the identification of NAFLD genes. Our data supports VKORC1 as a bona fide NAFLD gene. We have established a functional genomic framework to study at scale putative novel NAFLD genes from human genetic association studies."
+    },
+    {
+      "id": "pub-028",
+      "year": "2023",
+      "title": "Lipid fingerprint-based histology accurately classifies nevus, primary melanoma, and metastatic melanoma samples.",
+      "authors": "Huergo-Baños C, Velasco V, Garate J, Fernández R, Martín-Allende J, Zabalza I, Artola JL, Martí RM, Asumendi A, Astigarraga E, Barreda-Gómez G, Fresnedo O, Ochoa B, Boyano MD, Fernández JA.",
+      "journal": "Int J Cancer",
+      "topic": "cancer",
+      "doi": "10.1002/ijc.34800",
+      "abstract": "Probably, the most important factor for the survival of a melanoma patient is early detection and precise diagnosis. Although in most cases these tasks are readily carried out by pathologists and dermatologists, there are still difficult cases in which no consensus among experts is achieved. To deal with such cases, new methodologies are required. Following this motivation, we explore here the use of lipid imaging mass spectrometry as a complementary tool for the aid in the diagnosis. Thus, 53 samples (15 nevus, 24 primary melanomas, and 14 metastasis) were explored with the aid of a mass spectrometer, using negative polarity. The rich lipid fingerprint obtained from the samples allowed us to set up an artificial intelligence-based classification model that achieved 100% of specificity and precision both in training and validation data sets. A deeper analysis of the image data shows that the technique reports important information on the tumor microenvironment that may give invaluable insights in the prognosis of the lesion, with the correct interpretation."
+    },
+    {
+      "id": "pub-029",
+      "year": "2023",
+      "title": "Nonionic Surfactants can Modify the Thermal Stability of Globular and Membrane Proteins Interfering with the Thermal Proteome Profiling Principles to Identify Protein Targets",
+      "authors": "Emmanuel Berlin, Veronica Lizano-Fallas, Ana Carrasco Del Amor, Olatz Fresnedo, Susana Cristobal",
+      "journal": "Anal Chem",
+      "topic": "mafld",
+      "doi": "10.1021/acs.analchem.2c04500",
+      "abstract": "The membrane proteins are essential targets for understanding cellular function. The unbiased identification of membrane protein targets is still the bottleneck for a system-level understanding of cellular response to stimuli or perturbations. It has been suggested to enrich the soluble proteome with membrane proteins by introducing nonionic surfactants in the solubilization solution. This strategy aimed to simultaneously identify the globular and membrane protein targets by thermal proteome profiling principles. However, the thermal shift assay would surpass the cloud point temperature from the nonionic surfactants frequently utilized for membrane protein solubilization. It is expected that around the cloud point temperature, the surfactant micelles would suffer structural modifications altering protein solubility. Here, we show that the presence of nonionic surfactants can alter protein thermal stability from a mixed, globular, and membrane proteome. In the presence of surfactant micelles, the changes in protein solubility analyzed after the thermal shift assay was affected by the thermally dependent modification of the micellar size and its interaction with proteins. We demonstrate that the introduction of nonionic surfactants for the solubilization of membrane proteins is not compatible with the principles of target identification by thermal proteome profiling methodologies. Our results lead to exploring thermally independent strategies for membrane protein solubilization to assure confident membrane protein target identification. The proteome-wide thermal shift methods have already shown their capability to elucidate mechanisms of action from pharma, biomedicine, analytical chemistry, or toxicology, and finding strategies, free from surfactants, to identify membrane protein targets would be the next challenge."
+    },
+    {
+      "id": "pub-030",
+      "year": "2023",
+      "title": "Using the Synergy between HPLC-MS and MALDI-MS Imaging to Explore the Lipidomics of Clear Cell Renal Cell Carcinoma",
+      "authors": "Lucía Martín-Saiz, Beatriz Abad-García, Jon D Solano-Iturri, Lorena Mosteiro, Javier Martín-Allende, Yuri Rueda, Amparo Pérez-Fernández, Miguel Unda, Pedro Coterón-Ochoa, Aintzane Goya, Alberto Saiz, Jennifer Martínez, Begoña Ochoa, Olatz Fresnedo, Gorka Larrinaga, José A Fernández",
+      "journal": "Anal Chem",
+      "topic": "cancer",
+      "doi": "10.1021/acs.analchem.2c03953",
+      "abstract": "Lipid imaging mass spectrometry (LIMS) has been tested in several pathological contexts, demonstrating its ability to segregate and isolate lipid signatures in complex tissues, thanks to the technique's spatial resolution. However, it cannot yet compete with the superior identification power of high-performance liquid chromatography coupled to mass spectrometry (HPLC-MS), and therefore, very often, the latter is used to refine the assignment of the species detected by LIMS. Also, it is not clear if the differences in sensitivity and spatial resolution between the two techniques lead to a similar panel of biomarkers for a given disease. Here, we explore the capabilities of LIMS and HPLC-MS to produce a panel of lipid biomarkers to screen nephrectomy samples from 40 clear cell renal cell carcinoma patients. The same set of samples was explored by both techniques, and despite the important differences between them in terms of the number of detected and identified species (148 by LIMS and 344 by HPLC-MS in negative-ion mode) and the presence/absence of image capabilities, similar conclusions were reached: using the lipid fingerprint, it is possible to set up classifiers that correctly identify the samples as either healthy or tumor samples. The spatial resolution of LIMS enables extraction of additional information, such as the existence of necrotic areas or the existence of different tumor cell populations, but such information does not seem determinant for the correct classification of the samples, or it may be somehow compensated by the higher analytical power of HPLC-MS. Similar conclusions were reached with two very different techniques, validating their use for the discovery of lipid biomarkers."
+    },
+    {
+      "id": "pub-031",
+      "year": "2023",
+      "title": "Characterization of hepatic fatty acids using Magnetic Resonance Spectroscopy for the assessment of treatment response to Metformin in an eNOS-/- mouse model of metabolic NAFLD-NASH",
+      "authors": "Begoña Lavin, Thomas R Eykyn, Alkystis Phinikaridou, Aline Xavier, Shravan Kumar, Xabier Buqué, Patricia Aspichueta, Carlos Sing-Long, Marco Arrese, René M Botnar, Marcelo E Andia",
+      "journal": "NMR Biomed",
+      "topic": "lipidomics",
+      "doi": "10.1002/nbm.4932",
+      "abstract": "Nonalcoholic fatty liver disease (NAFLD) is the leading cause of chronic liver disease worldwide. Liver biopsy remains the gold standard for diagnosis and staging of disease. There is a clinical need for noninvasive diagnostic tools for risk stratification, follow-up, and monitoring treatment response that are currently lacking, as well as preclinical models that recapitulate the etiology of the human condition. We have characterized the progression of NAFLD in eNOS-/- mice fed a high fat diet (HFD) using noninvasive Dixon-based magnetic resonance imaging and single voxel STEAM spectroscopy-based protocols to measure liver fat fraction at 3 T. After 8 weeks of diet intervention, eNOS-/- mice exhibited significant accumulation of intra-abdominal and liver fat compared with control mice. Liver fat fraction measured by 1 H-MRS in vivo showed a good correlation with the NAFLD activity score measured by histology. Treatment of HFD-fed NOS3-/- mice with metformin showed significantly reduced liver fat fraction and altered hepatic lipidomic profile compared with untreated mice. Our results show the potential of in vivo liver MRI and 1 H-MRS to noninvasively diagnose and stage the progression of NAFLD and to monitor treatment response in an eNOS-/- murine model that represents the classic NAFLD phenotype associated with metabolic syndrome."
+    },
+    {
+      "id": "pub-032",
+      "year": "2023",
+      "title": "Expanding the roles of the renin-angiotensin system: Drug-induced liver injury",
+      "authors": "Ruben Nogueiras, Patricia Aspichueta",
+      "journal": "J Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.jhep.2022.12.016",
+      "abstract": ""
+    },
+    {
+      "id": "pub-033",
+      "year": "2022",
+      "title": "Tri-Reagent Homogenate Is a Suitable Starting Material for UHPLC-MS Lipidomic Analysis",
+      "authors": "Fresnedo O, Abad-Garcia B, Rueda Y",
+      "journal": "Separations",
+      "topic": "lipidomics",
+      "doi": "10.1007/s42770-026-02058-9",
+      "abstract": "Meat products represent important vehicles for foodborne viral transmission, yet standardized detection methodologies for these complex matrices remain limited. This study systematically compared three viral recovery methods across nine meat products representing chicken, pork, and processed deli meat matrices: polyethylene glycol 6000 (PEG) precipitation, glycine buffer-chloroform (GBC) phase separation, and β-mercaptoethanol (B-M) chaotropic lysis. Using Murine Norovirus 1 (MNV-1) and Murine Hepatitis Virus 3 (MHV-3) as process controls, recovery efficiency was assessed by RT-qPCR. The B-M method demonstrated the most consistent performance, successfully detecting MNV-1 across all tested matrices and significantly outperforming PEG and GBC for MNV-1 in chicken and pork. Applying the B-M method to 25 commercial retail products revealed the genetic material of Hepatitis E virus (HEV) in four samples and Porcine Circovirus type 2 (PCV-2) in one sample, exclusively within pork products. These findings provide critical comparative performance data for method selection in viral surveillance of meat and document the occurrence of HEV and PCV-2 genetic material in commercial pork products from Santa Catarina, Brazil, highlighting a significant food and agricultural biosafety concern in this major meat-producing and exporting state."
+    },
+    {
+      "id": "pub-034",
+      "year": "2022",
+      "title": "Role of Oxidative Stress and Lipid Peroxidation in the Pathophysiology of NAFLD",
+      "authors": "Marta Martín-Fernández, Víctor Arroyo, Carmen Carnicero, Rebeca Sigüenza, Reyes Busta, Natalia Mora, Beatriz Antolín, Eduardo Tamayo, Patricia Aspichueta, Irene Carnicero-Frutos, Hugo Gonzalo-Benito, Rocío Aller",
+      "journal": "Antioxidants (Basel)",
+      "topic": "mafld",
+      "doi": "10.3390/antiox11112217",
+      "abstract": "Non-alcoholic fatty liver disease (NAFLD) is characterised by an excess of hepatic fat that can progress to steatohepatitis, fibrosis, cirrhosis and hepatocarcinoma. The imbalance between lipid uptake/lipogenesis and lipid oxidation/secretion in the liver is a major feature of NAFLD. Given the lack of a non-invasive and reliable methods for the diagnosis of non-alcoholic steatohepatitis (NASH), it is important to find serum markers that are capable of discriminating or defining patients with this stage of NASH. Blood samples were obtained from 152 Caucasian subjects with biopsy-proven NAFLD due to persistently elevated liver enzyme levels. Metabolites representative of oxidative stress were assessed. The findings derived from this work revealed that NAFLD patients with a NASH score of ≥ 4 showed significantly higher levels of lipid peroxidation (LPO). Indeed, LPO levels above the optimal operating point (OOP) of 315.39 μM are an independent risk factor for presenting a NASH score of ≥ 4 (OR: 4.71; 95% CI: 1.68−13.19; p = 0.003). The area under the curve (AUC = 0.81, 95% CI = 0.73−0.89, p < 0.001) shows a good discrimination ability of the model. Therefore, understanding the molecular mechanisms underlying the basal inflammation present in these patients is postulated as a possible source of biomarkers and therapeutic targets in NASH."
+    },
+    {
+      "id": "pub-035",
+      "year": "2022",
+      "title": "Targeting E2F Sensitizes Prostate Cancer Cells to Drug-Induced Replication Stress by Promoting Unscheduled CDK1 Activity",
+      "authors": "Mohaddase Hamidi, Ainhoa Eriz, Jone Mitxelena, Larraitz Fernandez-Ares, Igor Aurrekoetxea, Patricia Aspichueta, Ainhoa Iglesias-Ara, Ana M Zubiaga",
+      "journal": "Cancers (Basel)",
+      "topic": "e2f",
+      "doi": "10.3390/cancers14194952",
+      "abstract": "E2F1/E2F2 expression correlates with malignancy in prostate cancer (PCa), but its functional significance remains unresolved. To define the mechanisms governed by E2F in PCa, we analyzed the contribution of E2F target genes to the control of genome integrity, and the impact of modulating E2F activity on PCa progression. We show that silencing or inhibiting E2F1/E2F2 induces DNA damage during S phase and potentiates 5-FU-induced replication stress and cellular toxicity. Inhibition of E2F downregulates the expression of E2F targets involved in nucleotide biosynthesis (TK1, DCK, TYMS), whose expression is upregulated by 5-FU. However, their enzymatic products failed to rescue DNA damage of E2F1/E2F2 knockdown cells, suggesting additional mechanisms for E2F function. Interestingly, targeting E2F1/E2F2 in PCa cells reduced WEE1 expression and resulted in premature CDK1 activation during S phase. Inhibition of CDK1/CDK2 prevented DNA damage induced by E2F loss, suggesting that E2F1/E2F2 safeguard genome integrity by restraining CDK1/CDK2 activity. Importantly, combined inhibition of E2F and ATR boosted replication stress and dramatically reduced tumorigenic capacity of PCa cells in xenografts. Collectively, inhibition of E2F in combination with drugs targeting nucleotide biosynthesis or DNA repair is a promising strategy to provoke catastrophic levels of replication stress that could be applied to PCa treatment."
+    },
+    {
+      "id": "pub-036",
+      "year": "2022",
+      "title": "TREM-2 plays a protective role in cholestasis by acting as a negative regulator of inflammation",
+      "authors": "Ibone Labiano, Aloña Agirre-Lizaso, Paula Olaizola, Anne Echebarria, Maider Huici-Izagirre, Irene Olaizola, Aitor Esparza-Baquer, Omar Sharif, Elizabeth Hijona, Piotr Milkiewicz, Malgorzata Milkiewicz, Francisco González-Romero, Patricia Aspichueta, Maria J Monte, Jose J G Marin, Mihael Vucur, Tom Luedde, Marco Marzioni, Derek A Mann, Luis Bujanda, Pedro M Rodrigues, Jesus M Banales, Maria J Perugorria",
+      "journal": "J Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.jhep.2022.05.044",
+      "abstract": "Background & aimsInflammation, particularly that mediated by bacterial components translocating from the gut to the liver and binding to toll-like receptors (TLRs), is central to cholestatic liver injury. The triggering receptor expressed on myeloid cells-2 (TREM-2) inhibits TLR-mediated signaling and exerts a protective role in hepatocellular injury and carcinogenesis. This study aims to evaluate the role of TREM-2 in cholestasis.MethodsTREM-2 expression was analyzed in the livers of patients with primary biliary cholangitis (PBC) or primary sclerosing cholangitis (PSC), and in mouse models of cholestasis. Wild-type (WT) and Trem-2 deficient (Trem-2-/-) mice were subjected to experimental cholestasis and gut sterilization. Primary cultured Kupffer cells were incubated with lipopolysaccharide and/or ursodeoxycholic acid (UDCA) and inflammatory responses were analyzed.ResultsTREM-2 expression was upregulated in the livers of patients with PBC or PSC, and in murine models of cholestasis. Compared to WT, the response to bile duct ligation (BDL)-induced obstructive cholestasis or alpha-naphtylisothiocyanate (ANIT)-induced cholestasis was exacerbated in Trem-2-/- mice. This was characterized by enhanced necroptotic cell death, inflammatory responses and biliary expansion. Antibiotic treatment partially abrogated the effects observed in Trem-2-/- mice after BDL. Experimental overexpression of TREM-2 in the liver of WT mice downregulated ANIT-induced IL-33 expression and neutrophil recruitment. UDCA regulated Trem-1 and Trem-2 expression in primary cultured mouse Kupffer cells and dampened inflammatory gene transcription via a TREM-2-dependent mechanism.ConclusionsTREM-2 acts as a negative regulator of inflammation during cholestasis, representing a novel potential therapeutic target.Lay summaryCholestasis (the reduction or cessation of bile flow) causes liver injury. This injury is exacerbated when gut-derived bacterial components interact with receptors (specifically Toll-like receptors or TLRs) on liver-resident immune cells, promoting inflammation. Herein, we show that the anti-inflammatory receptor TREM-2 dampens TLR-mediated signaling and hence protects against cholestasis-induced liver injury. Thus, TREM-2 could be a potential therapeutic target in cholestasis."
+    },
+    {
+      "id": "pub-037",
+      "year": "2022",
+      "title": "Genetics, pathobiology and therapeutic opportunities of polycystic liver disease",
+      "authors": "Paula Olaizola, Pedro M Rodrigues, Francisco J Caballero-Camino, Laura Izquierdo-Sanchez, Patricia Aspichueta, Luis Bujanda, Nicholas F Larusso, Joost P H Drenth, Maria J Perugorria, Jesus M Banales",
+      "journal": "Nat Rev Gastroenterol Hepatol",
+      "topic": "mafld",
+      "doi": "10.1038/s41575-022-00617-7",
+      "abstract": "Polycystic liver diseases (PLDs) are inherited genetic disorders characterized by progressive development of intrahepatic, fluid-filled biliary cysts (more than ten), which constitute the main cause of morbidity and markedly affect the quality of life. Liver cysts arise in patients with autosomal dominant PLD (ADPLD) or in co-occurrence with renal cysts in patients with autosomal dominant or autosomal recessive polycystic kidney disease (ADPKD and ARPKD, respectively). Hepatic cystogenesis is a heterogeneous process, with several risk factors increasing the odds of developing larger cysts. Depending on the causative gene, PLDs can arise exclusively in the liver or in parallel with renal cysts. Current therapeutic strategies, mainly based on surgical procedures and/or chronic administration of somatostatin analogues, show modest benefits, with liver transplantation as the only potentially curative option. Increasing research has shed light on the genetic landscape of PLDs and consequent cholangiocyte abnormalities, which can pave the way for discovering new targets for therapy and the design of novel potential treatments for patients. Herein, we provide a critical and comprehensive overview of the latest advances in the field of PLDs, mainly focusing on genetics, pathobiology, risk factors and next-generation therapeutic strategies, highlighting future directions in basic, translational and clinical research."
+    },
+    {
+      "id": "pub-038",
+      "year": "2022",
+      "title": "Targeting NAE1-mediated protein hyper-NEDDylation halts cholangiocarcinogenesis and impacts on tumor-stroma crosstalk in experimental models",
+      "authors": "Paula Olaizola, Pui Yuen Lee-Law, Maite G Fernandez-Barrena, Laura Alvarez, Massimiliano Cadamuro, Mikel Azkargorta, Colm J O'Rourke, Francisco J Caballero-Camino, Irene Olaizola, Rocio I R Macias, Jose J G Marin, Marina Serrano-Maciá, Maria L Martinez-Chantar, Matias A Avila, Patricia Aspichueta, Diego F Calvisi, Matthias Evert, Luca Fabris, Rui E Castro, Felix Elortza, Jesper B Andersen, Luis Bujanda, Pedro M Rodrigues, Maria J Perugorria, Jesus M Banales",
+      "journal": "J Hepatol",
+      "topic": "cancer",
+      "doi": "10.1016/j.jhep.2022.02.007",
+      "abstract": "Background & aimsCholangiocarcinoma (CCA) comprises a heterogeneous group of malignant tumors associated with dismal prognosis. Alterations in post-translational modifications (PTMs), including NEDDylation, result in abnormal protein dynamics, cell disturbances and disease. Herein, we investigate the role of NEDDylation in CCA development and progression.MethodsLevels and functions of NEDDylation, together with response to pevonedistat (NEDDylation inhibitor) or CRISPR/Cas9 against NAE1 were evaluated in vitro, in vivo and/or in patients with CCA. The development of preneoplastic lesions in Nae1+/- mice was investigated using an oncogene-driven CCA model. The impact of NEDDylation in CCA cells on tumor-stroma crosstalk was assessed using CCA-derived cancer-associated fibroblasts (CAFs). Proteomic analyses were carried out by mass-spectrometry.ResultsThe NEDDylation machinery was found overexpressed and overactivated in human CCA cells and tumors. Most NEDDylated proteins found upregulated in CCA cells, after NEDD8-immunoprecipitation and further proteomics, participate in the cell cycle, proliferation or survival. Genetic (CRISPR/Cas9-NAE1) and pharmacological (pevonedistat) inhibition of NEDDylation reduced CCA cell proliferation and impeded colony formation in vitro. NEDDylation depletion (pevonedistat or Nae1+/- mice) halted tumorigenesis in subcutaneous, orthotopic, and oncogene-driven models of CCA in vivo. Moreover, pevonedistat potentiated chemotherapy-induced cell death in CCA cells in vitro. Mechanistically, impaired NEDDylation triggered the accumulation of both cullin RING ligase and NEDD8 substrates, inducing DNA damage and cell cycle arrest. Furthermore, impaired NEDDylation in CCA cells reduced the secretion of proteins involved in fibroblast activation, angiogenesis, and oncogenic pathways, ultimately hampering CAF proliferation and migration.ConclusionAberrant protein NEDDylation contributes to cholangiocarcinogenesis by promoting cell survival and proliferation. Moreover, NEDDylation impacts the CCA-stroma crosstalk. Inhibition of NEDDylation with pevonedistat may represent a potential therapeutic strategy for patients with CCA.Lay summaryLittle is known about the role of post-translational modifications of proteins in cholangiocarcinoma development and progression. Herein, we show that protein NEDDylation is upregulated and hyperactivated in cholangiocarcinoma, promoting tumor growth. Pharmacological inhibition of NEDDylation halts cholangiocarcinogenesis and could be an effective therapeutic strategy to tackle these tumors."
+    },
+    {
+      "id": "pub-039",
+      "year": "2022",
+      "title": "Methionine adenosyltransferase 1a antisense oligonucleotides activate the liver-brown adipose tissue axis preventing obesity and associated hepatosteatosis",
+      "authors": "Diego Sáenz de Urturi, Xabier Buqué, Begoña Porteiro, Cintia Folgueira, Alfonso Mora, Teresa C. Delgado, Endika Prieto-Fernández, Paula Olaizola, Beatriz Gómez-Santos, Maider Apodaka-Biguri, Francisco González-Romero, Ane Nieva-Zuluaga, Mikel Ruiz de Gauna, Naroa Goikoetxea-Usandizaga, Juan Luis García-Rodríguez, Virginia Gutierrez de Juan, Igor Aurrekoetxea, Valle Montalvo-Romeral, Eva M. Novoa, Idoia Martín-Guerrero, Marta Varela-Rey, Sanjay Bhanot, Richard Lee, Jesus M. Banales, Wing-Kin Syn, Guadalupe Sabio, María L. Martínez-Chantar, Rubén Nogueiras, Patricia Aspichueta",
+      "journal": "NATURE COMMUNICATIONS",
+      "topic": "mafld",
+      "doi": "10.1038/s41467-022-28749-z",
+      "abstract": "Altered methionine metabolism is associated with weight gain in obesity. The methionine adenosyltransferase (MAT), catalyzing the first reaction of the methionine cycle, plays an important role regulating lipid metabolism. However, its role in obesity, when a plethora of metabolic diseases occurs, is still unknown. By using antisense oligonucleotides (ASO) and genetic depletion of Mat1a, here, we demonstrate that Mat1a deficiency in diet-induce obese or genetically obese mice prevented and reversed obesity and obesity-associated insulin resistance and hepatosteatosis by increasing energy expenditure in a hepatocyte FGF21 dependent fashion. The increased NRF2-mediated FGF21 secretion induced by targeting Mat1a, mobilized plasma lipids towards the BAT to be catabolized, induced thermogenesis and reduced body weight, inhibiting hepatic de novo lipogenesis. The beneficial effects of Mat1a ASO were abolished following FGF21 depletion in hepatocytes. Thus, targeting Mat1a activates the liver-BAT axis by increasing NRF2-mediated FGF21 secretion, which prevents obesity, insulin resistance and hepatosteatosis."
+    },
+    {
+      "id": "pub-040",
+      "year": "2022",
+      "title": "Ferrostatin-1 modulates dysregulated kidney lipids in acute kidney injury",
+      "authors": "Martín-Saiz L, Guerrero-Mauvecin J, Martín-Sanchez D, Fresnedo O, Gómez MJ, Carrasco S, Cannata-Ortiz P, Ortiz A, Fernandez JA, Sanz AB",
+      "journal": "J Pathol",
+      "topic": "spatial-omics",
+      "doi": "10.1002/path.5882",
+      "abstract": "Ferroptosis, a form of regulated necrosis characterized by peroxidation of lipids such as arachidonic acid-containing phosphatidylethanolamine (PE), contributes to the pathogenesis of acute kidney injury (AKI). We have characterized the kidney lipidome in an experimental nephrotoxic AKI induced in mice using folic acid and assessed the impact of the ferroptosis inhibitor Ferrostatin-1. Matrix-assisted laser desorption/ionization (MALDI) imaging mass spectrometry (IMS) was used to assess kidney lipidomics and it discriminated between glomeruli, medulla, and cortex in control kidneys, AKI kidneys, and AKI + Ferrostatin-1 kidneys. Out of 139 lipid species from 16 classes identified, 29 (20.5%) showed significant differences between control and AKI at 48 h. Total PE and lyso-sulfatide species decreased, while phosphatidylinositol (PI) species increased in AKI. Dysregulated mRNA levels for Pemt, Pgs1, Cdipt, and Tamm41, relevant to lipid metabolism, were in line with the lipid changes observed. Ferrostatin-1 prevented AKI and some AKI-associated changes in lipid levels, such as the decrease in PE and lyso-sulfatide species, without changing the gene expression of lipid metabolism enzymes. In conclusion, changes in the kidney lipid composition during nephrotoxic AKI are associated with differential gene expression of lipid metabolism enzymes and are partially prevented by Ferrostatin-1. © 2022 The Pathological Society of Great Britain and Ireland."
+    },
+    {
+      "id": "pub-041",
+      "year": "2022",
+      "title": "Cholangiocarcinoma progression depends on the uptake and metabolization of extracellular lipids",
+      "authors": "Ruiz de Gauna M, Biancaniello F, González-Romero F, Rodrigues PM, Lapitz A, Gómez-Santos B, Olaizola P, Di Matteo S, Aurrekoetxea I, Labiano I, Nieva-Zuluaga A, Benito-Vicente A, Perugorria MJ, Apodaka-Biguri M, Paiva NA, Sáenz de Urturi D, Buqué X, Delgado I, Martín C, Azkargorta M, Elortza F, Calvisi DF, Andersen JB, Alvaro D, Cardinale V, Bujanda L, Banales JM, Aspichueta P.",
+      "journal": "Hepatology",
+      "topic": "cancer",
+      "doi": "10.1002/hep.32344",
+      "abstract": "Background and aimsCholangiocarcinoma (CCA) includes a heterogeneous group of biliary cancers with a dismal prognosis. We investigated if lipid metabolism is disrupted in CCA and its role in tumor proliferation.Approach and resultsThe in vitro and in vivo tumorigenic capacity of five human CCA cell lines was analyzed. Proteome, lipid content, and metabolic fluxes were evaluated in CCA cells and compared with normal human cholangiocytes (NHC). The Akt1/NOTCH1 intracellular cytoplasmic domain (Nicd1)-driven CCA mouse model was also evaluated. The proteome of CCA cells was enriched in pathways involved in lipid and lipoprotein metabolism. The EGI1 CCA cell line presented the highest tumorigenic capacity. Metabolic studies in high (EGI1) versus low (HUCCT1) proliferative CCA cells in vitro showed that both EGI1 and HUCCT1 incorporated more fatty acids (FA) than NHC, leading to increased triglyceride storage, also observed in Akt1/Nicd1-driven CCA mouse model. The highly proliferative EGI1 CCA cells showed greater uptake of very-low-density and HDLs than NHC and HUCCT1 CCA cells and increased cholesteryl ester content. The FA oxidation (FAO) and related proteome enrichment were specifically up-regulated in EGI1, and consequently, pharmacological blockade of FAO induced more pronounced inhibition of their tumorigenic capacity compared with HUCCT1. The expression of acyl-CoA dehydrogenase ACADM, the first enzyme involved in FAO, was increased in human CCA tissues and correlated with the proliferation marker PCNA.ConclusionsHighly proliferative human CCA cells rely on lipid and lipoprotein uptake to fuel FA catabolism, suggesting that inhibition of FAO and/or lipid uptake could represent a therapeutic strategy for this CCA subclass."
+    },
+    {
+      "id": "pub-042",
+      "year": "2021",
+      "title": "High-Resolution Human Kidney Molecular Histology by Imaging Mass Spectrometry of Lipids",
+      "authors": "Martín-Saiz L, Mosteiro L, Solano-Iturri JD, Rueda Y, Martín-Allende J, Imaz I, Olano I, Ochoa B, Fresnedo O, Fernández JA, Larrinaga G",
+      "journal": "Anal Chem",
+      "topic": "spatial-omics",
+      "doi": "10.1021/acs.analchem.1c00649",
+      "abstract": "For many years, traditional histology has been the gold standard for the diagnosis of many diseases. However, alternative and powerful techniques have appeared in recent years that complement the information extracted from a tissue section. One of the most promising techniques is imaging mass spectrometry applied to lipidomics. Here, we demonstrate the capabilities of this technique to highlight the architectural features of the human kidney at a spatial resolution of 10 μm. Our data demonstrate that up to seven different segments of the nephron and the interstitial tissue can be readily identified in the sections according to their characteristic lipid fingerprints and that such fingerprints are maintained among different individuals (n = 32). These results set the foundation for further studies on the metabolic bases of the diseases affecting the human kidney."
+    },
+    {
+      "id": "pub-043",
+      "year": "2021",
+      "title": "Similar Results in Liver Transplantation From Controlled Donation After Circulatory Death Donors With Normothermic Regional Perfusion and Donation After Brain Death Donors: A Case-Matched Single-Center Study",
+      "authors": "Ruiz P, Valdivieso A, Palomares I, Prieto M, Ventoso A, Salvador P, Senosiain M, Fernandez JR, Testillano M, Bustamante FJ, Gastaca M.",
+      "journal": "Liver Transpl",
+      "topic": "mafld",
+      "doi": "10.1002/lt.26281",
+      "abstract": "Although good results have been reported with the use of normothermic regional perfusion (NRP) in controlled donation after circulatory death (cDCD) liver transplantation (LT), there is a lack of evidence to demonstrate similar results to donation after brain death (DBD). We present a single-center retrospective case-matched (1:2) study including 100 NRP cDCD LTs and 200 DBD LTs and a median follow-up of 36 months. Matching was done according to donor age, recipient Model for End-Stage Liver Disease score, and cold ischemia time. The following perioperative results were similar in both groups: alanine transaminase peaks of 909 U/L in the DBD group and 836 U/L in the cDCD group and early allograft disfunction percentages of 21% and 19.2%, respectively. The 1-year and 3-year overall graft survival for cDCD was 99% and 93%, respectively, versus 92% and 87%, respectively, for DBD (P = 0.04). Of note, no cases of primary nonfunction or ischemic-type biliary lesion were observed among the cDCD grafts. Our results confirm that NRP cDCD LT meets the same outcomes as those obtained with DBD LT and provides evidence to support the idea that cDCD donors per se should no longer be considered as \"marginal donors\" when recovered with NRP."
+    },
+    {
+      "id": "pub-044",
+      "year": "2021",
+      "title": "Early tacrolimus exposure does not impact long-term outcomes after liver transplantation",
+      "authors": "Gastaca M, Ruiz P, Bustamante J, Martinez-Indart L, Ventoso A, Fernandez JR, Palomares I, Prieto M, Testillano M, Salvador P, Senosiain M, Suárez MJ, Valdivieso A.",
+      "journal": "World J Hepatol",
+      "topic": "cancer",
+      "doi": "10.4254/wjh.v13.i3.362",
+      "abstract": "BackgroundTacrolimus trough levels (TTL) during the first weeks after liver transplantation (LT) have been related with long-term renal function and hepatocellular carcinoma recurrence. Nevertheless, the significance of trough levels of tacrolimus during the early post-transplant period for the long-term outcome is under debate.AimTo evaluate the effect of TTL during the first month on the long-term outcomes after LT.MethodsOne hundred fifty-five LT recipients treated de novo with once-daily tacrolimus were retrospectively studied. Patients with repeated LT or combined transplantation were excluded as well as those who presented renal dysfunction prior to transplantation and/or those who needed induction therapy. Patients were classified into 2 groups according to their mean TTL within the first month after transplantation: ≤ 10 (n = 98) and > 10 ng/mL (n = 57). Multivariate analyses were performed to assess risk factors for patient mortality.ResultsMean levels within the first month post-transplant were 7.4 ± 1.7 and 12.6 ± 2.2 ng/mL in the ≤ 10 and > 10 groups, respectively. Donor age was higher in the high TTL group 62.9 ± 16.8 years vs 45.7 ± 17.5 years (P = 0.002) whilst mycophenolate-mofetil was more frequently used in the low TTL group 32.7% vs 15.8% (P = 0.02). Recipient features were generally similar across groups. After a median follow-up of 52.8 mo (range 2.8-81.1), no significant differences were observed in: Mean estimated glomerular filtration rate (P = 0.69), hepatocellular carcinoma recurrence (P = 0.44), de novo tumors (P = 0.77), new-onset diabetes (P = 0.13), or biopsy-proven acute rejection rate (12.2% and 8.8%, respectively; P = 0.50). Eighteen patients died during the follow-up and were evenly distributed across groups (P = 0.83). Five-year patient survival was 90.5% and 84.9%, respectively (P = 0.44), while 5-year graft survival was 88.2% and 80.8%, respectively (P = 0.42). Early TTL was not an independent factor for patient mortality in multivariate analyses.ConclusionDifferences in tacrolimus levels restricted to the first month after transplant did not result in significant differences in long-term outcomes of LT recipients."
+    },
+    {
+      "id": "pub-045",
+      "year": "2021",
+      "title": "Totally laparoscopic simultaneous resection of colorectal cancer and synchronous liver metastases: a single-center case series",
+      "authors": "Perfecto A, Gastaca M, Prieto M, Cervera J, Ruiz P, Ventoso A, Palomares I, García JM, Valdivieso A.",
+      "journal": "Surg Endosc",
+      "topic": "cancer",
+      "doi": "10.1007/s00464-021-08362-9",
+      "abstract": "BackgroundThe aim of the study is to analyze the feasibility, the safety and short- and medium-term survival of totally laparoscopic simultaneous resections (LSR) of colorectal cancer (CRC) and synchronous liver metastases (LM).MethodsThis is a retrospective study of a single-center series. Patients ASA IV, ECOG ≥ 2, major hepatectomies (≥ 3 segments), symptomatic CRC as well as low rectal tumors were excluded from indication. The difficulty level of all liver resections was classified as low or intermediate according to the Iwate Criteria. Dindo-Clavien classification for postoperative complications evaluation was used.Results15 Patients with 21 liver lesions were included. Laparoscopic liver surgery was performed first in every case. Median size of the lesions was 20 mm (r 8-69). Major complications (Dindo-Clavien ≥ 3) occurred in 3 patients (20%); median hospital stay was 7 days (r 4-35), and only one patient (6.6%) was readmitted upon the first month from the surgery. 90-day mortality rate was 0%. After a median follow-up of 24 months (r 7-121), disease-free survival at 1, 2 and 3 years was 58%, 36% and 24%, respectively; overall survival at 1, 2 and 3 years was 92.3%.ConclusionsIn selected patients, LSR of CRC and LM is technically feasible and has an acceptable morbidity rate and mid-term survival."
+    },
+    {
+      "id": "pub-046",
+      "year": "2021",
+      "title": "Systematic analysis of chemical-protein interactions from zebrafish embryo by proteome-wide thermal shift assay, bridging the gap between molecular interactions and toxicity …",
+      "authors": "Veronica Lizano-Fallas, Ana Carrasco Del Amor, Susana Cristobal",
+      "journal": "Journal of Proteomics",
+      "topic": "mafld",
+      "doi": "10.1016/j.jprot.2021.104382",
+      "abstract": "The molecular interaction between chemicals and proteins often promotes alteration of cellular function. One of the challenges of the toxicology is to predict the impact of exposure to chemicals. Assessing the impact of exposure implies to understand their mechanism of actions starting from identification of specific protein targets of the interaction. Current methods can mainly predict effects of characterized chemicals with knowledge of its targets, and mechanism of actions. Here, we show that proteome-wide thermal shift methods can identify chemical-protein interactions and the protein targets from bioactive chemicals. We analyzed the identified targets from a soluble proteome extracted from zebrafish embryo, that is a model system for toxicology. To evaluate the utility to predict mechanism of actions, we discussed the applicability in four cases: single chemicals, chemical mixtures, novel chemicals, and novel drugs. Our results showed that this methodology could identify the protein targets, discriminate between protein increasing and decreasing in solubility, and offering additional data to complement the map of intertwined mechanism of actions. We anticipate that the proteome integral solubility alteration (PISA) assay, as it is defined here for the unbiased identification of protein targets of chemicals could bridge the gap between molecular interactions and toxicity pathways. SIGNIFICANCE: One of the challenges of the environmental toxicology is to predict the impact of exposure to chemicals on environment and human health. Our phenotype should be explained by our genotype and the environmental exposure. Genomic methodologies can offer a deep analysis of human genome that alone cannot explain our risks of disease. We are starting to understand the key role of exposure to chemicals on our health and risks of disease. Here, we present a proteomic-based method for the identification of soluble proteins interacting with chemicals in zebrafish embryo and discuss the opportunities to complement the map of toxicity pathway perturbations. We anticipate that this PISA assay could bridge the gap between molecular interactions and toxicity pathways."
+    },
+    {
+      "id": "pub-047",
+      "year": "2021",
+      "title": "B Lymphocyte Specification Is Preceded by Extensive Epigenetic Priming in Multipotent Progenitors",
+      "authors": "Tobias Strid, Kazuki Okuyama, Johanna Tingvall-Gustafsson, Jacob Kuruvilla, Christina T Jensen, Stefan Lang, Mahadesh Prasad, Rajesh Somasundaram, Josefine Åhsberg, Susana Cristobal, Shamit Soneji, Jonas Ungerbäck, Mikael Sigvardsson",
+      "journal": "The Journal of Immunology",
+      "topic": "mafld",
+      "doi": "10.4049/jimmunol.2100048",
+      "abstract": "B lymphocyte development is dependent on the interplay between the chromatin landscape and lineage-specific transcription factors. It has been suggested that B lineage commitment is associated with major changes in the nuclear chromatin environment, proposing a critical role for lineage-specific transcription factors in the formation of the epigenetic landscape. In this report, we have used chromosome conformation capture in combination with assay for transposase-accessible chromatin sequencing analysis to enable highly efficient annotation of both proximal and distal transcriptional control elements to genes activated in B lineage specification in mice. A large majority of these genes were annotated to at least one regulatory element with an accessible chromatin configuration in multipotent progenitors. Furthermore, the majority of binding sites for the key regulators of B lineage specification, EBF1 and PAX5, occurred in already accessible regions. EBF1 did, however, cause a dynamic change in assay for transposase-accessible chromatin accessibility and was critical for an increase in distal promoter-enhancer interactions. Our data unravel an extensive epigenetic priming at regulatory elements annotated to lineage-restricted genes and provide insight into the interplay between the epigenetic landscape and transcription factors in cell specification."
+    },
+    {
+      "id": "pub-048",
+      "year": "2021",
+      "title": "New applications of advanced instrumental techniques for the characterization of food allergenic proteins",
+      "authors": "Sara Benedé, Daniel Lozano-Ojalvo, Susana Cristobal, Joana Costa, Enza D’Auria, Tanja Cirkovic Velickovic, María Garrido-Arandia, Sibel Karakaya, Isabel Mafra, Gabriel Mazzucchelli, Gianluca Picariello, Alejandro Romero-Sahagun, Caterina Villa, Paola Roncada, Elena Molina",
+      "journal": "Critical reviews in food science and nutrition",
+      "topic": "mafld",
+      "doi": "10.1080/10408398.2021.1931806",
+      "abstract": "Current approaches based on electrophoretic, chromatographic or immunochemical principles have allowed characterizing multiple allergens, mapping their epitopes, studying their mechanisms of action, developing detection and diagnostic methods and therapeutic strategies for the food and pharmaceutical industry. However, some of the common structural features related to the allergenic potential of food proteins remain unknown, or the pathological mechanism of food allergy is not yet fully understood. In addition, it is also necessary to evaluate new allergens from novel protein sources that may pose a new risk for consumers. Technological development has allowed the expansion of advanced technologies for which their whole potential has not been entirely exploited and could provide novel contributions to still unexplored molecular traits underlying both the structure of food allergens and the mechanisms through which they sensitize or elicit adverse responses in human subjects, as well as improving analytical techniques for their detection. This review presents cutting-edge instrumental techniques recently applied when studying structural and functional aspects of proteins, mechanism of action and interaction between biomolecules. We also exemplify their role in the food allergy research and discuss their new possible applications in several areas of the food allergy field."
+    },
+    {
+      "id": "pub-049",
+      "year": "2021",
+      "title": "Mineralocorticoid receptor modulation by dietary sodium influences NAFLD development in mice",
+      "authors": "Cabrera D, Rao I, Raasch F, Solis N, Pizarro M, Freire M, Sáenz De Urturi D, Ramírez CA, Triantafilo N, León J, Riquelme A, Barrera F, Baudrand R, Aspichueta P, Arrese M, Arab JP.",
+      "journal": "Ann Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.aohep.2021.100357",
+      "abstract": "Introduction and objectivesNonalcoholic-fatty-liver disease (NAFLD) is considered the hepatic manifestation of metabolic syndrome (MetS). Mineralocorticoid receptor (MR) activation is associated with increased risk of MetS but few studies have assessed the role of liver MR on NAFLD. We aimed to evaluate the effect of MR modulation by sodium intake in liver injury in experimental models of NAFLD.Materials and methodsC57BL/6J mice were fed either a high-fat-diet (HFD) or a choline/methionine deficient (MCD) diet with different sodium concentrations. Hepatic concentration of lipid species, serum aldosterone levels, expression of MR, proinflammatory and profibrotic markers and liver histology were assessed.ResultsMice fed with High-Na+/HFD showed a lower MR expression in liver (p = 0.01) and less steatosis on histology (p = 0.04). Consistently, animals from this group exhibited lower levels of serum aldosterone (p = 0.028) and lower hepatic triglyceride content (p = 0.008). This associated to a reduced expression of lipogenic genes, significant changes in lipid subspecies, lower HOMA-IR (p +/HFD. Additionally, mice fed a High-Na+/HFD showed higher expression of salt-inducible kinase (SIK)-1 and lower expression of serum-and-glucocorticoid-inducible kinase (SGK)-1. Similar results were observed with the MCD diet model.ConclusionWe identified in two experimental models of NAFLD that High-Na+ diet content is associated to lower serum aldosterone levels and hepatic MR downregulation, associated to decreased steatosis and reduced de novo hepatic lipogenesis, proinflammatory and profibrotic markers. Decreased activation of hepatic MR seems to generate beneficial downstream inhibition of lipogenesis in experimental NAFLD."
+    },
+    {
+      "id": "pub-050",
+      "year": "2021",
+      "title": "A UHPLC-Mass Spectrometry View of Human Melanocytic Cells Uncovers Potential Lipid Biomarkers of Melanoma",
+      "authors": "Perez-Valle A, Abad-García B, Fresnedo O, Barreda-Gómez G, Aspichueta P, Asumendi A, Astigarraga E, Fernández JA, Boyano MD, Ochoa B.",
+      "journal": "Int J Mol Sci",
+      "topic": "cancer",
+      "doi": "10.3390/ijms222112061",
+      "abstract": "Melanoma is the deadliest form of skin cancer due to its ability to colonize distant sites and initiate metastasis. Although these processes largely depend on the lipid-based cell membrane scaffold, our understanding of the melanoma lipid phenotype lags behind most other aspects of this tumor cell. Here, we examined a panel of normal human epidermal and nevus melanocytes and primary and metastatic melanoma cell lines to determine whether distinctive cell-intrinsic lipidomes can discern non-neoplastic from neoplastic melanocytes and define their metastatic potential. Lipidome profiles were obtained by UHPLC-ESI mass-spectrometry, and differences in the signatures were analyzed by multivariate statistical analyses. Significant and highly specific changes in more than 30 lipid species were annotated in the initiation of melanoma, whereas less numerous changes were associated with melanoma progression and the non-malignant transformation of nevus melanocytes. Notably, the \"malignancy lipid signature\" features marked drops in pivotal membrane lipids, like sphingomyelins, and aberrant elevation of ether-type lipids and phosphatidylglycerol and phosphatidylinositol variants, suggesting a previously undefined remodeling of sphingolipid and glycerophospholipid metabolism. Besides broadening the molecular definition of this neoplasm, the different lipid profiles identified may help improve the clinical diagnosis/prognosis and facilitate therapeutic interventions for cutaneous melanoma."
+    },
+    {
+      "id": "pub-051",
+      "year": "2021",
+      "title": "p38γ and p38δ regulate postnatal cardiac metabolism through glycogen synthase 1",
+      "authors": "Santamans AM, Montalvo-Romeral V, Mora A, Lopez JA, González-Romero F, Jimenez-Blasco D, Rodríguez E, Pintor-Chocano A, Casanueva-Benítez C, Acín-Pérez R, Leiva-Vega L, Duran J, Guinovart JJ, Jiménez-Borreguero J, Enríquez JA, Villlalba-Orero M, Bolaños JP, Aspichueta P, Vázquez J, González-Terán B, Sabio G.",
+      "journal": "PLoS Biol",
+      "topic": "mafld",
+      "doi": "10.1371/journal.pbio.3001447",
+      "abstract": "During the first weeks of postnatal heart development, cardiomyocytes undergo a major adaptive metabolic shift from glycolytic energy production to fatty acid oxidation. This metabolic change is contemporaneous to the up-regulation and activation of the p38γ and p38δ stress-activated protein kinases in the heart. We demonstrate that p38γ/δ contribute to the early postnatal cardiac metabolic switch through inhibitory phosphorylation of glycogen synthase 1 (GYS1) and glycogen metabolism inactivation. Premature induction of p38γ/δ activation in cardiomyocytes of newborn mice results in an early GYS1 phosphorylation and inhibition of cardiac glycogen production, triggering an early metabolic shift that induces a deficit in cardiomyocyte fuel supply, leading to whole-body metabolic deregulation and maladaptive cardiac pathogenesis. Notably, the adverse effects of forced premature cardiac p38γ/δ activation in neonate mice are prevented by maternal diet supplementation of fatty acids during pregnancy and lactation. These results suggest that diet interventions have a potential for treating human cardiac genetic diseases that affect heart metabolism."
+    },
+    {
+      "id": "pub-052",
+      "year": "2021",
+      "title": "Fat: Quality, or Quantity? What Matters Most for the Progression of Metabolic Associated Fatty Liver Disease (MAFLD)",
+      "authors": "Estévez-Vázquez O, Benedé-Ubieto R, Guo F, Gómez-Santos B, Aspichueta P, Reissing J, Bruns T, Sanz-García C, Sydor S, Bechmann LP, Maranillo E, Sañudo JR, Vázquez MT, Lamas-Paz A, Morán L, Mazariegos MS, Ciudin A, Pericàs JM, Peligros MI, Vaquero J, Martínez-Naves E, Liedtke C, Regueiro JR, Trautwein C, Bañares R, Cubero FJ, Nevzorova YA.",
+      "journal": "Biomedicines",
+      "topic": "mafld",
+      "doi": "10.3390/biomedicines9101289",
+      "abstract": "ObjectivesLately, many countries have restricted or even banned transfat, and palm oil has become a preferred replacement for food manufacturers. Whether palm oil is potentially an unhealthy food mainly due to its high content of saturated Palmitic Acid (PA) is a matter of debate. The aim of this study was to test whether qualitative aspects of diet such as levels of PA and the fat source are risk factors for Metabolic Syndrome (MS) and Metabolic Associated Fatty Liver Disease (MAFLD).MethodsC57BL/6 male mice were fed for 14 weeks with three types of Western diet (WD): 1. LP-WD-low concentration of PA (main fat source-corn and soybean oils); 2. HP-WD-high concentration of PA (main fat source-palm oil); 3. HP-Trans-WD-high concentration of PA (mainly transfat).ResultsAll types of WD caused weight gain, adipocyte enlargement, hepatomegaly, lipid metabolism alterations, and steatohepatitis. Feeding with HP diets led to more prominent obesity, hypercholesterolemia, stronger hepatic injury, and fibrosis. Only the feeding with HP-Trans-WD resulted in glucose intolerance and elevation of serum transaminases. Brief withdrawal of WDs reversed MS and signs of MAFLD. However, mild hepatic inflammation was still detectable in HP groups.ConclusionsHP and HP-Trans-WD play a crucial role in the genesis of MS and MAFLD."
+    },
+    {
+      "id": "pub-053",
+      "year": "2021",
+      "title": "Inhibition of ATG3 ameliorates liver steatosis by increasing mitochondrial function",
+      "authors": "da Silva Lima N, Fondevila MF, Nóvoa E, Buqué X, Mercado-Gómez M, Gallet S, González-Rellan MJ, Fernandez U, Loyens A, Garcia-Vence M, Chantada-Vazquez MDP, Bravo SB, Marañon P, Senra A, Escudero A, Leiva M, Guallar D, Fidalgo M, Gomes P, Claret M, Sabio G, Varela-Rey M, Delgado TC, Montero-Vallejo R, Ampuero J, López M, Diéguez C, Herrero L, Serra D, Schwaninger M, Prevot V, Gallego-Duran R, Romero-Gomez M, Iruzubieta P, Crespo J, Martinez-Chantar ML, Garcia-Monzon C, Gonzalez-Rodriguez A, Aspichueta P, Nogueiras R.",
+      "journal": "J Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.jhep.2021.09.008",
+      "abstract": "Background & aimsAutophagy-related gene 3 (ATG3) is an enzyme mainly known for its actions in the LC3 lipidation process, which is essential for autophagy. Whether ATG3 plays a role in lipid metabolism or contributes to non-alcoholic fatty liver disease (NAFLD) remains unknown.MethodsBy performing proteomic analysis on livers from mice with genetic manipulation of hepatic p63, a regulator of fatty acid metabolism, we identified ATG3 as a new target downstream of p63. ATG3 was evaluated in liver samples from patients with NAFLD. Further, genetic manipulation of ATG3 was performed in human hepatocyte cell lines, primary hepatocytes and in the livers of mice.ResultsATG3 expression is induced in the liver of animal models and patients with NAFLD (both steatosis and non-alcoholic steatohepatitis) compared with those without liver disease. Moreover, genetic knockdown of ATG3 in mice and human hepatocytes ameliorates p63- and diet-induced steatosis, while its overexpression increases the lipid load in hepatocytes. The inhibition of hepatic ATG3 improves fatty acid metabolism by reducing c-Jun N-terminal protein kinase 1 (JNK1), which increases sirtuin 1 (SIRT1), carnitine palmitoyltransferase 1a (CPT1a), and mitochondrial function. Hepatic knockdown of SIRT1 and CPT1a blunts the effects of ATG3 on mitochondrial activity. Unexpectedly, these effects are independent of an autophagic action.ConclusionsCollectively, these findings indicate that ATG3 is a novel protein implicated in the development of steatosis.Lay summaryWe show that autophagy-related gene 3 (ATG3) contributes to the progression of non-alcoholic fatty liver disease in humans and mice. Hepatic knockdown of ATG3 ameliorates the development of NAFLD by stimulating mitochondrial function. Thus, ATG3 is an important factor implicated in steatosis."
+    },
+    {
+      "id": "pub-054",
+      "year": "2021",
+      "title": "Inhibition of NAE-dependent protein hyper-NEDDylation in cystic cholangiocytes halts cystogenesis in experimental models of polycystic liver disease",
+      "authors": "Lee-Law PY, Olaizola P, Caballero-Camino FJ, Izquierdo-Sanchez L, Rodrigues PM, Perugorria MJ, Azkargorta M, Elortza F, Martinez-Chantar ML, Aspichueta P, Marzioni M, Bujanda L, Drenth JPH, Banales JM.",
+      "journal": "United European Gastroenterol J",
+      "topic": "mafld",
+      "doi": "10.1002/ueg2.12126",
+      "abstract": "BackgroundPolycystic liver diseases (PLDs) are genetic inherited disorders characterized by the progressive growth of numerous intrahepatic biliary cysts, which are the main cause of morbidity. Previous studies revealed that cystic cholangiocytes are characterized by endoplasmic reticulum stress and aberrant posttranslational modification (PTM) of proteins, in particular hyper-SUMOylation, that promote PLD pathobiology. Protein NEDDylation is a newly characterized PTM that modulates a plethora of biological processes and its dysregulation is associated with the development and progression of several human diseases. However, the role of NEDDylation in PLD remains elusive.ObjectiveTo explore the role of protein NEDDylation in PLD and its potential therapeutic regulatory value.MethodsLevels and functional effects of NEDDylation, including response to Pevonedistat (first-in-class selective inhibitor of the NEDDylation E1 enzyme NAE), were assessed in vitro, in vivo, and/or in patients with PLD. NEDDylated protein levels in normal and cystic human cholangiocytes were assessed by immunoprecipitation, and the proteomic profile was further analyzed by mass spectrometry.Results and conclusionThe genes involved in the NEDDylation pathway were found overexpressed (mRNA) in polycystic human and rat liver tissue, as well as in cystic cholangiocytes in culture, compared to controls. Elevated levels of NEDDylated proteins were further confirmed in cystic cholangiocytes in vitro, which diminished under Pevonedistat incubation. Pevonedistat promoted apoptotic cell death and reduced proliferation in cystic cholangiocytes in vitro. Comparative proteomic profiling of NEDD8-immunoprecipitated proteins between normal and cystic cholangiocytes in culture reported candidate proteins involved in cystogenesis, mostly associated with protein biogenesis and quality control. All these data indicate that cystic cholangiocytes display increased protein NEDDylation, contributing to cell survival and proliferation, ultimately supporting hepatic cystogenesis. Targeting of protein hyper-NEDDylation in cystic cholangiocytes inhibits cystogenesis in experimental models, representing a novel therapeutic opportunity in PLD."
+    },
+    {
+      "id": "pub-055",
+      "year": "2021",
+      "title": "Neddylation inhibition ameliorates steatosis in NAFLD by boosting hepatic fatty acid oxidation via the DEPTOR-mTOR axis",
+      "authors": "Serrano-Maciá M, Simón J, González-Rellan MJ, Azkargorta M, Goikoetxea-Usandizaga N, Lopitz-Otsoa F, De Urturi DS, Rodríguez-Agudo R, Lachiondo-Ortega S, Mercado-Gomez M, Gutiérrez de Juan V, Bizkarguenaga M, Fernández-Ramos D, Buque X, Baselli GA, Valenti LVC, Iruzubieta P, Crespo J, Villa E, Banales JM, Avila MA, Marin JJG, Aspichueta P, Sutherland J, Barrio R, Mayor U, Elortza F, Xirodimas DP, Nogueiras R, Delgado TC, Martínez-Chantar ML.",
+      "journal": "Mol Metab",
+      "topic": "cancer",
+      "doi": "10.1016/j.molmet.2021.101275",
+      "abstract": "ObjectiveNeddylation is a druggable and reversible ubiquitin-like post-translational modification upregulated in many diseases, including liver fibrosis, hepatocellular carcinoma, and more recently, non-alcoholic fatty liver disease (NAFLD). Herein, we propose to address the effects of neddylation inhibition and the underlying mechanisms in pre-clinical models of NAFLD.MethodsHepatic neddylation measured by immunohistochemical analysis and NEDD8 serum levels measured by ELISA assay were evaluated in NAFLD clinical and pre-clinical samples. The effects of neddylation inhibition by using a pharmacological small inhibitor, MLN4924, or molecular approaches were assessed in isolated mouse hepatocytes and pre-clinical mouse models of diet-induced NAFLD, male adult C57BL/6 mice, and the AlfpCre transgenic mice infected with AAV-DIO-shNedd8.ResultsNeddylation inhibition reduced lipid accumulation in oleic acid-stimulated mouse primary hepatocytes and ameliorated liver steatosis, preventing lipid peroxidation and inflammation in the mouse models of diet-induced NAFLD. Under these conditions, increased Deptor levels and the concomitant repression of mTOR signaling were associated with augmented fatty acid oxidation and reduced lipid content. Moreover, Deptor silencing in isolated mouse hepatocytes abolished the anti-steatotic effects mediated by neddylation inhibition. Finally, serum NEDD8 levels correlated with hepatic neddylation during the disease progression in the clinical and pre-clinical models CONCLUSIONS: Overall, the upregulation of Deptor, driven by neddylation inhibition, is proposed as a novel effective target and therapeutic approach to tackle NAFLD."
+    },
+    {
+      "id": "pub-056",
+      "year": "2021",
+      "title": "Targeting myosin 1c inhibits murine hepatic fibrogenesis",
+      "authors": "Arif E, Wang C, Swiderska-Syn MK, Solanki AK, Rahman B, Manka PP, Coombes JD, Canbay A, Papa S, Nihalani D, Aspichueta P, Lipschutz JH, Syn WK.",
+      "journal": "Am J Physiol Gastrointest Liver Physiol",
+      "topic": "mafld",
+      "doi": "10.1152/ajpgi.00105.2021",
+      "abstract": "Myosin 1c (Myo1c) is an unconventional myosin that modulates signaling pathways involved in tissue injury and repair. In this study, we observed that Myo1c expression is significantly upregulated in human chronic liver disease such as nonalcoholic steatohepatitis (NASH) and in animal models of liver fibrosis. High throughput data from the GEO-database identified similar Myo1c upregulation in mice and human liver fibrosis. Notably, transforming growth factor-β1 (TGF-β1) stimulation to hepatic stellate cells (HSCs), the liver pericyte and key cell type responsible for the deposition of extracellular matrix, upregulates Myo1c expression, whereas genetic depletion or pharmacological inhibition of Myo1c blunted TGF-β-induced fibrogenic responses, resulting in repression of α-smooth muscle actin (α-SMA) and collagen type I α 1 chain (Col1α1) mRNA. Myo1c deletion also decreased fibrogenic processes such as cell proliferation, wound healing response, and contractility when compared with vehicle-treated HSCs. Importantly, phosphorylation of mothers against decapentaplegic homolog 2 (SMAD2) and mothers against decapentaplegic homolog 3 (SMAD3) were significantly blunted upon Myo1c inhibition in GRX cells as well as Myo1c knockout (Myo1c-KO) mouse embryonic fibroblasts (MEFs) upon TGF-β stimulation. Using the genetic Myo1c-KO mice, we confirmed that Myo1c is critical for fibrogenesis, as Myo1c-KO mice were resistant to carbon tetrachloride (CCl4)-induced liver fibrosis. Histological and immunostaining analysis of liver sections showed that deposition of collagen fibers and α-SMA expression were significantly reduced in Myo1c-KO mice upon liver injury. Collectively, these results demonstrate that Myo1c mediates hepatic fibrogenesis by modulating TGF-β signaling and suggest that inhibiting this process may have clinical application in treating liver fibrosis.NEW & NOTEWORTHY The incidences of liver fibrosis are growing at a rapid pace and have become one of the leading causes of end-stage liver disease. Although TGF-β1 is known to play a prominent role in transforming cells to produce excessive extracellular matrix that lead to hepatic fibrosis, the therapies targeting TGF-β1 have achieved very limited clinical impact. This study highlights motor protein myosin-1c-mediated mechanisms that serve as novel regulators of TGF-β1 signaling and fibrosis."
+    },
+    {
+      "id": "pub-057",
+      "year": "2021",
+      "title": "Definite and indeterminate nonalcoholic steatohepatitis share similar clinical features and prognosis: A longitudinal study of 1893 biopsy-proven nonalcoholic fatty liver disease subjects",
+      "authors": "Ampuero J, Aller R, Gallego-Durán R, Crespo J, Abad J, González-Rodríguez Á, Gómez-Camarero J, Caballería J, Lo Iacono O, Ibañez L, García-Samaniego J, Martín-Mateos R, Francés R, Fernández-Rodríguez C, Diago M, Soriano G, Andrade RJ, Latorre R, Jorquera F, Morillas RM, Escudero D, Estévez P, Hernández-Guerra M, Augustín S, Pareja-Megia MJ, Banales JM, Aspichueta P, Benlloch S, Rosales JM, Salmerón J, Turnes J, Romero-Gómez M",
+      "journal": "Liver Int",
+      "topic": "mafld",
+      "doi": "10.1111/liv.14898",
+      "abstract": "Background and aimHistological score systems may not fully capture the essential nonalcoholic steatohepatitis (NASH) features, which is one of the leading causes of screening failure in clinical trials. We assessed the NASH distribution and its components across the fibrosis stages and their impact on the prognosis and their relationship with the concept of metabolic-associated fatty liver disease (MAFLD).MethodsSpanish multicenter study including 1893 biopsy-proven nonalcoholic fatty liver disease (NAFLD) patients from HEPAmet registry. NASH was diagnosed by NAS score ≥4 (including steatosis, ballooning and lobular inflammation) and fibrosis by Kleiner score. The presence of MAFLD was determined. Progression to cirrhosis, first episode of decompensated cirrhosis and death were collected during the follow-up (4.7 ± 3.8 years).ResultsFibrosis was F0 34.3% (649/1893), F1 27% (511/1893), F2 16.5% (312/1893), F3 15% (284/1893) and F4 7.2% (137/1893). NASH diagnosis 51.9% (982/1893), and its individual components (severe steatosis, ballooning and lobular inflammation), increased from F0 (33.6%) to F2 (68.6%), and decreased significantly in F4 patients (51.8%) (P = .0001). More than 70% of non-NASH patients showed some inflammatory activity (ballooning or lobular inflammation), showing a similar MAFLD rate than NASH (96.2% [945/982] vs. 95.2% [535/562]) and significantly higher than nonalcoholic fatty liver (NAFL) subjects (89.1% [311/349]) (P ConclusionsThe prevalence of steatohepatitis decreased in advanced liver disease. However, most of these patients showed some inflammatory activity histologically and had metabolic disturbances. These findings should be considered in clinical trials whose main aim is to prevent cirrhosis progression and complications, liver transplant and death."
+    },
+    {
+      "id": "pub-058",
+      "year": "2021",
+      "title": "E2F1 and E2F2-Mediated Repression of CPT2 Establishes a Lipid-Rich Tumor-Promoting Environment",
+      "authors": "González-Romero F, Mestre D, Aurrekoetxea I, O'Rourke CJ, Andersen JB, Woodhoo A, Tamayo-Caro M, Varela-Rey M, Palomo-Irigoyen M, Gómez-Santos B, de Urturi DS, Núñez-García M, García-Rodríguez JL, Fernández-Ares L, Buqué X, Iglesias-Ara A, Bernales I, De Juan VG, Delgado TC, Goikoetxea-Usandizaga N, Lee R, Bhanot S, Delgado I, Perugorria MJ, Errazti G, Mosteiro L, Gaztambide S, Martinez de la Piscina I, Iruzubieta P, Crespo J, Banales JM, Martínez-Chantar ML, Castaño L, Zubiaga AM, Aspichueta P.",
+      "journal": "Cancer Res",
+      "topic": "e2f",
+      "doi": "10.1158/0008-5472.can-20-2052",
+      "abstract": "Lipid metabolism rearrangements in nonalcoholic fatty liver disease (NAFLD) contribute to disease progression. NAFLD has emerged as a major risk for hepatocellular carcinoma (HCC), where metabolic reprogramming is a hallmark. Identification of metabolic drivers might reveal therapeutic targets to improve HCC treatment. Here, we investigated the contribution of transcription factors E2F1 and E2F2 to NAFLD-related HCC and their involvement in metabolic rewiring during disease progression. In mice receiving a high-fat diet (HFD) and diethylnitrosamine (DEN) administration, E2f1 and E2f2 expressions were increased in NAFLD-related HCC. In human NAFLD, E2F1 and E2F2 levels were also increased and positively correlated. E2f1 -/- and E2f2 -/- mice were resistant to DEN-HFD-induced hepatocarcinogenesis and associated lipid accumulation. Administration of DEN-HFD in E2f1 -/- and E2f2 -/- mice enhanced fatty acid oxidation (FAO) and increased expression of Cpt2, an enzyme essential for FAO, whose downregulation is linked to NAFLD-related hepatocarcinogenesis. These results were recapitulated following E2f2 knockdown in liver, and overexpression of E2f2 elicited opposing effects. E2F2 binding to the Cpt2 promoter was enhanced in DEN-HFD-administered mouse livers compared with controls, implying a direct role for E2F2 in transcriptional repression. In human HCC, E2F1 and E2F2 expressions inversely correlated with CPT2 expression. Collectively, these results indicate that activation of the E2F1-E2F2-CPT2 axis provides a lipid-rich environment required for hepatocarcinogenesis. SIGNIFICANCE: These findings identify E2F1 and E2F2 transcription factors as metabolic drivers of hepatocellular carcinoma, where deletion of just one is sufficient to prevent disease. GRAPHICAL ABSTRACT: http://cancerres.aacrjournals.org/content/canres/81/11/2874/F1.large.jpg."
+    },
+    {
+      "id": "pub-059",
+      "year": "2021",
+      "title": "Magnesium accumulation upon cyclin M4 silencing activates microsomal triglyceride transfer protein improving NASH",
+      "authors": "Jorge Simón, Naroa Goikoetxea-Usandizaga, Marina Serrano-Maciá, David Fernández-Ramos, Diego Sáenz de Urturi, Jessica J Gruskos, Pablo Fernández-Tussy, Sofía Lachiondo-Ortega, Irene González-Recio, Rubén Rodríguez-Agudo, Virginia Gutiérrez-de-Juan, Begoña Rodríguez-Iruretagoyena, Marta Varela-Rey, Paula Gimenez-Mascarell, María Mercado-Gomez, Beatriz Gómez-Santos, Carmen Fernandez-Rodriguez, Fernando Lopitz-Otsoa, Maider Bizkarguenaga, Sibylle Dames, Ute Schaeper, Franz Martin, Guadalupe Sabio, Paula Iruzubieta, Javier Crespo, Patricia Aspichuet, Kevan H-Y Chu, Daniela Buccella, César Martín, Teresa Cardoso Delgado, Luis Alfonso Martínez-Cruz, María Luz Martínez-Chantar",
+      "journal": "J Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.jhep.2021.01.043",
+      "abstract": "Background & aimsPerturbations of intracellular magnesium (Mg2+) homeostasis have implications for cell physiology. The cyclin M family, CNNM, perform key functions in the transport of Mg2+ across cell membranes. Herein, we aimed to elucidate the role of CNNM4 in the development of non-alcoholic steatohepatitis (NASH).MethodsSerum Mg2+ levels and hepatic CNNM4 expression were characterised in clinical samples. Primary hepatocytes were cultured under methionine and choline deprivation. A 0.1% methionine and choline-deficient diet, or a choline-deficient high-fat diet were used to induce NASH in our in vivo rodent models. Cnnm4 was silenced using siRNA, in vitro with DharmaFECT and in vivo with Invivofectamine® or conjugated to N-acetylgalactosamine.ResultsPatients with NASH showed hepatic CNNM4 overexpression and dysregulated Mg2+ levels in the serum. Cnnm4 silencing ameliorated hepatic lipid accumulation, inflammation and fibrosis in the rodent NASH models. Mechanistically, CNNM4 knockdown in hepatocytes induced cellular Mg2+ accumulation, reduced endoplasmic reticulum stress, and increased microsomal triglyceride transfer activity, which promoted hepatic lipid clearance by increasing the secretion of VLDLs.ConclusionsCNNM4 is overexpressed in patients with NASH and is responsible for dysregulated Mg2+ transport. Hepatic CNNM4 is a promising therapeutic target for the treatment of NASH.Lay summaryCyclin M4 (CNNM4) is overexpressed in non-alcoholic steatohepatitis (NASH) and promotes the export of magnesium from the liver. The liver-specific silencing of Cnnm4 ameliorates NASH by reducing endoplasmic reticulum stress and promoting the activity of microsomal triglyceride transfer protein."
+    },
+    {
+      "id": "pub-060",
+      "year": "2021",
+      "title": "The L-α-Lysophosphatidylinositol/G Protein-Coupled Receptor 55 System Induces the Development of Nonalcoholic Steatosis and Steatohepatitis",
+      "authors": "Marcos F Fondevila, Uxia Fernandez, Maria J Gonzalez-Rellan, Natalia Da Silva Lima, Xabier Buque, Agueda Gonzalez-Rodriguez, Cristina Alonso, Marta Iruarrizaga-Lejarreta, Teresa C Delgado, Marta Varela-Rey, Ana Senra, Vera Garcia-Outeiral, Eva Novoa, Cristina Iglesias, Begoña Porteiro, Daniel Beiroa, Cintia Folgueira, Marta Tojo, Jorge L Torres, Lourdes Hernández-Cosido, Óscar Blanco, Juan Pablo Arab, Francisco Barrera, Diana Guallar, Miguel Fidalgo, Miguel López, Carlos Dieguez, Miguel Marcos, Maria L Martinez-Chantar, Marco Arrese, Carmelo Garcia-Monzon, Jose M Mato, Patricia Aspichueta, Ruben Nogueiras",
+      "journal": "Hepatology",
+      "topic": "mafld",
+      "doi": "10.1002/hep.31290",
+      "abstract": "Background and aimsG protein-coupled receptor (GPR) 55 is a putative cannabinoid receptor, and l-α-lysophosphatidylinositol (LPI) is its only known endogenous ligand. Although GPR55 has been linked to energy homeostasis in different organs, its specific role in lipid metabolism in the liver and its contribution to the pathophysiology of nonalcoholic fatty liver disease (NAFLD) remains unknown.Approach and resultsWe measured (1) GPR55 expression in the liver of patients with NAFLD compared with individuals without obesity and without liver disease, as well as animal models with steatosis and nonalcoholic steatohepatitis (NASH), and (2) the effects of LPI and genetic disruption of GPR55 in mice, human hepatocytes, and human hepatic stellate cells. Notably, we found that circulating LPI and liver expression of GPR55 were up-regulated in patients with NASH. LPI induced adenosine monophosphate-activated protein kinase activation of acetyl-coenzyme A carboxylase (ACC) and increased lipid content in human hepatocytes and in the liver of treated mice by inducing de novo lipogenesis and decreasing β-oxidation. The inhibition of GPR55 and ACCα blocked the effects of LPI, and the in vivo knockdown of GPR55 was sufficient to improve liver damage in mice fed a high-fat diet and in mice fed a methionine-choline-deficient diet. Finally, LPI promoted the initiation of hepatic stellate cell activation by stimulating GPR55 and activation of ACC.ConclusionsThe LPI/GPR55 system plays a role in the development of NAFLD and NASH by activating ACC."
+    },
+    {
+      "id": "pub-061",
+      "year": "2021",
+      "title": "Targeting UBC9-mediated protein hyper-SUMOylation in cystic cholangiocytes halts polycystic liver disease in experimental models",
+      "authors": "Pui Y Lee-Law, Paula Olaizola, Francisco J Caballero-Camino, Laura Izquierdo-Sanchez, Pedro M Rodrigues, Alvaro Santos-Laso, Mikel Azkargorta, Felix Elortza, Maria L Martinez-Chantar, Maria J Perugorria, Patricia Aspichueta, Marco Marzioni, Nicholas F LaRusso, Luis Bujanda, Joost P H Drenth, Jesus M Banales",
+      "journal": "J Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.jhep.2020.09.010",
+      "abstract": "Background & aimsPolycystic liver diseases (PLDs) are genetic disorders characterized by progressive development of multiple fluid-filled biliary cysts. Most PLD-causative genes participate in protein biogenesis and/or transport. Post-translational modifications (PTMs) are implicated in protein stability, localization and activity, contributing to human pathobiology; however, their role in PLD is unknown. Herein, we aimed to unveil the role of protein SUMOylation in PLD and its potential therapeutic targeting.MethodsLevels and functional effects of SUMOylation, along with response to S-adenosylmethionine (SAMe, inhibitor of the SUMOylation enzyme UBC9) and/or short-hairpin RNAs (shRNAs) against UBE2I (UBC9), were evaluated in vitro, in vivo and/or in patients with PLD. SUMOylated proteins were determined by immunoprecipitation and proteomic analyses by mass spectrometry.ResultsMost SUMOylation-related genes were found overexpressed (mRNA) in polycystic human and rat liver tissue, as well as in cystic cholangiocytes in culture compared to controls. Increased SUMOylated protein levels were also observed in cystic human cholangiocytes in culture, which decreased after SAMe administration. Chronic treatment of polycystic (PCK: Pkdh1-mut) rats with SAMe halted hepatic cystogenesis and fibrosis, and reduced liver/body weight ratio and liver volume. In vitro, both SAMe and shRNA-mediated UBE2I knockdown increased apoptosis and reduced cell proliferation of cystic cholangiocytes. High-throughput proteomic analysis of SUMO1-immunoprecipitated proteins in cystic cholangiocytes identified candidates involved in protein biogenesis, ciliogenesis and proteasome degradation. Accordingly, SAMe hampered proteasome hyperactivity in cystic cholangiocytes, leading to activation of the unfolded protein response and stress-related apoptosis.ConclusionsCystic cholangiocytes exhibit increased SUMOylation of proteins involved in cell survival and proliferation, thus promoting hepatic cystogenesis. Inhibition of protein SUMOylation with SAMe halts PLD, representing a novel therapeutic strategy.Lay summaryProtein SUMOylation is a dynamic post-translational event implicated in numerous cellular processes. This study revealed dysregulated protein SUMOylation in polycystic liver disease, which promotes hepatic cystogenesis. Administration of S-adenosylmethionine (SAMe), a natural UBC9-dependent SUMOylation inhibitor, halted polycystic liver disease in experimental models, thus representing a potential therapeutic agent for patients."
+    },
+    {
+      "id": "pub-062",
+      "year": "2020",
+      "title": "Proteinen desnaturalizazio termalaren bidezko analisia konposatu bioeraginkor berrien aurkikuntzarako",
+      "authors": "Yuri Rueda, Hiart Navarro-Imaz, Irati Rekondo, Susana Cristobal, Olatz Fresnedo",
+      "journal": "EKAIA",
+      "topic": "mafld",
+      "doi": "10.1387/ekaia.21405",
+      "abstract": ""
+    },
+    {
+      "id": "pub-063",
+      "year": "2020",
+      "title": "A case of COVID-19 immediately after liver transplantation: Not only bad news",
+      "authors": "Prieto M, Gastaca M, Ruiz P, Ventoso A, Palomares I, Rodríguez-Álvarez RJ, Salvador P, Bustamante J, Valdivieso A.",
+      "journal": "Ann Hepatobiliary Pancreat Surg",
+      "topic": "mafld",
+      "doi": "10.14701/ahbps.2020.24.3.314",
+      "abstract": "COVID-19, the illness caused by the SARS-CoV-2 virus originated in December 2019 in Wuhan, China and has caused more 3,3 million cases and more than 230,000 deaths throughout the world, with 25,000 of them only in Spain, where the first case was diagnosed on January 31st, 2020. As COVID-19 is a \"new\" disease, we still do not have data on prognosis or treatment in transplant patients or on how to manage immunosuppression in this complex scenario. We present a case of COVID-19 diagnosed during the early postoperative period in a recipient whose liver transplantation was performed on late March during the lockdown in Spain, with donor and recipient previously negative rRT-PCR to SARS-CoV-2. In the first post-operative week the patient suffered COVID-19 pneumonia that was treated with immunosuppression minimization, oral Hydroxycloroquine and Azithromycin with favorable outcome. The patient was discharged on POD 21 without complications. To date, few early post-liver transplantation SARS-CoV-2 infected recipients have been published, but only one was an early postoperative infection. In our case the outcome was favorable, even though it was an early post -liver transplantation COVID-19 in a frail patient."
+    },
+    {
+      "id": "pub-064",
+      "year": "2020",
+      "title": "Endovascular Therapy of Arterial Complications Within the First Week After Liver Transplant",
+      "authors": "Gastaca M, Gomez J, Terreros I, Izquierdo J, Ruiz P, Prieto M, Ventoso A, Palomares I, Aguinaga A, Valdivieso A.",
+      "journal": "Transplant Proc",
+      "topic": "mafld",
+      "doi": "10.1016/j.transproceed.2020.02.075",
+      "abstract": "BackgroundRecent radiologic advances have made endovascular treatment a very successful option for arterial complications after liver transplant. This article presents our experience of using endovascular treatments during the first week after liver transplant.MethodsThis study is a retrospective, single-center analysis. Liver transplants performed between 2010 and 2018 were analyzed. All patients underwent Doppler ultrasonography on days 1 and 7. Endovascular therapy was indicated in hepatic artery thrombosis diagnosed early after transplant and in stenosis when hepatic narrowing was > 70%. Patients were treated with subcutaneous anticoagulant therapy and with antiplatelet agents after endovascular therapy.ResultsSeven patients (1.1%) were included in the study. Stenosis was the reason in 5 patients while 2 patients had symptoms of thrombosis. The first 2 patients were initially treated with angioplasty; both had restenosis and were treated with angioplasty and stent placement, respectively. The 5 most recent patients received stenting as a primary treatment. Two of these patients developed a new stenosis. No patient developed any hepatic artery complication related to the procedure, and only 1 patient experienced a postprocedure complication (femoral artery pseudoaneurysm), which was managed conservatively. No patient required retransplant. After a median follow-up of 48 months (range, 35-85 months) 1 patient had died, and the rest were alive and asymptomatic.ConclusionsAlthough there is scant experience of the use of endovascular therapy very shortly after liver transplant, recent advances in interventional radiology have made the technique feasible and safe, and it achieves a high success rate."
+    },
+    {
+      "id": "pub-065",
+      "year": "2020",
+      "title": "Long-Term Outcomes of Liver Transplantation in Patients With Pretransplant Renal Dysfunction Treated With Induction Therapy and Delayed Reduced De Novo Once-Daily Tacrolimus",
+      "authors": "Gastaca M, Prieto M, Palomares I, Bustamante J, Fernandez JR, Ruiz P, Ventoso A, Salvador P, Senosiain M, Testillano M, Suarez MJ, Valdivieso A.",
+      "journal": "Transplant Proc",
+      "topic": "mafld",
+      "doi": "10.1016/j.transproceed.2020.01.083",
+      "abstract": "Background and aimRenal dysfunction is related to short- and long-term survival after liver transplantation. We present herein a retrospective analysis of our experience with liver transplantation in recipients with pretransplant renal dysfunction treated with induction therapy followed by delayed/reduced de novo once-daily tacrolimus.MethodsLiver transplantations performed between April 2008 and August 2011 were included in this study. Pretransplant renal dysfunction was defined as estimated glomerular filtration rate ResultsNineteen patients comprised the study cohort with a median follow-up of 56.4 months (range, 11-78). Median day of tacrolimus introduction was 7 (range, 3-12). Once-daily tacrolimus was withdrawn in 6 patients (31.6%) due to evolution of renal dysfunction in all cases. At 5 years, 30% of the patients were under MMF monotherapy. Mean tacrolimus trough levels were maintained under 5 ng/mL. Mean estimated glomerular filtration rate at 5 years was 55.3 ± 12.7 mL/min. No patient needed hemodialysis or renal transplantation over the follow-up. Patient survival at 5 years was 78.9%.ConclusionsInduction therapy followed by delayed/reduced de novo once-daily tacrolimus and maintenance of low tacrolimus exposition during the follow-up is effective to maintain long-term renal function and to achieve favorable patient survival in liver transplant recipients with pretransplant renal dysfunction."
+    },
+    {
+      "id": "pub-066",
+      "year": "2020",
+      "title": "Controlled donation after circulatory death up to 80 years for liver transplantation: Pushing the limit again",
+      "authors": "Gastaca M, Ruiz P, Bustamante J, Valdivieso A.",
+      "journal": "Am J Transplant",
+      "topic": "mafld",
+      "doi": "10.1111/ajt.15600",
+      "abstract": ""
+    },
+    {
+      "id": "pub-067",
+      "year": "2020",
+      "title": "The GOLIATH project: Towards an internationally harmonised approach for testing metabolism disrupting compounds",
+      "authors": "Juliette Legler, Daniel Zalko, Fabien Jourdan, Miriam Jacobs, Bernard Fromenty, Patrick Balaguer, William Bourguet, Vesna Munic Kos, Angel Nadal, Claire Beausoleil, Susana Cristobal, Sylvie Remy, Sibylle Ermler, Luigi Margiotta-Casaluci, Julian L Griffin, Bruce Blumberg, Christophe Chesné, Sebastian Hoffmann, Patrik L Andersson, Jorke H Kamstra",
+      "journal": "International journal of molecular sciences",
+      "topic": "exposome",
+      "doi": "10.3390/ijms21103480",
+      "abstract": "The purpose of this project report is to introduce the European \"GOLIATH\" project, a new research project which addresses one of the most urgent regulatory needs in the testing of endocrine-disrupting chemicals (EDCs), namely the lack of methods for testing EDCs that disrupt metabolism and metabolic functions. These chemicals collectively referred to as \"metabolism disrupting compounds\" (MDCs) are natural and anthropogenic chemicals that can promote metabolic changes that can ultimately result in obesity, diabetes, and/or fatty liver in humans. This project report introduces the main approaches of the project and provides a focused review of the evidence of metabolic disruption for selected EDCs. GOLIATH will generate the world's first integrated approach to testing and assessment (IATA) specifically tailored to MDCs. GOLIATH will focus on the main cellular targets of metabolic disruption-hepatocytes, pancreatic endocrine cells, myocytes and adipocytes-and using an adverse outcome pathway (AOP) framework will provide key information on MDC-related mode of action by incorporating multi-omic analyses and translating results from in silico, in vitro, and in vivo models and assays to adverse metabolic health outcomes in humans at real-life exposures. Given the importance of international acceptance of the developed test methods for regulatory use, GOLIATH will link with ongoing initiatives of the Organisation for Economic Development (OECD) for test method (pre-)validation, IATA, and AOP development."
+    },
+    {
+      "id": "pub-068",
+      "year": "2020",
+      "title": "BIRC6 Is Associated with Vulnerability of Carotid Atherosclerotic Plaque",
+      "authors": "Iraide Alloza, Andrea Salegi, Jorge Mena, Raquel Tulloch Navarro, César Martin, Patricia Aspichueta, Lucía Martínez Salazar, Jon Uriarte Carpio, Patricia De-la-Hera Cagigal, Reyes Vega, Juan Carlos Triviño, Maria Del Mar Freijo, Koen Vandenbroeck",
+      "journal": "Int J Mol Sci",
+      "topic": "mafld",
+      "doi": "10.3390/ijms21249387",
+      "abstract": "Carotid atherosclerotic plaque rupture can lead to cerebrovascular accident (CVA). By comparing RNA-Seq data from vascular smooth muscle cells (VSMC) extracted from carotid atheroma surgically excised from a group of asymptomatic and symptomatic subjects, we identified more than 700 genomic variants associated with symptomatology (p BIRC6 (BRUCE/Apollon) gene, rs35286811, emerged as significantly associated with CVA symptomatology (p = 0.002; OR = 2.24). Moreover, BIRC6 mRNA levels were significantly higher in symptomatic than asymptomatic subjects upon measurement by qPCR in excised carotid atherosclerotic tissue (p p p BIRC6 as a novel genetic risk factor for stroke, and identifies autophagy as a genetically regulated mechanism of carotid plaque vulnerability."
+    },
+    {
+      "id": "pub-069",
+      "year": "2020",
+      "title": "Dual targeting of G9a and DNMT1 for the treatment of experimental cholangiocarcinoma",
+      "authors": "Leticia Colyn, Marina Bárcena-Varela, Gloria Álvarez-Sola, M Ujue Latasa, Iker Uriarte, Eva Santamaría, Jose M Herranz, Alvaro Santos-Laso, Maria Arechederra, Mikel Ruiz de Gauna, Patricia Aspichueta, Matteo Canale, Andrea Casadei-Gardini, Maria Francesconi, Simone Carotti, Sergio Morini, Leonard J Nelson, Maria J Iraburu, Chaobo Chen, Bruno Sangro, Jose Jg Marin, Maria L Martinez-Chantar, Jesus M Banales, Robert Arnes, Meritxell Huch, John Patino, Altaf A Dar, Mehdi Nosrati, Julen Oyarzábal, Felipe Prósper, Jesus Urman, Francisco Javier Cubero, Christian Trautwein, Carmen Berasain, Maite G Fernandez-Barrena, Matias A Avila",
+      "journal": "Hepatology",
+      "topic": "cancer",
+      "doi": "10.1136/gutjnl-2019-320205",
+      "abstract": "ObjectiveHepatic stellate cells (HSC) transdifferentiation into myofibroblasts is central to fibrogenesis. Epigenetic mechanisms, including histone and DNA methylation, play a key role in this process. Concerted action between histone and DNA-mehyltransferases like G9a and DNMT1 is a common theme in gene expression regulation. We aimed to study the efficacy of CM272, a first-in-class dual and reversible G9a/DNMT1 inhibitor, in halting fibrogenesis.DesignG9a and DNMT1 were analysed in cirrhotic human livers, mouse models of liver fibrosis and cultured mouse HSC. G9a and DNMT1 expression was knocked down or inhibited with CM272 in human HSC (hHSC), and transcriptomic responses to transforming growth factor-β1 (TGFβ1) were examined. Glycolytic metabolism and mitochondrial function were analysed with Seahorse-XF technology. Gene expression regulation was analysed by chromatin immunoprecipitation and methylation-specific PCR. Antifibrogenic activity and safety of CM272 were studied in mouse chronic CCl4 administration and bile duct ligation (BDL), and in human precision-cut liver slices (PCLSs) in a new bioreactor technology.ResultsG9a and DNMT1 were detected in stromal cells in areas of active fibrosis in human and mouse livers. G9a and DNMT1 expression was induced during mouse HSC activation, and TGFβ1 triggered their chromatin recruitment in hHSC. G9a/DNMT1 knockdown and CM272 inhibited TGFβ1 fibrogenic responses in hHSC. TGFβ1-mediated profibrogenic metabolic reprogramming was abrogated by CM272, which restored gluconeogenic gene expression and mitochondrial function through on-target epigenetic effects. CM272 inhibited fibrogenesis in mice and PCLSs without toxicity.ConclusionsDual G9a/DNMT1 inhibition by compounds like CM272 may be a novel therapeutic strategy for treating liver fibrosis."
+    },
+    {
+      "id": "pub-070",
+      "year": "2020",
+      "title": "miR-27b Modulates Insulin Signaling in Hepatocytes by Regulating Insulin Receptor Expression",
+      "authors": "Asier Benito-Vicente, Kepa B Uribe, Noemi Rotllan, Cristina M Ramírez, Shifa Jebari-Benslaiman, Leigh Goedeke, Alberto Canfrán-Duque, Unai Galicia-García, Diego Saenz De Urturi, Patricia Aspichueta, Yajaira Suárez, Carlos Fernández-Hernando, Cesar Martín",
+      "journal": "Int J Mol Sci",
+      "topic": "mafld",
+      "doi": "10.3390/ijms21228675",
+      "abstract": "Insulin resistance (IR) is one of the key contributing factors in the development of type 2 diabetes mellitus (T2DM). However, the molecular mechanisms leading to IR are still unclear. The implication of microRNAs (miRNAs) in the pathophysiology of multiple cardiometabolic pathologies, including obesity, atherosclerotic heart failure and IR, has emerged as a major focus of interest in recent years. Indeed, upregulation of several miRNAs has been associated with obesity and IR. Among them, miR-27b is overexpressed in the liver in patients with obesity, but its role in IR has not yet been thoroughly explored. In this study, we investigated the role of miR-27b in regulating insulin signaling in hepatocytes, both in vitro and in vivo. Therefore, assessment of the impact of miR-27b on insulin resistance through the hepatic tissue is of special importance due to the high expression of miR-27b in the liver together with its known role in regulating lipid metabolism. Notably, we found that miR-27b controls post-transcriptional expression of numerous components of the insulin signaling pathway including the insulin receptor (INSR) and insulin receptor substrate 1 (IRS1) in human hepatoma cells. These results were further confirmed in vivo showing that overexpression and inhibition of hepatic miR-27 enhances and suppresses hepatic INSR expression and insulin sensitivity, respectively. This study identified a novel role for miR-27 in regulating insulin signaling, and this finding suggests that elevated miR-27 levels may contribute to early development of hepatic insulin resistance."
+    },
+    {
+      "id": "pub-071",
+      "year": "2020",
+      "title": "Membrane-bound sn-1,2-diacylglycerols explain the dissociation of hepatic insulin resistance from hepatic steatosis in MTTP knockout mice",
+      "authors": "Abudukadier Abulizi, Daniel F Vatner, Zhang Ye, Yongliang Wang, Joao-Paulo Camporez, Dongyan Zhang, Mario Kahn, Kun Lyu, Alaa Sirwi, Gary W Cline, M Mahmood Hussain, Patricia Aspichueta, Varman T Samuel, Gerald I Shulman",
+      "journal": "J Lipid Res",
+      "topic": "mafld",
+      "doi": "10.1194/jlr.ra119000586",
+      "abstract": "Microsomal triglyceride transfer protein (MTTP) deficiency results in a syndrome of hypolipidemia and accelerated NAFLD. Animal models of decreased hepatic MTTP activity have revealed an unexplained dissociation between hepatic steatosis and hepatic insulin resistance. Here, we performed comprehensive metabolic phenotyping of liver-specific MTTP knockout (L-Mttp-/-) mice and age-weight matched wild-type control mice. Young (10-12-week-old) L-Mttp-/- mice exhibited hepatic steatosis and increased DAG content; however, the increase in hepatic DAG content was partitioned to the lipid droplet and was not increased in the plasma membrane. Young L-Mttp-/- mice also manifested normal hepatic insulin sensitivity, as assessed by hyperinsulinemic-euglycemic clamps, no PKCε activation, and normal hepatic insulin signaling from the insulin receptor through AKT Ser/Thr kinase. In contrast, aged (10-month-old) L-Mttp-/- mice exhibited glucose intolerance and hepatic insulin resistance along with an increase in hepatic plasma membrane sn-1,2-DAG content and PKCε activation. Treatment with a functionally liver-targeted mitochondrial uncoupler protected the aged L-Mttp-/- mice against the development of hepatic steatosis, increased plasma membrane sn-1,2-DAG content, PKCε activation, and hepatic insulin resistance. Furthermore, increased hepatic insulin sensitivity in the aged controlled-release mitochondrial protonophore-treated L-Mttp-/- mice was not associated with any reductions in hepatic ceramide content. Taken together, these data demonstrate that differences in the intracellular compartmentation of sn-1,2-DAGs in the lipid droplet versus plasma membrane explains the dissociation of NAFLD/lipid-induced hepatic insulin resistance in young L-Mttp-/- mice as well as the development of lipid-induced hepatic insulin resistance in aged L-Mttp-/- mice."
+    },
+    {
+      "id": "pub-072",
+      "year": "2020",
+      "title": "TREM-2 defends the liver against hepatocellular carcinoma through multifactorial protective mechanisms",
+      "authors": "Aitor Esparza-Baquer, Ibone Labiano, Omar Sharif, Aloña Agirre-Lizaso, Fiona Oakley, Pedro M Rodrigues, Ekaterina Zhuravleva, Colm J O'Rourke, Elizabeth Hijona, Raul Jimenez-Agüero, Ioana Riaño, Ana Landa, Adelaida La Casta, Marco Y W Zaki, Patricia Munoz-Garrido, Mikel Azkargorta, Felix Elortza, Andrea Vogel, Gernot Schabbauer, Patricia Aspichueta, Jesper B Andersen, Sylvia Knapp, Derek A Mann, Luis Bujanda, Jesus Maria Banales , Maria Jesus Perugorria",
+      "journal": "Gut",
+      "topic": "cancer",
+      "doi": "10.1136/gutjnl-2019-319227",
+      "abstract": "ObjectiveHepatocellular carcinoma (HCC) is a prevalent and aggressive cancer usually arising on a background of chronic liver injury involving inflammatory and hepatic regenerative processes. The triggering receptor expressed on myeloid cells 2 (TREM-2) is predominantly expressed in hepatic non-parenchymal cells and inhibits Toll-like receptor signalling, protecting the liver from various hepatotoxic injuries, yet its role in liver cancer is poorly defined. Here, we investigated the impact of TREM-2 on liver regeneration and hepatocarcinogenesis.DesignTREM-2 expression was analysed in liver tissues of two independent cohorts of patients with HCC and compared with control liver samples. Experimental HCC and liver regeneration models in wild type and Trem-2-/- mice, and in vitro studies with hepatic stellate cells (HSCs) and HCC spheroids were conducted.ResultsTREM-2 expression was upregulated in human HCC tissue, in mouse models of liver regeneration and HCC. Trem-2-/- mice developed more liver tumours irrespective of size after diethylnitrosamine (DEN) administration, displayed exacerbated liver damage, inflammation, oxidative stress and hepatocyte proliferation. Administering an antioxidant diet blocked DEN-induced hepatocarcinogenesis in both genotypes. Similarly, Trem-2-/- animals developed more and larger tumours in fibrosis-associated HCC models. Trem-2-/- livers showed increased hepatocyte proliferation and inflammation after partial hepatectomy. Conditioned media from human HSCs overexpressing TREM-2 inhibited human HCC spheroid growth in vitro through attenuated Wnt ligand secretion.ConclusionTREM-2 plays a protective role in hepatocarcinogenesis via different pleiotropic effects, suggesting that TREM-2 agonism should be investigated as it might beneficially impact HCC pathogenesis in a multifactorial manner."
+    },
+    {
+      "id": "pub-073",
+      "year": "2020",
+      "title": "Silencing hepatic MCJ attenuates non-alcoholic fatty liver disease (NAFLD) by increasing mitochondrial fatty acid oxidation",
+      "authors": "Lucía Barbier-Torres, Karen A Fortne, Paula Iruzubieta, Teresa C Delgado, Emily Giddings, Youdinghuan Chen, Devin Champagne, David Fernández-Ramos, Daniela Mestre, Beatriz Gomez-Santos, Marta Varela-Rey, Virginia Gutiérrez de Juan, Pablo Fernández-Tussy, Imanol Zubiete-Franco, Carmelo García-Monzón, Águeda González-Rodríguez, Dhaval Oza, Felipe Valença-Pereira, Qian Fang, Javier Crespo, Patricia Aspichueta, Frederic Tremblay, Brock C Christensen, Juan Anguita, María Luz Martínez-Chantar",
+      "journal": "Nat Commun",
+      "topic": "mafld",
+      "doi": "10.1038/s41467-020-16991-2",
+      "abstract": "Nonalcoholic fatty liver disease (NAFLD) is considered the next major health epidemic with an estimated 25% worldwide prevalence. No drugs have yet been approved and NAFLD remains a major unmet need. Here, we identify MCJ (Methylation-Controlled J protein) as a target for non-alcoholic steatohepatitis (NASH), an advanced phase of NAFLD. MCJ is an endogenous negative regulator of the respiratory chain Complex I that acts to restrain mitochondrial respiration. We show that therapeutic targeting of MCJ in the liver with nanoparticle- and GalNAc-formulated siRNA efficiently reduces liver lipid accumulation and fibrosis in multiple NASH mouse models. Decreasing MCJ expression enhances the capacity of hepatocytes to mediate β-oxidation of fatty acids and minimizes lipid accumulation, which results in reduced hepatocyte damage and fibrosis. Moreover, MCJ levels in the liver of NAFLD patients are elevated relative to healthy subjects. Thus, inhibition of MCJ emerges as an alternative approach to treat NAFLD."
+    },
+    {
+      "id": "pub-074",
+      "year": "2020",
+      "title": "Significant fibrosis predicts new-onset diabetes mellitus and arterial hypertension in patients with NASH",
+      "authors": "Javier Ampuero, Rocío Aller, Rocío Gallego-Durán, Javier Crespo, José Luis Calleja, Carmelo García-Monzón, Judith Gómez-Camarero, Joan Caballería, Oreste Lo Iacono, Luis Ibañez, Javier García-Samaniego, Agustín Albillos, Rubén Francés, Conrado Fernández-Rodríguez, Moisés Diago, Germán Soriano, Raúl J Andrade, Raquel Latorre, Francisco Jorquera, Rosa María Morillas, Desamparados Escudero, Pamela Estévez, Manuel Hernández Guerra, Salvador Augustín, Jesús M Banales, Patricia Aspichueta, Salvador Benlloch, José Miguel Rosales, Javier Salmerón, Juan Turnes, Manuel Romero Gómez",
+      "journal": "J Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.jhep.2020.02.028",
+      "abstract": "Background & aimsNon-alcoholic fatty liver disease (NAFLD) could play a catalytic role in the development of metabolic comorbidities, although the magnitude of this effect in metabolically healthy patients with NAFLD remains unclear. We assessed the role of biopsy-proven NAFLD on the risk of developing type 2 diabetes mellitus (T2DM) and other metabolic comorbidities (arterial hypertension [AHT], and dyslipidemia) in metabolically healthy patients.MethodsWe included 178 metabolically healthy-defined by the absence of baseline T2DM, AHT, dyslipidemia-patients with biopsy-proven NAFLD from the HEPAmet Registry (N = 1,030). Hepamet fibrosis score (HFS), NAFLD fibrosis score, and Fibrosis-4 were calculated. Follow-up was computed from biopsy to the diagnosis of T2DM, AHT, or dyslipidemia.ResultsDuring a follow-up of 5.6 ± 4.4 years, T2DM occurred in 9% (16/178), AHT in 8.4% (15/178), low HDL in 9.6% (17/178), and hypertriglyceridemia in 23.6% (42/178) of patients. In multivariate analysis, significant fibrosis predicted T2DM and AHT. Independent variables related to T2DM appearance were significant fibrosis (HR 2.95; 95% CI 1.19-7.31; p = 0.019), glucose levels (p = 0.008), age (p = 0.007) and BMI (p = 0.039). AHT was independently linked to significant fibrosis (HR 2.39; 95% CI 1.14-5.10; p = 0.028), age (p = 0.0001), BMI (p = 0.006), glucose (p = 0.021) and platelets (p = 0.050). The annual incidence rate of T2DM was higher in patients with significant fibrosis (4.4 vs. 1.2 cases per 100 person-years), and increased in the presence of obesity, similar to AHT (4.6 vs. 1.1 cases per 100 person-years). HFS >0.12 predicted the risk of T2DM (25% [4/16] vs. HFS ConclusionMetabolically healthy patients with NAFLD-related significant fibrosis were at greater risk of developing T2DM and AHT. HFS >0.12, but not NAFLD fibrosis score or Fibrosis-4, predicted the occurrence of T2DM.Lay summaryPatients with biopsy-proven non-alcoholic fatty liver disease and significant fibrosis were at risk of developing type 2 diabetes mellitus and arterial hypertension. The risk of metabolic outcomes in patients with significant fibrosis was increased in the presence of obesity. In addition to liver biopsy, patients at intermediate-to-high risk of significant fibrosis by Hepamet fibrosis score were at risk of type 2 diabetes mellitus."
+    },
+    {
+      "id": "pub-075",
+      "year": "2020",
+      "title": "Targeting Hepatic Glutaminase 1 Ameliorates Non-alcoholic Steatohepatitis by Restoring Very-Low-Density Lipoprotein Triglyceride Assembly",
+      "authors": "Jorge Simon, Maitane Nuñez-García, Pablo Fernández-Tussy, Lucía Barbier-Torres, David Fernández-Ramos, Beatriz Gómez-Santos, Xabier Buqué, Fernando Lopitz-Otsoa, Naroa Goikoetxea-Usandizaga, Marina Serrano-Macia, Rubén Rodriguez-Agudo, Maider Bizkarguenaga, Imanol Zubiete-Franco, Virginia Gutiérrez-de Juan, Diana Cabrera, Cristina Alonso, Paula Iruzubieta, Manuel Romero-Gomez, Sebastiaan van Liempd, Azucena Castro, Ruben Nogueiras, Marta Varela-Rey, Juan Manuel Falcón-Pérez, Erica Villa, Javier Crespo, Shelly C Lu, Jose M Mato, Patricia Aspichueta, Teresa C Delgado, María Luz Martínez-Chantar",
+      "journal": "Cell Metab",
+      "topic": "mafld",
+      "doi": "10.1016/j.cmet.2020.01.013",
+      "abstract": "Non-alcoholic steatohepatitis (NASH) is characterized by the accumulation of hepatic fat in an inflammatory/fibrotic background. Herein, we show that the hepatic high-activity glutaminase 1 isoform (GLS1) is overexpressed in NASH. Importantly, GLS1 inhibition reduces lipid content in choline and/or methionine deprivation-induced steatotic mouse primary hepatocytes, in human hepatocyte cell lines, and in NASH mouse livers. We suggest that under these circumstances, defective glutamine fueling of anaplerotic mitochondrial metabolism and concomitant reduction of oxidative stress promotes a reprogramming of serine metabolism, wherein serine is shifted from the generation of the antioxidant glutathione and channeled to provide one-carbon units to regenerate the methionine cycle. The restored methionine cycle can induce phosphatidylcholine synthesis from the phosphatidylethanolamine N-methyltransferase-mediated and CDP-choline pathways as well as by base-exchange reactions between phospholipids, thereby restoring hepatic phosphatidylcholine content and very-low-density lipoprotein export. Overall, we provide evidence that hepatic GLS1 targeting is a valuable therapeutic approach in NASH."
+    },
+    {
+      "id": "pub-076",
+      "year": "2020",
+      "title": "Development and Validation of Hepamet Fibrosis Scoring System-A Simple, Noninvasive Test to Identify Patients With Nonalcoholic Fatty Liver Disease With Advanced Fibrosis",
+      "authors": "Javier Ampuero, Raluca Pais, Rocío Aller, Rocío Gallego-Durán, Javier Crespo, Carmelo García-Monzón, Jerome Boursier, Eduardo Vilar, Salvatore Petta, Ming-Hua Zheng, Desamparados Escudero, Jose Luis Calleja, Patricia Aspichueta, Moisés Diago, Jose Miguel Rosales, Joan Caballería, Judith Gómez-Camarero, Oreste Lo Iacono, Salvador Benlloch, Agustín Albillos, Juan Turnes, Jesus M Banales, Vlad Ratziu, Manuel Romero-Gómez",
+      "journal": "Clin Gastroenterol Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.cgh.2019.05.051",
+      "abstract": "Background & aimsFibrosis affects prognoses for patients with nonalcoholic fatty liver disease (NAFLD). Several non-invasive scoring systems have aimed to identify patients at risk for advanced fibrosis, but inconclusive results and variations in features of patients (diabetes, obesity and older age) reduce their diagnostic accuracy. We sought to develop a scoring system based on serum markers to identify patients with NAFLD at risk for advanced fibrosis.MethodsWe collected data from 2452 patients with NAFLD at medical centers in Italy, France, Cuba, and China. We developed the Hepamet fibrosis scoring system using demographic, anthropometric, and laboratory test data, collected at time of liver biopsy, from a training cohort of patients from Spain (n = 768) and validated the system using patients from Cuba (n = 344), Italy (n = 288), France (n = 830), and China (n = 232). Hepamet fibrosis score (HFS) were compared with those of previously developed fibrosis scoring systems (the NAFLD fibrosis score [NFS] and FIB-4). The diagnostic accuracy of the Hepamet fibrosis scoring system was assessed based on area under the receiver operating characteristic (AUROC) curve, sensitivity, specificity, diagnostic odds ratio, and positive and negative predictive values and likelihood ratios.ResultsVariables used to determine HFS were patient sex, age, homeostatic model assessment score, presence of diabetes, levels of aspartate aminotransferase, and albumin, and platelet counts; these were independently associated with advanced fibrosis. HFS discriminated between patients with and without advanced fibrosis with an AUROC curve value of 0.85 whereas NFS or FIB-4 did so with AUROC values of 0.80 (P = .0001). In the validation set, cut-off HFS of 0.12 and 0.47 identified patients with and without advanced fibrosis with 97.2% specificity, 74% sensitivity, a 92% negative predictive value, a 76.3% positive predictive value, a 13.22 positive likelihood ratio, and a 0.31 negative likelihood ratio. HFS were not affected by patient age, body mass index, hypertransaminasemia, or diabetes. The Hepamet fibrosis scoring system had the greatest net benefit in identifying patients who should undergo liver biopsy analysis and led to significant improvements in reclassification, reducing the number of patients with undetermined results to 20% from 30% for the FIB-4 and NFS systems (P ConclusionsUsing clinical and laboratory data from patients with NAFLD, we developed and validated the Hepamet fibrosis scoring system, which identified patients with advanced fibrosis with greater accuracy than the FIB-4 and NFS systems. the Hepamet system provides a greater net benefit for the decision-making process to identify patients who should undergo liver biopsy analysis."
+    },
+    {
+      "id": "pub-077",
+      "year": "2020",
+      "title": "Liver osteopontin is required to prevent the progression of age-related nonalcoholic fatty liver disease.",
+      "authors": "Beatriz Gómez-Santos, Diego Saenz de Urturi, Maitane Nuñez-García, Francisco Gonzalez-Romero, Xabier Buque, Igor Aurrekoetxea, Virginia Gutiérrez de Juan, Maria J Gonzalez-Rellan, Carmelo García-Monzón, Águeda González-Rodríguez, Lorena Mosteiro, Gaizka Errazti, Patricia Mifsut, Sonia Gaztambide, Luis Castaño, Cesar Martin, Rubén Nogueiras, María L Martinez-Chantar, Wing-Kin Syn, Patricia Aspichueta.",
+      "journal": "Aging Cell",
+      "topic": "mafld",
+      "doi": "10.1111/acel.13183",
+      "abstract": "Osteopontin (OPN), a senescence-associated secretory phenotype factor, is increased in patients with nonalcoholic fatty liver disease (NAFLD). Cellular senescence has been associated with age-dependent hepatosteatosis. Thus, we investigated the role of OPN in the age-related hepatosteatosis. For this, human serum samples, animal models of aging, and cell lines in which senescence was induced were used. Metabolic fluxes, lipid, and protein concentration were determined. Among individuals with a normal liver, we observed a positive correlation between serum OPN levels and increasing age. This correlation with age, however, was absent in patients with NAFLD. In wild-type (WT) mice, serum and liver OPN were increased at 10 months old (m) along with liver p53 levels and remained elevated at 20m. Markers of liver senescence increased in association with synthesis and concentration of triglycerides (TG) in 10m OPN-deficient (KO) hepatocytes when compared to WT hepatocytes. These changes in senescence and lipid metabolism in 10m OPN-KO mice liver were associated with the decrease of 78 kDa glucose-regulated protein (GRP78), induction of ER stress, and the increase in fatty acid synthase and CD36 levels. OPN deficiency in senescent cells also diminished GRP78, the accumulation of intracellular TG, and the increase in CD36 levels. In 20m mice, OPN loss led to increased liver fibrosis. Finally, we showed that OPN expression in vitro and in vivo was regulated by p53. In conclusion, OPN deficiency leads to earlier cellular senescence, ER stress, and TG accumulation during aging. The p53-OPN axis is required to inhibit the onset of age-related hepatosteatosis."
+    },
+    {
+      "id": "pub-078",
+      "year": "2019",
+      "title": "Long term recurrence free survival in a stage IV gallbladder cancer treated with chemotherapy plus trastuzumab and salvage liver resection",
+      "authors": "Prieto M, Gastaca M, Ruiz P, Ventoso A, Palomares I, Perfecto A, Valdivieso A.",
+      "journal": "Ann Hepatobiliary Pancreat Surg",
+      "topic": "cancer",
+      "doi": "10.14701/ahbps.2019.23.4.403",
+      "abstract": "Surgery is the only treatment for biliary tract cancer with long term survival. Unfortunately, most patients are diagnosed at stage IV with distant metastases. In these circumstances, life expectancy is less than one year due to aggressive tumour biology and a lack of effective systemic therapies. HER2 overexpression or amplification is predominantly seen in extrahepatic cholangiocarcinoma and gallbladder cancer (10-18%) and rarely in intrahepatic cholangiocarcinoma (1%). Trastuzumab is a monoclonal antibody that targets HER-2. We present a clinical case with a stage IV gallbladder cancer (liver and interaortocaval lymph node metastases), which presented progression during first-line chemotherapy treatment, which prompted a change in therapy to study the Her 2/Neu mutation which showed an intense positive overexpression. A combination of HER2/Neu-directed therapy (Trastuzumab) with second-line chemotherapy, was able to achieve a long term complete radiological, metabolic, and biochemical response. A curative intention surgery was performed and the patient is alive and recurrence-free at five years. To the best of our knowledge, we present a case which is the first report of a patient with a Stage IV gallbladder cancer who achieved a five-year survival without recurrence after a conversion therapy combining chemotherapy plus Trastuzumab and radical salvage surgery."
+    },
+    {
+      "id": "pub-079",
+      "year": "2019",
+      "title": "The Authors' Reply: To NRP or Not to NRP, That Is the Question…",
+      "authors": "Ruiz P, Gastaca M, Bustamante FJ, Valdivieso A.",
+      "journal": "Transplantation",
+      "topic": "mafld",
+      "doi": "10.1097/tp.0000000000002878",
+      "abstract": ""
+    },
+    {
+      "id": "pub-080",
+      "year": "2019",
+      "title": "Hepaticojejunostomy in Orthotopic Liver Transplant: A Retrospective Case Control Study",
+      "authors": "Prieto M, Valdivieso A, Gastaca M, Pijoan JI, Ruiz P, Ventoso A, Palomares I, Ortiz de Urbina J.",
+      "journal": "Transplant Proc",
+      "topic": "mafld",
+      "doi": "10.1016/j.transproceed.2018.03.135",
+      "abstract": "The reported biliary morbidity rate for deceased donor full-size orthotopic liver transplantation is up to 30%. The technique used may be influenced by multiple factors, and in some situations, biliary reconstruction must be carried out through Roux-en-Y hepaticojejunostomy. The aim of our study was to determine the results of the orthotopic liver transplantation according to the technique used in the biliary reconstruction. A retrospective study was performed with the first 1000 orthotopic liver transplants (951 patients) carried out consecutively (1996-2013) with follow-up until 2017. A matched case-control study was designed in 1:3 ratio (47/136) to compare the reconstruction by hepaticojejunostomy vs the end-to-end coledoco-coledocostomy. Hepaticojejunostomy was associated with patients with cholestatic (44.7% vs 3.7%) and ischemic disease (14.9% vs 0%; P < .001) and previous transplant (29.8% vs 1.5%; P = .003). The mean biliary duct reconstruction, surgery, and cold ischemia times were also higher. Vascular complications were significantly more frequent in the hepaticojejunostomy group (36.1% vs 10.4%; P < .001), mainly because of differences in early arterial complications. Nevertheless, there were no differences in the total biliary complication (21.2% vs 16.9%; P = .5). The biliary leakage rate and the biliary stricture rate were also similar. Hepaticojejunostomy in orthotopic liver transplantation presented longer biliary reconstruction, surgery, and cold ischemia times when compared with end-to-end coledoco-coledocostomy. In addition, it was followed by a higher incidence of arterial complications but had similar biliary complication rate and graft survival. Differences could be explained by the fact that hepaticojejunostomy was used more often in cholestatic or ischemic diseases and in retransplant procedures."
+    },
+    {
+      "id": "pub-081",
+      "year": "2019",
+      "title": "Favorable Outcomes After Liver Transplantation With Normothermic Regional Perfusion From Donors After Circulatory Death: A Single-center Experience",
+      "authors": "Ruiz P, Gastaca M, Bustamante FJ, Ventoso A, Palomares I, Prieto M, Fernández JR, Salvador P, Pijoan JI, Valdivieso A.",
+      "journal": "Transplantation",
+      "topic": "mafld",
+      "doi": "10.1097/tp.0000000000002391",
+      "abstract": "BackgroundControlled donation after circulatory death (cDCD) has been associated with a high incidence of ischemic cholangiopathy and other perioperative complications. In an attempt to avoid these complications, we implemented an active protocol of cDCD liver transplant (LT) with normothermic regional perfusion (NRP) preservation.MethodsThis is a descriptive analysis of data collected from a prospective date base of cDCD LT preserved with NRP from January 2015 to June 2017 with a minimum follow up of 9 months.ResultsFifty-seven potential cDCD donors were connected to the NRP system. Of these, 46 livers were transplanted over a 30-month period (80% liver recovery rate). The median posttransplant peak in alanine transaminase was 1136 U/L (220-6683 U/L). Seven (15%) patients presented postreperfusion syndrome and 11 (23%) showed early allograft dysfunction. No cases of ischemic cholangiopathy were diagnosed, and no graft loss was observed over a medium follow-up period of 19 months. Of note, 13 donors were older than 65 years, achieving comparable perioperative and midterm results to younger donors.ConclusionsAs far as we know, this represents the largest published series of cDCD LT with NRP preservation. Our results demonstrate that cDCD liver grafts preserved with NRP appear far superior to those obtained by the conventional rapid recovery technique."
+    },
+    {
+      "id": "pub-082",
+      "year": "2019",
+      "title": "PAX5 is part of a functional transcription factor network targeted in lymphoid leukemia",
+      "authors": "Kazuki Okuyama, Tobias Strid, Jacob Kuruvilla, Rajesh Somasundaram, Susana Cristobal, Emma Smith, Mahadesh Prasad, Thoas Fioretos, Henrik Lilljebjörn, Shamit Soneji, Stefan Lang, Jonas Ungerbäck, Mikael Sigvardsson",
+      "journal": "PLoS genetics",
+      "topic": "cancer",
+      "doi": "10.1371/journal.pgen.1008280",
+      "abstract": "One of the most frequently mutated proteins in human B-lineage leukemia is the transcription factor PAX5. These mutations often result in partial rather than complete loss of function of the transcription factor. While the functional dose of PAX5 has a clear connection to human malignancy, there is limited evidence for that heterozygote loss of PAX5 have a dramatic effect on the development and function of B-cell progenitors. One possible explanation comes from the finding that PAX5 mutated B-ALL often display complex karyotypes and additional mutations. Thus, PAX5 might be one component of a larger transcription factor network targeted in B-ALL. To investigate the functional network associated with PAX5 we used BioID technology to isolate proteins associated with this transcription factor in the living cell. This identified 239 proteins out of which several could be found mutated in human B-ALL. Most prominently we identified the commonly mutated IKZF1 and RUNX1, involved in the formation of ETV6-AML1 fusion protein, among the interaction partners. ChIP- as well as PLAC-seq analysis supported the idea that these factors share a multitude of target genes in human B-ALL cells. Gene expression analysis of mouse models and primary human leukemia suggested that reduced function of PAX5 increased the ability of an oncogenic form of IKZF1 or ETV6-AML to modulate gene expression. Our data reveals that PAX5 belong to a regulatory network frequently targeted by multiple mutations in B-ALL shedding light on the molecular interplay in leukemia cells."
+    },
+    {
+      "id": "pub-083",
+      "year": "2019",
+      "title": "Application of bioactive thermal proteome profiling to decipher the mechanism of action of the lipid lowering 132-hydroxy-pheophytin isolated from a marine Cyanobacteria",
+      "authors": "Ana Carrasco del Amor, Sara Freitas, Ralph Urbatzka, Olatz Fresnedo, Susana Cristobal",
+      "journal": "Marine drugs",
+      "topic": "mafld",
+      "doi": "10.3390/md17060371",
+      "abstract": "The acceleration of the process of understanding the pharmacological application of new marine bioactive compounds requires identifying the compound protein targets leading the molecular mechanisms in a living cell. The thermal proteome profiling (TPP) methodology does not fulfill the requirements for its application to any bioactive compound lacking chemical and functional characterization. Here, we present a modified method that we called bTPP for bioactive thermal proteome profiling that guarantees target specificity from a soluble subproteome. We showed that the precipitation of the microsomal fraction before the thermal shift assay is crucial to accurately calculate the melting points of the protein targets. As a probe of concept, the protein targets of 132-hydroxy-pheophytin, a compound previously isolated from a marine cyanobacteria for its lipid reducing activity, were analyzed on the hepatic cell line HepG2. Our improved method identified 9 protein targets out of 2500 proteins, including 3 targets (isocitrate dehydrogenase, aldehyde dehydrogenase, phosphoserine aminotransferase) that could be related to obesity and diabetes, as they are involved in the regulation of insulin sensitivity and energy metabolism. This study demonstrated that the bTPP method can accelerate the field of biodiscovery, revealing protein targets involved in mechanisms of action (MOA) connected with future applications of bioactive compounds."
+    },
+    {
+      "id": "pub-084",
+      "year": "2019",
+      "title": "Proteomic analysis of endothelial cells exposed to ultrasmall nanoparticles reveals disruption in paracellular and transcellular transport",
+      "authors": "Jacob Kuruvilla, Narges Bayat, Susana Cristobal",
+      "journal": "Proteomics",
+      "topic": "exposome",
+      "doi": "10.1002/pmic.201800228",
+      "abstract": "The large interactive surfaces of nanoparticles (NPs) increase the opportunities to develop NPs for vascular targeting. Proteomic analysis of endothelial cells exposed to NPs reveals the cellular response and turns the focus into the impairment of the endothelial permeability. Here, quantitative proteomics and transcriptome sequencing are combined to evaluate the effects of exposure to sub-lethal concentrations of TiO2 -USNPs and TiO2 -NPs on human dermal microvascular endothelial cells. Endothelial cells react to preserve the semi-permeable properties that are essential for vascular tissue fluid homeostasis, vascular development, and angiogenesis. The main impact of the exposure was alteration of functional complexes involved in cell adhesion, vesicular transport, and cytoskeletal structure. Those are the core cellular structures that are linked to the permeability and the integrity of the endothelial tissue. Moreover, the extracellular proteins uptake along wih the NPs into the endothelial cells escape the lysosomal degradation pathway. These findings improve the understanding of the interaction of NPs with endothelial cell. The effects of the studied NPs modulating cell-cell adhesion and vesicular transport can help to evaluate the distribution of NPs via intravenous administration."
+    },
+    {
+      "id": "pub-085",
+      "year": "2019",
+      "title": "miR-873-5p targets mitochondrial GNMT-Complex II interface contributing to non-alcoholic fatty liver disease",
+      "authors": "Pablo Fernández-Tussy, David Fernández-Ramos, Fernando Lopitz-Otsoa, Jorge Simón, Lucía Barbier-Torres, Beatriz Gomez-Santos, Maitane Nuñez-Garcia, Mikel Azkargorta, Virginia Gutiérrez-de Juan, Marina Serrano-Macia, Rubén Rodríguez-Agudo, Paula Iruzubieta, Juan Anguita, Rui E Castro, Devin Champagne, Mercedes Rincón, Felix Elortza, Anita Arslanow, Marcin Krawczyk, Frank Lammert, Mélanie Kirchmeyer, Iris Behrmann, Javier Crespo, Shelly C Lu, José M Mato, Marta Varela-Rey, Patricia Aspichueta, Teresa C Delgado, María L Martínez-Chantar",
+      "journal": "Mol Metab",
+      "topic": "mafld",
+      "doi": "10.1016/j.molmet.2019.08.008",
+      "abstract": "ObjectiveNon-alcoholic fatty liver disease (NAFLD) is a complex pathology in which several dysfunctions, including alterations in metabolic pathways, mitochondrial functionality and unbalanced lipid import/export, lead to lipid accumulation and progression to inflammation and fibrosis. The enzyme glycine N-methyltransferase (GNMT), the most important enzyme implicated in S-adenosylmethionine catabolism in the liver, is downregulated during NAFLD progression. We have studied the mechanism involved in GNMT downregulation by its repressor microRNA miR-873-5p and the metabolic pathways affected in NAFLD as well as the benefit of recovery GNMT expression.MethodsmiR-873-5p and GNMT expression were evaluated in liver biopsies of NAFLD/NASH patients. Different in vitro and in vivo NAFLD murine models were used to assess miR-873-5p/GNMT involvement in fatty liver progression through targeting of the miR-873-5p as NAFLD therapy.ResultsWe describe a new function of GNMT as an essential regulator of Complex II activity in the electron transport chain in the mitochondria. In NAFLD, GNMT expression is controlled by miR-873-5p in the hepatocytes, leading to disruptions in mitochondrial functionality in a preclinical murine non-alcoholic steatohepatitis (NASH) model. Upregulation of miR-873-5p is shown in the liver of NAFLD/NASH patients, correlating with hepatic GNMT depletion. Importantly, NASH therapies based on anti-miR-873-5p resolve lipid accumulation, inflammation and fibrosis by enhancing fatty acid β-oxidation in the mitochondria. Therefore, miR-873-5p inhibitor emerges as a potential tool for NASH treatment.ConclusionGNMT participates in the regulation of metabolic pathways and mitochondrial functionality through the regulation of Complex II activity in the electron transport chain. In NAFLD, GNMT is repressed by miR-873-5p and its targeting arises as a valuable therapeutic option for treatment."
+    },
+    {
+      "id": "pub-086",
+      "year": "2019",
+      "title": "Higher levels of serum uric acid influences hepatic damage in patients with non-alcoholic fatty liver disease (NAFLD)",
+      "authors": "Conrado M Fernández Rodríguez, Rocío Aller, María Luisa Gutiérrez García, Javier Ampuero, Judith Gómez-Camarero, Rosa M ª Martín-Mateos, Diego Burgos-Santamaría, José Miguel Rosales, Patricia Aspichueta, Xabier Buque, Mercedes Latorre, Raúl J Andrade, Manuel Hernández-Guerra, Manuel Romero-Gómez",
+      "journal": "Rev Esp Enferm Dig",
+      "topic": "mafld",
+      "doi": "10.17235/reed.2019.5965/2018",
+      "abstract": "Backgroundrecent evidence suggests a causal link between serum uric acid and the metabolic syndrome, diabetes mellitus, arterial hypertension, and renal and cardiac disease. Uric acid is an endogenous danger signal and activator of the inflammasome, and has been independently associated with an increased risk of cirrhosis.Aim and methodssix hundred and thirty-four patients from the nation-wide HEPAMET registry with biopsy-proven NAFLD (53% NASH) were analyzed to determine whether hyperuricemia is related with advanced liver damage in patients with non-alcoholic fatty liver disease (NAFLD). Patients were divided into three groups according to the tertile levels of serum uric acid and gender.Resultsthe cohort was composed of 50% females, with a mean age of 49 years (range 19-80). Patients in the top third of serum uric acid levels were older (p = 0.017); they had a higher body mass index (p Conclusionhigher levels of serum uric acid were independently associated with hepatocellular steatosis and NASH in a cohort of patients with NAFLD. Serum uric acid levels warrants further evaluation as a component of the current non-invasive NAFLD scores of histopathological damage."
+    },
+    {
+      "id": "pub-087",
+      "year": "2019",
+      "title": "SUMOylation regulates LKB1 localization and its oncogenic activity in liver cancer",
+      "authors": "Imanol Zubiete-Franco, Juan L García-Rodríguez, Fernando Lopitz-Otsoa, Marina Serrano-Macia, Jorge Simon, Pablo Fernández-Tussy, Lucía Barbier-Torres, David Fernández-Ramos, Virginia Gutiérrez-de-Juan, Sergio López de Davalillo, Onintza Carlevaris, Adolfo Beguiristain Gómez, Erica Villa, Diego Calvisi, César Martín, Edurne Berra, Patricia Aspichueta, Naiara Beraza, Marta Varela-Rey, Matias Ávila, Manuel S Rodríguez, José M Mato, Irene Díaz-Moreno, Antonio Díaz-Quintana, Teresa C Delgado, María L Martínez-Chantar",
+      "journal": "EBioMedicine",
+      "topic": "cancer",
+      "doi": "10.1016/j.ebiom.2018.12.031",
+      "abstract": "BackgroundEven though liver kinase B1 (LKB1) is usually described as a tumor suppressor in a wide variety of tissues, it has been shown that LKB1 aberrant expression is associated with bad prognosis in Hepatocellular Carcinoma (HCC).MethodsHerein we have overexpressed LKB1 in human hepatoma cells and by using histidine pull-down assay we have investigated the role of the hypoxia-related post-translational modification of Small Ubiquitin-related Modifier (SUMO)ylation in the regulation of LKB1 oncogenic role. Molecular modelling between LKB1 and its interactors, involved in regulation of LKB1 nucleocytoplasmic shuttling and LKB1 activity, was performed. Finally, high affinity SUMO binding entities-based technology were used to validate our findings in a pre-clinical mouse model and in clinical HCC.FindingsWe found that in human hepatoma cells under hypoxic stress, LKB1 overexpression increases cell viability and aggressiveness in association with changes in LKB1 cellular localization. Moreover, by using site-directed mutagenesis, we have shown that LKB1 is SUMOylated by SUMO-2 at Lys178 hampering LKB1 nucleocytoplasmic shuttling and fueling hepatoma cell growth. Molecular modelling of SUMO modified LKB1 further confirmed steric impedance between SUMOylated LKB1 and the STe20-Related ADaptor cofactor (STRADα), involved in LKB1 export from the nucleus. Finally, we provide evidence that endogenous LKB1 is modified by SUMO in pre-clinical mouse models of HCC and clinical HCC, where LKB1 SUMOylation is higher in fast growing tumors.InterpretationOverall, SUMO-2 modification of LKB1 at Lys178 mediates LKB1 cellular localization and its oncogenic role in liver cancer. FUND: This work was supported by grants from NIH (US Department of Health and Human services)-R01AR001576-11A1 (J.M.M and M.L.M-C.), Gobierno Vasco-Departamento de Salud 2013111114 (to M.L.M.-C), ELKARTEK 2016, Departamento de Industria del Gobierno Vasco (to M.L.M.-C), MINECO: SAF2017-87301-R and SAF2014-52097-R integrado en el Plan Estatal de Investigación Cientifica y Técnica y Innovación 2013-2016 cofinanciado con Fondos FEDER (to M.L.M.-C and J.M.M., respectively), BFU2015-71017/BMC MINECO/FEDER, EU (to A.D.Q. and I.D.M.), BIOEF (Basque Foundation for Innovation and Health Research): EITB Maratoia BIO15/CA/014; Instituto de Salud Carlos III:PIE14/00031, integrado en el Plan Estatal de Investigación Cientifica y Técnica y Innovacion 2013-2016 cofinanciado con Fondos FEDER (to M.L.M.-C and J.M.M), Asociación Española contra el Cáncer (T.C.D, P·F-T and M.L.M-C), Daniel Alagille award from EASL (to T.C.D), Fundación Científica de la Asociación Española Contra el Cancer (AECC Scientific Foundation) Rare Tumor Calls 2017 (to M.L.M and M.A), La Caixa Foundation Program (to M.L.M), Programma di Ricerca Regione-Università 2007-2009 and 2011-2012, Regione Emilia-Romagna (to E.V.), Ramón Areces Foundation and the Andalusian Government (BIO-198) (A.D.Q. and I.D.M.), ayudas para apoyar grupos de investigación del sistema Universitario Vasco IT971-16 (P.A.), MINECO:SAF2015-64352-R (P.A.), Institut National du Cancer, FRANCE, INCa grant PLBIO16-251 (M.S.R.), MINECO - BFU2016-76872-R to (E.B.). Work produced with the support of a 2017 Leonardo Grant for Researchers and Cultural Creators, BBVA Foundation (M.V-R). Finally, Ciberehd_ISCIII_MINECO is funded by the Instituto de Salud Carlos III. We thank MINECO for the Severo Ochoa Excellence Accreditation to CIC bioGUNE (SEV-2016-0644). Funding sources had no involvement in study design; in the collection, analysis, and interpretation of data; in the writing of the report; and in the decision to submit the paper for publication."
+    },
+    {
+      "id": "pub-088",
+      "year": "2019",
+      "title": "p107 Deficiency Increases Energy Expenditure by Inducing Brown-Fat Thermogenesis and Browning of White Adipose Tissue",
+      "authors": "Juan Cunarro, Xabier Buque, Sabela Casado, Javier Lugilde, Anxo Vidal, Alfonso Mora, Guadalupe Sabio, Rubén Nogueiras, Patricia Aspichueta, Carlos Diéguez, Sulay Tovar",
+      "journal": "Mol Nutr Food Res",
+      "topic": "e2f",
+      "doi": "10.1002/mnfr.201801096",
+      "abstract": "ScopeThe tumor suppressor p107, a pocket protein member of the retinoblastoma susceptibility protein family, plays an important role in the cell cycle and cellular adipocyte differentiation. Nonetheless, the mechanism by which it influences whole body Energy homeostasis is unknown.Methods and resultsThe phenotype of p107 knockout (KO) mixed-background C57BL6/129 mice phenotype is studied by focusing on the involvement of white and brown adipose tissue (WAT and BAT) in energy metabolism. It is shown that p107 KO mice are leaner and have high-fat diet resistence. This phenomenon is explained by an increase of energy expenditure. The higher energy expenditure is caused by the activation of thermogenesis and may be mediated by both BAT and the browning of WAT. Consequently, it leads to the resistance of p107 KO mice to high-fat diet effects, prevention of liver steatosis, and improvement of the lipid profile and glucose homeostasis.ConclusionThese data allowed the unmasking of a mechanism by which a KO of p107 prevents diet-induced obesity by increasing energy expenditure via increased thermogenesis in BAT and browning of WAT, indicating the relevance of p107 as a modulator of metabolic activity of both brown and white adipocytes. Therefore, it can be targeted for the development of new therapies to ameliorate the metabolic syndrome."
+    },
+    {
+      "id": "pub-089",
+      "year": "2019",
+      "title": "Channeling of newly synthesized fatty acids to cholesterol esterification limits triglyceride synthesis in SND1-overexpressing hepatoma cells",
+      "authors": "Navarro-Imaz, H, Chico, Y, Rueda, Y, Fresnedo, O",
+      "journal": ": Biochim Biophys Acta-Mol Cell Biol Lipids",
+      "topic": "cancer",
+      "doi": "10.1016/j.bbalip.2018.11.004",
+      "abstract": "SND1 is a putative oncoprotein whose molecular function remains unclear. Its overexpression in hepatocellular carcinoma impairs cholesterol homeostasis due to the altered activation of the sterol regulatory element-binding protein (SREBP) 2, which results in the accumulation of cellular cholesteryl esters (CE). In this work, we explored whether high cholesterol synthesis and esterification originates changes in glycerolipid metabolism that might affect cell growth, given that acetyl-coenzyme A is required for cholesterogenesis and fatty acids (FA) are the substrates of acyl-coenzyme A:cholesterol acyltransferase (ACAT). SND1-overexpressing hepatoma cells show low triglyceride (TG) synthesis, but phospholipid biosynthesis or cell growth is not affected. Limited TG synthesis is not due to low acetyl-coenzyme A or NADPH availability. We demonstrate that the main factor limiting TG synthesis is the utilization of FAs for cholesterol esterification. These metabolic adaptations are linked to high Scd1 expression, needed for the de novo production of oleic acid, the main FA used by ACAT. We conclude that high cholesterogenesis due to SND1 overexpression might determine the channeling of FAs to CEs."
+    },
+    {
+      "id": "pub-090",
+      "year": "2019",
+      "title": "Ecotoxicoproteomics: A decade of progress in our understanding of anthropogenic impact on the environment",
+      "authors": "Duarte Gouveia, Christine Almunia, Yannick Cogne, Olivier Pible, Davide Degli-Esposti, Arnaud Salvador, Susana Cristobal, David Sheehan, Arnaud Chaumot, Olivier Geffard, Jean Armengaud",
+      "journal": "Journal of proteomics",
+      "topic": "exposome",
+      "doi": "10.1016/j.jprot.2018.12.001",
+      "abstract": "Anthropogenic pollutants are found worldwide. Their fate and effects on human and ecosystem health must be appropriately monitored. Today, ecotoxicology is focused on the development of new methods to assess the impact of pollutant toxicity on living organisms and ecosystems. In situ biomonitoring often uses sentinel animals for which, ideally, molecular biomarkers have been defined thanks to which environmental quality can be assessed. In this context, high-throughput proteomics methods offer an attractive approach to study the early molecular responses of organisms to environmental stressors. This approach can be used to identify toxicity pathways, to quantify more precisely novel biomarkers, and to draw the possible adverse outcome pathways. In this review, we discuss the major advances in ecotoxicoproteomics made over the last decade and present the current state of knowledge, emphasizing the technological and conceptual advancements that allowed major breakthroughs in this field, which aims to \"make our planet great again\". SIGNIFICANCE: Ecotoxicoproteomics is a protein-centric methodology that is useful for ecotoxicology and could have future applications as part of chemical risk assessment and environmental monitoring. Ecotoxicology employing non-model sentinel organisms with highly divergent phylogenetic backgrounds aims to preserve the functioning of ecosystems and the overall range of biological species supporting them. The classical proteomics workflow involves protein identification, functional annotation, and extrapolation of toxicity across species. Thus, it is essential to develop multi-omics approaches in order to unravel molecular information and construct the most suitable databases for protein identification and pathway analysis in non-model species. Current instrumentation and available software allow relevant combined transcriptomic/proteomic studies to be performed for almost any species. This review summarizes these approaches and illustrates how they can be implemented in ecotoxicology for routine biomonitoring."
+    },
+    {
+      "id": "pub-091",
+      "year": "2018",
+      "title": "Significance of measured intraoperative portal vein flows after thrombendvenectomy in deceased donor liver transplantations with portal vein thrombosis",
+      "authors": "Gastaca M, Prieto M, Palomares I, Valdivieso A.",
+      "journal": "Liver Transpl",
+      "topic": "mafld",
+      "doi": "10.1002/lt.24996",
+      "abstract": ""
+    },
+    {
+      "id": "pub-092",
+      "year": "2018",
+      "title": "Zinc finger protein 521 regulates early hematopoiesis through cell-extrinsic mechanisms in the bone marrow microenvironment",
+      "authors": "Courtney J Fleenor, Tessa Arends, Hong Lei, Josefine Åhsberg, Kazuki Okuyama, Jacob Kuruvilla, Susana Cristobal, Jennifer L Rabe, Ahwan Pandey, Thomas Danhorn, Desiree Straign, Joaquin M Espinosa, Søren Warming, Eric M Pietras, Mikael Sigvardsson, James R Hagman",
+      "journal": "Molecular and cellular biology",
+      "topic": "mafld",
+      "doi": "10.1128/mcb.00603-17",
+      "abstract": "Zinc finger protein 521 (ZFP521), a DNA-binding protein containing 30 Krüppel-like zinc fingers, has been implicated in the differentiation of multiple cell types, including hematopoietic stem and progenitor cells (HSPC) and B lymphocytes. Here, we report a novel role for ZFP521 in regulating the earliest stages of hematopoiesis and lymphoid cell development via a cell-extrinsic mechanism. Mice with inactivated Zfp521 genes (Zfp521-/-) possess reduced frequencies and numbers of hematopoietic stem and progenitor cells, common lymphoid progenitors, and B and T cell precursors. Notably, ZFP521 deficiency changes bone marrow microenvironment cytokine levels and gene expression within resident HSPC, consistent with a skewing of hematopoiesis away from lymphopoiesis. These results advance our understanding of ZFP521's role in normal hematopoiesis, justifying further research to assess its potential as a target for cancer therapies."
+    },
+    {
+      "id": "pub-093",
+      "year": "2018",
+      "title": "The effects of metabolic status on non-alcoholic fatty liver disease-related outcomes, beyond the presence of obesity",
+      "authors": "Javier Ampuero, Rocío Aller, Rocío Gallego-Durán, Jesus M Banales, Javier Crespo, Carmelo García-Monzón, María Jesús Pareja, Eduardo Vilar-Gómez, Juan Caballería, Desamparados Escudero-García, Judith Gomez-Camarero, José Luis Calleja, Mercedes Latorre, Agustín Albillos, Javier Salmeron, Patricia Aspichueta, Oreste Lo Iacono, Rubén Francés, Salvador Benlloch, Conrado Fernández-Rodríguez, Javier García-Samaniego, Pamela Estévez, Raúl J Andrade, Juan Turnes, Manuel Romero-Gómez",
+      "journal": "Aliment Pharmacol Ther",
+      "topic": "mafld",
+      "doi": "10.1111/apt.15015",
+      "abstract": "BackgroundMetabolically healthy obesity (MHO) shows a reduced risk compared with obese patients with adverse metabolic conditions. Lean people suffering some metabolic derangements also have non-alcoholic fatty liver disease (NAFLD)-related outcomes compared with non-obese subjects with a few metabolic risks.AimTo define the impact of the metabolic status on the NAFLD-related outcomes, beyond the presence of obesity.MethodsWe designed a multicentre cross-sectional study, including 1058 biopsy-proven NAFLD patients. Metabolically healthy status was strictly defined by the lack of metabolic risk factors (diabetes mellitus, low HDL, hypertriglyceridemia, arterial hypertension). Non-alcoholic steatohepatitis (NASH) and significant fibrosis (F2-F4) were identified by liver biopsy. Chronic kidney disease epidemiology collaboration equation was calculated for kidney function and the atherogenic index of plasma (AIP) for cardiovascular risk.ResultsMetabolically healthy (OR 1.88; P = 0.050) and unhealthy obesity (OR 3.47: P ConclusionsMetabolic unhealthy status showed a greater impact on NASH, significant fibrosis, kidney dysfunction, and atherogenic profile than obesity. However, metabolically healthy obesity was not a full healthy condition. We should focus our messages especially on patients with adverse metabolic conditions."
+    },
+    {
+      "id": "pub-094",
+      "year": "2018",
+      "title": "Atorvastatin provides a new lipidome improving early regeneration after partial hepatectomy in osteopontin deficient mice",
+      "authors": "Maitane Nuñez-Garcia, Beatriz Gomez-Santos, Diego Saenz de Urturi, Daniela Mestre, Francisco Gonzalez-Romero, Xabier Buque, Virginia Gutiérrez-de Juan, María Luz Martinez-Chantar, Wing-Kin Syn, Olatz Fresnedo, Patricia Aspichueta",
+      "journal": "Sci Rep",
+      "topic": "e2f",
+      "doi": "10.1038/s41598-018-32919-9",
+      "abstract": "Osteopontin (OPN), a multifunctional cytokine that controls liver glycerolipid metabolism, is involved in activation and proliferation of several liver cell types during regeneration, a condition of high metabolic demands. Here we investigated the role of OPN in modulating the liver lipidome during regeneration after partial-hepatectomy (PH) and the impact that atorvastatin treatment has over regeneration in OPN knockout (KO) mice. The results showed that OPN deficiency leads to remodeling of phosphatidylcholine and triacylglycerol (TG) species primarily during the first 24 h after PH, with minimal effects on regeneration. Changes in the quiescent liver lipidome in OPN-KO mice included TG enrichment with linoleic acid and were associated with higher lysosome TG-hydrolase activity that maintained 24 h after PH but increased in WT mice. OPN-KO mice showed increased beta-oxidation 24 h after PH with less body weight loss. In OPN-KO mice, atorvastatin treatment induced changes in the lipidome 24 h after PH and improved liver regeneration while no effect was observed 48 h post-PH. These results suggest that increased dietary-lipid uptake in OPN-KO mice provides the metabolic precursors required for regeneration 24 h and 48 h after PH. However, atorvastatin treatment offers a new metabolic program that improves early regeneration when OPN is deficient."
+    },
+    {
+      "id": "pub-095",
+      "year": "2018",
+      "title": "Lipid-rich environment: a key role promoting carcinogenesis in obesity-related non-alcoholic fatty liver disease",
+      "authors": "Patricia Aspichueta",
+      "journal": "Gut",
+      "topic": "mafld",
+      "doi": "10.1136/gutjnl-2018-316047",
+      "abstract": ""
+    },
+    {
+      "id": "pub-096",
+      "year": "2018",
+      "title": "The Retina of Osteopontin deficient Mice in Aging",
+      "authors": "Noelia Ruzafa, Xandra Pereiro, Patricia Aspichueta, Javier Araiz, Elena Vecino",
+      "journal": "Mol Neurobiol",
+      "topic": "mafld",
+      "doi": "10.1007/s12035-017-0734-9",
+      "abstract": "Osteopontin (OPN) is a secreted glycosylated phosphoprotein that influences cell survival, inflammation, migration, and homeostasis after injury. As the role of OPN in the retina remains unclear, this study issue was addressed by aiming to study how the absence of OPN in knock-out mice affects the retina and the influence of age on these effects. The study focused on retinal ganglion cells (RGCs) and glial cells (astrocytes, Müller cells, and resident microglia) in 3- and 20-month-old mice. The number of RGCs in the retina was quantified and the area occupied by astrocytes was measured. In addition, the morphology of Müller cells and microglia was examined in retinal sections. The deficiency in OPN reduces RGC density by 25.09% at 3 months of age and by 60.37% at 20 months of age. The astrocyte area was also reduced by 51.01% in 3-month-old mice and by 57.84% at 20 months of age, although Müller glia and microglia did not seem to be affected by the lack of OPN. This study demonstrates the influence of OPN on astrocytes and RGCs, whereby the absence of OPN in the retina diminishes the area occupied by astrocytes and produces a secondary reduction in the number of RGCs. Accordingly, OPN could be a target to develop therapies to combat neurodegenerative diseases and astrocytes may represent a key mediator of such effects."
+    },
+    {
+      "id": "pub-097",
+      "year": "2018",
+      "title": "Pharmacological stimulation of p53 with low-dose doxorubicin ameliorates diet-induced nonalcoholic steatosis and steatohepatitis",
+      "authors": "Begoña Porteiro, Marcos F Fondevila, Xabier Buque, Maria J Gonzalez-Rellan, Uxia Fernandez, Alfonso Mora, Daniel Beiroa, Ana Senra, Rosalia Gallego, Johan Fernø, Miguel López, Guadalupe Sabio, Carlos Dieguez, Patricia Aspichueta, Rubén Nogueiras",
+      "journal": "Mol Metab",
+      "topic": "mafld",
+      "doi": "10.1016/j.molmet.2017.12.005",
+      "abstract": "ObjectiveRecent reports have implicated the p53 tumor suppressor in the regulation of lipid metabolism. We hypothesized that the pharmacological activation of p53 with low-dose doxorubicin, which is widely used to treat several types of cancer, may have beneficial effects on nonalcoholic fatty liver disease (NAFLD) and nonalcoholic steatohepatitis (NASH).MethodsWe used long-term pharmacological activation of p53 by i.p. or oral administration of low-dose doxorubicin in different animal models of NAFLD (high fat diet containing 45% and 60% kcal fat) and NASH (methionine- and choline-deficient diet and choline deficiency combined with high fat diet). We also administered doxorubicin in mice lacking p53 in the liver and in two human hepatic cells lines (HepG2 and THLE2).ResultsThe attenuation of liver damage was accompanied by the stimulation of fatty acid oxidation and decrease of lipogenesis, inflammation, and ER stress. The effects of doxorubicin were abrogated in mice with liver-specific ablation of p53. Finally, the effects of doxorubicin on lipid metabolism found in animal models were also present in two human hepatic cells lines, in which the drug stimulated fatty acid oxidation and inhibited de novo lipogenesis at doses that did not cause changes in apoptosis or cell viability.ConclusionThese data provide new evidence for targeting p53 as a strategy to treat liver disease."
+    },
+    {
+      "id": "pub-098",
+      "year": "2018",
+      "title": "Insights Into SND1 Oncogene Promoter Regulation",
+      "authors": "Ochoa B, Chico Y, Martínez MJ",
+      "journal": "Front Oncol",
+      "topic": "cancer",
+      "doi": "10.3389/fonc.2018.00606",
+      "abstract": "The staphylococcal nuclease and Tudor domain containing 1 gene (SND1), also known as Tudor-SN, TSN or p100, encodes an evolutionarily conserved protein with invariant domain composition. SND1 contains four repeated staphylococcal nuclease domains and a single Tudor domain, which confer it endonuclease activity and extraordinary capacity for interacting with nucleic acids, individual proteins and protein complexes. Originally described as a transcriptional coactivator, SND1 plays fundamental roles in the regulation of gene expression, including RNA splicing, interference, stability, and editing, as well as in the regulation of protein and lipid homeostasis. Recently, SND1 has gained attention as a potential disease biomarker due to its positive correlation with cancer progression and metastatic spread. Such functional diversity of SND1 marks this gene as interesting for further analysis in relation with the multiple levels of regulation of SND1 protein production. In this review, we summarize the SND1 genomic region and promoter architecture, the set of transcription factors that can bind the proximal promoter, and the evidence supporting transactivation of SND1 promoter by a number of signal transduction pathways operating in different cell types and conditions. Unraveling the mechanisms responsible for SND1 promoter regulation is of utmost interest to decipher the SND1 contribution in the realm of both normal and abnormal physiology."
+    },
+    {
+      "id": "pub-099",
+      "year": "2018",
+      "title": "High fat diet overfeeding promotes non-detrimental liver steatosis in female mice",
+      "authors": "Arisqueta L, Navarro-Imaz H, Labiano I, Rueda Y, Fresnedo O",
+      "journal": "Am J Physiol Gastrointest Liver Physiol",
+      "topic": "mafld",
+      "doi": "doi: 10.1152/ajpgi.00022.2018",
+      "abstract": "An excess of fat and carbohydrate exerts a negative role on liver metabolism, favouring the development of metabolic dysfunction-associated steatotic liver disease (MASLD). However, it is not clear which component of the diet is more detrimental to liver homeostasis. We assessed the long-term effect of high fructose and the ketogenic diet on hepatic steatosis. For this purpose, 18 adult male Wistar rats were randomized into three groups: Control Diet (CD), consisting of commercial chow; Fructose Diet (FD), which included commercial chow and water with 30% fructose; and Ketogenic Diet (KD), comprising high-fat chow (90% fat). Chow and water intake were provided ad libitum during the 100-day follow-up period. Despite the differences in calorie intake, animals exhibited similar weight gain and body length, except for the KD group at T5. Ketosis was achieved in the KD group, while glucose and fructose remained unchanged in all groups. KD promoted increases in liver enzymes (AST, ALT, GGT, and ALP) and simultaneous lipid infiltration, characterized by high TC, TG, and NEFA levels. Advanced oxidized lipids (TBARS) were reduced. Long-term FD intake stimulated inflammatory pathways, as indicated by elevated levels of IL-1β, IL-6, IL-10, and TNF-α, compared to the CD and KD groups. Although relative liver weight was high in FD, the direct evaluation of total fat confirmed the high lipid infiltration in the KD group. Histological analysis of the liver tissue revealed a marked inflammatory infiltrate of macrophages and hepatic steatosis in the KD group. In conclusion, long-term KD intervention promoted hepatic steatosis through dysfunction in lipid metabolism and inflammation, while FD induced a more pronounced inflammatory response."
+    },
+    {
+      "id": "pub-100",
+      "year": "2017",
+      "title": "Zitosoleko lipido-tanten sorrera eta erabilera",
+      "authors": "Hiart Navarro-Imaz, Lino Arisqueta, Yuri Rueda, Olatz Fresnedo",
+      "journal": "EKAIA",
+      "topic": "mafld",
+      "doi": "10.1387/ekaia.16388",
+      "abstract": ""
+    },
+    {
+      "id": "pub-101",
+      "year": "2017",
+      "title": "Human immunodeficiency virus-infected liver transplant recipients with incidental hepatocellular carcinoma: A prospective multicenter nationwide cohort study",
+      "authors": "Agüero F, Forner A, Valdivieso A, Blanes M, Barcena R, Manzardo C, Rafecas A, Castells L, Abradelo M, Barrera-Baena P, González-Diéguez L, Salcedo M, Serrano T, Jiménez-Pérez M, Herrero JI, Gastaca M, Aguilera V, Fabregat J, Del Campo S, Bilbao I, Romero CJ, Moreno A, Rimola A, Miro JM",
+      "journal": "Liver Transpl",
+      "topic": "cancer",
+      "doi": "10.1002/lt.24741",
+      "abstract": "There is a lack of data on incidental hepatocellular carcinoma (iHCC) in the setting of liver transplantation (LT) in human immunodeficiency virus (HIV)-infected patients. This study aims to describe the frequency, histopathological characteristics, and outcomes of HIV+ LT recipients with iHCC from a Spanish multicenter cohort in comparison with a matched cohort of LT patients without HIV infection. A total of 15 (6%) out of 271 patients with HIV infection who received LT in Spain from 2002 to 2012 and 38 (5%) out of the 811 HIV- counterparts presented iHCC in liver explants (P = 0.58). Patients with iHCC constitute the present study population. All patients also had hepatitis C virus (HCV)-related cirrhosis. There were no significant differences in histopathological features of iHCC between the 2 groups. Most patients showed a small number and size of tumoral nodules, and few patients had satellite nodules, microvascular invasion, or poorly differentiated tumors. After a median follow-up of 49 months, no patient developed hepatocellular carcinoma (HCC) recurrence after LT. HIV+ LT recipients tended to have lower survival than their HIV- counterparts at 1 (73% versus 92%), 3 (67% versus 84%), and 5 years (50% versus 80%; P = 0.06). There was also a trend to a higher frequency of HCV recurrence as a cause of death in the former (33% versus 10%; P = 0.097). In conclusion, among LT recipients for HCV-related cirrhosis, the incidence and histopathological features of iHCC in HIV+ and HIV- patients were similar. However, post-LT survival was lower in HIV+ patients probably because of a more aggressive HCV recurrence. Liver Transplantation 23 645-651 2017 AASLD."
+    },
+    {
+      "id": "pub-102",
+      "year": "2017",
+      "title": "Pharmacokinetics of prolonged-release tacrolimus versus immediate-release tacrolimus in de novo liver transplantation: A randomized phase III substudy",
+      "authors": "Ericzon BG, Varo E, Trunečka P, Fischer L, Colledan M, Gridelli B, Valdivieso A, O'Grady J, Dickinson J, Undre N.",
+      "journal": "Clin Transplant",
+      "topic": "mafld",
+      "doi": "10.1111/ctr.12958",
+      "abstract": "BackgroundWith the same dose of tacrolimus, lower systemic exposure on the first day of dosing has been reported for prolonged-release tacrolimus compared with immediate-release tacrolimus, prompting investigation of differing initial doses.MethodsThis substudy of a double-blind, randomized, phase III trial in de novo liver transplant recipients compared the pharmacokinetics of once-daily prolonged-release tacrolimus (initial dose: 0.2 mg/kg/day) versus twice-daily immediate-release tacrolimus (initial dose: 0.1 mg/kg/day) during the first 2 weeks post-transplant.ResultsPharmacokinetic data were analyzed from patients receiving prolonged-release tacrolimus (n=13) and immediate-release tacrolimus (n=12). Mean systemic exposure (AUC0-24 ) was higher with prolonged-release versus immediate-release tacrolimus. Dose-normalized AUC0-24 (normalized to 0.1 mg/kg/day) showed generally lower exposure with prolonged-release tacrolimus versus immediate-release tacrolimus. There was good correlation between AUC0-24 and concentration at 24 hours after the morning dose (r=.96 and r=.86, respectively), and the slope of the line of best fit was similar for both formulations.ConclusionsDoubling the initial starting dose of prolonged-release tacrolimus compared with immediate-release tacrolimus overcompensated for lower exposure on Day 1. A 50% higher starting dose of prolonged-release tacrolimus than immediate-release tacrolimus may be required for similar systemic exposure. However, doses of both formulations can be optimized using the same trough-level monitoring system. (ClinicalTrials.gov number: NCT00189826)."
+    },
+    {
+      "id": "pub-103",
+      "year": "2017",
+      "title": "Proteomics in Aquaculture: quality and safety",
+      "authors": "Pedro M Rodrigues, Alexandre Campos, Jacob Kuruvilla, Denise Schrama, Susana Cristobal",
+      "journal": "Proteomics in Food Science, from farm to Fork",
+      "topic": "exposome",
+      "doi": "10.3390/foods15081390",
+      "abstract": "The growing global population and increasing pressure on conventional food systems have intensified the search for sustainable and nutrient-rich protein sources. Blue foods derived from marine and freshwater organisms offer significant nutritional advantages and lower environmental footprints compared with many terrestrial animal proteins. However, challenges related to resource sustainability, processing, preservation, and product traceability limit their full potential. This review provides a broad overview of emerging technologies shaping the future of blue food systems, covering innovative production strategies, advanced processing techniques, and omics-based analytical approaches. Key developments in cellular aquaculture and cellular mariculture are discussed as promising alternatives to traditional fisheries and aquaculture, enabling the production of blue food through controlled cell cultivation. Additionally, alternative protein platforms including plant-based, fermentation-derived, and cultivated blue food analogues are assessed for their potential to enhance sustainability and diversify aquatic protein sources. Advanced structuring technologies such as extrusion, electrospinning, wet spinning, and 3D printing are highlighted for their roles in developing blue food analogues with improved texture and sensory attributes. Furthermore, non-thermal preservation techniques, including cold plasma (CP), high-pressure processing (HPP), pulsed electric fields (PEFs), and ultraviolet-based treatments, are reviewed for their effectiveness in improving microbial safety and extending shelf life while maintaining nutritional quality. The integration of omics technologies (proteomics, metabolomics, and lipidomics) provides deeper molecular insights into product quality, authenticity, and traceability within blue food supply chains. Collectively, these interdisciplinary advancements demonstrate strong potential to transform blue food production into a more resilient, sustainable, and technology-driven sector. Future progress will depend on overcoming challenges related to scalability, regulatory frameworks, and consumer acceptance to enable the successful commercialization of next-generation blue food products."
+    },
+    {
+      "id": "pub-104",
+      "year": "2017",
+      "title": "Surface proteomics on nanoparticles: a step to simplify the rapid prototyping of nanoparticles",
+      "authors": "Jacob Kuruvilla, Ana Paula Farinha, Narges Bayat, Susana Cristobal",
+      "journal": "Nanoscale horizons",
+      "topic": "exposome",
+      "doi": "10.1039/c6nh00162a",
+      "abstract": "Engineered nanoparticles for biomedical applications require increasing effectiveness in targeting specific cells while preserving non-target cells' safety. We developed a surface proteomics method for a rapid and systematic analysis of the interphase between the nanoparticle protein corona and the targeted cells that could implement the rapid prototyping of nanomedicines. Native nanoparticles entering in a protein-rich liquid medium quickly form a macromolecular structure called protein corona. This protein structure defines the physical interaction between nanoparticles and target cells. The surface proteins compose the first line of interaction between this macromolecular structure and the cell surface of a target cell. We demonstrated that SUSTU (SUrface proteomics, Safety, Targeting, Uptake) provides a qualitative and quantitative analysis from the protein corona surface. With SUSTU, the spatial dynamics of the protein corona surface can be studied. Data from SUSTU would ascertain the nanoparticle functionalized groups exposed at a destiny that could circumvent preliminary in vitro experiments. Therefore, this method could implement in the analysis of nanoparticle targeting and uptake capability and could be integrated into a rapid prototyping strategy which is a major challenge in nanomaterials science. Data are available via ProteomeXchange with the identifier PXD004636."
+    },
+    {
+      "id": "pub-105",
+      "year": "2017",
+      "title": "Osteopontin regulates the cross-talk between phosphatidylcholine and cholesterol metabolism in mouse liver.",
+      "authors": "Maitane Nuñez-Garcia, Beatriz Gomez-Santos, Xabier Buqué, Juan L García-Rodriguez, Marta R Romero, Jose J G Marin, Beatriz Arteta, Carmelo García-Monzón, Luis Castaño, Wing-Kin Syn, Olatz Fresnedo, Patricia Aspichueta",
+      "journal": "J. Lipid Res",
+      "topic": "mafld",
+      "doi": "10.1194/jlr.m078980",
+      "abstract": "Osteopontin (OPN) is involved in different liver pathologies in which metabolic dysregulation is a hallmark. Here, we investigated whether OPN could alter liver, and more specifically hepatocyte, lipid metabolism and the mechanism involved. In mice, lack of OPN enhanced cholesterol 7α-hydroxylase (CYP7A1) levels and promoted loss of phosphatidylcholine (PC) content in liver; in vivo treatment with recombinant (r)OPN caused opposite effects. rOPN directly decreased CYP7A1 levels through activation of focal adhesion kinase-AKT signaling in hepatocytes. PC content was also decreased in OPN-deficient (OPN-KO) hepatocytes in which de novo FA and PC synthesis was lower, whereas cholesterol (CHOL) synthesis was higher, than in WT hepatocytes. In vivo inhibition of cholesterogenesis normalized liver PC content in OPN-KO mice, demonstrating that OPN regulates the cross-talk between liver CHOL and PC metabolism. Matched liver and serum samples showed a positive correlation between serum OPN levels and liver PC and CHOL concentration in nonobese patients with nonalcoholic fatty liver. In conclusion, OPN regulates CYP7A1 levels and the metabolic fate of liver acetyl-CoA as a result of CHOL and PC metabolism interplay. The results suggest that CYP7A1 is a main axis and that serum OPN could disrupt liver PC and CHOL metabolism, contributing to nonalcoholic fatty liver disease progression in nonobese patients."
+    },
+    {
+      "id": "pub-106",
+      "year": "2017",
+      "title": "Adenosine: direct and indirect actions on gastric acid secretion",
+      "authors": "Arin RM, Gorostidi A, Navarro-Imaz H, Rueda Y, Fresnedo O, Ochoa B",
+      "journal": "Front Physiol",
+      "topic": "mafld",
+      "doi": "10.3389/fphys.2017.00737",
+      "abstract": "Composed by a molecule of adenine and a molecule of ribose, adenosine is a paradigm of recyclable nucleoside with a multiplicity of functions that occupies a privileged position in the metabolic and regulatory contexts. Adenosine is formed continuously in intracellular and extracellular locations of all tissues. Extracellular adenosine is a signaling molecule, able to modulate a vast range of physiologic responses in many cells and organs, including digestive organs. The adenosine A1, A2A, A2B, and A3 receptors are P1 purinergic receptors, G protein-coupled proteins implicated in tissue protection. This review is focused on gastric acid secretion, a process centered on the parietal cell of the stomach, which contains large amounts of H+/K+-ATPase, the proton pump responsible for proton extrusion during acid secretion. Gastric acid secretion is regulated by an extensive collection of neural stimuli and endocrine and paracrine agents, which act either directly at membrane receptors of the parietal cell or indirectly through other regulatory cells of the gastric mucosa, as well as mechanic and chemic stimuli. In this review, after briefly introducing these points, we condense the current body of knowledge about the modulating action of adenosine on the pathophysiology of gastric acid secretion and update its significance based on recent findings in gastric mucosa and parietal cells in humans and animal models."
+    },
+    {
+      "id": "pub-107",
+      "year": "2017",
+      "title": "Expression of adenosine A2B receptor and adenosine deaminase in rabbit gastric mucosa ECL cells",
+      "authors": "Arin Rosa María, Vallejo Ana Isabel, Rueda Yuri, Fresnedo Olatz, Ochoa Begoña",
+      "journal": "Molecules",
+      "topic": "mafld",
+      "doi": "10.3390/molecules22040625",
+      "abstract": "Adenosine is readily available to the glandular epithelium of the stomach. Formed continuously in intracellular and extracellular locations, it is notably produced from ATP released in enteric cotransmission. Adenosine analogs modulate chloride secretion in gastric glands and activate acid secretion in isolated parietal cells through A2B adenosine receptor (A2BR) binding. A functional link between surface A2BR and adenosine deaminase (ADA) was found in parietal cells, but whether this connection is a general feature of gastric mucosa cells is unknown. Here we examine whether A2BR is expressed at the membrane of histamine-producing enterochromaffin-like (ECL) cells, the major endocrine cell type in the oxyntic mucosa, and if so, whether it has a vicinity relationship with ADA. We used a highly homogeneous population of rabbit ECL cells (size 7.5-10 µm) after purification by elutriation centrifugation. The surface expression of A2BR and ADA proteins was assessed by flow cytometry and confocal microscopy. Our findings demonstrate that A2BR and ADA are partially coexpressed at the gastric ECL cell surface and that A2BR is functional, with regard to binding of adenosine analogs and adenylate cyclase activation. The physiological relevance of A2BR and ADA association in regulating histamine release is yet to be explained."
+    },
+    {
+      "id": "pub-108",
+      "year": "2017",
+      "title": "SREBP-2-driven transcriptional activation of human SND1 oncogene",
+      "authors": "Armengol Sandra, Arretxe Enara, Enzunza Leire, Llorente Irati, Mendibil Unai, Navarro-Imaz Hiart, Ochoa Begoña, Chico Yolanda, Martínez María José.",
+      "journal": "Oncotarget",
+      "topic": "cancer",
+      "doi": "10.18632/oncotarget.22569",
+      "abstract": "Upregulation of Staphylococcal nuclease and tudor domain containing 1 (SND1) is linked to cancer progression and metastatic spread. Increasing evidence indicates that SND1 plays a role in lipid homeostasis. Recently, it has been shown that SND1-overexpressing hepatocellular carcinoma cells present an increased de novo cholesterol synthesis and cholesteryl ester accumulation. Here we reveal that SND1 oncogene is a novel target for SREBPs. Exposure of HepG2 cells to the cholesterol-lowering drug simvastatin or to a lipoprotein-deficient medium triggers SREBP-2 activation and increases SND1 promoter activity and transcript levels. Similar increases in SND1 promoter activity and mRNA are mimicked by overexpressing nuclear SREBP-2 through expression vector transfection. Conversely, SREBP-2 suppression with specific siRNA or the addition of cholesterol/25-hydroxycholesterol to cell culture medium reduces transcriptional activity of SND1 promoter and SND1 mRNA abundance. Chromatin immunoprecipitation assays and site-directed mutagenesis show that SREBP-2 binds to the SND1 proximal promoter in a region containing one SRE and one E-box motif which are critical for maximal transcriptional activity under basal conditions. SREBP-1, in contrast, binds exclusively to the SRE element. Remarkably, while ectopic expression of SREBP-1c or -1a reduces SND1 promoter activity, knocking-down of SREBP-1 enhances SND1 mRNA and protein levels but failed to affect SND1 promoter activity. These findings reveal that SREBP-2 and SREBP-1 bind to specific sites in SND1 promoter and regulate SND1 transcription in opposite ways; it is induced by SREBP-2 activating conditions and repressed by SREBP-1 overexpression. We anticipate the contribution of a SREBPs/SND1 pathway to lipid metabolism reprogramming of human hepatoma cells."
+    },
+    {
+      "id": "pub-109",
+      "year": "2017",
+      "title": "Role of Aramchol in Steatohepatitis and Fibrosis in Mice",
+      "authors": "- Marta Iruarrizaga-Lejarreta, Marta Varela-Rey, David Fernandez-Ramos, Ibon Martınez-Arranz, Teresa C Delgado, Jorge Simon, Virginia Gutierrez-de Juan, Laura delaCruz-Villar, Mikel Azkargorta, Jose L. Lavin, Rebeca Mayo, Sebastiaan M. Van Liempd, Igor Aurrekoetxea, Xabier Buque, Donatella Delle Cave, Arantza Peña, Juan Rodrıguez-Cuesta, Ana M. Aransay, Felix Elortza, Juan M. Falcon-Perez, Patricia Aspichueta, Liat Hayardeny, Mazen Noureddin, Arun J. Sanyal, Cristina Alonso, Juan Anguita, Marıa Luz Martınez-Chantar, Shelly C. Lu, and Jose M. Mato.",
+      "journal": "Hepatology Communications",
+      "topic": "mafld",
+      "doi": "10.1002/hep4.1107",
+      "abstract": "Nonalcoholic steatohepatitis (NASH) is the advanced form of nonalcoholic fatty liver disease (NAFLD) which sets the stage for further liver damage. The mechanism for the progression of NASH involves multiple parallel hits including oxidative stress, mitochondrial dysfunction, inflammation and others. Manipulation of any of these pathways may be an approach to prevent NASH development and progression. Aramchol (arachidyl-amido cholanoic acid) is presently in a phase IIb NASH study. The aim of this study was to investigate Aramchol's mechanism of action and its effect on fibrosis using the methionine- and choline-deficient (MCD) diet model of NASH. We collected liver and serum from mice fed a MCD diet containing 0.1% methionine (0.1MCD) for four weeks, which developed steatohepatitis and fibrosis, as well as mice receiving a control diet; the metabolomes and proteomes were determined. 0.1MCD fed mice were given Aramchol (5mg/kg/day for the last 2 weeks); liver samples were analyzed histologically. Aramchol administration reduced features of steatohepatitis and fibrosis in 0.1MCD fed mice. Aramchol downregulated stearoyl-CoA desaturase 1 (SCD1), a key enzyme involved in triglyceride biosynthesis whose loss enhances fatty acid β-oxidation. Aramchol increased the flux through the transsulfuration pathway, leading to a rise in glutathione (GSH) and GSH/GSSG ratio, the main cellular antioxidant that maintains intracellular redox status. Comparison of serum metabolomic pattern between 0.1MCD fed mice and NAFLD patients showed a substantial overlap.ConclusionsAramchol treatment improved steatohepatitis and fibrosis by 1) decreasing SCD1, and 2) increasing the flux through the transsulfuration pathway maintaining cellular redox homeostasis. We also demonstrated that the 0.1MCD model resembles the metabolic phenotype observed in about 50% of NAFLD patients, which supports the potential use of Aramchol in NASH treatment."
+    },
+    {
+      "id": "pub-110",
+      "year": "2017",
+      "title": "Hepatic p63 regulates steatosis via IKKβ/ER stress.",
+      "authors": "Porteiro B, Fondevila MF, Delgado TC, Iglesias C, Imbernon M, Iruzubieta P, Crespo J, Zabala-Letona A, Fernø J, González-Terán B, Matesanz N, Hernández-Cosido L, Marcos M, Tovar S, Vidal A, Sánchez-Ceinos J, Malagon MM, Pombo C, Zalvide J, Carracedo A, Buque X, Dieguez C, Sabio G, López M, Aspichueta P, Martínez-Chantar ML, Nogueiras R.",
+      "journal": "Nat Commun",
+      "topic": "mafld",
+      "doi": "10.1038/ncomms15111",
+      "abstract": "p53 family members control several metabolic and cellular functions. The p53 ortholog p63 modulates cellular adaptations to stress and has a major role in cell maintenance and proliferation. Here we show that p63 regulates hepatic lipid metabolism. Mice with liver-specific p53 deletion develop steatosis and show increased levels of p63. Down-regulation of p63 attenuates liver steatosis in p53 knockout mice and in diet-induced obese mice, whereas the activation of p63 induces lipid accumulation. Hepatic overexpression of N-terminal transactivation domain TAp63 induces liver steatosis through IKKβ activation and the induction of ER stress, the inhibition of which rescues the liver functions. Expression of TAp63, IKKβ and XBP1s is also increased in livers of obese patients with NAFLD. In cultured human hepatocytes, TAp63 inhibition protects against oleic acid-induced lipid accumulation, whereas TAp63 overexpression promotes lipid storage, an effect reversible by IKKβ silencing. Our findings indicate an unexpected role of the p63/IKKβ/ER stress pathway in lipid metabolism and liver disease."
+    },
+    {
+      "id": "pub-111",
+      "year": "2017",
+      "title": "A controlled-release mitochondrial protonophore reverses hypertriglyceridemia, nonalcoholic steatohepatitis, and diabetes in lipodystrophic mice.",
+      "authors": "Abulizi A, Perry RJ, Camporez JPG, Jurczak MJ, Petersen KF, Aspichueta P, Shulman GI.",
+      "journal": "FASEB J",
+      "topic": "mafld",
+      "doi": "10.1096/fj.201700001r",
+      "abstract": "Lipodystrophy is a rare disorder characterized by complete or partial loss of adipose tissue. Patients with lipodystrophy exhibit hypertriglyceridemia, severe insulin resistance, type 2 diabetes, and nonalcoholic steatohepatitis (NASH). Efforts to ameliorate NASH in lipodystrophies with pharmacologic agents have met with limited success. We examined whether a controlled-release mitochondrial protonophore (CRMP) that produces mild liver-targeted mitochondrial uncoupling could decrease hypertriglyceridemia and reverse NASH and diabetes in a mouse model (fatless AZIP/F-1 mice) of severe lipodystrophy and diabetes. After 4 wk of oral CRMP (2 mg/kg body weight per day) or vehicle treatment, mice underwent hyperinsulinemic-euglycemic clamps combined with radiolabeled glucose to assess liver and muscle insulin responsiveness and tissue lipid measurements. CRMP treatment reversed hypertriglyceridemia and insulin resistance in liver and skeletal muscle. Reversal of insulin resistance could be attributed to reductions in diacylglycerol content and reduced PKC-ε and PKC-θ activity in liver and muscle respectively. CRMP treatment also reversed NASH as reflected by reductions in plasma aspartate aminotransferase and alanine aminotransferase concentrations; hepatic steatosis; and hepatic expression of IL-1α, -β, -2, -4, -6, -10, -12, CD69, and caspase 3 and attenuated activation of the IRE-1α branch of the unfolded protein response. Taken together, these results provide proof of concept for the development of liver-targeted mitochondrial uncoupling agents as a potential novel therapy for lipodystrophy-associated hypertriglyceridemia, NASH and diabetes.-Abulizi, A., Perry, R. J., Camporez, J. P. G., Jurczak, M. J., Petersen, K. F., Aspichueta, P., Shulman, G. I. A controlled-release mitochondrial protonophore reverses hypertriglyceridemia, nonalcoholic steatohepatitis, and diabetes in lipodystrophic mice."
+    },
+    {
+      "id": "pub-112",
+      "year": "2017",
+      "title": "Metabolomic Identification of Subtypes of Nonalcoholic Steatohepatitis",
+      "authors": "Alonso C, Fernández-Ramos D, Varela-Rey M, Martínez-Arranz I, Navasa N, Van Liempd SM, Lavín Trueba JL, Mayo R, Ilisso CP, de Juan VG, Iruarrizaga-Lejarreta M, delaCruz-Villar L, Mincholé I, Robinson A, Crespo J, Martín-Duce A, Romero-Gómez M, Sann H, Platon J, Van Eyk J, Aspichueta P, Noureddin M, Falcón-Pérez JM, Anguita J, Aransay AM, Martínez-Chantar ML, Lu SC, Mato JM",
+      "journal": "Gastroenterology",
+      "topic": "lipidomics",
+      "doi": "10.1053/j.gastro.2017.01.015",
+      "abstract": "Background & aimsNonalcoholic fatty liver disease (NAFLD) is a consequence of defects in diverse metabolic pathways that involve hepatic accumulation of triglycerides. Features of these aberrations might determine whether NAFLD progresses to nonalcoholic steatohepatitis (NASH). We investigated whether the diverse defects observed in patients with NAFLD are caused by different NAFLD subtypes with specific serum metabolomic profiles, and whether these can distinguish patients with NASH from patients with simple steatosis.MethodsWe collected liver and serum from methionine adenosyltransferase 1a knockout (MAT1A-KO) mice, which have chronically low levels of hepatic S-adenosylmethionine (SAMe) and spontaneously develop steatohepatitis, as well as C57Bl/6 mice (controls); the metabolomes of all samples were determined. We also analyzed serum metabolomes of 535 patients with biopsy-proven NAFLD (353 with simple steatosis and 182 with NASH) and compared them with serum metabolomes of mice. MAT1A-KO mice were also given SAMe (30 mg/kg/day for 8 weeks); liver samples were collected and analyzed histologically for steatohepatitis.ResultsLivers of MAT1A-KO mice were characterized by high levels of triglycerides, diglycerides, fatty acids, ceramides, and oxidized fatty acids, as well as low levels of SAMe and downstream metabolites. There was a correlation between liver and serum metabolomes. We identified a serum metabolomic signature associated with MAT1A-KO mice that also was present in 49% of the patients; based on this signature, we identified 2 NAFLD subtypes. We identified specific panels of markers that could distinguish patients with NASH from patients with simple steatosis for each subtype of NAFLD. Administration of SAMe reduced features of steatohepatitis in MAT1A-KO mice.ConclusionsIn an analysis of serum metabolomes of patients with NAFLD and MAT1A-KO mice with steatohepatitis, we identified 2 major subtypes of NAFLD and markers that differentiate steatosis from NASH in each subtype. These might be used to monitor disease progression and identify therapeutic targets for patients."
+    },
+    {
+      "id": "pub-113",
+      "year": "2017",
+      "title": "Hypothalamic AMPK-ER Stress-JNK1 Axis Mediates the Central Actions of Thyroid Hormones on Energy Balance",
+      "authors": "Martínez-Sánchez N, Seoane-Collazo P, Contreras C, Varela L, Villarroya J, Rial-Pensado E, Buqué X, Aurrekoetxea I, Delgado TC, Vázquez-Martínez R, González-García I, Roa J, Whittle AJ, Gomez-Santos B, Velagapudi V, Tung YCL, Morgan DA, Voshol PJ, Martínez de Morentin PB, López-González T, Liñares-Pose L, Gonzalez F, Chatterjee K, Sobrino T, Medina-Gómez G, Davis RJ, Casals N, Orešič M, Coll AP, Vidal-Puig A, Mittag J, Tena-Sempere M, Malagón MM, Diéguez C, Martínez-Chantar ML, Aspichueta P, Rahmouni K, Nogueiras R, Sabio G, Villarroya F, López M",
+      "journal": "Cell Metabol",
+      "topic": "mafld",
+      "doi": "10.1016/j.cmet.2017.06.014",
+      "abstract": "Thyroid hormones (THs) act in the brain to modulate energy balance. We show that central triiodothyronine (T3) regulates de novo lipogenesis in liver and lipid oxidation in brown adipose tissue (BAT) through the parasympathetic (PSNS) and sympathetic nervous system (SNS), respectively. Central T3 promotes hepatic lipogenesis with parallel stimulation of the thermogenic program in BAT. The action of T3 depends on AMP-activated protein kinase (AMPK)-induced regulation of two signaling pathways in the ventromedial nucleus of the hypothalamus (VMH): decreased ceramide-induced endoplasmic reticulum (ER) stress, which promotes BAT thermogenesis, and increased c-Jun N-terminal kinase (JNK) activation, which controls hepatic lipid metabolism. Of note, ablation of AMPKα1 in steroidogenic factor 1 (SF1) neurons of the VMH fully recapitulated the effect of central T3, pointing to this population in mediating the effect of central THs on metabolism. Overall, these findings uncover the underlying pathways through which central T3 modulates peripheral metabolism."
+    },
+    {
+      "id": "pub-114",
+      "year": "2016",
+      "title": "Proteomic analyses of early response of unicellular eukaryotic microorganism Tetrahymena thermophila exposed to TiO2 particles",
+      "authors": "K Rajapakse, D Drobne, D Kastelec, K Kogej, D Makovec, Christine Gallampois, Hanna Amelina, Gabriela Danielsson, L Fanedl, R Marinsek-Logar, Susana Cristobal",
+      "journal": "Nanotoxicology",
+      "topic": "mafld",
+      "doi": "10.3109/17435390.2015.1091107",
+      "abstract": "Key biological functions involved in cell survival have been studied to understand the difference between the impact of exposure to TiO2 nanoparticles (TiO2-NPs) and their bulk counterparts (bulk-TiO2). By selecting a unicellular eukaryotic model organism and applying proteomic analysis an overview of the possible impact of exposure could be obtained. In this study, we investigated the early response of unicellular eukaryotic protozoan Tetrahymena thermophila exposed to TiO2-NPs or bulk-TiO2 particles at subtoxic concentrations for this organism. The proteomic analysis based on 2DE + nLC-ESI-MS/MS revealed 930 distinct protein spots, among which 77 were differentially expressed and 18 were unambiguously identified. We identified alterations in metabolic pathways, including lipid and fatty acid metabolism, purine metabolism and energetic metabolism, as well as salt stress and protein degradation. This proteomic study is consistent with our previous findings, where the early response of T. thermophila to subtoxic concentrations of TiO2 particles included alterations in lipid and fatty acid metabolism and ion regulation. The response to the lowest TiO2-NPs concentration differed significantly from the response to higher TiO2-NPs concentration and both bulk-TiO2 concentrations. Alterations on the physiological landscape were significant after exposure to both nano- and bulk-TiO2; however, no toxic effects were evidenced even at very high exposure concentrations. This study confirms the relevance of the alteration of the lipid profile and lipid metabolism in understanding the early impact of TiO2-NPs in eukaryotic cells, for example, phagocytosing cells like macrophages and ciliated cells in the respiratory epithelium."
+    },
+    {
+      "id": "pub-115",
+      "year": "2016",
+      "title": "Shotgun proteomics to unravel marine mussel (Mytilus edulis) response to long-term exposure to low salinity and propranolol in a Baltic Sea microcosm",
+      "authors": "Alexandre Campos, Gabriela Danielsson, Ana Paula Farinha, Jacob Kuruvilla, Per Warholm, Susana Cristobal",
+      "journal": "Journal of proteomics",
+      "topic": "exposome",
+      "doi": "10.1016/j.jprot.2016.01.010",
+      "abstract": "Pharmaceuticals, among them the β-adrenoceptor blocker propranolol, are an important group of environmental contaminants reported in European waters. Laboratory exposure to pharmaceuticals on marine species has been performed without considering the input of the ecosystem flow. To unravel the ecosystem response to long-term exposure to propranolol we have performed long-term exposure to propranolol and low salinity in microcosms. We applied shotgun proteomic analysis to gills of Mytilus edulis from those Baltic Sea microcosms and identified 2071 proteins with a proteogenomic strategy. The proteome profiling patterns from the 587 highly reproductive proteins among groups define salinity as a key factor in the mussel's response to propranolol. Exposure at low salinity drives molecular mechanisms of adaptation based on a decrease in the abundance of several cytoskeletal proteins, signalling and intracellular membrane trafficking pathway combined with a response towards the maintenance of transcription and translation. The exposure to propranolol combined with low salinity modulates the expression of structural proteins including cilia functions and decreases the expression of membrane protein transporters. This study reinforces the environment concerns of the impact of low salinity in combination with anthropogenic pollutants and anticipates critical physiological conditions for the survival of the blue mussel in the northern areas.Biological significanceApplying shotgun proteomic analysis to M. edulis gills samples from a long-term microcosm exposure to propranolol and following a proteogenomic identification strategy, we have identified 2071 proteins. The proteomic analysis unrevealed which molecular mechanisms drive the adaptation to low salinity stress and how salinity modulates the effects of exposure to propranolol. These results reinforce the idea of the impact of low salinity in combination with anthropogenic pollutants and anticipate critical physiological condition."
+    },
+    {
+      "id": "pub-116",
+      "year": "2016",
+      "title": "Dose-dependent autophagic effect of titanium dioxide nanoparticles in human HaCaT cells at non-cytotoxic levels",
+      "authors": "and Susana Cristobal Viviana R Lopes, Vesa Loitto , Jean-Nicolas Audinot , Narges Bayat, Arno C Gutleb",
+      "journal": "Journal of Nanobiotechnology",
+      "topic": "exposome",
+      "doi": "10.1186/s12951-016-0174-0",
+      "abstract": "BackgroundInteractions between nanoparticles and cells are now the focus of a fast-growing area of research. Though many nanoparticles interact with cells without any acute toxic responses, metal oxide nanoparticles including those composed of titanium dioxide (TiO2-NPs) may disrupt the intracellular process of macroautophagy. Autophagy plays a key role in human health and disease, particularly in cancer and neurodegenerative diseases. We herein investigated the in vitro biological effects of TiO2-NPs (18 nm) on autophagy in human keratinocytes (HaCaT) cells at non-cytotoxic levels.ResultsTiO2-NPs were characterized by transmission electron microscopy (TEM) and dynamic light scattering techniques. Cellular uptake, as evaluated by TEM and NanoSIMS revealed that NPs internalization led to the formation of autophagosomes. TiO2-NPs treatment did not reduce cell viability of HaCaT cells nor increased oxidative stress. Cellular autophagy was additionally evaluated by confocal microscopy using eGFP-LC3 keratinocytes, western blotting of autophagy marker LC3I/II, immunodetection of p62 and NBR1 proteins, and gene expression of LC3II, p62, NBR1, beclin1 and ATG5 by RT-qPCR. We also confirmed the formation and accumulation of autophagosomes in NPs treated cells with LC3-II upregulation. Based on the lack of degradation of p62 and NBR1 proteins, autophagosomes accumulation at a high dose (25.0 μg/ml) is due to blockage while a low dose (0.16 μg/ml) promoted autophagy. Cellular viability was not affected in either case.ConclusionsThe uptake of TiO2-NPs led to a dose-dependent increase in autophagic effect under non-cytotoxic conditions. Our results suggest dose-dependent autophagic effect over time as a cellular response to TiO2-NPs. Most importantly, these findings suggest that simple toxicity data are not enough to understand the full impact of TiO2-NPs and their effects on cellular pathways or function."
+    },
+    {
+      "id": "pub-117",
+      "year": "2016",
+      "title": "Proteomics and the search for welfare and stress biomarkers in animal production in the one health context",
+      "authors": "P. Roncada and A. Bassols A. Marco-Ramella, A. M. de Almeida, S. Cristobal, P. Rodrigues",
+      "journal": "Molecular Biosystems",
+      "topic": "mafld",
+      "doi": "10.1039/c5mb00788g",
+      "abstract": "Stress and welfare are important factors in animal production in the context of growing production optimization and scrutiny by the general public. In a context in which animal and human health are intertwined aspects of the one-health concept it is of utmost importance to define the markers of stress and welfare. These are important tools for producers, retailers, regulatory agents and ultimately consumers to effectively monitor and assess the welfare state of production animals. Proteomics is the science that studies the proteins existing in a given tissue or fluid. In this review we address this topic by showing clear examples where proteomics has been used to study stress-induced changes at various levels. We adopt a multi-species (cattle, swine, small ruminants, poultry, fish and shellfish) approach under the effect of various stress inducers (handling, transport, management, nutritional, thermal and exposure to pollutants) clearly demonstrating how proteomics and systems biology are key elements to the study of stress and welfare in farm animals and powerful tools for animal welfare, health and productivity."
+    },
+    {
+      "id": "pub-118",
+      "year": "2016",
+      "title": "Deregulated neddylation in liver fibrosis",
+      "authors": "Imanol Zubiete-Franco, Pablo Fernández-Tussy, Lucía Barbier-Torres, Jorge Simon, David Fernández-Ramos, Fernando Lopitz-Otsoa, Virginia Gutiérrez-de Juan, Sergio López de Davalillo, Antonio Martín Duce, Paula Iruzubieta, Daniel Taibo, Javier Crespo, Juan Caballeria, Erica Villa, Igor Aurrekoetxea, Patricia Aspichueta, Marta Varela-Rey, Shelly C. Lu, José M. Mato, Naiara Beraza, Teresa C. Delgado, María L. Martínez-Chantar",
+      "journal": "Hepatology",
+      "topic": "mafld",
+      "doi": "10.1002/hep.28933",
+      "abstract": "Hepatic fibrosis is a global health problem currently without effective therapeutic approaches. Even though the ubiquitin-like posttranslational modification of neddylation, that conjugates Nedd8 (neural precursor cell expressed developmentally downregulated) to specific targets, is aberrant in many pathologies, its relevance in liver fibrosis (LF) remained unexplored. Our results show deregulated neddylation in clinical fibrosis and both in mouse bileductligation- and CCl4 -induced fibrosis. Importantly, neddylation inhibition, by using the pharmacological inhibitor, MLN4924, reduced liver injury, apoptosis, inflammation, and fibrosis by targeting different hepatic cell types. On one hand, increased neddylation was associated with augmented caspase 3 activity in bile-acid-induced apoptosis in mouse hepatocytes whereas neddylation inhibition ameliorated apoptosis through reduction of expression of the Cxcl1 and Ccl2 chemokines. On the other hand, chemokine receptors and cytokines, usually induced in activated macrophages, were reduced after neddylation inhibition in mouse Kupffer cells. Under these circumstances, decreased hepatocyte cell death and inflammation after neddylation inhibition could partly account for reduction of hepatic stellate cell (HSC) activation. We provide evidence that augmented neddylation characterizes activated HSCs, suggesting that neddylation inhibition could be important for resolving LF by directly targeting these fibrogenic cells. Indeed, neddylation inhibition in activated HSCs induces apoptosis in a process partly mediated by accumulation of c-Jun, whose cullin-mediated degradation is impaired under these circumstances.ConclusionNeddylation inhibition reduces fibrosis, suggesting neddylation as a potential and attractive therapeutic target in liver fibrosis. (Hepatology 2017;65:694-709)."
+    },
+    {
+      "id": "pub-119",
+      "year": "2016",
+      "title": "Deciphering the lipid architecture of the rat sciatic nerve using imaging mass spectrometry.",
+      "authors": "Fernández R, Carriel V, Lage S, Garate J, Diez-García J, Ochoa B, Castro B, Alaminos M, Fernández JA.",
+      "journal": "ACS Chemical Neuroscience",
+      "topic": "spatial-omics",
+      "doi": "10.1021/acschemneuro.6b00010",
+      "abstract": "Knowledge on the normal structure and molecular composition of the peripheral nerves is essential to understand their pathophysiology and to select the regeneration strategies after injury. However, the precise lipid composition of the normal peripheral nerve is still poorly known. Here, we present the first study of distribution of individual lipids in the mature sciatic nerve of rats by imaging mass spectrometry. Both positive and negative ion modes were used to detect, identify and in situ map 166 molecular species of mainly glycerophospholipids, sphingomyelins, sulfatides, and diacyl and triacylglycerols. In parallel, lipid extracts were analyzed by LC-MS/MS to verify and complement the identification of lipids directly from the whole tissue. Three anatomical regions were clearly identified by its differential lipid composition: the nerve fibers, the connective tissue and the adipose tissue that surrounds the nerve. Unexpectedly, very little variety of phosphatidylcholine (PC) species was found, being by far PC 34:1 the most abundant species. Also, a rich composition on sulfatides was detected in fibers, probably due to the important role they play in the myelin cover around axons, as well as an abundance of storage lipids in the adipose and connective tissues. The database of lipids here presented for each region and for the whole sciatic nerve is a first step toward understanding the variety of the peripheral nerves' lipidome and its changes associated with different diseases and mechanical injuries."
+    },
+    {
+      "id": "pub-120",
+      "year": "2016",
+      "title": "SND1 overexpression deregulates cholesterol homeostasis in hepatocellular carcinoma",
+      "authors": "Navarro-Imaz H, Rueda Y, Fresnedo O.",
+      "journal": "Biochim. Biophys. Acta- Mol. Cell Biol. Lipids",
+      "topic": "cancer",
+      "doi": "10.1016/j.bbalip.2016.05.011",
+      "abstract": "SND1 is a multifunctional protein participating, among others, in gene transcription and mRNA metabolism. SND1 is overexpressed in cancer cells and promotes viability and tumourigenicity of hepatocellular carcinoma cells. This study shows that cholesterol synthesis is increased in SND1-overexpressing hepatoma cells. Neither newly synthesised nor extracellularly supplied cholesterol are able to suppress this increase; however, inhibition of cholesterol esterification reverted the activated state of sterol-regulatory element-binding protein 2 (SREBP2) and cholesterogenesis. These results highlight SND1 as a potential regulator of cellular cholesterol distribution and homeostasis in hepatoma cells, and support the rationale for the therapeutic use of molecules that influence cholesterol management when SND1 is overexpressed."
+    },
+    {
+      "id": "pub-121",
+      "year": "2015",
+      "title": "Proteomic and lipidomic analysis of primary mouse hepatocytes exposed to metal and metal oxide nanoparticles",
+      "authors": "Tedesco S, Bayat N, Danielsson G, Buque X, Aspichueta P, Fresnedo O, Cristobal S",
+      "journal": "J Int OMICS",
+      "topic": "exposome",
+      "doi": "10.1002/advs.202521373",
+      "abstract": "Organoids derived from human induced pluripotent stem cells (iPSCs) serve as advanced multicellular models for studying human organ development and disease. Recent liver organoid platforms focus on achieving multicellular organization while minimizing reliance on xenogeneic extracellular matrices to support future clinical translation. Building on these advances, this study establishes a xenogeneic-free strategy that develops the hepatic cellular repertoire with interdigitating vasculature using an air-liquid interface approach, generating highly vascularized, multicellular, and functional liver organoids from de-identified control and metabolic dysfunction-associated steatohepatitis (MASH) donor-derived iPSCs. Phenotypic and functional characterization confirms the presence of hepatocytes, cholangiocytes, stellate cells, sinusoidal endothelial cells, and Kupffer-like cells. These organoids demonstrate the capacity to model steatohepatitis following free-fatty acid exposure and predict acetaminophen-induced drug toxicity. Organoids derived from MASH-donors exhibit increased susceptibility to steatosis, inflammation, fibrosis, and acetaminophen-induced toxicity. Lipidomic profiling reveals that MASH phenotype in organoids induces global lipidomic shifts that closely resemble those observed in MASH liver biopsies. Further post-transplantation into mice, the organoids retain hepatic cell repertoire, establish functional anastomoses with host vasculature, display intraluminal erythrocytes, and secrete human-specific albumin, validating their translational potential. This approach provides a robust, xenogeneic-free platform for disease modeling, evaluating drug responses, and exploring regenerative therapies."
+    },
+    {
+      "id": "pub-122",
+      "year": "2015",
+      "title": "Profiling of promoter occupancy by the SND1 transcriptional coactivator identifies downstream glycerolipid metabolic genes upon TNFalpha stimulation in human hepatoma cells",
+      "authors": "Arretxe E, Armengol S, Mula S, Chico Y, Ochoa B, Martínez MJ",
+      "journal": "Nucleic Acids Research",
+      "topic": "cancer",
+      "doi": "10.1093/nar/gkv858",
+      "abstract": "The NF-κB-inducible Staphylococcal nuclease and tudor domain-containing 1 gene (SND1) encodes a coactivator involved in inflammatory responses and tumorigenesis. While SND1 is known to interact with certain transcription factors and activate client gene expression, no comprehensive mapping of SND1 target genes has been reported. Here, we have approached this question by performing ChIP-chip assays on human hepatoma HepG2 cells and analyzing SND1 binding modulation by proinflammatory TNFα. We show that SND1 binds 645 gene promoters in control cells and 281 additional genes in TNFα-treated cells. Transcription factor binding site analysis of bound probes identified motifs for established partners and for novel transcription factors including HSF, ATF, STAT3, MEIS1/AHOXA9, E2F and p300/CREB. Major target genes were involved in gene expression and RNA metabolism regulation, as well as development and cellular metabolism. We confirmed SND1 binding to 21 previously unrecognized genes, including a set of glycerolipid genes. Knocking-down experiments revealed that SND1 deficiency compromises the glycerolipid gene reprogramming and lipid phenotypic responses to TNFα. Overall, our findings uncover an unexpected large set of potential SND1 target genes and partners and reveal SND1 to be a determinant downstream effector of TNFα that contributes to support glycerophospholipid homeostasis in human hepatocellular carcinoma during inflammation."
+    },
+    {
+      "id": "pub-123",
+      "year": "2015",
+      "title": "Stimulation of gastric acid secretion by rabbit parietal cell A2B adenosine receptor activation",
+      "authors": "Arin RM, Vallejo AI, Rueda Y, Fresnedo O, Ochoa B.",
+      "journal": "Amer J Physiol Cell Physiol",
+      "topic": "mafld",
+      "doi": "10.1152/ajpcell.00224.2015",
+      "abstract": "Adenosine modulates different functional activities in many cells of the gastrointestinal tract; some of them are believed to be mediated by interaction with its four G protein-coupled receptors. The renewed interest in the adenosine A2B receptor (A2BR) subtype can be traced by studies in which the introduction of new genetic and chemical tools has widened the pharmacological and structural knowledge of this receptor as well as its potential therapeutic use in cancer and inflammation- or hypoxia-related pathologies. In the acid-secreting parietal cells of the gastric mucosa, the use of various radioligands for adenosine receptors suggested the presence of the A2 adenosine receptor subtype(s) on the cell surface. Recently, we confirmed A2BR expression in native, nontransformed parietal cells at rest by using flow cytometry and confocal microscopy. In this study, we show that A2BR is functional in primary rabbit gastric parietal cells, as indicated by the fact that agonist binding to A2BR increased adenylate cyclase activity and acid production. In addition, both acid production and radioligand binding of adenosine analogs to isolated cell membranes were potently blocked by selective A2BR antagonists, whereas ligands for A1, A2A, and A3 adenosine receptors failed to abolish activation. We conclude that rabbit gastric parietal cells possess functional A2BR proteins that are coupled to Gs and stimulate HCl production upon activation. Whether adenosine- and A2BR-mediated functional responses play a role in human gastric pathophysiology is yet to be elucidated."
+    },
+    {
+      "id": "pub-124",
+      "year": "2015",
+      "title": "Schwann cell autophagy, myelinophagy, initiates myelin clearance from injured nerves",
+      "authors": "Jose A. Gomez-Sanchez, Lucy Carty, Marta Iruarrizaga-Lejarreta, Marta Palomo-Irigoyen, Marta Varela-Rey, Megan Griffith, Janina Hantke, Nuria Macias-Camara, Mikel Azkargorta, Igor Aurrekoetxea, Virginia Gutiérrez De Juan, Harold B.J. Jefferies, Patricia Aspichueta, Félix Elortza, Ana M. Aransay, María L. Martínez-Chantar, Frank Baas, José M. Mato, Rhona Mirsky, Ashwin Woodhoo, Kristján R. Jessen",
+      "journal": "J. Cell. Biol",
+      "topic": "mafld",
+      "doi": "10.1083/jcb.201503019",
+      "abstract": "Although Schwann cell myelin breakdown is the universal outcome of a remarkably wide range of conditions that cause disease or injury to peripheral nerves, the cellular and molecular mechanisms that make Schwann cell-mediated myelin digestion possible have not been established. We report that Schwann cells degrade myelin after injury by a novel form of selective autophagy, myelinophagy. Autophagy was up-regulated by myelinating Schwann cells after nerve injury, myelin debris was present in autophagosomes, and pharmacological and genetic inhibition of autophagy impaired myelin clearance. Myelinophagy was positively regulated by the Schwann cell JNK/c-Jun pathway, a central regulator of the Schwann cell reprogramming induced by nerve injury. We also present evidence that myelinophagy is defective in the injured central nervous system. These results reveal an important role for inductive autophagy during Wallerian degeneration, and point to potential mechanistic targets for accelerating myelin clearance and improving demyelinating disease."
+    },
+    {
+      "id": "pub-125",
+      "year": "2015",
+      "title": "Cholesterol mobilization from hepatic lipid droplets during endotoxemia is altered in obese ob/ob mice",
+      "authors": "Arisqueta L, Navarro-Imaz H, Rueda Y, Fresnedo O",
+      "journal": "J Biochem",
+      "topic": "mafld",
+      "doi": "10.1093/jb/mvv047",
+      "abstract": "The innate immune response to pathogens during the acute phase response includes lipid metabolism adaptations. Hepatic triacylglycerol (TG) and cholesteryl ester (CE) storage in and mobilization from lipid droplets (LDs) respond to metabolic changes under the control of liver X receptor (LXR) transactivation and cytokine transduction. To evaluate whether alterations of these mechanisms have an impact in the adaptive response to endotoxemia, we analysed liver metabolism changes in lipopolysaccharide (LPS)-treated ob/ob mice, which show altered metabolic and innate responses and a higher sensitivity to sepsis. Lipid composition of serum lipoproteins and hepatic LDs was determined in wild type and ob/ob mice 24 h after LPS treatment. Liver metabolic profiling was done by measuring enzyme activities and mRNA levels. Increased CE hydrolase activity in LDs from endotoxemic mice was accompanied by a lower content of CE and low or no induction of LXR-mediated expression of genes involved in HDL secretion. The attenuated response in liver lipid mobilization accompanied by the strain-specific cholesterol enrichment of secreted VLDL might lead to accumulation of LDL cholesterol. According to our findings, obese leptin-deficient mice present an altered control of hepatic lipid metabolism responses to LPS, which might be, in part at least, a consequence of impaired LXR."
+    },
+    {
+      "id": "pub-126",
+      "year": "2015",
+      "title": "The A2B adenosine receptor colocalizes with adenosine deaminase in resting parietal cells from gastric mucosa",
+      "authors": "Arin RM, Vallejo AI, Rueda Y, Fresnedo O, Ochoa B",
+      "journal": "Biochemistry (Mosc)",
+      "topic": "mafld",
+      "doi": "10.1134/s0006297915010149",
+      "abstract": "The A2B adenosine receptor (A2BR) mediates biological responses to extracellular adenosine in a wide variety of cell types. Adenosine deaminase (ADA) can degrade adenosine and bind extracellularly to adenosine receptors. Adenosine modulates chloride secretion in gastric glands and gastric mucosa parietal cells. A close functional link between surface A2BR and ADA has been found on cells of the immune system, but whether this occurs in the gastrointestinal tract is unknown. The goal of this study was to determine whether A2BR and ADA are coexpressed at the plasma membrane of the acid-secreting gastric mucosa parietal cells. We used isolated gastric parietal cells after purification by centrifugal elutriation. The membrane fraction was obtained by sucrose gradient centrifugation. A2BR mRNA expression was analyzed by RT-PCR. The surface expression of A2BR and ADA proteins was evaluated by Western blotting, flow cytometry and confocal microscopy. Our findings demonstrate that A2BR and ADA are expressed in cell membranes isolated from gastric parietal cells. They show a high degree of colocalization that is particularly evident in the surface of contact between parietal cells. The confocal microscopy data together with flow cytometry analysis suggest a tight association between A2BR and ADA that might be specifically linked to glandular secretory function."
+    },
+    {
+      "id": "pub-127",
+      "year": "2015",
+      "title": "S-adenosylmethionine increases circulating very-low density lipoprotein clearance in nonalcoholic fatty liver disease.",
+      "authors": "- Martínez-Uña M, Varela-Rey M, Mestre D, Fernández-Ares L, Fresnedo O, Fernandez-Ramos D, de Juan VG, Martin-Guerrero I, García-Orad A, Luka Z, Wagner C, Lu SC, García-Monzón C, Finnell RH, Aurrekoetxea I, Buqué X, Luz Martínez-Chantar M, Mato JM, Aspichueta P.",
+      "journal": "J Hepatol",
+      "topic": "mafld",
+      "doi": "10.1016/j.jhep.2014.10.019",
+      "abstract": "Background & aimsVery-low-density lipoproteins (VLDLs) export lipids from the liver to peripheral tissues and are the precursors of low-density-lipoproteins. Low levels of hepatic S-adenosylmethionine (SAMe) decrease triglyceride (TG) secretion in VLDLs, contributing to hepatosteatosis in methionine adenosyltransferase 1A knockout mice but nothing is known about the effect of SAMe on the circulating VLDL metabolism. We wanted to investigate whether excess SAMe could disrupt VLDL plasma metabolism and unravel the mechanisms involved.MethodsGlycine N-methyltransferase (GNMT) knockout (KO) mice, GNMT and perilipin-2 (PLIN2) double KO (GNMT-PLIN2-KO) and their respective wild type (WT) controls were used. A high fat diet (HFD) or a methionine deficient diet (MDD) was administrated to exacerbate or recover VLDL metabolism, respectively. Finally, 33 patients with non-alcoholic fatty-liver disease (NAFLD); 11 with hypertriglyceridemia and 22 with normal lipidemia were used in this study.ResultsWe found that excess SAMe increases the turnover of hepatic TG stores for secretion in VLDL in GNMT-KO mice, a model of NAFLD with high SAMe levels. The disrupted VLDL assembly resulted in the secretion of enlarged, phosphatidylethanolamine-poor, TG- and apoE-enriched VLDL-particles; special features that lead to increased VLDL clearance and decreased serum TG levels. Re-establishing normal SAMe levels restored VLDL secretion, features and metabolism. In NAFLD patients, serum TG levels were lower when hepatic GNMT-protein expression was decreased.ConclusionsExcess hepatic SAMe levels disrupt VLDL assembly and features and increase circulating VLDL clearance, which will cause increased VLDL-lipid supply to tissues and might contribute to the extrahepatic complications of NAFLD."
+    },
+    {
+      "id": "pub-128",
+      "year": "2014",
+      "title": "TWEAK/Fn14 signaling is required for liver regeneration after partial hepatectomy in mice.",
+      "authors": "Karaca G, Swiderska-Syn M, Xie G, Syn W-K, Krüger L, Machado M, Garman K, Choi S, Michelotti GA, Burkly L, Ochoa B, Diehl AME.",
+      "journal": "PLoS One",
+      "topic": "e2f",
+      "doi": "10.1371/journal.pone.0083987",
+      "abstract": "Background & aimsPro-inflammatory cytokines are important for liver regeneration after partial hepatectomy (PH). Expression of Fibroblast growth factor-inducible 14 (Fn14), the receptor for TNF-like weak inducer of apoptosis (TWEAK), is induced rapidly after PH and remains elevated throughout the period of peak hepatocyte replication. The role of Fn14 in post-PH liver regeneration is uncertain because Fn14 is expressed by liver progenitors and TWEAK-Fn14 interactions stimulate progenitor growth, but replication of mature hepatocytes is thought to drive liver regeneration after PH.MethodsTo clarify the role of TWEAK-Fn14 after PH, we compared post-PH regenerative responses in wild type (WT) mice, Fn14 knockout (KO) mice, TWEAK KO mice, and WT mice treated with anti-TWEAK antibodies.ResultsIn WT mice, rare Fn14(+) cells localized with other progenitor markers in peri-portal areas before PH. PH rapidly increased proliferation of Fn14(+) cells; hepatocytic cells that expressed Fn14 and other progenitor markers, such as Lgr5, progressively accumulated from 12-8 h post-PH and then declined to baseline by 96 h. When TWEAK/Fn14 signaling was disrupted, progenitor accumulation, induction of pro-regenerative cytokines, hepatocyte and cholangiocyte proliferation, and over-all survival were inhibited, while post-PH liver damage and bilirubin levels were increased. TWEAK stimulated proliferation and increased Lgr5 expression in cultured liver progenitors, but had no effect on either parameter in cultured primary hepatocytes.ConclusionsTWEAK-FN14 signaling is necessary for the healthy adult liver to regenerate normally after acute partial hepatectomy."
+    },
+    {
+      "id": "pub-129",
+      "year": "2014",
+      "title": "Synaptotagmin 11 interacts with components of the RNA-induced silencing complex RISC in clonal β–cells",
+      "authors": "Milochau A, Lagrée V, Benassy MN, Chaignepain S, Papin J, Garcia-Arcos I, Monterrat C, Coudert L, Schmitter JM, Ochoa B, Lang J.",
+      "journal": "FEBS Lett",
+      "topic": "mafld",
+      "doi": "10.1016/j.febslet.2014.05.031",
+      "abstract": "Synaptotagmins are two C2 domain-containing transmembrane proteins. The function of calcium-sensitive members in the regulation of post-Golgi traffic has been well established whereas little is known about the calcium-insensitive isoforms constituting half of the protein family. Novel binding partners of synaptotagmin 11 were identified in β-cells. A number of them had been assigned previously to ER/Golgi derived-vesicles or linked to RNA synthesis, translation and processing. Whereas the C2A domain interacted with the Q-SNARE Vti1a, the C2B domain of syt11 interacted with the SND1, Ago2 and FMRP, components of the RNA-induced silencing complex (RISC). Binding to SND was direct via its N-terminal tandem repeats. Our data indicate that syt11 may provide a link between gene regulation by microRNAs and membrane traffic."
+    },
+    {
+      "id": "pub-130",
+      "year": "2014",
+      "title": "The E2F2 transcription factor sustains hepatic glycerophospholipid homeostasis in mice",
+      "authors": "Maldonado EN, Delgado I, Furland NE, Buqué X, Iglesias A, Aveldaño MI, Zubiaga A, Fresnedo O, Ochoa B.",
+      "journal": "PLoS One",
+      "topic": "e2f",
+      "doi": "10.1371/journal.pone.0112620",
+      "abstract": "Increasing evidence links metabolic signals to cell proliferation, but the molecular wiring that connects the two core machineries remains largely unknown. E2Fs are master regulators of cellular proliferation. We have recently shown that E2F2 activity facilitates the completion of liver regeneration after partial hepatectomy (PH) by regulating the expression of genes required for S-phase entry. Our study also revealed that E2F2 determines the duration of hepatectomy-induced hepatic steatosis. A transcriptomic analysis of normal adult liver identified \"lipid metabolism regulation\" as a major E2F2 functional target, suggesting that E2F2 has a role in lipid homeostasis. Here we use wild-type (E2F2+/+) and E2F2 deficient (E2F2-/-) mice to investigate the in vivo role of E2F2 in the composition of liver lipids and fatty acids in two metabolically different contexts: quiescence and 48-h post-PH, when cellular proliferation and anabolic demands are maximal. We show that liver regeneration is accompanied by large triglyceride and protein increases without changes in total phospholipids both in E2F2+/+ and E2F2-/- mice. Remarkably, we found that the phenotype of quiescent liver tissue from E2F2-/- mice resembles the phenotype of proliferating E2F2+/+ liver tissue, characterized by a decreased phosphatidylcholine to phosphatidylethanolamine ratio and a reprogramming of genes involved in generation of choline and ethanolamine derivatives. The diversity of fatty acids in total lipid, triglycerides and phospholipids was essentially preserved on E2F2 loss both in proliferating and non-proliferating liver tissue, although notable exceptions in inflammation-related fatty acids of defined phospholipid classes were detected. Overall, our results indicate that E2F2 activity sustains the hepatic homeostasis of major membrane glycerolipid components while it is dispensable for storage glycerolipid balance."
+    },
+    {
+      "id": "pub-131",
+      "year": "2014",
+      "title": "The promoter of cell growth- and RNA protection-associated SND1 gene is activated by endoplasmic reticulum stress in human hepatoma cells",
+      "authors": "Armengol S, Arretxe E, Enzunza L, Mula S, Ochoa B, Chico Y, Martínez MJ",
+      "journal": "BMC Biochemistry",
+      "topic": "cancer",
+      "doi": "10.1186/s12858-014-0025-2",
+      "abstract": "BackgroundStaphyloccocal nuclease domain-containing protein 1 (SND1) is involved in the regulation of gene expression and RNA protection. While numerous studies have established that SND1 protein expression is modulated by cellular stresses associated with tumor growth, hypoxia, inflammation, heat-shock and oxidative conditions, little is known about the factors responsible for SND1 expression. Here, we have approached this question by analyzing the transcriptional response of human SND1 gene to pharmacological endoplasmic reticulum (ER) stress in liver cancer cells.ResultsWe provide first evidence that SND1 promoter activity is increased in human liver cancer cells upon exposure to thapsigargin or tunicamycin or by ectopic expression of ATF6, a crucial transcription factor in the unfolded protein response triggered by ER stress. Deletion analysis of the 5'-flanking region of SND1 promoter identified maximal activation in fragment (-934, +221), which contains most of the predicted ER stress response elements in proximal promoter. Quantitative real-time PCR revealed a near 3 fold increase in SND1 mRNA expression by either of the stress-inducers; whereas SND1 protein was maximally upregulated (3.4-fold) in cells exposed to tunicamycin, a protein glycosylation inhibitor.ConclusionPromoter activity of the cell growth- and RNA-protection associated SND1 gene is up-regulated by ER stress in human hepatoma cells."
+    },
+    {
+      "id": "pub-132",
+      "year": "2013",
+      "title": "Biochemistry of Liver Regeneration.",
+      "authors": "Ochoa B and Diehl AME",
+      "journal": "The Encyclopedia of Biological Chemistry (four-volume set), second edition",
+      "topic": "e2f",
+      "doi": "10.1016/j.jcmgh.2026.101858",
+      "abstract": "Background & aimsConstitutive androstane receptor transcriptionally regulates xenobiotic detoxification, metabolism, and hepatocyte proliferation. Although constitutive androstane receptor activation promotes regeneration and its loss impairs recovery after extreme hepatectomy (86%-90% liver resection), its temporal role during standard liver regeneration following two-thirds partial hepatectomy remains unclear.MethodsWe quantified DNA synthesis, gene expression, and bile acid concentrations and composition in Car knockout and wild-type mice across regenerative time points after partial hepatectomy.ResultsCar transcript expression is dynamically regulated during regeneration, peaking at 12 hours and plummeting below basal levels by 72 hours post-partial hepatectomy. Despite this, Car knockout livers regenerate comparably to wild-type livers. Notably, Car knockout mice display an exaggerated increase in hepatic and systemic bile acid levels after partial hepatectomy, revealing an unexpected metabolic role for constitutive androstane receptor. Pharmacologic reduction of bile acid levels with cholestyramine in Car knockout mice attenuated 5-bromo-2'-deoxyuridine incorporation and proliferation-associated gene expression. Analysis of single-cell RNA sequencing data further showed that Car and its target genes are enriched in hypermetabolic, rather than proliferating, hepatocyte population during regeneration.ConclusionsConstitutive androstane receptor exerts a temporally regulated metabolic role during liver regeneration. Car deletion amplifies the post-hepatectomy bile acid surge, which acts as a compensatory proproliferative signal to sustain regeneration."
+    },
+    {
+      "id": "pub-133",
+      "year": "2013",
+      "title": "Infection of primary hepatocytes with adenoviral vectors alters biliary lipid metabolism",
+      "authors": "Rueda Y, Garcia-Arcos I, Aspichueta P, Ochoa B, Palacios L, Fresnedo O",
+      "journal": "J Physiol Sci",
+      "topic": "mafld",
+      "doi": "10.1007/s12576-013-0260-0",
+      "abstract": "In the context of a study of the involvement of SND1 (also known as coactivator p100) in biliary lipid secretion by primary rat hepatocytes, first-generation adenoviral vectors were used to promote the overexpression and underexpression of the protein SND1. Although differential expression of SND1 did not result in significant changes in the processes studied, some effects of the adenoviral infection itself were observed. In particular, infected hepatocytes showed a higher intracellular taurocholate accumulation capacity. Additionally, small heterodimer partner (SHP) and farnesoid X receptor (FXR), which are nuclear receptors essential for the regulation of bile salt metabolism and transport, were underregulated at the mRNA level. Our results suggest that adenoviral vectors could be altering some important control mechanism and indicate that adenoviral vectors should be used with caution as transfection vectors for hepatocytes when biliary lipid metabolism is to be studied."
+    },
+    {
+      "id": "pub-134",
+      "year": "2013",
+      "title": "Involvement of lipid droplets in hepatic responses to lipopolysaccharide treatment in mice",
+      "authors": "Arisqueta L, Nuñez-Garcia M, Ogando J, Garcia-Arcos I, Ochoa B, Aspichueta P, Fresnedo O, Rueda Y",
+      "journal": "Biochim Biophys Acta",
+      "topic": "mafld",
+      "doi": "10.1016/j.bbalip.2013.04.015",
+      "abstract": "Infection and inflammation induce important changes in lipid metabolism, which result in increased free fatty acids and triacylglycerol in plasma and altered high density lipoprotein (HDL) metabolism. Our aim was to elucidate whether hepatic lipid droplets (LDs) are involved in the adaptations of lipid metabolism to endotoxemia. We characterized the lipid content and several enzymatic activities in subcellular fractions and subpopulations of LDs from livers of mice 24h after lipopolysaccharide (LPS) treatment and analyzed the expression of key genes involved in lipid management. Endotoxemic mice showed lower lipid content in LDs with decreased molar fraction of cholesteryl ester and higher diacylglycerol/triacylglycerol ratio as compared to their controls. They also showed a decrease in cytosolic triacylglycerol hydrolase activity, specifically in dense LDs, and in microsomal and cytosolic diacylglycerol hydrolase activity; concomitantly neutral lipid biosynthetic capacity and triacylglycerol levels in plasma lipoproteins increased. Together with the overexpression of genes involved in lipogenesis and HDL formation our results suggest that altered hepatic management of LD lipids in LPS-treated mice might be related to the channeled mobilization of triacylglycerol for very low density lipoprotein assembly and to the induction of cholesterol export."
+    },
+    {
+      "id": "pub-135",
+      "year": "2013",
+      "title": "Excess S-adenosylmethionine reroutes phosphatidylethanolamine towards phosphatidylcholine and triglyceride synthesis.",
+      "authors": "- Martinez-Uña M, Varela M, Cano A, Fernández-Ares L, Beraza N, Aurrekoetxea I, Martinez-Arranz I, García-Rodriguez JL, Buqué X, Mestre D, Luka Z, Wagner C, Alonso C, Finnell RH, Lu SC, Martinez-Chantar ML, Aspichueta P, Mato JM.",
+      "journal": "Hepatology",
+      "topic": "mafld",
+      "doi": "10.1002/hep.26399",
+      "abstract": "UnlabelledMethionine adenosyltransferase 1A (MAT1A) and glycine N-methyltransferase (GNMT) are the primary genes involved in hepatic S-adenosylmethionine (SAMe) synthesis and degradation, respectively. Mat1a ablation in mice induces a decrease in hepatic SAMe, activation of lipogenesis, inhibition of triglyceride (TG) release, and steatosis. Gnmt-deficient mice, despite showing a large increase in hepatic SAMe, also develop steatosis. We hypothesized that as an adaptive response to hepatic SAMe accumulation, phosphatidylcholine (PC) synthesis by way of the phosphatidylethanolamine (PE) N-methyltransferase (PEMT) pathway is stimulated in Gnmt(-/-) mice. We also propose that the excess PC thus generated is catabolized, leading to TG synthesis and steatosis by way of diglyceride (DG) generation. We observed that Gnmt(-/-) mice present with normal hepatic lipogenesis and increased TG release. We also observed that the flux from PE to PC is stimulated in the liver of Gnmt(-/-) mice and that this results in a reduction in PE content and a marked increase in DG and TG. Conversely, reduction of hepatic SAMe following the administration of a methionine-deficient diet reverted the flux from PE to PC of Gnmt(-/-) mice to that of wildtype animals and normalized DG and TG content preventing the development of steatosis. Gnmt(-/-) mice with an additional deletion of perilipin2, the predominant lipid droplet protein, maintain high SAMe levels, with a concurrent increased flux from PE to PC, but do not develop liver steatosis.ConclusionThese findings indicate that excess SAMe reroutes PE towards PC and TG synthesis and lipid sequestration."
+    },
+    {
+      "id": "pub-136",
+      "year": "2013",
+      "title": "NF-κB, Sp1 and NF-Y as transcriptional regulators of human SND1 gene",
+      "authors": "Armengol S, Arretxe E, Rodríguez L, Ochoa B, Chico Y, Martínez MJ.",
+      "journal": "Biochimie",
+      "topic": "cancer",
+      "doi": "10.1016/j.biochi.2012.10.029",
+      "abstract": "Staphylococcal nuclease domain-containing protein 1 (SND1), also called Tudor-SN, is required for many biological events ranging from gene expression to cell growth regulation. Promoter regulation of SND1 gene and its molecular mechanism have remained elusive to date. In this work, we have identified SND1 as a new target gene for NF-κB, Sp1 and NF-Y transcription factors. We isolated and characterized a 3808 bp sequence corresponding to the human SND1 gene promoter (GenBank ID: EF690304). It lacks the typical TATA-box element and contains a CpG island with several Sp1 binding sites at the 3' end, and a highly conserved 300 bp segment with two inverted CCAAT boxes that bind NF-Y, in addition to NF-κB sites and other cis-regulatory elements. Electrophoretic mobility shift assays and chromatin immunoprecipitation experiments confirmed the ability of SND1 promoter to bind NF-κB, Sp1 and NF-Y in vitro and in vivo. Deletion analysis of the 5'-flanking region by luciferase reporter assays, showed the minimum promoter activity 112 base-pair upstream from the transcription start site, and an enhancer region between -112 and -274 bp responsible for the maximal transcriptional activity of the promoter. Site-directed mutagenesis of the CCAAT and GC boxes and the NF-κB elements within the proximal region substantially reduced SND1 promoter activity. Proinflammatory cytokine TNF-α caused an increase of SND1 promoter activity that is mediated, at least in part, via NF-κB as mutation in the NF-κB sites impaired the promoter stimulation. We provide for the first time the characterization of the human SND1 promoter activity and establish a transcriptional network associated to the key transcription factors NF-κB, Sp1 and NF-Y that operates in the control of the SND1 gene expression."
+    },
+    {
+      "id": "pub-137",
+      "year": "2012",
+      "title": "Biphasic adaptative responses in VLDL metabolism and lipoprotein homeostasis during Gram-negative endotoxemia",
+      "authors": "Bartolomé N, Aspichueta P, Martínez MJ, Vázquez-Chantada M, Martínez-Chantar ML, Ochoa B, Chico Y",
+      "journal": "Innate Immunity",
+      "topic": "mafld",
+      "doi": "10.1177/1753425910390722",
+      "abstract": "Dyslipidemia and hepatic overproduction of very low density lipoprotein (VLDL) are hallmarks of the septic response, yet the underlying mechanisms are not fully defined. We evaluated the lipoprotein subclasses profile and hepatic VLDL assembly machinery over 24 h in fasted LPS-treated rats. The response of serum non-esterified fatty acids (NEFA) and glucose to endotoxin was biphasic, with increased levels of NEFA and hypoglycemia in the first 12 h-phase, and low NEFA and high glucose in the second 12 h-phase. Hypertriglyceridemia was more marked in the first 12 h (6.8-fold), when triglyceride abundance increased in all lipoprotein subclasses, and preferentially in large VLDL. The abundance of medium-sized VLDL and the increase in the number of VLDL particles was higher in the second phase (10-fold vs 5-fold in the first phase); however, apoB gene transcript abundance increased only in the second phase. Analysis of putative pre-translational mechanisms revealed that neither increased Apob transcription rate nor increased transcript binding to mRNA stabilizing HuR (Hu antigen R) protein paralleled the increase in apoB transcripts. In conclusion, endotoxin challenge induces increases in plasma NEFA and large, triglyceride-rich VLDL. After approximately 12 h, the triglyceride-rich VLDLs are replaced by medium-sized, triglyceride-poor VLDL particles. Hepatic apoB mRNA abundance also increases during the second period, suggesting a role for apoB protein expression in the acute reaction against sepsis."
+    },
+    {
+      "id": "pub-138",
+      "year": "2011",
+      "title": "Behazun-gatzen garraioaren fisiologia",
+      "authors": "Rueda Y, Aspichueta P, Fresnedo O",
+      "journal": "Ekaia",
+      "topic": "mafld",
+      "doi": "10.1387/ekaia.6802",
+      "abstract": ""
+    },
+    {
+      "id": "pub-139",
+      "year": "2011",
+      "title": "Matrix-assisted laser desorption ionization imaging mass spectrometry in lipidomics",
+      "authors": "• Fernández JA, Ochoa B, Fresnedo O, Giralt MT, Rodríguez-Puertas R",
+      "journal": "Anal Bioanal Chem",
+      "topic": "spatial-omics",
+      "doi": "10.1007/s00216-011-4696-x",
+      "abstract": "The relevant structural, energetics, and regulatory roles of lipids are universally acknowledged. However, the high variability of lipid species and the large differences in concentrations make unraveling the role played by the different species in metabolism a titanic task. A recently developed technique, known as imaging mass spectrometry, may shed some light on the field, as it enables precise information to be obtained on the location of lipids in tissues. A review of the state of the art of the technique is presented in this manuscript, including detailed analysis of sample-preparation steps, data handling, and the identification of the species mapped so far."
+    },
+    {
+      "id": "pub-140",
+      "year": "2011",
+      "title": "Anatomical distribution of lipids in human brain cortex by imaging mass spectrometry",
+      "authors": "• Veloso A, Astigarraga E, Barreda-Gómez G, Manuel I, Ferrer I, Giralt MT, Ochoa B, Fresnedo O, Rodríguez-Puertas R, Fernández JA",
+      "journal": "J Am Soc Mass Spectrom",
+      "topic": "spatial-omics",
+      "doi": "10.1007/s13361-010-0024-5",
+      "abstract": "Molecular mass images of tissues will be biased if differences in the physicochemical properties of the microenvironment affect the intensity of the spectra. To address this issue, we have performed-by means of MALDI-TOF mass spectrometry-imaging on slices and lipidomic analysis in extracts of frontal cortex, both from the same postmortem tissue samples of human brain. An external calibration was used to achieve a mass accuracy of 10 ppm (1σ) in the spectra of the extracts, although the final assignment was based on a comparison with previously reported species. The spectra recorded directly from tissue slices (imaging) show excellent s/n ratios, almost comparable to those obtained from the extracts. In addition, they retain the information about the anatomical distribution of the molecular species present in autopsied frozen tissue. Further comparison between the spectra from lipid extracts devoid of proteins and those recorded directly from the tissue unambiguously show that the differences in lipid composition between gray and white matter observed in the mass images are not an artifact due to microenvironmental influences of each anatomical area on the signal intensity, but real variations in the lipid composition."
+    },
+    {
+      "id": "pub-141",
+      "year": "2011",
+      "title": "A role for transcription factor E2F2 in hepatocyte proliferation and timely liver regeneration",
+      "authors": "• Delgado I, Fresnedo O, Iglesias A, Rueda Y, Syn WK, Zubiaga AM, Ochoa B",
+      "journal": "Am J Physiol Gastrointest Liver Physiol",
+      "topic": "e2f",
+      "doi": "10.1152/ajpgi.00481.2010",
+      "abstract": "E2F transcription factors are key regulators of the cell cycle although the relative contribution of each E2F member in regulating cellular proliferation is still poorly defined. Present evidence suggests that E2F2 may act both as a suppressor and promoter of proliferation, depending on the cellular context. We used a loss-of-function mutant mouse model to investigate the function of E2F2 in liver regeneration after partial hepatectomy, a paradigm of cell-cycle progression. Liver mass recovery and histology were examined over 9 days in 70% hepatectomized E2F2(-/-) and wild-type animals. Transcriptome analysis was performed in quiescent and 48-h regenerating liver samples. TIGR MultiExperiment Viewer was used for the statistical analysis of microarray data, significance was determined by Fischer, and P values were adjusted applying Benjamini-Hochberg multiple-testing correction. We show that E2F2 is required for adult hepatocyte proliferation and for timely liver regeneration, as disruption of the E2F2 gene in hepatocytes leads to a reduced rate of S-phase entry and to delayed liver regeneration. Transcriptome analysis followed by ontological classification of differentially expressed genes and gene-interaction network analysis indicated that the majority of genes involved in normal liver regeneration were related to biosynthetic and catabolic processes of all major biomolecules as well as cellular location and intracellular transport, confirming the complex nature of the regeneration process. Remarkably, transcripts of genes included in functional categories that are crucial for cell cycle, apoptosis and wound-healing response, and fibrosis were absent in the transcriptome of posthepatectomized E2F2(-/-) mice. Our results indicate that the transcriptional activity of E2F2 contributes to promote adult hepatocyte proliferation and liver regeneration."
+    },
+    {
+      "id": "pub-142",
+      "year": "2011",
+      "title": "Distribution of lipids in the human brain",
+      "authors": "Veloso A, Fernández R, Astigarraga E, Barreda-Gómez G, Manuel I, Giralt MT, Ferrer I, Ochoa B, Rodríguez-Puertas R, Fernández JA.",
+      "journal": "Anal Bioanal Chemistry",
+      "topic": "mafld",
+      "doi": "10.1038/s41380-026-03793-z",
+      "abstract": "BackgroundLipids represent a significant component of the human brain, exerting crucial functions in both physiological and pathological conditions. Mapping brain lipids distribution is an emerging area of research, with mass spectrometry imaging allowing the detection of lipid species and their localization within tissue sections. However, comprehensive spatial mapping of lipids in the human brain remains to be achieved. This systematic review addresses this gap by critically synthesizing the available literature in the field.MethodsA bibliographic search on PubMed, Scopus and Web of Science for original articles employing mass spectrometry imaging to analyze lipids and their distribution in the human brain was performed. The included articles were grouped according to the clinical characteristics of the studied populations, including healthy subjects and selected neurological and psychiatric disorders. Studies on human brain tissue from tumoral specimens, animals, or in vitro models such as organoids were excluded to maintain focus on translational findings directly applicable to human neurological and psychiatric diseases.ResultsFollowing the inclusion criteria, 34 articles were selected. Alzheimer's disease, schizophrenia and multiple sclerosis were the most frequently investigated conditions, alongside studies in healthy subjects describing lipid distribution under physiological conditions. We observed considerable heterogeneity across studies in terms of research questions and methodological approaches. Nevertheless, our critical synthesis allowed us to identify both consistencies and discrepancies in experimental strategies and in the lipid signatures reported.ConclusionsStudying lipids by mass spectrometry imaging enables the identification of spatially defined profiles in distinct brain areas, providing valuable insights into both human neurobiology and brain disorders' pathophysiology. In this context, spatial information is crucial for linking lipid alterations to specific structures or lesions, thereby supporting translational applications. Finally, we identified key methodological issues that must be addressed to advance this emerging field."
+    },
+    {
+      "id": "pub-143",
+      "year": "2011",
+      "title": "Involvement of G-463A MPO gene polymorphism in the response of post-menopausal women to hormone therapy.",
+      "authors": "Ruiz del Agua A, Aurrekoetxea I, Elorriaga MA, Rodriguez F, Guéraud F, Ruiz-Larrea MB, Ruiz-Sanz JI.",
+      "journal": "Menopause",
+      "topic": "mafld",
+      "doi": "10.1097/gme.0b013e3181fcabaa",
+      "abstract": "ObjectiveThe aims of this work were to determine (1) the effects of estrogen plus progestogen therapy (EPT) and raloxifene on oxidative stress and cardiovascular risk biomarkers in postmenopausal women and (2) the involvement of the functional G-463A polymorphism of the myeloperoxidase (MPO) gene in the therapy responses.MethodsPostmenopausal women (45-55 y old) were assigned to three groups receiving (1) EPT (continuous 50 μg transdermal estradiol daily and 200 mg/d micronized progesterone orally the first 14 d of each month; n = 21), (2) raloxifene (60 mg daily; n = 17), and (3) no treatment (control; n = 21). Blood and urine samples were taken before and after 6 months of therapy. Measurements were serum lipid profile, C-reactive intercellular adhesion molecule 1 (ICAM-1), α-tocopherol, γ-tocopherol, uric acid, total antioxidant activity (TAA), malondialdehyde, and urinary 1,4-dihydroxynonane-mercapturic acid (the major urinary 4-hydroxynonenal metabolite). The G-463A MPO polymorphism was analyzed by polymerase chain reaction and restriction fragment length polymorphism.ResultsEPT significantly decreased TAA and the levels of ICAM-1, not modifying other cardiovascular risk or oxidative stress markers. The raloxifene and control groups experienced no modifications in oxidative stress or endothelial dysfunction markers. The MPO genotype specifically influenced the outcomes in the EPT group. Thus, TAA decreased significantly in GG (high-expression genotype) homozygotes, whereas ICAM-1 levels were reduced in A allele carriers.ConclusionsEPT exerted a negative action on the serum oxidant/antioxidant balance in the MPO GG homozygotes and a positive effect on the ICAM-1 endothelial dysfunction marker in carriers of the low-expression A allele. This observation provides evidence of the importance of this polymorphism in the response to EPT."
+    },
+    {
+      "id": "pub-144",
+      "year": "2011",
+      "title": "Ala16Val SOD2 polymorphism is associated with higher pregnancy rates in in vitro fertilization cycles.",
+      "authors": "Ruiz-Sanz JI, Aurrekoetxea I, Matorras R, Ruiz-Larrea MB.",
+      "journal": "Fertility and Sterility",
+      "topic": "mafld",
+      "doi": "10.1016/j.fertnstert.2010.11.022",
+      "abstract": "ObjectiveTo investigate whether the Ala16Val polymorphism in the SOD2 gene, encoding for mitochondrial manganese superoxide dismutase (SOD), is associated with [1] infertility and [2] the pregnancy rate (PR) in IVF cycles.DesignProspective case-control study.SettingPublic university and public university hospital.Patient(s)A total of 362 newborns (nonselected population) and 148 infertile women undergoing an IVF cycle, from which 44 became pregnant and 104 did not.Intervention(s)Blood samples extracted from the patients and newborn umbilical cord.Main outcome measure(s)Genotype and allele distribution of the Ala16Val polymorphism in the SOD2 gene using the tetra-primer amplification refractory mutation system-polymerase chain reaction (PCR).Result(s)The polymorphism distribution of the subfertile women was similar to that of a nonselected population. The SOD2 Ala allele frequency was 49% both in controls and IVF patients. In IVF population the Ala/Ala SOD2 genotype was 25%, with a 28% Val/Val homozygous. In contrast, the Ala/Ala genotype was associated with higher PRs in IVF (47% in Ala/Ala vs. 23% in no Ala/Ala). A multivariate logistic regression analysis revealed that the Ala/Ala genotype was an independent predictor of pregnancy (odds ratio [OR] = 3.29), followed by the number of transferred embryos (OR = 2.37) and age (OR = 0.84).Conclusion(s)The Ala/Ala SOD2 genotype is a significant independent predictor of the occurrence of pregnancy in IVF. Data also support a role for antioxidant defense, particularly in the mitochondria, in conception in IVF."
+    },
+    {
+      "id": "pub-145",
+      "year": "2011",
+      "title": "An imbalance in progenitor cell populations reflects tumour progression in breast cancer primary culture models.",
+      "authors": "- Donatello S, Hudson L, Cottell DC, Blanco A, Aurrekoetxea I, Shelly MJ, Dervan PA, Kell MR, Stokes M, Hill AD, Hopkins AM.",
+      "journal": "J Exp Clin Cancer Res",
+      "topic": "cancer",
+      "doi": "10.1186/1756-9966-30-45",
+      "abstract": "BackgroundMany factors influence breast cancer progression, including the ability of progenitor cells to sustain or increase net tumour cell numbers. Our aim was to define whether alterations in putative progenitor populations could predict clinicopathological factors of prognostic importance for cancer progression.MethodsPrimary cultures were established from human breast tumour and adjacent non-tumour tissue. Putative progenitor cell populations were isolated based on co-expression or concomitant absence of the epithelial and myoepithelial markers EPCAM and CALLA respectively.ResultsSignificant reductions in cellular senescence were observed in tumour versus non-tumour cultures, accompanied by a stepwise increase in proliferation:senescence ratios. A novel correlation between tumour aggressiveness and an imbalance of putative progenitor subpopulations was also observed. Specifically, an increased double-negative (DN) to double-positive (DP) ratio distinguished aggressive tumours of high grade, estrogen receptor-negativity or HER2-positivity. The DN:DP ratio was also higher in malignant MDA-MB-231 cells relative to non-tumorigenic MCF-10A cells. Ultrastructural analysis of the DN subpopulation in an invasive tumour culture revealed enrichment in lipofuscin bodies, markers of ageing or senescent cells.ConclusionsOur results suggest that an imbalance in tumour progenitor subpopulations imbalances the functional relationship between proliferation and senescence, creating a microenvironment favouring tumour progression."
+    },
+    {
+      "id": "pub-146",
+      "year": "2011",
+      "title": "Methionine adenosyltransferase 1A gene deletion disrupts hepatic VLDL assembly in mice.",
+      "authors": "Cano A, Buqué X, Martinez-Uña M, Aurrekoetxea I, Menor A, García-Rodriguez JL, Lu SC, Martinez-Chantar ML, Mato JM, Ochoa B, Aspichueta P.",
+      "journal": "Hepatology",
+      "topic": "mafld",
+      "doi": "10.1002/hep.24607",
+      "abstract": "UnlabelledVery low-density lipoprotein (VLDL) secretion provides a mechanism to export triglycerides (TG) from the liver to peripheral tissues, maintaining lipid homeostasis. In nonalcoholic fatty liver disease (NAFLD), VLDL secretion disturbances are unclear. Methionine adenosyltransferase (MAT) is responsible for S-adenosylmethionine (SAMe) synthesis and MAT I and III are the products of the MAT1A gene. Deficient MAT I and III activities and SAMe content in the liver have been associated with NAFLD, but whether MAT1A is required for normal VLDL assembly remains unknown. We investigated the role of MAT1A on VLDL assembly in two metabolic contexts: in 3-month-old MAT1A-knockout mice (3-KO), with no signs of liver injury, and in 8-month-old MAT1A-knockout mice (8-KO), harboring nonalcoholic steatohepatitis. In 3-KO mouse liver, there is a potent effect of MAT1A deletion on lipid handling, decreasing mobilization of TG stores, TG secretion in VLDL and phosphatidylcholine synthesis via phosphatidylethanolamine N-methyltransferase. MAT1A deletion also increased VLDL-apolipoprotein B secretion, leading to small, lipid-poor VLDL particles. Administration of SAMe to 3-KO mice for 7 days recovered crucial altered processes in VLDL assembly and features of the secreted lipoproteins. The unfolded protein response was activated in 8-KO mouse liver, in which TG accumulated and the phosphatidylcholine-to-phosphatidylethanolamine ratio was reduced in the endoplasmic reticulum, whereas secretion of TG and apolipoprotein B in VLDL was increased and the VLDL physical characteristics resembled that in 3-KO mice. MAT1A deletion also altered plasma lipid homeostasis, with an increase in lipid transport in low-density lipoprotein subclasses and decrease in high-density lipoprotein subclasses.ConclusionMAT1A is required for normal VLDL assembly and plasma lipid homeostasis in mice. Impaired VLDL synthesis, mainly due to SAMe deficiency, contributes to NAFLD development in MAT1A-KO mice."
+    },
+    {
+      "id": "pub-147",
+      "year": "2011",
+      "title": "Disrupted VLDL features and lipoprotein metabolism in sepsis",
+      "authors": "Aspichueta P, Bartolomé N, Buqué X, Martínez MJ, Ochoa B and Chico Y",
+      "journal": "Dyslipidemia- From prevention to treatment. Editor Roya Kelishadi, InTech (on line) DOI: 10.5772/29421",
+      "topic": "mafld",
+      "doi": "10.1042/bsr20260413",
+      "abstract": "Dysregulated lipid metabolism is implicated in renal injury associated with diabetic nephropathy, acute kidney injury, chronic kidney disease, nephrotic syndrome, and renal cell carcinoma. However, its causal role and mechanisms remain ambiguous. Mitochondria-associated ER membranes (MAMs) are contact sites between the endoplasmic reticulum and mitochondria that facilitate the integration of lipid trafficking, mitochondrial metabolism, calcium signaling, and redox homeostasis within cells. Recent evidence from patient biopsies and experimental renal models suggests that altered MAM integrity is linked to ectopic lipid deposition, mitochondrial dysfunction, oxidative stress, and renal injury. The present review examines evidence suggesting that MAM dysregulation may contribute to the abnormal metabolism of phospholipids (PLs), ceramides, cholesterol, fatty acids, and triglycerides in renal cells, thereby addressing a gap between previous reviews on renal lipotoxicity and those focusing on MAM-dependent calcium signaling in kidney diseases. Key mechanisms include impaired PL transfer with disrupted cardiolipin remodeling, ceramide-associated mitochondrial injury, defective fatty acid oxidation, and acyl-CoA synthetase long-chain family member 4-mediated PL peroxidation, leading to renal ferroptosis. Direct evidence for MAM-regulated lipid droplet degradation in the kidney is limited; thus, findings from non-renal cells are differentiated from kidney-specific observations. MAM-associated proteins have emerged as potential therapeutic targets in preclinical studies. However, renoprotective effects of sodium-glucose cotransporter 2 inhibitors and glucagon-like peptide-1 receptor agonists related to MAMs remain indirect and necessitate validation. Restoring the structural and functional integrity of MAMs could represent a promising strategy to mitigate lipid-induced renal injury."
+    },
+    {
+      "id": "pub-148",
+      "year": "2010",
+      "title": "Association of SND1 protein to low density lipid droplets in liver steatosis",
+      "authors": "Garcia-Arcos I, Rueda Y, González-Kother P, Palacios L, Ochoa B, Fresnedo O",
+      "journal": "J Physiol Biochem",
+      "topic": "cancer",
+      "doi": "10.1007/s13105-010-0011-0",
+      "abstract": "Although the human homologue of SND p102, p100 coactivator, was initially described as a nuclear protein, the p100 coactivator protein family members have non-nuclear localization in mammalian cells with active lipid handling, storage, and secretion. However, their role in lipid homeostasis remains unresolved. Here, we investigate the distribution of the rat homologue SND p102 (also called SND1) and its association with newly formed lipid droplets in the liver parenchyma and cultured hepatocytes. Sucrose gradient fractionation showed that SND p102 cofractionated with endoplasmic reticulum and Golgi markers. Such cofractionation was not altered in regenerating steatotic rat liver. However, SND p102 was also detected in lipid droplets from regenerating liver, showing a specific directionalization to the least dense ones. Confocal microscopy of cultured hepatocytes confirmed the findings of gradient fractionation. In addition, p100 coactivator was consistently encountered in microsomes and lipid droplets in control and oleate-treated HepG2 cells. The total amount of SND p102 in hepatocytes was similar in both conditions, suggesting a specific translocation of the protein. Our findings indicate that SND p102 and the human p100 coactivator have a ubiquitous cytoplasmic distribution in hepatocytes and that steatogenic conditions promote the targeting of SND p102 from other cell compartments to specific low density lipid droplets."
+    },
+    {
+      "id": "pub-149",
+      "year": "2010",
+      "title": "Hedgehog signaling is critical for normal liver regeneration after partial hepatectomy in mice",
+      "authors": "Ochoa B, Syn WK, Delgado I, Karaca GF, Jung Y, Wang J, Zubiaga AM, Fresnedo O, Omenetti A, Zdanowicz M, Choi SS, Diehl AM",
+      "journal": "Hepatology",
+      "topic": "e2f",
+      "doi": "10.1002/hep.23525",
+      "abstract": "UnlabelledDistinct mechanisms are believed to regulate growth of the liver during fetal development and after injury in adults, because the former relies on progenitors and the latter generally involves replication of mature hepatocytes. However, chronic liver injury in adults increases production of Hedgehog (Hh) ligands, developmental morphogens that control progenitor cell fate and orchestrate various aspects of tissue construction during embryogenesis. This raises the possibility that similar Hh-dependent mechanisms also might regulate adult liver regeneration. The current analysis of murine liver regeneration after 70% partial hepatectomy (PH), an established model of adult liver regeneration, demonstrated that PH induced production of Hh ligands and activated Hh signaling in liver cells. Treatment with a specific Hh signaling inhibitor interfered with several key components of normal liver regeneration, significantly inhibiting progenitor responses, matrix remodeling, proliferation of hepatocytes and ductular cells, and restoration of liver mass. These global inhibitory effects on liver regeneration dramatically reduced survival after PH.ConclusionMechanisms that mediate liver organogenesis, such as Hh pathway activation, are retained and promote reconstruction of adult livers after injury."
+    },
+    {
+      "id": "pub-150",
+      "year": "2010",
+      "title": "Lipid analysis reveals quiescent and regenerating liver-specific populations of lipid droplets",
+      "authors": "• García-Arcos I, González-Kother P, Aspichueta P, Rueda Y, Ochoa B, Fresnedo O",
+      "journal": "Lipids",
+      "topic": "mafld",
+      "doi": "10.1007/s11745-010-3492-2",
+      "abstract": "The mammalian liver, a key organ in lipid homeostasis, can accumulate increased amounts of lipids in certain physiological conditions including liver regeneration. Lipid droplets (LD), the lipid storage organelles in the cytoplasm, are composed of a core of neutral lipids (mainly triacylglycerols and cholesteryl esters) surrounded by a monolayer of phospholipids and cholesterol with associated proteins. It is recognized that LD lipid composition is cell- and environment-specific and enables LD to carry out specific functions, but few descriptive studies aiming to interpret such differences have been published. We characterized eight density fractions of LD isolated from quiescent (control) and regenerating liver after partial hepatectomy, and grouped populations according to their lipid composition. LD from quiescent liver resembled the cholesteryl ester storage LD found in steroidogenic tissues, whereas in the regenerating tissue they were similar to adipocyte LD. Specifically, there were large, light LD with increased triacylglycerol content, the hallmark of liver regeneration. The apparent volume of the dense LD was, however, lower than in the quiescent density-matched populations, concomitant with increased phosphatidylcholine and phosphatidylethanolamine and decreased neutral lipid content. Analysis of the lipid profile of LD populations from quiescent and regenerating tissue leads us to define four physiological LD phenotypes for rat liver."
+    },
+    {
+      "id": "pub-151",
+      "year": "2010",
+      "title": "Serum oxidizability and antioxidant status in patients undergoing in vitro fertilization.",
+      "authors": "Aurrekoetxea I, Ruiz-Sanz JI, Ruiz del Agua A, Navarro R, Hernández ML, Matorras R, Prieto B, Ruiz-Larrea MB.",
+      "journal": "Fertility and Sterility",
+      "topic": "mafld",
+      "doi": "10.1016/j.fertnstert.2009.05.028",
+      "abstract": "ObjectiveTo evaluate the serum oxidizability and antioxidant status in women undergoing an in vitro fertilization (IVF) cycle and to assess the possible relationship of the oxidizability indexes with the pregnancy rate.DesignProspective, longitudinal study.SettingPublic university and public university hospital.Patient(s)Systematically recruited cohort of 125 women undergoing either IVF or intracytoplasmic sperm injection (ICSI).Intervention(s)Serum samples were collected before the beginning of the use of gonadotropins (basal) and the day of human chorionic gonadotropin (hCG) administration (final) during an IVF cycle.Main outcome measure(s)The Cu2+-induced serum oxidation in terms of the oxidation rate in the lag (Vlag) and propagation (Vmax) phases and the time at which the oxidation rate is maximal (tmax), and measurements of serum total antioxidant activity (TAA), tocopherol, hydrophilic antioxidants, malondialdehyde, and nitric oxide.Result(s)Albumin, urate, bilirubin, alpha-tocopherol and gamma-tocopherol, TAA, and tmax statistically significantly decreased after the IVF cycle. Conception cycles were associated with a serum more prone to oxidation compared with nonconception cycles. In multivariate logistic regression analysis, the difference (final-basal) of the oxidation index Vlag (OR 1.394) and the body mass index (OR 0.785) were independent predictors of pregnancy.Conclusion(s)Treatment with IVF induces the production of reactive oxygen species (ROS), which is reflected in a serum less protected against oxidation. The results also suggest a role for ROS in the occurrence of conception in IVF."
+    },
+    {
+      "id": "pub-152",
+      "year": "2010",
+      "title": "A subset of dysregulated metabolic and survivial genes is associated with severity of hepatic steatosis in obese Zucker rats",
+      "authors": "X. Buqué, P. Aspichueta, A. Cano, M.E. Miquilena-Colina, C. García-Monzón, M.J. Martínez, B. Ochoa",
+      "journal": "J. Lipid Res",
+      "topic": "mafld",
+      "doi": "10.7554/elife.81184",
+      "abstract": "Multiple myeloma is an incurable plasma cell malignancy with only a 53% 5-year survival rate. There is a critical need to find new multiple myeloma vulnerabilities and therapeutic avenues. Herein, we identified and explored a novel multiple myeloma target: the fatty acid binding protein (FABP) family. In our work, myeloma cells were treated with FABP inhibitors (BMS3094013 and SBFI-26) and examined in vivo and in vitro for cell cycle state, proliferation, apoptosis, mitochondrial membrane potential, cellular metabolism (oxygen consumption rates and fatty acid oxidation), and DNA methylation properties. Myeloma cell responses to BMS309403, SBFI-26, or both, were also assessed with RNA sequencing (RNA-Seq) and proteomic analysis, and confirmed with western blotting and qRT-PCR. Myeloma cell dependency on FABPs was assessed using the Cancer Dependency Map (DepMap). Finally, MM patient datasets (CoMMpass and GEO) were mined for FABP expression correlations with clinical outcomes. We found that myeloma cells treated with FABPi or with FABP5 knockout (generated via CRISPR/Cas9 editing) exhibited diminished proliferation, increased apoptosis, and metabolic changes in vitro. FABPi had mixed results in vivo, in two pre-clinical MM mouse models, suggesting optimization of in vivo delivery, dosing, or type of FABP inhibitors will be needed before clinical applicability. FABPi negatively impacted mitochondrial respiration and reduced expression of MYC and other key signaling pathways in MM cells in vitro. Clinical data demonstrated worse overall and progression-free survival in patients with high FABP5 expression in tumor cells. Overall, this study establishes the FABP family as a potentially new target in multiple myeloma. In MM cells, FABPs have a multitude of actions and cellular roles that result in the support of myeloma progression. Further research into the FABP family in MM is warrented, especially into the effective translation of targeting these in vivo."
+    },
+    {
+      "id": "pub-153",
+      "year": "2009",
+      "title": "Interleukin-6 is associated with liver lipid homeostasis but not with cell death in experimental hepatic steatosis",
+      "authors": "Sánchez-Garrido MA, Chico Y, González R, Ranchal I, González-Rubio S, Hidalgo AB, Díaz-López C, Costán G, Padillo FJ, De la Mata M, Ochoa B, Muntané J.",
+      "journal": "Innate Immun",
+      "topic": "mafld",
+      "doi": "10.1177/1753425909104900",
+      "abstract": "Hepatic steatosis is a risk factor for the progression of non-alcoholic fatty liver disease. The role of pro-inflammatory interleukin (IL)-6 in hepatic steatosis etiology is controversial. We investigated in vivo and in primary hepatocyte cultures whether IL-6 has a modulator role in liver and mitochondria lipid composition and cell death in a choline-deficient (CD) diet rat model of hepatic steatosis. Dietary choline deficiency increased triglycerides and cholesterol, and reduced phosphatidylcholine (PC), phosphatidylethanolamine (PE) and the membrane integrity marker PC:PE ratio in liver. Choline-deficient diet enhanced systemic IL-6, and IL-6 receptor expression and cell death vulnerability in hepatocytes. Derangement of the mitochondrial electron transport chain and of its phospholipid environment was found in CD rat liver mitochondria, which exhibited elevated concentrations of triglycerides, cardiolipin and PC and elevated PC:PE ratio. The cell treatment with IL-6, but not PC, eliminated much of the CD-promoted lipid imbalance in mitochondria but not tumor-necrosis factor (TNF)-alpha-induced cell death. However, PC supplementation prevented the TNF-alpha-induced DNA fragmentation, cytochrome-c release and caspase-3 activity in control and CD hepatocytes. In conclusion, IL-6 ameliorated the mitochondria lipid disturbance in hepatocytes isolated from steatotic animals. Furthermore, PC is identified as a new survival agent that reverses several TNFalpha-inducible responses that are likely to promote steatosis and necrosis."
+    },
+    {
+      "id": "pub-154",
+      "year": "2008",
+      "title": "Profiling and imaging of lipids on brain and liver tissue by matrix-assisted laser desorption/ ionization mass spectrometry using 2-mercaptobenzothiazole as a matrix",
+      "authors": "Astigarraga E, Barreda-Gómez G, Lombardero L, Fresnedo O, Castaño F, Giralt MT, Ochoa B, Rodríguez-Puertas R, Fernández JA",
+      "journal": "Anal Chem",
+      "topic": "spatial-omics",
+      "doi": "10.1021/ac801662n",
+      "abstract": "2-Mercaptobenzothiazole (MBT) is employed for the first time as a matrix for the analysis of lipids from tissue extracts using matrix-assisted laser desorption/ionization time-of-flight mass spectrometry. We demonstrate that the performance of MBT is superior to that of the matrixes commonly employed for lipids, due to its low vapor pressure, its low acidity, and the formation of small crystals, although because of the strong background at low m/z, it precludes detection of species below approximately 500 Da. This inconvenience can be partly overcome with the formation of Cs adducts. Using a polymer-based dual calibration, a mass accuracy of approximately 10 ppm in lipid extracts and of approximately 80 ppm in tissues is achieved. We present spectra from liver and brain lipid extracts where a large amount of lipid species is identified, in both positive and negative ion modes, with high reproducibility. In addition, the above-mentioned special properties of MBT allow its employment for imaging mass spectrometry. In the present work, images of brain and liver tissues showing different lipid species are presented, demonstrating the advantages of the employment of MBT."
+    },
+    {
+      "id": "pub-155",
+      "year": "2008",
+      "title": "Kupffer cell products and interleukin 1beta directly promote VLDL secretion and apoB mRNA up-regulation in rodent hepatocytes",
+      "authors": "Bartolomé N, Arteta B, Martínez MJ, Chico Y, Ochoa B.",
+      "journal": "Innate Immun",
+      "topic": "mafld",
+      "doi": "10.1177/1753425908094718",
+      "abstract": "Plasma VLDL accumulation in Gram-negative sepsis is partly ascribed to an increased hepatic VLDL production driven by pro-inflammatory cytokines. We previously showed that hepatocytes of the Kupffer cell (KC)-rich periportal area are major contributors to enhanced VLDL production in lipopolysaccharide (LPS)-injected rats. However, it remains to be established whether KC generated products directly affect the number (apoB) and composition of secreted VLDL. Using rat primary cells, we show here that hepatocytes respond to stimulation by soluble mediators released by LPS-stimulated Kupffer cells with enhanced secretion of apoB and triglycerides in phospholipid-rich VLDL particles. Unstimulated KC products also augmented the secretion of normal VLDL, doubling apoB mRNA abundance. IL-1beta treatment resulted in concentration-dependent increases of hepatocyte apoB mRNA and protein secretion, increases that were greater, but not additive, when combined with IL-6 and TNF-alpha. Lipid secretion and MTP mRNA levels were unaffected by cytokines. In summary: (i) enhanced secretion of phospholipid-rich VLDL particles is a net hepatocyte response to LPS-stimulated KC products, which gives a clue about the local role of Kupffer cells in septic dyslipidemia induction; and (ii) pro-inflammatory cytokines act redundantly to enhance apoB secretion involving translational apoB up-regulation, but other humoral components or KC mediators are necessary to accomplish increased lipid association."
+    }
+  ],
+  "training": [
+    {
+      "id": "master-biologia-molecular",
+      "title": "Máster Universitario en Biología Molecular y Biomedicina",
+      "type": "Máster Universitario Oficial",
+      "badge": "60 ECTS • Presencial",
+      "institution": "UPV/EHU & Universidad de Cantabria",
+      "url": "https://www.ehu.eus/es/web/master/master-biologia-molecular-biomedicina",
+      "order": 1,
+      "icon": "fas fa-dna",
+      "bentoSpan": "wide",
+      "contentHtml": "<p>Programa oficial interuniversitario que capacita para el ejercicio profesional en investigación biomédica y otorga acceso directo a estudios de doctorado.</p>\n<p>El profesorado del grupo <strong>Lipids & Liver</strong> coordina e imparte módulos docentes de vanguardia:\n<ul><li><strong>Fisiopatología del Metabolismo Lipídico</strong> (Dra. Patricia Aspichueta).</li><li><strong>Sensores Lipídicos y Regulación Genómica</strong> (Dr. Juan Luis García-Rodríguez).</li><li><strong>Proteómica y Espectrometría de Masas</strong> (Dra. Susana Cristóbal).</li><li><strong>Técnicas Avanzadas en Lipidómica</strong> (Dra. Olatz Fresnedo).</li><li>Tutorización de <strong>Trabajos de Fin de Máster (TFM)</strong> en nuestros laboratorios y en la Unidad SGIker.</li></ul></p>"
+    },
+    {
+      "id": "master-investigacion-biomedica",
+      "title": "Máster Universitario en Investigación Biomédica",
+      "type": "Máster Universitario Oficial",
+      "badge": "60 ECTS • Orientación Investigadora",
+      "institution": "Facultad de Medicina y Enfermería (Campus de Bizkaia) • UPV/EHU",
+      "url": "https://www.ehu.eus/es/web/master/master-investigacion-biomedica",
+      "order": 2,
+      "icon": "fas fa-microscope",
+      "bentoSpan": "compact",
+      "contentHtml": "<p>Título de posgrado oficial de la Facultad de Medicina y Enfermería enfocado en los fundamentos moleculares y metodológicos de las patologías humanas más prevalentes.</p>\n<p>Participación docente del equipo <strong>Lipids & Liver</strong>:\n<ul><li>Impartición de contenidos formativos en fisiopatología traslacional, señalización hepática y modelos experimentales de enfermedad metabólica.</li><li>Dirección y desarrollo experimental de <strong>Trabajos de Fin de Máster (TFM)</strong> en estrecha conexión con el entorno hospitalario e investigación clínica del <strong>IIS Biocruces Bizkaia</strong>.</li></ul></p>"
+    },
+    {
+      "id": "doctorado-biologia-molecular",
+      "title": "Programa de Doctorado en Biología Molecular y Biomedicina",
+      "type": "Programa de Doctorado Oficial",
+      "badge": "Nivel 4 MECES / Nivel 8 EQF • DOKTUM",
+      "institution": "Escuela de Máster y Doctorado (DOKTUM) • UPV/EHU",
+      "url": "https://www.ehu.eus/es/web/doktoregoa/programa-doctorado-biologia-molecular-biomedicina",
+      "order": 3,
+      "icon": "fas fa-award",
+      "bentoSpan": "compact",
+      "contentHtml": "<p>Programa de doctorado de máxima excelencia académica orientado a la formación de personal investigador doctor de proyección internacional.</p>\n<p>El grupo <strong>Lipids & Liver</strong> lidera la línea de investigación oficial:\n<ul><li><strong>Fisiopatología de los lípidos y técnicas lipidómicas</strong>, integrando estudios en esteatohepatitis metabólica (MAFLD/MASLD), daño celular, cáncer de hígado y lipidómica traslacional.</li><li>Formación intensiva predoctoral vinculada a contratos predoctorales del Gobierno Vasco, FPI (Ministerio de Ciencia e Innovación) y FPU (Ministerio de Universidades).</li><li>Dirección de tesis con <strong>Mención Internacional</strong>, estancias en centros extranjeros de prestigio y cotutelas universitarias.</li></ul></p>"
+    },
+    {
+      "id": "grados-ciencias-salud",
+      "title": "Docencia en Grados Universitarios de Ciencias de la Salud",
+      "type": "Grados Oficiales",
+      "badge": "Grado Universitario • UPV/EHU",
+      "institution": "Departamento de Fisiología • Facultad de Medicina y Enfermería",
+      "url": "https://www.ehu.eus/es/web/medikuntza-erizaintza-fakultatea",
+      "order": 4,
+      "icon": "fas fa-user-graduate",
+      "bentoSpan": "wide",
+      "contentHtml": "<p>El personal docente e investigador (PDI) del grupo desarrolla una continuada e intensa labor pedagógica universitaria en las enseñanzas de Grado de la UPV/EHU:\n<ul><li><strong>Grado en Medicina</strong>: Fisiología Humana, Fisiología General y Fisiopatología Hepática y Metabólica.</li><li><strong>Grado en Enfermería</strong>: Fisiología Humana e Inmunofisiología.</li><li><strong>Grado en Odontología</strong>: Fisiología Humana y del Aparato Estomatognático.</li><li><strong>Grado en Bioquímica y Biología Molecular</strong>: Fisiología Molecular y Regulación Metabólica.</li><li>Tutorización anual de <strong>Trabajos de Fin de Grado (TFG)</strong> con inmersión práctica en el laboratorio.</li></ul></p>"
+    }
+  ]
+};
+
+if (typeof window !== 'undefined') {
+  window.APP_DATA = APP_DATA;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = APP_DATA;
+}
