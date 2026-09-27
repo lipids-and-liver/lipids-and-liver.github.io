@@ -3,12 +3,12 @@ import { config, fields, collection } from '@keystatic/core';
 function createThesesCollection(lang: 'es' | 'eu' | 'en', label: string) {
   return collection({
     label,
-    slugField: 'slug',
+    slugField: 'title',
     path: `src/content/theses/${lang}/*`,
     format: { contentField: 'content' },
     schema: {
-      slug: fields.slug({ name: { label: 'Identificador / Slug (ej. tesis-1)' } }),
-      title: fields.text({ label: 'Título de la Tesis' }),
+      id: fields.text({ label: 'Identificador / ID (ej. tesis-1)' }),
+      title: fields.slug({ name: { label: 'Título de la Tesis' } }),
       author: fields.text({ label: 'Doctorando / Autor' }),
       status: fields.select({
         label: 'Estado',
@@ -39,23 +39,14 @@ function createThesesCollection(lang: 'es' | 'eu' | 'en', label: string) {
 function createTeamCollection(lang: 'es' | 'eu' | 'en', label: string) {
   return collection({
     label,
-    slugField: 'slug',
+    slugField: 'name',
     path: `src/content/team/${lang}/*`,
     format: { contentField: 'content' },
     schema: {
-      slug: fields.slug({ name: { label: 'Identificador / Slug (ej. patricia-aspichueta)' } }),
-      name: fields.text({ label: 'Nombre y Apellidos' }),
+      id: fields.text({ label: 'Identificador / ID (ej. patricia-aspichueta)' }),
+      name: fields.slug({ name: { label: 'Nombre y Apellidos' } }),
       role: fields.text({ label: 'Cargo o Puesto' }),
-      category: fields.select({
-        label: 'Categoría',
-        options: [
-          { label: 'PDI (Profesorado / Investigador)', value: 'PDI' },
-          { label: 'Posdoctoral', value: 'Posdoctoral' },
-          { label: 'Predoctoral', value: 'Predoctoral' },
-          { label: 'Técnico / Apoyo', value: 'Técnico' },
-        ],
-        defaultValue: 'PDI',
-      }),
+      category: fields.text({ label: 'Categoría (ej. PDI, Posdoctoral, Predoctoral, Técnico)' }),
       department: fields.text({ label: 'Departamento / Filiación' }),
       image: fields.text({ label: 'Ruta de la Foto', defaultValue: '/assets/images/team/placeholder.jpg' }),
       email: fields.text({ label: 'Correo Electrónico' }),
@@ -82,12 +73,12 @@ function createTeamCollection(lang: 'es' | 'eu' | 'en', label: string) {
 function createResearchCollection(lang: 'es' | 'eu' | 'en', label: string) {
   return collection({
     label,
-    slugField: 'slug',
+    slugField: 'title',
     path: `src/content/research/${lang}/*`,
     format: { contentField: 'content' },
     schema: {
-      slug: fields.slug({ name: { label: 'Identificador / Slug (ej. mafld)' } }),
-      title: fields.text({ label: 'Título de la Línea' }),
+      id: fields.text({ label: 'Identificador / ID (ej. mafld)' }),
+      title: fields.slug({ name: { label: 'Título de la Línea' } }),
       shortDesc: fields.text({ label: 'Descripción Breve (Tarjeta)', multiline: true }),
       badge: fields.text({ label: 'Distintivo / Etiqueta' }),
       image: fields.text({ label: 'Imagen de Cabecera (Ruta)' }),
@@ -101,16 +92,16 @@ function createResearchCollection(lang: 'es' | 'eu' | 'en', label: string) {
 function createPublicationsCollection(lang: 'es' | 'eu' | 'en', label: string) {
   return collection({
     label,
-    slugField: 'slug',
+    slugField: 'title',
     path: `src/content/publications/${lang}/*`,
     format: { contentField: 'content' },
     schema: {
-      slug: fields.slug({ name: { label: 'Identificador / Slug (ej. 2024-nature-comm)' } }),
+      id: fields.text({ label: 'Identificador / ID (ej. pub-001)' }),
       year: fields.text({ label: 'Año (ej. 2025)' }),
-      title: fields.text({ label: 'Título del Artículo' }),
+      title: fields.slug({ name: { label: 'Título del Artículo' } }),
       authors: fields.text({ label: 'Autores' }),
       journal: fields.text({ label: 'Revista Científica / Journal' }),
-      topic: fields.text({ label: 'Tema / Línea (ej. MAFLD, Cáncer, Spatial Omics)' }),
+      topic: fields.text({ label: 'Tema / Línea (ej. mafld, cancer, spatial-omics)' }),
       doi: fields.text({ label: 'DOI (ej. 10.1038/s41467-024-12345-6)' }),
       content: fields.markdoc({ label: 'Abstract / Resumen', extension: 'md' }),
     },
@@ -120,18 +111,19 @@ function createPublicationsCollection(lang: 'es' | 'eu' | 'en', label: string) {
 function createTrainingCollection(lang: 'es' | 'eu' | 'en', label: string) {
   return collection({
     label,
-    slugField: 'slug',
+    slugField: 'title',
     path: `src/content/training/${lang}/*`,
     format: { contentField: 'content' },
     schema: {
-      slug: fields.slug({ name: { label: 'Identificador / Slug' } }),
-      title: fields.text({ label: 'Título del Programa / Grado' }),
+      id: fields.text({ label: 'Identificador / ID' }),
+      title: fields.slug({ name: { label: 'Título del Programa / Grado' } }),
       type: fields.text({ label: 'Tipo (Grado, Máster, Doctorado)' }),
       badge: fields.text({ label: 'Distintivo' }),
       institution: fields.text({ label: 'Centro / Facultad' }),
       url: fields.text({ label: 'Enlace Oficial' }),
       icon: fields.text({ label: 'Icono FontAwesome (ej. fas fa-graduation-cap)' }),
       order: fields.integer({ label: 'Orden', defaultValue: 99 }),
+      bentoSpan: fields.text({ label: 'Disposición Bento (ej. wide)' }),
       content: fields.markdoc({ label: 'Descripción del Programa', extension: 'md' }),
     },
   });
@@ -140,17 +132,25 @@ function createTrainingCollection(lang: 'es' | 'eu' | 'en', label: string) {
 function createPresentationCollection(lang: 'es' | 'eu' | 'en', label: string) {
   return collection({
     label,
-    slugField: 'slug',
+    slugField: 'tabTitle',
     path: `src/content/presentation/${lang}/*`,
     format: { contentField: 'content' },
     schema: {
-      slug: fields.slug({ name: { label: 'Identificador / Slug (ej. 1-perfil)' } }),
-      tabTitle: fields.text({ label: 'Título de la Pestaña' }),
+      id: fields.text({ label: 'Identificador / ID (ej. perfil)' }),
+      tabTitle: fields.slug({ name: { label: 'Título de la Pestaña' } }),
       tabId: fields.text({ label: 'ID de la Pestaña HTML (ej. tab-profile)' }),
       order: fields.integer({ label: 'Orden', defaultValue: 99 }),
       specialties: fields.array(fields.text({ label: 'Especialidad' }), {
         label: 'Especialidades / Áreas Clave',
       }),
+      staffCompositionTitle: fields.text({ label: 'Título Composición Personal' }),
+      staffComposition: fields.array(
+        fields.object({
+          count: fields.text({ label: 'Número de Personas' }),
+          role: fields.text({ label: 'Categoría o Puesto' }),
+        }),
+        { label: 'Composición del Personal' }
+      ),
       content: fields.markdoc({ label: 'Texto Institucional', extension: 'md' }),
     },
   });
