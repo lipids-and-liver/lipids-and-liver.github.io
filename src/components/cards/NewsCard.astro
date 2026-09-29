@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { article, lang = 'es' } = Astro.props;
-const { title, date, category, categoryBadge, summary, author, featured } = article.data;
+const { title, date, category, categoryBadge, summary, author, featured, image } = article.data;
 const slug = getItemSlug(article);
 const t = getTranslations(lang);
 
@@ -26,9 +26,15 @@ try {
 } catch (e) {}
 
 const articleUrl = getLocalizedPath(`/noticias/${slug}`, lang);
+const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https://') ? image : (image.startsWith('/') ? image : `/${image}`)) : null;
 ---
 
 <article class={`news-card-inst ${featured ? 'news-card-featured' : ''}`}>
+  {imageSrc && (
+    <a href={articleUrl} class="news-card-img-link">
+      <img src={imageSrc} alt={title} class="news-card-img" loading="lazy" />
+    </a>
+  )}
   <div class="news-card-top">
     <span class="news-category-badge">
       <i class="fas fa-bookmark"></i> {categoryBadge || category}

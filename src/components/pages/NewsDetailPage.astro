@@ -18,7 +18,7 @@ if (!article) {
 }
 
 const { Content } = await render(article);
-const { title, date, category, categoryBadge, author } = article.data;
+const { title, date, category, categoryBadge, author, image } = article.data;
 
 let formattedDate = date;
 try {
@@ -31,6 +31,8 @@ try {
     });
   }
 } catch (e) {}
+
+const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https://') ? image : (image.startsWith('/') ? image : `/${image}`)) : null;
 ---
 
 <Layout currentPage="news" lang={lang} title={`${title} | Lipids & Liver`}>
@@ -69,6 +71,12 @@ try {
 
         <h1 class="news-detail-title">{title}</h1>
       </div>
+
+      {imageSrc && (
+        <div class="news-detail-image-box">
+          <img src={imageSrc} alt={title} class="news-detail-image" />
+        </div>
+      )}
 
       <div class="news-detail-content markdown-body">
         <Content />
