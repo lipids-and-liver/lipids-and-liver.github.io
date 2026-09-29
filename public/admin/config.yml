@@ -157,7 +157,7 @@ collections:
     fields:
       - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: easl-congress-milan" }
       - { label: "Titular de la Noticia", name: "title", widget: "string" }
-      - { label: "Fecha de Publicación", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Fecha de Publicación", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD" }
       - { label: "Categoría", name: "category", widget: "select", options: ["Congresos", "Publicaciones", "Acreditación", "Tesis", "Divulgación", "Premios"] }
       - { label: "Insignia de Categoría", name: "categoryBadge", widget: "string", required: false }
       - { label: "Resumen Breve", name: "summary", widget: "text" }
