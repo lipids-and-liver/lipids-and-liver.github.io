@@ -1,13 +1,13 @@
 ---
-id: "doctorado-biologia-molecular"
-title: "Biologia Molekularra eta Biomedikuntza Doktorego Programa"
-type: "Doktorego Programa Ofiziala"
-badge: "MECES 4 Maila / EQF 8 Maila • DOKTUM"
-institution: "Master eta Doktorego Eskola (DOKTUM) • UPV/EHU"
-url: "https://www.ehu.eus/es/web/doktoregoa/programa-doctorado-biologia-molecular-biomedicina"
+id: doctorado-biologia-molecular
+title: Biologia Molekularra eta Biomedikuntza Doktorego Programa
+type: Doktorego Programa Ofiziala
+badge: MECES 4 Maila / EQF 8 Maila • DOKTUM
+institution: Master eta Doktorego Eskola (DOKTUM) • UPV/EHU
+url: https://www.ehu.eus/es/web/doktoregoa/programa-doctorado-biologia-molecular-biomedicina
+icon: fas fa-award
 order: 3
-icon: "fas fa-award"
-bentoSpan: "compact"
+bentoSpan: compact
 ---
 
 Bikaintasun akademiko handiko doktorego-programa, nazioarteko proiekzioa duten ikertzaile doktoreak prestatzera bideratua.

@@ -1,13 +1,13 @@
 ---
-id: "doctorado-biologia-molecular"
-title: "PhD Programme in Molecular Biology and Biomedicine"
-type: "Official Doctoral Programme (DOKTUM)"
-badge: "MECES Level 4 / EQF Level 8 • DOKTUM"
-institution: "Master and Doctoral School (DOKTUM) • UPV/EHU"
-url: "https://www.ehu.eus/es/web/doktoregoa/programa-doctorado-biologia-molecular-biomedicina"
+id: doctorado-biologia-molecular
+title: PhD Programme in Molecular Biology and Biomedicine
+type: Official Doctoral Programme (DOKTUM)
+badge: MECES Level 4 / EQF Level 8 • DOKTUM
+institution: Master and Doctoral School (DOKTUM) • UPV/EHU
+url: https://www.ehu.eus/es/web/doktoregoa/programa-doctorado-biologia-molecular-biomedicina
+icon: fas fa-award
 order: 3
-icon: "fas fa-award"
-bentoSpan: "compact"
+bentoSpan: compact
 ---
 
 Doctoral programme of highest academic excellence aimed at training doctorate-level researchers with international reach.
