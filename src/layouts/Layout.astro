@@ -6,18 +6,25 @@ interface Props {
   description?: string;
   currentPage?: string;
   lang?: Locale;
+  isHoldingPage?: boolean;
 }
 
 const {
   title = "Lipids & Liver - Grupo de Investigación Consolidado | UPV/EHU & IIS Biocruces Bizkaia",
   description = "Página oficial del Grupo de Investigación Consolidado Lipids & Liver de la Universidad del País Vasco (UPV/EHU) e Instituto Sanitario Biocruces Bizkaia. Investigación en esteatosis hepática (MAFLD), cáncer hepático, lipidómica, tesis doctorales y exposoma.",
   currentPage = "home",
-  lang = "es"
+  lang = "es",
+  isHoldingPage = false
 } = Astro.props;
 
 const t = getTranslations(lang);
 const currentPath = Astro.url.pathname;
 const basePath = getPathWithoutLocale(currentPath);
+
+const homeLink = isHoldingPage ? (lang === 'es' ? '/' : `/${lang}/`) : getLocalizedPath('/', lang);
+const langEsLink = isHoldingPage ? '/' : getLocalizedPath(basePath, 'es');
+const langEuLink = isHoldingPage ? '/eu/' : getLocalizedPath(basePath, 'eu');
+const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 ---
 
 <!DOCTYPE html>
@@ -63,11 +70,11 @@ const basePath = getPathWithoutLocale(currentPath);
       <div class="header-main-row">
         <!-- Dual Logos Container: EHU Logo + Group Logo -->
         <div class="brand-logos-container">
-          <a href={getLocalizedPath('/', lang)}>
+          <a href={homeLink}>
             <img src="/assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="ehu-logo-img" id="ehu-header-logo" />
           </a>
           <div class="brand-divider"></div>
-          <a href={getLocalizedPath('/', lang)}>
+          <a href={homeLink}>
             <img src="/assets/images/logo/lipid_liver_logo.png" alt="Lipids & Liver Logo" class="group-logo-img" />
           </a>
           <div class="header-title-box">
@@ -79,9 +86,9 @@ const basePath = getPathWithoutLocale(currentPath);
         <div class="header-actions">
           <!-- Language Switcher -->
           <div class="lang-selector" id="lang-switch-group">
-            <a href={getLocalizedPath(basePath, 'es')} class={`lang-btn ${lang === 'es' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="es">ES</a>
-            <a href={getLocalizedPath(basePath, 'eu')} class={`lang-btn ${lang === 'eu' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="eu">EU</a>
-            <a href={getLocalizedPath(basePath, 'en')} class={`lang-btn ${lang === 'en' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="en">EN</a>
+            <a href={langEsLink} class={`lang-btn ${lang === 'es' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="es">ES</a>
+            <a href={langEuLink} class={`lang-btn ${lang === 'eu' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="eu">EU</a>
+            <a href={langEnLink} class={`lang-btn ${lang === 'en' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="en">EN</a>
           </div>
 
           <!-- Theme Toggle -->
@@ -93,20 +100,27 @@ const basePath = getPathWithoutLocale(currentPath);
     </div>
 
     <!-- Main Navigation Bar -->
-    <!-- Main Navigation Bar -->
     <nav class="nav-bar-row">
       <div class="container">
-        <ul class="nav-menu" id="main-nav-links">
-          <li class="nav-menu-item"><a href={getLocalizedPath('/', lang)} class={currentPage === 'home' ? 'active' : ''}>{t.nav_home}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/tesis', lang)} class={currentPage === 'theses' ? 'active' : ''}>{t.nav_theses}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/publicaciones', lang)} class={currentPage === 'pubs' ? 'active' : ''}>{t.nav_pubs}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#training', lang)}>{t.nav_training}</a></li>
-          <li class="nav-menu-item"><a href={getLocalizedPath('/#contact', lang)}>{t.nav_contact}</a></li>
-          <li class="nav-menu-item" style="margin-left:auto"><a href={getLocalizedPath('/curriculum', lang)} class={currentPage === 'curriculum' ? 'active' : ''}><i class="fas fa-id-card"></i> {t.nav_cv_portal}</a></li>
-        </ul>
+        {isHoldingPage ? (
+          <ul class="nav-menu" id="main-nav-links">
+            <li class="nav-menu-item"><a href="#hero" class="active">{t.nav_home}</a></li>
+            <li class="nav-menu-item"><a href="#resumen">{t.about_title}</a></li>
+            <li class="nav-menu-item"><a href="#contacto">{t.nav_contact}</a></li>
+          </ul>
+        ) : (
+          <ul class="nav-menu" id="main-nav-links">
+            <li class="nav-menu-item"><a href={getLocalizedPath('/', lang)} class={currentPage === 'home' ? 'active' : ''}>{t.nav_home}</a></li>
+            <li class="nav-menu-item"><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
+            <li class="nav-menu-item"><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
+            <li class="nav-menu-item"><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
+            <li class="nav-menu-item"><a href={getLocalizedPath('/tesis', lang)} class={currentPage === 'theses' ? 'active' : ''}>{t.nav_theses}</a></li>
+            <li class="nav-menu-item"><a href={getLocalizedPath('/publicaciones', lang)} class={currentPage === 'pubs' ? 'active' : ''}>{t.nav_pubs}</a></li>
+            <li class="nav-menu-item"><a href={getLocalizedPath('/#training', lang)}>{t.nav_training}</a></li>
+            <li class="nav-menu-item"><a href={getLocalizedPath('/#contact', lang)}>{t.nav_contact}</a></li>
+            <li class="nav-menu-item" style="margin-left:auto"><a href={getLocalizedPath('/curriculum', lang)} class={currentPage === 'curriculum' ? 'active' : ''}><i class="fas fa-id-card"></i> {t.nav_cv_portal}</a></li>
+          </ul>
+        )}
       </div>
     </nav>
 
@@ -153,16 +167,24 @@ const basePath = getPathWithoutLocale(currentPath);
         </div>
         <div>
           <h4>{t.footer_nav}</h4>
-          <ul class="footer-links-inst">
-            <li><a href={getLocalizedPath('/', lang)}>{t.nav_home}</a></li>
-            <li><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
-            <li><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
-            <li><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
-            <li><a href={getLocalizedPath('/#theses', lang)}>{t.nav_theses}</a></li>
-            <li><a href={getLocalizedPath('/tesis', lang)}>{t.theses_page_title}</a></li>
-            <li><a href={getLocalizedPath('/publicaciones', lang)}>{t.pubs_title}</a></li>
-            <li><a href={getLocalizedPath('/curriculum', lang)}>{t.nav_cv_portal}</a></li>
-          </ul>
+          {isHoldingPage ? (
+            <ul class="footer-links-inst">
+              <li><a href="#hero">{t.nav_home}</a></li>
+              <li><a href="#resumen">{t.about_title}</a></li>
+              <li><a href="#contacto">{t.nav_contact}</a></li>
+            </ul>
+          ) : (
+            <ul class="footer-links-inst">
+              <li><a href={getLocalizedPath('/', lang)}>{t.nav_home}</a></li>
+              <li><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
+              <li><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
+              <li><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
+              <li><a href={getLocalizedPath('/#theses', lang)}>{t.nav_theses}</a></li>
+              <li><a href={getLocalizedPath('/tesis', lang)}>{t.theses_page_title}</a></li>
+              <li><a href={getLocalizedPath('/publicaciones', lang)}>{t.pubs_title}</a></li>
+              <li><a href={getLocalizedPath('/curriculum', lang)}>{t.nav_cv_portal}</a></li>
+            </ul>
+          )}
         </div>
         <div>
           <h4>{t.footer_interest}</h4>

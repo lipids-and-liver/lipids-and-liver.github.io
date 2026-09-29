@@ -1,5 +1,5 @@
 ---
-import CurriculumIndexPage from '../../../components/pages/CurriculumIndexPage.astro';
+import HomePage from '../../../components/pages/HomePage.astro';
 import type { Locale } from '../../../utils/i18n';
 
 export function getStaticPaths() {
@@ -12,4 +12,4 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 
-<CurriculumIndexPage lang={lang as Locale} />
+<HomePage lang={lang as Locale} />

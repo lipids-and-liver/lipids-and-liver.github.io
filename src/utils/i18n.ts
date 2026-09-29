@@ -26,11 +26,22 @@ export function getItemLang(entry: { id: string }): Locale {
   return 'es';
 }
 
+export const PORTAL_BASE = '/portal';
+
 export function getPathWithoutLocale(pathname: string): string {
   // Normalize leading slash and remove any trailing .html or index.html
   let clean = pathname.replace(/\/index\.html$/, '').replace(/\.html$/, '');
+
+  // If inside portal, strip PORTAL_BASE
+  if (clean === PORTAL_BASE) {
+    clean = '/';
+  } else if (clean.startsWith(`${PORTAL_BASE}/`)) {
+    clean = clean.slice(PORTAL_BASE.length);
+  }
+
   // Remove /eu or /en prefix (e.g. /eu, /eu/, /eu/tesis, /en/curriculum)
   clean = clean.replace(/^\/(eu|en)(\/|$)/, '/');
+
   // Ensure starts with /
   if (!clean.startsWith('/')) clean = '/' + clean;
   // If ends with trailing slash (except root /), strip it for consistent joining
@@ -43,7 +54,7 @@ export function getPathWithoutLocale(pathname: string): string {
 export function getLocalizedPath(path: string, lang: Locale = DEFAULT_LOCALE): string {
   // In-page anchor like #hero or #lines
   if (path.startsWith('#')) {
-    return lang === DEFAULT_LOCALE ? `/${path}` : `/${lang}/${path}`;
+    return lang === DEFAULT_LOCALE ? `${PORTAL_BASE}/${path}` : `${PORTAL_BASE}/${lang}/${path}`;
   }
 
   // If path already has hash at end, e.g. /#lines
@@ -56,10 +67,12 @@ export function getLocalizedPath(path: string, lang: Locale = DEFAULT_LOCALE): s
 
   let localized = clean;
   if (lang !== DEFAULT_LOCALE) {
-    localized = clean === '/' ? (hashSuffix ? `/${lang}/` : `/${lang}`) : `/${lang}${clean}`;
+    localized = clean === '/' ? `/${lang}/` : `/${lang}${clean}`;
   }
 
-  return `${localized}${hashSuffix}`;
+  // Prepend PORTAL_BASE
+  const fullPath = localized === '/' ? `${PORTAL_BASE}/` : `${PORTAL_BASE}${localized}`;
+  return `${fullPath}${hashSuffix}`;
 }
 
 export type LocalizedItem<T> = T & { slug: string; locale: Locale };

@@ -1,6 +1,6 @@
 ---
-import ResearchDetailPage from '../../components/pages/ResearchDetailPage.astro';
-import { getAllSlugs } from '../../utils/i18n';
+import ResearchDetailPage from '../../../components/pages/ResearchDetailPage.astro';
+import { getAllSlugs } from '../../../utils/i18n';
 
 export async function getStaticPaths() {
   const slugs = await getAllSlugs('research');

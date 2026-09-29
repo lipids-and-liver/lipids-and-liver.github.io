@@ -1,0 +1,371 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<Layout currentPage="home" lang={lang} isHoldingPage={true} title={`Lipids & Liver - ${t.holding_title} | UPV/EHU & IIS Biocruces Bizkaia`}>
+  <!-- Institutional Hero Banner with Dynamic Interactive Network -->
+  <section class="institutional-hero" id="hero">
+    <!-- Interactive Background Canvas & Ambient Glowing Orbs -->
+    <div class="hero-canvas-wrap">
+      <canvas id="hero-particles-canvas"></canvas>
+    </div>
+    <div class="hero-ambient-orb hero-orb-1"></div>
+    <div class="hero-ambient-orb hero-orb-2"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-tag">
+          <span class="hero-pulse-badge">
+            <span class="hero-pulse-ring"></span>
+            <span class="hero-pulse-dot"></span>
+          </span>
+          <i class="fas fa-tools"></i> {t.holding_badge}
+        </span>
+        
+        <h1 class="hero-headline">
+          {t.holding_title}
+        </h1>
+
+        <p class="hero-lead">
+          {t.holding_subtitle}
+        </p>
+
+        <p style="color:var(--text-muted, #64748b); font-size:1.02rem; line-height:1.65; margin-bottom:1.8rem;">
+          {t.holding_desc}
+        </p>
+
+        <div class="hero-btn-group">
+          <a href="#contacto" class="btn-inst-primary">
+            {t.holding_btn_contact} <i class="fas fa-envelope"></i>
+          </a>
+          <a href="#resumen" class="btn-inst-secondary">
+            {t.holding_btn_explore} <i class="fas fa-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-banner-img-box">
+        <img src="/assets/images/hero_outdoor_group.jpg" alt="Grupo de Investigación Lipids & Liver en Exteriores" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Notice Bar -->
+  <section style="background:var(--card-bg, #ffffff); border-bottom:1px solid var(--border-color, #e2e8f0); padding:1.25rem 0;">
+    <div class="container">
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:40px; height:40px; border-radius:10px; background:rgba(104,159,56,0.12); color:#689F38; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
+            <i class="fas fa-flask"></i>
+          </div>
+          <div>
+            <div style="font-weight:700; color:var(--text-main, #002B49); font-size:0.95rem;">{t.holding_notice_title}</div>
+            <div style="color:var(--text-muted, #64748b); font-size:0.875rem;">{t.holding_notice_desc}</div>
+          </div>
+        </div>
+        <div style="font-size:0.85rem; font-weight:600; color:var(--text-muted, #64748b); display:flex; align-items:center; gap:8px;">
+          <i class="fas fa-map-marker-alt" style="color:#002B49;"></i> Campus de Leioa • IIS Biocruces Bizkaia
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary & Scientific Identity Section -->
+  <section class="section-container" id="resumen" style="padding:4rem 0; background:var(--bg-main, #f8fafc);">
+    <div class="container">
+      <div class="section-header" style="text-align:center; max-width:800px; margin:0 auto 3rem auto;">
+        <span class="section-tag" style="background:rgba(0,43,73,0.08); color:var(--text-main, #002B49); padding:4px 12px; border-radius:20px; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">
+          {t.about_title}
+        </span>
+        <h2 style="font-size:2.1rem; font-weight:800; color:var(--text-main, #002B49); margin-top:0.6rem; margin-bottom:0.75rem;">
+          {t.hero_title}
+        </h2>
+        <p style="color:var(--text-muted, #64748b); font-size:1.05rem; line-height:1.6;">
+          {t.hero_subtitle}
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
+        <!-- Card 1: Líneas -->
+        <div style="background:var(--card-bg, #ffffff); border:1px solid var(--border-color, #e2e8f0); border-radius:16px; padding:2rem; box-shadow:0 4px 16px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:transform 0.2s ease, box-shadow 0.2s ease;">
+          <div style="width:48px; height:48px; border-radius:12px; background:rgba(0,43,73,0.08); color:#002B49; display:flex; align-items:center; justify-content:center; font-size:1.3rem;">
+            <i class="fas fa-microscope"></i>
+          </div>
+          <h3 style="font-size:1.2rem; font-weight:700; color:var(--text-main, #002B49); margin:0;">
+            {t.holding_card_lines_title}
+          </h3>
+          <p style="color:var(--text-muted, #64748b); font-size:0.92rem; line-height:1.6; margin:0;">
+            {t.holding_card_lines_desc}
+          </p>
+        </div>
+
+        <!-- Card 2: Liderazgo -->
+        <div style="background:var(--card-bg, #ffffff); border:1px solid var(--border-color, #e2e8f0); border-radius:16px; padding:2rem; box-shadow:0 4px 16px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:transform 0.2s ease, box-shadow 0.2s ease;">
+          <div style="width:48px; height:48px; border-radius:12px; background:rgba(104,159,56,0.12); color:#689F38; display:flex; align-items:center; justify-content:center; font-size:1.3rem;">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <h3 style="font-size:1.2rem; font-weight:700; color:var(--text-main, #002B49); margin:0;">
+            {t.holding_card_leadership_title}
+          </h3>
+          <p style="color:var(--text-muted, #64748b); font-size:0.92rem; line-height:1.6; margin:0;">
+            {t.holding_card_leadership_desc}
+          </p>
+        </div>
+
+        <!-- Card 3: Filiación -->
+        <div style="background:var(--card-bg, #ffffff); border:1px solid var(--border-color, #e2e8f0); border-radius:16px; padding:2rem; box-shadow:0 4px 16px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:transform 0.2s ease, box-shadow 0.2s ease;">
+          <div style="width:48px; height:48px; border-radius:12px; background:rgba(30,58,95,0.08); color:#1E3A5F; display:flex; align-items:center; justify-content:center; font-size:1.3rem;">
+            <i class="fas fa-university"></i>
+          </div>
+          <h3 style="font-size:1.2rem; font-weight:700; color:var(--text-main, #002B49); margin:0;">
+            {t.holding_card_affil_title}
+          </h3>
+          <p style="color:var(--text-muted, #64748b); font-size:0.92rem; line-height:1.6; margin:0;">
+            {t.holding_card_affil_desc}
+          </p>
+        </div>
+
+        <!-- Card 4: SGIker -->
+        <div style="background:var(--card-bg, #ffffff); border:1px solid var(--border-color, #e2e8f0); border-radius:16px; padding:2rem; box-shadow:0 4px 16px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:transform 0.2s ease, box-shadow 0.2s ease;">
+          <div style="width:48px; height:48px; border-radius:12px; background:rgba(0,43,73,0.08); color:#002B49; display:flex; align-items:center; justify-content:center; font-size:1.3rem;">
+            <i class="fas fa-dna"></i>
+          </div>
+          <h3 style="font-size:1.2rem; font-weight:700; color:var(--text-main, #002B49); margin:0;">
+            {t.holding_card_sgiker_title}
+          </h3>
+          <p style="color:var(--text-muted, #64748b); font-size:0.92rem; line-height:1.6; margin:0;">
+            {t.holding_card_sgiker_desc}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Contact & Headquarters Section -->
+  <section class="section-container" id="contacto" style="padding:4rem 0; background:var(--card-bg, #ffffff); border-top:1px solid var(--border-color, #e2e8f0);">
+    <div class="container">
+      <div style="max-width:900px; margin:0 auto; background:var(--bg-main, #f8fafc); border:1px solid var(--border-color, #e2e8f0); border-radius:24px; padding:3rem 2.5rem; box-shadow:0 6px 24px rgba(0,0,0,0.04);">
+        <div style="text-align:center; margin-bottom:2.5rem;">
+          <span style="background:rgba(104,159,56,0.12); color:#689F38; padding:4px 14px; border-radius:20px; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">
+            {t.contact_title}
+          </span>
+          <h2 style="font-size:2rem; font-weight:800; color:var(--text-main, #002B49); margin-top:0.6rem; margin-bottom:0.5rem;">
+            {t.holding_contact_title}
+          </h2>
+          <p style="color:var(--text-muted, #64748b); font-size:1rem;">
+            {t.holding_contact_desc}
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px; margin-bottom:2.5rem;">
+          <!-- Postal Address -->
+          <div style="background:var(--card-bg, #ffffff); border:1px solid var(--border-color, #e2e8f0); border-radius:14px; padding:1.5rem; display:flex; gap:16px;">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(0,43,73,0.08); color:#002B49; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <div style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-muted, #64748b); margin-bottom:4px;">{t.contact_postal}</div>
+              <div style="color:var(--text-main, #002B49); font-size:0.92rem; font-weight:600; line-height:1.5;">
+                Departamento de Fisiología<br />
+                Facultad de Medicina y Enfermería (UPV/EHU)<br />
+                Barrio Sarriena s/n, 48940 Leioa, Bizkaia
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div style="background:var(--card-bg, #ffffff); border:1px solid var(--border-color, #e2e8f0); border-radius:14px; padding:1.5rem; display:flex; gap:16px;">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(104,159,56,0.12); color:#689F38; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <div style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-muted, #64748b); margin-bottom:4px;">{t.contact_email_title}</div>
+              <div style="color:var(--text-main, #002B49); font-size:0.95rem; font-weight:600;">
+                <a href="mailto:patricia.aspichueta@ehu.eus" style="color:var(--text-main, #002B49); text-decoration:underline;">patricia.aspichueta@ehu.eus</a>
+              </div>
+              <div style="color:var(--text-muted, #64748b); font-size:0.82rem; margin-top:4px;">
+                Dra. Patricia Aspichueta (IP)
+              </div>
+            </div>
+          </div>
+
+          <!-- Affiliation / Campus -->
+          <div style="background:var(--card-bg, #ffffff); border:1px solid var(--border-color, #e2e8f0); border-radius:14px; padding:1.5rem; display:flex; gap:16px;">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(30,58,95,0.08); color:#1E3A5F; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
+              <i class="fas fa-hospital-user"></i>
+            </div>
+            <div>
+              <div style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-muted, #64748b); margin-bottom:4px;">Instituto Sanitario</div>
+              <div style="color:var(--text-main, #002B49); font-size:0.92rem; font-weight:600; line-height:1.5;">
+                IIS Biocruces Bizkaia<br />
+                <span style="font-size:0.82rem; color:var(--text-muted, #64748b); font-weight:normal;">Área de Enfermedades Hepáticas y Digestivas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <a href="mailto:patricia.aspichueta@ehu.eus?subject=Consulta%20Grupo%20Lipids%20and%20Liver" class="btn-inst-primary" style="padding:14px 32px; font-size:1rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
+            <i class="fas fa-paper-plane"></i> {t.holding_btn_contact}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Hero Particles Script (Identical to main portal) -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroSection = document.getElementById('hero');
+      const heroCanvas = document.getElementById('hero-particles-canvas');
+
+      if (heroSection && heroCanvas) {
+        const ctx = heroCanvas.getContext('2d');
+        if (ctx) {
+          let width = (heroCanvas.width = heroSection.offsetWidth);
+          let height = (heroCanvas.height = heroSection.offsetHeight);
+          let animId = null;
+          let isHeroVisible = true;
+
+          const numParticles = 45;
+          const particles = [];
+          const mouse = { x: -1000, y: -1000, active: false };
+
+          class Particle {
+            constructor() {
+              this.reset(true);
+            }
+
+            reset(initial = false) {
+              this.x = Math.random() * width;
+              this.y = initial ? Math.random() * height : height + 10;
+              this.baseRadius = Math.random() * 3.5 + 1.5;
+              this.radius = this.baseRadius;
+              this.vx = (Math.random() - 0.5) * 0.45;
+              this.vy = -(Math.random() * 0.55 + 0.2);
+              this.alpha = Math.random() * 0.45 + 0.2;
+              this.pulseAngle = Math.random() * Math.PI * 2;
+              this.pulseSpeed = Math.random() * 0.025 + 0.01;
+              this.isGreen = Math.random() > 0.55;
+            }
+
+            update() {
+              this.pulseAngle += this.pulseSpeed;
+              this.radius = this.baseRadius + Math.sin(this.pulseAngle) * 0.8;
+              this.x += this.vx;
+              this.y += this.vy;
+
+              if (mouse.active) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 140) {
+                  const force = (140 - dist) / 140;
+                  this.x -= (dx / dist) * force * 1.5;
+                  this.y -= (dy / dist) * force * 1.5;
+                }
+              }
+
+              if (this.x < -20 || this.x > width + 20 || this.y < -20) {
+                this.reset();
+              }
+            }
+
+            draw() {
+              ctx.save();
+              ctx.beginPath();
+              ctx.arc(this.x, this.y, Math.max(0.5, this.radius), 0, Math.PI * 2);
+              if (this.isGreen) {
+                ctx.fillStyle = `rgba(104, 159, 56, ${this.alpha * 0.85})`;
+                ctx.shadowColor = 'rgba(104, 159, 56, 0.4)';
+              } else {
+                ctx.fillStyle = `rgba(0, 43, 73, ${this.alpha * 0.75})`;
+                ctx.shadowColor = 'rgba(0, 43, 73, 0.3)';
+              }
+              ctx.shadowBlur = 8;
+              ctx.fill();
+              ctx.restore();
+            }
+          }
+
+          for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+          }
+
+          function animate() {
+            if (!isHeroVisible) return;
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+              particles[i].update();
+              particles[i].draw();
+            }
+
+            for (let i = 0; i < particles.length; i++) {
+              for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 110) {
+                  const lineAlpha = (1 - dist / 110) * 0.18;
+                  ctx.save();
+                  ctx.beginPath();
+                  ctx.moveTo(particles[i].x, particles[i].y);
+                  ctx.lineTo(particles[j].x, particles[j].y);
+                  ctx.strokeStyle = `rgba(0, 43, 73, ${lineAlpha})`;
+                  ctx.lineWidth = 0.8;
+                  ctx.stroke();
+                  ctx.restore();
+                }
+              }
+            }
+
+            animId = requestAnimationFrame(animate);
+          }
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              isHeroVisible = entry.isIntersecting;
+              if (isHeroVisible && !animId) {
+                animate();
+              } else if (!isHeroVisible && animId) {
+                cancelAnimationFrame(animId);
+                animId = null;
+              }
+            });
+          }, { threshold: 0.1 });
+          observer.observe(heroSection);
+
+          window.addEventListener('resize', () => {
+            width = heroCanvas.width = heroSection.offsetWidth;
+            height = heroCanvas.height = heroSection.offsetHeight;
+          }, { passive: true });
+
+          heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+            mouse.active = true;
+          });
+
+          heroSection.addEventListener('mouseleave', () => {
+            mouse.active = false;
+            mouse.x = -1000;
+            mouse.y = -1000;
+          });
+
+          animate();
+        }
+      }
+    });
+  </script>
+</Layout>

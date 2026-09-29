@@ -1,9 +1,9 @@
 ---
-import CurriculumDetailPage from '../../../components/pages/CurriculumDetailPage.astro';
-import { getAllSlugs, type Locale } from '../../../utils/i18n';
+import ResearchDetailPage from '../../../../components/pages/ResearchDetailPage.astro';
+import { getAllSlugs, type Locale } from '../../../../utils/i18n';
 
 export async function getStaticPaths() {
-  const slugs = await getAllSlugs('team');
+  const slugs = await getAllSlugs('research');
   const locales: Locale[] = ['eu', 'en'];
   const paths = [];
   for (const lang of locales) {
@@ -17,4 +17,4 @@ export async function getStaticPaths() {
 const { lang, id } = Astro.params;
 ---
 
-<CurriculumDetailPage id={id!} lang={lang as Locale} />
+<ResearchDetailPage id={id!} lang={lang as Locale} />

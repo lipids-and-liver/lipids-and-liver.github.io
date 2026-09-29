@@ -1,6 +1,6 @@
 ---
-import CurriculumDetailPage from '../../components/pages/CurriculumDetailPage.astro';
-import { getAllSlugs } from '../../utils/i18n';
+import CurriculumDetailPage from '../../../components/pages/CurriculumDetailPage.astro';
+import { getAllSlugs } from '../../../utils/i18n';
 
 export async function getStaticPaths() {
   const slugs = await getAllSlugs('team');

@@ -7,5 +7,5 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-return Astro.redirect(`/${lang}/#lines`);
+return Astro.redirect(`/portal/${lang}/#lines`);
 ---

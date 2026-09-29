@@ -1,5 +1,5 @@
 ---
-import HomePage from '../../components/pages/HomePage.astro';
+import InstitutionalHoldingPage from '../../components/pages/InstitutionalHoldingPage.astro';
 import type { Locale } from '../../utils/i18n';
 
 export function getStaticPaths() {
@@ -12,4 +12,4 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 
-<HomePage lang={lang as Locale} />
+<InstitutionalHoldingPage lang={lang as Locale} />
