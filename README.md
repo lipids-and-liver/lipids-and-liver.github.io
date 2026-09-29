@@ -61,8 +61,10 @@ El resultado estático se genera en el directorio **`dist/`** (185 páginas HTML
 - **`src/content.config.ts`**: Esquemas de validación tipados con Zod para todo el contenido.
 - **`src/layouts/Layout.astro`**: Cabecera institucional con navegación en menús desplegables optimizados, doble logotipo UPV/EHU y grupo, barra de idiomas, selector de modo oscuro/claro y pie de página.
 - **`src/pages/`**: Páginas principales (`index.astro`, `/tesis`, `/curriculum`, `/lineas`, `/publicaciones`, `/proyectos`, `/noticias`, `/alumni`, `/divulgacion`, `/recursos`, `/sgiker`, `/unete`, y versiones localizadas en `/eu` y `/en`).
+- **`public/admin/`**: Panel de administración visual **Sveltia CMS** (`index.html` y `config.yml`), accesible en `/admin/` para editar contenidos sin tocar código.
 - **`public/assets/css/styles.css`**: Sistema de diseño institucional corporativo con paleta UPV/EHU.
 - **`under-construction/` & `en-construccion/`**: Página de preestreno "En Construcción" estática e independiente con simulación de vesículas en canvas y sin accesos a desarrollo, lista para subir directamente por FTP.
+- **`GUIA_SVELTIA_CMS.md`**: Guía detallada para autenticación con token de GitHub y edición mediante Sveltia CMS.
 - **`COMO_EDITAR.md`**: Guía paso a paso para que personal no técnico del laboratorio actualice contenidos.
 - **`PROJECT_CONTEXT.md`**: Documento exhaustivo de arquitectura técnica para desarrolladores y asistentes IA.
 - **`.agents/AGENTS.md`**: Reglas y directrices automáticas para el asistente IA **Antigravity**.

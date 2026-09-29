@@ -1,8 +1,14 @@
 # Guía de Edición de Contenidos - Grupo Lipids & Liver
 
-¡Bienvenido/a! Toda la información del portal (tesis doctorales, fichas del equipo, publicaciones, líneas de investigación, presentación y docencia) se gestiona mediante sencillos **archivos de texto Markdown (.md)** organizados por idiomas en la carpeta `src/content/`.
+¡Bienvenido/a! Toda la información del portal (tesis doctorales, fichas del equipo, publicaciones, líneas de investigación, proyectos, noticias y docencia) puede actualizarse de dos formas:
 
-Para añadir o modificar contenido solo tienes que abrir o duplicar los archivos correspondientes (o usar las plantillas preparadas en `src/content/templates/`) y guardar los cambios.
+1. **🖥️ Mediante el panel visual Sveltia CMS (Recomendado para el equipo)**:  
+   Accede directamente desde el navegador a:  
+   👉 **`https://lipids-and-liver.github.io/admin/`**  
+   Permite editar textos, subir fotos de miembros y añadir tesis o publicaciones con formularios visuales y previsualización inmediata. Consulta la [GUIA_SVELTIA_CMS.md](file:///home/smzlogoj/Workspaces/lipids-and-liver.github.io/GUIA_SVELTIA_CMS.md) para más detalles.
+
+2. **📝 Directamente en archivos Markdown (.md)**:  
+   Modificando los archivos de texto estructurado organizados por idiomas en `src/content/` o usando las plantillas preparadas en `src/content/templates/`.
 
 ---
 
