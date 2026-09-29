@@ -125,7 +125,7 @@ const news = defineCollection({
   schema: z.object({
     id: z.string().optional(),
     title: z.string(),
-    date: z.string(),
+    date: z.union([z.string(), z.date()]).transform(val => val instanceof Date ? val.toISOString().split('T')[0] : String(val)),
     category: z.string(),
     categoryBadge: z.string().optional(),
     summary: z.string(),
