@@ -1,36 +1,8 @@
 # Guía de Edición de Contenidos - Grupo Lipids & Liver
 
-¡Bienvenido/a! Esta web cuenta con dos formas de gestión:
-1. **Panel de Edición Visual (Keystatic CMS - Recomendado)**: interfaz web amigable con formularios, sin tocar archivos ni código.
-2. **Edición Manual de Archivos Markdown**: para usuarios avanzados o edición directa en texto plano.
+¡Bienvenido/a! Toda la información del portal (tesis doctorales, fichas del equipo, publicaciones, líneas de investigación, presentación y docencia) se gestiona mediante sencillos **archivos de texto Markdown (.md)** organizados por idiomas en la carpeta `src/content/`.
 
----
-
-## 🚀 Método Recomendado: Panel de Edición Visual (Keystatic)
-
-No necesitas saber programar ni formatear archivos. Puedes editar todo mediante formularios interactivos en tu navegador:
-
-1. **Inicia el panel de control:**
-   ```bash
-   ./iniciar_cms.sh
-   # (O alternativamente: npm run dev)
-   ```
-2. **Abre tu navegador en:**
-   👉 **`http://localhost:4321/keystatic`**
-3. **Elige la sección en el menú lateral:**
-   - **Contenido en Español:** Tesis Doctorales, Personal y Equipo, Líneas de Investigación, Publicaciones, Docencia, Presentación.
-   - **Edukiak Euskaraz:** Doktorego Tesiak, Taldea, Ikerketa Lerroak, Argitalpenak, Prestakuntza.
-   - **English Content:** PhD Theses, Personnel, Research Lines, Publications, Academic Training.
-4. **Crea, edita o elimina:**
-   - Rellena los campos con validación automática (título, autor, fechas, enlaces, selector de estado).
-   - **Foto / Imagen**: puedes arrastrar o seleccionar una foto directamente desde tu ordenador (Keystatic la guarda y vincula automáticamente). Si no subes ninguna, se usará la silueta institucional por defecto.
-   - Escribe el resumen o biografía en un editor de texto enriquecido (negritas, listas, enlaces).
-   - Haz clic en **"Create"** o **"Save"**. ¡Keystatic guardará los cambios automáticamente en los archivos Markdown!
-5. **Para compilar la web final estática para el servidor UPV/EHU:**
-   ```bash
-   ./construir_web.sh
-   # Genera la carpeta dist/ 100% lista para subir por FTP
-   ```
+Para añadir o modificar contenido solo tienes que abrir o duplicar los archivos correspondientes (o usar las plantillas preparadas en `src/content/templates/`) y guardar los cambios.
 
 ---
 
@@ -136,7 +108,7 @@ name: "Dra. Laura González Martínez"
 role: "Investigadora Posdoctoral"
 category: "Posdoctoral" # Coordinadora | PDI | Ramón y Cajal | Posdoctoral | Predoctoral | Técnico
 department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
-# image: "/assets/images/team/laura-gonzalez/image.jpg" # Opcional (si usas Keystatic se sube automáticamente desde el botón de examinar)
+# image: "/assets/images/team/laura-gonzalez/image.jpg" # Opcional (si no se indica, se usa la silueta institucional por defecto)
 email: "laura.gonzalez@ehu.eus"
 office: "Despacho 2.10, Facultad de Medicina y Enfermería, Leioa"
 orcid: "0000-0002-XXXX-XXXX"
