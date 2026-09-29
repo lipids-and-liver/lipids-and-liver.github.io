@@ -804,13 +804,15 @@
         <button type="button" class="lang-btn-cinema active" data-cinema-lang="en" onclick="window.setCinemaLang && window.setCinemaLang('en')">EN</button>
       </div>
 
-      <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-drawer-trigger" style="border-color: rgba(255, 255, 255, 0.2); color: #ffffff; text-decoration: none;" id="link-top-current-web" title="Ir al portal web oficial actual en UPV/EHU">
-        <i class="fas fa-external-link-alt" style="color: var(--cinema-mint);"></i> <span id="txt-top-current-web">Current Web</span>
+      <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-drawer-trigger" style="border-color: rgba(0, 245, 155, 0.4); color: #ffffff; text-decoration: none;" id="link-top-current-web" title="Ir al portal web oficial actual en UPV/EHU">
+        <i class="fas fa-external-link-alt" style="color: var(--cinema-mint);"></i> <span id="txt-top-current-web">Current Web &amp; Contact</span>
       </a>
 
+      <!-- Oculto temporalmente: Botón Contacto en cabecera (descomentar para reactivar)
       <button type="button" class="btn-drawer-trigger" data-cinema-modal="contact" onclick="window.toggleModal && window.toggleModal('contact', true)">
         <i class="fas fa-envelope"></i> <span id="txt-btn-drawer">Contacto</span>
       </button>
+      -->
     </div>
   </header>
 
@@ -835,16 +837,18 @@
           Desde 2007 desentrañando la fisiopatología hepática en la UPV/EHU y el IIS Biocruces Bizkaia. Estamos ultimando el nuevo portal digital oficial de divulgación científica, catálogo de publicaciones JCR y repositorio de tesis.
         </p>
 
-        <!-- Actions (No development site link) -->
+        <!-- Actions -->
         <div class="cinema-action-row">
+          <!-- Oculto temporalmente: Botones de Contacto y Dossier (descomentar para reactivar)
           <button type="button" class="btn-cinema-glow" data-cinema-modal="contact" onclick="window.toggleModal && window.toggleModal('contact', true)">
             <i class="fas fa-paper-plane"></i> <span id="txt-btn-contact">Contactar con el Grupo</span>
           </button>
           <button type="button" class="btn-cinema-glass" data-cinema-modal="dossier" onclick="window.toggleModal && window.toggleModal('dossier', true)">
             <i class="fas fa-book-open"></i> <span id="txt-btn-dossier">Dossier Institucional</span>
           </button>
-          <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-cinema-glass" style="border-color: rgba(0, 245, 155, 0.45); color: #ffffff; text-decoration: none;" id="btn-current-web-link">
-            <i class="fas fa-external-link-alt" style="color:var(--cinema-mint);"></i> <span id="txt-btn-current-web">Current UPV/EHU Website</span>
+          -->
+          <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-cinema-glow" style="text-decoration: none;" id="btn-current-web-link">
+            <i class="fas fa-external-link-alt"></i> <span id="txt-btn-current-web">Current UPV/EHU Website &amp; Contact</span>
           </a>
         </div>
 
@@ -990,7 +994,7 @@
 
   </main>
 
-  <!-- Contact Modal -->
+  <!-- Oculto temporalmente: Modales de Contacto y Dossier (descomentar para reactivar)
   <div class="cinema-modal" id="modal-contact" onclick="if(event.target===this) (window.toggleModal ? window.toggleModal('contact', false) : this.classList.remove('open'))">
     <div class="cinema-modal-card">
       <button type="button" class="cinema-modal-close" data-cinema-close="contact" onclick="window.toggleModal && window.toggleModal('contact', false)"><i class="fas fa-times"></i></button>
@@ -1019,7 +1023,6 @@
     </div>
   </div>
 
-  <!-- Dossier Modal -->
   <div class="cinema-modal" id="modal-dossier" onclick="if(event.target===this) (window.toggleModal ? window.toggleModal('dossier', false) : this.classList.remove('open'))">
     <div class="cinema-modal-card">
       <button type="button" class="cinema-modal-close" data-cinema-close="dossier" onclick="window.toggleModal && window.toggleModal('dossier', false)"><i class="fas fa-times"></i></button>
@@ -1041,6 +1044,7 @@
       </button>
     </div>
   </div>
+  -->
 
   <!-- Interactive Canvas Particle Simulation (Lipid Vesicles) -->
   <script>
@@ -1177,7 +1181,10 @@
         m_d_desc: 'El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y translacional:',
         m_d_list: '<li><strong style="color:#fff;">Acreditación:</strong> Grupo Consolidado de Excelencia Tipo A (Gobierno Vasco IT1560-22).</li><li><strong style="color:#fff;">Sedes:</strong> Facultad de Medicina y Enfermería (UPV/EHU) y Centro María Goyri.</li><li><strong style="color:#fff;">Centros:</strong> UPV/EHU &amp; Instituto de Investigación Sanitaria Biocruces Bizkaia.</li><li><strong style="color:#fff;">Producción:</strong> +150 publicaciones en revistas científicas de primer cuartil (Q1 JCR).</li><li><strong style="color:#fff;">Formación:</strong> Dirección continuada de tesis doctorales y másteres oficiales.</li>',
         m_d_close: "Cerrar",
-        footer_tag: "Grupo Consolidado del Gobierno Vasco IT1560-22"
+        footer_tag: "Grupo Consolidado del Gobierno Vasco IT1560-22",
+        btn_current_web: "Web Actual UPV/EHU & Contacto",
+        top_current_web: "Web Actual & Contacto",
+        footer_current_web: "Web actual UPV/EHU"
       },
       eu: {
         header_tag: "Ikerketa Talde Finkatua IT1560-22",
@@ -1187,9 +1194,9 @@
         lead: "2007az geroztik gibeleko fisiopatologia ikertzen UPV/EHUn eta Biocruces Bizkaia Institutuan. Zientzia-dibulgazioko atari digital ofizial berria, JCR argitalpenen katalogoa eta tesien biltegia amaitzen ari gara.",
         btn_contact: "Taldearekin Harremanetan Jarri",
         btn_dossier: "Txosten Instituzionala",
-        btn_current_web: "Gaur Egungo Webgunea UPV/EHU",
-        top_current_web: "Gaur Egungo Webgunea",
-        footer_current_web: "Gaur egungo webgunea UPV/EHU",
+        btn_current_web: "Egungo Webgunea UPV/EHU & Harremana",
+        top_current_web: "Egungo Webgunea & Harremana",
+        footer_current_web: "Egungo webgunea (UPV/EHU)",
         prog_label: "GARAPEN ETA BALIDAZIO FASEA",
         st1: "Arkitektura",
         st2: "UI Diseinua",
@@ -1238,8 +1245,8 @@
         lead: "Unraveling hepatic pathophysiology since 2007 at UPV/EHU and Biocruces Bizkaia Institute. We are putting the final touches on our new official website, JCR publication database, and PhD thesis repository.",
         btn_contact: "Contact the Group",
         btn_dossier: "Institutional Dossier",
-        btn_current_web: "Current UPV/EHU Website",
-        top_current_web: "Current Web",
+        btn_current_web: "Current UPV/EHU Website & Contact",
+        top_current_web: "Current Web & Contact",
         footer_current_web: "Current UPV/EHU website",
         prog_label: "DEVELOPMENT & VALIDATION STAGE",
         st1: "Architecture",
