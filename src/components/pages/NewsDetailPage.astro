@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { render } from 'astro:content';
+
+interface Props {
+  id: string;
+  lang: Locale;
+}
+
+const { id, lang } = Astro.props;
+const t = getTranslations(lang);
+
+const article = await getLocalizedEntry('news', id, lang);
+
+if (!article) {
+  return Astro.redirect(getLocalizedPath('/noticias', lang));
+}
+
+const { Content } = await render(article);
+const { title, date, category, categoryBadge, author } = article.data;
+
+let formattedDate = date;
+try {
+  const d = new Date(date);
+  if (!isNaN(d.getTime())) {
+    formattedDate = d.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'eu' ? 'eu-ES' : 'es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+} catch (e) {}
+---
+
+<Layout currentPage="news" lang={lang} title={`${title} | Lipids & Liver`}>
+  <!-- Contextual Sub-bar -->
+  <div class="nav-sub-bar">
+    <div class="container nav-sub-container">
+      <div class="nav-sub-context">
+        <span class="nav-sub-badge">
+          <i class="fas fa-newspaper"></i> {categoryBadge || category}
+        </span>
+      </div>
+      <div class="nav-sub-actions">
+        <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-outline-light">
+          <i class="fas fa-arrow-left"></i> {t.news_back || 'Volver a Noticias'}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <article class="page-section">
+    <div class="container" style="max-width: 860px;">
+      <div class="news-detail-header">
+        <div class="news-detail-meta">
+          <span class="news-category-badge">
+            <i class="fas fa-tag"></i> {categoryBadge || category}
+          </span>
+          <span class="news-date">
+            <i class="far fa-calendar-alt"></i> {formattedDate}
+          </span>
+          {author && (
+            <span class="news-author">
+              <i class="fas fa-pen-nib"></i> {author}
+            </span>
+          )}
+        </div>
+
+        <h1 class="news-detail-title">{title}</h1>
+      </div>
+
+      <div class="news-detail-content markdown-body">
+        <Content />
+      </div>
+
+      <div class="news-detail-footer">
+        <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-secondary">
+          <i class="fas fa-arrow-left"></i> {t.news_back || 'Volver a la Sala de Prensa'}
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>

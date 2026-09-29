@@ -102,11 +102,49 @@ const training = defineCollection({
   })
 });
 
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    code: z.string(),
+    fundingBody: z.string(),
+    fundingType: z.enum(['regional', 'national', 'european', 'foundation']).default('national'),
+    pi: z.string(),
+    period: z.string(),
+    status: z.enum(['active', 'completed']).default('active'),
+    budget: z.string().optional(),
+    badge: z.string().optional(),
+    summary: z.string().optional(),
+    order: z.number().default(99)
+  })
+});
+
+const news = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/news" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    date: z.string(),
+    category: z.string(),
+    categoryBadge: z.string().optional(),
+    summary: z.string(),
+    image: z.string().optional(),
+    author: z.string().optional(),
+    link: z.string().optional(),
+    featured: z.boolean().default(false),
+    order: z.number().default(99)
+  })
+});
+
 export const collections = {
   theses,
   team,
   research,
   publications,
   presentation,
-  training
+  training,
+  projects,
+  news
 };
+

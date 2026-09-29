@@ -1,0 +1,80 @@
+---
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface AlumniItem {
+  id: string;
+  name: string;
+  labRole: string;
+  thesis: string;
+  year: string;
+  currentRole: string;
+  currentAffiliation: string;
+  location: string;
+  category: 'academia' | 'industry' | 'clinical';
+  categoryLabel: string;
+  icon: string;
+  linkedin?: string;
+  orcid?: string;
+}
+
+interface Props {
+  alumni: AlumniItem;
+  lang?: Locale;
+}
+
+const { alumni, lang = 'es' } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<div class={`alumni-card-inst category-${alumni.category}`}>
+  <div class="alumni-card-header">
+    <div class="alumni-avatar-box">
+      <i class={alumni.icon || 'fas fa-user-graduate'}></i>
+    </div>
+    <div class="alumni-identity">
+      <span class="alumni-category-badge">{alumni.categoryLabel}</span>
+      <h3 class="alumni-name">{alumni.name}</h3>
+      <span class="alumni-lab-past">
+        <i class="fas fa-history"></i> {alumni.labRole} • Tesis {alumni.year}
+      </span>
+    </div>
+  </div>
+
+  <div class="alumni-card-body">
+    <div class="alumni-current-box">
+      <span class="current-label"><i class="fas fa-briefcase"></i> {t.alumni_current_label || 'Puesto Actual:'}</span>
+      <div class="current-role">{alumni.currentRole}</div>
+      <div class="current-affiliation">
+        <i class="fas fa-building"></i> {alumni.currentAffiliation}
+      </div>
+      <div class="current-location">
+        <i class="fas fa-map-marker-alt"></i> {alumni.location}
+      </div>
+    </div>
+
+    {alumni.thesis && (
+      <div class="alumni-thesis-box">
+        <span class="thesis-label"><i class="fas fa-graduation-cap"></i> {t.alumni_thesis_label || 'Tesis en Lipids & Liver:'}</span>
+        <p class="thesis-title">"{alumni.thesis}"</p>
+      </div>
+    )}
+  </div>
+
+  {(alumni.linkedin || alumni.orcid) && (
+    <div class="alumni-card-footer">
+      <span class="alumni-links-label">Perfiles profesionales:</span>
+      <div class="alumni-links">
+        {alumni.linkedin && (
+          <a href={alumni.linkedin} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        )}
+        {alumni.orcid && (
+          <a href={alumni.orcid} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="ORCID">
+            <i class="fab fa-orcid"></i>
+          </a>
+        )}
+      </div>
+    </div>
+  )}
+</div>

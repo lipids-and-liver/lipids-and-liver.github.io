@@ -1,0 +1,21 @@
+---
+import NewsDetailPage from '../../../../components/pages/NewsDetailPage.astro';
+import { getAllSlugs, type Locale } from '../../../../utils/i18n';
+
+export async function getStaticPaths() {
+  const slugs = await getAllSlugs('news');
+  const paths = [];
+
+  for (const lang of ['eu', 'en'] as const) {
+    for (const id of slugs) {
+      paths.push({ params: { lang, id } });
+    }
+  }
+
+  return paths;
+}
+
+const { id, lang } = Astro.params;
+---
+
+<NewsDetailPage id={id as string} lang={lang as Locale} />

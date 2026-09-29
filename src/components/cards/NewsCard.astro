@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, getLocalizedPath, getItemSlug, type Locale } from '../../utils/i18n';
+
+interface Props {
+  article: CollectionEntry<'news'>;
+  lang?: Locale;
+}
+
+const { article, lang = 'es' } = Astro.props;
+const { title, date, category, categoryBadge, summary, author, featured } = article.data;
+const slug = getItemSlug(article);
+const t = getTranslations(lang);
+
+// Format date nicely
+let formattedDate = date;
+try {
+  const d = new Date(date);
+  if (!isNaN(d.getTime())) {
+    formattedDate = d.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'eu' ? 'eu-ES' : 'es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+} catch (e) {}
+
+const articleUrl = getLocalizedPath(`/noticias/${slug}`, lang);
+---
+
+<article class={`news-card-inst ${featured ? 'news-card-featured' : ''}`}>
+  <div class="news-card-top">
+    <span class="news-category-badge">
+      <i class="fas fa-bookmark"></i> {categoryBadge || category}
+    </span>
+    <time class="news-date" datetime={date}>
+      <i class="far fa-calendar-alt"></i> {formattedDate}
+    </time>
+  </div>
+
+  <h3 class="news-title">
+    <a href={articleUrl}>{title}</a>
+  </h3>
+
+  <p class="news-summary">
+    {summary}
+  </p>
+
+  <div class="news-card-footer">
+    {author && (
+      <span class="news-author">
+        <i class="fas fa-pen-nib"></i> {author}
+      </span>
+    )}
+    <a href={articleUrl} class="news-read-more">
+      {t.news_read_more || 'Leer más'} <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</article>

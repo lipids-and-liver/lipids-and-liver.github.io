@@ -37,18 +37,57 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
   <!-- Meta Tags for SEO & Institutional Branding -->
   <meta name="description" content={description} />
   <meta name="keywords" content="Lipids and Liver, UPV/EHU, Biocruces Bizkaia, Patricia Aspichueta, MAFLD, NASH, Tesis Doctorales, Lipidómica, Fisiología, Hepatología, Espectrometría de Masas" />
+  
+  <!-- Anti-Indexing during Development: Block all search engine bots -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.ehu.eus/es/web/lipidsliver" />
+  <meta property="og:url" content={Astro.url.href} />
 
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Custom Institutional Stylesheet -->
   <link rel="stylesheet" href="/assets/css/styles.css" />
+
+  <!-- Prevent alert flash if previously dismissed in session -->
+  <script is:inline>
+    try {
+      if (sessionStorage.getItem('lipids_demo_alert_dismissed') === '1') {
+        document.documentElement.classList.add('demo-alert-hidden');
+      }
+    } catch(e) {}
+  </script>
 </head>
 <body>
+
+  <!-- Demo Notice Banner (Discreet & Dismissible, only in /portal/) -->
+  {!isHoldingPage && (
+    <aside class="demo-alert-banner" id="demo-alert-banner" role="alert" aria-label="Aviso de versión de desarrollo">
+      <div class="container demo-alert-content">
+        <div class="demo-alert-left">
+          <span class="demo-alert-badge">
+            <i class="fas fa-flask"></i> {t.demo_alert_badge || "Versión Demo"}
+          </span>
+          <span class="demo-alert-text">
+            {t.demo_alert_text || "Web en desarrollo: la información y datos mostrados son provisionales y están en proceso de validación."}
+          </span>
+        </div>
+        <div class="demo-alert-right">
+          <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="demo-alert-link" title="Consultar web institucional oficial actual">
+            <span>{t.demo_alert_link || "Web Oficial UPV/EHU"}</span> <i class="fas fa-external-link-alt" style="font-size: 0.68rem;"></i>
+          </a>
+          <button type="button" class="demo-alert-close" id="btn-close-demo-alert" title="Ocultar aviso" aria-label="Cerrar aviso">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+  )}
 
   <!-- Top Institutional Bar -->
   <div class="top-institutional-bar">
@@ -110,15 +149,190 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
           </ul>
         ) : (
           <ul class="nav-menu" id="main-nav-links">
-            <li class="nav-menu-item"><a href={getLocalizedPath('/', lang)} class={currentPage === 'home' ? 'active' : ''}>{t.nav_home}</a></li>
-            <li class="nav-menu-item"><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
-            <li class="nav-menu-item"><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
-            <li class="nav-menu-item"><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
-            <li class="nav-menu-item"><a href={getLocalizedPath('/tesis', lang)} class={currentPage === 'theses' ? 'active' : ''}>{t.nav_theses}</a></li>
-            <li class="nav-menu-item"><a href={getLocalizedPath('/publicaciones', lang)} class={currentPage === 'pubs' ? 'active' : ''}>{t.nav_pubs}</a></li>
-            <li class="nav-menu-item"><a href={getLocalizedPath('/#training', lang)}>{t.nav_training}</a></li>
-            <li class="nav-menu-item"><a href={getLocalizedPath('/#contact', lang)}>{t.nav_contact}</a></li>
-            <li class="nav-menu-item" style="margin-left:auto"><a href={getLocalizedPath('/curriculum', lang)} class={currentPage === 'curriculum' ? 'active' : ''}><i class="fas fa-id-card"></i> {t.nav_cv_portal}</a></li>
+            <!-- 1. Inicio -->
+            <li class="nav-menu-item">
+              <a href={getLocalizedPath('/', lang)} class={currentPage === 'home' ? 'active' : ''}>
+                <i class="fas fa-home"></i> <span>{t.nav_home}</span>
+              </a>
+            </li>
+
+            <!-- 2. El Grupo (Dropdown) -->
+            <li class="nav-menu-item has-dropdown">
+              <a href={getLocalizedPath('/#about', lang)} class={`nav-dropdown-trigger ${['about', 'team', 'curriculum', 'alumni'].includes(currentPage) ? 'active' : ''}`}>
+                <span>{t.nav_group_group || 'El Grupo'}</span> <i class="fas fa-chevron-down nav-caret"></i>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li>
+                  <a href={getLocalizedPath('/#about', lang)}>
+                    <i class="fas fa-landmark"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_about || 'Presentación'}</span>
+                      <span class="dropdown-link-sub">Perfil e instalaciones del grupo</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/#team', lang)}>
+                    <i class="fas fa-users"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_team || 'Personal e Investigadores'}</span>
+                      <span class="dropdown-link-sub">PDI, postdocs, predocs y técnicos</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/curriculum', lang)}>
+                    <i class="fas fa-id-card"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_cv_portal || 'Portal de Currículums'}</span>
+                      <span class="dropdown-link-sub">CVs y perfiles de los miembros</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/alumni', lang)}>
+                    <i class="fas fa-user-graduate"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_alumni || 'Antiguos Miembros (Alumni)'}</span>
+                      <span class="dropdown-link-sub">Puestos actuales de los doctores</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/#collaborations', lang)}>
+                    <i class="fas fa-project-diagram"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_collaborations || 'Alianzas y Colaboraciones'}</span>
+                      <span class="dropdown-link-sub">Hospitales, centros y consorcios</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- 3. Investigación (Dropdown) -->
+            <li class="nav-menu-item has-dropdown">
+              <a href={getLocalizedPath('/#lines', lang)} class={`nav-dropdown-trigger ${['lines', 'projects', 'theses', 'pubs'].includes(currentPage) ? 'active' : ''}`}>
+                <span>{t.nav_group_research || 'Investigación'}</span> <i class="fas fa-chevron-down nav-caret"></i>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li>
+                  <a href={getLocalizedPath('/#lines', lang)}>
+                    <i class="fas fa-microscope"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_lines || 'Líneas de Investigación'}</span>
+                      <span class="dropdown-link-sub">MASH, cáncer hepático, ómicas</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/proyectos', lang)}>
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_projects || 'Proyectos Financiados'}</span>
+                      <span class="dropdown-link-sub">Plan Nacional, Gobierno Vasco, FEDER</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/publicaciones', lang)}>
+                    <i class="fas fa-book-open"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_pubs || 'Publicaciones Científicas'}</span>
+                      <span class="dropdown-link-sub">Artículos JCR con filtros temáticos</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/tesis', lang)}>
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_theses || 'Tesis Doctorales'}</span>
+                      <span class="dropdown-link-sub">Tesis en curso y defendidas</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- 4. Servicios & Recursos (Dropdown) -->
+            <li class="nav-menu-item has-dropdown">
+              <a href={getLocalizedPath('/sgiker', lang)} class={`nav-dropdown-trigger ${['sgiker', 'resources', 'training'].includes(currentPage) ? 'active' : ''}`}>
+                <span>{t.nav_group_services || 'Servicios & Recursos'}</span> <i class="fas fa-chevron-down nav-caret"></i>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li>
+                  <a href={getLocalizedPath('/sgiker', lang)}>
+                    <i class="fas fa-flask"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_sgiker || 'Unidad de Lipidómica SGIker'}</span>
+                      <span class="dropdown-link-sub">UHPLC-MS/MS, tarifas y solicitudes</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/recursos', lang)}>
+                    <i class="fas fa-lock-open"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_resources || 'Ciencia Abierta y Protocolos'}</span>
+                      <span class="dropdown-link-sub">SOPs validados y datos FAIR</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/#training', lang)}>
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_training || 'Docencia y Formación'}</span>
+                      <span class="dropdown-link-sub">Grados, Másteres y Doctorado</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- 5. Sociedad & Novedades (Dropdown) -->
+            <li class="nav-menu-item has-dropdown">
+              <a href={getLocalizedPath('/noticias', lang)} class={`nav-dropdown-trigger ${['news', 'outreach', 'join'].includes(currentPage) ? 'active' : ''}`}>
+                <span>{t.nav_group_impact || 'Sociedad & Novedades'}</span> <i class="fas fa-chevron-down nav-caret"></i>
+              </a>
+              <ul class="nav-dropdown-menu">
+                <li>
+                  <a href={getLocalizedPath('/noticias', lang)}>
+                    <i class="fas fa-newspaper"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_news || 'Noticias y Sala de Prensa'}</span>
+                      <span class="dropdown-link-sub">Avances, congresos y premios</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/divulgacion', lang)}>
+                    <i class="fas fa-heartbeat"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_outreach || 'Divulgación y Salud Hepática'}</span>
+                      <span class="dropdown-link-sub">Guías para pacientes y Zientzia Astea</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={getLocalizedPath('/unete', lang)}>
+                    <i class="fas fa-user-plus"></i>
+                    <div class="dropdown-link-text">
+                      <span class="dropdown-link-title">{t.nav_join || 'Únete al Grupo'}</span>
+                      <span class="dropdown-link-sub">Oportunidades TFG, TFM, FPU/FPI</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- 6. Contacto -->
+            <li class="nav-menu-item nav-menu-contact" style="margin-left:auto">
+              <a href={getLocalizedPath('/#contact', lang)} class="nav-contact-link">
+                <i class="fas fa-envelope"></i> <span>{t.nav_contact}</span>
+              </a>
+            </li>
           </ul>
         )}
       </div>
@@ -137,6 +351,15 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
             )}
             {currentPage === 'lines' && (
               <span class="nav-sub-badge"><i class="fas fa-microscope"></i> {t.lines_title}</span>
+            )}
+            {currentPage === 'projects' && (
+              <span class="nav-sub-badge"><i class="fas fa-hand-holding-usd"></i> {t.projects_title || 'Proyectos Financiados'}</span>
+            )}
+            {currentPage === 'news' && (
+              <span class="nav-sub-badge"><i class="fas fa-newspaper"></i> {t.news_title || 'Noticias y Actualidad'}</span>
+            )}
+            {currentPage === 'alumni' && (
+              <span class="nav-sub-badge"><i class="fas fa-user-graduate"></i> {t.alumni_title || 'Antiguos Miembros y Alumni'}</span>
             )}
           </div>
           <div class="nav-sub-action">
@@ -178,10 +401,16 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
               <li><a href={getLocalizedPath('/', lang)}>{t.nav_home}</a></li>
               <li><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
               <li><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
+              <li><a href={getLocalizedPath('/proyectos', lang)}>{t.nav_projects || 'Proyectos Financiados'}</a></li>
               <li><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
-              <li><a href={getLocalizedPath('/#theses', lang)}>{t.nav_theses}</a></li>
               <li><a href={getLocalizedPath('/tesis', lang)}>{t.theses_page_title}</a></li>
               <li><a href={getLocalizedPath('/publicaciones', lang)}>{t.pubs_title}</a></li>
+              <li><a href={getLocalizedPath('/sgiker', lang)}>{t.nav_sgiker || 'Unidad Lipidómica SGIker'}</a></li>
+              <li><a href={getLocalizedPath('/noticias', lang)}>{t.nav_news || 'Noticias y Actualidad'}</a></li>
+              <li><a href={getLocalizedPath('/recursos', lang)}>{t.nav_resources || 'Ciencia Abierta y Protocolos'}</a></li>
+              <li><a href={getLocalizedPath('/divulgacion', lang)}>{t.nav_outreach || 'Divulgación Científica'}</a></li>
+              <li><a href={getLocalizedPath('/unete', lang)}>{t.nav_join || 'Únete al Grupo'}</a></li>
+              <li><a href={getLocalizedPath('/alumni', lang)}>{t.nav_alumni || 'Antiguos Miembros (Alumni)'}</a></li>
               <li><a href={getLocalizedPath('/curriculum', lang)}>{t.nav_cv_portal}</a></li>
             </ul>
           )}
@@ -189,9 +418,11 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
         <div>
           <h4>{t.footer_interest}</h4>
           <ul class="footer-links-inst">
-            <li><a href="https://www.ehu.eus" target="_blank" rel="noopener">UPV / EHU</a></li>
+            <li><a href="https://www.ehu.eus" target="_blank" rel="noopener">Universidad del País Vasco (UPV/EHU)</a></li>
             <li><a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener">IIS Biocruces Bizkaia</a></li>
-            <li><a href="https://www.ehu.eus/es/web/sgiker" target="_blank" rel="noopener">SGIker UPV/EHU</a></li>
+            <li><a href="https://www.ehu.eus/es/web/sgiker" target="_blank" rel="noopener">SGIker UPV/EHU (Lipidómica)</a></li>
+            <li><a href="https://www.ciberehd.org" target="_blank" rel="noopener">CIBERehd (ISCIII)</a></li>
+            <li><a href="https://easl.eu" target="_blank" rel="noopener">EASL - European Liver Community</a></li>
           </ul>
         </div>
       </div>
@@ -202,6 +433,63 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
       </div>
     </div>
   </footer>
+
+  <!-- Institutional Demo Disclaimer Modal (Prominent & Clear, Shown Initially in /portal/) -->
+  {!isHoldingPage && (
+    <div class="demo-modal-backdrop" id="demo-disclaimer-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+      <div class="demo-modal-card">
+        <button type="button" class="demo-modal-close" id="btn-close-demo-modal" aria-label="Cerrar ventana emergente">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="demo-modal-header">
+          <div class="demo-modal-icon-badge">
+            <i class="fas fa-flask"></i>
+          </div>
+          <div>
+            <div class="demo-modal-tag"><i class="fas fa-exclamation-triangle"></i> {t.demo_alert_badge || "Versión Demo"}</div>
+            <h2 class="demo-modal-title" id="demo-modal-title">{t.demo_modal_title}</h2>
+            <p class="demo-modal-subtitle">{t.demo_modal_sub}</p>
+          </div>
+        </div>
+
+        <div class="demo-modal-body">
+          <p class="demo-modal-lead">{t.demo_modal_p1}</p>
+
+          <div class="demo-modal-warning-box">
+            <div class="demo-warning-header">
+              <i class="fas fa-info-circle"></i>
+              <span>{t.demo_modal_box_title}</span>
+            </div>
+            <p>{t.demo_modal_box_text}</p>
+          </div>
+
+          <div class="demo-modal-official-box">
+            <div class="demo-official-label">{t.demo_modal_official_note}</div>
+            <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="demo-official-link-card">
+              <div class="demo-official-link-left">
+                <i class="fas fa-university"></i>
+                <div>
+                  <span class="demo-official-link-name">Portal Oficial Lipids &amp; Liver en UPV/EHU</span>
+                  <span class="demo-official-link-url">https://www.ehu.eus/es/web/lipidsliver</span>
+                </div>
+              </div>
+              <i class="fas fa-external-link-alt" style="color:var(--text-muted); font-size:0.85rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="demo-modal-footer">
+          <button type="button" class="btn-demo-modal-accept" id="btn-accept-demo-modal">
+            <i class="fas fa-check"></i> {t.demo_modal_btn_accept}
+          </button>
+          <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-demo-modal-secondary">
+            <i class="fas fa-external-link-alt"></i> {t.demo_modal_btn_official}
+          </a>
+        </div>
+      </div>
+    </div>
+  )}
 
   <!-- Theme Toggle logic -->
   <script is:inline>
@@ -235,6 +523,94 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
         if (ehuLogo) ehuLogo.src = theme === 'dark' 
           ? '/assets/images/logo/ehu_logo_negatiboa.svg' 
           : '/assets/images/logo/ehu_logo_positiboa.svg';
+      }
+
+      // 2. Dropdown menu behavior for mobile & keyboard navigation
+      const dropdownItems = document.querySelectorAll('.nav-menu-item.has-dropdown');
+      dropdownItems.forEach(item => {
+        const trigger = item.querySelector('.nav-dropdown-trigger');
+        if (trigger) {
+          trigger.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+              const isOpen = item.classList.contains('open');
+              if (!isOpen) {
+                e.preventDefault();
+                dropdownItems.forEach(d => d.classList.remove('open'));
+                item.classList.add('open');
+              }
+            }
+          });
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.has-dropdown')) {
+          dropdownItems.forEach(item => item.classList.remove('open'));
+        }
+      });
+
+      // 3. Demo Alert Banner dismissal
+      const closeAlertBtn = document.getElementById('btn-close-demo-alert');
+      const alertBanner = document.getElementById('demo-alert-banner');
+      if (closeAlertBtn && alertBanner) {
+        closeAlertBtn.addEventListener('click', () => {
+          alertBanner.classList.add('is-dismissed');
+          document.documentElement.classList.add('demo-alert-hidden');
+          try {
+            sessionStorage.setItem('lipids_demo_alert_dismissed', '1');
+          } catch (e) {}
+        });
+      }
+
+      // 4. Demo Disclaimer Modal logic (Auto-opens on first visit to /portal/)
+      const demoModal = document.getElementById('demo-disclaimer-modal');
+      const acceptBtn = document.getElementById('btn-accept-demo-modal');
+      const closeDemoModalBtn = document.getElementById('btn-close-demo-modal');
+
+      function closeDemoModal() {
+        if (!demoModal) return;
+        demoModal.classList.remove('is-active');
+        document.body.style.overflow = '';
+        try {
+          sessionStorage.setItem('lipids_demo_modal_seen', '1');
+        } catch(e) {}
+      }
+
+      function openDemoModal() {
+        if (!demoModal) return;
+        demoModal.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      if (demoModal) {
+        try {
+          if (sessionStorage.getItem('lipids_demo_modal_seen') !== '1') {
+            setTimeout(openDemoModal, 250);
+          }
+        } catch(e) {
+          setTimeout(openDemoModal, 250);
+        }
+
+        if (acceptBtn) acceptBtn.addEventListener('click', closeDemoModal);
+        if (closeDemoModalBtn) closeDemoModalBtn.addEventListener('click', closeDemoModal);
+
+        demoModal.addEventListener('click', (e) => {
+          if (e.target === demoModal) closeDemoModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && demoModal.classList.contains('is-active')) {
+            closeDemoModal();
+          }
+        });
+
+        // Clickable badge in top banner allows reopening the modal anytime
+        const topDemoTrigger = document.querySelector('.demo-alert-badge');
+        if (topDemoTrigger) {
+          topDemoTrigger.style.cursor = 'pointer';
+          topDemoTrigger.title = 'Ver aviso detallado de la versión demo';
+          topDemoTrigger.addEventListener('click', openDemoModal);
+        }
       }
     });
   </script>

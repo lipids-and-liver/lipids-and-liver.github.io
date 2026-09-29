@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import AlumniCard from '../cards/AlumniCard.astro';
+import alumniData from '../../data/alumni.json';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const academiaCount = alumniData.filter(a => a.category === 'academia').length;
+const industryCount = alumniData.filter(a => a.category === 'industry').length;
+---
+
+<Layout currentPage="alumni" lang={lang} title={`${t.alumni_page_title || 'Antiguos Miembros y Alumni'} | Lipids & Liver`}>
+  <!-- Contextual Sub-bar -->
+  <div class="nav-sub-bar">
+    <div class="container nav-sub-container">
+      <div class="nav-sub-context">
+        <span class="nav-sub-badge">
+          <i class="fas fa-user-graduate"></i> {t.alumni_title || 'Red de Antiguos Miembros (Alumni)'}
+        </span>
+      </div>
+      <div class="nav-sub-actions">
+        <a href={getLocalizedPath('/', lang)} class="btn-inst-outline-light">
+          <i class="fas fa-home"></i> {t.nav_home}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <section class="catalog-header-section">
+    <div class="container">
+      <div class="catalog-header-content">
+        <span class="catalog-badge">
+          <i class="fas fa-award"></i> Trayectoria y Liderazgo Profesional
+        </span>
+        <h1 class="catalog-title">{t.alumni_page_title || 'Antiguos Miembros y Alumni'}</h1>
+        <p class="catalog-subtitle">{t.alumni_page_sub || 'Puestos que ocupan actualmente las investigadoras y doctores formados en el grupo Lipids & Liver'}</p>
+      </div>
+
+      <!-- Segmented Category Filters -->
+      <div class="filter-controls-wrap">
+        <div class="segmented-control-bar" id="alumni-category-filters">
+          <button class="segmented-btn active" data-filter="ALL">
+            <i class="fas fa-layer-group"></i> {t.team_all || 'Todos'} <span class="segmented-count">{alumniData.length}</span>
+          </button>
+          <button class="segmented-btn" data-filter="academia">
+            <i class="fas fa-university"></i> Academia & Investigación <span class="segmented-count">{academiaCount}</span>
+          </button>
+          <button class="segmented-btn" data-filter="industry">
+            <i class="fas fa-industry"></i> Industria & Biotecnología <span class="segmented-count">{industryCount}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alumni Grid Section -->
+  <section class="page-section">
+    <div class="container">
+      <!-- Career Impact Highlight -->
+      <div class="about-card" style="padding:2rem; margin-bottom:3rem; background:linear-gradient(135deg, rgba(0, 43, 73, 0.04) 0%, rgba(104, 159, 56, 0.08) 100%); border-left: 4px solid var(--logo-green);">
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          <div style="font-size:2.8rem; color:var(--logo-green); line-height:1;">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div style="flex:1; min-width:260px;">
+            <h3 style="font-size:1.25rem; color:var(--ehu-navy); margin-bottom:0.4rem;">
+              Impacto de la Formación Doctoral en Lipids & Liver
+            </h3>
+            <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6; margin:0;">
+              El 100% de los doctores e investigadoras formados en nuestro laboratorio continúan su trayectoria profesional en centros de excelencia internacional (como la <strong>Universidad de Yale</strong>, <strong>Biocruces Bizkaia</strong>, <strong>CIC bioGUNE</strong>), facultades universitarias y compañías multinacionales del sector biofarmacéutico y de investigación clínica.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="alumni-grid-inst" id="alumni-grid">
+        {alumniData.map(alumni => (
+          <div class="alumni-item" data-category={alumni.category}>
+            <AlumniCard alumni={alumni} lang={lang} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('#alumni-category-filters .segmented-btn');
+    const alumniItems = document.querySelectorAll('#alumni-grid .alumni-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        alumniItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'ALL' || category === filter) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

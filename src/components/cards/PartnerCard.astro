@@ -1,0 +1,50 @@
+---
+interface Partner {
+  id: string;
+  name: string;
+  type: string;
+  role: string;
+  location: string;
+  icon: string;
+  url: string;
+  desc: string;
+}
+
+interface Props {
+  partner: Partner;
+}
+
+const { partner } = Astro.props;
+---
+
+<div class="partner-card-inst">
+  <div class="partner-header">
+    <div class="partner-icon-box">
+      <i class={partner.icon}></i>
+    </div>
+    <div class="partner-title-box">
+      <span class="partner-type-badge">{partner.type}</span>
+      <h3 class="partner-name">
+        <a href={partner.url} target="_blank" rel="noopener noreferrer">
+          {partner.name} <i class="fas fa-external-link-alt external-icon"></i>
+        </a>
+      </h3>
+    </div>
+  </div>
+
+  <div class="partner-body">
+    <div class="partner-role-tag">
+      <i class="fas fa-microscope"></i> {partner.role}
+    </div>
+    <p class="partner-desc">{partner.desc}</p>
+  </div>
+
+  <div class="partner-footer">
+    <span class="partner-location">
+      <i class="fas fa-map-marker-alt"></i> {partner.location}
+    </span>
+    <a href={partner.url} target="_blank" rel="noopener noreferrer" class="partner-link-btn">
+      Sitio web oficial <i class="fas fa-chevron-right"></i>
+    </a>
+  </div>
+</div>

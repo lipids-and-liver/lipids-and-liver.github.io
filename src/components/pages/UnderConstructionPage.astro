@@ -14,8 +14,10 @@ const { lang = 'es' } = Astro.props;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lipids &amp; Liver | Portal Oficial en Construcción (UPV/EHU &amp; IIS Biocruces Bizkaia)</title>
-  <meta name="description" content="Página oficial en construcción del Grupo de Investigación Consolidado Lipids & Liver de la Universidad del País Vasco (UPV/EHU) e Instituto Sanitario Biocruces Bizkaia." />
-  <meta name="robots" content="noindex, follow" />
+  <!-- Anti-Indexing during Development: Block all search engine bots -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
 
   <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans (Prototipo 5) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -812,12 +814,16 @@ const { lang = 'es' } = Astro.props;
       </div>
 
       <div class="lang-switcher-cinema">
-        <button class={`lang-btn-cinema ${lang === 'es' ? 'active' : ''}`} onclick="setCinemaLang('es')">ES</button>
-        <button class={`lang-btn-cinema ${lang === 'eu' ? 'active' : ''}`} onclick="setCinemaLang('eu')">EU</button>
-        <button class={`lang-btn-cinema ${lang === 'en' ? 'active' : ''}`} onclick="setCinemaLang('en')">EN</button>
+        <button type="button" class={`lang-btn-cinema ${lang === 'es' ? 'active' : ''}`} data-cinema-lang="es" onclick="window.setCinemaLang && window.setCinemaLang('es')">ES</button>
+        <button type="button" class={`lang-btn-cinema ${lang === 'eu' ? 'active' : ''}`} data-cinema-lang="eu" onclick="window.setCinemaLang && window.setCinemaLang('eu')">EU</button>
+        <button type="button" class={`lang-btn-cinema ${lang === 'en' ? 'active' : ''}`} data-cinema-lang="en" onclick="window.setCinemaLang && window.setCinemaLang('en')">EN</button>
       </div>
 
-      <button class="btn-drawer-trigger" onclick="toggleModal('contact', true)">
+      <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-drawer-trigger" style="border-color: rgba(255, 255, 255, 0.2); color: #ffffff; text-decoration: none;" id="link-top-current-web" title="Ir al portal web oficial actual en UPV/EHU">
+        <i class="fas fa-external-link-alt" style="color: var(--cinema-mint);"></i> <span id="txt-top-current-web">Web Actual</span>
+      </a>
+
+      <button type="button" class="btn-drawer-trigger" data-cinema-modal="contact" onclick="window.toggleModal && window.toggleModal('contact', true)">
         <i class="fas fa-envelope"></i> <span id="txt-btn-drawer">Contacto</span>
       </button>
     </div>
@@ -846,12 +852,15 @@ const { lang = 'es' } = Astro.props;
 
         <!-- Actions -->
         <div class="cinema-action-row">
-          <button class="btn-cinema-glow" onclick="toggleModal('contact', true)">
+          <button type="button" class="btn-cinema-glow" data-cinema-modal="contact" onclick="window.toggleModal && window.toggleModal('contact', true)">
             <i class="fas fa-paper-plane"></i> <span id="txt-btn-contact">Contactar con el Grupo</span>
           </button>
-          <button class="btn-cinema-glass" onclick="toggleModal('dossier', true)">
+          <button type="button" class="btn-cinema-glass" data-cinema-modal="dossier" onclick="window.toggleModal && window.toggleModal('dossier', true)">
             <i class="fas fa-book-open"></i> <span id="txt-btn-dossier">Dossier Institucional</span>
           </button>
+          <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-cinema-glass" style="border-color: rgba(0, 245, 155, 0.45); color: #ffffff; text-decoration: none;" id="btn-current-web-link">
+            <i class="fas fa-external-link-alt" style="color:var(--cinema-mint);"></i> <span id="txt-btn-current-web">Web Actual UPV/EHU</span>
+          </a>
         </div>
 
         <!-- Progress Box (Prototipo 5) -->
@@ -988,6 +997,7 @@ const { lang = 'es' } = Astro.props;
     <footer class="cinema-footer">
       <div>
         <strong>Lipids &amp; Liver Research Group</strong> &bull; Universidad del País Vasco (UPV/EHU) &bull; IIS Biocruces Bizkaia
+        &bull; <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" style="color:var(--cinema-mint); text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:600;"><i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i> <span id="txt-footer-current-web">Web actual UPV/EHU</span></a>
       </div>
       <div id="txt-footer-tag">
         Grupo Consolidado del Gobierno Vasco IT1560-22
@@ -997,9 +1007,9 @@ const { lang = 'es' } = Astro.props;
   </main>
 
   <!-- Contact Modal -->
-  <div class="cinema-modal" id="modal-contact" onclick="if(event.target===this) toggleModal('contact', false)">
+  <div class="cinema-modal" id="modal-contact" onclick="if(event.target===this) (window.toggleModal ? window.toggleModal('contact', false) : this.classList.remove('open'))">
     <div class="cinema-modal-card">
-      <button class="cinema-modal-close" onclick="toggleModal('contact', false)"><i class="fas fa-times"></i></button>
+      <button type="button" class="cinema-modal-close" data-cinema-close="contact" onclick="window.toggleModal && window.toggleModal('contact', false)"><i class="fas fa-times"></i></button>
       <h3 style="font-family:var(--cinema-font-display); font-size:1.5rem; color:var(--cinema-mint); margin-bottom:0.75rem;" id="txt-m-c-title">Contacto Directo</h3>
       <p style="color:var(--cinema-text-secondary); font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;" id="txt-m-c-desc">
         Durante el periodo de renovación del portal web, puedes contactar con la investigadora principal para asuntos académicos, colaboraciones científicas o doctorado:
@@ -1019,16 +1029,16 @@ const { lang = 'es' } = Astro.props;
         </div>
       </div>
 
-      <button class="btn-cinema-glow" style="width:100%; justify-content:center; padding:10px;" onclick="toggleModal('contact', false)" id="txt-m-c-btn">
+      <button type="button" class="btn-cinema-glow" style="width:100%; justify-content:center; padding:10px;" data-cinema-close="contact" onclick="window.toggleModal && window.toggleModal('contact', false)" id="txt-m-c-btn">
         Cerrar
       </button>
     </div>
   </div>
 
   <!-- Dossier Modal -->
-  <div class="cinema-modal" id="modal-dossier" onclick="if(event.target===this) toggleModal('dossier', false)">
+  <div class="cinema-modal" id="modal-dossier" onclick="if(event.target===this) (window.toggleModal ? window.toggleModal('dossier', false) : this.classList.remove('open'))">
     <div class="cinema-modal-card">
-      <button class="cinema-modal-close" onclick="toggleModal('dossier', false)"><i class="fas fa-times"></i></button>
+      <button type="button" class="cinema-modal-close" data-cinema-close="dossier" onclick="window.toggleModal && window.toggleModal('dossier', false)"><i class="fas fa-times"></i></button>
       <h3 style="font-family:var(--cinema-font-display); font-size:1.5rem; color:var(--cinema-cyan); margin-bottom:0.75rem;" id="txt-m-d-title">Dossier Institucional</h3>
       <p style="color:var(--cinema-text-secondary); font-size:0.9rem; line-height:1.6; margin-bottom:1.25rem;" id="txt-m-d-desc">
         El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y translacional:
@@ -1042,7 +1052,7 @@ const { lang = 'es' } = Astro.props;
         <li><strong style="color:#fff;">Formación:</strong> Dirección continuada de tesis doctorales y másteres oficiales.</li>
       </ul>
 
-      <button class="btn-cinema-glass" style="width:100%; justify-content:center; padding:10px;" onclick="toggleModal('dossier', false)" id="txt-m-d-btn">
+      <button type="button" class="btn-cinema-glass" style="width:100%; justify-content:center; padding:10px;" data-cinema-close="dossier" onclick="window.toggleModal && window.toggleModal('dossier', false)" id="txt-m-d-btn">
         Cerrar
       </button>
     </div>
@@ -1180,7 +1190,10 @@ const { lang = 'es' } = Astro.props;
         m_d_desc: 'El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y translacional:',
         m_d_list: '<li><strong style="color:#fff;">Acreditación:</strong> Grupo Consolidado de Excelencia Tipo A (Gobierno Vasco IT1560-22).</li><li><strong style="color:#fff;">Sedes:</strong> Facultad de Medicina y Enfermería (UPV/EHU) y Centro María Goyri.</li><li><strong style="color:#fff;">Centros:</strong> UPV/EHU &amp; Instituto de Investigación Sanitaria Biocruces Bizkaia.</li><li><strong style="color:#fff;">Producción:</strong> +150 publicaciones en revistas científicas de primer cuartil (Q1 JCR).</li><li><strong style="color:#fff;">Formación:</strong> Dirección continuada de tesis doctorales y másteres oficiales.</li>',
         m_d_close: "Cerrar",
-        footer_tag: "Grupo Consolidado del Gobierno Vasco IT1560-22"
+        footer_tag: "Grupo Consolidado del Gobierno Vasco IT1560-22",
+        btn_current_web: "Web Actual UPV/EHU",
+        top_current_web: "Web Actual",
+        footer_current_web: "Web actual UPV/EHU"
       },
       eu: {
         header_tag: "Ikerketa Talde Finkatua IT1560-22",
@@ -1226,9 +1239,12 @@ const { lang = 'es' } = Astro.props;
         m_c_close: "Itxi",
         m_d_title: "Txosten Instituzionala",
         m_d_desc: '<strong>Lipids &amp; Liver (IT1560-22)</strong> Ikerketa Talde Finkatuak bikaintasun akademikoa eta translazionala uztartzen ditu:',
-        m_d_list: '<li><strong style="color:#fff;">Egiaztapena:</strong> A Motako Bikaintasun Talde Finkatua (Eusko Jaurlaritza IT1560-22).</li><li><strong style="color:#fff;">Egoitzak:</strong> Medikuntza eta Erizaintza Fakultatea (UPV/EHU) eta Maria Goyri eraikina.</li><li><strong style="color:#fff;">Zentroak:</strong> UPV/EHU &amp; Biocruces Bizkaia Osasun Ikerketa Institutua.</li><li><strong style="color:#fff;">Ekoizpena:</strong> +150 argitalpen lehen laurdeneko aldizkari zientifikoetan (Q1 JCR).</li><li><strong style="color:#fff;">Prestakuntza:</strong> Doktore-tesien eta master ofizialen etengabeko zuzendaritza.</li>',
+        m_d_list: '<li><strong style="color:#fff;">Egiaztapena:</strong> A Motako Bikaintasun Talde Finkatua (Eusko Jaurlaritza IT1560-22).</li><li><strong style="color:#fff;">Sedes:</strong> Medikuntza eta Erizaintza Fakultatea (UPV/EHU) eta Maria Goyri eraikina.</li><li><strong style="color:#fff;">Zentroak:</strong> UPV/EHU &amp; Biocruces Bizkaia Osasun Ikerketa Institutua.</li><li><strong style="color:#fff;">Ekoizpena:</strong> +150 argitalpen lehen laurdeneko aldizkari zientifikoetan (Q1 JCR).</li><li><strong style="color:#fff;">Prestakuntza:</strong> Doktore-tesien eta master ofizialen etengabeko zuzendaritza.</li>',
         m_d_close: "Itxi",
-        footer_tag: "Eusko Jaurlaritzako IT1560-22 Talde Finkatua"
+        footer_tag: "Eusko Jaurlaritzako IT1560-22 Talde Finkatua",
+        btn_current_web: "Egungo Webgunea UPV/EHU",
+        top_current_web: "Egungo Webgunea",
+        footer_current_web: "Egungo webgunea (UPV/EHU)"
       },
       en: {
         header_tag: "Consolidated Group IT1560-22",
@@ -1276,14 +1292,22 @@ const { lang = 'es' } = Astro.props;
         m_d_desc: 'The <strong>Lipids &amp; Liver (IT1560-22)</strong> Consolidated Research Group combines academic and translational excellence:',
         m_d_list: '<li><strong style="color:#fff;">Accreditation:</strong> Type A Consolidated Group of Excellence (Basque Government IT1560-22).</li><li><strong style="color:#fff;">Facilities:</strong> Faculty of Medicine and Nursing (UPV/EHU) and María Goyri Building.</li><li><strong style="color:#fff;">Institutions:</strong> UPV/EHU &amp; Biocruces Bizkaia Health Research Institute.</li><li><strong style="color:#fff;">Output:</strong> 150+ publications in top quartile peer-reviewed journals (Q1 JCR).</li><li><strong style="color:#fff;">Training:</strong> Continuous supervision of PhD dissertations and official master\'s degrees.</li>',
         m_d_close: "Close",
-        footer_tag: "Basque Government Consolidated Group IT1560-22"
+        footer_tag: "Basque Government Consolidated Group IT1560-22",
+        btn_current_web: "Current UPV/EHU Website",
+        top_current_web: "Current Web",
+        footer_current_web: "Current UPV/EHU website"
       }
     };
 
     function setCinemaLang(lang) {
-      document.querySelectorAll('.lang-btn-cinema').forEach(b => b.classList.remove('active'));
-      const activeBtn = Array.from(document.querySelectorAll('.lang-btn-cinema')).find(b => b.textContent.trim().toLowerCase() === lang);
-      if (activeBtn) activeBtn.classList.add('active');
+      document.querySelectorAll('.lang-btn-cinema').forEach(b => {
+        const btnLang = (b.getAttribute('data-cinema-lang') || b.textContent).trim().toLowerCase();
+        if (btnLang === lang) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
 
       const d = translations[lang] || translations.es;
       const setTxt = (id, val, isHtml = false) => {
@@ -1346,16 +1370,97 @@ const { lang = 'es' } = Astro.props;
       setTxt('txt-m-d-btn', d.m_d_close);
 
       setTxt('txt-footer-tag', d.footer_tag);
+      setTxt('txt-btn-current-web', d.btn_current_web);
+      setTxt('txt-top-current-web', d.top_current_web);
+      setTxt('txt-footer-current-web', d.footer_current_web);
 
       document.documentElement.lang = lang;
+
+      // Update URL smoothly if on standard web server
+      try {
+        const currentPath = window.location.pathname;
+        if (currentPath === '/' || currentPath === '/eu/' || currentPath === '/en/') {
+          const targetPath = lang === 'es' ? '/' : '/' + lang + '/';
+          if (currentPath !== targetPath && window.history && window.history.pushState) {
+            window.history.pushState({ lang: lang }, '', targetPath);
+          }
+        }
+      } catch (e) {
+        // Ignore in restricted environments
+      }
     }
 
     function toggleModal(id, open) {
       const modal = document.getElementById('modal-' + id);
       if (modal) {
-        if (open) modal.classList.add('open');
-        else modal.classList.remove('open');
+        if (open) {
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        } else {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
       }
+    }
+
+    // Expose explicitly to global window object
+    window.setCinemaLang = setCinemaLang;
+    window.toggleModal = toggleModal;
+
+    // Attach event listeners to ensure functionality regardless of inline evaluation
+    function setupInteractions() {
+      // Language switcher buttons
+      document.querySelectorAll('.lang-btn-cinema').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetLang = (btn.getAttribute('data-cinema-lang') || btn.textContent).trim().toLowerCase();
+          setCinemaLang(targetLang);
+        });
+      });
+
+      // Modal open buttons
+      document.querySelectorAll('[data-cinema-modal]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modalId = btn.getAttribute('data-cinema-modal');
+          toggleModal(modalId, true);
+        });
+      });
+
+      // Modal close buttons
+      document.querySelectorAll('[data-cinema-close]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modalId = btn.getAttribute('data-cinema-close');
+          toggleModal(modalId, false);
+        });
+      });
+
+      // Close on backdrop click
+      document.querySelectorAll('.cinema-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.cinema-modal.open').forEach(m => {
+            m.classList.remove('open');
+          });
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupInteractions);
+    } else {
+      setupInteractions();
     }
 
     // Initialize requested language

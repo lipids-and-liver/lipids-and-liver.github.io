@@ -1,0 +1,15 @@
+---
+import NewsPage from '../../../../components/pages/NewsPage.astro';
+import type { Locale } from '../../../../utils/i18n';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'eu' } },
+    { params: { lang: 'en' } }
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<NewsPage lang={lang as Locale} />

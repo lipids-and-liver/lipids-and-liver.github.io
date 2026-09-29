@@ -8,6 +8,12 @@ import TeamCard from '../cards/TeamCard.astro';
 import ThesisCard from '../cards/ThesisCard.astro';
 import PublicationCard from '../cards/PublicationCard.astro';
 import TrainingCard from '../cards/TrainingCard.astro';
+import ProjectCard from '../cards/ProjectCard.astro';
+import NewsCard from '../cards/NewsCard.astro';
+import PartnerCard from '../cards/PartnerCard.astro';
+import AlumniCard from '../cards/AlumniCard.astro';
+import collaborationsData from '../../data/collaborations.json';
+import alumniData from '../../data/alumni.json';
 
 interface Props {
   lang: Locale;
@@ -48,6 +54,16 @@ const latestPublications = allPubs.slice(0, 6);
 
 const trainings = await getLocalizedCollection('training', lang);
 trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const allProjects = await getLocalizedCollection('projects', lang);
+allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+const featuredProjects = allProjects.slice(0, 4);
+
+const allNews = await getLocalizedCollection('news', lang);
+allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const latestNews = allNews.slice(0, 3);
+
+const featuredAlumni = alumniData.slice(0, 4);
 ---
 
 <Layout currentPage="home" lang={lang}>
@@ -196,6 +212,27 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
     </div>
   </section>
 
+  <!-- Funded Projects Section -->
+  <section class="page-section" id="projects">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.projects_title || 'Proyectos de Investigación Financiados'}</h2>
+          <span class="section-subtitle-inst">{t.projects_subtitle || 'Convocatorias competitivas nacionales, autonómicas y europeas'}</span>
+        </div>
+        <a href={getLocalizedPath('/proyectos', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-hand-holding-usd"></i> {t.projects_view_catalog || 'Ver Todos los Proyectos'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="projects-grid-inst" id="featured-projects-grid">
+        {featuredProjects.map(project => (
+          <ProjectCard project={project} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Team Personnel Section with Images & CV links -->
   <section class="page-section" id="team">
     <div class="container">
@@ -262,6 +299,27 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
     </div>
   </section>
 
+  <!-- Former Members / Alumni Section -->
+  <section class="page-section page-section-alt" id="alumni">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.alumni_title || 'Antiguos Miembros y Trayectoria (Alumni)'}</h2>
+          <span class="section-subtitle-inst">{t.alumni_subtitle || 'Puestos de liderazgo científico, asistencial e industrial que ocupan los doctores formados en el grupo'}</span>
+        </div>
+        <a href={getLocalizedPath('/alumni', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-user-graduate"></i> {t.alumni_view_all || 'Ver Red de Antiguos Miembros'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="alumni-grid-inst">
+        {featuredAlumni.map(alumni => (
+          <AlumniCard alumni={alumni} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Publications Section (Latest only on Home) -->
   <section class="page-section" id="publications">
     <div class="container">
@@ -293,6 +351,91 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
     </div>
   </section>
 
+  <!-- SGIker Lipidomics Facility Section -->
+  <section class="page-section page-section-alt" id="sgiker">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.sgiker_title || 'Servicios Científico-Técnicos: Unidad de Lipidómica SGIker'}</h2>
+          <span class="section-subtitle-inst">{t.sgiker_subtitle || 'Plataforma analítica avanzada de espectrometría de masas y lipidómica traslacional'}</span>
+        </div>
+        <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-flask"></i> {t.sgiker_btn || 'Ver Servicios y Protocolos'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="about-card" style="padding:2.5rem;">
+        <div class="about-grid">
+          <div class="about-text">
+            <h3 style="color:var(--ehu-navy); margin-bottom:1rem; font-size:1.4rem;">
+              <i class="fas fa-microscope" style="color:var(--logo-green);"></i> Espectrometría de Masas al Servicio de la Investigación
+            </h3>
+            <p style="font-size:1rem; line-height:1.7; color:var(--text-secondary); margin-bottom:1.25rem;">
+              La <strong>Unidad Central de Lipidómica SGIker</strong> (UPV/EHU), ubicada en el Campus de Leioa y vinculada a nuestro grupo, ofrece asesoramiento metodológico y capacidad analítica de vanguardia para proyectos de investigación biomédica, clínica y biotecnológica.
+            </p>
+            <div class="specialty-list">
+              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Perfilado Untargeted por UHPLC-QTOF</span>
+              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Cuantificación Absoluta (Triple Cuadrupolo MRM)</span>
+              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Ácidos Biliares y Oxilipinas</span>
+              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Asesoramiento Bioinformático</span>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-surface-alt); padding:1.75rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:center;">
+            <h4 style="color:var(--ehu-navy); margin-bottom:0.75rem; font-size:1.1rem;">
+              <i class="fas fa-external-link-alt" style="color:var(--logo-green);"></i> Acceso y Solicitudes
+            </h4>
+            <p style="font-size:0.9rem; line-height:1.6; color:var(--text-secondary); margin-bottom:1.25rem;">
+              Servicio abierto a la UPV/EHU, centros públicos del sistema científico nacional e internacional y empresas biomédicas bajo tarifas oficiales aprobadas.
+            </p>
+            <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-secondary" style="text-align:center; justify-content:center;">
+              Consultar Catálogo de Servicios <i class="fas fa-arrow-right" style="margin-left:6px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News & Highlights Section -->
+  <section class="page-section" id="news">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.news_latest_title || 'Últimas Novedades Científicas'}</h2>
+          <span class="section-subtitle-inst">{t.news_subtitle || 'Publicaciones destacadas, congresos y reconocimientos'}</span>
+        </div>
+        <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-newspaper"></i> {t.news_view_all || 'Ver Todas las Noticias'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="news-grid-inst" id="featured-news-grid">
+        {latestNews.map(article => (
+          <NewsCard article={article} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborations & Strategic Partners Section -->
+  <section class="page-section page-section-alt" id="collaborations">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.collab_title || 'Red de Colaboraciones y Alianzas'}</h2>
+          <span class="section-subtitle-inst">{t.collab_subtitle || 'Entorno hospitalario, centros de investigación de excelencia y consorcios internacionales'}</span>
+        </div>
+      </div>
+
+      <div class="partners-grid-inst">
+        {collaborationsData.map(partner => (
+          <PartnerCard partner={partner} />
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Training Section -->
   <section class="page-section page-section-alt" id="training">
     <div class="container">
@@ -307,6 +450,157 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
         {trainings.map((tr, idx) => (
           <TrainingCard training={tr} lang={lang} index={idx} />
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Science & Protocols Section -->
+  <section class="page-section" id="resources">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.resources_title || 'Ciencia Abierta y Protocolos'}</h2>
+          <span class="section-subtitle-inst">{t.resources_subtitle || 'Procedimientos normalizados de trabajo (SOPs) y datos abiertos'}</span>
+        </div>
+        <a href={getLocalizedPath('/recursos', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-lock-open"></i> {t.resources_btn || 'Explorar Protocolos y Recursos'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="research-grid-inst">
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#e0f2fe; color:#0369a1;"><i class="fas fa-vial"></i> SOP</span>
+              <h3 class="research-card-title">Extracción de Lípidos Folch Modificado</h3>
+            </div>
+            <p class="research-card-desc">
+              Protocolo optimizado para la extracción y recuperación de fosfolípidos, triglicéridos y esfingolípidos en biopsias hepáticas y plasma humano.
+            </p>
+          </div>
+        </div>
+
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#dcfce7; color:#166534;"><i class="fas fa-dna"></i> Cultivo Celular</span>
+              <h3 class="research-card-title">Aislamiento de Hepatocitos Primarios</h3>
+            </div>
+            <p class="research-card-desc">
+              Perfusión hepática in situ en dos etapas (EGTA + colagenasa) para el aislamiento de hepatocitos primarios viables para estudios metabólicos.
+            </p>
+          </div>
+        </div>
+
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#fef3c7; color:#92400e;"><i class="fab fa-github"></i> Open Data</span>
+              <h3 class="research-card-title">Repositorios Públicos & Scripts R</h3>
+            </div>
+            <p class="research-card-desc">
+              Acceso a conjuntos de datos depositados en GEO/MetaboLights y scripts bioinformáticos de código abierto desarrollados por el grupo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Science Outreach & Patient Impact Section -->
+  <section class="page-section page-section-alt" id="outreach">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.outreach_title || 'Divulgación Científica y Sociedad'}</h2>
+          <span class="section-subtitle-inst">{t.outreach_subtitle || 'Transferencia de conocimiento a pacientes, centros educativos y sociedad'}</span>
+        </div>
+        <a href={getLocalizedPath('/divulgacion', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-heartbeat"></i> {t.outreach_btn || 'Conocer Actividades de Divulgación'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="about-card" style="padding:2.5rem;">
+        <div class="about-grid">
+          <div class="about-text">
+            <h3 style="color:var(--ehu-navy); margin-bottom:1rem; font-size:1.35rem;">
+              <i class="fas fa-users" style="color:var(--logo-green);"></i> Salud Hepática y Conciencia Social
+            </h3>
+            <p style="font-size:1rem; line-height:1.7; color:var(--text-secondary); margin-bottom:1.25rem;">
+              En el grupo Lipids & Liver acercamos la investigación preclínica sobre esteatosis hepática metabólica (MASLD/MASH) a la ciudadanía a través de talleres en la <strong>Zientzia Astea UPV/EHU</strong>, charlas del <strong>11 de Febrero (Mujer y Niña en la Ciencia)</strong> y estrecha cooperación con asociaciones de pacientes hepáticos.
+            </p>
+            <div class="specialty-list">
+              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Información para Pacientes MASLD</span>
+              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Talleres Escolares Zientzia Astea</span>
+              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Fomento de Vocaciones Científicas Femeninas</span>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-surface-alt); padding:1.75rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:center;">
+            <h4 style="color:var(--ehu-navy); margin-bottom:0.75rem; font-size:1.1rem;">
+              <i class="fas fa-book-open" style="color:var(--logo-green);"></i> Guías y Recursos Divulgativos
+            </h4>
+            <p style="font-size:0.9rem; line-height:1.6; color:var(--text-secondary); margin-bottom:1.25rem;">
+              Consulta nuestras recomendaciones sobre hábitos cardiosaludables y prevención no farmacológica del daño metabólico en el hígado.
+            </p>
+            <a href={getLocalizedPath('/divulgacion', lang)} class="btn-inst-secondary" style="text-align:center; justify-content:center;">
+              Portal de Divulgación <i class="fas fa-arrow-right" style="margin-left:6px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Us / Careers Section -->
+  <section class="page-section" id="join">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst">{t.join_title || 'Únete a Lipids & Liver'}</h2>
+          <span class="section-subtitle-inst">{t.join_subtitle || 'Oportunidades de formación e investigación predoctoral y posdoctoral'}</span>
+        </div>
+        <a href={getLocalizedPath('/unete', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-user-plus"></i> {t.join_btn || 'Ver Oportunidades y Convocatorias'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
+      </div>
+
+      <div class="research-grid-inst">
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#e0f2fe; color:#0369a1;"><i class="fas fa-book-reader"></i> TFG / TFM</span>
+              <h3 class="research-card-title">Estudiantes de Grado y Máster</h3>
+            </div>
+            <p class="research-card-desc">
+              Prácticas de laboratorio y trabajos fin de titulación en Medicina, Bioquímica, Biología, Biotecnología y Farmacia (UPV/EHU).
+            </p>
+          </div>
+        </div>
+
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#fef3c7; color:#92400e;"><i class="fas fa-graduation-cap"></i> Doctorado</span>
+              <h3 class="research-card-title">Tesis Doctorales (FPU / FPI)</h3>
+            </div>
+            <p class="research-card-desc">
+              Apoyo en solicitudes de contratos predoctorales del Gobierno Vasco y Plan Estatal para integrarse en proyectos financiados de vanguardia.
+            </p>
+          </div>
+        </div>
+
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#f3e8ff; color:#6b21a8;"><i class="fas fa-microscope"></i> Posdoctoral</span>
+              <h3 class="research-card-title">Investigadores/as Posdoctorales</h3>
+            </div>
+            <p class="research-card-desc">
+              Recepción de candidaturas para programas Juan de la Cierva, Marie Skłodowska-Curie Actions (MSCA) y perfeccionamiento posdoctoral UPV/EHU.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

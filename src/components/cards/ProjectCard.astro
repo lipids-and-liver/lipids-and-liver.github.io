@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  lang?: Locale;
+}
+
+const { project, lang = 'es' } = Astro.props;
+const { title, code, fundingBody, pi, period, status, badge, summary, fundingType } = project.data;
+const t = getTranslations(lang);
+
+const isActive = status === 'active';
+const statusLabel = isActive ? (t.projects_status_active || 'En Activo') : (t.projects_status_completed || 'Finalizado');
+---
+
+<div class={`project-card-inst ${isActive ? 'status-active' : 'status-completed'}`}>
+  <div class="project-card-header">
+    <div class="project-badges">
+      <span class={`project-status-badge ${isActive ? 'badge-active' : 'badge-completed'}`}>
+        <i class={`fas ${isActive ? 'fa-dot-circle' : 'fa-check-circle'}`}></i>
+        {statusLabel}
+      </span>
+      {badge && <span class="project-type-badge">{badge}</span>}
+    </div>
+    <span class="project-code-tag"><i class="fas fa-tag"></i> {code}</span>
+  </div>
+
+  <h3 class="project-title">{title}</h3>
+
+  <div class="project-meta-grid">
+    <div class="project-meta-item">
+      <i class="fas fa-user-tie"></i>
+      <div>
+        <span class="meta-label">{t.projects_pi_label || 'Investigador/a Principal:'}</span>
+        <span class="meta-value">{pi}</span>
+      </div>
+    </div>
+
+    <div class="project-meta-item">
+      <i class="fas fa-landmark"></i>
+      <div>
+        <span class="meta-label">{t.projects_entity_label || 'Entidad Financiadora:'}</span>
+        <span class="meta-value">{fundingBody}</span>
+      </div>
+    </div>
+
+    <div class="project-meta-item">
+      <i class="fas fa-calendar-alt"></i>
+      <div>
+        <span class="meta-label">{t.projects_period_label || 'Periodo:'}</span>
+        <span class="meta-value">{period}</span>
+      </div>
+    </div>
+  </div>
+
+  {summary && (
+    <p class="project-summary">
+      {summary}
+    </p>
+  )}
+</div>
