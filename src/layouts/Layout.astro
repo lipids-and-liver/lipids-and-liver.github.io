@@ -255,10 +255,10 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
               </ul>
             </li>
 
-            <!-- 4. Servicios & Recursos (Dropdown) -->
+            <!-- 4. Servicios & Transferencia (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/sgiker', lang)} class={`nav-dropdown-trigger ${['sgiker', 'resources', 'training'].includes(currentPage) ? 'active' : ''}`}>
-                <span>{t.nav_group_services || 'Servicios & Recursos'}</span> <i class="fas fa-chevron-down nav-caret"></i>
+              <a href={getLocalizedPath('/sgiker', lang)} class={`nav-dropdown-trigger ${['sgiker', 'resources', 'outreach'].includes(currentPage) ? 'active' : ''}`}>
+                <span>{t.nav_group_transfer || 'Servicios & Transferencia'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
                 <li>
@@ -280,38 +280,29 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
                   </a>
                 </li>
                 <li>
-                  <a href={getLocalizedPath('/#training', lang)}>
-                    <i class="fas fa-chalkboard-teacher"></i>
+                  <a href={getLocalizedPath('/divulgacion', lang)}>
+                    <i class="fas fa-heartbeat"></i>
                     <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_training || 'Docencia y Formación'}</span>
-                      <span class="dropdown-link-sub">Grados, Másteres y Doctorado</span>
+                      <span class="dropdown-link-title">{t.nav_outreach || 'Divulgación y Salud Hepática'}</span>
+                      <span class="dropdown-link-sub">Guías para pacientes y Zientzia Astea</span>
                     </div>
                   </a>
                 </li>
               </ul>
             </li>
 
-            <!-- 5. Sociedad & Novedades (Dropdown) -->
+            <!-- 5. Formación & Talento (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/noticias', lang)} class={`nav-dropdown-trigger ${['news', 'outreach', 'join'].includes(currentPage) ? 'active' : ''}`}>
-                <span>{t.nav_group_impact || 'Sociedad & Novedades'}</span> <i class="fas fa-chevron-down nav-caret"></i>
+              <a href={getLocalizedPath('/#training', lang)} class={`nav-dropdown-trigger ${['training', 'join'].includes(currentPage) ? 'active' : ''}`}>
+                <span>{t.nav_group_training || 'Formación & Talento'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
                 <li>
-                  <a href={getLocalizedPath('/noticias', lang)}>
-                    <i class="fas fa-newspaper"></i>
+                  <a href={getLocalizedPath('/#training', lang)}>
+                    <i class="fas fa-chalkboard-teacher"></i>
                     <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_news || 'Noticias y Sala de Prensa'}</span>
-                      <span class="dropdown-link-sub">Avances, congresos y premios</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href={getLocalizedPath('/divulgacion', lang)}>
-                    <i class="fas fa-heartbeat"></i>
-                    <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_outreach || 'Divulgación y Salud Hepática'}</span>
-                      <span class="dropdown-link-sub">Guías para pacientes y Zientzia Astea</span>
+                      <span class="dropdown-link-title">{t.nav_training || 'Docencia y Formación'}</span>
+                      <span class="dropdown-link-sub">Grados, Másteres y Doctorado</span>
                     </div>
                   </a>
                 </li>
@@ -327,7 +318,14 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
               </ul>
             </li>
 
-            <!-- 6. Contacto -->
+            <!-- 6. Noticias -->
+            <li class="nav-menu-item">
+              <a href={getLocalizedPath('/noticias', lang)} class={currentPage === 'news' ? 'active' : ''}>
+                <i class="fas fa-newspaper"></i> <span>{t.nav_news || 'Noticias'}</span>
+              </a>
+            </li>
+
+            <!-- 7. Contacto -->
             <li class="nav-menu-item nav-menu-contact" style="margin-left:auto">
               <a href={getLocalizedPath('/#contact', lang)} class="nav-contact-link">
                 <i class="fas fa-envelope"></i> <span>{t.nav_contact}</span>
@@ -389,7 +387,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
           <p set:html={t.footer_desc}></p>
         </div>
         <div>
-          <h4>{t.footer_nav}</h4>
+          <h4>{t.nav_group_group || 'El Grupo'} &amp; {t.nav_group_research || 'Investigación'}</h4>
           {isHoldingPage ? (
             <ul class="footer-links-inst">
               <li><a href="#hero">{t.nav_home}</a></li>
@@ -405,15 +403,20 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
               <li><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
               <li><a href={getLocalizedPath('/tesis', lang)}>{t.theses_page_title}</a></li>
               <li><a href={getLocalizedPath('/publicaciones', lang)}>{t.pubs_title}</a></li>
-              <li><a href={getLocalizedPath('/sgiker', lang)}>{t.nav_sgiker || 'Unidad Lipidómica SGIker'}</a></li>
-              <li><a href={getLocalizedPath('/noticias', lang)}>{t.nav_news || 'Noticias y Actualidad'}</a></li>
-              <li><a href={getLocalizedPath('/recursos', lang)}>{t.nav_resources || 'Ciencia Abierta y Protocolos'}</a></li>
-              <li><a href={getLocalizedPath('/divulgacion', lang)}>{t.nav_outreach || 'Divulgación Científica'}</a></li>
-              <li><a href={getLocalizedPath('/unete', lang)}>{t.nav_join || 'Únete al Grupo'}</a></li>
-              <li><a href={getLocalizedPath('/alumni', lang)}>{t.nav_alumni || 'Antiguos Miembros (Alumni)'}</a></li>
-              <li><a href={getLocalizedPath('/curriculum', lang)}>{t.nav_cv_portal}</a></li>
             </ul>
           )}
+        </div>
+        <div>
+          <h4>{t.nav_group_services || 'Servicios'} &amp; {t.nav_group_training || 'Talento'}</h4>
+          <ul class="footer-links-inst">
+            <li><a href={getLocalizedPath('/sgiker', lang)}>{t.nav_sgiker || 'Unidad Lipidómica SGIker'}</a></li>
+            <li><a href={getLocalizedPath('/recursos', lang)}>{t.nav_resources || 'Ciencia Abierta y Protocolos'}</a></li>
+            <li><a href={getLocalizedPath('/#training', lang)}>{t.nav_training || 'Docencia y Formación'}</a></li>
+            <li><a href={getLocalizedPath('/unete', lang)}>{t.nav_join || 'Únete al Grupo'}</a></li>
+            <li><a href={getLocalizedPath('/alumni', lang)}>{t.nav_alumni || 'Antiguos Miembros (Alumni)'}</a></li>
+            <li><a href={getLocalizedPath('/noticias', lang)}>{t.nav_news || 'Noticias y Actualidad'}</a></li>
+            <li><a href={getLocalizedPath('/divulgacion', lang)}>{t.nav_outreach || 'Divulgación Científica'}</a></li>
+          </ul>
         </div>
         <div>
           <h4>{t.footer_interest}</h4>
