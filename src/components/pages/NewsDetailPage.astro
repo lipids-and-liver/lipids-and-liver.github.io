@@ -36,57 +36,91 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
 ---
 
 <Layout currentPage="news" lang={lang} title={`${title} | Lipids & Liver`}>
-  <!-- Contextual Sub-bar -->
-  <div class="nav-sub-bar">
-    <div class="container nav-sub-container">
-      <div class="nav-sub-context">
-        <span class="nav-sub-badge">
-          <i class="fas fa-newspaper"></i> {categoryBadge || category}
-        </span>
-      </div>
-      <div class="nav-sub-actions">
-        <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-outline-light">
-          <i class="fas fa-arrow-left"></i> {t.news_back || 'Volver a Noticias'}
-        </a>
-      </div>
+  <div class="container cv-container">
+    <div class="cv-top-bar">
+      <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-secondary" style="padding:6px 14px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
+        <i class="fas fa-arrow-left"></i> {t.news_back || 'Volver a Sala de Prensa'}
+      </a>
     </div>
-  </div>
 
-  <article class="page-section">
-    <div class="container" style="max-width: 860px;">
-      <div class="news-detail-header">
-        <div class="news-detail-meta">
+    <!-- Main News Article Card: Mismo estilo limpio editorial que la carta de presentación -->
+    <div class="cv-card">
+      <!-- Columna Izquierda: Imagen / Icono, Categoría, Metadatos de Publicación -->
+      <aside class="cv-aside">
+        {imageSrc ? (
+          <div class="news-portrait">
+            <img src={imageSrc} alt={title} class="news-photo" loading="lazy" />
+          </div>
+        ) : (
+          <div class="news-portrait-fallback">
+            <i class="fas fa-newspaper"></i>
+          </div>
+        )}
+
+        <div class="cv-aside-badge">
           <span class="news-category-badge">
             <i class="fas fa-tag"></i> {categoryBadge || category}
           </span>
-          <span class="news-date">
-            <i class="far fa-calendar-alt"></i> {formattedDate}
-          </span>
+        </div>
+
+        <div class="cv-contacts-box">
+          <div class="cv-contact-item">
+            <i class="far fa-calendar-alt"></i>
+            <div>
+              <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.news_date || 'Fecha'}</div>
+              <strong style="color:var(--ehu-navy);">{formattedDate}</strong>
+            </div>
+          </div>
+
           {author && (
-            <span class="news-author">
-              <i class="fas fa-pen-nib"></i> {author}
-            </span>
+            <div class="cv-contact-item">
+              <i class="fas fa-pen-nib"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.news_author || 'Redacción / Autor'}</div>
+                <span>{author}</span>
+              </div>
+            </div>
           )}
+
+          <div class="cv-contact-item">
+            <i class="fas fa-university"></i>
+            <div>
+              <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.header_sub || 'Institución'}</div>
+              <span>Lipids & Liver • UPV/EHU</span>
+            </div>
+          </div>
+
+          <a href={getLocalizedPath('/noticias', lang)} class="cv-contact-item" style="color:var(--logo-green); font-weight:600; margin-top:4px;">
+            <i class="fas fa-newspaper"></i>
+            <span>{t.nav_news || 'Sala de Prensa'}</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Columna Derecha: Contenido del artículo -->
+      <article class="cv-main">
+        <div class="cv-kicker">
+          <span class="cv-dot"></span>
+          {categoryBadge || category} • {formattedDate}
         </div>
 
-        <h1 class="news-detail-title">{title}</h1>
-      </div>
+        <h1 class="cv-main-name" style="margin-bottom:1.25rem;">
+          {title}
+        </h1>
 
-      {imageSrc && (
-        <div class="news-detail-image-box">
-          <img src={imageSrc} alt={title} class="news-detail-image" />
+        <div class="cv-bio markdown-body" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+          <Content />
         </div>
-      )}
 
-      <div class="news-detail-content markdown-body">
-        <Content />
-      </div>
-
-      <div class="news-detail-footer">
-        <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-secondary">
-          <i class="fas fa-arrow-left"></i> {t.news_back || 'Volver a la Sala de Prensa'}
-        </a>
-      </div>
+        <div class="cv-block" style="margin-top:2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-secondary" style="padding:6px 16px; font-size:0.86rem; display:inline-flex; align-items:center; gap:8px;">
+            <i class="fas fa-arrow-left"></i> {t.news_back || 'Volver a Sala de Prensa'}
+          </a>
+          <span style="font-size:0.82rem; color:var(--text-muted);">
+            Lipids & Liver Research Group • IT1560-22
+          </span>
+        </div>
+      </article>
     </div>
-  </article>
+  </div>
 </Layout>

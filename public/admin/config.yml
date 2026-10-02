@@ -213,7 +213,37 @@ collections:
       - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
       - { label: "Descripción", name: "body", widget: "markdown", i18n: true }
 
-  # 8. PRESENTACIÓN INSTITUCIONAL (PESTAÑAS)
+  # 8. CARTA DE PRESENTACIÓN DE LA INVESTIGADORA PRINCIPAL
+  - name: "letter"
+    label: "Carta de Presentación (IP)"
+    label_singular: "Carta de Presentación"
+    description: "Carta de bienvenida y presentación institucional de la IP (Dra. Patricia Aspichueta) en 3 idiomas"
+    folder: "src/content/letter"
+    i18n: true
+    create: false
+    delete: false
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{title}} - {{piName}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string", default: "carta", i18n: "duplicate" }
+      - { label: "Título de la Carta", name: "title", widget: "string", i18n: true }
+      - { label: "Distintivo / Badge", name: "badge", widget: "string", i18n: true }
+      - { label: "Saludo Inicial", name: "salutation", widget: "string", i18n: true }
+      - { label: "Nombre de la Investigadora Principal", name: "piName", widget: "string", i18n: true }
+      - { label: "Cargo Académico", name: "piRole", widget: "string", i18n: true }
+      - { label: "Filiación Institucional", name: "piDept", widget: "string", i18n: true }
+      - { label: "Distintivo sobre la Foto", name: "piBadgeOverlay", widget: "string", i18n: true }
+      - { label: "Fotografía de la IP", name: "piImage", widget: "image", i18n: "duplicate", default: "/assets/images/team/patricia-aspichueta/image.jpg" }
+      - { label: "Cargo en Firma", name: "signRole", widget: "string", required: false, i18n: true }
+      - { label: "Filiación en Firma", name: "signDept", widget: "string", required: false, i18n: true }
+      - { label: "Texto Enlace a CV", name: "viewCvText", widget: "string", required: false, i18n: true }
+      - { label: "Ruta del CV", name: "cvLink", widget: "string", required: false, i18n: "duplicate", default: "/curriculum/patricia-aspichueta" }
+      - { label: "Correo Electrónico", name: "email", widget: "string", required: false, i18n: "duplicate", default: "patricia.aspichueta@ehu.eus" }
+      - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", default: "0000-0002-8921-9421" }
+      - { label: "Cuerpo de la Carta (Texto Completo)", name: "body", widget: "markdown", i18n: true }
+
+  # 9. PRESENTACIÓN INSTITUCIONAL (PESTAÑAS)
   - name: "presentation"
     label: "Presentación del Grupo"
     label_singular: "Pestaña de Presentación"

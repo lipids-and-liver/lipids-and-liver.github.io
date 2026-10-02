@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
 import stats from '../../data/stats.json';
 import ResearchCard from '../cards/ResearchCard.astro';
@@ -35,6 +35,10 @@ const presentationTabs = await Promise.all(
     };
   })
 );
+
+const letterEntry = await getLocalizedEntry('letter', 'carta', lang);
+const letterRender = letterEntry ? await render(letterEntry) : null;
+const LetterContent = letterRender ? letterRender.Content : null;
 
 const researchLines = await getLocalizedCollection('research', lang);
 researchLines.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
@@ -135,68 +139,164 @@ const featuredAlumni = alumniData.slice(0, 4);
         </div>
       </div>
 
-      <div class="about-card">
-        <div class="about-tabs" id="about-tabs-group">
-          {presentationTabs.map((tab) => (
-            <button
-              class={`tab-btn ${tab.isActive ? 'active' : ''}`}
-              data-tab={tab.entry.data.tabId}
-            >
-              {tab.entry.data.tabTitle}
-            </button>
-          ))}
+      <!-- Apartado 1: Carta de Presentación de la Investigadora Principal (IP) -->
+      <div class="about-pi-card">
+        <aside class="about-pi-aside">
+          <div class="about-pi-portrait">
+            <img
+              src={letterEntry?.data.piImage || "/assets/images/team/patricia-aspichueta/image.jpg"}
+              alt={letterEntry?.data.piName || t.about_letter_sign_name}
+              class="about-pi-photo"
+              loading="lazy"
+            />
+          </div>
+          <div class="about-pi-info">
+            <h3 class="about-pi-name">{letterEntry?.data.piName || t.about_letter_sign_name}</h3>
+            <span class="about-pi-role">{letterEntry?.data.piRole || t.about_letter_pi_role}</span>
+
+            <div class="about-pi-actions">
+              <a
+                href={getLocalizedPath(letterEntry?.data.cvLink || '/curriculum/patricia-aspichueta', lang)}
+                class="about-pi-cv-btn"
+              >
+                <span>{letterEntry?.data.viewCvText || t.about_letter_view_cv}</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+
+              <div class="about-pi-contacts">
+                <a
+                  href={`mailto:${letterEntry?.data.email || 'patricia.aspichueta@ehu.eus'}`}
+                  class="about-pi-contact-badge"
+                  title={letterEntry?.data.email || 'patricia.aspichueta@ehu.eus'}
+                  aria-label="Email"
+                >
+                  <i class="fas fa-envelope"></i>
+                </a>
+                <a
+                  href={`https://orcid.org/${letterEntry?.data.orcid || '0000-0002-8921-9421'}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="about-pi-contact-badge"
+                  title={`ORCID: ${letterEntry?.data.orcid || '0000-0002-8921-9421'}`}
+                  aria-label="ORCID"
+                >
+                  <i class="fab fa-orcid" style="color:#a6ce39;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <article class="about-pi-letter">
+          <div class="about-letter-header">
+            <div class="about-letter-kicker">
+              <span class="about-letter-dot"></span>
+              {letterEntry?.data.badge || t.about_letter_badge}
+            </div>
+            <h3 class="about-letter-heading">{letterEntry?.data.title || t.about_letter_title}</h3>
+          </div>
+
+          <div class="about-letter-body">
+            <p class="about-letter-salutation">
+              <strong>{letterEntry?.data.salutation || t.about_letter_greeting}</strong>
+            </p>
+            {LetterContent ? (
+              <LetterContent />
+            ) : (
+              <>
+                <p>{t.about_letter_p1}</p>
+                <p>{t.about_letter_p2}</p>
+                <p>{t.about_letter_p3}</p>
+              </>
+            )}
+          </div>
+
+          <div class="about-letter-signature-block">
+            <div class="about-letter-signature-mark"></div>
+            <div class="about-letter-sign-name">{letterEntry?.data.piName || t.about_letter_sign_name}</div>
+            <div class="about-letter-sign-meta">
+              <span>{letterEntry?.data.signRole || t.about_letter_sign_role}</span>
+              <span class="about-letter-sign-separator">•</span>
+              <span>{letterEntry?.data.signDept || t.about_letter_sign_dept}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Apartado 2: A continuación, las pestañas siguientes -->
+      <div class="about-tabs-block">
+        <div class="about-tabs-header-bar">
+          <h3 class="about-tabs-block-title">
+            <i class="fas fa-layer-group"></i> {t.about_tabs_heading}
+          </h3>
+          <span class="about-tabs-block-subtitle">
+            {t.about_tabs_subheading}
+          </span>
         </div>
 
-        {presentationTabs.map((tab) => {
-          const { entry, Content, isActive } = tab;
-          const { tabId, specialties, staffCompositionTitle, staffComposition } = entry.data;
-          const hasSidebar = (specialties && specialties.length > 0) || (staffComposition && staffComposition.length > 0);
+        <div class="about-card">
+          <div class="about-tabs" id="about-tabs-group">
+            {presentationTabs.map((tab) => (
+              <button
+                class={`tab-btn ${tab.isActive ? 'active' : ''}`}
+                data-tab={tab.entry.data.tabId}
+              >
+                {tab.entry.data.tabTitle}
+              </button>
+            ))}
+          </div>
 
-          return (
-            <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
-              {hasSidebar ? (
-                <div class="about-grid">
-                  <div class="about-text">
-                    <Content />
-                    {specialties && specialties.length > 0 && (
-                      <div class="specialty-list">
-                        {specialties.map((spec: string) => (
-                          <span class="specialty-chip"><i class="fas fa-check-circle"></i> {spec}</span>
-                        ))}
+          {presentationTabs.map((tab) => {
+            const { entry, Content, isActive } = tab;
+            const { tabId, specialties, staffCompositionTitle, staffComposition } = entry.data;
+            const hasSidebar = (specialties && specialties.length > 0) || (staffComposition && staffComposition.length > 0);
+
+            return (
+              <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
+                {hasSidebar ? (
+                  <div class="about-grid">
+                    <div class="about-text">
+                      <Content />
+                      {specialties && specialties.length > 0 && (
+                        <div class="specialty-list">
+                          {specialties.map((spec: string) => (
+                            <span class="specialty-chip"><i class="fas fa-check-circle"></i> {spec}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {staffComposition && staffComposition.length > 0 && (
+                      <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
+                        <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
+                          <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
+                        </h4>
+                        <ul style="list-style:none; line-height:2">
+                          {staffComposition.map((member: { count: string; role: string }) => (
+                            <li>
+                              <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
                   </div>
-
-                  {staffComposition && staffComposition.length > 0 && (
-                    <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
-                      <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
-                        <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
-                      </h4>
-                      <ul style="list-style:none; line-height:2">
-                        {staffComposition.map((member: { count: string; role: string }) => (
-                          <li>
-                            <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div class="about-text">
-                  <Content />
-                  {entry.data.tabId === 'tab-infraestructura' && (
-                    <div style="margin-top: 1.5rem;">
-                      <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-primary" style="display:inline-flex; align-items:center; gap:8px;">
-                        <i class="fas fa-flask"></i> {t.sgiker_btn || 'Ver Servicios y Protocolos'} <i class="fas fa-arrow-right"></i>
-                      </a>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })}
+                ) : (
+                  <div class="about-text">
+                    <Content />
+                    {entry.data.tabId === 'tab-infraestructura' && (
+                      <div style="margin-top: 1.5rem;">
+                        <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-primary" style="display:inline-flex; align-items:center; gap:8px;">
+                          <i class="fas fa-flask"></i> {t.sgiker_btn || 'Ver Servicios y Protocolos'} <i class="fas fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   </section>

@@ -137,6 +137,27 @@ const news = defineCollection({
   })
 });
 
+const letter = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/letter" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    badge: z.string(),
+    salutation: z.string(),
+    piName: z.string(),
+    piRole: z.string(),
+    piDept: z.string(),
+    piBadgeOverlay: z.string().optional().default('IP & Coordinadora'),
+    piImage: z.string().optional().default('/assets/images/team/patricia-aspichueta/image.jpg'),
+    signRole: z.string().optional(),
+    signDept: z.string().optional(),
+    viewCvText: z.string().optional().default('Ver Curriculum Vitae Completo'),
+    cvLink: z.string().optional().default('/curriculum/patricia-aspichueta'),
+    email: z.string().optional().default('patricia.aspichueta@ehu.eus'),
+    orcid: z.string().optional().default('0000-0002-8921-9421')
+  })
+});
+
 export const collections = {
   theses,
   team,
@@ -145,6 +166,8 @@ export const collections = {
   presentation,
   training,
   projects,
-  news
+  news,
+  letter
 };
+
 
