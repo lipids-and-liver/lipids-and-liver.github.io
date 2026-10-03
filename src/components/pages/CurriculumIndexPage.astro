@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getLocalizedCollection, getTranslations, getLocalizedPath, sortTeamMembers, type Locale } from '../../utils/i18n';
 import TeamCard from '../cards/TeamCard.astro';
 
 interface Props {
@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 const t = getTranslations(lang);
 
 const teamMembers = await getLocalizedCollection('team', lang);
-teamMembers.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+sortTeamMembers(teamMembers);
 ---
 
 <Layout title={`${t.team_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="curriculum" lang={lang}>

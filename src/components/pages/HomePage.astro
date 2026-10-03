@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, sortTeamMembers, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
 import stats from '../../data/stats.json';
 import ResearchCard from '../cards/ResearchCard.astro';
@@ -46,7 +46,7 @@ researchLines.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 import { sortTheses } from '../../utils/theses';
 
 const teamMembers = await getLocalizedCollection('team', lang);
-teamMembers.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+sortTeamMembers(teamMembers);
 const allTheses = await getLocalizedCollection('theses', lang);
 sortTheses(allTheses);
 const ongoingCount = allTheses.filter(t => t.data.status === 'ongoing').length;

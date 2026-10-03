@@ -120,6 +120,10 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
     }
   }
 
+  if (collectionName === 'team') {
+    sortTeamMembers(result as any);
+  }
+
   return result;
 }
 
@@ -215,6 +219,64 @@ export function getTeamCategoryInfo(category: string = '', lang: Locale = DEFAUL
     label: t.team_badge_pdi,
     icon: 'fas fa-user-graduate'
   };
+}
+
+export function getTeamCategoryRank(category: string = ''): number {
+  const cat = category.toLowerCase().trim();
+
+  // 1. Coordinación / IP
+  if (cat.includes('coordinador') || cat.includes('koordinatzaile') || cat.includes('coordinator')) {
+    return 1;
+  }
+  // 2. Personal Docente e Investigador Senior (Líneas, Senior, Ramón y Cajal, PDI)
+  if (
+    cat.includes('directora') ||
+    cat.includes('director') ||
+    cat.includes('senior') ||
+    cat.includes('ramón y cajal') ||
+    cat.includes('ramon y cajal') ||
+    cat.includes('ryc') ||
+    cat === 'pdi' ||
+    cat.includes('titular') ||
+    cat.includes('agregad') ||
+    cat.includes('catedr')
+  ) {
+    return 2;
+  }
+  // 3. Investigadores Posdoctorales
+  if (cat.includes('posdoctoral') || cat.includes('postdoc') || cat.includes('doktoretza-osteko')) {
+    return 3;
+  }
+  // 4. Investigadores Predoctorales / Doctorandos
+  if (cat.includes('predoctoral') || cat.includes('predoc') || cat.includes('doktorego-aurreko')) {
+    return 4;
+  }
+  // 5. Personal Técnico de Apoyo
+  if (cat.includes('técnico') || cat.includes('tecnico') || cat.includes('tech') || cat.includes('teknikari')) {
+    return 5;
+  }
+
+  return 6;
+}
+
+export function sortTeamMembers<T extends { data: { category?: string; order?: number | string | null; name?: string } }>(members: T[]): T[] {
+  return members.sort((a, b) => {
+    const rankA = getTeamCategoryRank(a.data.category || '');
+    const rankB = getTeamCategoryRank(b.data.category || '');
+    if (rankA !== rankB) {
+      return rankA - rankB;
+    }
+
+    const orderA = typeof a.data.order === 'number' ? a.data.order : (Number(a.data.order) || 99);
+    const orderB = typeof b.data.order === 'number' ? b.data.order : (Number(b.data.order) || 99);
+    if (orderA !== orderB) {
+      return orderA - orderB;
+    }
+
+    const nameA = a.data.name || '';
+    const nameB = b.data.name || '';
+    return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
+  });
 }
 
 export function localizeTeamRole(role: string = '', lang: Locale = DEFAULT_LOCALE): string {
