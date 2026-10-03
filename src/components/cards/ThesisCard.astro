@@ -31,7 +31,11 @@ const badgeText = getThesisBadgeText(thesis, lang);
       <span>{thesis.data.year}</span>
     </div>
   </div>
-  <a href={getLocalizedPath(`/tesis/${currentSlug}`, lang)} class="thesis-detail-link">
-    <i class="fas fa-book-reader"></i> {t.theses_view_more}
-  </a>
+  <div class="thesis-card-footer">
+    <a href={getLocalizedPath(`/tesis/${currentSlug}`, lang)} class="card-btn-compact" title={t.theses_view_more}>
+      <i class="fas fa-graduation-cap"></i>
+      <span>{t.theses_card_btn || 'Ver tesis'}</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
 </div>

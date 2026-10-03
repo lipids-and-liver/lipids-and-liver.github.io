@@ -15,14 +15,18 @@ const t = getTranslations(lang);
   <img src={line.data.image} alt={line.data.title} class="research-card-img" />
   <div class="research-card-content">
     <span class="research-badge">{line.data.badge}</span>
-    <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:0.75rem; color:var(--ehu-navy);">{line.data.title}</h3>
-    <p style="font-size:0.92rem; color:var(--text-secondary); margin-bottom:1.25rem; flex-grow:1;">{line.data.shortDesc}</p>
-    <a 
-      href={getLocalizedPath(`/lineas/${line.slug}`, lang)} 
-      class="btn-inst-primary" 
-      style="width:100%; justify-content:center; padding:10px; font-size:0.88rem;"
-    >
-      {t.research_btn_page} <i class="fas fa-arrow-right"></i>
-    </a>
+    <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.75rem; color:var(--ehu-navy);">{line.data.title}</h3>
+    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem; flex-grow:1; line-height:1.6;">{line.data.shortDesc}</p>
+    <div class="research-card-footer">
+      <a 
+        href={getLocalizedPath(`/lineas/${line.slug}`, lang)} 
+        class="card-btn-compact" 
+        title={t.research_btn_page}
+      >
+        <i class="fas fa-microscope"></i>
+        <span>{t.research_card_btn || 'Ver línea'}</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
   </div>
 </div>

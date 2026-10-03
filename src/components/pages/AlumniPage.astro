@@ -11,8 +11,11 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 
-const academiaCount = alumniData.filter(a => a.category === 'academia').length;
-const industryCount = alumniData.filter(a => a.category === 'industry').length;
+const rawAlumni = (alumniData as any).alumni || alumniData;
+const alumniList: any[] = Array.isArray(rawAlumni) ? rawAlumni : [];
+
+const academiaCount = alumniList.filter((a: any) => a.category === 'academia').length;
+const industryCount = alumniList.filter((a: any) => a.category === 'industry').length;
 ---
 
 <Layout currentPage="alumni" lang={lang} title={`${t.alumni_page_title || 'Antiguos Miembros y Alumni'} | Lipids & Liver`}>
@@ -81,7 +84,7 @@ const industryCount = alumniData.filter(a => a.category === 'industry').length;
       </div>
 
       <div class="alumni-grid-inst" id="alumni-grid">
-        {alumniData.map(alumni => (
+        {alumniList.map((alumni: any) => (
           <div class="alumni-item" data-category={alumni.category}>
             <AlumniCard alumni={alumni} lang={lang} />
           </div>

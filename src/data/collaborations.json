@@ -1,82 +1,84 @@
-[
-  {
-    "id": "ehu",
-    "name": "Universidad del País Vasco (UPV/EHU)",
-    "type": "Académica e Institucional",
-    "role": "Sede Universitaria y Departamento de Fisiología",
-    "location": "Leioa, Bizkaia",
-    "icon": "fas fa-university",
-    "url": "https://www.ehu.eus",
-    "desc": "Marco académico principal, departamento docente de Fisiología en la Facultad de Medicina y Enfermería y sede de los laboratorios centrales del grupo."
-  },
-  {
-    "id": "biocruces",
-    "name": "IIS Biocruces Bizkaia",
-    "type": "Sanitaria e Investigación Traslacional",
-    "role": "Área de Enfermedades Digestivas",
-    "location": "Barakaldo, Bizkaia",
-    "icon": "fas fa-hospital-user",
-    "url": "https://www.biocrucesbizkaia.org",
-    "desc": "Instituto Sanitario de referencia para la translación directa de los descubrimientos moleculares hacia el diagnóstico y abordaje de pacientes hepáticos."
-  },
-  {
-    "id": "cruces",
-    "name": "Hospital Universitario de Cruces",
-    "type": "Clínica y Asistencial",
-    "role": "Servicio de Aparato Digestivo y Cirugía",
-    "location": "Barakaldo, Bizkaia",
-    "icon": "fas fa-clinic-medical",
-    "url": "https://www.osakidetza.euskadi.eus",
-    "desc": "Colaboración asistencial para el acceso a cohortes clínicas de pacientes con esteatosis metabólica, cirrosis y tumores hepáticos primarios."
-  },
-  {
-    "id": "ciberehd",
-    "name": "CIBERehd (ISCIII)",
-    "type": "Red de Excelencia Biomédica",
-    "role": "Enfermedades Hepáticas y Digestivas",
-    "location": "Nacional (España)",
-    "icon": "fas fa-project-diagram",
-    "url": "https://www.ciberehd.org",
-    "desc": "Consorcio en red del Instituto de Salud Carlos III que agrupa a los principales grupos de investigación hepatológica de España."
-  },
-  {
-    "id": "cicbiogune",
-    "name": "CIC bioGUNE",
-    "type": "Centro de Investigación Cooperativa",
-    "role": "Biología Estructural y Metabolómica",
-    "location": "Parque Tecnológico de Bizkaia, Derio",
-    "icon": "fas fa-dna",
-    "url": "https://www.cicbiogune.es",
-    "desc": "Alianza científica estratégica en técnicas complementarias de resonancia magnética nuclear (RMN) y biología computacional metabólica."
-  },
-  {
-    "id": "cnic",
-    "name": "CNIC",
-    "type": "Centro Nacional de Excelencia",
-    "role": "Investigaciones Cardiovasculares",
-    "location": "Madrid, España",
-    "icon": "fas fa-heartbeat",
-    "url": "https://www.cnic.es",
-    "desc": "Colaboraciones en modelos murinos avanzados de esteatohepatitis asociada a síndrome metabólico y aterosclerosis."
-  },
-  {
-    "id": "sgiker",
-    "name": "SGIker (UPV/EHU)",
-    "type": "Servicio Científico-Técnico",
-    "role": "Unidad Central de Lipidómica",
-    "location": "Campus de Leioa",
-    "icon": "fas fa-flask",
-    "url": "https://www.ehu.eus/es/web/sgiker",
-    "desc": "Infraestructura analítica centralizada dotada de espectrómetros de masas de alta resolución para la comunidad científica y el sector biotecnológico."
-  },
-  {
-    "id": "easl",
-    "name": "EASL & Consorcios Europeos",
-    "type": "Sociedad Científica Internacional",
-    "role": "European Association for the Study of the Liver",
-    "location": "Ginebra, Suiza / Europa",
-    "icon": "fas fa-globe-europe",
-    "url": "https://easl.eu",
-    "desc": "Participación activa en grupos de trabajo europeos sobre biomarcadores lipídicos no invasivos para la detección precoz de esteatohepatitis."
-  }
-]
+{
+  "collaborations": [
+    {
+      "id": "ehu",
+      "name": "Universidad del País Vasco (UPV/EHU)",
+      "type": "Académica e Institucional",
+      "role": "Sede Universitaria y Departamento de Fisiología",
+      "location": "Leioa, Bizkaia",
+      "icon": "fas fa-university",
+      "url": "https://www.ehu.eus",
+      "desc": "Marco académico principal, departamento docente de Fisiología en la Facultad de Medicina y Enfermería y sede de los laboratorios centrales del grupo."
+    },
+    {
+      "id": "biocruces",
+      "name": "IIS Biocruces Bizkaia",
+      "type": "Sanitaria e Investigación Traslacional",
+      "role": "Área de Enfermedades Digestivas",
+      "location": "Barakaldo, Bizkaia",
+      "icon": "fas fa-hospital-user",
+      "url": "https://www.biocrucesbizkaia.org",
+      "desc": "Instituto Sanitario de referencia para la translación directa de los descubrimientos moleculares hacia el diagnóstico y abordaje de pacientes hepáticos."
+    },
+    {
+      "id": "cruces",
+      "name": "Hospital Universitario de Cruces",
+      "type": "Clínica y Asistencial",
+      "role": "Servicio de Aparato Digestivo y Cirugía",
+      "location": "Barakaldo, Bizkaia",
+      "icon": "fas fa-clinic-medical",
+      "url": "https://www.osakidetza.euskadi.eus",
+      "desc": "Colaboración asistencial para el acceso a cohortes clínicas de pacientes con esteatosis metabólica, cirrosis y tumores hepáticos primarios."
+    },
+    {
+      "id": "ciberehd",
+      "name": "CIBERehd (ISCIII)",
+      "type": "Red de Excelencia Biomédica",
+      "role": "Enfermedades Hepáticas y Digestivas",
+      "location": "Nacional (España)",
+      "icon": "fas fa-project-diagram",
+      "url": "https://www.ciberehd.org",
+      "desc": "Consorcio en red del Instituto de Salud Carlos III que agrupa a los principales grupos de investigación hepatológica de España."
+    },
+    {
+      "id": "cicbiogune",
+      "name": "CIC bioGUNE",
+      "type": "Centro de Investigación Cooperativa",
+      "role": "Biología Estructural y Metabolómica",
+      "location": "Parque Tecnológico de Bizkaia, Derio",
+      "icon": "fas fa-dna",
+      "url": "https://www.cicbiogune.es",
+      "desc": "Alianza científica estratégica en técnicas complementarias de resonancia magnética nuclear (RMN) y biología computacional metabólica."
+    },
+    {
+      "id": "cnic",
+      "name": "CNIC",
+      "type": "Centro Nacional de Excelencia",
+      "role": "Investigaciones Cardiovasculares",
+      "location": "Madrid, España",
+      "icon": "fas fa-heartbeat",
+      "url": "https://www.cnic.es",
+      "desc": "Colaboraciones en modelos murinos avanzados de esteatohepatitis asociada a síndrome metabólico y aterosclerosis."
+    },
+    {
+      "id": "sgiker",
+      "name": "SGIker (UPV/EHU)",
+      "type": "Servicio Científico-Técnico",
+      "role": "Unidad Central de Lipidómica",
+      "location": "Campus de Leioa",
+      "icon": "fas fa-flask",
+      "url": "https://www.ehu.eus/es/web/sgiker",
+      "desc": "Infraestructura analítica centralizada dotada de espectrómetros de masas de alta resolución para la comunidad científica y el sector biotecnológico."
+    },
+    {
+      "id": "easl",
+      "name": "EASL & Consorcios Europeos",
+      "type": "Sociedad Científica Internacional",
+      "role": "European Association for the Study of the Liver",
+      "location": "Ginebra, Suiza / Europa",
+      "icon": "fas fa-globe-europe",
+      "url": "https://easl.eu",
+      "desc": "Participación activa en grupos de trabajo europeos sobre biomarcadores lipídicos no invasivos para la detección precoz de esteatohepatitis."
+    }
+  ]
+}

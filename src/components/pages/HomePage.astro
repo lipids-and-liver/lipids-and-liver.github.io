@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
 import stats from '../../data/stats.json';
 import ResearchCard from '../cards/ResearchCard.astro';
@@ -36,6 +36,10 @@ const presentationTabs = await Promise.all(
   })
 );
 
+const letterEntry = await getLocalizedEntry('letter', 'carta', lang);
+const letterRender = letterEntry ? await render(letterEntry) : null;
+const LetterContent = letterRender ? letterRender.Content : null;
+
 const researchLines = await getLocalizedCollection('research', lang);
 researchLines.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
@@ -61,9 +65,16 @@ const featuredProjects = allProjects.slice(0, 4);
 
 const allNews = await getLocalizedCollection('news', lang);
 allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-const latestNews = allNews.slice(0, 3);
+const featuredNews = allNews.filter(article => article.data.featured === true);
+const nonFeaturedNews = allNews.filter(article => !article.data.featured);
+const latestNews = [...featuredNews, ...nonFeaturedNews].slice(0, 3);
 
-const featuredAlumni = alumniData.slice(0, 4);
+const rawStats = (stats as any).stats || stats;
+const statsList: any[] = Array.isArray(rawStats) ? rawStats : [];
+const rawAlumni = (alumniData as any).alumni || alumniData;
+const featuredAlumni = Array.isArray(rawAlumni) ? rawAlumni.slice(0, 4) : [];
+const rawCollaborations = (collaborationsData as any).collaborations || collaborationsData;
+const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollaborations : [];
 ---
 
 <Layout currentPage="home" lang={lang}>
@@ -114,13 +125,17 @@ const featuredAlumni = alumniData.slice(0, 4);
   <section class="stats-bar">
     <div class="container">
       <div class="stats-grid" id="stats-grid">
-        {stats.map(stat => (
-          <div class="stat-box">
-            <div class="stat-val">{stat.number}</div>
-            <div class="stat-tit">{stat.label}</div>
-            <div class="stat-desc">{stat.subtext}</div>
-          </div>
-        ))}
+        {statsList.map((stat: any) => {
+          const label = stat[`label_${lang}`] || stat.label_es || stat.label;
+          const subtext = stat[`subtext_${lang}`] || stat.subtext_es || stat.subtext;
+          return (
+            <div class="stat-box">
+              <div class="stat-val">{stat.number}</div>
+              <div class="stat-tit">{label}</div>
+              <div class="stat-desc">{subtext}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -135,68 +150,139 @@ const featuredAlumni = alumniData.slice(0, 4);
         </div>
       </div>
 
-      <div class="about-card">
-        <div class="about-tabs" id="about-tabs-group">
-          {presentationTabs.map((tab) => (
-            <button
-              class={`tab-btn ${tab.isActive ? 'active' : ''}`}
-              data-tab={tab.entry.data.tabId}
-            >
-              {tab.entry.data.tabTitle}
-            </button>
-          ))}
+      <!-- Apartado 1: Carta de Presentación de la Investigadora Principal (IP) -->
+      <article class="about-pi-card">
+        <!-- Cabecera de la Carta a ancho completo -->
+        <header class="about-letter-header">
+          <div class="about-letter-kicker">
+            <span class="about-letter-dot"></span>
+            {letterEntry?.data.badge || t.about_letter_badge}
+          </div>
+          <h3 class="about-letter-heading">{letterEntry?.data.title || t.about_letter_title}</h3>
+        </header>
+
+        <!-- Contenedor del Cuerpo con Foto Flotante -->
+        <div class="about-letter-content">
+          <!-- Figura Flotante: Foto de cuerpo entero + Insignia -->
+          <figure class="about-pi-figure">
+            <div class="about-pi-portrait">
+              <img
+                src={letterEntry?.data.piImage || "/assets/images/team/patricia-aspichueta/image.jpg"}
+                alt={letterEntry?.data.piName || t.about_letter_sign_name}
+                class="about-pi-photo"
+                loading="lazy"
+              />
+              <span class="about-pi-badge-tag">
+                <i class="fas fa-crown"></i> {letterEntry?.data.piBadgeOverlay || 'IP & Coordinadora'}
+              </span>
+            </div>
+          </figure>
+
+          <!-- Texto de la Carta que rodea a la foto flotante -->
+          <div class="about-letter-body">
+            <p class="about-letter-salutation">
+              <strong>{letterEntry?.data.salutation || t.about_letter_greeting}</strong>
+            </p>
+            {LetterContent ? (
+              <LetterContent />
+            ) : (
+              <>
+                <p>{t.about_letter_p1}</p>
+                <p>{t.about_letter_p2}</p>
+                <p>{t.about_letter_p3}</p>
+              </>
+            )}
+          </div>
         </div>
 
-        {presentationTabs.map((tab) => {
-          const { entry, Content, isActive } = tab;
-          const { tabId, specialties, staffCompositionTitle, staffComposition } = entry.data;
-          const hasSidebar = (specialties && specialties.length > 0) || (staffComposition && staffComposition.length > 0);
+        <!-- Bloque de Firma al pie de la carta -->
+        <footer class="about-letter-signature-block">
+          <div class="about-letter-signature-mark"></div>
+          <div class="about-letter-sign-details">
+            <div class="about-letter-sign-name">{letterEntry?.data.piName || t.about_letter_sign_name}</div>
+            <div class="about-letter-sign-meta">
+              <span>{letterEntry?.data.signRole || t.about_letter_sign_role}</span>
+              <span class="about-letter-sign-separator">•</span>
+              <span>{letterEntry?.data.signDept || t.about_letter_sign_dept}</span>
+            </div>
+          </div>
+        </footer>
+      </article>
 
-          return (
-            <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
-              {hasSidebar ? (
-                <div class="about-grid">
-                  <div class="about-text">
-                    <Content />
-                    {specialties && specialties.length > 0 && (
-                      <div class="specialty-list">
-                        {specialties.map((spec: string) => (
-                          <span class="specialty-chip"><i class="fas fa-check-circle"></i> {spec}</span>
-                        ))}
+      <!-- Apartado 2: A continuación, las pestañas siguientes -->
+      <div class="about-tabs-block">
+        <div class="about-tabs-header-bar">
+          <h3 class="about-tabs-block-title">
+            <i class="fas fa-layer-group"></i> {t.about_tabs_heading}
+          </h3>
+          <span class="about-tabs-block-subtitle">
+            {t.about_tabs_subheading}
+          </span>
+        </div>
+
+        <div class="about-card">
+          <div class="about-tabs" id="about-tabs-group">
+            {presentationTabs.map((tab) => (
+              <button
+                class={`tab-btn ${tab.isActive ? 'active' : ''}`}
+                data-tab={tab.entry.data.tabId}
+              >
+                {tab.entry.data.tabTitle}
+              </button>
+            ))}
+          </div>
+
+          {presentationTabs.map((tab) => {
+            const { entry, Content, isActive } = tab;
+            const { tabId, specialties, staffCompositionTitle, staffComposition } = entry.data;
+            const hasSidebar = (specialties && specialties.length > 0) || (staffComposition && staffComposition.length > 0);
+
+            return (
+              <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
+                {hasSidebar ? (
+                  <div class="about-grid">
+                    <div class="about-text">
+                      <Content />
+                      {specialties && specialties.length > 0 && (
+                        <div class="specialty-list">
+                          {specialties.map((spec: string) => (
+                            <span class="specialty-chip"><i class="fas fa-check-circle"></i> {spec}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {staffComposition && staffComposition.length > 0 && (
+                      <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
+                        <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
+                          <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
+                        </h4>
+                        <ul style="list-style:none; line-height:2">
+                          {staffComposition.map((member: { count: string; role: string }) => (
+                            <li>
+                              <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
                   </div>
-
-                  {staffComposition && staffComposition.length > 0 && (
-                    <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
-                      <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
-                        <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
-                      </h4>
-                      <ul style="list-style:none; line-height:2">
-                        {staffComposition.map((member: { count: string; role: string }) => (
-                          <li>
-                            <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div class="about-text">
-                  <Content />
-                  {entry.data.tabId === 'tab-infraestructura' && (
-                    <div style="margin-top: 1.5rem;">
-                      <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-primary" style="display:inline-flex; align-items:center; gap:8px;">
-                        <i class="fas fa-flask"></i> {t.sgiker_btn || 'Ver Servicios y Protocolos'} <i class="fas fa-arrow-right"></i>
-                      </a>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })}
+                ) : (
+                  <div class="about-text">
+                    <Content />
+                    {entry.data.tabId === 'tab-infraestructura' && (
+                      <div style="margin-top: 1.5rem;">
+                        <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-primary" style="display:inline-flex; align-items:center; gap:8px;">
+                          <i class="fas fa-flask"></i> {t.sgiker_btn || 'Ver Servicios y Protocolos'} <i class="fas fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   </section>
@@ -522,7 +608,7 @@ const featuredAlumni = alumniData.slice(0, 4);
       </div>
 
       <div class="partners-grid-inst">
-        {collaborationsData.map(partner => (
+        {collaborationsList.map((partner: any) => (
           <PartnerCard partner={partner} />
         ))}
       </div>
