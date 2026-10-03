@@ -5,10 +5,10 @@ role: Investigador/a Predoctoral
 category: Predoctoral
 department: Departamento de Fisiología, Facultad de Medicina y Enfermería
 image: /assets/images/uploads/erik-lucatero-d2MSDujJl2g-unsplash.jpg
-email: ''
-phone: ''
+email: daviz@sssss.es
+phone: +34 94 601 2854
 office: Facultad de Medicina y Enfermería, Leioa
-orcid: ''
+orcid: 000-0002-2234-3345
 x: ''
 linkedin: ''
 order: 99
