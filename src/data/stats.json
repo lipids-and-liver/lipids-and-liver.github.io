@@ -1,22 +1,48 @@
-[
-  {
-    "number": "2007",
-    "label": "Grupo Consolidado",
-    "subtext": "Reconocido por el Gobierno Vasco"
-  },
-  {
-    "number": "10+",
-    "label": "PDI y Catedráticos",
-    "subtext": "Facultad de Medicina y Enfermería"
-  },
-  {
-    "number": "15+",
-    "label": "Tesis Doctorales",
-    "subtext": "Defendidas y en curso de investigación"
-  },
-  {
-    "number": "SGIker",
-    "label": "Unidad de Lipidómica",
-    "subtext": "Servicios Generales UPV/EHU"
-  }
-]
+{
+  "stats": [
+    {
+      "number": "2007",
+      "label_es": "Grupo Consolidado",
+      "label_eu": "Talde Sendotua",
+      "label_en": "Consolidated Group",
+      "subtext_es": "Reconocido por el Gobierno Vasco",
+      "subtext_eu": "Eusko Jaurlaritzak aitortua",
+      "subtext_en": "Recognized by the Basque Government",
+      "label": "Grupo Consolidado",
+      "subtext": "Reconocido por el Gobierno Vasco"
+    },
+    {
+      "number": "10+",
+      "label_es": "PDI y Catedráticos",
+      "label_eu": "Irakasle-ikertzaileak eta Katedradunak",
+      "label_en": "Faculty Members & Full Professors",
+      "subtext_es": "Facultad de Medicina y Enfermería",
+      "subtext_eu": "Medikuntza eta Erizaintza Fakultatea",
+      "subtext_en": "Faculty of Medicine and Nursing",
+      "label": "PDI y Catedráticos",
+      "subtext": "Facultad de Medicina y Enfermería"
+    },
+    {
+      "number": "15+",
+      "label_es": "Tesis Doctorales",
+      "label_eu": "Doktore-tesiak",
+      "label_en": "PhD Theses",
+      "subtext_es": "Defendidas y en curso de investigación",
+      "subtext_eu": "Defendatuak eta ikerketan abian",
+      "subtext_en": "Defended and currently ongoing",
+      "label": "Tesis Doctorales",
+      "subtext": "Defendidas y en curso de investigación"
+    },
+    {
+      "number": "SGIker",
+      "label_es": "Unidad de Lipidómica",
+      "label_eu": "Lipidomika Unitatea",
+      "label_en": "Lipidomics Unit",
+      "subtext_es": "Servicios Generales UPV/EHU",
+      "subtext_eu": "UPV/EHUko Zerbitzu Orokorrak",
+      "subtext_en": "UPV/EHU General Research Services",
+      "label": "Unidad de Lipidómica",
+      "subtext": "Servicios Generales UPV/EHU"
+    }
+  ]
+}

@@ -1,12 +1,14 @@
 ---
 id: zientzia-astea-talleres
-title: "Talleres de divulgación sobre salud metabólica e hígado en Zientzia Astea UPV/EHU"
-date: "2023-11-10"
-category: "Divulgación"
-categoryBadge: "Sociedad"
-summary: "El equipo participa activamente en la Semana de la Ciencia de Bizkaia acercando la investigación metabólica y los hábitos cardiosaludables a escolares y familias."
-author: "Comisión de Divulgación"
-featured: false
+title: Talleres de divulgación sobre salud metabólica e hígado en Zientzia Astea UPV/EHU
+date: 2023-11-10
+category: Divulgación
+categoryBadge: Sociedad
+summary: El equipo participa activamente en la Semana de la Ciencia de Bizkaia acercando la investigación metabólica y los hábitos cardiosaludables a escolares y familias.
+image: ''
+author: Comisión de Divulgación
+link: ''
+featured: true
 order: 5
 ---
 

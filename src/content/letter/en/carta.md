@@ -7,7 +7,7 @@ piName: Prof. Patricia Aspichueta, PhD
 piRole: Full Professor of Physiology
 piDept: Faculty of Medicine and Nursing (UPV/EHU) • Biocruces Bizkaia HRI
 piBadgeOverlay: Lead PI & Coordinator
-piImage: /assets/images/team/patricia-aspichueta/image.jpg
+piImage: /assets/images/uploads/Ga_B-xNWUAAZ3qv.webp
 signRole: Lead Principal Investigator & Coordinator of Lipids & Liver Group
 signDept: Full Professor of Physiology • University of the Basque Country (UPV/EHU) & Biocruces Bizkaia HRI
 viewCvText: View Full Curriculum Vitae

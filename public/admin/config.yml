@@ -29,193 +29,32 @@ i18n:
   default_locale: es
 
 collections:
-  # 1. TESIS DOCTORALES
-  - name: "theses"
-    label: "Tesis Doctorales"
-    label_singular: "Tesis Doctoral"
-    description: "Repositorio de tesis doctorales defendidas y en curso de realización"
-    folder: "src/content/theses"
+  # ============================================================================
+  # 1. BLOQUE: EL GRUPO
+  # ============================================================================
+
+  # 1.1 PRESENTACIÓN INSTITUCIONAL
+  - name: "presentation"
+    label: "👥 El Grupo › Presentación Institucional"
+    label_singular: "Pestaña de Presentación"
+    description: "Pestañas institucionales del perfil, Biocruces, SGIker e instalaciones"
+    folder: "src/content/presentation"
     i18n: true
     create: true
     slug: "{{id}}"
-    identifier_field: "title"
-    summary: "{{title}} ({{author}} - {{year}})"
-    sortable_fields: ["order", "year", "author", "status"]
-    fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: tesis-16" }
-      - { label: "Doctorando/a (Autor)", name: "author", widget: "string", i18n: "duplicate" }
-      - { label: "Estado", name: "status", widget: "select", options: [{ label: "En Curso", value: "ongoing" }, { label: "Defendida", value: "completed" }], i18n: "duplicate" }
-      - { label: "Título de la Tesis", name: "title", widget: "string", i18n: true }
-      - { label: "Institución", name: "institution", widget: "string", default: "UPV/EHU - Departamento de Fisiología", i18n: true }
-      - { label: "Año / Periodo", name: "year", widget: "string", i18n: true, hint: "Ej: 2025 o 'En desarrollo (2024-2027)'" }
-      - { label: "Insignia / Badge", name: "badge", widget: "string", required: false, i18n: true, hint: "Ej: En Curso, Cum Laude, Mención Internacional" }
-      - { label: "Directores de Tesis", name: "directors", widget: "list", i18n: "duplicate" }
-      - { label: "Programa de Doctorado", name: "program", widget: "string", required: false, i18n: true, default: "Programa de Doctorado en Biomedicina" }
-      - { label: "Palabras Clave", name: "keywords", widget: "list", i18n: true }
-      - { label: "Orden de Aparición", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
-      - { label: "Resumen / Abstract", name: "body", widget: "markdown", i18n: true }
-
-  # 2. PERSONAL DEL GRUPO (TEAM & CVs)
-  - name: "team"
-    label: "Personal del Grupo"
-    label_singular: "Miembro del Equipo"
-    description: "Fichas de investigadores, PDI, postdocs, predocs y personal técnico con CVs"
-    folder: "src/content/team"
-    i18n: true
-    create: true
-    slug: "{{id}}"
-    identifier_field: "name"
-    summary: "{{name}} ({{role}} - {{category}})"
-    sortable_fields: ["order", "name", "category"]
-    fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: patricia-aspichueta" }
-      - { label: "Nombre Completo", name: "name", widget: "string", i18n: "duplicate" }
-      - { label: "Cargo / Puesto", name: "role", widget: "string", i18n: true }
-      - { label: "Categoría", name: "category", widget: "select", options: ["Coordinadora", "PDI & Senior", "Posdoctoral", "Predoctoral", "Técnico"], i18n: true }
-      - { label: "Departamento / Centro", name: "department", widget: "string", required: false, i18n: true, default: "Departamento de Fisiología, Facultad de Medicina y Enfermería" }
-      - { label: "Fotografía", name: "image", widget: "image", required: false, i18n: "duplicate" }
-      - { label: "Correo Electrónico UPV/EHU", name: "email", widget: "string", required: false, i18n: "duplicate" }
-      - { label: "Despacho / Ubicación", name: "office", widget: "string", required: false, i18n: true }
-      - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", hint: "Formato: 0000-0002-XXXX-XXXX" }
-      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
-      - label: "Currículum Vitae Detallado"
-        name: "cv"
-        widget: "object"
-        required: false
-        i18n: true
-        fields:
-          - { label: "Título Profesional CV", name: "title", widget: "string", required: false, i18n: true }
-          - { label: "Resumen de Investigación", name: "researchSummary", widget: "text", required: false, i18n: true }
-          - { label: "Titulaciones Académicas", name: "degrees", widget: "list", required: false, i18n: true }
-          - { label: "Puestos y Trayectoria Previa", name: "positions", widget: "list", required: false, i18n: true }
-          - { label: "Proyectos y Financiación", name: "grants", widget: "list", required: false, i18n: true }
-          - { label: "Publicaciones Relevantes", name: "publications", widget: "list", required: false, i18n: true }
-          - { label: "Docencia Universitaria", name: "teaching", widget: "list", required: false, i18n: true }
-      - { label: "Semblanza / Biografía Breve", name: "body", widget: "markdown", i18n: true }
-
-  # 3. LÍNEAS DE INVESTIGACIÓN
-  - name: "research"
-    label: "Líneas de Investigación"
-    label_singular: "Línea de Investigación"
-    description: "Proyectos científicos y líneas prioritarias del grupo"
-    folder: "src/content/research"
-    i18n: true
-    create: true
-    slug: "{{id}}"
-    identifier_field: "title"
-    summary: "{{title}} ({{badge}})"
-    sortable_fields: ["order", "title"]
-    fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: mafld, cancer, spatial-omics" }
-      - { label: "Título de la Línea", name: "title", widget: "string", i18n: true }
-      - { label: "Descripción Breve", name: "shortDesc", widget: "text", i18n: true }
-      - { label: "Imagen Representativa", name: "image", widget: "image", i18n: "duplicate" }
-      - { label: "Insignia / Badge", name: "badge", widget: "string", i18n: true }
-      - { label: "Filiación y Financiación", name: "affiliation", widget: "text", required: false, i18n: true }
-      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
-      - { label: "Objetivos Científicos y Memoria Extensa", name: "body", widget: "markdown", i18n: true }
-
-  # 4. PROYECTOS DE INVESTIGACIÓN
-  - name: "projects"
-    label: "Proyectos Competitivos"
-    label_singular: "Proyecto"
-    description: "Proyectos financiados del Plan Nacional, Gobierno Vasco, FEDER y Fundaciones"
-    folder: "src/content/projects"
-    i18n: false
-    create: true
-    slug: "{{id}}"
-    identifier_field: "title"
-    summary: "{{title}} [{{code}}] ({{status}})"
-    sortable_fields: ["order", "period", "status"]
-    fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: pid2021-mafld" }
-      - { label: "Título del Proyecto", name: "title", widget: "string" }
-      - { label: "Código / Expediente", name: "code", widget: "string" }
-      - { label: "Entidad Financiadora", name: "fundingBody", widget: "string" }
-      - { label: "Ámbito de Convocatoria", name: "fundingType", widget: "select", options: [{ label: "Nacional (MICINN / ISCIII)", value: "national" }, { label: "Regional (Gobierno Vasco)", value: "regional" }, { label: "Europeo (Horizon / FEDER)", value: "european" }, { label: "Fundación (AECC, etc.)", value: "foundation" }] }
-      - { label: "Investigadora Principal", name: "pi", widget: "string", default: "Dra. Patricia Aspichueta" }
-      - { label: "Periodo de Ejecución", name: "period", widget: "string", hint: "Ej: 2022 - 2025" }
-      - { label: "Estado", name: "status", widget: "select", options: [{ label: "Activo", value: "active" }, { label: "Finalizado", value: "completed" }] }
-      - { label: "Presupuesto / Programa", name: "budget", widget: "string", required: false }
-      - { label: "Insignia", name: "badge", widget: "string", required: false }
-      - { label: "Resumen Breve", name: "summary", widget: "text", required: false }
-      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int" }
-      - { label: "Memoria y Objetivos del Proyecto", name: "body", widget: "markdown" }
-
-  # 5. NOTICIAS Y NOVEDADES
-  - name: "news"
-    label: "Noticias y Novedades"
-    label_singular: "Noticia"
-    description: "Noticias de divulgación, congresos, tesis y hitos del laboratorio"
-    folder: "src/content/news"
-    i18n: false
-    create: true
-    slug: "{{id}}"
-    identifier_field: "title"
-    summary: "{{title}} ({{date}} - {{category}})"
-    sortable_fields: ["date", "order", "category"]
-    fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: easl-congress-milan" }
-      - { label: "Titular de la Noticia", name: "title", widget: "string" }
-      - { label: "Fecha de Publicación", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD" }
-      - { label: "Categoría", name: "category", widget: "select", options: ["Congresos", "Publicaciones", "Acreditación", "Tesis", "Divulgación", "Premios"] }
-      - { label: "Insignia de Categoría", name: "categoryBadge", widget: "string", required: false }
-      - { label: "Resumen Breve", name: "summary", widget: "text" }
-      - { label: "Imagen Destacada", name: "image", widget: "image", required: false }
-      - { label: "Autor/a", name: "author", widget: "string", default: "Grupo Lipids & Liver" }
-      - { label: "Enlace Externo (Opcional)", name: "link", widget: "string", required: false }
-      - { label: "Destacada en Portada", name: "featured", widget: "boolean", default: false }
-      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int" }
-      - { label: "Cuerpo de la Noticia", name: "body", widget: "markdown" }
-
-  # 6. PUBLICACIONES CIENTÍFICAS JCR
-  - name: "publications"
-    label: "Publicaciones Científicas"
-    label_singular: "Publicación"
-    description: "Catálogo de artículos en revistas de alto impacto con DOI"
-    folder: "src/content/publications/es"
-    i18n: false
-    create: true
-    slug: "{{id}}"
-    identifier_field: "title"
-    summary: "{{year}}: {{title}} ({{journal}})"
-    sortable_fields: ["year", "title", "topic"]
-    fields:
-      - { label: "ID", name: "id", widget: "string", required: false, hint: "Ej: pub-001" }
-      - { label: "Año", name: "year", widget: "string", hint: "Ej: 2026" }
-      - { label: "Título del Artículo", name: "title", widget: "string" }
-      - { label: "Autores", name: "authors", widget: "text" }
-      - { label: "Revista Científica", name: "journal", widget: "string" }
-      - { label: "Área Temática", name: "topic", widget: "select", options: [{ label: "MAFLD / MASLD", value: "mafld" }, { label: "Cáncer Hepático", value: "cancer" }, { label: "Ómicas Espaciales", value: "spatial-omics" }, { label: "Ciclo Celular E2F", value: "e2f" }, { label: "Esposoma", value: "exposome" }, { label: "Lipidómica", value: "lipidomics" }] }
-      - { label: "DOI (Identificador)", name: "doi", widget: "string", required: false, hint: "Ej: 10.1080/19490976.2026.2631834" }
-      - { label: "Abstract / Resumen", name: "body", widget: "markdown" }
-
-  # 7. FORMACIÓN UNIVERSITARIA
-  - name: "training"
-    label: "Formación Académica"
-    label_singular: "Actividad Formativa"
-    description: "Docencia reglada en Grados, Másteres Universitarios y Doctorado"
-    folder: "src/content/training"
-    i18n: true
-    create: true
-    slug: "{{id}}"
-    identifier_field: "title"
-    summary: "{{title}} ({{type}})"
-    sortable_fields: ["order", "type"]
+    identifier_field: "tabTitle"
+    summary: "{{tabTitle}} ({{tabId}})"
     fields:
       - { label: "ID", name: "id", widget: "string", required: false, i18n: "duplicate" }
-      - { label: "Título de la Asignatura / Módulo", name: "title", widget: "string", i18n: true }
-      - { label: "Tipo / Nivel", name: "type", widget: "string", i18n: true, hint: "Ej: Grado, Máster Oficial, Doctorado" }
-      - { label: "Insignia", name: "badge", widget: "string", required: false, i18n: true }
-      - { label: "Institución", name: "institution", widget: "string", required: false, i18n: true, default: "UPV/EHU" }
-      - { label: "Enlace Oficial", name: "url", widget: "string", required: false, i18n: "duplicate" }
-      - { label: "Icono FontAwesome", name: "icon", widget: "string", required: false, i18n: "duplicate", hint: "Ej: fas fa-microscope" }
+      - { label: "Título de la Pestaña", name: "tabTitle", widget: "string", i18n: true }
+      - { label: "ID de la Pestaña", name: "tabId", widget: "string", i18n: "duplicate" }
       - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
-      - { label: "Descripción", name: "body", widget: "markdown", i18n: true }
+      - { label: "Especialidades", name: "specialties", widget: "list", required: false, i18n: true }
+      - { label: "Contenido de la Presentación", name: "body", widget: "markdown", i18n: true }
 
-  # 8. CARTA DE PRESENTACIÓN DE LA INVESTIGADORA PRINCIPAL
+  # 1.2 CARTA DE BIENVENIDA (IP)
   - name: "letter"
-    label: "Carta de Presentación (IP)"
+    label: "👥 El Grupo › Carta de Bienvenida (IP)"
     label_singular: "Carta de Presentación"
     description: "Carta de bienvenida y presentación institucional de la IP (Dra. Patricia Aspichueta) en 3 idiomas"
     folder: "src/content/letter"
@@ -243,37 +82,103 @@ collections:
       - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", default: "0000-0002-8921-9421" }
       - { label: "Cuerpo de la Carta (Texto Completo)", name: "body", widget: "markdown", i18n: true }
 
-  # 9. PRESENTACIÓN INSTITUCIONAL (PESTAÑAS)
-  - name: "presentation"
-    label: "Presentación del Grupo"
-    label_singular: "Pestaña de Presentación"
-    description: "Pestañas institucionales del perfil, Biocruces, SGIker e instalaciones"
-    folder: "src/content/presentation"
+  # 1.3 CIFRAS CLAVE & MÉTRICAS (STATS)
+  - name: "stats"
+    label: "👥 El Grupo › Cifras Clave & Métricas (Stats)"
+    description: "Indicadores numéricos destacados bajo la cabecera en Español, Euskera e Inglés"
+    files:
+      - label: "Cifras Clave del Grupo"
+        name: "stats_data"
+        file: "src/data/stats.json"
+        format: "json"
+        fields:
+          - label: "Lista de Métricas (Tarjetas de la Cabecera)"
+            name: "stats"
+            widget: "list"
+            summary: "{{fields.number}} — {{fields.label_es}}"
+            fields:
+              - { label: "Cifra o Texto Destacado", name: "number", widget: "string", hint: "Ej: 2007, 10+, 15+, SGIker" }
+              - { label: "Etiqueta (Español)", name: "label_es", widget: "string", hint: "Ej: Grupo Consolidado" }
+              - { label: "Etiketa (Euskara)", name: "label_eu", widget: "string", hint: "Ej: Talde Sendotua" }
+              - { label: "Label (English)", name: "label_en", widget: "string", hint: "Ej: Consolidated Group" }
+              - { label: "Subtexto (Español)", name: "subtext_es", widget: "string", hint: "Ej: Reconocido por el Gobierno Vasco" }
+              - { label: "Azpitestua (Euskara)", name: "subtext_eu", widget: "string", hint: "Ej: Eusko Jaurlaritzak aitortua" }
+              - { label: "Subtext (English)", name: "subtext_en", widget: "string", hint: "Ej: Recognized by the Basque Government" }
+
+  # 1.4 PERSONAL INVESTIGADOR & CVs
+  - name: "team"
+    label: "👥 El Grupo › Personal Investigador & CVs"
+    label_singular: "Miembro del Equipo"
+    description: "Fichas de investigadores, PDI, postdocs, predocs y personal técnico con CVs"
+    folder: "src/content/team"
     i18n: true
     create: true
     slug: "{{id}}"
-    identifier_field: "tabTitle"
-    summary: "{{tabTitle}} ({{tabId}})"
+    identifier_field: "name"
+    summary: "{{name}} ({{role}} - {{category}})"
+    sortable_fields: ["order", "name", "category"]
+    view_groups:
+      - label: "Categoría del Personal"
+        field: "category"
+    view_filters:
+      - label: "PDI & Senior"
+        field: "category"
+        pattern: "PDI|Investigador Senior|Investigadora Senior|Directora de Línea"
+      - label: "Ramón y Cajal"
+        field: "category"
+        pattern: "Ramón y Cajal"
+      - label: "Posdoctoral"
+        field: "category"
+        pattern: "Posdoctoral"
+      - label: "Predoctoral"
+        field: "category"
+        pattern: "Predoctoral"
+      - label: "Técnico"
+        field: "category"
+        pattern: "Técnico"
     fields:
-      - { label: "ID", name: "id", widget: "string", required: false, i18n: "duplicate" }
-      - { label: "Título de la Pestaña", name: "tabTitle", widget: "string", i18n: true }
-      - { label: "ID de la Pestaña", name: "tabId", widget: "string", i18n: "duplicate" }
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: patricia-aspichueta" }
+      - { label: "Nombre Completo", name: "name", widget: "string", i18n: "duplicate" }
+      - { label: "Cargo / Puesto", name: "role", widget: "string", i18n: true }
+      - { label: "Categoría", name: "category", widget: "select", options: ["Coordinadora", "Investigadora Senior", "Investigador Senior", "Directora de Línea", "PDI", "Ramón y Cajal", "Posdoctoral", "Predoctoral", "Técnico"], i18n: true }
+      - { label: "Departamento / Centro", name: "department", widget: "string", required: false, i18n: true, default: "Departamento de Fisiología, Facultad de Medicina y Enfermería" }
+      - { label: "Fotografía", name: "image", widget: "image", required: false, i18n: "duplicate" }
+      - { label: "Correo Electrónico UPV/EHU", name: "email", widget: "string", required: false, i18n: "duplicate" }
+      - { label: "Teléfono", name: "phone", widget: "string", required: false, i18n: "duplicate", hint: "Ej: +34 94 601 2854" }
+      - { label: "Despacho / Ubicación", name: "office", widget: "string", required: false, i18n: true }
+      - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", hint: "Formato: 0000-0002-XXXX-XXXX" }
+      - { label: "Perfil X / Twitter", name: "x", widget: "string", required: false, i18n: "duplicate", hint: "Ej: @usuario o https://x.com/usuario" }
+      - { label: "Perfil LinkedIn", name: "linkedin", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://linkedin.com/in/usuario" }
       - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
-      - { label: "Especialidades", name: "specialties", widget: "list", required: false, i18n: true }
-      - { label: "Contenido de la Presentación", name: "body", widget: "markdown", i18n: true }
-
-  # 9. ARCHIVOS DE DATOS (JSON)
-  - name: "datasets"
-    label: "Datasets Estructurados (JSON)"
-    description: "Gestión directa de antiguos miembros (Alumni) y centros colaboradores"
-    files:
-      - label: "Antiguos Miembros (Alumni)"
-        name: "alumni"
-        file: "src/data/alumni.json"
+      - label: "Currículum Vitae Detallado"
+        name: "cv"
+        widget: "object"
+        required: false
+        i18n: true
         fields:
-          - label: "Lista de Alumni"
+          - { label: "Título Profesional CV", name: "title", widget: "string", required: false, i18n: true }
+          - { label: "Resumen de Investigación", name: "researchSummary", widget: "text", required: false, i18n: true }
+          - { label: "Titulaciones Académicas", name: "degrees", widget: "list", required: false, i18n: true }
+          - { label: "Puestos y Trayectoria Previa", name: "positions", widget: "list", required: false, i18n: true }
+          - { label: "Proyectos y Financiación", name: "grants", widget: "list", required: false, i18n: true }
+          - { label: "Publicaciones Relevantes", name: "publications", widget: "list", required: false, i18n: true }
+          - { label: "Docencia Universitaria", name: "teaching", widget: "list", required: false, i18n: true }
+      - { label: "Semblanza / Biografía Breve", name: "body", widget: "markdown", i18n: true }
+
+  # 1.5 ANTIGUOS MIEMBROS (ALUMNI)
+  - name: "alumni"
+    label: "👥 El Grupo › Antiguos Miembros (Alumni)"
+    description: "Directorio histórico de investigadores egresados y su trayectoria actual"
+    files:
+      - label: "Red de Antiguos Miembros (Alumni)"
+        name: "alumni_data"
+        file: "src/data/alumni.json"
+        format: "json"
+        fields:
+          - label: "Lista de Antiguos Miembros"
             name: "alumni"
             widget: "list"
+            summary: "{{fields.name}} ({{fields.currentRole}})"
             fields:
               - { label: "ID / Slug", name: "id", widget: "string" }
               - { label: "Nombre", name: "name", widget: "string" }
@@ -283,24 +188,250 @@ collections:
               - { label: "Puesto Actual", name: "currentRole", widget: "string" }
               - { label: "Afiliación / Centro Actual", name: "currentAffiliation", widget: "string" }
               - { label: "Ubicación Geográfica", name: "location", widget: "string" }
-              - { label: "Categoría", name: "category", widget: "select", options: ["academia", "industry", "clinical"] }
+              - { label: "Categoría", name: "category", widget: "select", options: [{ label: "Academia", value: "academia" }, { label: "Industria", value: "industry" }, { label: "Clínica", value: "clinical" }] }
               - { label: "Etiqueta de Categoría", name: "categoryLabel", widget: "string" }
               - { label: "Icono FontAwesome", name: "icon", widget: "string", default: "fas fa-university" }
               - { label: "Enlace LinkedIn", name: "linkedin", widget: "string", required: false }
               - { label: "Enlace ORCID", name: "orcid", widget: "string", required: false }
+
+  # ============================================================================
+  # 2. BLOQUE: INVESTIGACIÓN
+  # ============================================================================
+
+  # 2.1 LÍNEAS DE INVESTIGACIÓN
+  - name: "research"
+    label: "🔬 Investigación › Líneas Prioritarias"
+    label_singular: "Línea de Investigación"
+    description: "Proyectos científicos y líneas prioritarias del grupo"
+    folder: "src/content/research"
+    i18n: true
+    create: true
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{title}} ({{badge}})"
+    sortable_fields: ["order", "title"]
+    fields:
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: mafld, cancer, spatial-omics" }
+      - { label: "Título de la Línea", name: "title", widget: "string", i18n: true }
+      - { label: "Descripción Breve", name: "shortDesc", widget: "text", i18n: true }
+      - { label: "Imagen Representativa", name: "image", widget: "image", i18n: "duplicate" }
+      - { label: "Insignia / Badge", name: "badge", widget: "string", i18n: true }
+      - { label: "Filiación y Financiación", name: "affiliation", widget: "text", required: false, i18n: true }
+      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
+      - { label: "Objetivos Científicos y Memoria Extensa", name: "body", widget: "markdown", i18n: true }
+
+  # 2.2 PROYECTOS COMPETITIVOS
+  - name: "projects"
+    label: "🔬 Investigación › Proyectos Competitivos"
+    label_singular: "Proyecto"
+    description: "Proyectos financiados del Plan Nacional, Gobierno Vasco, FEDER y Fundaciones"
+    folder: "src/content/projects"
+    i18n: false
+    create: true
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{title}} [{{code}}] ({{status}})"
+    sortable_fields: ["order", "period", "status"]
+    view_groups:
+      - label: "Estado del Proyecto"
+        field: "status"
+      - label: "Ámbito de Convocatoria"
+        field: "fundingType"
+    view_filters:
+      - label: "Proyectos Activos"
+        field: "status"
+        pattern: "active"
+      - label: "Proyectos Finalizados"
+        field: "status"
+        pattern: "completed"
+    fields:
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: pid2021-mafld" }
+      - { label: "Título del Proyecto", name: "title", widget: "string" }
+      - { label: "Código / Expediente", name: "code", widget: "string" }
+      - { label: "Entidad Financiadora", name: "fundingBody", widget: "string" }
+      - { label: "Ámbito de Convocatoria", name: "fundingType", widget: "select", options: [{ label: "Nacional (MICINN / ISCIII)", value: "national" }, { label: "Regional (Gobierno Vasco)", value: "regional" }, { label: "Europeo (Horizon / FEDER)", value: "european" }, { label: "Fundación (AECC, etc.)", value: "foundation" }] }
+      - { label: "Investigadora Principal", name: "pi", widget: "string", default: "Dra. Patricia Aspichueta" }
+      - { label: "Periodo de Ejecución", name: "period", widget: "string", hint: "Ej: 2022 - 2025" }
+      - { label: "Estado", name: "status", widget: "select", options: [{ label: "Activo", value: "active" }, { label: "Finalizado", value: "completed" }] }
+      - { label: "Presupuesto / Programa", name: "budget", widget: "string", required: false }
+      - { label: "Insignia", name: "badge", widget: "string", required: false }
+      - { label: "Resumen Breve", name: "summary", widget: "text", required: false }
+      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int" }
+      - { label: "Memoria y Objetivos del Proyecto", name: "body", widget: "markdown" }
+
+  # 2.3 PUBLICACIONES CIENTÍFICAS JCR
+  - name: "publications"
+    label: "🔬 Investigación › Publicaciones JCR"
+    label_singular: "Publicación"
+    description: "Catálogo de artículos en revistas de alto impacto con DOI"
+    folder: "src/content/publications/es"
+    i18n: false
+    create: true
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{year}}: {{title}} ({{journal}})"
+    sortable_fields: ["year", "title", "topic"]
+    view_groups:
+      - label: "Área Temática"
+        field: "topic"
+      - label: "Año de Publicación"
+        field: "year"
+    view_filters:
+      - label: "MAFLD / MASLD"
+        field: "topic"
+        pattern: "mafld"
+      - label: "Cáncer Hepático"
+        field: "topic"
+        pattern: "cancer"
+      - label: "Ómicas Espaciales"
+        field: "topic"
+        pattern: "spatial-omics"
+      - label: "Ciclo Celular E2F"
+        field: "topic"
+        pattern: "e2f"
+      - label: "Exposoma"
+        field: "topic"
+        pattern: "exposome"
+      - label: "Lipidómica"
+        field: "topic"
+        pattern: "lipidomics"
+    fields:
+      - { label: "ID", name: "id", widget: "string", required: false, hint: "Ej: pub-001" }
+      - { label: "Año", name: "year", widget: "string", hint: "Ej: 2026" }
+      - { label: "Título del Artículo", name: "title", widget: "string" }
+      - { label: "Autores", name: "authors", widget: "text" }
+      - { label: "Revista Científica", name: "journal", widget: "string" }
+      - { label: "Área Temática", name: "topic", widget: "select", options: [{ label: "MAFLD / MASLD", value: "mafld" }, { label: "Cáncer Hepático", value: "cancer" }, { label: "Ómicas Espaciales", value: "spatial-omics" }, { label: "Ciclo Celular E2F", value: "e2f" }, { label: "Esposoma", value: "exposome" }, { label: "Lipidómica", value: "lipidomics" }] }
+      - { label: "DOI (Identificador)", name: "doi", widget: "string", required: false, hint: "Ej: 10.1080/19490976.2026.2631834" }
+      - { label: "Abstract / Resumen", name: "body", widget: "markdown" }
+
+  # 2.4 TESIS DOCTORALES
+  - name: "theses"
+    label: "🔬 Investigación › Tesis Doctorales"
+    label_singular: "Tesis Doctoral"
+    description: "Repositorio de tesis doctorales defendidas y en curso de realización"
+    folder: "src/content/theses"
+    i18n: true
+    create: true
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{title}} ({{author}} - {{year}})"
+    sortable_fields: ["order", "year", "author", "status"]
+    view_groups:
+      - label: "Estado de la Tesis"
+        field: "status"
+    view_filters:
+      - label: "Tesis en Curso"
+        field: "status"
+        pattern: "ongoing"
+      - label: "Tesis Defendidas"
+        field: "status"
+        pattern: "completed"
+    fields:
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: tesis-16" }
+      - { label: "Doctorando/a (Autor)", name: "author", widget: "string", i18n: "duplicate" }
+      - { label: "Estado", name: "status", widget: "select", options: [{ label: "En Curso", value: "ongoing" }, { label: "Defendida", value: "completed" }], i18n: "duplicate" }
+      - { label: "Título de la Tesis", name: "title", widget: "string", i18n: true }
+      - { label: "Institución", name: "institution", widget: "string", default: "UPV/EHU - Departamento de Fisiología", i18n: true }
+      - { label: "Año / Periodo", name: "year", widget: "string", i18n: true, hint: "Ej: 2025 o 'En desarrollo (2024-2027)'" }
+      - { label: "Insignia / Badge", name: "badge", widget: "string", required: false, i18n: true, hint: "Ej: En Curso, Cum Laude, Mención Internacional" }
+      - { label: "Directores de Tesis", name: "directors", widget: "list", i18n: "duplicate" }
+      - { label: "Programa de Doctorado", name: "program", widget: "string", required: false, i18n: true, default: "Programa de Doctorado en Biomedicina" }
+      - { label: "Palabras Clave", name: "keywords", widget: "list", i18n: true }
+      - { label: "Orden de Aparición", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
+      - { label: "Resumen / Abstract", name: "body", widget: "markdown", i18n: true }
+
+  # ============================================================================
+  # 3. BLOQUE: FORMACIÓN & TALENTO
+  # ============================================================================
+
+  # 3.1 DOCENCIA UNIVERSITARIA Y FORMACIÓN
+  - name: "training"
+    label: "🎓 Formación › Docencia Universitaria"
+    label_singular: "Actividad Formativa"
+    description: "Docencia reglada en Grados, Másteres Universitarios y Doctorado"
+    folder: "src/content/training"
+    i18n: true
+    create: true
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{title}} ({{type}})"
+    sortable_fields: ["order", "type"]
+    view_groups:
+      - label: "Nivel Formativo"
+        field: "type"
+    fields:
+      - { label: "ID", name: "id", widget: "string", required: false, i18n: "duplicate" }
+      - { label: "Título de la Asignatura / Módulo", name: "title", widget: "string", i18n: true }
+      - { label: "Tipo / Nivel", name: "type", widget: "string", i18n: true, hint: "Ej: Grado, Máster Oficial, Doctorado" }
+      - { label: "Insignia", name: "badge", widget: "string", required: false, i18n: true }
+      - { label: "Institución", name: "institution", widget: "string", required: false, i18n: true, default: "UPV/EHU" }
+      - { label: "Enlace Oficial", name: "url", widget: "string", required: false, i18n: "duplicate" }
+      - { label: "Icono FontAwesome", name: "icon", widget: "string", required: false, i18n: "duplicate", hint: "Ej: fas fa-microscope" }
+      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
+      - { label: "Descripción", name: "body", widget: "markdown", i18n: true }
+
+  # ============================================================================
+  # 4. BLOQUE: COMUNICACIÓN & NOTICIAS
+  # ============================================================================
+
+  # 4.1 NOTICIAS Y HITOS
+  - name: "news"
+    label: "📰 Noticias › Novedades & Hitos"
+    label_singular: "Noticia"
+    description: "Noticias de divulgación, congresos, tesis y hitos del laboratorio"
+    folder: "src/content/news"
+    i18n: false
+    create: true
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{title}} ({{date}} - {{category}})"
+    sortable_fields: ["date", "order", "category"]
+    view_groups:
+      - label: "Categoría de Noticia"
+        field: "category"
+    view_filters:
+      - label: "Noticias Destacadas"
+        field: "featured"
+        pattern: true
+    fields:
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: easl-congress-milan" }
+      - { label: "Titular de la Noticia", name: "title", widget: "string" }
+      - { label: "Fecha de Publicación", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", options: ["Congresos", "Publicaciones", "Acreditación", "Tesis", "Divulgación", "Premios"] }
+      - { label: "Insignia de Categoría", name: "categoryBadge", widget: "string", required: false }
+      - { label: "Resumen Breve", name: "summary", widget: "text" }
+      - { label: "Imagen Destacada", name: "image", widget: "image", required: false }
+      - { label: "Autor/a", name: "author", widget: "string", default: "Grupo Lipids & Liver" }
+      - { label: "Enlace Externo (Opcional)", name: "link", widget: "string", required: false }
+      - { label: "Destacada en Portada", name: "featured", widget: "boolean", default: false }
+      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int" }
+      - { label: "Cuerpo de la Noticia", name: "body", widget: "markdown" }
+
+  # ============================================================================
+  # 5. BLOQUE: RED & ALIANZAS
+  # ============================================================================
+
+  # 5.1 CENTROS COLABORADORES
+  - name: "collaborations"
+    label: "⚙️ Red & Alianzas › Centros Colaboradores"
+    description: "Hospitales, centros de investigación, universidades y consorcios"
+    files:
       - label: "Centros Colaboradores"
-        name: "collaborations"
+        name: "collaborations_data"
         file: "src/data/collaborations.json"
+        format: "json"
         fields:
           - label: "Lista de Colaboraciones"
             name: "collaborations"
             widget: "list"
+            summary: "{{fields.name}} ({{fields.type}})"
             fields:
-              - { label: "ID", name: "id", widget: "string" }
-              - { label: "Nombre del Centro", name: "name", widget: "string" }
-              - { label: "Tipo de Centro", name: "type", widget: "select", options: ["hospital", "research_center", "university", "consortium"] }
-              - { label: "Etiqueta de Tipo", name: "typeLabel", widget: "string" }
-              - { label: "Ciudad / País", name: "location", widget: "string" }
-              - { label: "Área de Colaboración", name: "focus", widget: "string" }
-              - { label: "Investigador / Contacto", name: "lead", widget: "string" }
-              - { label: "Sitio Web", name: "url", widget: "string", required: false }
+              - { label: "ID / Slug", name: "id", widget: "string" }
+              - { label: "Nombre de la Institución", name: "name", widget: "string" }
+              - { label: "Tipo / Categoría", name: "type", widget: "string" }
+              - { label: "Rol / Área de Alianza", name: "role", widget: "string" }
+              - { label: "Ubicación Geográfica", name: "location", widget: "string" }
+              - { label: "Icono FontAwesome", name: "icon", widget: "string", default: "fas fa-university" }
+              - { label: "Sitio Web Oficial", name: "url", widget: "string", required: false }
+              - { label: "Descripción / Alcance", name: "desc", widget: "text", required: false }

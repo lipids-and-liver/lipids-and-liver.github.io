@@ -47,53 +47,55 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
     <div class="cv-card">
       <!-- Columna Izquierda: Imagen / Icono, Categoría, Metadatos de Publicación -->
       <aside class="cv-aside">
-        {imageSrc ? (
-          <div class="news-portrait">
-            <img src={imageSrc} alt={title} class="news-photo" loading="lazy" />
-          </div>
-        ) : (
-          <div class="news-portrait-fallback">
-            <i class="fas fa-newspaper"></i>
-          </div>
-        )}
-
-        <div class="cv-aside-badge">
-          <span class="news-category-badge">
-            <i class="fas fa-tag"></i> {categoryBadge || category}
-          </span>
-        </div>
-
-        <div class="cv-contacts-box">
-          <div class="cv-contact-item">
-            <i class="far fa-calendar-alt"></i>
-            <div>
-              <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.news_date || 'Fecha'}</div>
-              <strong style="color:var(--ehu-navy);">{formattedDate}</strong>
+        <div class="cv-aside-sticky">
+          {imageSrc ? (
+            <div class="news-portrait">
+              <img src={imageSrc} alt={title} class="news-photo" loading="lazy" />
             </div>
-          </div>
-
-          {author && (
-            <div class="cv-contact-item">
-              <i class="fas fa-pen-nib"></i>
-              <div>
-                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.news_author || 'Redacción / Autor'}</div>
-                <span>{author}</span>
-              </div>
+          ) : (
+            <div class="news-portrait-fallback">
+              <i class="fas fa-newspaper"></i>
             </div>
           )}
 
-          <div class="cv-contact-item">
-            <i class="fas fa-university"></i>
-            <div>
-              <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.header_sub || 'Institución'}</div>
-              <span>Lipids & Liver • UPV/EHU</span>
-            </div>
+          <div class="cv-aside-badge">
+            <span class="news-category-badge">
+              <i class="fas fa-tag"></i> {categoryBadge || category}
+            </span>
           </div>
 
-          <a href={getLocalizedPath('/noticias', lang)} class="cv-contact-item" style="color:var(--logo-green); font-weight:600; margin-top:4px;">
-            <i class="fas fa-newspaper"></i>
-            <span>{t.nav_news || 'Sala de Prensa'}</span>
-          </a>
+          <div class="cv-contacts-box">
+            <div class="cv-contact-item">
+              <i class="far fa-calendar-alt"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.news_date || 'Fecha'}</div>
+                <strong style="color:var(--ehu-navy);">{formattedDate}</strong>
+              </div>
+            </div>
+
+            {author && (
+              <div class="cv-contact-item">
+                <i class="fas fa-pen-nib"></i>
+                <div>
+                  <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.news_author || 'Redacción / Autor'}</div>
+                  <span>{author}</span>
+                </div>
+              </div>
+            )}
+
+            <div class="cv-contact-item">
+              <i class="fas fa-university"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.header_sub || 'Institución'}</div>
+                <span>Lipids & Liver • UPV/EHU</span>
+              </div>
+            </div>
+
+            <a href={getLocalizedPath('/noticias', lang)} class="cv-contact-item" style="color:var(--logo-green); font-weight:600; margin-top:4px;">
+              <i class="fas fa-newspaper"></i>
+              <span>{t.nav_news || 'Sala de Prensa'}</span>
+            </a>
+          </div>
         </div>
       </aside>
 

@@ -65,9 +65,16 @@ const featuredProjects = allProjects.slice(0, 4);
 
 const allNews = await getLocalizedCollection('news', lang);
 allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-const latestNews = allNews.slice(0, 3);
+const featuredNews = allNews.filter(article => article.data.featured === true);
+const nonFeaturedNews = allNews.filter(article => !article.data.featured);
+const latestNews = [...featuredNews, ...nonFeaturedNews].slice(0, 3);
 
-const featuredAlumni = alumniData.slice(0, 4);
+const rawStats = (stats as any).stats || stats;
+const statsList: any[] = Array.isArray(rawStats) ? rawStats : [];
+const rawAlumni = (alumniData as any).alumni || alumniData;
+const featuredAlumni = Array.isArray(rawAlumni) ? rawAlumni.slice(0, 4) : [];
+const rawCollaborations = (collaborationsData as any).collaborations || collaborationsData;
+const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollaborations : [];
 ---
 
 <Layout currentPage="home" lang={lang}>
@@ -118,13 +125,17 @@ const featuredAlumni = alumniData.slice(0, 4);
   <section class="stats-bar">
     <div class="container">
       <div class="stats-grid" id="stats-grid">
-        {stats.map(stat => (
-          <div class="stat-box">
-            <div class="stat-val">{stat.number}</div>
-            <div class="stat-tit">{stat.label}</div>
-            <div class="stat-desc">{stat.subtext}</div>
-          </div>
-        ))}
+        {statsList.map((stat: any) => {
+          const label = stat[`label_${lang}`] || stat.label_es || stat.label;
+          const subtext = stat[`subtext_${lang}`] || stat.subtext_es || stat.subtext;
+          return (
+            <div class="stat-box">
+              <div class="stat-val">{stat.number}</div>
+              <div class="stat-tit">{label}</div>
+              <div class="stat-desc">{subtext}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -140,62 +151,34 @@ const featuredAlumni = alumniData.slice(0, 4);
       </div>
 
       <!-- Apartado 1: Carta de Presentación de la Investigadora Principal (IP) -->
-      <div class="about-pi-card">
-        <aside class="about-pi-aside">
-          <div class="about-pi-portrait">
-            <img
-              src={letterEntry?.data.piImage || "/assets/images/team/patricia-aspichueta/image.jpg"}
-              alt={letterEntry?.data.piName || t.about_letter_sign_name}
-              class="about-pi-photo"
-              loading="lazy"
-            />
+      <article class="about-pi-card">
+        <!-- Cabecera de la Carta a ancho completo -->
+        <header class="about-letter-header">
+          <div class="about-letter-kicker">
+            <span class="about-letter-dot"></span>
+            {letterEntry?.data.badge || t.about_letter_badge}
           </div>
-          <div class="about-pi-info">
-            <h3 class="about-pi-name">{letterEntry?.data.piName || t.about_letter_sign_name}</h3>
-            <span class="about-pi-role">{letterEntry?.data.piRole || t.about_letter_pi_role}</span>
+          <h3 class="about-letter-heading">{letterEntry?.data.title || t.about_letter_title}</h3>
+        </header>
 
-            <div class="about-pi-actions">
-              <a
-                href={getLocalizedPath(letterEntry?.data.cvLink || '/curriculum/patricia-aspichueta', lang)}
-                class="about-pi-cv-btn"
-              >
-                <span>{letterEntry?.data.viewCvText || t.about_letter_view_cv}</span>
-                <i class="fas fa-arrow-right"></i>
-              </a>
-
-              <div class="about-pi-contacts">
-                <a
-                  href={`mailto:${letterEntry?.data.email || 'patricia.aspichueta@ehu.eus'}`}
-                  class="about-pi-contact-badge"
-                  title={letterEntry?.data.email || 'patricia.aspichueta@ehu.eus'}
-                  aria-label="Email"
-                >
-                  <i class="fas fa-envelope"></i>
-                </a>
-                <a
-                  href={`https://orcid.org/${letterEntry?.data.orcid || '0000-0002-8921-9421'}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="about-pi-contact-badge"
-                  title={`ORCID: ${letterEntry?.data.orcid || '0000-0002-8921-9421'}`}
-                  aria-label="ORCID"
-                >
-                  <i class="fab fa-orcid" style="color:#a6ce39;"></i>
-                </a>
-              </div>
+        <!-- Contenedor del Cuerpo con Foto Flotante -->
+        <div class="about-letter-content">
+          <!-- Figura Flotante: Foto de cuerpo entero + Insignia -->
+          <figure class="about-pi-figure">
+            <div class="about-pi-portrait">
+              <img
+                src={letterEntry?.data.piImage || "/assets/images/team/patricia-aspichueta/image.jpg"}
+                alt={letterEntry?.data.piName || t.about_letter_sign_name}
+                class="about-pi-photo"
+                loading="lazy"
+              />
+              <span class="about-pi-badge-tag">
+                <i class="fas fa-crown"></i> {letterEntry?.data.piBadgeOverlay || 'IP & Coordinadora'}
+              </span>
             </div>
-          </div>
-        </aside>
+          </figure>
 
-        <article class="about-pi-letter">
-          <div class="about-letter-header">
-            <div class="about-letter-kicker">
-              <span class="about-letter-dot"></span>
-              {letterEntry?.data.badge || t.about_letter_badge}
-            </div>
-            <h3 class="about-letter-heading">{letterEntry?.data.title || t.about_letter_title}</h3>
-          </div>
-
+          <!-- Texto de la Carta que rodea a la foto flotante -->
           <div class="about-letter-body">
             <p class="about-letter-salutation">
               <strong>{letterEntry?.data.salutation || t.about_letter_greeting}</strong>
@@ -210,9 +193,12 @@ const featuredAlumni = alumniData.slice(0, 4);
               </>
             )}
           </div>
+        </div>
 
-          <div class="about-letter-signature-block">
-            <div class="about-letter-signature-mark"></div>
+        <!-- Bloque de Firma al pie de la carta -->
+        <footer class="about-letter-signature-block">
+          <div class="about-letter-signature-mark"></div>
+          <div class="about-letter-sign-details">
             <div class="about-letter-sign-name">{letterEntry?.data.piName || t.about_letter_sign_name}</div>
             <div class="about-letter-sign-meta">
               <span>{letterEntry?.data.signRole || t.about_letter_sign_role}</span>
@@ -220,8 +206,8 @@ const featuredAlumni = alumniData.slice(0, 4);
               <span>{letterEntry?.data.signDept || t.about_letter_sign_dept}</span>
             </div>
           </div>
-        </article>
-      </div>
+        </footer>
+      </article>
 
       <!-- Apartado 2: A continuación, las pestañas siguientes -->
       <div class="about-tabs-block">
@@ -622,7 +608,7 @@ const featuredAlumni = alumniData.slice(0, 4);
       </div>
 
       <div class="partners-grid-inst">
-        {collaborationsData.map(partner => (
+        {collaborationsList.map((partner: any) => (
           <PartnerCard partner={partner} />
         ))}
       </div>

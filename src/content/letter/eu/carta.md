@@ -7,7 +7,7 @@ piName: Patricia Aspichueta Celaá doktorea
 piRole: Fisiologiako Katedraduna
 piDept: Medikuntza eta Erizaintza Fakultatea (UPV/EHU) • Biocruces Bizkaia OII
 piBadgeOverlay: IN & Koordinatzailea
-piImage: /assets/images/team/patricia-aspichueta/image.jpg
+piImage: /assets/images/uploads/Ga_B-xNWUAAZ3qv.webp
 signRole: Lipids & Liver Taldearen Zuzendaria eta Ikertzaile Nagusia
 signDept: Fisiologiako Katedraduna • Euskal Herriko Unibertsitatea (UPV/EHU) & Biocruces Bizkaia OII
 viewCvText: Curriculum Osoa Ikusi

@@ -7,7 +7,7 @@ piName: Dra. Patricia Aspichueta Celaá
 piRole: Catedrática de Fisiología
 piDept: Facultad de Medicina y Enfermería (UPV/EHU) • IIS Biocruces Bizkaia
 piBadgeOverlay: IP & Coordinadora
-piImage: /assets/images/team/patricia-aspichueta/image.jpg
+piImage: /assets/images/uploads/Ga_B-xNWUAAZ3qv.webp
 signRole: Investigadora Principal y Coordinadora del Grupo Lipids & Liver
 signDept: Catedrática de Fisiología • Universidad del País Vasco (UPV/EHU) & IIS Biocruces Bizkaia
 viewCvText: Ver Curriculum Vitae Completo

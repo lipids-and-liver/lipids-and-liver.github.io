@@ -56,50 +56,52 @@ const { Content } = await render(line);
     <div class="cv-card">
       <!-- Columna Izquierda: Imagen de la línea, Distintivo, Metadatos clave -->
       <aside class="cv-aside">
-        <div class="research-portrait">
-          <img 
-            src={line.data.image} 
-            alt={line.data.title} 
-            class="research-photo"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="cv-aside-badge">
-          <span class="research-badge">{line.data.badge}</span>
-        </div>
-
-        <div class="cv-contacts-box">
-          <div class="cv-contact-item">
-            <i class="fas fa-dna"></i>
-            <div>
-              <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.lines_title || 'Línea'}</div>
-              <strong style="color:var(--ehu-navy);">{line.data.badge}</strong>
-            </div>
+        <div class="cv-aside-sticky">
+          <div class="research-portrait">
+            <img 
+              src={line.data.image} 
+              alt={line.data.title} 
+              class="research-photo"
+              loading="lazy"
+            />
           </div>
 
-          <div class="cv-contact-item">
-            <i class="fas fa-book-open"></i>
-            <div>
-              <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.nav_pubs || 'Publicaciones'}</div>
-              <span>{relatedPubs.length} {t.pubs_of ? 'publicaciones' : 'artículos JCR'}</span>
-            </div>
+          <div class="cv-aside-badge">
+            <span class="research-badge">{line.data.badge}</span>
           </div>
 
-          <div class="cv-contact-item">
-            <i class="fas fa-university"></i>
-            <div>
-              <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.theses_affiliation_title || 'Filiación'}</div>
-              <span>UPV/EHU • Biocruces</span>
+          <div class="cv-contacts-box">
+            <div class="cv-contact-item">
+              <i class="fas fa-dna"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.lines_title || 'Línea'}</div>
+                <strong style="color:var(--ehu-navy);">{line.data.badge}</strong>
+              </div>
             </div>
-          </div>
 
-          {hasMorePubs && (
-            <a href={`${getLocalizedPath('/publicaciones', lang)}?topic=${id}`} class="cv-contact-item" style="color:var(--logo-green); font-weight:600; margin-top:4px;">
-              <i class="fas fa-layer-group"></i>
-              <span>{t.lines_view_all_pubs} ({relatedPubs.length})</span>
-            </a>
-          )}
+            <div class="cv-contact-item">
+              <i class="fas fa-book-open"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.nav_pubs || 'Publicaciones'}</div>
+                <span>{relatedPubs.length} {t.pubs_of ? 'publicaciones' : 'artículos JCR'}</span>
+              </div>
+            </div>
+
+            <div class="cv-contact-item">
+              <i class="fas fa-university"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.theses_affiliation_title || 'Filiación'}</div>
+                <span>UPV/EHU • Biocruces</span>
+              </div>
+            </div>
+
+            {hasMorePubs && (
+              <a href={`${getLocalizedPath('/publicaciones', lang)}?topic=${id}`} class="cv-contact-item" style="color:var(--logo-green); font-weight:600; margin-top:4px;">
+                <i class="fas fa-layer-group"></i>
+                <span>{t.lines_view_all_pubs} ({relatedPubs.length})</span>
+              </a>
+            )}
+          </div>
         </div>
       </aside>
 

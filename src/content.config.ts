@@ -28,8 +28,12 @@ const team = defineCollection({
     department: z.string().optional(),
     image: z.string().nullable().optional().transform(val => val || '/assets/images/team/placeholder.jpg'),
     email: z.string().optional(),
+    phone: z.string().optional(),
     office: z.string().optional(),
     orcid: z.string().optional(),
+    twitter: z.string().optional(),
+    x: z.string().optional(),
+    linkedin: z.string().optional(),
     order: z.number().default(99),
     cv: z.object({
       title: z.string().optional(),
