@@ -73,6 +73,7 @@ El asistente te preguntará el nombre, rol y categoría, y generará automática
 | `department` | No | Centro / Departamento UPV/EHU | Se rellena solo por defecto |
 | `email` | No | Correo de contacto | `elena.garcia@ehu.eus` |
 | `order` | No | Posición en el listado (menor número = más arriba) | `99` (por defecto) |
+| `quote` | No | Citas célebres o de filosofía de trabajo (máximo 2) | Opcional |
 | `cv` | No | Bloque con títulos, proyectos y trayectoria | Opcional |
 | (Texto libre) | No | Breve semblanza biográfica o presentación (se escribe bajo los `---`) | Opcional |
 
@@ -88,6 +89,7 @@ El contenido textual que escribas **debajo de los tres guiones (`---`)** que cie
   - Breve resumen de la trayectoria académica o profesional.
   - Áreas principales de investigación o enfoque científico dentro del laboratorio.
   - Motivación, colaboraciones destacadas o hitos relevantes de forma narrativa.
+- **Toque personal con citas:** Puedes incluir hasta un máximo de **2 citas célebres o lemas de trabajo** en el campo `quote` de la cabecera.
 - **Formato:** Puedes utilizar formato Markdown estándar: `**negritas**`, `*cursivas*`, o `[enlaces](URL)`.
 
 **Ejemplo de cómo queda en el archivo `.md`:**

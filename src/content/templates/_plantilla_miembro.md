@@ -17,7 +17,8 @@ orcid: "0000-0000-0000-0000"
 # x: "https://x.com/usuario" # Opcional
 # linkedin: "https://www.linkedin.com/in/usuario" # Opcional
 # github: "https://github.com/usuario" # Opcional
-# quote: '"Cita inspiradora o filosofía de trabajo..." — Autor'
+# quote: # Opcional: cita o filosofía de trabajo (máximo 2)
+#   - '"Las ideas son como los conejos..." — John Steinbeck'
 order: 99
 cv:
   title: "Título profesional en la ficha de CV"
