@@ -120,6 +120,16 @@ const { Content } = await render(line);
           {line.data.shortDesc}
         </div>
 
+        {(id === 'lipidomics' || currentSlug.includes('lipidomics')) && (
+          <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:6px; padding:0.9rem 1.15rem; margin-bottom:1.5rem; display:flex; align-items:flex-start; gap:10px;">
+            <i class="fas fa-question-circle" style="color:#dc2626; font-size:1.25rem; margin-top:2px; flex-shrink:0;"></i>
+            <div style="font-size:0.92rem; color:#991b1b; line-height:1.45;">
+              <strong>Aviso de Revisión: ¿Sustituir por EHU-iBio?</strong><br>
+              Se plantea la posible sustitución de los contenidos de la Unidad SGIker por el <strong>Instituto Universitario EHU-iBio</strong> en la versión definitiva de la web.
+            </div>
+          </div>
+        )}
+
         <!-- Descripción / Contenido Markdown -->
         <div class="cv-bio">
           <h3 class="cv-block-title" style="margin-bottom:0.85rem;"><i class="fas fa-file-alt"></i> {t.lines_desc_title}</h3>

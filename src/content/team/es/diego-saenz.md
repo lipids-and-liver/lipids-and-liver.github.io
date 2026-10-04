@@ -11,7 +11,6 @@ orcid: "0000-0001-8899-7766"
 order: 10
 cv:
   title: "Investigador Posdoctoral"
-  researchSummary: "Evaluación de estrategias de silenciamiento génico mediante oligonucleótidos para modular el contenido de triglicéridos e inflamación en la esteatopatía hepática."
   degrees:
       - "Doctor en Biomedicina (UPV/EHU, 2021)"
       - "Licenciado en Biotecnología"

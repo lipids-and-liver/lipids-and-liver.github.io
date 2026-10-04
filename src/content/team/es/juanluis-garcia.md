@@ -11,7 +11,6 @@ orcid: "0000-0002-7654-3210"
 order: 2
 cv:
   title: "Investigador Ramón y Cajal - Grupo Lipids & Liver"
-  researchSummary: "Su línea de investigación se centra en la caracterización de redes reguladoras de transcripción genómica, sensores lipídicos y receptores nucleares en la esteatosis hepática metabólica y oncología hepática."
   degrees:
       - "Doctor en Biomedicina / Bioquímica (UPV/EHU, Mención Internacional)"
       - "Licenciado en Bioquímica (UPV/EHU)"

@@ -77,12 +77,16 @@ department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
 email: "${EMAIL:-}"
 office: "Facultad de Medicina y Enfermería, Leioa"
 orcid: ""
+x: ""
+linkedin: ""
+github: ""
+quote: ""
 order: 99
 cv:
   title: "$ROLE - Grupo Lipids & Liver"
-  researchSummary: "Líneas de investigación en metabolismo lipídico y patología hepática..."
   degrees:
     - "Grado / Licenciatura (UPV/EHU)"
+  otherTraining: []
   positions:
     - "$ROLE en Grupo Lipids & Liver (Presente)"
   grants: []

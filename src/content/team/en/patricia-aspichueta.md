@@ -11,7 +11,6 @@ orcid: "0000-0002-8921-9421"
 order: 1
 cv:
   title: "Professor of Physiology - Coordinator of Lipids & Liver Group"
-  researchSummary: "Dr. Aspichueta's research focuses on the study of hepatic lipid metabolism and its alterations in pathological conditions such as Metabolic Dysfunction-Associated Fatty Liver Disease (MAFLD/MASLD), Liver Injury, and Liver Cancer. She is the author of more than 70 publications in high-impact international JCR journals and has led multiple national and Basque Government research grants."
   degrees:
       - "PhD in Biology / Biochemistry (UPV/EHU, 2002)"
       - "BSc in Biological Sciences (UPV/EHU, 1997)"

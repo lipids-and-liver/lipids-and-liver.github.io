@@ -11,7 +11,6 @@ orcid: "0000-0002-9988-3412"
 order: 6
 cv:
   title: "Profesora Agregada de Universidad"
-  researchSummary: "Investigación orientada a la caracterización del lipidoma plasmático y celular en modelos nutricionales de obesesidad y MAFLD."
   degrees:
       - "Doctora en Biología (UPV/EHU)"
       - "Licenciada en Bioquímica"

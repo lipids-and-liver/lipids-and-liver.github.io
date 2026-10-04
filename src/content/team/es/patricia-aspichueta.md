@@ -11,7 +11,6 @@ orcid: "0000-0002-8921-9421"
 order: 1
 cv:
   title: "Catedrática de Fisiología - Coordinadora del Grupo Lipids & Liver"
-  researchSummary: "La investigación de la Dra. Aspichueta se enfoca en el estudio del metabolismo lipídico hepático y su alteración en condiciones patológicas como la Esteatosis Hepática Metabólica (MAFLD/MASLD), el Daño Hepático y el Cáncer Hepático. Es autora de más de 70 publicaciones en revistas JCR internacionales de alto impacto y ha liderado múltiples proyectos del Plan Nacional de R+D+i y del Gobierno Vasco."
   degrees:
       - "Doctora en Biología / Bioquímica (UPV/EHU, 2002)"
       - "Licenciada en Ciencias Biológicas (UPV/EHU, 1997)"

@@ -9,7 +9,6 @@ office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
 order: 19
 cv:
   title: "Investigador Predoctoral"
-  researchSummary: "Fisiopatología hepática, regulación transcripcional de la homeostasis mitocondrial y lipídica en MASLD/MASH, y mecanismos oncogénicos en colangiocarcinoma."
   degrees:
       - "Máster en Investigación Biomédica"
       - "Graduado en Ciencias Biomédicas"

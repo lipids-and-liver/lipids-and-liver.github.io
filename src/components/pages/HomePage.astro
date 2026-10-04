@@ -228,6 +228,11 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
                 data-tab={tab.entry.data.tabId}
               >
                 {tab.entry.data.tabTitle}
+                {tab.entry.data.tabId === 'tab-infraestructura' && (
+                  <span style="background:#fee2e2; color:#b91c1c; font-size:0.65rem; font-weight:700; padding:2px 5px; border-radius:3px; margin-left:6px; border:1px solid #fca5a5; vertical-align:middle; display:inline-block;">
+                    ¿Sustituir por EHU-iBio?
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -269,6 +274,14 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
                   </div>
                 ) : (
                   <div class="about-text">
+                    {entry.data.tabId === 'tab-infraestructura' && (
+                      <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:6px; padding:0.85rem 1.1rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:10px;">
+                        <i class="fas fa-question-circle" style="color:#dc2626; font-size:1.2rem; flex-shrink:0;"></i>
+                        <span style="font-size:0.9rem; color:#991b1b; line-height:1.4;">
+                          <strong>Aviso en revisión:</strong> Se plantea sustituir la Unidad de Lipidómica SGIker por <strong>EHU-iBio</strong> en la versión definitiva de la web.
+                        </span>
+                      </div>
+                    )}
                     <Content />
                     {entry.data.tabId === 'tab-infraestructura' && (
                       <div style="margin-top: 1.5rem;">
@@ -399,9 +412,6 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
           <h2 class="section-title-inst">{t.team_title}</h2>
           <span class="section-subtitle-inst">{t.team_subtitle}</span>
         </div>
-        <a href={getLocalizedPath('/curriculum', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
-          <i class="fas fa-id-card"></i> {t.nav_cv_portal} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
-        </a>
       </div>
 
       <!-- Segmented Switcher for Team Views: Current Team vs Alumni -->
@@ -412,6 +422,9 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
           </button>
           <button class="segmented-btn team-view-btn" data-target="team-alumni-panel">
             <i class="fas fa-user-graduate"></i> {t.team_tab_alumni || 'Antiguos Miembros (Alumni)'} <span class="segmented-count">{featuredAlumni.length}</span>
+            <span style="background:#fef9c3; color:#854d0e; font-size:0.65rem; font-weight:700; padding:2px 6px; border-radius:4px; margin-left:6px; border:1px solid #fde047; vertical-align:middle; display:inline-block;">
+              Pedir permiso
+            </span>
           </button>
         </div>
       </div>
@@ -435,6 +448,12 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
 
       <!-- Panel: Alumni -->
       <div class="team-panel" id="team-alumni-panel" style="display:none;">
+        <div style="background:#fefce8; border:1px solid #fef08a; border-left:4px solid #ca8a04; border-radius:6px; padding:0.85rem 1.1rem; margin-bottom:1.5rem; display:flex; align-items:center; gap:10px;">
+          <i class="fas fa-user-shield" style="color:#ca8a04; font-size:1.2rem; flex-shrink:0;"></i>
+          <span style="font-size:0.9rem; color:#854d0e; line-height:1.4;">
+            <strong>Aviso de privacidad:</strong> Queda pendiente recabar el consentimiento explícito de las personas egresadas para su inclusión pública en el portal.
+          </span>
+        </div>
         <div class="alumni-grid-inst">
           {featuredAlumni.map(alumni => (
             <AlumniCard alumni={alumni} lang={lang} />

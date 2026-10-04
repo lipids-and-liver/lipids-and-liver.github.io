@@ -11,7 +11,6 @@ orcid: "0000-0002-1144-8890"
 order: 5
 cv:
   title: "Profesor Titular de Universidad"
-  researchSummary: "Experto en hemodinámica hepática, microcirculación sinusoidal y modelos animales de esteatosis y cirrosis hepática."
   degrees:
       - "Doctor en Medicina (UPV/EHU)"
       - "Licenciado en Medicina y Cirugía"

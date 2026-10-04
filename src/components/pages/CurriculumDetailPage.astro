@@ -48,7 +48,10 @@ const xUrl = xRaw ? (xRaw.startsWith('http') ? xRaw : (xRaw.startsWith('@') ? `h
 const linkedinRaw = member.data.linkedin?.trim();
 const linkedinUrl = linkedinRaw ? (linkedinRaw.startsWith('http') ? linkedinRaw : `https://www.linkedin.com/in/${linkedinRaw}`) : '';
 
-const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl);
+const githubRaw = member.data.github?.trim();
+const githubUrl = githubRaw ? (githubRaw.startsWith('http') ? githubRaw : `https://github.com/${githubRaw}`) : '';
+
+const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || githubUrl);
 ---
 
 <Layout title={`${member.data.name} - ${localizedCvTitle} | Lipids & Liver`} currentPage="curriculum" lang={lang}>
@@ -66,7 +69,7 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl);
 
   <div class="container cv-container">
     <div class="cv-top-bar">
-      <a href={getLocalizedPath('/curriculum', lang)} class="btn-inst-secondary" style="padding:6px 14px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
+      <a href={getLocalizedPath('/#team', lang)} class="btn-inst-secondary" style="padding:6px 14px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
         <i class="fas fa-arrow-left"></i> {t.team_back_dir}
       </a>
     </div>
@@ -141,12 +144,17 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl);
                     <i class="fab fa-linkedin"></i>
                   </a>
                 )}
+                {githubUrl && (
+                  <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title={t.cv_contact_github} aria-label={t.cv_contact_github}>
+                    <i class="fab fa-github"></i>
+                  </a>
+                )}
               </div>
             </div>
           )}
         </div>
-      </aside>
 
+      </aside>
       <!-- Columna Derecha: Resto del contenido -->
       <article class="cv-main">
         <div class="cv-kicker">
@@ -157,23 +165,24 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl);
         <h1 class="cv-main-name">{member.data.name}</h1>
         <div class="cv-main-title">{localizedCvTitle}</div>
 
+        {member.data.quote && (
+          <div class="cv-quotes-container">
+            {(Array.isArray(member.data.quote) ? member.data.quote : [member.data.quote]).map((q: string) => (
+              <blockquote class="cv-quote-epigraph">
+                <i class="fas fa-quote-left"></i>
+                <p>{q}</p>
+              </blockquote>
+            ))}
+          </div>
+        )}
+
         <!-- Bio / Semblanza -->
         <div class="cv-bio">
-          <h3 class="cv-block-title" style="margin-top:0; padding-top:0; border-top:none; margin-bottom:0.75rem;">
-            <i class="fas fa-user-circle"></i> {t.cv_bio || 'Semblanza y Biografía Breve'}
-          </h3>
           <div class="cv-bio-content">
             <Content />
           </div>
         </div>
 
-        <!-- Resumen de Investigación -->
-        {cv.researchSummary && (
-          <div class="cv-block">
-            <h3 class="cv-block-title"><i class="fas fa-microscope"></i> {t.cv_research}</h3>
-            <p class="cv-block-text">{cv.researchSummary}</p>
-          </div>
-        )}
 
         <!-- Titulaciones Académicas -->
         {cv.degrees && cv.degrees.length > 0 && (
@@ -181,6 +190,16 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl);
             <h3 class="cv-block-title"><i class="fas fa-graduation-cap"></i> {t.cv_degrees}</h3>
             <ul class="cv-clean-list">
               {cv.degrees.map((d: string) => <li>{d}</li>)}
+            </ul>
+          </div>
+        )}
+
+        <!-- Formación Continua y Cursos -->
+        {cv.otherTraining && cv.otherTraining.length > 0 && (
+          <div class="cv-block">
+            <h3 class="cv-block-title"><i class="fas fa-certificate"></i> {t.cv_other_training}</h3>
+            <ul class="cv-clean-list">
+              {cv.otherTraining.map((ot: string) => <li>{ot}</li>)}
             </ul>
           </div>
         )}
@@ -227,6 +246,37 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl);
       </article>
     </div>
   </div>
+
+  <style>
+    .cv-quotes-container {
+      margin: 1.5rem 1.5rem 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .cv-quote-epigraph {
+      margin: 0;
+      padding: 0.5rem 1.5rem;
+      border-left: 4px solid var(--logo-green, #689F38);
+      background: transparent;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .cv-quote-epigraph i {
+      color: var(--logo-green, #689F38);
+      font-size: 1rem;
+      opacity: 0.4;
+      margin-top: 0.15rem;
+    }
+    .cv-quote-epigraph p {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #777;
+      line-height: 1.5;
+      margin: 0;
+    }
+  </style>
 
   <script is:inline>
     const select = document.getElementById('member-select');

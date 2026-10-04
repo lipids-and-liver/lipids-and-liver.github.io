@@ -74,4 +74,33 @@ El asistente te preguntará el nombre, rol y categoría, y generará automática
 | `email` | No | Correo de contacto | `elena.garcia@ehu.eus` |
 | `order` | No | Posición en el listado (menor número = más arriba) | `99` (por defecto) |
 | `cv` | No | Bloque con títulos, proyectos y trayectoria | Opcional |
-| `body` | No | Breve semblanza biográfica | Opcional |
+| (Texto libre) | No | Breve semblanza biográfica o presentación (se escribe bajo los `---`) | Opcional |
+
+---
+
+## 4. ¿Cómo rellenar la Presentación o Biografía corta?
+
+El contenido textual que escribas **debajo de los tres guiones (`---`)** que cierran los datos iniciales en el archivo Markdown se utilizará como la **Presentación o biografía corta** del miembro del equipo. Esta descripción se mostrará de forma destacada en la parte superior de la página del currículum individual.
+
+### Recomendaciones para la biografía:
+- **Extensión:** Se recomienda que sea un texto breve y conciso (1 a 3 párrafos).
+- **Contenido:**
+  - Breve resumen de la trayectoria académica o profesional.
+  - Áreas principales de investigación o enfoque científico dentro del laboratorio.
+  - Motivación, colaboraciones destacadas o hitos relevantes de forma narrativa.
+- **Formato:** Puedes utilizar formato Markdown estándar: `**negritas**`, `*cursivas*`, o `[enlaces](URL)`.
+
+**Ejemplo de cómo queda en el archivo `.md`:**
+
+```markdown
+---
+id: "elena-garcia"
+name: "Dra. Elena García López"
+role: "Investigadora Predoctoral"
+# ... (resto de campos) ...
+---
+
+La Dra. Elena García López es investigadora predoctoral en el grupo *Lipids & Liver*. Su investigación principal se centra en el estudio de las vías metabólicas lipídicas alteradas en la progresión del cáncer hepático. 
+
+Durante su trayectoria, ha adquirido amplia experiencia en modelos in vivo e in vitro, así como en técnicas avanzadas de biología molecular y celular, contribuyendo al desarrollo de nuevas estrategias terapéuticas.
+```

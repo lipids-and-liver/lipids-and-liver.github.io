@@ -11,7 +11,6 @@ orcid: "0000-0003-1122-3344"
 order: 11
 cv:
   title: "Investigadora Predoctoral (Contrato FPU)"
-  researchSummary: "Desarrollo de la Tesis Doctoral sobre la regulación del factor E2F2 sobre la síntesis ectópica de triglicéridos y función mitocondrial en hepatocitos."
   degrees:
       - "Máster en Biología Molecular y Biomedicina (UPV/EHU)"
       - "Graduada en Bioquímica y Biología Molecular (UPV/EHU)"

@@ -11,7 +11,6 @@ orcid: "0000-0003-2211-9988"
 order: 8
 cv:
   title: "Profesora Titular de Universidad"
-  researchSummary: "Investigación sobre el ensamblaje de lipoproteínas de muy baja densidad (VLDL) y la dinámica de gotas lipídicas en modelos celulares de esteatosis."
   degrees:
       - "Doctora en Ciencias Biológicas (UPV/EHU)"
       - "Licenciada en Biología"

@@ -11,7 +11,6 @@ orcid: "0000-0003-8877-6655"
 order: 14
 cv:
   title: "Investigadora Predoctoral"
-  researchSummary: "Estudio del microambiente hepático esteatósico y su acondicionamiento endotelial para el prendimiento de metástasis tumorales."
   degrees:
       - "Máster en Investigación Biomédica"
       - "Graduada en Farmacia (UPV/EHU)"

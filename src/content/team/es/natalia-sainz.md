@@ -11,7 +11,6 @@ orcid: "0000-0001-9988-7766"
 order: 16
 cv:
   title: "Investigadora Predoctoral"
-  researchSummary: "Aplicación de lipidómica y metabolómica a nivel de célula única (*single-cell*) para subclasificar nódulos tumorales hepáticos."
   degrees:
       - "Máster en Biomedicina"
       - "Graduada en Biología"

@@ -11,7 +11,6 @@ orcid: "0000-0002-8921-9421"
 order: 1
 cv:
   title: "Fisiologiako Katedraduna - Lipids & Liver Taldeko Koordinatzailea"
-  researchSummary: "Aspichueta doktorearen ikerketa gibeleko lipidoen metabolizazioa eta egoera patologikoetan (hala nola MAFLD/MASLD, Gibeleko Kaltea eta Gibeleko Minbizia) gertatzen diren asaldurak aztertzean datza. Nazioarteko inpaktu handiko JCR aldizkarietan 70 argitalpen baino gehiagoren egilea da eta Eusko Jaurlaritzaren eta Plan Nazionalaren ikerketa-proiektu anitzen buru izan da."
   degrees:
       - "Biologia / Biokimikan Doktorea (UPV/EHU, 2002)"
       - "Biologia Zientzietan Lizentziaduna (UPV/EHU, 1997)"

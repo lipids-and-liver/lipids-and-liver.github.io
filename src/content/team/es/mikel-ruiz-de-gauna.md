@@ -11,7 +11,6 @@ orcid: "0000-0001-4433-2211"
 order: 13
 cv:
   title: "Investigador Predoctoral"
-  researchSummary: "Caracterización de las rutas de insaturación de ácidos grasos y evaluación de inhibidores enzimáticos en organoides tumorales."
   degrees:
       - "Máster en Biología Molecular y Biomedicina"
       - "Graduado en Biotecnología"

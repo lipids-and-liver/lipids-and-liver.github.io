@@ -9,7 +9,6 @@ office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
 order: 18
 cv:
   title: "Investigadora Predoctoral"
-  researchSummary: "Alteraciones del metabolismo lipídico hepático en esteatohepatitis asociada a disfunción metabólica (MASH), vesículas extracelulares en la comunicación intercelular y regulación génica mediada por E2F2."
   degrees:
       - "Máster en Investigación Biomédica (UPV/EHU)"
       - "Graduada en Biotecnología / Bioquímica (UPV/EHU)"

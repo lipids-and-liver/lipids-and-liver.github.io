@@ -4942,6 +4942,9 @@ a.cv-contact-item:hover i {
   color: var(--logo-green);
   background: rgba(104, 159, 56, 0.08);
   border-color: rgba(104, 159, 56, 0.25);
+  width: 28px;
+  height: 28px;
+  font-size: 0.85rem;
 }
 
 .cv-alumni-footer .alumni-social-link i {

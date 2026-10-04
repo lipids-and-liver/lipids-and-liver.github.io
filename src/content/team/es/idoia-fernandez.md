@@ -10,7 +10,6 @@ orcid: "0000-0002-7788-9900"
 order: 15
 cv:
   title: "Investigadora Predoctoral"
-  researchSummary: "Análisis del estrés de replicación y la integridad genómica en el mantenimiento de la función del retículo endoplásmico hepatocelular."
   degrees:
       - "Máster en Biología Molecular y Biomedicina"
       - "Graduada en Bioquímica"

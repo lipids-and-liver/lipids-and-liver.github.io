@@ -11,7 +11,6 @@ orcid: "0000-0001-7893-4521"
 order: 3
 cv:
   title: "Profesora Titular de Universidad - Directora de Línea de Investigación"
-  researchSummary: "Especializada en la purificación y caracterización kinetico-metabólica de enzimas sintéticas de triacilgliceroles y aciltransferasas en tejido hepático. Desarrolladora de protocolos estándar de extracción y análisis de lípidos por MS."
   degrees:
       - "Doctora en Ciencias (UPV/EHU)"
       - "Licenciada en Bioquímica (UPV/EHU)"

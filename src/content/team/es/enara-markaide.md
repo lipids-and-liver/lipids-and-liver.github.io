@@ -10,7 +10,6 @@ orcid: "0000-0002-9911-2233"
 order: 12
 cv:
   title: "Investigadora Predoctoral"
-  researchSummary: "Investigación sobre la reprogramación glucolítica y biosíntesis de lípidos en colangiocitos císticos como diana farmacológica no quirúrgica."
   degrees:
       - "Máster en Biomedicina Evaluativa"
       - "Graduada en Biología (UPV/EHU)"

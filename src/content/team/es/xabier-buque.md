@@ -11,7 +11,6 @@ orcid: "0000-0002-3344-5566"
 order: 7
 cv:
   title: "Profesor Titular de Universidad"
-  researchSummary: "Estudio de las rutas metabólicas desreguladas en oncología hepática, con énfasis en el colangiocarcinoma intrahepático y la resistencia a fármacos antineoplásicos."
   degrees:
       - "Doctor en Biología / Bioquímica (UPV/EHU)"
       - "Licenciado en Bioquímica (UPV/EHU)"

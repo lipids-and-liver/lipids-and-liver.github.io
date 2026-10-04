@@ -1,7 +1,4 @@
 ---
-import CurriculumIndexPage from '../../../../components/pages/CurriculumIndexPage.astro';
-import type { Locale } from '../../../../utils/i18n';
-
 export function getStaticPaths() {
   return [
     { params: { lang: 'eu' } },
@@ -10,6 +7,5 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
+return Astro.redirect(`/portal/${lang}/#team`);
 ---
-
-<CurriculumIndexPage lang={lang as Locale} />

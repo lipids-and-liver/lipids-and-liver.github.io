@@ -14,7 +14,6 @@ linkedin: ''
 order: 99
 cv:
   title: Tecnico Especialista Laboratorio
-  researchSummary: ''
   degrees:
     - Grado en Bioquimica
   positions: []

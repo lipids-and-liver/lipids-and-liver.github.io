@@ -14,13 +14,19 @@ department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
 email: "nombre.apellido@ehu.eus"
 office: "Despacho X.XX, Facultad de Medicina y Enfermería, Leioa"
 orcid: "0000-0000-0000-0000"
+# x: "https://x.com/usuario" # Opcional
+# linkedin: "https://www.linkedin.com/in/usuario" # Opcional
+# github: "https://github.com/usuario" # Opcional
+# quote: '"Cita inspiradora o filosofía de trabajo..." — Autor'
 order: 99
 cv:
   title: "Título profesional en la ficha de CV"
-  researchSummary: "Resumen de líneas de investigación..."
   degrees:
     - "Doctor/a en Biomedicina (UPV/EHU, 2020)"
     - "Licenciado/a o Graduado/a (UPV/EHU, 2015)"
+  otherTraining:
+    - "Acreditación de experimentación animal (Funciones B y C / FELASA, 2021)"
+    - "Curso de Formación Especializada o Metodológica (técnicas de laboratorio, ómicas, bioinformática...)"
   positions:
     - "Investigador/a en Grupo Lipids & Liver (2020 - Presente)"
   grants:
@@ -32,4 +38,9 @@ cv:
     - "Docencia en Grado de Medicina o Posgrado"
 ---
 
-Escribe aquí una breve descripción biográfica o perfil del investigador/a (se mostrará en la cabecera de su ficha de CV).
+# PRESENTACIÓN / BIOGRAFÍA CORTA:
+# Escribe justo aquí debajo una breve descripción biográfica o perfil del investigador/a.
+# Esta presentación se mostrará de forma destacada en la cabecera de la ficha de CV.
+# Se recomienda un texto breve (1 a 3 párrafos) explicando la trayectoria, área principal de investigación e hitos relevantes. (Puedes usar formato Markdown como negritas o enlaces).
+
+Escribe aquí tu presentación biográfica...

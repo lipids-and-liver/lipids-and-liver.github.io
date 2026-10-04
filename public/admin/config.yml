@@ -149,6 +149,8 @@ collections:
       - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", hint: "Formato: 0000-0002-XXXX-XXXX" }
       - { label: "Perfil X / Twitter", name: "x", widget: "string", required: false, i18n: "duplicate", hint: "Ej: @usuario o https://x.com/usuario" }
       - { label: "Perfil LinkedIn", name: "linkedin", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://linkedin.com/in/usuario" }
+      - { label: "Perfil GitHub", name: "github", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://github.com/usuario" }
+      - { label: "Cita(s) (Opcional)", name: "quote", widget: "list", required: false, i18n: "duplicate", hint: "Añade una o varias citas inspiradoras" }
       - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
       - label: "Currículum Vitae Detallado"
         name: "cv"
@@ -157,8 +159,8 @@ collections:
         i18n: "duplicate"
         fields:
           - { label: "Título Profesional CV", name: "title", widget: "string", required: false, hint: "Ej: Investigador/a en Formación" }
-          - { label: "Resumen de Investigación", name: "researchSummary", widget: "text", required: false, hint: "Breve descripción de las líneas en las que investiga" }
           - { label: "Titulaciones Académicas", name: "degrees", widget: "list", required: false, hint: "Ej: Grado en Bioquímica (UPV/EHU, 2023)" }
+          - { label: "Formación Continua y Cursos", name: "otherTraining", widget: "list", required: false, hint: "Ej: Acreditación animalario (Funciones B y C), Cursos de especialización técnica, bioinformática, etc." }
           - { label: "Puestos y Trayectoria Previa", name: "positions", widget: "list", required: false, hint: "Ej: Investigador en formación (2024-Presente)" }
           - { label: "Proyectos y Financiación", name: "grants", widget: "list", required: false, hint: "Ej: Contrato Predoctoral Gobierno Vasco (2024-2028)" }
           - { label: "Publicaciones Relevantes", name: "publications", widget: "list", required: false, hint: "Citas destacadas" }
@@ -461,7 +463,6 @@ collections:
             widget: "object"
             fields:
               - { label: "Título CV", name: "title", widget: "string", default: "Investigador/a - Grupo Lipids & Liver" }
-              - { label: "Resumen Investigación", name: "researchSummary", widget: "text", default: "Líneas de investigación en metabolismo lipídico y esteatosis hepática..." }
               - { label: "Titulaciones Académicas", name: "degrees", widget: "list" }
               - { label: "Puestos y Trayectoria", name: "positions", widget: "list" }
               - { label: "Proyectos y Financiación", name: "grants", widget: "list" }

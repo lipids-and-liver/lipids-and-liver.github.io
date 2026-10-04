@@ -11,7 +11,6 @@ orcid: "0000-0002-4455-6677"
 order: 9
 cv:
   title: "Investigador Posdoctoral"
-  researchSummary: "Su trabajo investiga el papel de la deficiencia de E2F2 en la reducción de la acumulación lipídica y la atenuación de lesiones precancerosas en hígado graso metabólico."
   degrees:
       - "Doctor en Biomedicina (UPV/EHU, Mención Internacional 2023)"
       - "Máster en Biología Molecular y Biomedicina (UPV/EHU)"

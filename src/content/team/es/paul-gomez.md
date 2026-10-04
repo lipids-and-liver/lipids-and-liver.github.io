@@ -9,7 +9,6 @@ office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
 order: 17
 cv:
   title: "Investigador Predoctoral"
-  researchSummary: "Bases moleculares y fisiopatológicas en la progresión de la esteatosis hepática metabólica (MASLD/MASH), estudio del factor de transcripción E2F2 y regulación del metabolismo hepatobiliar por microARNs (miR-34a-5p)."
   degrees:
       - "Máster en Investigación Biomédica"
       - "Graduado en Bioquímica y Biología Molecular (UPV/EHU)"

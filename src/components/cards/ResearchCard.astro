@@ -13,8 +13,14 @@ const t = getTranslations(lang);
 
 <div class="research-card-inst">
   <img src={line.data.image} alt={line.data.title} class="research-card-img" />
-  <div class="research-card-content">
-    <span class="research-badge">{line.data.badge}</span>
+    <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-bottom:0.5rem;">
+      <span class="research-badge">{line.data.badge}</span>
+      {(line.data.id === 'lipidomics' || line.slug?.includes('lipidomics')) && (
+        <span style="background:#fee2e2; color:#b91c1c; font-size:0.68rem; font-weight:700; padding:2px 7px; border-radius:4px; border:1px solid #fca5a5;">
+          ¿Sustituir por EHU-iBio?
+        </span>
+      )}
+    </div>
     <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.75rem; color:var(--ehu-navy);">{line.data.title}</h3>
     <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem; flex-grow:1; line-height:1.6;">{line.data.shortDesc}</p>
     <div class="research-card-footer">

@@ -11,7 +11,6 @@ orcid: "0000-0003-4412-9011"
 order: 4
 cv:
   title: "Ikerbasque Research Professor"
-  researchSummary: "Líder internacional en el estudio del organelo peroxisomal y en la aplicación de la espectrometría de masas para identificar el impacto de contaminantes ambientales (Exposoma) en la salud metabólica humana."
   degrees:
       - "Doctora en Bioquímica y Biología Molecular"
       - "Postdoctorado en Estocolmo y Uppsala (Suecia)"
