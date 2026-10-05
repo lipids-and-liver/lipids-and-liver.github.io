@@ -13,8 +13,16 @@ const t = getTranslations(lang);
 const allProjects = await getLocalizedCollection('projects', lang);
 allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
-const activeCount = allProjects.filter(p => p.data.status === 'active').length;
-const completedCount = allProjects.filter(p => p.data.status === 'completed').length;
+const activeProjects = allProjects.filter(p => p.data.status === 'active');
+const completedProjects = allProjects.filter(p => p.data.status === 'completed');
+
+// Sort completed by year descending
+completedProjects.sort((a, b) => {
+  const yA = a.data.year || (a.data.period ? parseInt(a.data.period.match(/\b(20\d\d)\b/)?.[1] || '0') : 0);
+  const yB = b.data.year || (b.data.period ? parseInt(b.data.period.match(/\b(20\d\d)\b/)?.[1] || '0') : 0);
+  if (yB !== yA) return yB - yA;
+  return (a.data.order || 99) - (b.data.order || 99);
+});
 ---
 
 <Layout currentPage="projects" lang={lang} title={`${t.projects_page_title} | Lipids & Liver`}>
@@ -44,67 +52,186 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
         <h1 class="catalog-title">{t.projects_page_title}</h1>
         <p class="catalog-subtitle">{t.projects_page_sub}</p>
       </div>
-
-      <!-- Controls: Status Switcher, Entity Pills & Search -->
-      <div class="projects-controls-container">
-        <!-- Segmented Status Filter -->
-        <div class="segmented-control-bar" id="projects-status-filters" style="margin: 0 auto;">
-          <button class="segmented-btn active" data-status-filter="ALL">
-            <i class="fas fa-layer-group"></i> {t.projects_all} <span class="segmented-count">{allProjects.length}</span>
-          </button>
-          <button class="segmented-btn" data-status-filter="ACTIVE">
-            <i class="fas fa-spinner fa-spin"></i> {t.projects_active} <span class="segmented-count">{activeCount}</span>
-          </button>
-          <button class="segmented-btn" data-status-filter="COMPLETED">
-            <i class="fas fa-check-circle"></i> {t.projects_completed} <span class="segmented-count">{completedCount}</span>
-          </button>
-        </div>
-
-        <!-- Entity Scope Filters -->
-        <div class="projects-entity-filters" id="projects-entity-filters">
-          <button class="entity-pill-btn active" data-type-filter="ALL">
-            <i class="fas fa-th"></i> {lang === 'eu' ? 'Entitate guztiak' : (lang === 'en' ? 'All entities' : 'Todas las entidades')}
-          </button>
-          <button class="entity-pill-btn" data-type-filter="national">
-            <i class="fas fa-landmark"></i> {lang === 'eu' ? 'Estatukoak (MCIU / ISCIII)' : (lang === 'en' ? 'National (MCIU / ISCIII)' : 'Nacional (MCIU / ISCIII)')}
-          </button>
-          <button class="entity-pill-btn" data-type-filter="regional">
-            <i class="fas fa-map-marker-alt"></i> {lang === 'eu' ? 'Autonomikoak (Eusko Jaurlaritza / ELKARTEK)' : (lang === 'en' ? 'Regional (Basque Govt / ELKARTEK)' : 'Autonómico (Gob. Vasco / ELKARTEK)')}
-          </button>
-          <button class="entity-pill-btn" data-type-filter="european">
-            <i class="fas fa-globe-europe"></i> {lang === 'eu' ? 'Europarrak (FEDER)' : (lang === 'en' ? 'European (FEDER)' : 'Europeo (FEDER)')}
-          </button>
-          <button class="entity-pill-btn" data-type-filter="foundation">
-            <i class="fas fa-hand-holding-heart"></i> {lang === 'eu' ? 'Fundazioak (AECC / CIBER)' : (lang === 'en' ? 'Foundations (AECC / CIBER)' : 'Fundaciones (AECC / CIBER)')}
-          </button>
-        </div>
-
-        <!-- Instant Real-Time Search Bar -->
-        <div class="projects-search-bar">
-          <i class="fas fa-search"></i>
-          <input 
-            type="text" 
-            id="projects-search-input" 
-            class="projects-search-input" 
-            placeholder={t.projects_search_placeholder || 'Buscar por título, acrónimo, código, IP...'} 
-            aria-label="Buscar proyectos"
-          />
-        </div>
-
-        <!-- Counter display -->
-        <div class="projects-count-display">
-          {lang === 'eu' ? 'Erakusten:' : (lang === 'en' ? 'Showing:' : 'Mostrando:')} <strong id="visible-count">{allProjects.length}</strong> / {allProjects.length} {lang === 'eu' ? 'proiektu' : (lang === 'en' ? 'projects' : 'proyectos')}
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Projects Grid Section -->
-  <section class="page-section">
+  <!-- Main Content: Active Cards + Compact Archive Table -->
+  <section class="page-section" style="padding-top: 1rem;">
     <div class="container">
 
-      <!-- Official UPV/EHU Hub Banner -->
-      <div class="projects-official-hub-card">
+      <!-- ==========================================
+           SECCIÓN 1: PROYECTOS EN EJECUCIÓN (TARJETAS)
+           ========================================== -->
+      <div class="projects-block-header">
+        <div class="projects-block-title-wrap">
+          <h2 class="projects-block-title">
+            <i class="fas fa-spinner fa-pulse" style="color:var(--logo-green);"></i>
+            {t.projects_active_section_title || 'Proyectos en Ejecución'}
+            <span class="projects-block-badge">{activeProjects.length}</span>
+          </h2>
+          <p class="projects-block-sub">
+            {t.projects_active_section_sub || 'Proyectos competitivos y ayudas estructurales con dotación presupuestaria activa'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Active Projects Grid (Clean & Impactful) -->
+      <div class="projects-grid-inst" id="active-projects-grid">
+        {activeProjects.map(project => (
+          <div class="project-item">
+            <ProjectCard project={project} lang={lang} />
+          </div>
+        ))}
+      </div>
+
+      <!-- ==========================================
+           SECCIÓN 2: HISTÓRICO EN TABLA COMPACTA
+           ========================================== -->
+      <div class="projects-archive-box" id="historico">
+        <!-- Archive Header & Toolbar -->
+        <div class="projects-archive-toolbar">
+          <div class="archive-search-row">
+            <div>
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--ehu-navy); margin:0 0 4px 0; display:flex; align-items:center; gap:8px;">
+                <i class="fas fa-archive" style="color:var(--logo-green);"></i>
+                {t.projects_archive_section_title || 'Histórico de Convocatorias y Proyectos Finalizados'}
+                <span class="projects-block-badge" style="font-size:0.75rem;">{completedProjects.length}</span>
+              </h3>
+              <p style="font-size:0.86rem; color:var(--text-secondary); margin:0;">
+                {t.projects_archive_section_sub || 'Registro auditado de proyectos concluidos con participación del equipo'}
+              </p>
+            </div>
+
+            <!-- Instant Search Input -->
+            <div class="archive-search-box">
+              <i class="fas fa-search"></i>
+              <input 
+                type="text" 
+                id="archive-search-input" 
+                class="archive-search-input" 
+                placeholder={t.projects_search_placeholder || 'Buscar por título, acrónimo, código, IP...'} 
+                aria-label="Buscar en histórico de proyectos"
+              />
+            </div>
+          </div>
+
+          <!-- Entity Filter Pills & Counter Row -->
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div class="projects-entity-filters" id="archive-entity-filters" style="justify-content:flex-start;">
+              <button class="entity-pill-btn active" data-type-filter="ALL">
+                <i class="fas fa-th"></i> {lang === 'eu' ? 'Guztiak' : (lang === 'en' ? 'All' : 'Todas las entidades')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="national">
+                <i class="fas fa-landmark"></i> {lang === 'eu' ? 'MCIU / Estatua' : (lang === 'en' ? 'National' : 'Nacional (MCIU/ISCIII)')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="regional">
+                <i class="fas fa-map-marker-alt"></i> {lang === 'eu' ? 'Eusko Jaurlaritza' : (lang === 'en' ? 'Regional' : 'Autonómico (Gob. Vasco)')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="european">
+                <i class="fas fa-globe-europe"></i> {lang === 'eu' ? 'FEDER / Europa' : (lang === 'en' ? 'European' : 'Europeo (FEDER)')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="foundation">
+                <i class="fas fa-hand-holding-heart"></i> {lang === 'eu' ? 'Fundazioak' : (lang === 'en' ? 'Foundations' : 'Fundaciones (AECC)')}
+              </button>
+            </div>
+
+            <div class="archive-counter">
+              {lang === 'eu' ? 'Erakusten:' : (lang === 'en' ? 'Showing:' : 'Mostrando:')} <strong id="archive-visible-count">{completedProjects.length}</strong> / {completedProjects.length}
+            </div>
+          </div>
+        </div>
+
+        <!-- Compact Table Scroll Container -->
+        <div class="archive-table-scroll">
+          <table class="projects-compact-table" id="archive-table">
+            <thead>
+              <tr>
+                <th class="col-year">{t.projects_col_year || 'Año / Periodo'}</th>
+                <th class="col-code">{t.projects_col_code || 'Acrónimo / Ref.'}</th>
+                <th class="col-title">{t.projects_col_title || 'Título del Proyecto'}</th>
+                <th class="col-pi">{t.projects_col_pi || 'IP / Dirección'}</th>
+                <th class="col-entity">{t.projects_col_entity || 'Entidad'}</th>
+                <th class="col-budget">{t.projects_col_budget || 'Presupuesto'}</th>
+                <th class="col-action">{t.projects_col_link || 'Ficha UPV/EHU'}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {completedProjects.map(project => {
+                const yearVal = project.data.year || project.data.period?.match(/\b(20\d\d)\b/)?.[1] || '-';
+                return (
+                  <tr 
+                    class="archive-row" 
+                    data-type={project.data.fundingType}
+                    data-search={`${project.data.title} ${project.data.acronym || ''} ${project.data.code || ''} ${project.data.pi || ''} ${project.data.fundingBody || ''} ${yearVal}`.toLowerCase()}
+                  >
+                    <td class="col-year">
+                      <span class="archive-year-tag">{yearVal}</span>
+                    </td>
+                    <td class="col-code">
+                      {project.data.acronym && (
+                        <span class="archive-acronym-badge">{project.data.acronym}</span>
+                      )}
+                      {project.data.code && (
+                        <span class="archive-code-sub">{project.data.code}</span>
+                      )}
+                    </td>
+                    <td class="col-title">
+                      <span class="archive-title-link">{project.data.title}</span>
+                    </td>
+                    <td class="col-pi">
+                      <span class="archive-pi-name">
+                        <i class="fas fa-user-circle"></i>
+                        {project.data.pi.split(',')[0]}
+                      </span>
+                    </td>
+                    <td class="col-entity">
+                      <span class="archive-entity-label" title={project.data.fundingBody}>
+                        {project.data.fundingBody.length > 32 ? `${project.data.fundingBody.slice(0, 32)}...` : project.data.fundingBody}
+                      </span>
+                    </td>
+                    <td class="col-budget">
+                      {project.data.budget && project.data.budget.includes('€') ? (
+                        <span class="archive-budget-val">{project.data.budget}</span>
+                      ) : (
+                        <span class="archive-budget-na">-</span>
+                      )}
+                    </td>
+                    <td class="col-action">
+                      {project.data.officialUrl ? (
+                        <a 
+                          href={project.data.officialUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          class="archive-link-btn" 
+                          title="Abrir ficha oficial en el portal de la UPV/EHU"
+                        >
+                          <span>UPV/EHU</span>
+                          <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i>
+                        </a>
+                      ) : (
+                        <span style="color:var(--text-muted); font-size:0.8rem;">-</span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- No Archive Results Row -->
+        <div id="no-archive-results" style="display:none; text-align:center; padding: 3rem 1rem;">
+          <i class="fas fa-search" style="font-size:2rem; color:var(--text-muted); margin-bottom:0.75rem; display:block;"></i>
+          <p style="color:var(--text-secondary); margin:0;">
+            {lang === 'eu' ? 'Ez da proiekturik aurkitu irizpide hauekin' : (lang === 'en' ? 'No historical projects match your criteria' : 'No se han encontrado proyectos históricos con estos criterios')}
+          </p>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           SECCIÓN 3: BANNER OFICIAL UPV/EHU & TRANSPARENCIA
+           ========================================== -->
+      <div class="projects-official-hub-card" style="margin-top: 3.5rem;">
         <div class="projects-official-hub-info">
           <div class="projects-official-hub-icon">
             <i class="fas fa-university"></i>
@@ -130,31 +257,6 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
         </div>
       </div>
 
-      <!-- Projects Grid -->
-      <div class="projects-grid-inst" id="projects-grid">
-        {allProjects.map(project => (
-          <div 
-            class="project-item" 
-            data-status={project.data.status.toUpperCase()} 
-            data-type={project.data.fundingType}
-            data-search={`${project.data.title} ${project.data.acronym || ''} ${project.data.code || ''} ${project.data.pi || ''} ${project.data.fundingBody || ''} ${project.data.period || ''}`.toLowerCase()}
-          >
-            <ProjectCard project={project} lang={lang} />
-          </div>
-        ))}
-      </div>
-
-      <!-- No Results Message -->
-      <div id="no-projects-msg" style="display:none; text-align:center; padding: 4rem 1rem;">
-        <i class="fas fa-folder-open" style="font-size:3rem; color:var(--text-muted); margin-bottom:1rem; display:block;"></i>
-        <h3 style="color:var(--text-secondary); margin-bottom:0.5rem;">
-          {lang === 'eu' ? 'Ez da proiekturik aurkitu irizpide hauekin' : (lang === 'en' ? 'No projects match your criteria' : 'No se han encontrado proyectos con estos criterios')}
-        </h3>
-        <p style="color:var(--text-muted); font-size:0.95rem;">
-          {lang === 'eu' ? 'Saiatu bilaketa-terminoak edo iragazkiak aldatzen' : (lang === 'en' ? 'Try adjusting your search terms or filters' : 'Pruebe a modificar los términos de búsqueda o los filtros')}
-        </p>
-      </div>
-
       <!-- Institutional Transparency Notice -->
       <div class="institutional-funding-notice">
         <div class="funding-notice-icon">
@@ -172,74 +274,66 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
           </p>
         </div>
       </div>
+
     </div>
   </section>
 </Layout>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const statusButtons = document.querySelectorAll('#projects-status-filters .segmented-btn');
-    const typeButtons = document.querySelectorAll('#projects-entity-filters .entity-pill-btn');
-    const searchInput = document.getElementById('projects-search-input');
-    const projectItems = document.querySelectorAll('#projects-grid .project-item');
-    const visibleCounter = document.getElementById('visible-count');
-    const noResultsMsg = document.getElementById('no-projects-msg');
+    const searchInput = document.getElementById('archive-search-input');
+    const entityButtons = document.querySelectorAll('#archive-entity-filters .entity-pill-btn');
+    const rows = document.querySelectorAll('#archive-table tbody tr.archive-row');
+    const visibleCounter = document.getElementById('archive-visible-count');
+    const noResults = document.getElementById('no-archive-results');
+    const tableElement = document.getElementById('archive-table');
 
-    let currentStatus = 'ALL';
-    let currentType = 'ALL';
+    let selectedType = 'ALL';
     let searchQuery = '';
 
-    function applyFilters() {
-      let visibleCount = 0;
+    function filterArchive() {
+      let count = 0;
 
-      projectItems.forEach(item => {
-        const itemStatus = item.getAttribute('data-status');
-        const itemType = item.getAttribute('data-type');
-        const itemSearch = item.getAttribute('data-search') || '';
+      rows.forEach(row => {
+        const rowType = row.getAttribute('data-type');
+        const rowSearch = row.getAttribute('data-search') || '';
 
-        const matchesStatus = (currentStatus === 'ALL' || itemStatus === currentStatus);
-        const matchesType = (currentType === 'ALL' || itemType === currentType);
-        const matchesSearch = !searchQuery || itemSearch.includes(searchQuery);
+        const typeMatch = (selectedType === 'ALL' || rowType === selectedType);
+        const searchMatch = !searchQuery || rowSearch.includes(searchQuery);
 
-        if (matchesStatus && matchesType && matchesSearch) {
-          item.style.display = '';
-          visibleCount++;
+        if (typeMatch && searchMatch) {
+          row.style.display = '';
+          count++;
         } else {
-          item.style.display = 'none';
+          row.style.display = 'none';
         }
       });
 
       if (visibleCounter) {
-        visibleCounter.textContent = visibleCount;
+        visibleCounter.textContent = count;
       }
 
-      if (noResultsMsg) {
-        noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+      if (noResults) {
+        noResults.style.display = count === 0 ? 'block' : 'none';
+      }
+      if (tableElement) {
+        tableElement.style.display = count === 0 ? 'none' : 'table';
       }
     }
 
-    statusButtons.forEach(btn => {
+    entityButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        statusButtons.forEach(b => b.classList.remove('active'));
+        entityButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        currentStatus = btn.getAttribute('data-status-filter') || 'ALL';
-        applyFilters();
-      });
-    });
-
-    typeButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        typeButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentType = btn.getAttribute('data-type-filter') || 'ALL';
-        applyFilters();
+        selectedType = btn.getAttribute('data-type-filter') || 'ALL';
+        filterArchive();
       });
     });
 
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value.toLowerCase().trim();
-        applyFilters();
+        filterArchive();
       });
     }
   });
