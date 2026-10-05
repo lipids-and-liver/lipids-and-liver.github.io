@@ -2,7 +2,7 @@
 id: isciii-premed-mafld
 title: "Dianas terapeuticas y biomarcadores para la medicina de precision en MAFLD"
 acronym: "PREMED-MAFLD"
-code: "Instituto Salud Carlos III (conv varias)21/01"
+code: "ISCIII-21/01"
 fundingBody: "Instituto Salud Carlos III (conv varias) 2021"
 fundingType: "national"
 pi: "Dra. Patricia Aspichueta"

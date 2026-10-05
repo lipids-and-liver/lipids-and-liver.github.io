@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { formatProjectCode } from '../../utils/projects';
 import ProjectCard from '../cards/ProjectCard.astro';
 
 interface Props {
@@ -158,6 +159,7 @@ completedProjects.sort((a, b) => {
             <tbody>
               {completedProjects.map(project => {
                 const yearVal = project.data.year || project.data.period?.match(/\b(20\d\d)\b/)?.[1] || '-';
+                const formattedCode = formatProjectCode(project.data.code);
                 return (
                   <tr 
                     class="archive-row" 
@@ -171,8 +173,16 @@ completedProjects.sort((a, b) => {
                       {project.data.acronym && (
                         <span class="archive-acronym-badge">{project.data.acronym}</span>
                       )}
-                      {project.data.code && (
-                        <span class="archive-code-sub">{project.data.code}</span>
+                      {formattedCode.displayCode && (
+                        <span 
+                          class="archive-code-sub" 
+                          title={formattedCode.extraCount > 0 ? `Subproyectos vinculados: ${formattedCode.fullCode}` : 'Código de referencia oficial'}
+                        >
+                          {formattedCode.displayCode}
+                          {formattedCode.extraCount > 0 && (
+                            <span class="code-more-badge">+{formattedCode.extraCount}</span>
+                          )}
+                        </span>
                       )}
                     </td>
                     <td class="col-title">

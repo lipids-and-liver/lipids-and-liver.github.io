@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getTranslations, type Locale } from '../../utils/i18n';
+import { formatProjectCode } from '../../utils/projects';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -27,6 +28,8 @@ const t = getTranslations(lang);
 
 const isActive = status === 'active';
 const statusLabel = isActive ? (t.projects_status_active || 'En Activo') : (t.projects_status_completed || 'Finalizado');
+
+const formattedCode = formatProjectCode(code);
 ---
 
 <div class={`project-card-inst ${isActive ? 'status-active' : 'status-completed'}`}>
@@ -43,9 +46,15 @@ const statusLabel = isActive ? (t.projects_status_active || 'En Activo') : (t.pr
       )}
       {badge && <span class="project-type-badge">{badge}</span>}
     </div>
-    {code && (
-      <span class="project-code-tag" title="Código de referencia oficial">
-        <i class="fas fa-hashtag"></i> {code}
+    {formattedCode.displayCode && (
+      <span 
+        class="project-code-tag" 
+        title={formattedCode.extraCount > 0 ? `Referencias vinculadas: ${formattedCode.fullCode}` : 'Código de referencia oficial'}
+      >
+        <i class="fas fa-hashtag"></i> {formattedCode.displayCode}
+        {formattedCode.extraCount > 0 && (
+          <span class="code-more-badge">+{formattedCode.extraCount}</span>
+        )}
       </span>
     )}
   </div>
