@@ -135,10 +135,6 @@ completedProjects.sort((a, b) => {
                 <i class="fas fa-hand-holding-heart"></i> {lang === 'eu' ? 'Fundazioak' : (lang === 'en' ? 'Foundations' : 'Fundaciones (AECC)')}
               </button>
             </div>
-
-            <div class="archive-counter">
-              {lang === 'eu' ? 'Erakusten:' : (lang === 'en' ? 'Showing:' : 'Mostrando:')} <strong id="archive-visible-count">{completedProjects.length}</strong> / {completedProjects.length}
-            </div>
           </div>
         </div>
 
@@ -234,11 +230,13 @@ completedProjects.sort((a, b) => {
         <!-- Table Pagination Footer -->
         <div class="projects-table-footer" id="table-pagination-footer">
           <div class="table-pagination-info" id="table-pagination-info">
-            {lang === 'eu' ? 'Erakusten:' : (lang === 'en' ? 'Showing:' : 'Mostrando:')} 
-            <strong id="page-range-start">1</strong> - <strong id="page-range-end">10</strong> 
-            {lang === 'eu' ? 'guztira:' : (lang === 'en' ? 'of' : 'de')} 
-            <strong id="pagination-total-count">{completedProjects.length}</strong> 
-            {lang === 'eu' ? 'proiektu' : (lang === 'en' ? 'projects' : 'proyectos')}
+            <span>{lang === 'eu' ? 'Erakusten' : (lang === 'en' ? 'Showing' : 'Mostrando')}</span>
+            <strong id="page-range-start">1</strong>
+            <span>–</span>
+            <strong id="page-range-end">10</strong>
+            <span>{lang === 'eu' ? 'guztira:' : (lang === 'en' ? 'of' : 'de')}</span>
+            <strong id="pagination-total-count">{completedProjects.length}</strong>
+            <span>{lang === 'eu' ? 'proiektu' : (lang === 'en' ? 'projects' : 'proyectos')}</span>
           </div>
 
           <div class="table-pagination-controls">

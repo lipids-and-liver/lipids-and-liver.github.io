@@ -5908,8 +5908,17 @@ a.cv-contact-item:hover i {
 }
 
 .table-pagination-info {
-  font-size: 0.86rem;
-  color: var(--text-muted);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.table-pagination-info strong {
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 .table-pagination-controls {
