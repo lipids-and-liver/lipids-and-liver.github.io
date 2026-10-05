@@ -857,14 +857,9 @@ const { lang = 'es' } = Astro.props;
 
         <!-- Actions -->
         <div class="cinema-action-row">
-          <!-- Oculto temporalmente: Botones de Contacto y Dossier (descomentar para reactivar)
-          <button type="button" class="btn-cinema-glow" data-cinema-modal="contact" onclick="window.toggleModal && window.toggleModal('contact', true)">
-            <i class="fas fa-paper-plane"></i> <span id="txt-btn-contact">Contactar con el Grupo</span>
-          </button>
-          <button type="button" class="btn-cinema-glass" data-cinema-modal="dossier" onclick="window.toggleModal && window.toggleModal('dossier', true)">
+          <button type="button" class="btn-cinema-glass" data-cinema-modal="dossier" onclick="window.toggleModal && window.toggleModal('dossier', true)" id="btn-dossier-trigger">
             <i class="fas fa-book-open"></i> <span id="txt-btn-dossier">Dossier Institucional</span>
           </button>
-          -->
           <a href="https://www.ehu.eus/es/web/lipidsliver" target="_blank" rel="noopener" class="btn-cinema-glow" style="text-decoration: none;" id="btn-current-web-link">
             <i class="fas fa-external-link-alt"></i> <span id="txt-btn-current-web">Web Actual UPV/EHU &amp; Contacto</span>
           </a>
@@ -1013,49 +1008,22 @@ const { lang = 'es' } = Astro.props;
 
   </main>
 
-  <!-- Oculto temporalmente: Modales de Contacto y Dossier (descomentar para reactivar)
-  <div class="cinema-modal" id="modal-contact" onclick="if(event.target===this) (window.toggleModal ? window.toggleModal('contact', false) : this.classList.remove('open'))">
-    <div class="cinema-modal-card">
-      <button type="button" class="cinema-modal-close" data-cinema-close="contact" onclick="window.toggleModal && window.toggleModal('contact', false)"><i class="fas fa-times"></i></button>
-      <h3 style="font-family:var(--cinema-font-display); font-size:1.5rem; color:var(--cinema-mint); margin-bottom:0.75rem;" id="txt-m-c-title">Contacto Directo</h3>
-      <p style="color:var(--cinema-text-secondary); font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;" id="txt-m-c-desc">
-        Durante el periodo de renovación del portal web, puedes contactar con la investigadora principal para asuntos académicos, colaboraciones científicas o doctorado:
-      </p>
-
-      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--cinema-border); border-radius:12px; padding:1.25rem; margin-bottom:1.5rem;">
-        <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:3px;">Dra. Patricia Aspichueta Celaya</h4>
-        <div style="color:var(--cinema-mint); font-size:0.85rem; font-weight:600; margin-bottom:12px;" id="txt-m-c-role">Catedrática de Fisiología &bull; Investigadora Principal</div>
-        <div style="font-size:0.9rem; color:var(--cinema-text-secondary); margin-bottom:8px;">
-          <i class="fas fa-envelope" style="color:var(--cinema-cyan); width:20px;"></i> <a href="mailto:patricia.aspichueta@ehu.eus" style="color:#ffffff;">patricia.aspichueta@ehu.eus</a>
-        </div>
-        <div style="font-size:0.9rem; color:var(--cinema-text-secondary); margin-bottom:8px;">
-          <i class="fas fa-phone" style="color:var(--cinema-cyan); width:20px;"></i> +34 94 601 2828 / 5679
-        </div>
-        <div style="font-size:0.9rem; color:var(--cinema-text-secondary);" id="txt-m-c-dept">
-          <i class="fas fa-map-marker-alt" style="color:var(--cinema-cyan); width:20px;"></i> Dpto. Fisiología, Fac. Medicina y Enfermería, UPV/EHU (Leioa)
-        </div>
-      </div>
-
-      <button type="button" class="btn-cinema-glow" style="width:100%; justify-content:center; padding:10px;" data-cinema-close="contact" onclick="window.toggleModal && window.toggleModal('contact', false)" id="txt-m-c-btn">
-        Cerrar
-      </button>
-    </div>
-  </div>
-
+  <!-- Modales Institucionales -->
   <div class="cinema-modal" id="modal-dossier" onclick="if(event.target===this) (window.toggleModal ? window.toggleModal('dossier', false) : this.classList.remove('open'))">
     <div class="cinema-modal-card">
       <button type="button" class="cinema-modal-close" data-cinema-close="dossier" onclick="window.toggleModal && window.toggleModal('dossier', false)"><i class="fas fa-times"></i></button>
       <h3 style="font-family:var(--cinema-font-display); font-size:1.5rem; color:var(--cinema-cyan); margin-bottom:0.75rem;" id="txt-m-d-title">Dossier Institucional</h3>
       <p style="color:var(--cinema-text-secondary); font-size:0.9rem; line-height:1.6; margin-bottom:1.25rem;" id="txt-m-d-desc">
-        El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y translacional:
+        El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y traslacional:
       </p>
 
       <ul style="color:var(--cinema-text-secondary); font-size:0.88rem; line-height:1.8; padding-left:1.25rem; margin-bottom:1.5rem;" id="txt-m-d-list">
-        <li><strong style="color:#fff;">Acreditación:</strong> Grupo Consolidado de Excelencia Tipo A (Gobierno Vasco IT1560-22).</li>
-        <li><strong style="color:#fff;">Sedes:</strong> Facultad de Medicina y Enfermería (UPV/EHU) y Centro María Goyri.</li>
-        <li><strong style="color:#fff;">Centros:</strong> UPV/EHU &amp; Instituto de Investigación Sanitaria Biocruces Bizkaia.</li>
-        <li><strong style="color:#fff;">Producción:</strong> +150 publicaciones en revistas científicas de primer cuartil (Q1 JCR).</li>
-        <li><strong style="color:#fff;">Formación:</strong> Dirección continuada de tesis doctorales y másteres oficiales.</li>
+        <li><strong style="color:#fff;">Acreditación:</strong> Grupo Consolidado de Excelencia Tipo A (Gobierno Vasco IT1560-22 desde 2007).</li>
+        <li><strong style="color:#fff;">Proyectos:</strong> +70 proyectos y convenios de investigación competitivos activos e históricos (MCIU, Gobierno Vasco, ISCIII/CIBERehd, ELKARTEK, AECC).</li>
+        <li><strong style="color:#fff;">Tesis Doctorales:</strong> Dirección de 38 tesis doctorales (32 defendidas y 6 en curso) vinculadas al Programa de Doctorado en Biomedicina.</li>
+        <li><strong style="color:#fff;">Producción Científica:</strong> +150 publicaciones en revistas científicas de primer cuartil (Q1 JCR) con acceso directo DOI.</li>
+        <li><strong style="color:#fff;">Sedes y Laboratorios:</strong> Facultad de Medicina y Enfermería (UPV/EHU, Leioa), Centro María Goyri (Parque Científico) e IIS Biocruces Bizkaia.</li>
+        <li><strong style="color:#fff;">Plataformas de Vanguardia:</strong> Unidad SGIker de Lipidómica por espectrometría de masas (UHPLC-MS/MS) y tecnología de ómicas espaciales.</li>
       </ul>
 
       <button type="button" class="btn-cinema-glass" style="width:100%; justify-content:center; padding:10px;" data-cinema-close="dossier" onclick="window.toggleModal && window.toggleModal('dossier', false)" id="txt-m-d-btn">
@@ -1063,7 +1031,6 @@ const { lang = 'es' } = Astro.props;
       </button>
     </div>
   </div>
-  -->
 
   <!-- Interactive Canvas Particle Simulation (Lipid Vesicles) -->
   <script is:inline define:vars={{ initialLang: lang }}>
@@ -1180,7 +1147,7 @@ const { lang = 'es' } = Astro.props;
         p2_stat_extra: '<i class="fas fa-external-link-alt"></i> Acceso DOI',
         p3_badge: "03 // CANTERA DE INVESTIGACIÓN",
         p3_title: "Tesis Doctorales & Posgrado",
-        p3_desc: "Repositorio de 15+ tesis defendidas y en curso, dirección académica y másteres oficiales.",
+        p3_desc: "Repositorio de 35+ tesis defendidas y en curso, dirección académica y másteres oficiales.",
         p3_stat_lbl: "Tesis",
         p3_stat_extra: '<i class="fas fa-award"></i> Posgrado',
         p4_badge: "04 // SEDES & EQUIPAMIENTO",
@@ -1194,8 +1161,8 @@ const { lang = 'es' } = Astro.props;
         m_c_dept: '<i class="fas fa-map-marker-alt" style="color:var(--cinema-cyan); width:20px;"></i> Dpto. Fisiología, Fac. Medicina y Enfermería, UPV/EHU (Leioa)',
         m_c_close: "Cerrar",
         m_d_title: "Dossier Institucional",
-        m_d_desc: 'El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y translacional:',
-        m_d_list: '<li><strong style="color:#fff;">Acreditación:</strong> Grupo Consolidado de Excelencia Tipo A (Gobierno Vasco IT1560-22).</li><li><strong style="color:#fff;">Sedes:</strong> Facultad de Medicina y Enfermería (UPV/EHU) y Centro María Goyri.</li><li><strong style="color:#fff;">Centros:</strong> UPV/EHU &amp; Instituto de Investigación Sanitaria Biocruces Bizkaia.</li><li><strong style="color:#fff;">Producción:</strong> +150 publicaciones en revistas científicas de primer cuartil (Q1 JCR).</li><li><strong style="color:#fff;">Formación:</strong> Dirección continuada de tesis doctorales y másteres oficiales.</li>',
+        m_d_desc: 'El Grupo de Investigación Consolidado <strong>Lipids &amp; Liver (IT1560-22)</strong> aúna excelencia académica y traslacional:',
+        m_d_list: '<li><strong style="color:#fff;">Acreditación:</strong> Grupo Consolidado de Excelencia Tipo A (Gobierno Vasco IT1560-22 desde 2007).</li><li><strong style="color:#fff;">Proyectos:</strong> +70 proyectos y convenios de investigación competitivos activos e históricos (MCIU, Gobierno Vasco, ISCIII/CIBERehd, ELKARTEK, AECC).</li><li><strong style="color:#fff;">Tesis Doctorales:</strong> Dirección de 38 tesis doctorales (32 defendidas y 6 en curso) vinculadas al Programa de Doctorado en Biomedicina.</li><li><strong style="color:#fff;">Producción Científica:</strong> +150 publicaciones en revistas científicas de primer cuartil (Q1 JCR) con acceso directo DOI.</li><li><strong style="color:#fff;">Sedes y Laboratorios:</strong> Facultad de Medicina y Enfermería (UPV/EHU, Leioa), Centro María Goyri (Parque Científico) e IIS Biocruces Bizkaia.</li><li><strong style="color:#fff;">Plataformas de Vanguardia:</strong> Unidad SGIker de Lipidómica por espectrometría de masas (UHPLC-MS/MS) y tecnología de ómicas espaciales.</li>',
         m_d_close: "Cerrar",
         footer_tag: "Grupo Consolidado del Gobierno Vasco IT1560-22",
         btn_current_web: "Web Actual UPV/EHU & Contacto",
@@ -1231,7 +1198,7 @@ const { lang = 'es' } = Astro.props;
         p2_stat_extra: '<i class="fas fa-external-link-alt"></i> DOI Sarbidea',
         p3_badge: "03 // IKERKETA-HARROBIA",
         p3_title: "Doktore-tesiak & Graduondokoa",
-        p3_desc: "15 tesi baino gehiagoren biltegia, zuzendaritza akademikoa eta master ofizialak.",
+        p3_desc: "35 tesi baino gehiagoren biltegia (defendatuak eta bidean), zuzendaritza akademikoa eta graduondokoa.",
         p3_stat_lbl: "Tesiak",
         p3_stat_extra: '<i class="fas fa-award"></i> Graduondokoa',
         p4_badge: "04 // EGOITZAK ETA EKIPAMENDUA",
@@ -1246,7 +1213,7 @@ const { lang = 'es' } = Astro.props;
         m_c_close: "Itxi",
         m_d_title: "Txosten Instituzionala",
         m_d_desc: '<strong>Lipids &amp; Liver (IT1560-22)</strong> Ikerketa Talde Finkatuak bikaintasun akademikoa eta translazionala uztartzen ditu:',
-        m_d_list: '<li><strong style="color:#fff;">Egiaztapena:</strong> A Motako Bikaintasun Talde Finkatua (Eusko Jaurlaritza IT1560-22).</li><li><strong style="color:#fff;">Sedes:</strong> Medikuntza eta Erizaintza Fakultatea (UPV/EHU) eta Maria Goyri eraikina.</li><li><strong style="color:#fff;">Zentroak:</strong> UPV/EHU &amp; Biocruces Bizkaia Osasun Ikerketa Institutua.</li><li><strong style="color:#fff;">Ekoizpena:</strong> +150 argitalpen lehen laurdeneko aldizkari zientifikoetan (Q1 JCR).</li><li><strong style="color:#fff;">Prestakuntza:</strong> Doktore-tesien eta master ofizialen etengabeko zuzendaritza.</li>',
+        m_d_list: '<li><strong style="color:#fff;">Egiaztapena:</strong> A Motako Bikaintasun Talde Finkatua (Eusko Jaurlaritza IT1560-22 2007az geroztik).</li><li><strong style="color:#fff;">Ikerketa Proiektuak:</strong> 70 ikerketa-proiektu lehiakor eta hitzarmen baino gehiago (MCIU, Eusko Jaurlaritza, ISCIII/CIBERehd, ELKARTEK, AECC).</li><li><strong style="color:#fff;">Doktore-tesiak:</strong> 38 doktore-tesiren zuzendaritza (32 defendatuak eta 6 bidean), Biomedikuntzako Doktorego Programari lotuak.</li><li><strong style="color:#fff;">Ekoizpen Zientifikoa:</strong> 150 argitalpen baino gehiago lehen laurdeneko nazioarteko aldizkarietan (Q1 JCR) DOI sarbidearekin.</li><li><strong style="color:#fff;">Egoitzak eta Laborategiak:</strong> Medikuntza eta Erizaintza Fakultatea (UPV/EHU, Leioa), Maria Goyri Eraikina (Zientzia Parkea) eta Biocruces Bizkaia OII.</li><li><strong style="color:#fff;">Puntako Plataformak:</strong> SGIker Lipidomika Unitatea masa-espektrometriaren bidez (UHPLC-MS/MS) eta omika espazialak.</li>',
         m_d_close: "Itxi",
         footer_tag: "Eusko Jaurlaritzako IT1560-22 Talde Finkatua",
         btn_current_web: "Egungo Webgunea UPV/EHU & Harremana",
@@ -1282,7 +1249,7 @@ const { lang = 'es' } = Astro.props;
         p2_stat_extra: '<i class="fas fa-external-link-alt"></i> DOI Access',
         p3_badge: "03 // RESEARCH TALENT",
         p3_title: "PhD Theses & Mentoring",
-        p3_desc: "Repository of 15+ defended and ongoing doctoral theses, academic mentoring, and master's degrees.",
+        p3_desc: "Repository of 35+ defended and ongoing doctoral theses, academic mentoring, and master's degrees.",
         p3_stat_lbl: "Theses",
         p3_stat_extra: '<i class="fas fa-award"></i> Postgraduate',
         p4_badge: "04 // SITES & FACILITIES",
@@ -1297,7 +1264,7 @@ const { lang = 'es' } = Astro.props;
         m_c_close: "Close",
         m_d_title: "Institutional Dossier",
         m_d_desc: 'The <strong>Lipids &amp; Liver (IT1560-22)</strong> Consolidated Research Group combines academic and translational excellence:',
-        m_d_list: '<li><strong style="color:#fff;">Accreditation:</strong> Type A Consolidated Group of Excellence (Basque Government IT1560-22).</li><li><strong style="color:#fff;">Facilities:</strong> Faculty of Medicine and Nursing (UPV/EHU) and María Goyri Building.</li><li><strong style="color:#fff;">Institutions:</strong> UPV/EHU &amp; Biocruces Bizkaia Health Research Institute.</li><li><strong style="color:#fff;">Output:</strong> 150+ publications in top quartile peer-reviewed journals (Q1 JCR).</li><li><strong style="color:#fff;">Training:</strong> Continuous supervision of PhD dissertations and official master\'s degrees.</li>',
+        m_d_list: '<li><strong style="color:#fff;">Accreditation:</strong> Type A Consolidated Group of Excellence (Basque Government IT1560-22 since 2007).</li><li><strong style="color:#fff;">Research Projects:</strong> 70+ competitive funded research projects and grants (MCIU, Basque Government, ISCIII/CIBERehd, ELKARTEK, AECC).</li><li><strong style="color:#fff;">PhD Theses:</strong> Supervision of 38 doctoral dissertations (32 defended and 6 ongoing) in the PhD Program in Biomedicine.</li><li><strong style="color:#fff;">Scientific Output:</strong> 150+ publications in top-quartile international peer-reviewed journals (Q1 JCR) with direct DOI access.</li><li><strong style="color:#fff;">Sites & Facilities:</strong> Faculty of Medicine and Nursing (UPV/EHU, Leioa), María Goyri Building (Science Park), and Biocruces Bizkaia HRI.</li><li><strong style="color:#fff;">Cutting-Edge Platforms:</strong> SGIker Lipidomics Unit featuring mass spectrometry (UHPLC-MS/MS) and spatial omics technologies.</li>',
         m_d_close: "Close",
         footer_tag: "Basque Government Consolidated Group IT1560-22",
         btn_current_web: "Current UPV/EHU Website & Contact",
