@@ -119,6 +119,52 @@ const { Content } = await render(thesis);
               <span>{localizedProgram}</span>
             </div>
           </div>
+
+          {thesis.data.defenseDate && (
+            <div class="cv-contact-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{lang === 'eu' ? 'Defentsa data:' : lang === 'en' ? 'Defense date:' : 'Fecha de defensa:'}</div>
+                <span>{thesis.data.defenseDate}</span>
+              </div>
+            </div>
+          )}
+
+          {thesis.data.handleUrl && (
+            <div class="cv-contact-item">
+              <i class="fas fa-lock-open" style="color:var(--logo-green);"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">Repositorio ADDI</div>
+                <a href={thesis.data.handleUrl} target="_blank" rel="noopener noreferrer" style="color:var(--ehu-navy); font-weight:600; text-decoration:underline;">
+                  Texto Completo (PDF) <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+          )}
+
+          {thesis.data.officialUrl && (
+            <div class="cv-contact-item">
+              <i class="fas fa-university"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">UPV/EHU</div>
+                <a href={thesis.data.officialUrl} target="_blank" rel="noopener noreferrer" style="color:var(--ehu-navy); font-weight:600; text-decoration:underline;">
+                  Ficha Oficial del Portal <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+          )}
+
+          {thesis.data.dialnetUrl && (
+            <div class="cv-contact-item">
+              <i class="fas fa-book-reader"></i>
+              <div>
+                <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">Dialnet</div>
+                <a href={thesis.data.dialnetUrl} target="_blank" rel="noopener noreferrer" style="color:var(--ehu-navy); font-weight:600; text-decoration:underline;">
+                  Registro Dialnet <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+          )}
         </div>
 
         <!-- Palabras Clave / Keywords -->

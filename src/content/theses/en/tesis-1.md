@@ -1,22 +1,27 @@
 ---
 id: "tesis-1"
-author: "Maider Apodaka Biguri"
-status: "ongoing"
-title: "Lipid environment and liver disease progression: a metabolic role for the transcription factor E2F2"
+author: "Dra. Maider Apodaka Biguri"
+status: "completed"
+title: "Involvement of E2F2 targets in metabolic dysfunction-associated steatotic liver disease (MASLD)"
 institution: "UPV/EHU - Department of Physiology"
-year: "In progress (2023-2026)"
-badge: "In Progress"
+year: "2025"
+badge: "Completed"
 directors:
   - "Prof. Patricia Aspichueta Celaá"
   - "Dr. Igotz Delgado Balzategui"
 program: "PhD Program in Biomedicine"
 keywords:
   - "E2F2"
+  - "MASLD / MASH"
   - "Lipid Metabolism"
-  - "MAFLD"
-  - "Liver Fibrosis"
-  - "Lipidomics"
-order: 1
+  - "Biliary Metabolism"
+  - "PCSK9"
+officialUrl: "https://ekoizpen-zientifikoa.ehu.eus/documentos/6a693c80e53e796677211656"
+handleUrl: "https://hdl.handle.net/10810/77999"
+dialnetUrl: "https://dialnet.unirioja.es/servlet/tesis?codigo=405088"
+teseoId: "329290"
+defenseDate: "30 October 2025"
+order: 10
 ---
 
-Metabolic Dysfunction-Associated Fatty Liver Disease (MAFLD) progresses from simple steatosis to steatohepatitis and cirrhosis through complex alterations in cellular lipid remodeling. This doctoral thesis evaluates the regulatory role of the transcription factor E2F2 in ectopic triglyceride synthesis and mitochondrial function in hepatocytes subjected to lipid overload. Preliminary results demonstrate that E2F2 modulation alters membrane phospholipid composition and prevents tissue oxidative stress.
+Metabolic dysfunction–associated steatotic liver disease (MASLD) is the most common cause of chronic liver disease, affecting over 30% of adults. It can progress from simple steatosis to metabolic dysfunction–associated steatohepatitis (MASH), fibrosis, cirrhosis, and hepatocellular carcinoma. Cholesterol accumulation is a key driver of MASLD. The first part of this work demonstrates that the transcription factor E2F2 regulates biliary metabolism in MASH via miR-34a-5p. The second part investigates the role of E2F2 in lipoprotein metabolism and its interaction with PCSK9, highlighting the contribution of this axis to dyslipidemia and cardiovascular risk.

@@ -16,12 +16,27 @@ const badgeText = getThesisBadgeText(thesis, lang);
 ---
 
 <div class={`thesis-card-inst ${isOngoing ? 'ongoing' : ''}`} data-type={isOngoing ? 'ONGOING' : 'COMPLETED'}>
-  <span class={isOngoing ? 'thesis-badge-ongoing' : 'thesis-badge-completed'}>
-    <i class={isOngoing ? 'fas fa-spinner fa-spin' : 'fas fa-check-circle'}></i> {badgeText}
-  </span>
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.85rem; flex-wrap:wrap; gap:6px;">
+    <span class={isOngoing ? 'thesis-badge-ongoing' : 'thesis-badge-completed'} style="margin-bottom:0;">
+      <i class={isOngoing ? 'fas fa-spinner fa-spin' : 'fas fa-check-circle'}></i> {badgeText}
+    </span>
+    {thesis.data.handleUrl && (
+      <span style="font-size:0.72rem; font-weight:700; color:#15803d; background:#dcfce7; padding:2px 8px; border-radius:4px; display:inline-flex; align-items:center; gap:4px;">
+        <i class="fas fa-lock-open"></i> Open Access
+      </span>
+    )}
+  </div>
+
   <h4 class="thesis-author">{thesis.data.author}</h4>
   <div class="thesis-title-text">"{thesis.data.title}"</div>
+  
   <div class="thesis-meta-info">
+    {thesis.data.directors && thesis.data.directors.length > 0 && (
+      <div class="thesis-meta-item">
+        <i class="fas fa-user-tie"></i>
+        <span><strong>{t.theses_directors || 'Dirección:'}</strong> {Array.isArray(thesis.data.directors) ? thesis.data.directors.join(', ') : thesis.data.directors}</span>
+      </div>
+    )}
     <div class="thesis-meta-item">
       <i class="fas fa-university"></i>
       <span>{thesis.data.institution}</span>
@@ -31,11 +46,38 @@ const badgeText = getThesisBadgeText(thesis, lang);
       <span>{thesis.data.year}</span>
     </div>
   </div>
-  <div class="thesis-card-footer">
+
+  <div class="thesis-card-footer" style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
     <a href={getLocalizedPath(`/tesis/${currentSlug}`, lang)} class="card-btn-compact" title={t.theses_view_more}>
       <i class="fas fa-graduation-cap"></i>
       <span>{t.theses_card_btn || 'Ver tesis'}</span>
       <i class="fas fa-arrow-right"></i>
     </a>
+    <div style="display:flex; gap:6px;">
+      {thesis.data.officialUrl && (
+        <a 
+          href={thesis.data.officialUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="card-btn-compact"
+          style="padding:6px 9px; background:var(--bg-surface-alt);"
+          title="Ficha oficial UPV/EHU"
+        >
+          <i class="fas fa-university"></i>
+        </a>
+      )}
+      {thesis.data.handleUrl && (
+        <a 
+          href={thesis.data.handleUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="card-btn-compact"
+          style="padding:6px 9px; background:var(--bg-surface-alt);"
+          title="Texto Completo en Repositorio ADDI (PDF)"
+        >
+          <i class="fas fa-file-pdf"></i>
+        </a>
+      )}
+    </div>
   </div>
 </div>

@@ -14,6 +14,13 @@ const theses = defineCollection({
     directors: z.array(z.string()).nullish().transform(val => val || []),
     program: z.string().nullish(),
     keywords: z.array(z.string()).nullish().transform(val => val || []),
+    defenseDate: z.string().nullish(),
+    officialUrl: z.string().nullish(),
+    handleUrl: z.string().nullish(),
+    dialnetUrl: z.string().nullish(),
+    teseoId: z.string().nullish(),
+    department: z.string().nullish(),
+    university: z.string().nullish(),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
   })
 });
