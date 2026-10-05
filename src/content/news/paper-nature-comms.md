@@ -6,6 +6,7 @@ category: "Publicaciones"
 categoryBadge: "Investigación"
 summary: "El grupo Lipids & Liver describe nuevos mecanismos moleculares que vinculan la desregulación de lípidos bioactivos con la agresividad tumoral y la resistencia a fármacos en cáncer hepático."
 author: "Equipo Lipids & Liver"
+image: /assets/images/news/nature-comms-cancer.jpg
 featured: true
 order: 1
 ---

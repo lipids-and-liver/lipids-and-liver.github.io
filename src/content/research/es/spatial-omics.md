@@ -4,7 +4,7 @@ title: "Ómicas Espaciales y Multi-ómica de Resolución Celular (Spatial Omics)
 shortDesc: "Mapeo espacial de alta resolución de la zonación metabólica, microambiente tumoral y lipidómica in situ en patología hepática."
 image: "/assets/images/spatial_omics.jpg"
 badge: "Spatial Multi-Omics"
-order: 6
+order: 5
 affiliation: "Unidad de Lipidómica SGIker UPV/EHU — Instituto de Investigación Sanitaria Biocruces Bizkaia (IIS Biocruces Bizkaia). Plataforma de Ómicas Espaciales, con acceso a tecnologías 10x Genomics Visium, MALDI-MSI y Xenium. Grupo Consolidado IT1560-22, Gobierno Vasco."
 ---
 <p>

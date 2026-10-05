@@ -5,9 +5,12 @@ import { getTranslations, getLocalizedPath, getItemSlug, type Locale } from '../
 interface Props {
   article: CollectionEntry<'news'>;
   lang?: Locale;
+  variant?: 'lead' | 'compact' | 'standard';
+  isLead?: boolean;
 }
 
-const { article, lang = 'es' } = Astro.props;
+const { article, lang = 'es', variant = 'standard', isLead = false } = Astro.props;
+const currentVariant = isLead ? 'lead' : variant;
 const { title, date, category, categoryBadge, summary, author, featured, image } = article.data;
 const slug = getItemSlug(article);
 const t = getTranslations(lang);
@@ -29,37 +32,82 @@ const articleUrl = getLocalizedPath(`/noticias/${slug}`, lang);
 const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https://') ? image : (image.startsWith('/') ? image : `/${image}`)) : null;
 ---
 
-<article class={`news-card-inst ${featured ? 'news-card-featured' : ''}`}>
-  {imageSrc && (
-    <a href={articleUrl} class="news-card-img-link">
-      <img src={imageSrc} alt={title} class="news-card-img" loading="lazy" />
-    </a>
-  )}
-  <div class="news-card-top">
-    <span class="news-category-badge">
-      <i class="fas fa-bookmark"></i> {categoryBadge || category}
-    </span>
-    <time class="news-date" datetime={date}>
-      <i class="far fa-calendar-alt"></i> {formattedDate}
-    </time>
-  </div>
-
-  <h3 class="news-title">
-    <a href={articleUrl}>{title}</a>
-  </h3>
-
-  <p class="news-summary">
-    {summary}
-  </p>
-
-  <div class="news-card-footer">
-    {author && (
-      <span class="news-author">
-        <i class="fas fa-pen-nib"></i> {author}
-      </span>
+{currentVariant === 'compact' ? (
+  <article class={`news-card-inst news-card-compact ${featured ? 'news-card-featured' : ''}`}>
+    {imageSrc && (
+      <a href={articleUrl} class="news-compact-img-link" aria-label={title}>
+        <img src={imageSrc} alt={title} class="news-compact-img" loading="lazy" />
+      </a>
     )}
-    <a href={articleUrl} class="news-read-more">
-      {t.news_read_more || 'Leer más'} <i class="fas fa-arrow-right"></i>
-    </a>
-  </div>
-</article>
+    <div class="news-compact-content">
+      <div class="news-compact-top-block">
+        <div class="news-compact-meta">
+          <span class="news-category-badge">
+            <i class="fas fa-bookmark"></i> {categoryBadge || category}
+          </span>
+          <time class="news-date" datetime={date}>
+            <i class="far fa-calendar-alt"></i> {formattedDate}
+          </time>
+        </div>
+
+        <h4 class="news-compact-title">
+          <a href={articleUrl}>{title}</a>
+        </h4>
+
+        {summary && (
+          <p class="news-compact-summary">
+            {summary}
+          </p>
+        )}
+      </div>
+
+      <div class="news-compact-footer">
+        <a href={articleUrl} class="news-compact-link">
+          {t.news_read_more || 'Leer más'} <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </article>
+) : (
+  <article class={`news-card-inst ${currentVariant === 'lead' ? 'news-card-lead' : ''} ${featured ? 'news-card-featured' : ''}`}>
+    {currentVariant === 'lead' && (
+      <div class="news-lead-tag">
+        <i class="fas fa-star"></i> {t.news_featured_badge || 'Última Noticia Destacada'}
+      </div>
+    )}
+    {imageSrc && (
+      <a href={articleUrl} class="news-card-img-link">
+        <img src={imageSrc} alt={title} class="news-card-img" loading="lazy" />
+      </a>
+    )}
+    <div class="news-card-content">
+      <div class="news-card-top">
+        <span class="news-category-badge">
+          <i class="fas fa-bookmark"></i> {categoryBadge || category}
+        </span>
+        <time class="news-date" datetime={date}>
+          <i class="far fa-calendar-alt"></i> {formattedDate}
+        </time>
+      </div>
+
+      <h3 class="news-title">
+        <a href={articleUrl}>{title}</a>
+      </h3>
+
+      <p class="news-summary">
+        {summary}
+      </p>
+
+      <div class="news-card-footer">
+        {author && (
+          <span class="news-author">
+            <i class="fas fa-pen-nib"></i> {author}
+          </span>
+        )}
+        <a href={articleUrl} class="news-read-more">
+          {t.news_read_more || 'Leer más'} <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </article>
+)}

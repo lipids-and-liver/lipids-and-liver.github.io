@@ -4,7 +4,7 @@ title: "Omika Espazialak eta Erresoluzio Zelularreko Multi-omika (Spatial Omics)
 shortDesc: "Bereizmen handiko mapa espaziala zonazio metabolikoan, tumore-mikroingurunean eta in situ lipidomikan gibeleko patologietan."
 image: "/assets/images/spatial_omics.jpg"
 badge: "Multi-omika Espaziala"
-order: 6
+order: 5
 ---
 
 **Omika Espazialen (Spatial Omics)** teknologiak iraultza kontzeptual eta metodologiko handia dira ikerketa biomedikoan. Horiei esker, gene-adierazpena, proteina-ugaritasuna eta lipido-espezieak azter daitezke, ehun-egitura eta zelulen jatorrizko kokapen espaziala osorik gordez.

@@ -254,22 +254,10 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 
             <!-- 4. Servicios & Transferencia (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/sgiker', lang)} class={`nav-dropdown-trigger ${['sgiker', 'resources', 'outreach'].includes(currentPage) ? 'active' : ''}`}>
+              <a href={getLocalizedPath('/recursos', lang)} class={`nav-dropdown-trigger ${['resources', 'outreach'].includes(currentPage) ? 'active' : ''}`}>
                 <span>{t.nav_group_transfer || 'Servicios & Transferencia'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
-                <li>
-                  <a href={getLocalizedPath('/sgiker', lang)}>
-                    <i class="fas fa-flask"></i>
-                    <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">
-                        {t.nav_sgiker || 'Unidad de Lipidómica SGIker'}
-                        <span style="background:#fee2e2; color:#b91c1c; font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px; margin-left:6px; border:1px solid #fca5a5; display:inline-block; vertical-align:middle;">¿Sustituir por EHU-iBio?</span>
-                      </span>
-                      <span class="dropdown-link-sub">UHPLC-MS/MS, tarifas y solicitudes</span>
-                    </div>
-                  </a>
-                </li>
                 <li>
                   <a href={getLocalizedPath('/recursos', lang)}>
                     <i class="fas fa-lock-open"></i>
@@ -416,12 +404,6 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
           <h4>{t.nav_group_services || 'Servicios'} &amp; {t.nav_group_training || 'Talento'}</h4>
           <ul class="footer-links-inst">
             <li>
-              <a href={getLocalizedPath('/sgiker', lang)}>
-                {t.nav_sgiker || 'Unidad Lipidómica SGIker'}
-                <span style="background:#fee2e2; color:#b91c1c; font-size:0.65rem; font-weight:700; padding:1px 5px; border-radius:3px; margin-left:5px; border:1px solid #fca5a5; display:inline-block;">¿Sustituir por EHU-iBio?</span>
-              </a>
-            </li>
-            <li>
               <a href={getLocalizedPath('/recursos', lang)}>
                 {t.nav_resources || 'Ciencia Abierta y Protocolos'}
                 <span style="background:#ffedd5; color:#c2410c; font-size:0.65rem; font-weight:700; padding:1px 5px; border-radius:3px; margin-left:5px; border:1px solid #fdba74; display:inline-block;">Fase 2</span>
@@ -449,7 +431,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
           <ul class="footer-links-inst">
             <li><a href="https://www.ehu.eus" target="_blank" rel="noopener">Universidad del País Vasco (UPV/EHU)</a></li>
             <li><a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener">IIS Biocruces Bizkaia</a></li>
-            <li><a href="https://www.ehu.eus/es/web/sgiker" target="_blank" rel="noopener">SGIker UPV/EHU (Lipidómica)</a></li>
+            <li><a href="https://ehu-ibio.org" target="_blank" rel="noopener">EHU-iBio</a></li>
             <li><a href="https://www.ciberehd.org" target="_blank" rel="noopener">CIBERehd (ISCIII)</a></li>
             <li><a href="https://easl.eu" target="_blank" rel="noopener">EASL - European Liver Community</a></li>
           </ul>

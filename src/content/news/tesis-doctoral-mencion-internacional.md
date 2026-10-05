@@ -6,6 +6,7 @@ category: "Tesis"
 categoryBadge: "Formación"
 summary: "Defensa exitosa de la tesis doctoral centrada en dianas moleculares mitocondriales en la progresión de la esteatohepatitis no alcohólica (MASH), obteniendo la máxima calificación académica."
 author: "Comisión Académica de Doctorado"
+image: /assets/images/news/tesis-defensa.jpg
 featured: true
 order: 2
 ---

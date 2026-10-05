@@ -32,17 +32,6 @@
       "subtext_en": "Defended and currently ongoing",
       "label": "Tesis Doctorales",
       "subtext": "Defendidas y en curso de investigación"
-    },
-    {
-      "number": "SGIker",
-      "label_es": "Unidad de Lipidómica",
-      "label_eu": "Lipidomika Unitatea",
-      "label_en": "Lipidomics Unit",
-      "subtext_es": "Servicios Generales UPV/EHU",
-      "subtext_eu": "UPV/EHUko Zerbitzu Orokorrak",
-      "subtext_en": "UPV/EHU General Research Services",
-      "label": "Unidad de Lipidómica",
-      "subtext": "Servicios Generales UPV/EHU"
     }
   ]
 }

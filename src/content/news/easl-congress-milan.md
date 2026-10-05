@@ -6,6 +6,7 @@ category: "Congresos"
 categoryBadge: "Internacional"
 summary: "Investigadores del equipo Lipids & Liver presentan comunicaciones orales y pósteres científicos sobre biomarcadores de progresión en hígado graso durante el congreso anual de la EASL."
 author: "Dra. Patricia Aspichueta"
+image: /assets/images/news/easl-milan.jpg
 featured: false
 order: 3
 ---

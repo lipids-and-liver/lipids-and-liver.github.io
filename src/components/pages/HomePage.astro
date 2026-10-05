@@ -49,8 +49,7 @@ const teamMembers = await getLocalizedCollection('team', lang);
 sortTeamMembers(teamMembers);
 const allTheses = await getLocalizedCollection('theses', lang);
 sortTheses(allTheses);
-const ongoingCount = allTheses.filter(t => t.data.status === 'ongoing').length;
-const completedCount = allTheses.filter(t => t.data.status === 'completed').length;
+const ongoingTheses = allTheses.filter(t => t.data.status === 'ongoing');
 
 const allPubs = await getLocalizedCollection('publications', lang);
 allPubs.sort((a, b) => Number(b.data.year) - Number(a.data.year));
@@ -61,13 +60,13 @@ trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
 const allProjects = await getLocalizedCollection('projects', lang);
 allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-const featuredProjects = allProjects.slice(0, 4);
+const activeProjects = allProjects.filter(p => p.data.status === 'active');
 
 const allNews = await getLocalizedCollection('news', lang);
 allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-const featuredNews = allNews.filter(article => article.data.featured === true);
-const nonFeaturedNews = allNews.filter(article => !article.data.featured);
-const latestNews = [...featuredNews, ...nonFeaturedNews].slice(0, 3);
+const leadNews = allNews[0];
+const sideNews = allNews.slice(1, 3);
+const bottomNews = allNews.slice(3, 6);
 
 const rawStats = (stats as any).stats || stats;
 const statsList: any[] = Array.isArray(rawStats) ? rawStats : [];
@@ -124,7 +123,7 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
   <!-- Stats Bar -->
   <section class="stats-bar">
     <div class="container">
-      <div class="stats-grid" id="stats-grid">
+      <div class="stats-grid" id="stats-grid" style={`--stats-cols: ${statsList.length || 3};`}>
         {statsList.map((stat: any) => {
           const label = stat[`label_${lang}`] || stat.label_es || stat.label;
           const subtext = stat[`subtext_${lang}`] || stat.subtext_es || stat.subtext;
@@ -228,11 +227,6 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
                 data-tab={tab.entry.data.tabId}
               >
                 {tab.entry.data.tabTitle}
-                {tab.entry.data.tabId === 'tab-infraestructura' && (
-                  <span style="background:#fee2e2; color:#b91c1c; font-size:0.65rem; font-weight:700; padding:2px 5px; border-radius:3px; margin-left:6px; border:1px solid #fca5a5; vertical-align:middle; display:inline-block;">
-                    ¿Sustituir por EHU-iBio?
-                  </span>
-                )}
               </button>
             ))}
           </div>
@@ -240,7 +234,7 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
           {presentationTabs.map((tab) => {
             const { entry, Content, isActive } = tab;
             const { tabId, specialties, staffCompositionTitle, staffComposition } = entry.data;
-            const hasSidebar = (specialties && specialties.length > 0) || (staffComposition && staffComposition.length > 0);
+            const hasSidebar = Boolean(staffComposition && staffComposition.length > 0);
 
             return (
               <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
@@ -257,37 +251,27 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
                       )}
                     </div>
 
-                    {staffComposition && staffComposition.length > 0 && (
-                      <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
-                        <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
-                          <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
-                        </h4>
-                        <ul style="list-style:none; line-height:2">
-                          {staffComposition.map((member: { count: string; role: string }) => (
-                            <li>
-                              <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
+                      <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
+                        <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
+                      </h4>
+                      <ul style="list-style:none; line-height:2">
+                        {staffComposition!.map((member: { count: string; role: string }) => (
+                          <li>
+                            <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ) : (
                   <div class="about-text">
-                    {entry.data.tabId === 'tab-infraestructura' && (
-                      <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:6px; padding:0.85rem 1.1rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:10px;">
-                        <i class="fas fa-question-circle" style="color:#dc2626; font-size:1.2rem; flex-shrink:0;"></i>
-                        <span style="font-size:0.9rem; color:#991b1b; line-height:1.4;">
-                          <strong>Aviso en revisión:</strong> Se plantea sustituir la Unidad de Lipidómica SGIker por <strong>EHU-iBio</strong> en la versión definitiva de la web.
-                        </span>
-                      </div>
-                    )}
                     <Content />
-                    {entry.data.tabId === 'tab-infraestructura' && (
-                      <div style="margin-top: 1.5rem;">
-                        <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-primary" style="display:inline-flex; align-items:center; gap:8px;">
-                          <i class="fas fa-flask"></i> {t.sgiker_btn || 'Ver Servicios y Protocolos'} <i class="fas fa-arrow-right"></i>
-                        </a>
+                    {specialties && specialties.length > 0 && (
+                      <div class="specialty-list" style="margin-top: 1.5rem;">
+                        {specialties.map((spec: string) => (
+                          <span class="specialty-chip"><i class="fas fa-check-circle"></i> {spec}</span>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -318,33 +302,61 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
     </div>
   </section>
 
-  <!-- Section: Producción Científica & Hitos (Publicaciones, Proyectos y Tesis Unificados) -->
+  <!-- Section: Producción Científica & Hitos (Tesis, Proyectos y Publicaciones) -->
   <section class="page-section" id="outputs">
     <div class="container">
       <div class="section-header-inst">
         <div>
           <h2 class="section-title-inst">{t.outputs_section_title || 'Producción Científica & Hitos'}</h2>
-          <span class="section-subtitle-inst">{t.outputs_section_subtitle || 'Artículos de impacto internacional, proyectos públicos competitivos y tesis doctorales'}</span>
+          <span class="section-subtitle-inst">{t.outputs_section_subtitle || 'Tesis doctorales, proyectos públicos competitivos y artículos de impacto internacional'}</span>
         </div>
       </div>
 
       <!-- Segmented Switcher for Scientific Outputs -->
       <div style="display:flex; justify-content:center; margin-bottom:2rem;">
         <div class="segmented-control-bar" id="outputs-switcher">
-          <button class="segmented-btn outputs-tab-btn active" data-target="output-pubs">
-            <i class="fas fa-book-open"></i> {t.outputs_tab_pubs || 'Publicaciones JCR'} <span class="segmented-count">{allPubs.length}</span>
+          <button class="segmented-btn outputs-tab-btn active" data-target="output-theses">
+            <i class="fas fa-graduation-cap"></i> {t.outputs_tab_theses || 'Tesis Doctorales'} <span class="segmented-count">{ongoingTheses.length}</span>
           </button>
           <button class="segmented-btn outputs-tab-btn" data-target="output-projects">
-            <i class="fas fa-hand-holding-usd"></i> {t.outputs_tab_projects || 'Proyectos Financiados'} <span class="segmented-count">{allProjects.length}</span>
+            <i class="fas fa-hand-holding-usd"></i> {t.outputs_tab_projects || 'Proyectos Financiados'} <span class="segmented-count">{activeProjects.length}</span>
           </button>
-          <button class="segmented-btn outputs-tab-btn" data-target="output-theses">
-            <i class="fas fa-graduation-cap"></i> {t.outputs_tab_theses || 'Tesis Doctorales'} <span class="segmented-count">{allTheses.length}</span>
+          <button class="segmented-btn outputs-tab-btn" data-target="output-pubs">
+            <i class="fas fa-book-open"></i> {t.outputs_tab_pubs || 'Publicaciones JCR'} <span class="segmented-count">{allPubs.length}</span>
           </button>
         </div>
       </div>
 
-      <!-- Tab Panel 1: Publicaciones -->
-      <div class="output-panel active" id="output-pubs">
+      <!-- Tab Panel 1: Tesis Doctorales (En curso) -->
+      <div class="output-panel active" id="output-theses">
+        <div class="theses-grid-inst" id="theses-grid">
+          {ongoingTheses.map(thesis => (
+            <ThesisCard thesis={thesis} lang={lang} />
+          ))}
+        </div>
+        <div style="text-align:center; margin-top:2.5rem;">
+          <a href={getLocalizedPath('/tesis', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
+            <i class="fas fa-graduation-cap"></i> {t.theses_page_title} ({allTheses.length}) <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tab Panel 2: Proyectos Financiados -->
+      <div class="output-panel" id="output-projects" style="display:none;">
+        <div class="projects-grid-inst" id="featured-projects-grid">
+          {activeProjects.map(project => (
+            <ProjectCard project={project} lang={lang} />
+          ))}
+        </div>
+        <div style="text-align:center; margin-top:2.5rem;">
+          <a href={getLocalizedPath('/proyectos', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
+            <i class="fas fa-hand-holding-usd"></i> {t.projects_view_catalog || 'Ver Todos los Proyectos'} ({allProjects.length}) <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tab Panel 3: Publicaciones -->
+      <div class="output-panel" id="output-pubs" style="display:none;">
         <div class="pubs-list" id="pubs-list">
           {latestPublications.map(pub => (
             <PublicationCard pub={pub} />
@@ -357,47 +369,6 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
           </p>
           <a href={getLocalizedPath('/publicaciones', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
             <i class="fas fa-book-open"></i> {t.pubs_view_all_btn} ({allPubs.length}) <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Tab Panel 2: Proyectos Financiados -->
-      <div class="output-panel" id="output-projects" style="display:none;">
-        <div class="projects-grid-inst" id="featured-projects-grid">
-          {featuredProjects.map(project => (
-            <ProjectCard project={project} lang={lang} />
-          ))}
-        </div>
-        <div style="text-align:center; margin-top:2.5rem;">
-          <a href={getLocalizedPath('/proyectos', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
-            <i class="fas fa-hand-holding-usd"></i> {t.projects_view_catalog || 'Ver Todos los Proyectos'} ({allProjects.length}) <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Tab Panel 3: Tesis Doctorales -->
-      <div class="output-panel" id="output-theses" style="display:none;">
-        <div style="display:flex; justify-content:center; margin-bottom: 2rem;">
-          <div class="segmented-control-bar" id="theses-filter-bar">
-            <button class="segmented-btn theses-filter-btn active" data-type="ALL">
-              <i class="fas fa-layer-group"></i> {t.theses_all} <span class="segmented-count">{allTheses.length}</span>
-            </button>
-            <button class="segmented-btn theses-filter-btn" data-type="ONGOING">
-              <i class="fas fa-spinner fa-spin"></i> {t.theses_ongoing} <span class="segmented-count">{ongoingCount}</span>
-            </button>
-            <button class="segmented-btn theses-filter-btn" data-type="COMPLETED">
-              <i class="fas fa-check-circle"></i> {t.theses_completed} <span class="segmented-count">{completedCount}</span>
-            </button>
-          </div>
-        </div>
-        <div class="theses-grid-inst" id="theses-grid">
-          {allTheses.map(thesis => (
-            <ThesisCard thesis={thesis} lang={lang} />
-          ))}
-        </div>
-        <div style="text-align:center; margin-top:2.5rem;">
-          <a href={getLocalizedPath('/tesis', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
-            <i class="fas fa-graduation-cap"></i> {t.theses_page_title} ({allTheses.length}) <i class="fas fa-arrow-right"></i>
           </a>
         </div>
       </div>
@@ -567,28 +538,46 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
           <h2 class="section-title-inst">{t.news_outreach_title || 'Actualidad, Divulgación & Sociedad'}</h2>
           <span class="section-subtitle-inst">{t.news_outreach_subtitle || 'Avances científicos, presencia en medios, salud hepática y transferencia social'}</span>
         </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href={getLocalizedPath('/divulgacion', lang)} class="btn-inst-secondary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
-            <i class="fas fa-heartbeat"></i> {t.outreach_btn || 'Salud Hepática & Divulgación'}
-          </a>
+        <div>
           <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
             <i class="fas fa-newspaper"></i> {t.news_view_all || 'Sala de Prensa'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
           </a>
         </div>
       </div>
 
-      <div class="news-grid-inst" id="featured-news-grid">
-        {latestNews.map(article => (
-          <NewsCard article={article} lang={lang} />
-        ))}
+      <div class="news-bento-grid" id="featured-news-grid">
+        <!-- Bloque Superior Bento: Noticia Destacada + 2 Noticias Laterales -->
+        <div class="news-bento-top">
+          {leadNews && (
+            <NewsCard article={leadNews} lang={lang} variant="lead" />
+          )}
+
+          {sideNews.length > 0 && (
+            <div class="news-bento-side">
+              {sideNews.map(article => (
+                <NewsCard article={article} lang={lang} variant="compact" />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Bloque Inferior Bento: 3 Noticias Recientes en Fila -->
+        {bottomNews.length > 0 && (
+          <div class="news-bento-bottom">
+            {bottomNews.map(article => (
+              <NewsCard article={article} lang={lang} variant="standard" />
+            ))}
+          </div>
+        )}
       </div>
 
       <!-- Science Outreach / Patient Impact Spotlight Card -->
       <div class="about-card" style="padding:2.25rem; margin-top:2.5rem; background:linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-surface-alt) 100%);">
         <div class="about-grid">
           <div class="about-text">
-            <h3 style="color:var(--ehu-navy); margin-bottom:1rem; font-size:1.35rem;">
-              <i class="fas fa-heartbeat" style="color:var(--logo-green);"></i> Salud Hepática y Conciencia Social (MASLD/MASH)
+            <h3 style="color:var(--ehu-navy); margin-bottom:1rem; font-size:1.35rem; display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
+              <span><i class="fas fa-heartbeat" style="color:var(--logo-green);"></i> Salud Hepática y Conciencia Social (MASLD/MASH)</span>
+              <span style="background:#ffedd5; color:#c2410c; font-size:0.75rem; font-weight:700; padding:2px 8px; border-radius:4px; border:1px solid #fdba74; display:inline-block; vertical-align:middle; text-transform:none; letter-spacing:normal;">Lanzar en Fase 2</span>
             </h3>
             <p style="font-size:0.98rem; line-height:1.7; color:var(--text-secondary); margin-bottom:1.25rem;">
               En el grupo Lipids & Liver acercamos la investigación preclínica a la ciudadanía a través de talleres en la <strong>Zientzia Astea UPV/EHU</strong>, charlas del <strong>11 de Febrero (Mujer y Niña en la Ciencia)</strong> y estrecha cooperación con asociaciones de pacientes hepáticos.

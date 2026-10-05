@@ -4,7 +4,7 @@ title: "Spatial Omics and Cellular-Resolution Multi-Omics"
 shortDesc: "High-resolution spatial mapping of metabolic zonation, tumor microenvironment, and in situ lipidomics in hepatic disease."
 image: "/assets/images/spatial_omics.jpg"
 badge: "Spatial Multi-Omics"
-order: 6
+order: 5
 ---
 
 **Spatial Omics** technologies represent a major conceptual and methodological breakthrough in biomedical research, enabling the interrogation of gene expression, protein abundance, and lipid species while preserving tissue architecture and cellular native spatial coordinates.

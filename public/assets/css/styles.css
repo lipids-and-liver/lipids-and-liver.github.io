@@ -1276,8 +1276,24 @@ html.demo-alert-hidden .demo-alert-banner {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--stats-cols, 3), 1fr);
   gap: 1.5rem;
+  max-width: min(100%, calc(var(--stats-cols, 3) * 280px + (var(--stats-cols, 3) - 1) * 1.5rem));
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.stats-grid:has(> .stat-box:nth-child(1):last-child) {
+  --stats-cols: 1;
+}
+.stats-grid:has(> .stat-box:nth-child(2):last-child) {
+  --stats-cols: 2;
+}
+.stats-grid:has(> .stat-box:nth-child(3):last-child) {
+  --stats-cols: 3;
+}
+.stats-grid:has(> .stat-box:nth-child(4):last-child) {
+  --stats-cols: 4;
 }
 
 .stat-box {
@@ -1862,6 +1878,58 @@ html.demo-alert-hidden .demo-alert-banner {
   background: rgba(104, 159, 56, 0.2);
   color: #a3e635;
   border-color: rgba(104, 159, 56, 0.4);
+}
+
+/* EHU-iBio Brand Banner in Presentation Tab */
+.ehubio-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--logo-green);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ehubio-logo-badge {
+  background: #ffffff;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+}
+
+.ehubio-logo-img {
+  height: 46px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.ehubio-action-box {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .ehubio-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ehubio-action-box {
+    width: 100%;
+  }
+  .ehubio-action-box .btn-inst-primary {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Facilities Cards in About / Presentation */
@@ -4088,11 +4156,29 @@ a.cv-contact-item:hover i {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  .stats-grid {
+  .stats-grid:has(> .stat-box:nth-child(4)) {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
   }
   .cv-meta-list {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 320px !important;
+    gap: 1.25rem;
+  }
+  .stat-box {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding: 0 0.5rem 1.25rem;
+  }
+  .stat-box:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }
 
@@ -4380,6 +4466,7 @@ a.cv-contact-item:hover i {
 /* ==========================================================================
    NEWS SECTION & CARDS
    ========================================================================== */
+/* Base News Grid & Card */
 .news-grid-inst {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -4394,13 +4481,294 @@ a.cv-contact-item:hover i {
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .news-card-inst:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
   border-color: rgba(104, 159, 56, 0.4);
+}
+
+.news-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* News Bento Grid Architecture */
+.news-bento-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.news-bento-top {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.news-bento-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+}
+
+.news-bento-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* Responsive Bento Breakpoints */
+@media (max-width: 992px) {
+  .news-bento-top {
+    grid-template-columns: 1fr;
+  }
+  .news-bento-side {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .news-bento-bottom {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .news-bento-side {
+    grid-template-columns: 1fr;
+  }
+  .news-bento-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Lead Bento News Card */
+.news-lead-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--ehu-navy) 0%, #1e3a5f 100%);
+  color: #ffffff;
+  font-size: 0.73rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 5px 13px;
+  border-radius: 20px;
+  margin-bottom: 1.15rem;
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 43, 73, 0.18);
+}
+
+.news-lead-tag i {
+  color: #8AC63F;
+}
+
+[data-theme="dark"] .news-lead-tag {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  border: 1px solid rgba(138, 198, 63, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.news-card-inst.news-card-lead {
+  border: 2px solid rgba(104, 159, 56, 0.45);
+  background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(104, 159, 56, 0.05) 100%);
+  box-shadow: 0 10px 28px -6px rgba(0, 43, 73, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-theme="dark"] .news-card-inst.news-card-lead {
+  border-color: rgba(138, 198, 63, 0.4);
+  background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(30, 58, 95, 0.25) 100%);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.5);
+}
+
+.news-card-inst.news-card-lead:hover {
+  border-color: var(--logo-green);
+  box-shadow: 0 16px 36px -8px rgba(0, 43, 73, 0.14), 0 8px 16px -4px rgba(0, 0, 0, 0.06);
+}
+
+.news-card-lead .news-card-img-link {
+  height: 220px;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: block;
+}
+
+.news-card-lead .news-card-img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-smooth);
+}
+
+.news-card-lead:hover .news-card-img {
+  transform: scale(1.04);
+}
+
+.news-card-lead .news-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.news-card-lead .news-summary {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Compact Bento News Card (Side Column) */
+.news-card-inst.news-card-compact {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  gap: 1.25rem;
+  padding: 1.15rem 1.25rem !important;
+  flex: 1;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.news-card-inst.news-card-compact:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(104, 159, 56, 0.45);
+}
+
+.news-compact-img-link {
+  flex: 0 0 135px;
+  width: 135px;
+  align-self: stretch;
+  min-height: 100%;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-surface-secondary);
+  display: block;
+}
+
+.news-compact-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-smooth);
+}
+
+.news-card-inst.news-card-compact:hover .news-compact-img {
+  transform: scale(1.05);
+}
+
+.news-compact-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  padding: 2px 0;
+}
+
+.news-compact-top-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-compact-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.news-compact-meta .news-category-badge {
+  font-size: 0.68rem;
+  padding: 2px 7px;
+  border-radius: 12px;
+}
+
+.news-compact-meta .news-date {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+}
+
+.news-compact-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 0.35rem 0;
+}
+
+.news-compact-title a {
+  color: var(--ehu-navy);
+  text-decoration: none;
+  transition: color var(--transition-smooth);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .news-compact-title a {
+  color: #ffffff;
+}
+
+.news-compact-title a:hover {
+  color: var(--logo-green);
+}
+
+.news-compact-summary {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0 0 0.4rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-compact-footer {
+  margin-top: auto;
+  padding-top: 0.2rem;
+}
+
+.news-compact-link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--logo-green);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: gap var(--transition-smooth);
+}
+
+.news-compact-link:hover {
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .news-card-inst.news-card-compact {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .news-compact-img-link {
+    width: 100%;
+    height: 150px;
+    flex: none;
+  }
 }
 
 .news-card-top {
