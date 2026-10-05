@@ -5893,4 +5893,102 @@ a.cv-contact-item:hover i {
   color: #ffffff;
 }
 
+/* ==========================================================================
+   PROJECTS TABLE PAGINATION
+   ========================================================================== */
+.projects-table-footer {
+  padding: 1rem 1.75rem;
+  background: var(--bg-surface-alt);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.table-pagination-info {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.table-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pagination-nav-btn {
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pagination-nav-btn:hover:not(:disabled) {
+  background: var(--bg-surface-alt);
+  border-color: var(--text-muted);
+}
+
+.pagination-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-num-btn {
+  min-width: 32px;
+  height: 32px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+.page-num-btn:hover:not(.active) {
+  background: var(--bg-surface-alt);
+  color: var(--text-primary);
+}
+
+.page-num-btn.active {
+  background: var(--ehu-navy);
+  color: #ffffff;
+  border-color: var(--ehu-navy);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .page-num-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.page-ellipsis {
+  padding: 0 4px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+
 

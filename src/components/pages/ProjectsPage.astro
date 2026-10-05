@@ -230,6 +230,27 @@ completedProjects.sort((a, b) => {
             {lang === 'eu' ? 'Ez da proiekturik aurkitu irizpide hauekin' : (lang === 'en' ? 'No historical projects match your criteria' : 'No se han encontrado proyectos históricos con estos criterios')}
           </p>
         </div>
+
+        <!-- Table Pagination Footer -->
+        <div class="projects-table-footer" id="table-pagination-footer">
+          <div class="table-pagination-info" id="table-pagination-info">
+            {lang === 'eu' ? 'Erakusten:' : (lang === 'en' ? 'Showing:' : 'Mostrando:')} 
+            <strong id="page-range-start">1</strong> - <strong id="page-range-end">10</strong> 
+            {lang === 'eu' ? 'guztira:' : (lang === 'en' ? 'of' : 'de')} 
+            <strong id="pagination-total-count">{completedProjects.length}</strong> 
+            {lang === 'eu' ? 'proiektu' : (lang === 'en' ? 'projects' : 'proyectos')}
+          </div>
+
+          <div class="table-pagination-controls">
+            <button class="pagination-nav-btn" id="btn-page-prev" aria-label="Página anterior" disabled>
+              <i class="fas fa-chevron-left"></i> <span>{t.projects_pagination_prev || 'Anterior'}</span>
+            </button>
+            <div class="pagination-page-numbers" id="pagination-page-numbers"></div>
+            <button class="pagination-nav-btn" id="btn-page-next" aria-label="Página siguiente">
+              <span>{t.projects_pagination_next || 'Siguiente'}</span> <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- ==========================================
@@ -287,42 +308,125 @@ completedProjects.sort((a, b) => {
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('archive-search-input');
     const entityButtons = document.querySelectorAll('#archive-entity-filters .entity-pill-btn');
-    const rows = document.querySelectorAll('#archive-table tbody tr.archive-row');
+    const rows = Array.from(document.querySelectorAll('#archive-table tbody tr.archive-row'));
     const visibleCounter = document.getElementById('archive-visible-count');
     const noResults = document.getElementById('no-archive-results');
     const tableElement = document.getElementById('archive-table');
+    const paginationFooter = document.getElementById('table-pagination-footer');
+    const prevBtn = document.getElementById('btn-page-prev');
+    const nextBtn = document.getElementById('btn-page-next');
+    const pagesContainer = document.getElementById('pagination-page-numbers');
+    const rangeStart = document.getElementById('page-range-start');
+    const rangeEnd = document.getElementById('page-range-end');
+    const totalCountEl = document.getElementById('pagination-total-count');
 
+    const PAGE_SIZE = 10;
+    let currentPage = 1;
     let selectedType = 'ALL';
     let searchQuery = '';
+    let filteredRows = [...rows];
+
+    function getVisiblePages(current, total) {
+      if (total <= 7) {
+        return Array.from({ length: total }, (_, i) => i + 1);
+      }
+      const pages = [];
+      pages.push(1);
+      if (current > 3) pages.push('...');
+      const start = Math.max(2, current - 1);
+      const end = Math.min(total - 1, current + 1);
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+      if (current < total - 2) pages.push('...');
+      pages.push(total);
+      return pages;
+    }
+
+    function renderPagination() {
+      const total = filteredRows.length;
+      const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * PAGE_SIZE;
+      const endIndex = Math.min(startIndex + PAGE_SIZE, total);
+
+      // Hide all rows, then display current page slice
+      rows.forEach(r => r.style.display = 'none');
+      for (let i = startIndex; i < endIndex; i++) {
+        if (filteredRows[i]) {
+          filteredRows[i].style.display = '';
+        }
+      }
+
+      // Update counter texts
+      if (rangeStart) rangeStart.textContent = total > 0 ? (startIndex + 1) : 0;
+      if (rangeEnd) rangeEnd.textContent = endIndex;
+      if (totalCountEl) totalCountEl.textContent = total;
+      if (visibleCounter) visibleCounter.textContent = total;
+
+      // Update Prev / Next buttons
+      if (prevBtn) prevBtn.disabled = currentPage <= 1;
+      if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+
+      // Render page number buttons
+      if (pagesContainer) {
+        pagesContainer.innerHTML = '';
+        if (totalPages > 1) {
+          const pageNumbers = getVisiblePages(currentPage, totalPages);
+          pageNumbers.forEach(p => {
+            if (p === '...') {
+              const ellipsis = document.createElement('span');
+              ellipsis.className = 'page-ellipsis';
+              ellipsis.textContent = '...';
+              pagesContainer.appendChild(ellipsis);
+            } else {
+              const btn = document.createElement('button');
+              btn.className = `page-num-btn ${p === currentPage ? 'active' : ''}`;
+              btn.textContent = p;
+              btn.addEventListener('click', () => {
+                currentPage = p;
+                renderPagination();
+                const archiveBox = document.getElementById('historico');
+                if (archiveBox) {
+                  const rect = archiveBox.getBoundingClientRect();
+                  if (rect.top < 0) {
+                    archiveBox.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              });
+              pagesContainer.appendChild(btn);
+            }
+          });
+        }
+      }
+
+      // Handle empty state & table visibility
+      if (noResults) {
+        noResults.style.display = total === 0 ? 'block' : 'none';
+      }
+      if (tableElement) {
+        tableElement.style.display = total === 0 ? 'none' : 'table';
+      }
+      if (paginationFooter) {
+        paginationFooter.style.display = total === 0 ? 'none' : 'flex';
+      }
+    }
 
     function filterArchive() {
-      let count = 0;
-
-      rows.forEach(row => {
+      filteredRows = rows.filter(row => {
         const rowType = row.getAttribute('data-type');
         const rowSearch = row.getAttribute('data-search') || '';
 
         const typeMatch = (selectedType === 'ALL' || rowType === selectedType);
         const searchMatch = !searchQuery || rowSearch.includes(searchQuery);
 
-        if (typeMatch && searchMatch) {
-          row.style.display = '';
-          count++;
-        } else {
-          row.style.display = 'none';
-        }
+        return typeMatch && searchMatch;
       });
 
-      if (visibleCounter) {
-        visibleCounter.textContent = count;
-      }
-
-      if (noResults) {
-        noResults.style.display = count === 0 ? 'block' : 'none';
-      }
-      if (tableElement) {
-        tableElement.style.display = count === 0 ? 'none' : 'table';
-      }
+      currentPage = 1;
+      renderPagination();
     }
 
     entityButtons.forEach(btn => {
@@ -340,5 +444,27 @@ completedProjects.sort((a, b) => {
         filterArchive();
       });
     }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderPagination();
+        }
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredRows.length / PAGE_SIZE);
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderPagination();
+        }
+      });
+    }
+
+    // Initial render
+    renderPagination();
   });
 </script>
