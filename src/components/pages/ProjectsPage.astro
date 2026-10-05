@@ -170,20 +170,22 @@ completedProjects.sort((a, b) => {
                       <span class="archive-year-tag">{yearVal}</span>
                     </td>
                     <td class="col-code">
-                      {project.data.acronym && (
-                        <span class="archive-acronym-badge">{project.data.acronym}</span>
-                      )}
-                      {formattedCode.displayCode && (
-                        <span 
-                          class="archive-code-sub" 
-                          title={formattedCode.extraCount > 0 ? `Subproyectos vinculados: ${formattedCode.fullCode}` : 'Código de referencia oficial'}
-                        >
-                          {formattedCode.displayCode}
-                          {formattedCode.extraCount > 0 && (
-                            <span class="code-more-badge">+{formattedCode.extraCount}</span>
-                          )}
-                        </span>
-                      )}
+                      <div class="col-code-stack">
+                        {project.data.acronym && (
+                          <span class="archive-acronym-badge">{project.data.acronym}</span>
+                        )}
+                        {formattedCode.displayCode && formattedCode.displayCode.toLowerCase() !== (project.data.acronym || '').toLowerCase() && (
+                          <span 
+                            class="archive-code-sub" 
+                            title={formattedCode.extraCount > 0 ? `Subproyectos vinculados: ${formattedCode.fullCode}` : 'Código de referencia oficial'}
+                          >
+                            <span>{formattedCode.displayCode}</span>
+                            {formattedCode.extraCount > 0 && (
+                              <span class="code-more-badge">+{formattedCode.extraCount}</span>
+                            )}
+                          </span>
+                        )}
+                      </div>
                     </td>
                     <td class="col-title">
                       <span class="archive-title-link">{project.data.title}</span>
