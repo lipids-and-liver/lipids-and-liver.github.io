@@ -13,7 +13,7 @@ x: https://x.com/joxan_lo
 linkedin: https://www.linkedin.com/in/josean-lopez-b2a3042b5
 github: https://github.com/smzlogoj
 quote:
-  - '"Las ideas son como los conejos. Consigues un par, aprendes a manejarlos y muy pronto tienes una docena." — John Steinbeck'
+  - '"Es aconsejable mirar desde la charca hacia las estrellas y luego volver de nuevo a la charca." — John Steinbeck'
   - '"Mantén el fuego encendido." — Cormac McCarthy'
 order: 20
 cv:
