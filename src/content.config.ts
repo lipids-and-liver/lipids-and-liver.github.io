@@ -113,6 +113,7 @@ const projects = defineCollection({
   schema: z.object({
     id: z.string().optional(),
     title: z.string().default('Proyecto de Investigación'),
+    acronym: z.string().nullish(),
     code: z.string().default(''),
     fundingBody: z.string().default(''),
     fundingType: z.enum(['regional', 'national', 'european', 'foundation']).nullish().transform(val => val || 'national'),
@@ -122,6 +123,11 @@ const projects = defineCollection({
     budget: z.string().nullish(),
     badge: z.string().nullish(),
     summary: z.string().nullish(),
+    officialUrl: z.string().nullish(),
+    scope: z.string().nullish(),
+    call: z.string().nullish(),
+    year: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : undefined),
+    researchers: z.array(z.string()).nullish(),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
   })
 });

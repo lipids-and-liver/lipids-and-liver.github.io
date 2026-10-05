@@ -45,18 +45,55 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
         <p class="catalog-subtitle">{t.projects_page_sub}</p>
       </div>
 
-      <!-- Segmented Status Filter -->
-      <div class="filter-controls-wrap">
-        <div class="segmented-control-bar" id="projects-status-filters">
-          <button class="segmented-btn active" data-filter="ALL">
+      <!-- Controls: Status Switcher, Entity Pills & Search -->
+      <div class="projects-controls-container">
+        <!-- Segmented Status Filter -->
+        <div class="segmented-control-bar" id="projects-status-filters" style="margin: 0 auto;">
+          <button class="segmented-btn active" data-status-filter="ALL">
             <i class="fas fa-layer-group"></i> {t.projects_all} <span class="segmented-count">{allProjects.length}</span>
           </button>
-          <button class="segmented-btn" data-filter="ACTIVE">
+          <button class="segmented-btn" data-status-filter="ACTIVE">
             <i class="fas fa-spinner fa-spin"></i> {t.projects_active} <span class="segmented-count">{activeCount}</span>
           </button>
-          <button class="segmented-btn" data-filter="COMPLETED">
+          <button class="segmented-btn" data-status-filter="COMPLETED">
             <i class="fas fa-check-circle"></i> {t.projects_completed} <span class="segmented-count">{completedCount}</span>
           </button>
+        </div>
+
+        <!-- Entity Scope Filters -->
+        <div class="projects-entity-filters" id="projects-entity-filters">
+          <button class="entity-pill-btn active" data-type-filter="ALL">
+            <i class="fas fa-th"></i> {lang === 'eu' ? 'Entitate guztiak' : (lang === 'en' ? 'All entities' : 'Todas las entidades')}
+          </button>
+          <button class="entity-pill-btn" data-type-filter="national">
+            <i class="fas fa-landmark"></i> {lang === 'eu' ? 'Estatukoak (MCIU / ISCIII)' : (lang === 'en' ? 'National (MCIU / ISCIII)' : 'Nacional (MCIU / ISCIII)')}
+          </button>
+          <button class="entity-pill-btn" data-type-filter="regional">
+            <i class="fas fa-map-marker-alt"></i> {lang === 'eu' ? 'Autonomikoak (Eusko Jaurlaritza / ELKARTEK)' : (lang === 'en' ? 'Regional (Basque Govt / ELKARTEK)' : 'Autonómico (Gob. Vasco / ELKARTEK)')}
+          </button>
+          <button class="entity-pill-btn" data-type-filter="european">
+            <i class="fas fa-globe-europe"></i> {lang === 'eu' ? 'Europarrak (FEDER)' : (lang === 'en' ? 'European (FEDER)' : 'Europeo (FEDER)')}
+          </button>
+          <button class="entity-pill-btn" data-type-filter="foundation">
+            <i class="fas fa-hand-holding-heart"></i> {lang === 'eu' ? 'Fundazioak (AECC / CIBER)' : (lang === 'en' ? 'Foundations (AECC / CIBER)' : 'Fundaciones (AECC / CIBER)')}
+          </button>
+        </div>
+
+        <!-- Instant Real-Time Search Bar -->
+        <div class="projects-search-bar">
+          <i class="fas fa-search"></i>
+          <input 
+            type="text" 
+            id="projects-search-input" 
+            class="projects-search-input" 
+            placeholder={t.projects_search_placeholder || 'Buscar por título, acrónimo, código, IP...'} 
+            aria-label="Buscar proyectos"
+          />
+        </div>
+
+        <!-- Counter display -->
+        <div class="projects-count-display">
+          {lang === 'eu' ? 'Erakusten:' : (lang === 'en' ? 'Showing:' : 'Mostrando:')} <strong id="visible-count">{allProjects.length}</strong> / {allProjects.length} {lang === 'eu' ? 'proiektu' : (lang === 'en' ? 'projects' : 'proyectos')}
         </div>
       </div>
     </div>
@@ -65,12 +102,57 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
   <!-- Projects Grid Section -->
   <section class="page-section">
     <div class="container">
+
+      <!-- Official UPV/EHU Hub Banner -->
+      <div class="projects-official-hub-card">
+        <div class="projects-official-hub-info">
+          <div class="projects-official-hub-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div>
+            <h3 class="projects-official-hub-title">{t.projects_official_portal_btn || 'Portal de Producción Científica UPV/EHU'}</h3>
+            <p class="projects-official-hub-desc">
+              {t.projects_official_portal_desc || 'Registro oficial auditado de subvenciones del Grupo Lipids & Liver (Código 10483). Acceda a las fichas oficiales y al histórico institucional en la base de datos universitaria.'}
+            </p>
+          </div>
+        </div>
+        <div>
+          <a 
+            href="https://ekoizpen-zientifikoa.ehu.eus/grupos/10483/proyectos" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-inst-primary"
+            style="white-space:nowrap; padding:12px 22px; font-size:0.92rem; border-radius:30px; display:inline-flex; align-items:center; gap:8px;"
+          >
+            <span>{lang === 'eu' ? 'UPV/EHU Erregistro Ofiziala' : (lang === 'en' ? 'Official UPV/EHU Portal' : 'Ver Registro Oficial UPV/EHU')}</span>
+            <i class="fas fa-external-link-alt" style="font-size:0.8rem;"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
       <div class="projects-grid-inst" id="projects-grid">
         {allProjects.map(project => (
-          <div class="project-item" data-status={project.data.status.toUpperCase()} data-type={project.data.fundingType}>
+          <div 
+            class="project-item" 
+            data-status={project.data.status.toUpperCase()} 
+            data-type={project.data.fundingType}
+            data-search={`${project.data.title} ${project.data.acronym || ''} ${project.data.code || ''} ${project.data.pi || ''} ${project.data.fundingBody || ''} ${project.data.period || ''}`.toLowerCase()}
+          >
             <ProjectCard project={project} lang={lang} />
           </div>
         ))}
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-projects-msg" style="display:none; text-align:center; padding: 4rem 1rem;">
+        <i class="fas fa-folder-open" style="font-size:3rem; color:var(--text-muted); margin-bottom:1rem; display:block;"></i>
+        <h3 style="color:var(--text-secondary); margin-bottom:0.5rem;">
+          {lang === 'eu' ? 'Ez da proiekturik aurkitu irizpide hauekin' : (lang === 'en' ? 'No projects match your criteria' : 'No se han encontrado proyectos con estos criterios')}
+        </h3>
+        <p style="color:var(--text-muted); font-size:0.95rem;">
+          {lang === 'eu' ? 'Saiatu bilaketa-terminoak edo iragazkiak aldatzen' : (lang === 'en' ? 'Try adjusting your search terms or filters' : 'Pruebe a modificar los términos de búsqueda o los filtros')}
+        </p>
       </div>
 
       <!-- Institutional Transparency Notice -->
@@ -79,9 +161,14 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
           <i class="fas fa-shield-alt"></i>
         </div>
         <div class="funding-notice-text">
-          <h4>Compromiso con la Transparencia y la Investigación de Impacto</h4>
+          <h4>{lang === 'eu' ? 'Gardentasunarekin eta Eraginpeko Ikerketarekin Konpromisoa' : (lang === 'en' ? 'Commitment to Transparency & High-Impact Research' : 'Compromiso con la Transparencia y la Investigación de Impacto')}</h4>
           <p>
-            Los proyectos del grupo Lipids & Liver están auditados y cofinanciados por entidades públicas y fundaciones científicas de máximo prestigio bajo directivas europeas de ciencia abierta y excelencia biomédica.
+            {lang === 'eu' 
+              ? 'Lipids & Liver taldearen proiektuak entitate publikoek eta ospe goreneko fundazio zientifikoek ikuskatu eta finantzatzen dituzte, zientzia irekiaren eta bikaintasun biomedikoaren europar zuzentarauen pean.'
+              : (lang === 'en'
+                ? 'All research projects in the Lipids & Liver group are audited and co-funded by prestigious public bodies and scientific foundations in full compliance with European open-science directives and biomedical excellence.'
+                : 'Los proyectos del grupo Lipids & Liver están auditados y cofinanciados por entidades públicas y fundaciones científicas de máximo prestigio bajo directivas europeas de ciencia abierta y excelencia biomédica.')
+            }
           </p>
         </div>
       </div>
@@ -91,25 +178,69 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('#projects-status-filters .segmented-btn');
+    const statusButtons = document.querySelectorAll('#projects-status-filters .segmented-btn');
+    const typeButtons = document.querySelectorAll('#projects-entity-filters .entity-pill-btn');
+    const searchInput = document.getElementById('projects-search-input');
     const projectItems = document.querySelectorAll('#projects-grid .project-item');
+    const visibleCounter = document.getElementById('visible-count');
+    const noResultsMsg = document.getElementById('no-projects-msg');
 
-    filterButtons.forEach(btn => {
+    let currentStatus = 'ALL';
+    let currentType = 'ALL';
+    let searchQuery = '';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      projectItems.forEach(item => {
+        const itemStatus = item.getAttribute('data-status');
+        const itemType = item.getAttribute('data-type');
+        const itemSearch = item.getAttribute('data-search') || '';
+
+        const matchesStatus = (currentStatus === 'ALL' || itemStatus === currentStatus);
+        const matchesType = (currentType === 'ALL' || itemType === currentType);
+        const matchesSearch = !searchQuery || itemSearch.includes(searchQuery);
+
+        if (matchesStatus && matchesType && matchesSearch) {
+          item.style.display = '';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (visibleCounter) {
+        visibleCounter.textContent = visibleCount;
+      }
+
+      if (noResultsMsg) {
+        noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    statusButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
+        statusButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        projectItems.forEach(item => {
-          const status = item.getAttribute('data-status');
-          if (filter === 'ALL' || status === filter) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        currentStatus = btn.getAttribute('data-status-filter') || 'ALL';
+        applyFilters();
       });
     });
+
+    typeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        typeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentType = btn.getAttribute('data-type-filter') || 'ALL';
+        applyFilters();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        applyFilters();
+      });
+    }
   });
 </script>

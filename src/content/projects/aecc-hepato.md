@@ -1,16 +1,21 @@
 ---
 id: aecc-hepato
-title: "Vulnerabilidades del Metabolismo de Fosfolípidos como Nuevas Estrategias Terapéuticas en Cáncer de Hígado"
-code: "IDEAS-AECC-2022"
-fundingBody: "Fundación Científica de la Asociación Española Contra el Cáncer (AECC)"
+title: "Nuevos mecanismos de prevención y diagnóstico de metástasis hepáticas de cáncer colorrectal: reprogramando el metabolismo del colesterol en hepatocitos"
+acronym: null
+code: "FP24/44"
+fundingBody: "FUNDACIONES PRIVADAS 2024"
 fundingType: "foundation"
-pi: "Dra. Patricia Aspichueta"
-period: "2022 - 2024"
-status: "completed"
-budget: "Ayudas a Proyectos de Investigación Biomédica en Oncología"
-badge: "Fundación AECC"
-summary: "Identificación de enzimas clave en la remodelación de fosfolípidos que modulan la agresividad tumoral y la resistencia a la quimioterapia en hepatocarcinoma."
-order: 4
+pi: "Patricia Aspichueta Celaa"
+period: "01 December 2024 - 30 November 2027"
+status: "active"
+budget: "€300,000.00"
+badge: "AECC Estratégico"
+scope: ""
+year: 2027
+officialUrl: "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303542/detalle"
+order: 3
+researchers:
+  - "Patricia Aspichueta Celaa (Leader)"
 ---
 
 ### Resumen del Proyecto

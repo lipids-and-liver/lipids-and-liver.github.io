@@ -5340,3 +5340,244 @@ a.cv-contact-item:hover i {
 .cv-alumni-footer .alumni-social-link:hover i {
   color: #ffffff !important;
 }
+
+/* ==========================================================================
+   ENHANCED PROJECTS & UPV/EHU HUB STYLES
+   ========================================================================== */
+.project-acronym-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(104, 159, 56, 0.15);
+  color: var(--logo-green);
+  border: 1px solid rgba(104, 159, 56, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+[data-theme="dark"] .project-acronym-badge {
+  background: rgba(138, 198, 63, 0.2);
+  color: #a3e635;
+  border-color: rgba(138, 198, 63, 0.4);
+}
+
+.project-budget-highlight {
+  background: rgba(104, 159, 56, 0.08);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.project-budget-highlight .budget-amount {
+  font-weight: 700;
+  color: var(--logo-green);
+  font-size: 0.95rem;
+}
+
+[data-theme="dark"] .project-budget-highlight .budget-amount {
+  color: #86efac;
+}
+
+.project-card-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-project-official {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ehu-navy);
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-project-official:hover {
+  background: var(--ehu-navy);
+  color: #ffffff;
+  border-color: var(--ehu-navy);
+}
+
+[data-theme="dark"] .btn-project-official {
+  color: #93c5fd;
+  border-color: rgba(147, 197, 253, 0.25);
+}
+
+[data-theme="dark"] .btn-project-official:hover {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.btn-project-official .ext-icon {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.official-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.project-team-chip {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.projects-official-hub-card {
+  background: linear-gradient(135deg, rgba(0, 43, 73, 0.05) 0%, rgba(104, 159, 56, 0.08) 100%);
+  border: 1px solid rgba(0, 43, 73, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .projects-official-hub-card {
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.4) 0%, rgba(104, 159, 56, 0.15) 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.projects-official-hub-info {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+  min-width: 280px;
+}
+
+.projects-official-hub-icon {
+  font-size: 2.4rem;
+  color: var(--ehu-navy);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .projects-official-hub-icon {
+  color: #93c5fd;
+}
+
+.projects-official-hub-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ehu-navy);
+  margin-bottom: 0.35rem;
+}
+
+[data-theme="dark"] .projects-official-hub-title {
+  color: #f1f5f9;
+}
+
+.projects-official-hub-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.projects-controls-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.projects-search-bar {
+  position: relative;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.projects-search-bar i {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.projects-search-input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-smooth);
+}
+
+.projects-search-input:focus {
+  outline: none;
+  border-color: var(--logo-green);
+  box-shadow: 0 0 0 3px rgba(104, 159, 56, 0.2);
+}
+
+.projects-entity-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.entity-pill-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.entity-pill-btn:hover {
+  background: var(--bg-surface-alt);
+  color: var(--text-primary);
+}
+
+.entity-pill-btn.active {
+  background: var(--ehu-navy);
+  color: #ffffff;
+  border-color: var(--ehu-navy);
+}
+
+[data-theme="dark"] .entity-pill-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.projects-count-display {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+

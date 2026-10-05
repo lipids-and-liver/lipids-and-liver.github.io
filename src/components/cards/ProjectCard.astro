@@ -8,7 +8,21 @@ interface Props {
 }
 
 const { project, lang = 'es' } = Astro.props;
-const { title, code, fundingBody, pi, period, status, badge, summary, fundingType } = project.data;
+const {
+  title,
+  acronym,
+  code,
+  fundingBody,
+  pi,
+  period,
+  status,
+  badge,
+  summary,
+  fundingType,
+  budget,
+  officialUrl,
+  researchers
+} = project.data;
 const t = getTranslations(lang);
 
 const isActive = status === 'active';
@@ -22,9 +36,18 @@ const statusLabel = isActive ? (t.projects_status_active || 'En Activo') : (t.pr
         <i class={`fas ${isActive ? 'fa-dot-circle' : 'fa-check-circle'}`}></i>
         {statusLabel}
       </span>
+      {acronym && (
+        <span class="project-acronym-badge" title="Acrónimo oficial">
+          <i class="fas fa-bookmark"></i> {acronym}
+        </span>
+      )}
       {badge && <span class="project-type-badge">{badge}</span>}
     </div>
-    <span class="project-code-tag"><i class="fas fa-tag"></i> {code}</span>
+    {code && (
+      <span class="project-code-tag" title="Código de referencia oficial">
+        <i class="fas fa-hashtag"></i> {code}
+      </span>
+    )}
   </div>
 
   <h3 class="project-title">{title}</h3>
@@ -46,6 +69,16 @@ const statusLabel = isActive ? (t.projects_status_active || 'En Activo') : (t.pr
       </div>
     </div>
 
+    {budget && (
+      <div class="project-meta-item project-budget-highlight">
+        <i class="fas fa-coins"></i>
+        <div>
+          <span class="meta-label">{t.projects_budget_label || 'Presupuesto Concedido:'}</span>
+          <span class="meta-value budget-amount">{budget}</span>
+        </div>
+      </div>
+    )}
+
     <div class="project-meta-item">
       <i class="fas fa-calendar-alt"></i>
       <div>
@@ -60,4 +93,30 @@ const statusLabel = isActive ? (t.projects_status_active || 'En Activo') : (t.pr
       {summary}
     </p>
   )}
+
+  <div class="project-card-footer">
+    {officialUrl ? (
+      <a 
+        href={officialUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn-project-official"
+        title="Consultar ficha en el Portal de Producción Científica UPV/EHU"
+      >
+        <i class="fas fa-university"></i>
+        <span>{t.projects_official_link || 'Ficha oficial UPV/EHU'}</span>
+        <i class="fas fa-external-link-alt ext-icon"></i>
+      </a>
+    ) : (
+      <span class="official-verified-badge">
+        <i class="fas fa-shield-alt"></i> Registrado UPV/EHU
+      </span>
+    )}
+
+    {researchers && researchers.length > 1 && (
+      <span class="project-team-chip" title={researchers.join(', ')}>
+        <i class="fas fa-users"></i> {researchers.length} miembros
+      </span>
+    )}
+  </div>
 </div>

@@ -1,16 +1,25 @@
 ---
 id: pid2021-mafld
-title: "Desregulación del Metabolismo Lipídico en la Progresión de la Esteatohepatitis Metabólica (MASH) a Carcinoma Hepatocelular"
-code: "PID2021-124112OB-I00"
-fundingBody: "Ministerio de Ciencia e Innovación / Agencia Estatal de Investigación (AEI) y Fondos FEDER"
+title: "Heterogeneidad metabólica en cánceres primarios de hígado y MAFLD: un papel para el factor de transcripción E2F2"
+acronym: "Lip-METABOtreat"
+code: "MCIU-O21/P10"
+fundingBody: "MCIU-Proyectos de Investigación Orientada 2021 ORIENTADA"
 fundingType: "national"
-pi: "Dra. Patricia Aspichueta"
-period: "2022 - 2025"
-status: "active"
-budget: "Plan Nacional de I+D+i (Proyectos de Generación de Conocimiento)"
-badge: "Plan Nacional MICINN"
-summary: "Investigación traslacional sobre los mecanismos moleculares del flujo lipídico, homeostasis mitocondrial y vulnerabilidades metabólicas en el desarrollo de esteatosis y malignidad hepática."
-order: 2
+pi: "Patricia Aspichueta Celaa"
+period: "01 September 2022 - 31 August 2025"
+status: "completed"
+budget: "€302,500.00"
+badge: "MCIU Retos"
+scope: "National"
+year: 2025
+officialUrl: "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1301710/detalle"
+order: 5
+researchers:
+  - "Patricia Aspichueta Celaa (Leader)"
+  - "Igor Aurrekoetxea Galindo"
+  - "Xabier Buque Garcia"
+  - "Francisco Javier Bustamante Schneider"
+  - "Igotz Delgado Balzategui"
 ---
 
 ### Resumen del Proyecto

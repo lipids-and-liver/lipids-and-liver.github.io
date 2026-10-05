@@ -1,16 +1,27 @@
 ---
 id: elkartek-lipid-target
-title: "LIPIDTARGET: Plataforma Avanzada de Lipidómica Traslacional para la Identificación de Biomarcadores en Patologías Metabólicas"
-code: "KK-2023/00042"
-fundingBody: "Gobierno Vasco (Programa Elkartek - Investigación Colaborativa)"
+title: "Generación y Caracterización de Tumor Twins -en-chip para Mimetizar la Heterogeneidad del Cáncer Billar (CCA) y Evaluar Nuevas Terapias"
+acronym: "BILTWIN"
+code: "ELKARTEK25/16;ELKARTEK25/17"
+fundingBody: "ELKARTEK 2025"
 fundingType: "regional"
-pi: "Dra. Patricia Aspichueta (UPV/EHU & IIS Biocruces Bizkaia)"
-period: "2023 - 2025"
+pi: "Xabier Buque Garcia, Maria Jesus Perugorria Montiel"
+period: "03 March 2025 - 31 December 2026"
 status: "active"
-budget: "Programa Elkartek de Apoyo a la I+D Colaborativa"
-badge: "Elkartek"
-summary: "Consorcio vasco para el desarrollo de metodologías lipidómicas traslacionales de alto rendimiento orientadas a la detección precoz de daño hepático y fibrosis."
-order: 3
+budget: "€168,565.00"
+badge: "ELKARTEK"
+scope: "Regional"
+year: 2026
+officialUrl: "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1840417/detalle"
+order: 4
+researchers:
+  - "Xabier Buque Garcia (Leader)"
+  - "Maria Jesus Perugorria Montiel (Leader)"
+  - "Kendall Alonso Alfaro Jimenez"
+  - "Luis Bujanda Fernandez De Pierola"
+  - "Igotz Delgado Balzategui"
+  - "Beatriz Gomez Santos"
+  - "Aritz Lopategui Martinez"
 ---
 
 ### Resumen del Proyecto
