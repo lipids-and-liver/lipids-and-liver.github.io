@@ -152,7 +152,6 @@ completedProjects.sort((a, b) => {
                 <th class="col-title">{t.projects_col_title || 'Título del Proyecto'}</th>
                 <th class="col-pi">{t.projects_col_pi || 'IP / Dirección'}</th>
                 <th class="col-entity">{t.projects_col_entity || 'Entidad'}</th>
-                <th class="col-budget">{t.projects_col_budget || 'Presupuesto'}</th>
                 <th class="col-action">{t.projects_col_link || 'Ficha UPV/EHU'}</th>
               </tr>
             </thead>
@@ -200,13 +199,6 @@ completedProjects.sort((a, b) => {
                       <span class="archive-entity-label" title={project.data.fundingBody}>
                         {project.data.fundingBody.length > 32 ? `${project.data.fundingBody.slice(0, 32)}...` : project.data.fundingBody}
                       </span>
-                    </td>
-                    <td class="col-budget">
-                      {project.data.budget && project.data.budget.includes('€') ? (
-                        <span class="archive-budget-val">{project.data.budget}</span>
-                      ) : (
-                        <span class="archive-budget-na">-</span>
-                      )}
                     </td>
                     <td class="col-action">
                       {project.data.officialUrl ? (

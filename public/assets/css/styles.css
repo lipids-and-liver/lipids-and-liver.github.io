@@ -5710,7 +5710,7 @@ a.cv-contact-item:hover i {
   border-collapse: collapse;
   text-align: left;
   font-size: 0.88rem;
-  min-width: 820px;
+  min-width: 680px;
 }
 
 .projects-compact-table thead th {
@@ -5774,14 +5774,8 @@ a.cv-contact-item:hover i {
   width: 160px;
 }
 
-.col-budget {
-  width: 130px;
-  text-align: right;
-  white-space: nowrap;
-}
-
 .col-action {
-  width: 120px;
+  width: 110px;
   text-align: center;
   white-space: nowrap;
 }
@@ -5866,21 +5860,6 @@ a.cv-contact-item:hover i {
   color: var(--text-secondary);
   line-height: 1.3;
   display: block;
-}
-
-.archive-budget-val {
-  font-weight: 700;
-  font-size: 0.88rem;
-  color: var(--logo-green);
-}
-
-[data-theme="dark"] .archive-budget-val {
-  color: #86efac;
-}
-
-.archive-budget-na {
-  color: var(--text-muted);
-  font-size: 0.85rem;
 }
 
 .archive-link-btn {
