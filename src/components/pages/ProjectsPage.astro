@@ -79,9 +79,7 @@ completedProjects.sort((a, b) => {
       <!-- Active Projects Grid (Clean & Impactful) -->
       <div class="projects-grid-inst" id="active-projects-grid">
         {activeProjects.map(project => (
-          <div class="project-item">
-            <ProjectCard project={project} lang={lang} />
-          </div>
+          <ProjectCard project={project} lang={lang} />
         ))}
       </div>
 
