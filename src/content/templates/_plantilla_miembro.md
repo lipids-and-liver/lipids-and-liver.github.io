@@ -35,6 +35,8 @@ cv:
   publications:
     - "Referencia bibliográfica destacada 1"
     - "Referencia bibliográfica destacada 2"
+  patents:
+    - "Patente o registro de propiedad industrial (OEPM, etc.)"
   teaching:
     - "Docencia en Grado de Medicina o Posgrado"
 ---

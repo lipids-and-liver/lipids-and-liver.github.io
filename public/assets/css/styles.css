@@ -4496,6 +4496,12 @@ a.cv-contact-item:hover i {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.75rem;
+  align-items: stretch;
+}
+
+.news-item {
+  display: flex;
+  height: 100%;
 }
 
 .news-card-inst {
@@ -4505,6 +4511,8 @@ a.cv-contact-item:hover i {
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
@@ -4518,7 +4526,8 @@ a.cv-contact-item:hover i {
 .news-card-content {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 /* News Bento Grid Architecture */
@@ -4839,6 +4848,12 @@ a.cv-contact-item:hover i {
   color: var(--ehu-navy);
   text-decoration: none;
   transition: color var(--transition-smooth);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.8em;
 }
 
 [data-theme="dark"] .news-title a {
@@ -4854,13 +4869,20 @@ a.cv-contact-item:hover i {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  flex-grow: 1;
+  flex: 1 1 auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 4.8em;
 }
 
 .news-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
   font-size: 0.85rem;
@@ -5092,6 +5114,12 @@ a.cv-contact-item:hover i {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 1.75rem;
+  align-items: stretch;
+}
+
+.alumni-item {
+  display: flex;
+  height: 100%;
 }
 
 .alumni-card-inst {
@@ -5101,6 +5129,8 @@ a.cv-contact-item:hover i {
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
   position: relative;
@@ -5119,6 +5149,10 @@ a.cv-contact-item:hover i {
 
 .alumni-card-inst.category-industry::before {
   background-color: #0284c7;
+}
+
+.alumni-card-inst.category-emerita::before {
+  background-color: #f59e0b;
 }
 
 .alumni-card-inst:hover {
@@ -5166,6 +5200,10 @@ a.cv-contact-item:hover i {
   color: #0284c7;
 }
 
+.category-emerita .alumni-category-badge {
+  color: #d97706;
+}
+
 .alumni-name {
   font-size: 1.15rem;
   font-weight: 700;
@@ -5181,6 +5219,12 @@ a.cv-contact-item:hover i {
 .alumni-lab-past {
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+.alumni-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
 
 .alumni-current-box {
@@ -5203,6 +5247,10 @@ a.cv-contact-item:hover i {
 
 .category-industry .current-label {
   color: #0284c7;
+}
+
+.category-emerita .current-label {
+  color: #d97706;
 }
 
 .current-role {
@@ -5239,7 +5287,9 @@ a.cv-contact-item:hover i {
   font-size: 0.84rem;
   color: var(--text-secondary);
   line-height: 1.5;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
 }
 
 .thesis-label {
@@ -5247,13 +5297,20 @@ a.cv-contact-item:hover i {
   color: var(--text-primary);
   display: block;
   font-size: 0.78rem;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .thesis-title {
   font-style: italic;
   margin: 0;
   color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 3.8em;
+  line-height: 1.45;
 }
 
 .alumni-card-footer {
@@ -5305,6 +5362,53 @@ a.cv-contact-item:hover i {
 
 .alumni-social-link:hover i {
   color: #ffffff !important;
+}
+
+.alumni-card-footer .ehu-cris-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: auto !important;
+  height: 28px !important;
+  padding: 0 10px !important;
+  border-radius: 14px !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  background: rgba(0, 43, 73, 0.08) !important;
+  color: var(--ehu-navy) !important;
+  border: 1px solid rgba(0, 43, 73, 0.2) !important;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.alumni-card-footer .ehu-cris-badge i {
+  color: var(--logo-green);
+  font-size: 0.8rem;
+  transition: color 0.2s ease;
+}
+
+.alumni-card-footer .ehu-cris-badge:hover {
+  background: var(--ehu-navy) !important;
+  color: #ffffff !important;
+  border-color: var(--ehu-navy) !important;
+  transform: translateY(-2px);
+}
+
+.alumni-card-footer .ehu-cris-badge:hover i {
+  color: #8AC63F !important;
+}
+
+[data-theme="dark"] .alumni-card-footer .ehu-cris-badge {
+  background: rgba(147, 197, 253, 0.12) !important;
+  color: #93c5fd !important;
+  border-color: rgba(147, 197, 253, 0.25) !important;
+}
+
+[data-theme="dark"] .alumni-card-footer .ehu-cris-badge:hover {
+  background: #1e3a5f !important;
+  color: #ffffff !important;
+  border-color: #3b82f6 !important;
 }
 
 .cv-alumni-footer {

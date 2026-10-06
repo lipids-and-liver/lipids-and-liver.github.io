@@ -1,20 +1,26 @@
 ---
-import { getTranslations, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 
 interface AlumniItem {
   id: string;
   name: string;
+  period?: string;
   labRole: string;
-  thesis: string;
-  year: string;
+  thesisId?: string;
+  thesis?: string;
+  year?: string;
   currentRole: string;
   currentAffiliation: string;
   location: string;
-  category: 'academia' | 'industry' | 'clinical';
+  category: 'academia' | 'industry' | 'clinical' | 'emerita';
   categoryLabel: string;
-  icon: string;
+  icon?: string;
+  ehuUrl?: string;
   linkedin?: string;
   orcid?: string;
+  isFounder?: boolean;
+  thesesSupervised?: number[];
+  patent?: string;
 }
 
 interface Props {
@@ -35,7 +41,8 @@ const t = getTranslations(lang);
       <span class="alumni-category-badge">{alumni.categoryLabel}</span>
       <h3 class="alumni-name">{alumni.name}</h3>
       <span class="alumni-lab-past">
-        <i class="fas fa-history"></i> {alumni.labRole} • Tesis {alumni.year}
+        <i class="fas fa-history"></i> {alumni.labRole}
+        {alumni.period && <span class="alumni-period"> • {alumni.period}</span>}
       </span>
     </div>
   </div>
@@ -55,26 +62,46 @@ const t = getTranslations(lang);
     {alumni.thesis && (
       <div class="alumni-thesis-box">
         <span class="thesis-label"><i class="fas fa-graduation-cap"></i> {t.alumni_thesis_label || 'Tesis en Lipids & Liver:'}</span>
-        <p class="thesis-title">"{alumni.thesis}"</p>
+        <p class="thesis-title" title={alumni.thesis}>"{alumni.thesis}"</p>
+        {alumni.thesisId && (
+          <a href={getLocalizedPath(`/tesis/${alumni.thesisId}`, lang)} class="alumni-thesis-link" style="display:inline-flex; align-items:center; gap:5px; margin-top:6px; font-size:0.82rem; font-weight:600; color:var(--logo-green); text-decoration:none;">
+            <i class="fas fa-file-alt"></i> {t.alumni_thesis_view_record || 'Ver ficha completa de tesis'} <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+          </a>
+        )}
+      </div>
+    )}
+
+    {!alumni.thesis && alumni.thesesSupervised && (
+      <div class="alumni-thesis-box">
+        <span class="thesis-label"><i class="fas fa-graduation-cap"></i> {t.alumni_theses_supervised_label || 'Tesis Doctorales Dirigidas:'}</span>
+        <p class="thesis-title" style="font-style:normal;">
+          Dirección de 6+ tesis doctorales clave en el laboratorio ({alumni.thesesSupervised.map(n => `tesis-${n}`).join(', ')}).
+        </p>
+        <a href={getLocalizedPath('/tesis', lang)} class="alumni-thesis-link" style="display:inline-flex; align-items:center; gap:5px; margin-top:6px; font-size:0.82rem; font-weight:600; color:var(--logo-green); text-decoration:none;">
+          <i class="fas fa-graduation-cap"></i> {t.nav_theses || 'Catálogo de Tesis'} <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+        </a>
       </div>
     )}
   </div>
 
-  {(alumni.linkedin || alumni.orcid) && (
-    <div class="alumni-card-footer">
-      <span class="alumni-links-label">Perfiles profesionales:</span>
-      <div class="alumni-links">
-        {alumni.linkedin && (
-          <a href={alumni.linkedin} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        )}
-        {alumni.orcid && (
-          <a href={alumni.orcid} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="ORCID">
-            <i class="fab fa-orcid"></i>
-          </a>
-        )}
-      </div>
+  <div class="alumni-card-footer">
+    <span class="alumni-links-label">Filiación y registros:</span>
+    <div class="alumni-links">
+      {alumni.ehuUrl && (
+        <a href={alumni.ehuUrl} target="_blank" rel="noopener noreferrer" class="ehu-cris-badge" title="Producción Científica UPV/EHU">
+          <i class="fas fa-university"></i> Portal UPV/EHU
+        </a>
+      )}
+      {alumni.linkedin && (
+        <a href={alumni.linkedin} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      )}
+      {alumni.orcid && (
+        <a href={alumni.orcid} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="ORCID">
+          <i class="fab fa-orcid"></i>
+        </a>
+      )}
     </div>
-  )}
+  </div>
 </div>

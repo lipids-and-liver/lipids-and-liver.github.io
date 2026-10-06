@@ -234,6 +234,16 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
           </div>
         )}
 
+        <!-- Patentes y Propiedad Industrial -->
+        {cv.patents && cv.patents.length > 0 && (
+          <div class="cv-block">
+            <h3 class="cv-block-title"><i class="fas fa-certificate"></i> {t.cv_patents || 'Patentes y Propiedad Industrial'}</h3>
+            <ul class="cv-clean-list">
+              {cv.patents.map((pat: string) => <li>{pat}</li>)}
+            </ul>
+          </div>
+        )}
+
         <!-- Docencia Universitaria -->
         {cv.teaching && cv.teaching.length > 0 && (
           <div class="cv-block">

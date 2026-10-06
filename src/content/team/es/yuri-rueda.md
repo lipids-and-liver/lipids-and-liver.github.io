@@ -15,8 +15,10 @@ cv:
       - "Doctor en Ciencias Biológicas (UPV/EHU)"
       - "Licenciada en Bioquímica"
   positions:
-      - "Profesora Titular, Dept. Fisiología, UPV/EHU"
+      - "Profesor Titular, Dept. Fisiología, UPV/EHU"
       - "Investigador Senior, Grupo Lipids & Liver"
+  patents:
+      - "Método para extraer lípidos de la lágrima. Solicitud: P201831028 (2018). Publicación: ES2755963A1 (2020). Cotitular: Universidad del País Vasco (UPV/EHU)."
   teaching:
       - "Giza Fisiologia (Fisiología Humana). 1º del Grado en Fisioterapia"
       - "Medical Biochemistry (Bioquímica Médica). 1º del Grado en Medicina"

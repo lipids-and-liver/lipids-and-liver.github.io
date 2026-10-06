@@ -25,10 +25,14 @@ badge: "En Curso"
 directors:
   - "Dra. Patricia Aspichueta Celaá"
   - "Dr. Nombre Co-director"
-program: "Programa de Doctorado en Biomedicina"
 keywords:
   - "Metabolismo Lipídico"
   - "Hepatología"
+# defenseDate: "2025-06-15" # Opcional: Fecha de defensa (si está defendida)
+# officialUrl: "https://ekoizpen-zientifikoa.ehu.eus/documentos/XXXXX" # Opcional: Ficha UPV/EHU
+# handleUrl: "https://hdl.handle.net/10810/XXXXX" # Opcional: Repositorio ADDI
+# dialnetUrl: "https://dialnet.unirioja.es/servlet/tesis?codigo=XXXXX" # Opcional: Dialnet
+# teseoId: "XXXXX" # Opcional: Código TESEO
 order: 1
 ---
 

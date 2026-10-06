@@ -51,6 +51,7 @@ const team = defineCollection({
       positions: z.array(z.string()).nullish().transform(val => val || []),
       grants: z.array(z.string()).nullish().transform(val => val || []),
       publications: z.array(z.string()).nullish().transform(val => val || []),
+      patents: z.array(z.string()).nullish().transform(val => val || []),
       teaching: z.array(z.string()).nullish().transform(val => val || [])
     }).nullish()
   })
@@ -177,6 +178,30 @@ const letter = defineCollection({
   })
 });
 
+const patents = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/patents" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string().default('Patente de Invención'),
+    applicationNumber: z.string().default(''),
+    publicationNumber: z.string().default(''),
+    year: z.union([z.number(), z.string()]).default(2020),
+    applicationDate: z.string().nullish(),
+    publicationDate: z.string().nullish(),
+    applicant: z.string().default('Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)'),
+    inventors: z.array(z.string()).default([]),
+    groupInventors: z.array(z.string()).nullish().transform(val => val || []),
+    scope: z.string().default('Nacional (España - OEPM)'),
+    status: z.string().default('Concedida / Publicada'),
+    badge: z.string().default('Patente OEPM'),
+    abstract: z.string().nullish(),
+    invenesUrl: z.string().nullish(),
+    pdfUrl: z.string().nullish(),
+    ehuUrl: z.string().nullish(),
+    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
+  })
+});
+
 export const collections = {
   theses,
   team,
@@ -186,7 +211,8 @@ export const collections = {
   training,
   projects,
   news,
-  letter
+  letter,
+  patents
 };
 
 

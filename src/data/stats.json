@@ -32,6 +32,17 @@
       "subtext_en": "Defended and currently ongoing",
       "label": "Tesis Doctorales",
       "subtext": "Defendidas y en curso de investigación"
+    },
+    {
+      "number": "1",
+      "label_es": "Patente de Invención",
+      "label_eu": "Asmakuntza-patentea",
+      "label_en": "Invention Patent",
+      "subtext_es": "OEPM • Transferencia Tecnológica",
+      "subtext_eu": "OEPM • Transferentzia Teknologikoa",
+      "subtext_en": "OEPM • Technology Transfer",
+      "label": "Patente de Invención",
+      "subtext": "OEPM • Transferencia Tecnológica"
     }
   ]
 }

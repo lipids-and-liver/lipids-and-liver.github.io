@@ -1,0 +1,291 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import PatentCard from '../cards/PatentCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const allPatents = await getLocalizedCollection('patents', lang);
+allPatents.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<Layout currentPage="patents" lang={lang} title={`${t.patents_page_title} | Lipids & Liver`}>
+  <!-- Contextual Sub-bar -->
+  <div class="nav-sub-bar">
+    <div class="container nav-sub-container">
+      <div class="nav-sub-context">
+        <span class="nav-sub-badge">
+          <i class="fas fa-certificate"></i> {t.patents_title}
+        </span>
+      </div>
+      <div class="nav-sub-actions">
+        <a href={getLocalizedPath('/', lang)} class="btn-inst-outline-light">
+          <i class="fas fa-home"></i> {t.nav_home}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <section class="catalog-header-section">
+    <div class="container">
+      <div class="catalog-header-content">
+        <span class="catalog-badge">
+          <i class="fas fa-microchip"></i> {t.nav_group_transfer || 'Servicios & Transferencia'}
+        </span>
+        <h1 class="catalog-title">{t.patents_page_title}</h1>
+        <p class="catalog-subtitle">{t.patents_page_sub}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="page-section" style="padding-top: 2rem;">
+    <div class="container">
+      <!-- Transfer Impact Highlights Grid -->
+      <div class="transfer-highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="highlight-text">
+            <span class="highlight-num">1</span>
+            <span class="highlight-label">Patente Concedida (OEPM)</span>
+          </div>
+        </div>
+
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <div class="highlight-text">
+            <span class="highlight-num">2</span>
+            <span class="highlight-label">Investigadores Cotitulares</span>
+          </div>
+        </div>
+
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fas fa-vial"></i>
+          </div>
+          <div class="highlight-text">
+            <span class="highlight-num">Kit Dx</span>
+            <span class="highlight-label">Lipidómica Traslacional</span>
+          </div>
+        </div>
+
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="highlight-text">
+            <span class="highlight-num">UPV/EHU</span>
+            <span class="highlight-label">Titularidad Institucional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Title -->
+      <div class="section-header-inst" style="margin-top: 2.5rem; margin-bottom: 1.5rem;">
+        <div>
+          <h2 class="section-title-inst">{t.patents_title}</h2>
+          <span class="section-subtitle-inst">Registros oficiales en la Oficina Española de Patentes y Marcas (OEPM)</span>
+        </div>
+      </div>
+
+      <!-- Patents Grid / List -->
+      <div class="patents-list-container">
+        {allPatents.map(patent => (
+          <PatentCard patent={patent} lang={lang} />
+        ))}
+      </div>
+
+      <!-- Transfer & Clinical Value Editorial Block -->
+      <div class="transfer-editorial-card">
+        <div class="editorial-icon-box">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="editorial-content">
+          <h3 class="editorial-title">Transferencia Tecnológica y Traslación Clínica</h3>
+          <p class="editorial-desc">
+            En el Grupo <strong>Lipids &amp; Liver</strong> entendemos la investigación científica como un motor de innovación capaz de aportar soluciones tangibles a la sociedad y al sistema de salud. A través de la plataforma de lipidómica avanzada y la colaboración interdepartamental en la <strong>UPV/EHU</strong> y el <strong>IIS Biocruces Bizkaia</strong>, transformamos el conocimiento biológico fundamental sobre el metabolismo lipídico en métodos patentados de diagnóstico precoz y biomarcadores traslacionales.
+          </p>
+          <div class="editorial-badges">
+            <span class="ed-tag"><i class="fas fa-check"></i> Protección de la Propiedad Industrial</span>
+            <span class="ed-tag"><i class="fas fa-check"></i> Colaboración Multidisciplinar</span>
+            <span class="ed-tag"><i class="fas fa-check"></i> Desarrollo de Kits Diagnósticos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .transfer-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .highlight-item {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-md, 8px);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .highlight-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--logo-green, #689F38);
+  }
+
+  .highlight-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(104, 159, 56, 0.12);
+    color: var(--logo-green, #689F38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  .highlight-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .highlight-num {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--ehu-navy, #002B49);
+    line-height: 1.1;
+  }
+
+  :global([data-theme="dark"]) .highlight-num {
+    color: #f8fafc;
+  }
+
+  .highlight-label {
+    font-size: 0.82rem;
+    color: var(--text-muted, #64748b);
+    font-weight: 500;
+    margin-top: 0.2rem;
+  }
+
+  .patents-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .transfer-editorial-card {
+    background: linear-gradient(135deg, rgba(0, 43, 73, 0.04) 0%, rgba(104, 159, 56, 0.06) 100%);
+    border: 1px solid var(--border-color, #cbd5e1);
+    border-left: 4px solid var(--logo-green, #689F38);
+    border-radius: var(--radius-lg, 12px);
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+  }
+
+  :global([data-theme="dark"]) .transfer-editorial-card {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: #334155;
+    border-left-color: var(--logo-green, #689F38);
+  }
+
+  .editorial-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--logo-green, #689F38);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(104, 159, 56, 0.3);
+  }
+
+  .editorial-content {
+    flex-grow: 1;
+  }
+
+  .editorial-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ehu-navy, #002B49);
+    margin-bottom: 0.65rem;
+  }
+
+  :global([data-theme="dark"]) .editorial-title {
+    color: #f8fafc;
+  }
+
+  .editorial-desc {
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: var(--text-secondary, #334155);
+    margin: 0 0 1.25rem 0;
+  }
+
+  :global([data-theme="dark"]) .editorial-desc {
+    color: #cbd5e1;
+  }
+
+  .editorial-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .ed-tag {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-color, #cbd5e1);
+    color: var(--text-primary, #0f172a);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  :global([data-theme="dark"]) .ed-tag {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .ed-tag i {
+    color: var(--logo-green, #689F38);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .transfer-editorial-card {
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+  }
+</style>

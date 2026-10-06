@@ -77,7 +77,7 @@ export function getLocalizedPath(path: string, lang: Locale = DEFAULT_LOCALE): s
 
 export type LocalizedItem<T> = T & { slug: string; locale: Locale };
 
-export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(
+export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents'>(
   collectionName: C,
   lang: Locale = DEFAULT_LOCALE
 ): Promise<Array<CollectionEntry<C> & { slug: string; locale: Locale }>> {
@@ -127,7 +127,7 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
   return result;
 }
 
-export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(
+export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents'>(
   collectionName: C,
   slug: string,
   lang: Locale = DEFAULT_LOCALE
