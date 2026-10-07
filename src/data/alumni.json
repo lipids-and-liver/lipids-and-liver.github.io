@@ -4,19 +4,18 @@
       "id": "begona-ochoa",
       "name": "Dra. Begoña Ochoa Olascoaga",
       "period": "2007 – 2019",
-      "labRole": "Cofundadora Histórica y Catedrática de Universidad",
+      "labRole": "Catedrática de Universidad",
       "role": "Catedrática Emérita de Bioquímica y Biología Molecular",
       "currentRole": "Catedrática Emérita de Bioquímica y Biología Molecular",
       "currentAffiliation": "Universidad del País Vasco (UPV/EHU)",
       "location": "Leioa, Bizkaia, España",
       "category": "emerita",
-      "categoryLabel": "Cofundadora & Cátedra Emérita",
-      "isFounder": true,
+      "categoryLabel": "Cátedra Emérita",
       "thesesSupervised": [29, 31, 32, 33, 34, 35],
       "patent": "P201831028 (OEPM)",
-      "description": "Impulsora y cofundadora de las líneas pioneras de investigación sobre metabolismo lipídico y fisiología hepática en la UPV/EHU, dirigiendo más de 6 tesis doctorales en el grupo y cotitular de la patente de biomarcadores lipídicos.",
+      "description": "Catedrática de Bioquímica y Biología Molecular e investigadora en metabolismo lipídico y fisiología hepática en la UPV/EHU, dirigiendo más de 6 tesis doctorales en el grupo y cotitular de la patente de biomarcadores lipídicos.",
       "ehuUrl": "https://ekoizpen-zientifikoa.ehu.eus/investigadores/1028609/detalle",
-      "icon": "fas fa-award"
+      "icon": "fas fa-university"
     },
     {
       "id": "diego-saenz",

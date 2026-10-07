@@ -14,11 +14,9 @@ const t = getTranslations(lang);
 const rawAlumni = (alumniData as any).alumni || alumniData;
 const alumniList: any[] = Array.isArray(rawAlumni) ? rawAlumni : [];
 
-const founder = alumniList.find((a: any) => a.isFounder);
-const standardAlumni = alumniList.filter((a: any) => !a.isFounder);
-
 const academiaCount = alumniList.filter((a: any) => a.category === 'academia').length;
 const industryCount = alumniList.filter((a: any) => a.category === 'industry').length;
+const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').length;
 ---
 
 <Layout currentPage="alumni" lang={lang} title={`${t.alumni_page_title || 'Antiguos Miembros'} | Lipids & Liver`}>
@@ -62,7 +60,7 @@ const industryCount = alumniList.filter((a: any) => a.category === 'industry').l
             <i class="fas fa-industry"></i> Industria & Biotecnología <span class="segmented-count">{industryCount}</span>
           </button>
           <button class="segmented-btn" data-filter="emerita">
-            <i class="fas fa-crown"></i> Cátedra Emérita <span class="segmented-count">1</span>
+            <i class="fas fa-university"></i> Cátedra Emérita <span class="segmented-count">{emeritaCount}</span>
           </button>
         </div>
       </div>
@@ -84,42 +82,6 @@ const industryCount = alumniList.filter((a: any) => a.category === 'industry').l
           </p>
         </div>
       </div>
-
-      <!-- Honorary Card: Dra. Begoña Ochoa Olascoaga -->
-      {founder && (
-        <div class="alumni-founder-card" style="background: linear-gradient(135deg, #002B49 0%, #1E3A5F 100%); color: #ffffff; border-radius: 12px; padding: 2.25rem; margin-bottom: 3rem; box-shadow: 0 10px 25px -5px rgba(0, 43, 73, 0.2); position: relative; overflow: hidden; border-left: 6px solid var(--logo-green);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem; position:relative; z-index:2;">
-            <div style="flex:1; min-width:300px;">
-              <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); padding:4px 12px; border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:1rem; color:#8AC63F;">
-                <i class="fas fa-crown"></i> Reconocimiento Honorífico e Histórico
-              </div>
-              <h2 style="font-size:1.85rem; font-weight:800; color:#ffffff; margin:0 0 0.5rem 0;">{founder.name}</h2>
-              <p style="color:#93c5fd; font-size:1.05rem; font-weight:600; margin-bottom:0.75rem;">
-                {founder.role} • Grupo Lipids & Liver ({founder.period})
-              </p>
-              <p style="color:#e2e8f0; font-size:0.95rem; line-height:1.65; margin-bottom:1.5rem; max-width:850px;">
-                {founder.description}
-              </p>
-              <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
-                <span style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); padding:6px 14px; border-radius:6px; font-size:0.85rem; color:#f1f5f9;">
-                  <i class="fas fa-graduation-cap" style="color:#8AC63F; margin-right:6px;"></i> 6+ Tesis Doctorales Dirigidas
-                </span>
-                <span style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); padding:6px 14px; border-radius:6px; font-size:0.85rem; color:#f1f5f9;">
-                  <i class="fas fa-certificate" style="color:#8AC63F; margin-right:6px;"></i> Cotitular Patente P201831028 (OEPM)
-                </span>
-                {founder.ehuUrl && (
-                  <a href={founder.ehuUrl} target="_blank" rel="noopener noreferrer" class="btn-inst-primary" style="padding:7px 18px; font-size:0.85rem; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-                    <i class="fas fa-external-link-alt"></i> Perfil Producción Científica UPV/EHU
-                  </a>
-                )}
-              </div>
-            </div>
-            <div style="font-size:5rem; color:rgba(255,255,255,0.1); line-height:1; align-self:center;">
-              <i class="fas fa-award"></i>
-            </div>
-          </div>
-        </div>
-      )}
 
       <!-- Career Impact Highlight -->
       <div class="about-card" style="padding:2rem; margin-bottom:3rem; background:linear-gradient(135deg, rgba(0, 43, 73, 0.04) 0%, rgba(104, 159, 56, 0.08) 100%); border-left: 4px solid var(--logo-green);">
