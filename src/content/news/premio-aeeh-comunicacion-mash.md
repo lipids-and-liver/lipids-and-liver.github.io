@@ -2,7 +2,7 @@
 id: premio-aeeh-comunicacion-mash
 title: "Premio a la mejor comunicación básica en el Congreso Anual de la AEEH"
 date: "2026-02-20"
-category: "Premios"
+category: "premios"
 categoryBadge: "Premio Nacional"
 summary: "El estudio del grupo Lipids & Liver sobre la disfunción mitocondrial y lipotoxicidad en MASH recibe el máximo galardón en investigación básica de la Asociación Española para el Estudio del Hígado."
 image: /assets/images/news/aeeh-premio.jpg

@@ -46,6 +46,11 @@
 }
 
 /* Base Resets */
+/* El atributo hidden siempre oculta, aunque la clase del elemento defina display (filtros y paginación) */
+[hidden] {
+  display: none !important;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -6296,4 +6301,14 @@ a.cv-contact-item:hover i {
   .thesis-row {
     padding: 8px 4px;
   }
+}
+
+/* Paginación del listado de noticias */
+.news-pagination {
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+#news-grid {
+  scroll-margin-top: 200px;
 }

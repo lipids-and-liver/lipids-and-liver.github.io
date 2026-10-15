@@ -148,18 +148,30 @@ const projects = defineCollection({
   })
 });
 
+// Categorías de noticias (clave estable; la etiqueta se traduce con news_cat_<clave>).
+// Textos antiguos o desconocidos se normalizan; lo que no encaja va a "otros".
+const NEWS_CATEGORIES = ['divulgacion', 'congresos', 'publicaciones', 'premios', 'institucional', 'tesis', 'otros'] as const;
+const NEWS_CATEGORY_ALIASES: Record<string, (typeof NEWS_CATEGORIES)[number]> = { acreditacion: 'institucional' };
+const normalizeNewsCategory = (val: string) => {
+  const key = val.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+  if ((NEWS_CATEGORIES as readonly string[]).includes(key)) return key as (typeof NEWS_CATEGORIES)[number];
+  return NEWS_CATEGORY_ALIASES[key] ?? 'otros';
+};
+
 const news = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/news" }),
   schema: z.object({
     id: z.string().optional(),
     title: z.string().default('Noticia'),
     date: z.union([z.string(), z.date()]).transform(val => val instanceof Date ? val.toISOString().split('T')[0] : String(val)),
-    category: z.string().default('Novedades'),
+    category: z.string().default('otros').transform(normalizeNewsCategory),
     categoryBadge: z.string().nullish(),
     summary: z.string().default(''),
     image: z.string().nullish(),
     author: z.string().nullish(),
     link: z.string().nullish(),
+    // 'year' cuando solo se conoce el año (p. ej. noticias antiguas basadas en registros)
+    datePrecision: z.enum(['day', 'year']).default('day'),
     featured: z.boolean().nullish().transform(val => Boolean(val)),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
   })

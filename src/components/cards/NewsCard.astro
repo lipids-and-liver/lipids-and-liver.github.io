@@ -1,7 +1,7 @@
 ---
 import ContentLangNotice from '../ContentLangNotice.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getTranslations, getLocalizedPath, getItemSlug, getItemLang, DEFAULT_LOCALE, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, getItemSlug, getItemLang, DEFAULT_LOCALE, type Locale, formatNewsDate } from '../../utils/i18n';
 
 interface Props {
   article: CollectionEntry<'news'> & { locale?: Locale };
@@ -19,18 +19,9 @@ const t = getTranslations(lang);
 const articleLang = article.locale ?? getItemLang(article);
 const contentLang = articleLang !== lang ? articleLang : undefined;
 
-// Format date nicely
-let formattedDate = date;
-try {
-  const d = new Date(date);
-  if (!isNaN(d.getTime())) {
-    formattedDate = d.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'eu' ? 'eu-ES' : 'es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
-} catch (e) {}
+const formattedDate = formatNewsDate(date, article.data.datePrecision, lang);
+// Etiqueta: la propia de la noticia o, si no tiene, la categoría traducida
+const categoryLabel = categoryBadge || (t as Record<string, string>)[`news_cat_${category}`] || category;
 
 const articleUrl = getLocalizedPath(`/noticias/${slug}`, lang);
 const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https://') ? image : (image.startsWith('/') ? image : `/${image}`)) : null;
@@ -47,7 +38,7 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
       <div class="news-compact-top-block">
         <div class="news-compact-meta">
           <span class="news-category-badge">
-            <i class="fas fa-bookmark"></i> {categoryBadge || category}
+            <i class="fas fa-bookmark"></i> {categoryLabel}
           </span>
           <ContentLangNotice contentLang={articleLang} lang={lang} />
           <time class="news-date" datetime={date}>
@@ -88,7 +79,7 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
     <div class="news-card-content">
       <div class="news-card-top">
         <span class="news-category-badge">
-          <i class="fas fa-bookmark"></i> {categoryBadge || category}
+          <i class="fas fa-bookmark"></i> {categoryLabel}
         </span>
         <ContentLangNotice contentLang={articleLang} lang={lang} />
         <time class="news-date" datetime={date}>

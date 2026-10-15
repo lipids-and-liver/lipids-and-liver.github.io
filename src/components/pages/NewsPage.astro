@@ -13,7 +13,13 @@ const t = getTranslations(lang);
 const allNews = await getLocalizedCollection('news', lang);
 allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-const categories = Array.from(new Set(allNews.map(n => n.data.category)));
+// Categorías en orden fijo (traducidas); solo las que tienen noticias. "Otros" siempre al final.
+const CATEGORY_ORDER = ['publicaciones', 'tesis', 'congresos', 'premios', 'divulgacion', 'institucional', 'otros'];
+const categories = CATEGORY_ORDER
+  .map(key => ({ key, label: (t as Record<string, string>)[`news_cat_${key}`] || key, count: allNews.filter(n => n.data.category === key).length }))
+  .filter(c => c.count > 0);
+
+const PAGE_SIZE = 9;
 ---
 
 <Layout currentPage="news" lang={lang} title={`${t.news_page_title} | Lipids & Liver`}>
@@ -50,14 +56,11 @@ const categories = Array.from(new Set(allNews.map(n => n.data.category)));
           <button class="segmented-btn active" data-category="ALL">
             <i class="fas fa-layer-group"></i> {t.team_all || 'Todas'} <span class="segmented-count">{allNews.length}</span>
           </button>
-          {categories.map(cat => {
-            const count = allNews.filter(n => n.data.category === cat).length;
-            return (
-              <button class="segmented-btn" data-category={cat}>
-                {cat} <span class="segmented-count">{count}</span>
-              </button>
-            );
-          })}
+          {categories.map(cat => (
+            <button class="segmented-btn" data-category={cat.key}>
+              {cat.label} <span class="segmented-count">{cat.count}</span>
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -66,38 +69,76 @@ const categories = Array.from(new Set(allNews.map(n => n.data.category)));
   <!-- News List Section -->
   <section class="page-section">
     <div class="container">
-      <div class="news-grid-inst" id="news-grid">
-        {allNews.map(article => (
-          <div class="news-item" data-category={article.data.category}>
+      <div class="news-grid-inst" id="news-grid" data-page-size={PAGE_SIZE}>
+        {allNews.map((article, i) => (
+          <div class="news-item" data-category={article.data.category} hidden={i >= PAGE_SIZE}>
             <NewsCard article={article} lang={lang} />
           </div>
         ))}
       </div>
+
+      <!-- Paginación (mismos estilos que la tabla de proyectos) -->
+      <nav class="table-pagination-controls news-pagination" id="news-pagination" aria-label={t.news_title} hidden={allNews.length <= PAGE_SIZE}>
+        <button type="button" class="pagination-nav-btn" id="news-page-prev" aria-label={t.pagination_prev} disabled>
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <div class="pagination-page-numbers" id="news-page-numbers"></div>
+        <button type="button" class="pagination-nav-btn" id="news-page-next" aria-label={t.pagination_next}>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </nav>
     </div>
   </section>
 </Layout>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('news-grid');
     const buttons = document.querySelectorAll('#news-category-filters .segmented-btn');
-    const items = document.querySelectorAll('#news-grid .news-item');
+    const items = Array.from(document.querySelectorAll('#news-grid .news-item'));
+    const nav = document.getElementById('news-pagination');
+    const numbers = document.getElementById('news-page-numbers');
+    const prev = document.getElementById('news-page-prev');
+    const next = document.getElementById('news-page-next');
+    const pageSize = Number(grid.dataset.pageSize) || 9;
+    let category = 'ALL';
+    let page = 1;
 
+    const render = (scroll) => {
+      const matching = items.filter(el => category === 'ALL' || el.dataset.category === category);
+      const pages = Math.max(1, Math.ceil(matching.length / pageSize));
+      page = Math.min(page, pages);
+      items.forEach(el => { el.hidden = true; });
+      matching.slice((page - 1) * pageSize, page * pageSize).forEach(el => { el.hidden = false; });
+
+      nav.hidden = pages <= 1;
+      prev.disabled = page === 1;
+      next.disabled = page === pages;
+      numbers.innerHTML = '';
+      for (let p = 1; p <= pages; p++) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'page-num-btn' + (p === page ? ' active' : '');
+        b.textContent = String(p);
+        if (p === page) b.setAttribute('aria-current', 'page');
+        b.addEventListener('click', () => { page = p; render(true); });
+        numbers.appendChild(b);
+      }
+      if (scroll) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    prev.addEventListener('click', () => { page -= 1; render(true); });
+    next.addEventListener('click', () => { page += 1; render(true); });
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         buttons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const cat = btn.getAttribute('data-category');
-
-        items.forEach(item => {
-          const itemCat = item.getAttribute('data-category');
-          if (cat === 'ALL' || itemCat === cat) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        category = btn.getAttribute('data-category');
+        page = 1;
+        render(false);
       });
     });
+
+    render(false);
   });
 </script>

@@ -521,7 +521,8 @@ collections:
       - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: easl-congress-milan" }
       - { label: "Titular de la Noticia", name: "title", widget: "string" }
       - { label: "Fecha de Publicación", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD" }
-      - { label: "Categoría", name: "category", widget: "select", options: ["Congresos", "Publicaciones", "Acreditación", "Tesis", "Divulgación", "Premios"] }
+      - { label: "Categoría", name: "category", widget: "select", default: "otros", options: [{ label: "Divulgación", value: "divulgacion" }, { label: "Congresos", value: "congresos" }, { label: "Publicaciones", value: "publicaciones" }, { label: "Premios", value: "premios" }, { label: "Institucional (acreditaciones, convenios…)", value: "institucional" }, { label: "Tesis", value: "tesis" }, { label: "Otros (cuando no encaja en las anteriores)", value: "otros" }] }
+      - { label: "Precisión de la fecha", name: "datePrecision", widget: "select", default: "day", required: false, options: [{ label: "Día exacto", value: "day" }, { label: "Solo el año", value: "year" }], hint: "Usa «Solo el año» si no se conoce el día (se mostrará solo el año)" }
       - { label: "Insignia de Categoría", name: "categoryBadge", widget: "string", required: false }
       - { label: "Resumen Breve", name: "summary", widget: "text" }
       - { label: "Imagen Destacada", name: "image", widget: "image", required: false }

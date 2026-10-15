@@ -2,7 +2,7 @@
 id: zientzia-astea-talleres
 title: Talleres de divulgación sobre salud metabólica e hígado en Zientzia Astea UPV/EHU
 date: 2023-11-10
-category: Divulgación
+category: "divulgacion"
 categoryBadge: Sociedad
 summary: El equipo participa activamente en la Semana de la Ciencia de Bizkaia acercando la investigación metabólica y los hábitos cardiosaludables a escolares y familias.
 image: /assets/images/news/zientzia-astea.jpg

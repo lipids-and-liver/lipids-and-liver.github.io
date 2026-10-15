@@ -2,7 +2,7 @@
 id: incorporacion-tecnologia-maldi-msi-lipidomica
 title: "Nueva tecnología de lipidómica espacial MALDI-MSI de alta resolución en la UPV/EHU"
 date: "2026-04-15"
-category: "Publicaciones"
+category: "publicaciones"
 categoryBadge: "Infraestructuras SGIker"
 summary: "La Unidad de Lipidómica de SGIker y el laboratorio Lipids & Liver ponen a disposición de la comunidad investigadora instrumentación de vanguardia para mapear especies lipídicas a resolución tisular."
 image: /assets/images/news/maldi-mass-spec.jpg

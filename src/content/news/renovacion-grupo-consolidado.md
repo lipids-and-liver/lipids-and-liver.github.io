@@ -2,7 +2,7 @@
 id: renovacion-grupo-consolidado
 title: "El Gobierno Vasco renueva la acreditación de Grupo Consolidado Tipo A (IT1560-22)"
 date: "2023-01-15"
-category: "Acreditación"
+category: "institucional"
 categoryBadge: "Institucional"
 summary: "El Departamento de Educación del Gobierno Vasco otorga la máxima calificación de excelencia investigadora al grupo Lipids & Liver para el cuatrienio 2022-2025."
 author: "Secretaría Científica"

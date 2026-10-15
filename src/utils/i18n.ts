@@ -92,6 +92,16 @@ export function getLocalizedPath(path: string, lang: Locale = DEFAULT_LOCALE): s
 
 export type LocalizedItem<T> = T & { slug: string; locale: Locale };
 
+// Fecha de una noticia según su precisión: "25 de septiembre de 2026" o solo "2019"
+export function formatNewsDate(date: string, precision: 'day' | 'year' = 'day', lang: Locale = DEFAULT_LOCALE): string {
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return date;
+  if (precision === 'year') return String(d.getUTCFullYear());
+  return d.toLocaleDateString(lang === 'en' ? 'en-GB' : lang === 'eu' ? 'eu-ES' : 'es-ES', {
+    year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'
+  });
+}
+
 // Primer idioma disponible según FALLBACK_LOCALES[lang]
 function pickLocale(available: Map<Locale, unknown>, lang: Locale): Locale | undefined {
   return FALLBACK_LOCALES[lang].find(l => available.has(l));

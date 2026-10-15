@@ -2,7 +2,7 @@
 id: paper-nature-comms
 title: "Publicación en Nature Communications sobre la reprogramación metabólica en hepatocarcinoma"
 date: "2024-04-18"
-category: "Publicaciones"
+category: "publicaciones"
 categoryBadge: "Investigación"
 summary: "El grupo Lipids & Liver describe nuevos mecanismos moleculares que vinculan la desregulación de lípidos bioactivos con la agresividad tumoral y la resistencia a fármacos en cáncer hepático."
 author: "Equipo Lipids & Liver"

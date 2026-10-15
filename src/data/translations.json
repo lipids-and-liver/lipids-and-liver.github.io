@@ -483,7 +483,14 @@
     "theses_line_all": "Todas",
     "theses_line_none": "Otras",
     "theses_no_results": "No hay tesis de esta línea.",
-    "theses_dir_short": "Dir.:"
+    "theses_dir_short": "Dir.:",
+    "news_cat_divulgacion": "Divulgación",
+    "news_cat_congresos": "Congresos",
+    "news_cat_publicaciones": "Publicaciones",
+    "news_cat_premios": "Premios",
+    "news_cat_institucional": "Institucional",
+    "news_cat_tesis": "Tesis",
+    "news_cat_otros": "Otros"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -969,7 +976,14 @@
     "theses_line_all": "Guztiak",
     "theses_line_none": "Besteak",
     "theses_no_results": "Ez dago lerro honetako tesirik.",
-    "theses_dir_short": "Zuz.:"
+    "theses_dir_short": "Zuz.:",
+    "news_cat_divulgacion": "Dibulgazioa",
+    "news_cat_congresos": "Kongresuak",
+    "news_cat_publicaciones": "Argitalpenak",
+    "news_cat_premios": "Sariak",
+    "news_cat_institucional": "Instituzionala",
+    "news_cat_tesis": "Tesiak",
+    "news_cat_otros": "Besteak"
   },
   "en": {
     "nav_home": "Home",
@@ -1455,6 +1469,13 @@
     "theses_line_all": "All",
     "theses_line_none": "Other",
     "theses_no_results": "No theses in this research line.",
-    "theses_dir_short": "Supervisors:"
+    "theses_dir_short": "Supervisors:",
+    "news_cat_divulgacion": "Outreach",
+    "news_cat_congresos": "Conferences",
+    "news_cat_publicaciones": "Publications",
+    "news_cat_premios": "Awards",
+    "news_cat_institucional": "Institutional",
+    "news_cat_tesis": "Theses",
+    "news_cat_otros": "Other"
   }
 }

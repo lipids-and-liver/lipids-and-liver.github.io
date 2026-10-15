@@ -2,7 +2,7 @@
 id: jornada-cribado-masld-bilbao
 title: Campaña de concienciación y cribado temprano del hígado graso metabólico (MASLD)
 date: 2026-06-12
-category: Divulgación
+category: "divulgacion"
 categoryBadge: Salud Pública
 summary: Con motivo del Día Internacional del Hígado Graso, investigadoras del grupo organizan una jornada comunitaria en Bilbao sobre prevención metabólica, estilo de vida y biomarcadores tempranos.
 image: /assets/images/news/masld-screening.jpg

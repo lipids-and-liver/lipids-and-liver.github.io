@@ -2,7 +2,7 @@
 id: tesis-doctoral-mencion-internacional
 title: "Defensa de Tesis Doctoral con Mención Internacional y calificación Sobresaliente Cum Laude"
 date: "2024-02-23"
-category: "Tesis"
+category: "tesis"
 categoryBadge: "Formación"
 summary: "Defensa exitosa de la tesis doctoral centrada en dianas moleculares mitocondriales en la progresión de la esteatohepatitis no alcohólica (MASH), obteniendo la máxima calificación académica."
 author: "Comisión Académica de Doctorado"

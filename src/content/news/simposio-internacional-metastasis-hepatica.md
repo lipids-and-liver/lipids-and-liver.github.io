@@ -2,7 +2,7 @@
 id: simposio-internacional-metastasis-hepatica
 title: "Simposio internacional sobre dianas lipídicas en la metástasis hepática del cáncer colorrectal"
 date: "2025-11-20"
-category: "Congresos"
+category: "congresos"
 categoryBadge: "Simposio Internacional"
 summary: "Investigadores básicos y oncólogos traslacionales debaten en Biocruces Bizkaia sobre las vulnerabilidades metabólicas de las células tumorales que colonizan el parénquima hepático."
 image: /assets/images/news/simposio-oncologia.jpg
