@@ -15,9 +15,19 @@ const t = getTranslations(lang);
 const rawAlumni = (alumniData as any).alumni || alumniData;
 const alumniList: any[] = Array.isArray(rawAlumni) ? rawAlumni : [];
 
-const academiaCount = alumniList.filter((a: any) => a.category === 'academia').length;
-const industryCount = alumniList.filter((a: any) => a.category === 'industry').length;
-const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').length;
+// Egresados (formados en el grupo) y personal jubilado se muestran por separado
+const RETIRED_CATEGORIES = ['emerita'];
+const retiredList = alumniList.filter((a: any) => RETIRED_CATEGORIES.includes(a.category));
+const graduatesList = alumniList.filter((a: any) => !RETIRED_CATEGORIES.includes(a.category));
+
+// Filtros de egresados: solo las categorías que tienen alguien
+const graduateFilters = [
+  { key: 'academia', icon: 'fas fa-university', label: t.alumni_cat_academia },
+  { key: 'industry', icon: 'fas fa-industry', label: t.alumni_cat_industry },
+  { key: 'clinical', icon: 'fas fa-hospital', label: t.alumni_cat_clinical },
+]
+  .map(f => ({ ...f, count: graduatesList.filter((a: any) => a.category === f.key).length }))
+  .filter(f => f.count > 0);
 ---
 
 <Layout currentPage="alumni" lang={lang} title={`${t.alumni_page_title || 'Antiguos Miembros'} | Lipids & Liver`}>
@@ -47,24 +57,6 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
         <h1 class="catalog-title">{t.alumni_page_title || 'Antiguos Miembros'}</h1>
         <p class="catalog-subtitle">{t.alumni_page_sub || 'Investigadores y doctores del Grupo Consolidado Lipids & Liver registrados oficialmente en la Universidad del País Vasco'}</p>
       </div>
-
-      <!-- Segmented Category Filters -->
-      <div class="filter-controls-wrap">
-        <div class="segmented-control-bar" id="alumni-category-filters">
-          <button class="segmented-btn active" data-filter="ALL">
-            <i class="fas fa-layer-group"></i> {t.team_all || 'Todos'} <span class="segmented-count">{alumniList.length}</span>
-          </button>
-          <button class="segmented-btn" data-filter="academia">
-            <i class="fas fa-university"></i> {t.alumni_cat_academia} <span class="segmented-count">{academiaCount}</span>
-          </button>
-          <button class="segmented-btn" data-filter="industry">
-            <i class="fas fa-industry"></i> {t.alumni_cat_industry} <span class="segmented-count">{industryCount}</span>
-          </button>
-          <button class="segmented-btn" data-filter="emerita">
-            <i class="fas fa-university"></i> {t.alumni_cat_emerita} <span class="segmented-count">{emeritaCount}</span>
-          </button>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -81,6 +73,21 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
           <p style="color: #166534; margin: 0; font-size: 0.92rem; line-height: 1.55;">
             <Fragment set:html={t.alumni_registry_desc} />
           </p>
+        </div>
+      </div>
+
+      <!-- Los perfiles (alumni.json) solo existen en español -->
+      <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
+    </div>
+  </section>
+
+  <!-- Alumni: egresados formados en el grupo -->
+  <section class="page-section" id="alumni-graduados">
+    <div class="container">
+      <div class="section-header-inst">
+        <div>
+          <h2 class="section-title-inst"><i class="fas fa-user-graduate"></i> {t.alumni_graduates_title}</h2>
+          <span class="section-subtitle-inst">{t.alumni_graduates_sub}</span>
         </div>
       </div>
 
@@ -101,10 +108,23 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
         </div>
       </div>
 
-      <!-- Los perfiles (alumni.json) solo existen en español -->
-      <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
+      {graduateFilters.length > 1 && (
+        <div class="filter-controls-wrap" style="margin-bottom:2rem;">
+          <div class="segmented-control-bar" id="alumni-category-filters">
+            <button class="segmented-btn active" data-filter="ALL">
+              <i class="fas fa-layer-group"></i> {t.team_all} <span class="segmented-count">{graduatesList.length}</span>
+            </button>
+            {graduateFilters.map(f => (
+              <button class="segmented-btn" data-filter={f.key}>
+                <i class={f.icon}></i> {f.label} <span class="segmented-count">{f.count}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div class="alumni-grid-inst" id="alumni-grid">
-        {alumniList.map((alumni: any) => (
+        {graduatesList.map((alumni: any) => (
           <div class="alumni-item" data-category={alumni.category}>
             <AlumniCard alumni={alumni} lang={lang} />
           </div>
@@ -112,6 +132,27 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
       </div>
     </div>
   </section>
+
+  <!-- Personal jubilado -->
+  {retiredList.length > 0 && (
+    <section class="page-section page-section-alt" id="alumni-jubilados">
+      <div class="container">
+        <div class="section-header-inst">
+          <div>
+            <h2 class="section-title-inst"><i class="fas fa-award"></i> {t.alumni_retired_title}</h2>
+            <span class="section-subtitle-inst">{t.alumni_retired_sub}</span>
+          </div>
+        </div>
+        <div class="alumni-grid-inst">
+          {retiredList.map((alumni: any) => (
+            <div class="alumni-item" data-category={alumni.category}>
+              <AlumniCard alumni={alumni} lang={lang} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>
 
 <script is:inline>

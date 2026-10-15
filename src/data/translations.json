@@ -269,7 +269,7 @@
     "alumni_title": "Antiguos Miembros y Trayectoria",
     "alumni_subtitle": "Puestos de liderazgo científico, asistencial e industrial que ocupan los investigadores y doctores formados en el grupo",
     "alumni_page_title": "Antiguos Miembros",
-    "alumni_page_sub": "Evolución profesional y posiciones actuales de las investigadoras y doctores formados en el grupo Lipids & Liver",
+    "alumni_page_sub": "Doctoras y doctores formados en el grupo (alumni) y personal jubilado que desarrolló su carrera en Lipids & Liver",
     "alumni_current_label": "Puesto Actual:",
     "alumni_thesis_label": "Tesis en Lipids & Liver:",
     "alumni_theses_supervised_label": "Tesis Doctorales Dirigidas:",
@@ -338,7 +338,7 @@
     "content_only_in_en": "Este contenido solo está disponible en inglés.",
     "nav_sub_about": "Perfil e instalaciones del grupo",
     "nav_sub_team": "PDI, postdocs, predocs y técnicos",
-    "nav_sub_alumni": "Trayectoria de investigadores y doctores",
+    "nav_sub_alumni": "Alumni y personal jubilado",
     "nav_sub_collab": "Hospitales, centros y consorcios",
     "nav_sub_lines": "MASH, cáncer hepático, ómicas",
     "nav_sub_projects": "Plan Nacional, Gobierno Vasco, FEDER",
@@ -470,7 +470,11 @@
     "join_fp_cycles_label": "Ciclos:",
     "join_fp_cycles": "Laboratorio Clínico y Biomédico, Anatomía Patológica y Citodiagnóstico, Laboratorio de Análisis y de Control de Calidad, y otros afines de las familias de Sanidad y Química.",
     "join_fp_how_label": "Cómo:",
-    "join_fp_how": "Tu tutor/a de prácticas del centro educativo puede contactar con el grupo para acordar el plan formativo y formalizar el convenio."
+    "join_fp_how": "Tu tutor/a de prácticas del centro educativo puede contactar con el grupo para acordar el plan formativo y formalizar el convenio.",
+    "alumni_graduates_title": "Alumni (egresados)",
+    "alumni_graduates_sub": "Doctoras e investigadores formados en el grupo y su trayectoria actual",
+    "alumni_retired_title": "Personal jubilado",
+    "alumni_retired_sub": "Profesorado e investigadores que desarrollaron su carrera en el grupo y hoy están jubilados o son eméritos"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -742,7 +746,7 @@
     "alumni_title": "Kide Ohiak eta Ibilbidea",
     "alumni_subtitle": "Taldean trebatutako ikertzaile eta doktoreek gaur egun zientzian, osasunean eta industrian dituzten lanpostuak",
     "alumni_page_title": "Kide Ohiak",
-    "alumni_page_sub": "Lipids & Liver taldean trebatutako ikertzaile eta doktoreen bilakaera profesionala eta egungo karguak",
+    "alumni_page_sub": "Taldean prestatutako doktoreak (alumniak) eta Lipids & Liver taldean beren ibilbidea egin zuten erretiratutako langileak",
     "alumni_current_label": "Gaur Egungo Lanpostua:",
     "alumni_thesis_label": "Tesia Lipids & Liver-en:",
     "alumni_theses_supervised_label": "Zuzendutako Doktorego Tesiak:",
@@ -811,7 +815,7 @@
     "content_only_in_en": "Eduki hau ingelesez bakarrik dago eskuragarri.",
     "nav_sub_about": "Taldearen profila eta instalazioak",
     "nav_sub_team": "Irakasle-ikertzaileak, doktoreondokoak, doktoregaiak eta teknikariak",
-    "nav_sub_alumni": "Ikertzaileen eta doktoreen ibilbidea",
+    "nav_sub_alumni": "Alumniak eta erretiratutako langileak",
     "nav_sub_collab": "Ospitaleak, zentroak eta partzuergoak",
     "nav_sub_lines": "MASH, gibeleko minbizia, omikak",
     "nav_sub_projects": "Plan Nazionala, Eusko Jaurlaritza, FEDER",
@@ -943,7 +947,11 @@
     "join_fp_cycles_label": "Zikloak:",
     "join_fp_cycles": "Laborategi Kliniko eta Biomedikoa, Anatomia Patologikoa eta Zitodiagnostikoa, Analisi eta Kalitate Kontroleko Laborategia, eta Osasun eta Kimika familietako antzekoak.",
     "join_fp_how_label": "Nola:",
-    "join_fp_how": "Ikastetxeko praktika-tutoreak taldearekin harremanetan jar daiteke prestakuntza-plana adosteko eta hitzarmena formalizatzeko."
+    "join_fp_how": "Ikastetxeko praktika-tutoreak taldearekin harremanetan jar daiteke prestakuntza-plana adosteko eta hitzarmena formalizatzeko.",
+    "alumni_graduates_title": "Alumniak (graduatuak)",
+    "alumni_graduates_sub": "Taldean prestatutako doktoreak eta ikertzaileak, eta haien egungo ibilbidea",
+    "alumni_retired_title": "Erretiratutako langileak",
+    "alumni_retired_sub": "Taldean beren ibilbidea egin eta gaur egun erretiratuta edo emerituak diren irakasle eta ikertzaileak"
   },
   "en": {
     "nav_home": "Home",
@@ -1215,7 +1223,7 @@
     "alumni_title": "Former Members & Trajectory",
     "alumni_subtitle": "Leadership positions in academia, clinical research, and biotech held by researchers and PhD graduates trained in the group",
     "alumni_page_title": "Former Members",
-    "alumni_page_sub": "Career evolution and current positions of researchers and PhD graduates trained in Lipids & Liver",
+    "alumni_page_sub": "PhD graduates trained in the group (alumni) and retired staff who built their careers at Lipids & Liver",
     "alumni_current_label": "Current Position:",
     "alumni_thesis_label": "PhD Thesis at Lipids & Liver:",
     "alumni_theses_supervised_label": "PhD Theses Supervised:",
@@ -1284,7 +1292,7 @@
     "content_only_in_en": "This content is only available in English.",
     "nav_sub_about": "Group profile and facilities",
     "nav_sub_team": "Faculty, postdocs, PhD students and technicians",
-    "nav_sub_alumni": "Career paths of former researchers and PhDs",
+    "nav_sub_alumni": "Alumni and retired staff",
     "nav_sub_collab": "Hospitals, centres and consortia",
     "nav_sub_lines": "MASH, liver cancer, omics",
     "nav_sub_projects": "Spanish National Plan, Basque Government, ERDF",
@@ -1416,6 +1424,10 @@
     "join_fp_cycles_label": "Programmes:",
     "join_fp_cycles": "Clinical and Biomedical Laboratory, Pathological Anatomy and Cytodiagnosis, Analysis and Quality Control Laboratory, and related programmes in Health and Chemistry.",
     "join_fp_how_label": "How:",
-    "join_fp_how": "Your school placement tutor can contact the group to agree on the training plan and formalise the agreement."
+    "join_fp_how": "Your school placement tutor can contact the group to agree on the training plan and formalise the agreement.",
+    "alumni_graduates_title": "Alumni (graduates)",
+    "alumni_graduates_sub": "PhDs and researchers trained in the group and where they are now",
+    "alumni_retired_title": "Retired Staff",
+    "alumni_retired_sub": "Faculty and researchers who built their careers in the group and are now retired or emeritus"
   }
 }

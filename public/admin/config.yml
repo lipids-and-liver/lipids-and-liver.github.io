@@ -232,7 +232,7 @@ collections:
                   - { label: "Academia & Investigación", value: "academia" }
                   - { label: "Industria & Biotecnología", value: "industry" }
                   - { label: "Investigación Clínica", value: "clinical" }
-                  - { label: "Cofundadora & Emérita", value: "emerita" }
+                  - { label: "Personal jubilado / emérito (sección propia)", value: "emerita" }
               - { label: "Etiqueta de Categoría", name: "categoryLabel", widget: "string" }
               - { label: "¿Es Cofundadora / Honorífico?", name: "isFounder", widget: "boolean", default: false, required: false }
               - { label: "Tesis Dirigidas (Números)", name: "thesesSupervised", widget: "list", required: false, hint: "Números de tesis dirigidas, ej: 29, 31" }
