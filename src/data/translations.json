@@ -454,7 +454,8 @@
     "nav_sub_facilities": "Facultad, María Goyri y Biobizkaia",
     "nav_sub_sciresources": "SGIker y plataformas de Biobizkaia",
     "nav_group_production": "Producción científica",
-    "nav_group_society": "Sociedad"
+    "nav_group_society": "Sociedad",
+    "footer_col_society": "Sociedad y Formación"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -911,7 +912,8 @@
     "nav_sub_facilities": "Fakultatea, María Goyri eta Biobizkaia",
     "nav_sub_sciresources": "SGIker eta Biobizkaiako plataformak",
     "nav_group_production": "Ekoizpen zientifikoa",
-    "nav_group_society": "Gizartea"
+    "nav_group_society": "Gizartea",
+    "footer_col_society": "Gizartea eta Prestakuntza"
   },
   "en": {
     "nav_home": "Home",
@@ -1368,6 +1370,7 @@
     "nav_sub_facilities": "Faculty, María Goyri and Biobizkaia",
     "nav_sub_sciresources": "SGIker and Biobizkaia platforms",
     "nav_group_production": "Scientific Output",
-    "nav_group_society": "Society"
+    "nav_group_society": "Society",
+    "footer_col_society": "Society & Training"
   }
 }

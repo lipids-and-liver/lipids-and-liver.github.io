@@ -3752,37 +3752,9 @@ a.cv-contact-item:hover i {
 .institutional-footer {
   background: var(--ehu-navy-dark);
   color: #94a3b8;
-  padding: 0 0 25px;
+  padding: 50px 0 25px;
+  border-top: 4px solid var(--logo-green);
   font-size: 0.88rem;
-}
-
-/* Franja clara de logos al inicio del pie */
-.footer-logos-strip {
-  background: var(--bg-surface);
-  border-top: 1px solid var(--border-light);
-  border-bottom: 4px solid var(--logo-green);
-  margin-bottom: 45px;
-}
-
-/* Marca + título como en la cabecera; en pantallas estrechas el título pasa debajo */
-.footer-logos-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  column-gap: 36px;
-  row-gap: 12px;
-  padding-top: 1.4rem;
-  padding-bottom: 1.4rem;
-}
-
-.footer-logo-img {
-  height: 72px;
-  width: auto;
-}
-
-.footer-title-box {
-  display: flex;
-  flex-direction: column;
 }
 
 .footer-grid-inst {

@@ -421,18 +421,6 @@ const alternates = isHoldingPage ? [] : [
 
   <!-- Institutional Footer with Both Logos -->
   <footer class="institutional-footer">
-    <!-- Franja clara de logos institucionales en su versión original a color -->
-    <div class="footer-logos-strip">
-      <div class="container footer-logos-row">
-        <img src="/assets/images/logo/marca_ehu_lipids_liver.svg" alt="EHU · Ikerketa taldea · Grupo de investigación · Lipids & Liver" class="footer-logo-img" loading="lazy" />
-        <!-- Mismo título que en la cabecera -->
-        <div class="footer-title-box">
-          <span class="header-title-main">Lipids &amp; Liver</span>
-          <span class="header-title-sub">{t.header_sub}</span>
-        </div>
-      </div>
-    </div>
-
     <div class="container">
       <div class="footer-grid-inst">
         <div>
@@ -463,7 +451,7 @@ const alternates = isHoldingPage ? [] : [
           )}
         </div>
         <div>
-          <h4>{t.nav_group_society} &amp; {t.nav_group_training}</h4>
+          <h4>{t.footer_col_society}</h4>
           <ul class="footer-links-inst">
             <li><a href={getLocalizedPath('/docencia', lang)}>{t.nav_training}</a></li>
             <li><a href={getLocalizedPath('/unete', lang)}>{t.nav_join}</a></li>
