@@ -5696,11 +5696,13 @@ a.cv-contact-item:hover i {
   color: var(--logo-green-hover);
 }
 
+/* Fondo verde claro de la marca: se distingue del pie azul marino y de la franja blanca de logos.
+   Contraste: título azul marino 13:1, texto gris pizarra 9,3:1 */
 .home-cta-band {
-  background: linear-gradient(135deg, var(--ehu-navy-dark) 0%, var(--ehu-navy) 100%);
-  color: #ffffff;
+  background: #eef5e6;
+  color: var(--ehu-navy);
   padding: 3.5rem 0;
-  border-top: 4px solid var(--logo-green);
+  border-top: 1px solid rgba(104, 159, 56, 0.35);
 }
 
 .home-cta-inner {
@@ -5714,12 +5716,12 @@ a.cv-contact-item:hover i {
 .home-cta-title {
   font-size: 1.6rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--ehu-navy);
   margin: 0 0 0.5rem;
 }
 
 .home-cta-text {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   max-width: 620px;
   line-height: 1.7;
   margin: 0;
@@ -5729,6 +5731,17 @@ a.cv-contact-item:hover i {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+/* El botón secundario está pensado para fondos oscuros: aquí va en contorno azul marino */
+.home-cta-band .btn-inst-secondary {
+  color: var(--ehu-navy);
+  border-color: var(--ehu-navy);
+}
+
+.home-cta-band .btn-inst-secondary:hover {
+  background: var(--ehu-navy);
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
