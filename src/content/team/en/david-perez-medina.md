@@ -11,6 +11,8 @@ office: Facultad de Medicina y Enfermería, Leioa
 orcid: 000-0002-2234-3345
 x: ''
 linkedin: ''
+github: ''
+quote: []
 order: 99
 cv:
   title: Tecnico Especialista Laboratorio
