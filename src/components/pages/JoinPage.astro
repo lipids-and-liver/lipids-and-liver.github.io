@@ -80,36 +80,19 @@ const t = getTranslations(lang);
       </div>
 
       <div class="research-grid-inst" style="margin-bottom:3.5rem;">
-        <!-- TFG -->
+        <!-- Postdoc -->
         <div class="research-card-inst">
           <div class="research-card-content">
             <div class="research-card-header">
-              <span class="research-badge" style="background:#e0f2fe; color:#0369a1;"><i class="fas fa-book-reader"></i> {t.join_tfg_badge}</span>
-              <h3 class="research-card-title">{t.join_tfg_title}</h3>
+              <span class="research-badge" style="background:#f3e8ff; color:#6b21a8;"><i class="fas fa-microscope"></i> {t.join_postdoc_badge}</span>
+              <h3 class="research-card-title">{t.join_postdoc_title}</h3>
             </div>
             <p class="research-card-desc">
-              {t.join_tfg_desc}
+              {t.join_postdoc_desc}
             </p>
             <div style="margin-top:1.25rem;">
               <span style="font-size:0.85rem; font-weight:700; color:var(--ehu-navy);">{t.join_profile_label}</span>
-              <span style="font-size:0.85rem; color:var(--text-secondary);"> {t.join_tfg_profile}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TFM -->
-        <div class="research-card-inst">
-          <div class="research-card-content">
-            <div class="research-card-header">
-              <span class="research-badge" style="background:#fef3c7; color:#92400e;"><i class="fas fa-user-graduate"></i> {t.join_tfm_badge}</span>
-              <h3 class="research-card-title">{t.join_tfm_title}</h3>
-            </div>
-            <p class="research-card-desc">
-              {t.join_tfm_desc}
-            </p>
-            <div style="margin-top:1.25rem;">
-              <span style="font-size:0.85rem; font-weight:700; color:var(--ehu-navy);">{t.join_profile_label}</span>
-              <span style="font-size:0.85rem; color:var(--text-secondary);"> {t.join_tfm_profile}</span>
+              <span style="font-size:0.85rem; color:var(--text-secondary);"> {t.join_postdoc_profile}</span>
             </div>
           </div>
         </div>
@@ -131,19 +114,61 @@ const t = getTranslations(lang);
           </div>
         </div>
 
-        <!-- Postdoc -->
+        <!-- TFM -->
         <div class="research-card-inst">
           <div class="research-card-content">
             <div class="research-card-header">
-              <span class="research-badge" style="background:#f3e8ff; color:#6b21a8;"><i class="fas fa-microscope"></i> {t.join_postdoc_badge}</span>
-              <h3 class="research-card-title">{t.join_postdoc_title}</h3>
+              <span class="research-badge" style="background:#fef3c7; color:#92400e;"><i class="fas fa-user-graduate"></i> {t.join_tfm_badge}</span>
+              <h3 class="research-card-title">{t.join_tfm_title}</h3>
             </div>
             <p class="research-card-desc">
-              {t.join_postdoc_desc}
+              {t.join_tfm_desc}
             </p>
             <div style="margin-top:1.25rem;">
               <span style="font-size:0.85rem; font-weight:700; color:var(--ehu-navy);">{t.join_profile_label}</span>
-              <span style="font-size:0.85rem; color:var(--text-secondary);"> {t.join_postdoc_profile}</span>
+              <span style="font-size:0.85rem; color:var(--text-secondary);"> {t.join_tfm_profile}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TFG -->
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#e0f2fe; color:#0369a1;"><i class="fas fa-book-reader"></i> {t.join_tfg_badge}</span>
+              <h3 class="research-card-title">{t.join_tfg_title}</h3>
+            </div>
+            <p class="research-card-desc">
+              {t.join_tfg_desc}
+            </p>
+            <div style="margin-top:1.25rem;">
+              <span style="font-size:0.85rem; font-weight:700; color:var(--ehu-navy);">{t.join_profile_label}</span>
+              <span style="font-size:0.85rem; color:var(--text-secondary);"> {t.join_tfg_profile}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alumnado interno -->
+        <div class="research-card-inst">
+          <div class="research-card-content">
+            <div class="research-card-header">
+              <span class="research-badge" style="background:#ccfbf1; color:#115e59;"><i class="fas fa-user-plus"></i> {t.join_tfg_badge}</span>
+              <h3 class="research-card-title">{t.join_intern_title}</h3>
+            </div>
+            <p class="research-card-desc">
+              {t.join_intern_desc}
+            </p>
+            <div style="margin-top:1.25rem; font-size:0.85rem; line-height:1.55;">
+              <span style="font-weight:700; color:var(--ehu-navy);">{t.join_intern_credits_label}</span>
+              <span style="color:var(--text-secondary);"> {t.join_intern_credits}</span>
+            </div>
+            <div style="margin-top:0.85rem; font-size:0.85rem; line-height:1.55;">
+              <span style="font-weight:700; color:var(--ehu-navy);">{t.join_intern_funding_label}</span>
+              <ul style="margin:0.4rem 0 0; padding-left:1.1rem; color:var(--text-secondary);">
+                <li style="margin-bottom:0.35rem;"><Fragment set:html={t.join_intern_ikasiker} /></li>
+                <li><Fragment set:html={t.join_intern_aecc} /></li>
+              </ul>
+              <p style="margin:0.6rem 0 0; font-size:0.8rem; color:var(--text-muted); font-style:italic;">{t.join_intern_calls_note}</p>
             </div>
           </div>
         </div>
