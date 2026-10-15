@@ -369,16 +369,16 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 
   <!-- Institutional Footer with Both Logos -->
   <footer class="institutional-footer">
-    <div class="container">
-      <div class="footer-logos-row">
-        <!-- Logos en su versión original a color sobre placa blanca para que se lean sobre el fondo oscuro -->
-        <div class="footer-logos-plate">
-          <img src="/assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="footer-logo-img" loading="lazy" />
-          <span class="footer-logos-divider"></span>
-          <img src="/assets/images/logo/lipid_liver_logo.svg" alt="Lipids & Liver Logo" class="footer-logo-img" loading="lazy" />
-        </div>
+    <!-- Franja clara de logos institucionales en su versión original a color -->
+    <div class="footer-logos-strip">
+      <div class="container footer-logos-row">
+        <img src="/assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="footer-logo-img" loading="lazy" />
+        <span class="footer-logos-divider"></span>
+        <img src="/assets/images/logo/lipid_liver_logo.svg" alt="Lipids & Liver Logo" class="footer-logo-img" loading="lazy" />
       </div>
+    </div>
 
+    <div class="container">
       <div class="footer-grid-inst">
         <div>
           <h4>{t.hero_title}</h4>
