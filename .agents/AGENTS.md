@@ -14,7 +14,7 @@ This repository contains the modernized official web portal for the **Lipids & L
   - `training/`: Official undergraduate, master's and doctoral teaching activities.
   - `templates/`: Blank templates (`_plantilla_tesis.md`, `_plantilla_miembro.md`, `_plantilla_publicacion.md`) for non-technical team members.
 - `src/content.config.ts`: Zod schema validation rules for all Markdown collections.
-- `src/layouts/Layout.astro`: Institutional layout with header, UPV/EHU & Biocruces branding, language switcher, dark/light theme, and footer.
+- `src/layouts/Layout.astro`: Institutional layout with header, UPV/EHU & Biocruces branding, language switcher and footer. Light mode only (decided by the group): do not add a dark theme or theme toggle.
 - `src/pages/`:
   - `index.astro`: Main portal with stats, presentation tabs, research lines, team grid, segmented theses filter, publications, training, and contact form.
   - `tesis/index.astro` & `tesis/[id].astro`: Full PhD theses catalog and individual detail pages with interactive dropdown selector.
@@ -44,7 +44,6 @@ This repository contains the modernized official web portal for the **Lipids & L
   - Secondary Slate Blue: `#1E3A5F`
   - Accent Green: `#689F38` (Lipids & Liver logo green) / `#8AC63F`
   - Neutral Light Background: `#F8FAFC` / `#FFFFFF`
-  - Dark Mode: `#0f172a` / `#1e293b`
 - **Typography**: Clean sans-serif System font stack (`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`).
 - **Style Rules**: Sober, institutional, prestigious university lab aesthetic. High readability, clear hierarchy, structured cards with micro-animations.
 

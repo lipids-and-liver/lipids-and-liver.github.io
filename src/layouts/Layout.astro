@@ -28,7 +28,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 ---
 
 <!DOCTYPE html>
-<html lang={lang} data-theme="light">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,13 +57,8 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
   <!-- Umami Analytics -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3b088faa-e063-478c-8b7e-d4aaec85a1dd"></script>
 
-  <!-- Apply saved theme and dismissed alert before first paint (avoids flash) -->
+  <!-- Apply dismissed alert before first paint (avoids flash) -->
   <script is:inline>
-    try {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-    } catch(e) {}
     try {
       if (sessionStorage.getItem('lipids_demo_alert_dismissed') === '1') {
         document.documentElement.classList.add('demo-alert-hidden');
@@ -137,11 +132,6 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
             <a href={langEuLink} class={`lang-btn ${lang === 'eu' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="eu">EU</a>
             <a href={langEnLink} class={`lang-btn ${lang === 'en' ? 'active' : ''}`} style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;" data-lang="en">EN</a>
           </div>
-
-          <!-- Theme Toggle -->
-          <button class="theme-toggle-btn" id="theme-toggle" title={t.theme_toggle_title} data-light={t.theme_light} data-dark={t.theme_dark}>
-            <i class="fas fa-moon"></i> <span class="theme-toggle-text">{t.theme_dark}</span>
-          </button>
         </div>
       </div>
     </div>
@@ -517,42 +507,10 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
     </div>
   )}
 
-  <!-- Theme Toggle logic -->
+  <!-- Navigation menu logic -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Theme setup
-      const savedTheme = document.documentElement.getAttribute('data-theme') || 'light';
-      updateThemeUI(savedTheme);
-
-      const themeBtn = document.getElementById('theme-toggle');
-      if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-          const current = document.documentElement.getAttribute('data-theme');
-          const next = current === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-theme', next);
-          try {
-            localStorage.setItem('theme', next);
-          } catch (e) {}
-          updateThemeUI(next);
-        });
-      }
-
-      function updateThemeUI(theme) {
-        const icon = document.querySelector('#theme-toggle i');
-        const text = document.querySelector('#theme-toggle .theme-toggle-text');
-        const ehuLogo = document.getElementById('ehu-header-logo');
-        const themeBtn = document.getElementById('theme-toggle');
-        const lightText = themeBtn ? themeBtn.dataset.light || 'Modo Claro' : 'Modo Claro';
-        const darkText = themeBtn ? themeBtn.dataset.dark || 'Modo Oscuro' : 'Modo Oscuro';
-
-        if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        if (text) text.textContent = theme === 'dark' ? lightText : darkText;
-        if (ehuLogo) ehuLogo.src = theme === 'dark' 
-          ? '/assets/images/logo/ehu_logo_negatiboa.svg' 
-          : '/assets/images/logo/ehu_logo_positiboa.svg';
-      }
-
-      // 2. Dropdown menu behavior for mobile & keyboard navigation
+      // 1. Dropdown menu behavior for mobile & keyboard navigation
       const dropdownItems = document.querySelectorAll('.nav-menu-item.has-dropdown');
       dropdownItems.forEach(item => {
         const trigger = item.querySelector('.nav-dropdown-trigger');
@@ -576,7 +534,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
         }
       });
 
-      // 3. Demo Alert Banner dismissal
+      // 2. Demo Alert Banner dismissal
       const closeAlertBtn = document.getElementById('btn-close-demo-alert');
       const alertBanner = document.getElementById('demo-alert-banner');
       if (closeAlertBtn && alertBanner) {
@@ -589,7 +547,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
         });
       }
 
-      // 4. Demo Disclaimer Modal logic (Auto-opens on first visit to /portal/)
+      // 3. Demo Disclaimer Modal logic (Auto-opens on first visit to /portal/)
       const demoModal = document.getElementById('demo-disclaimer-modal');
       const acceptBtn = document.getElementById('btn-accept-demo-modal');
       const closeDemoModalBtn = document.getElementById('btn-close-demo-modal');
