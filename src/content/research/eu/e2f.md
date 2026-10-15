@@ -5,7 +5,7 @@ shortDesc: "Estres oxidatiboaren, lipidoen desregulazioaren eta E2F faktoreen eg
 image: "/assets/images/e2f.jpg"
 badge: "Birsorkuntza eta DILI"
 order: 3
-affiliation: "Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea, UPV/EHU — Biocruces Bizkaia Osasun Ikerketa Institutua (IIS Biocruces Bizkaia). Gibeleko eta Digestio Aparatuko Gaixotasunen Sareko Ikerketa Biomedikoko Zentroarekin (CIBERehd) lankidetzan. IT1560-22 Talde Sendotua, Eusko Jaurlaritza."
+affiliation: "Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea, UPV/EHU — Biocruces Bizkaia Osasun Ikerketa Institutua (IIS Biocruces Bizkaia). Gibeleko eta Digestio Aparatuko Gaixotasunen Sareko Ikerketa Biomedikoko Zentroarekin (CIBERehd) lankidetzan. IT1560-22 Talde Finkatua, Eusko Jaurlaritza."
 translationStatus: "draft"
 ---
 
