@@ -10,7 +10,8 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 
-const teamMembers = await getLocalizedCollection('team', lang);
+// El personal jubilado se muestra en Antiguos Miembros (/alumni)
+const teamMembers = (await getLocalizedCollection('team', lang)).filter(m => m.data.status !== 'retired');
 sortTeamMembers(teamMembers);
 ---
 
@@ -33,7 +34,7 @@ sortTeamMembers(teamMembers);
       <div class="section-header-inst">
         <div>
           <h1 class="section-title-inst">{t.team_page_title}</h1>
-          <span class="section-subtitle-inst">{t.team_page_sub} &bull; {teamMembers.length} {t.team_active_members}</span>
+          <span class="section-subtitle-inst">{t.team_page_sub} &bull; {teamMembers.length} {t.team_active_members} &bull; <a href={`${getLocalizedPath('/alumni', lang)}#alumni-jubilados`}>{t.team_see_retired}</a></span>
         </div>
       </div>
 

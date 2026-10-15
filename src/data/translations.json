@@ -474,7 +474,9 @@
     "alumni_graduates_title": "Alumni (egresados)",
     "alumni_graduates_sub": "Doctoras e investigadores formados en el grupo y su trayectoria actual",
     "alumni_retired_title": "Personal jubilado",
-    "alumni_retired_sub": "Profesorado e investigadores que desarrollaron su carrera en el grupo y hoy están jubilados o son eméritos"
+    "alumni_retired_sub": "Profesorado e investigadores que desarrollaron su carrera en el grupo y hoy están jubilados o son eméritos",
+    "team_retired_badge": "Jubilado/a",
+    "team_see_retired": "Ver personal jubilado"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -951,7 +953,9 @@
     "alumni_graduates_title": "Alumniak (graduatuak)",
     "alumni_graduates_sub": "Taldean prestatutako doktoreak eta ikertzaileak, eta haien egungo ibilbidea",
     "alumni_retired_title": "Erretiratutako langileak",
-    "alumni_retired_sub": "Taldean beren ibilbidea egin eta gaur egun erretiratuta edo emerituak diren irakasle eta ikertzaileak"
+    "alumni_retired_sub": "Taldean beren ibilbidea egin eta gaur egun erretiratuta edo emerituak diren irakasle eta ikertzaileak",
+    "team_retired_badge": "Erretiratua",
+    "team_see_retired": "Ikusi erretiratutako langileak"
   },
   "en": {
     "nav_home": "Home",
@@ -1428,6 +1432,8 @@
     "alumni_graduates_title": "Alumni (graduates)",
     "alumni_graduates_sub": "PhDs and researchers trained in the group and where they are now",
     "alumni_retired_title": "Retired Staff",
-    "alumni_retired_sub": "Faculty and researchers who built their careers in the group and are now retired or emeritus"
+    "alumni_retired_sub": "Faculty and researchers who built their careers in the group and are now retired or emeritus",
+    "team_retired_badge": "Retired",
+    "team_see_retired": "See retired staff"
   }
 }

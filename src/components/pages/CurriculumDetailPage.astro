@@ -162,6 +162,7 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
         <div class="cv-kicker">
           <span class="cv-dot"></span>
           <i class={catIcon} style="color:var(--logo-green); margin-right:4px;"></i> {catLabel} • {t.header_sub || 'Grupo Consolidado Lipids & Liver'}
+          {member.data.status === 'retired' && <span class="cv-retired-badge">{t.team_retired_badge}</span>}
         </div>
 
         <h1 class="cv-main-name">{member.data.name}</h1>

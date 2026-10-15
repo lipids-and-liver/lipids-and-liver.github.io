@@ -34,6 +34,8 @@ const team = defineCollection({
     name: z.string().default('Investigador/a'),
     role: z.string().default('Investigador/a'),
     category: z.string().default('Predoctoral'),
+    // Personal jubilado: sale del listado de personal y aparece en Antiguos Miembros (conserva su CV)
+    status: z.enum(['active', 'retired']).default('active'),
     department: z.string().nullish().transform(val => val || 'Departamento de Fisiología, Facultad de Medicina y Enfermería'),
     image: z.string().nullish().transform(val => val || '/assets/images/team/placeholder.jpg'),
     email: z.string().nullish().transform(val => val || ''),

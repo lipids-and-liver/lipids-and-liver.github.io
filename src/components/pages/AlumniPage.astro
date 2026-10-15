@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getTranslations, getLocalizedPath, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, getLocalizedCollection, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
 import ContentLangNotice from '../ContentLangNotice.astro';
 import AlumniCard from '../cards/AlumniCard.astro';
+import TeamCard from '../cards/TeamCard.astro';
 import alumniData from '../../data/alumni.json';
 
 interface Props {
@@ -19,6 +20,8 @@ const alumniList: any[] = Array.isArray(rawAlumni) ? rawAlumni : [];
 const RETIRED_CATEGORIES = ['emerita'];
 const retiredList = alumniList.filter((a: any) => RETIRED_CATEGORIES.includes(a.category));
 const graduatesList = alumniList.filter((a: any) => !RETIRED_CATEGORIES.includes(a.category));
+// Personal del equipo marcado como jubilado (status: retired): conserva su ficha de CV
+const retiredTeam = (await getLocalizedCollection('team', lang)).filter(m => m.data.status === 'retired');
 
 // Filtros de egresados: solo las categorías que tienen alguien
 const graduateFilters = [
@@ -134,7 +137,7 @@ const graduateFilters = [
   </section>
 
   <!-- Personal jubilado -->
-  {retiredList.length > 0 && (
+  {(retiredList.length > 0 || retiredTeam.length > 0) && (
     <section class="page-section page-section-alt" id="alumni-jubilados">
       <div class="container">
         <div class="section-header-inst">
@@ -143,6 +146,11 @@ const graduateFilters = [
             <span class="section-subtitle-inst">{t.alumni_retired_sub}</span>
           </div>
         </div>
+        {retiredTeam.length > 0 && (
+          <div class="team-grid-inst" style="margin-bottom:2rem;">
+            {retiredTeam.map(member => <TeamCard member={member} lang={lang} />)}
+          </div>
+        )}
         <div class="alumni-grid-inst">
           {retiredList.map((alumni: any) => (
             <div class="alumni-item" data-category={alumni.category}>

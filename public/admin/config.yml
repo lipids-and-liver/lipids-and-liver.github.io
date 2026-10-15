@@ -171,6 +171,7 @@ collections:
       - { label: "Nombre Completo", name: "name", widget: "string", required: true, i18n: "duplicate", hint: "Ej: Dr. Jon Ander Pérez" }
       - { label: "Cargo / Puesto", name: "role", widget: "string", required: false, default: "Investigador/a Predoctoral", i18n: true, hint: "Ej: Investigador Predoctoral, Posdoctoral, etc. (se traduce automáticamente si no se introduce en euskera/inglés)" }
       - { label: "Categoría", name: "category", widget: "select", options: ["Coordinadora", "Investigadora Senior", "Investigador Senior", "Directora de Línea", "PDI", "Ramón y Cajal", "Posdoctoral", "Predoctoral", "Técnico"], default: "Predoctoral", i18n: "duplicate", hint: "Categoría para filtros del portal (se traduce automáticamente)" }
+      - { label: "Situación", name: "status", widget: "select", options: [{ label: "En activo", value: "active" }, { label: "Jubilado/a (pasa a Antiguos Miembros)", value: "retired" }], default: "active", i18n: "duplicate" }
       - { label: "Departamento / Centro", name: "department", widget: "string", required: false, i18n: "duplicate", default: "Departamento de Fisiología, Facultad de Medicina y Enfermería" }
       - { label: "Fotografía", name: "image", widget: "image", required: false, i18n: "duplicate", hint: "Opcional. Si se deja vacía se muestra la silueta institucional por defecto" }
       - { label: "Correo Electrónico UPV/EHU", name: "email", widget: "string", required: false, i18n: "duplicate", hint: "Ej: nombre.apellido@ehu.eus" }

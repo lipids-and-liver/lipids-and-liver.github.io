@@ -6000,3 +6000,19 @@ a.cv-contact-item:hover i {
   padding-top: 4px;
   border-top: 1px solid var(--border-light);
 }
+
+/* Etiqueta de personal jubilado en la ficha de CV */
+.cv-retired-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  vertical-align: middle;
+}
