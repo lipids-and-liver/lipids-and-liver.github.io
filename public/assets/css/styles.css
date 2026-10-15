@@ -6006,3 +6006,25 @@ a.cv-contact-item:hover i {
 .sciresource-card-body a {
   color: var(--logo-green-hover);
 }
+
+/* Subgrupo dentro de un desplegable del menú (p. ej. "Producción científica") */
+.nav-dropdown-group-label {
+  margin: 6px 12px 2px !important;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.nav-dropdown-menu li.nav-dropdown-subitem a {
+  padding-left: 24px;
+}
+
+.nav-dropdown-menu li.nav-dropdown-subitem + li:not(.nav-dropdown-subitem) {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border-light);
+}

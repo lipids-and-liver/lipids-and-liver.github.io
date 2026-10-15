@@ -450,7 +450,11 @@
     "sciresources_provider_sgiker": "SGIker · Servicios Generales de Investigación (UPV/EHU)",
     "sciresources_provider_biobizkaia": "IIS Biobizkaia · Plataformas de apoyo a la investigación",
     "sciresources_official_link": "Web oficial del servicio",
-    "content_draft_public_sources": "Borrador redactado a partir de fuentes públicas, pendiente de validación por el grupo."
+    "content_draft_public_sources": "Borrador redactado a partir de fuentes públicas, pendiente de validación por el grupo.",
+    "nav_sub_facilities": "Facultad, María Goyri y Biobizkaia",
+    "nav_sub_sciresources": "SGIker y plataformas de Biobizkaia",
+    "nav_group_production": "Producción científica",
+    "nav_group_society": "Sociedad"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -903,7 +907,11 @@
     "sciresources_provider_sgiker": "SGIker · Ikerketarako Zerbitzu Orokorrak (UPV/EHU)",
     "sciresources_provider_biobizkaia": "IIS Biobizkaia · Ikerketarako laguntza-plataformak",
     "sciresources_official_link": "Zerbitzuaren webgune ofiziala",
-    "content_draft_public_sources": "Iturri publikoetatik idatzitako zirriborroa, taldeak baliozkotzeke."
+    "content_draft_public_sources": "Iturri publikoetatik idatzitako zirriborroa, taldeak baliozkotzeke.",
+    "nav_sub_facilities": "Fakultatea, María Goyri eta Biobizkaia",
+    "nav_sub_sciresources": "SGIker eta Biobizkaiako plataformak",
+    "nav_group_production": "Ekoizpen zientifikoa",
+    "nav_group_society": "Gizartea"
   },
   "en": {
     "nav_home": "Home",
@@ -1356,6 +1364,10 @@
     "sciresources_provider_sgiker": "SGIker · General Research Services (UPV/EHU)",
     "sciresources_provider_biobizkaia": "IIS Biobizkaia · Research support platforms",
     "sciresources_official_link": "Official service website",
-    "content_draft_public_sources": "Draft based on public sources, pending validation by the group."
+    "content_draft_public_sources": "Draft based on public sources, pending validation by the group.",
+    "nav_sub_facilities": "Faculty, María Goyri and Biobizkaia",
+    "nav_sub_sciresources": "SGIker and Biobizkaia platforms",
+    "nav_group_production": "Scientific Output",
+    "nav_group_society": "Society"
   }
 }

@@ -7,15 +7,17 @@ export async function getStaticPaths() {
   // getStaticPaths se ejecuta aislado: las listas tienen que vivir aquí dentro
   const sections = ['', 'alumni', 'colaboraciones', 'contacto', 'curriculum', 'divulgacion', 'docencia', 'grupo',
     'lineas', 'noticias', 'patentes', 'proyectos', 'publicaciones', 'recursos', 'tesis', 'unete'];
+  // Secciones renombradas después del cambio de idioma por defecto
+  const renamed: Record<string, string> = { recursos: 'ciencia-abierta' };
   const details = { curriculum: 'team', lineas: 'research', noticias: 'news', tesis: 'theses' } as const;
 
   const paths: (string | undefined)[] = sections.map(s => s || undefined);
   for (const [section, collection] of Object.entries(details)) {
     for (const id of await getAllSlugs(collection)) paths.push(`${section}/${id}`);
   }
-  return paths.map(path => ({ params: { path } }));
+  return paths.map(path => ({ params: { path }, props: { target: path ? (renamed[path] ?? path) : undefined } }));
 }
 
-const { path } = Astro.params;
-return Astro.redirect(path ? `/portal/${path}/` : '/portal/', 301);
+const { target } = Astro.props;
+return Astro.redirect(target ? `/portal/${target}/` : '/portal/', 301);
 ---
