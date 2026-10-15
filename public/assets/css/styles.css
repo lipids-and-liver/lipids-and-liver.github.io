@@ -3764,10 +3764,13 @@ a.cv-contact-item:hover i {
   margin-bottom: 45px;
 }
 
+/* Marca + título como en la cabecera; en pantallas estrechas el título pasa debajo */
 .footer-logos-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 28px;
+  column-gap: 36px;
+  row-gap: 12px;
   padding-top: 1.4rem;
   padding-bottom: 1.4rem;
 }
@@ -3775,6 +3778,11 @@ a.cv-contact-item:hover i {
 .footer-logo-img {
   height: 72px;
   width: auto;
+}
+
+.footer-title-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-grid-inst {
