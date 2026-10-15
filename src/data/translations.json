@@ -2,7 +2,7 @@
   "es": {
     "nav_home": "Inicio",
     "nav_about": "Presentación",
-    "nav_lines": "Investigación",
+    "nav_lines": "Líneas de Investigación",
     "nav_team": "Personal",
     "nav_theses": "Tesis Doctorales",
     "nav_pubs": "Publicaciones",
@@ -447,7 +447,7 @@
   "eu": {
     "nav_home": "Hasiera",
     "nav_about": "Aurkezpena",
-    "nav_lines": "Ikerketa",
+    "nav_lines": "Ikerketa Lerroak",
     "nav_team": "Pertsonala",
     "nav_theses": "Doktorego Tesiak",
     "nav_pubs": "Argitalpenak",
