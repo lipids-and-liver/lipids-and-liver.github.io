@@ -1,0 +1,11 @@
+---
+import ResearchDetailPage from '../../../../components/pages/ResearchDetailPage.astro';
+import { localeSlugPaths } from '../../../../utils/routes';
+
+export const getStaticPaths = () => localeSlugPaths('research');
+
+const { lang } = Astro.props;
+const { id } = Astro.params;
+---
+
+<ResearchDetailPage id={id!} lang={lang} />

@@ -1,0 +1,10 @@
+---
+import CurriculumIndexPage from '../../../../components/pages/CurriculumIndexPage.astro';
+import { localePaths } from '../../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<CurriculumIndexPage lang={lang} />

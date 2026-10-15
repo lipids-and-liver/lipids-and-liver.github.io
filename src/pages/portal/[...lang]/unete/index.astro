@@ -1,0 +1,10 @@
+---
+import JoinPage from '../../../../components/pages/JoinPage.astro';
+import { localePaths } from '../../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<JoinPage lang={lang} />

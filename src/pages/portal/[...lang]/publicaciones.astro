@@ -1,0 +1,10 @@
+---
+import PublicationsPage from '../../../components/pages/PublicationsPage.astro';
+import { localePaths } from '../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<PublicationsPage lang={lang} />

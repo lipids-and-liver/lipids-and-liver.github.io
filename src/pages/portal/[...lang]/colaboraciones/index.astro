@@ -1,0 +1,10 @@
+---
+import CollaborationsPage from '../../../../components/pages/CollaborationsPage.astro';
+import { localePaths } from '../../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<CollaborationsPage lang={lang} />

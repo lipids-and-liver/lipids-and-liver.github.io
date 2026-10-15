@@ -1,0 +1,11 @@
+---
+import ThesisDetailPage from '../../../../components/pages/ThesisDetailPage.astro';
+import { localeSlugPaths } from '../../../../utils/routes';
+
+export const getStaticPaths = () => localeSlugPaths('theses');
+
+const { lang } = Astro.props;
+const { id } = Astro.params;
+---
+
+<ThesisDetailPage id={id!} lang={lang} />

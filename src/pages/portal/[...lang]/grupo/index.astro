@@ -1,0 +1,10 @@
+---
+import GroupPage from '../../../../components/pages/GroupPage.astro';
+import { localePaths } from '../../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<GroupPage lang={lang} />

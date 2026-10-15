@@ -1,0 +1,10 @@
+---
+import TrainingPage from '../../../../components/pages/TrainingPage.astro';
+import { localePaths } from '../../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<TrainingPage lang={lang} />
