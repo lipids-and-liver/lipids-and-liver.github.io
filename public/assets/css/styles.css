@@ -6097,6 +6097,7 @@ a.cv-contact-item:hover i {
   flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--border-color);
+  border-top: 3px solid var(--logo-green);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
   box-shadow: var(--shadow-sm);
@@ -6110,35 +6111,31 @@ a.cv-contact-item:hover i {
   border-color: var(--logo-green);
 }
 
-.thesis-feature-media {
-  position: relative;
-  height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--ehu-navy) 0%, var(--ehu-blue-slate) 100%);
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 2rem;
-}
-
-.thesis-feature-media img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+/* Línea de la tesis: etiqueta pequeña con miniatura (no domina sobre el título) */
 .thesis-feature-line {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  padding: 3px 10px;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 100%;
+  padding: 2px 10px 2px 2px;
+  margin-bottom: 4px;
+  border: 1px solid var(--border-color);
   border-radius: 999px;
-  background: rgba(0, 30, 54, 0.82);
-  color: #ffffff;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
+  color: var(--ehu-navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.thesis-feature-line img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .thesis-feature-body {
