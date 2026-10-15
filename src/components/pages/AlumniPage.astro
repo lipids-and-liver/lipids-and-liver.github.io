@@ -1,9 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getTranslations, getLocalizedPath, getLocalizedCollection, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, getLocalizedCollection, localizeTeamRole, localizeTeamDepartment, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
 import ContentLangNotice from '../ContentLangNotice.astro';
 import AlumniCard from '../cards/AlumniCard.astro';
-import TeamCard from '../cards/TeamCard.astro';
 import alumniData from '../../data/alumni.json';
 
 interface Props {
@@ -22,6 +21,21 @@ const retiredList = alumniList.filter((a: any) => RETIRED_CATEGORIES.includes(a.
 const graduatesList = alumniList.filter((a: any) => !RETIRED_CATEGORIES.includes(a.category));
 // Personal del equipo marcado como jubilado (status: retired): conserva su ficha de CV
 const retiredTeam = (await getLocalizedCollection('team', lang)).filter(m => m.data.status === 'retired');
+// Se muestran con el mismo formato que el resto de antiguos miembros (AlumniCard)
+const retiredTeamCards = retiredTeam.map(m => ({
+  id: m.slug,
+  name: m.data.name,
+  labRole: m.locale === lang ? m.data.role : localizeTeamRole(m.data.role, lang),
+  currentRole: t.team_retired_badge,
+  currentAffiliation: m.locale === lang ? m.data.department : localizeTeamDepartment(m.data.department || '', lang),
+  category: 'emerita',
+  badgeLabel: t.team_retired_badge,
+  icon: 'fas fa-university',
+  orcid: m.data.orcid ? (m.data.orcid.startsWith('http') ? m.data.orcid : `https://orcid.org/${m.data.orcid}`) : undefined,
+  linkedin: m.data.linkedin || undefined,
+  cvUrl: getLocalizedPath(`/curriculum/${m.slug}`, lang),
+  sourceLang: lang, // cargo y departamento ya salen traducidos
+}));
 
 // Filtros de egresados: solo las categorías que tienen alguien
 const graduateFilters = [
@@ -146,13 +160,8 @@ const graduateFilters = [
             <span class="section-subtitle-inst">{t.alumni_retired_sub}</span>
           </div>
         </div>
-        {retiredTeam.length > 0 && (
-          <div class="team-grid-inst" style="margin-bottom:2rem;">
-            {retiredTeam.map(member => <TeamCard member={member} lang={lang} />)}
-          </div>
-        )}
         <div class="alumni-grid-inst">
-          {retiredList.map((alumni: any) => (
+          {[...retiredTeamCards, ...retiredList].map((alumni: any) => (
             <div class="alumni-item" data-category={alumni.category}>
               <AlumniCard alumni={alumni} lang={lang} />
             </div>

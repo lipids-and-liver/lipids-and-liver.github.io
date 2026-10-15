@@ -21,6 +21,10 @@ interface AlumniItem {
   isFounder?: boolean;
   thesesSupervised?: number[];
   patent?: string;
+  // Opcionales para personal del equipo mostrado con este formato (p. ej. jubilado)
+  cvUrl?: string;
+  badgeLabel?: string;
+  sourceLang?: Locale;
 }
 
 interface Props {
@@ -31,8 +35,9 @@ interface Props {
 const { alumni, lang = DEFAULT_LOCALE } = Astro.props;
 const t = getTranslations(lang);
 // alumni.json solo está en español: sus textos se marcan con su idioma real
-const dataLang = lang !== CONTENT_SOURCE_LOCALE ? CONTENT_SOURCE_LOCALE : undefined;
-const categoryLabel = (t as Record<string, string>)[`alumni_cat_${alumni.category}`] || alumni.categoryLabel;
+const sourceLang = alumni.sourceLang ?? CONTENT_SOURCE_LOCALE;
+const dataLang = lang !== sourceLang ? sourceLang : undefined;
+const categoryLabel = alumni.badgeLabel || (t as Record<string, string>)[`alumni_cat_${alumni.category}`] || alumni.categoryLabel;
 ---
 
 <div class={`alumni-card-inst category-${alumni.category}`}>
@@ -57,9 +62,11 @@ const categoryLabel = (t as Record<string, string>)[`alumni_cat_${alumni.categor
       <div class="current-affiliation" lang={dataLang}>
         <i class="fas fa-building"></i> {alumni.currentAffiliation}
       </div>
-      <div class="current-location" lang={dataLang}>
-        <i class="fas fa-map-marker-alt"></i> {alumni.location}
-      </div>
+      {alumni.location && (
+        <div class="current-location" lang={dataLang}>
+          <i class="fas fa-map-marker-alt"></i> {alumni.location}
+        </div>
+      )}
     </div>
 
     {alumni.thesis && (
@@ -90,6 +97,11 @@ const categoryLabel = (t as Record<string, string>)[`alumni_cat_${alumni.categor
   <div class="alumni-card-footer">
     <span class="alumni-links-label">{t.alumni_links_label}</span>
     <div class="alumni-links">
+      {alumni.cvUrl && (
+        <a href={alumni.cvUrl} class="ehu-cris-badge" title={t.team_view_cv}>
+          <i class="fas fa-id-card"></i> CV
+        </a>
+      )}
       {alumni.ehuUrl && (
         <a href={alumni.ehuUrl} target="_blank" rel="noopener noreferrer" class="ehu-cris-badge" title={t.alumni_ehu_link_title}>
           <i class="fas fa-university"></i> Portal UPV/EHU
