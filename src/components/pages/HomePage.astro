@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import stats from '../../data/stats.json';
 import leadership from '../../data/leadership.json';
+import heroGallery from '../../data/hero_gallery.json';
 import ResearchCard from '../cards/ResearchCard.astro';
 import NewsCard from '../cards/NewsCard.astro';
 
@@ -35,6 +36,8 @@ const latestNews = allNews.slice(0, 3);
 const rawStats = (stats as any).stats || stats;
 const statsList: any[] = Array.isArray(rawStats) ? rawStats : [];
 const contactEmail = leadership.coordinator.email;
+const rawSlides = (heroGallery as any).slides || heroGallery;
+const heroSlides: any[] = (Array.isArray(rawSlides) ? rawSlides : []).filter((s: any) => s && s.image);
 ---
 
 <Layout currentPage="home" lang={lang}>
@@ -75,8 +78,55 @@ const contactEmail = leadership.coordinator.email;
         </div>
       </div>
 
-      <div class="hero-banner-img-box">
-        <img src="/assets/images/hero_outdoor_group.jpg" alt="Grupo de Investigación Lipids & Liver en Exteriores" />
+      <!-- Galería de fotos del grupo (datos en src/data/hero_gallery.json, editable desde el CMS) -->
+      <div
+        class="hero-banner-img-box hero-gallery"
+        id="hero-gallery"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={t.hero_gallery_label}
+      >
+        <div class="hero-gallery-track" aria-live="off">
+          {heroSlides.map((slide: any, i: number) => (
+            <figure
+              class={`hero-gallery-slide ${i === 0 ? 'is-active' : ''}`}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} ${t.hero_gallery_of} ${heroSlides.length}`}
+              aria-hidden={i === 0 ? 'false' : 'true'}
+            >
+              <!-- Solo la primera se descarga al cargar; el resto bajo demanda (data-src) -->
+              <img
+                src={i === 0 ? slide.image : undefined}
+                data-src={i === 0 ? undefined : slide.image}
+                alt={slide[`alt_${lang}`] || slide.alt_es}
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
+
+        {heroSlides.length > 1 && (
+          <>
+            <button type="button" class="hero-gallery-btn hero-gallery-prev" aria-label={t.hero_gallery_prev}>
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="hero-gallery-btn hero-gallery-next" aria-label={t.hero_gallery_next}>
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+            <div class="hero-gallery-dots">
+              {heroSlides.map((_: any, i: number) => (
+                <button
+                  type="button"
+                  class={`hero-gallery-dot ${i === 0 ? 'is-active' : ''}`}
+                  aria-label={`${t.hero_gallery_goto} ${i + 1}`}
+                  aria-current={i === 0 ? 'true' : 'false'}
+                  data-index={i}
+                ></button>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   </section>
@@ -196,6 +246,84 @@ const contactEmail = leadership.coordinator.email;
   <!-- Interactive Client-side Logic: Hero particle network -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
+      // Hero Photo Gallery: fade carousel with arrows, dots, keyboard, swipe and autoplay
+      const gallery = document.getElementById('hero-gallery');
+      const slides = gallery ? Array.from(gallery.querySelectorAll('.hero-gallery-slide')) : [];
+
+      if (gallery && slides.length > 1) {
+        const dots = Array.from(gallery.querySelectorAll('.hero-gallery-dot'));
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const AUTOPLAY_MS = 6000;
+        let current = 0;
+        let timer = null;
+        let paused = false;
+
+        const loadSlide = (index) => {
+          const img = slides[index % slides.length].querySelector('img');
+          if (img && img.dataset.src) {
+            img.src = img.dataset.src;
+            delete img.dataset.src;
+          }
+        };
+
+        const goTo = (index) => {
+          current = (index + slides.length) % slides.length;
+          slides.forEach((slide, i) => {
+            const active = i === current;
+            slide.classList.toggle('is-active', active);
+            slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === current);
+            dot.setAttribute('aria-current', i === current ? 'true' : 'false');
+          });
+          // Carga la imagen actual y precarga la siguiente para que el fundido no muestre un hueco
+          loadSlide(current);
+          loadSlide(current + 1);
+        };
+
+        const stop = () => { clearInterval(timer); timer = null; };
+        const start = () => {
+          stop();
+          if (!reduceMotion && !paused && !document.hidden) {
+            timer = setInterval(() => goTo(current + 1), AUTOPLAY_MS);
+          }
+        };
+        // Navegación manual: reinicia el temporizador
+        const navigate = (index) => { goTo(index); start(); };
+
+        gallery.querySelector('.hero-gallery-prev').addEventListener('click', () => navigate(current - 1));
+        gallery.querySelector('.hero-gallery-next').addEventListener('click', () => navigate(current + 1));
+        dots.forEach((dot) => dot.addEventListener('click', () => navigate(Number(dot.dataset.index))));
+
+        gallery.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(current - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); navigate(current + 1); }
+        });
+
+        // Pausa mientras el usuario interactúa con la galería
+        const pause = () => { paused = true; stop(); };
+        const resume = () => { paused = false; start(); };
+        gallery.addEventListener('mouseenter', pause);
+        gallery.addEventListener('mouseleave', resume);
+        gallery.addEventListener('focusin', pause);
+        gallery.addEventListener('focusout', (e) => { if (!gallery.contains(e.relatedTarget)) resume(); });
+        document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+        // Deslizar con el dedo en móvil
+        let touchX = null;
+        gallery.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+        gallery.addEventListener('touchend', (e) => {
+          if (touchX === null) return;
+          const dx = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(dx) > 40) navigate(dx < 0 ? current + 1 : current - 1);
+          touchX = null;
+        }, { passive: true });
+
+        goTo(0);
+        start();
+      }
+
       // Hero Interactive Dynamic Effects
       // A. Dynamic Molecular/Lipid Particle Network Simulation
       const heroSection = document.getElementById('hero');

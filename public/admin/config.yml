@@ -91,6 +91,27 @@ collections:
       - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", default: "0000-0002-8921-9421" }
       - { label: "Cuerpo de la Carta (Texto Completo)", name: "body", widget: "markdown", required: false, i18n: true }
 
+  # 1.2b GALERÍA DE FOTOS DEL HERO (PORTADA)
+  - name: "hero_gallery"
+    label: "🏠 Portada › Galería de Fotos de la Cabecera"
+    description: "Fotos que rotan en la cabecera de la portada. El orden de la lista es el orden de la galería; la primera es la que se ve al cargar."
+    files:
+      - label: "Galería de la Cabecera"
+        name: "hero_gallery_data"
+        file: "src/data/hero_gallery.json"
+        format: "json"
+        fields:
+          - label: "Fotos"
+            name: "slides"
+            widget: "list"
+            summary: "{{fields.alt_es}}"
+            hint: "Recomendado: fotos horizontales de al menos 1200 px de ancho. Se recortan a una franja apaisada, así que conviene que las personas estén centradas."
+            fields:
+              - { label: "Imagen", name: "image", widget: "image" }
+              - { label: "Descripción (Español)", name: "alt_es", widget: "string", hint: "Describe la foto para personas que usan lector de pantalla. Ej: Grupo Lipids & Liver en el laboratorio" }
+              - { label: "Deskribapena (Euskara)", name: "alt_eu", widget: "string", required: false }
+              - { label: "Description (English)", name: "alt_en", widget: "string", required: false }
+
   # 1.3 CIFRAS CLAVE & MÉTRICAS (STATS)
   - name: "stats"
     label: "👥 El Grupo › Cifras Clave & Métricas (Stats)"

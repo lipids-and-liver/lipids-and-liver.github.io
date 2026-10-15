@@ -1143,6 +1143,108 @@ html.demo-alert-hidden .demo-alert-banner {
   display: block;
 }
 
+/* Galería de fotos del hero (fundido entre imágenes apiladas) */
+.hero-gallery {
+  position: relative;
+}
+
+.hero-gallery-track {
+  position: relative;
+  height: 320px;
+}
+
+.hero-gallery-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.hero-gallery-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 30, 54, 0.55);
+  color: #ffffff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-smooth), background var(--transition-smooth);
+}
+
+.hero-gallery-prev { left: 12px; }
+.hero-gallery-next { right: 12px; }
+
+.hero-gallery:hover .hero-gallery-btn,
+.hero-gallery-btn:focus-visible {
+  opacity: 1;
+}
+
+.hero-gallery-btn:hover {
+  background: var(--logo-green);
+}
+
+.hero-gallery-btn:focus-visible,
+.hero-gallery-dot:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.hero-gallery-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 30px;
+  background: rgba(0, 30, 54, 0.45);
+}
+
+.hero-gallery-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.hero-gallery-dot.is-active {
+  background: var(--logo-green);
+  transform: scale(1.25);
+}
+
+/* En pantallas táctiles no hay hover: flechas siempre visibles */
+@media (hover: none) {
+  .hero-gallery-btn {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gallery-slide {
+    transition: none;
+  }
+}
+
 /* Institutional Stats Bar */
 .stats-bar {
   background: var(--bg-surface);

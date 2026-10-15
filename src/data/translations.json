@@ -321,7 +321,12 @@
     "contact_write_title": "Escríbenos",
     "contact_write_text": "Para consultas sobre colaboraciones, doctorado, prácticas o servicios de lipidómica, escríbenos directamente al correo oficial del grupo. Te responderemos lo antes posible.",
     "group_page_title": "El Grupo",
-    "group_page_sub": "Carta de la Investigadora Principal, presentación institucional e instalaciones"
+    "group_page_sub": "Carta de la Investigadora Principal, presentación institucional e instalaciones",
+    "hero_gallery_label": "Galería de fotos del grupo",
+    "hero_gallery_prev": "Foto anterior",
+    "hero_gallery_next": "Foto siguiente",
+    "hero_gallery_goto": "Ir a la foto",
+    "hero_gallery_of": "de"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -645,7 +650,12 @@
     "contact_write_title": "Idatz iezaguzu",
     "contact_write_text": "Lankidetzei, doktoregoari, praktikei edo lipidomika-zerbitzuei buruzko kontsultetarako, idatz iezaguzu zuzenean taldearen helbide elektroniko ofizialera. Ahal bezain laster erantzungo dizugu.",
     "group_page_title": "Taldea",
-    "group_page_sub": "Ikertzaile Nagusiaren gutuna, aurkezpen instituzionala eta instalazioak"
+    "group_page_sub": "Ikertzaile Nagusiaren gutuna, aurkezpen instituzionala eta instalazioak",
+    "hero_gallery_label": "Taldearen argazki-galeria",
+    "hero_gallery_prev": "Aurreko argazkia",
+    "hero_gallery_next": "Hurrengo argazkia",
+    "hero_gallery_goto": "Joan argazkira",
+    "hero_gallery_of": "/"
   },
   "en": {
     "nav_home": "Home",
@@ -969,6 +979,11 @@
     "contact_write_title": "Write to us",
     "contact_write_text": "For enquiries about collaborations, PhD positions, internships or lipidomics services, write directly to the group's official email address. We will reply as soon as possible.",
     "group_page_title": "The Group",
-    "group_page_sub": "Letter from the Principal Investigator, institutional profile and facilities"
+    "group_page_sub": "Letter from the Principal Investigator, institutional profile and facilities",
+    "hero_gallery_label": "Group photo gallery",
+    "hero_gallery_prev": "Previous photo",
+    "hero_gallery_next": "Next photo",
+    "hero_gallery_goto": "Go to photo",
+    "hero_gallery_of": "of"
   }
 }

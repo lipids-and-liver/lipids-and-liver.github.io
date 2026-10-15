@@ -1,0 +1,34 @@
+{
+  "slides": [
+    {
+      "image": "/assets/images/hero_outdoor_group.jpg",
+      "alt_es": "Grupo Lipids & Liver frente a un edificio de la UPV/EHU",
+      "alt_eu": "Lipids & Liver taldea UPV/EHUko eraikin baten aurrean",
+      "alt_en": "The Lipids & Liver group outside a UPV/EHU building"
+    },
+    {
+      "image": "/assets/images/hero/grupo-entrada-maria-goyri.jpg",
+      "alt_es": "Grupo Lipids & Liver en la entrada del edificio María Goyri",
+      "alt_eu": "Lipids & Liver taldea María Goyri eraikinaren sarreran",
+      "alt_en": "The Lipids & Liver group at the entrance of the María Goyri building"
+    },
+    {
+      "image": "/assets/images/hero/grupo-sala-ventanal.jpg",
+      "alt_es": "Miembros del grupo Lipids & Liver junto a un ventanal",
+      "alt_eu": "Lipids & Liver taldeko kideak leiho handi baten ondoan",
+      "alt_en": "Members of the Lipids & Liver group by a large window"
+    },
+    {
+      "image": "/assets/images/hero/grupo-laboratorio-world-cca-day.jpg",
+      "alt_es": "Grupo Lipids & Liver en el laboratorio durante el World CCA Day",
+      "alt_eu": "Lipids & Liver taldea laborategian World CCA Day egunean",
+      "alt_en": "The Lipids & Liver group in the lab on World CCA Day"
+    },
+    {
+      "image": "/assets/images/hero/grupo-escaleras-jardin.jpg",
+      "alt_es": "Miembros del grupo Lipids & Liver sentados en unas escaleras con flores",
+      "alt_eu": "Lipids & Liver taldeko kideak lorez inguratutako eskailera batzuetan eserita",
+      "alt_en": "Members of the Lipids & Liver group sitting on steps among flowers"
+    }
+  ]
+}
