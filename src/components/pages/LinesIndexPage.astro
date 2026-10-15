@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import ResearchCard from '../cards/ResearchCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const researchLines = await getLocalizedCollection('research', lang);
+researchLines.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<Layout currentPage="lines" lang={lang} title={`${t.lines_title} | Lipids & Liver`}>
+  <!-- Contextual Sub-bar -->
+  <div class="nav-sub-bar">
+    <div class="container nav-sub-container">
+      <div class="nav-sub-context">
+        <span class="nav-sub-badge">
+          <i class="fas fa-microscope"></i> {t.lines_title}
+        </span>
+      </div>
+      <div class="nav-sub-actions">
+        <a href={getLocalizedPath('/', lang)} class="btn-inst-outline-light">
+          <i class="fas fa-home"></i> {t.nav_home}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <section class="catalog-header-section">
+    <div class="container">
+      <div class="catalog-header-content">
+        <span class="catalog-badge">
+          <i class="fas fa-flask"></i> {t.nav_group_research || 'Investigación'}
+        </span>
+        <h1 class="catalog-title">{t.lines_title}</h1>
+        <p class="catalog-subtitle">{t.lines_subtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="research-grid-inst" id="lines-grid">
+        {researchLines.map(line => (
+          <ResearchCard line={line} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

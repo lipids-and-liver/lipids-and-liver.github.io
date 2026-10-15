@@ -1,4 +1,7 @@
 ---
+import LinesIndexPage from '../../../../components/pages/LinesIndexPage.astro';
+import type { Locale } from '../../../../utils/i18n';
+
 export function getStaticPaths() {
   return [
     { params: { lang: 'eu' } },
@@ -7,5 +10,6 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-return Astro.redirect(`/portal/${lang}/#lines`);
 ---
+
+<LinesIndexPage lang={lang as Locale} />

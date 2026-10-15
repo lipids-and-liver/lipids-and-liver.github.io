@@ -3421,6 +3421,7 @@ a.cv-contact-item:hover i {
   flex-shrink: 0;
 }
 
+.info-text h3,
 .info-text h4 {
   font-size: 0.98rem;
   font-weight: 700;
@@ -5398,6 +5399,112 @@ a.cv-contact-item:hover i {
   padding: 0 4px;
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Home Resumen: extracto de la carta de la IP y franja final de contacto
+   ========================================================================== */
+.home-letter-teaser {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin: 0;
+}
+
+.home-letter-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 8px 24px rgba(0, 43, 73, 0.1);
+}
+
+.home-letter-excerpt {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 1rem 0 1.5rem;
+}
+
+.home-letter-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.home-letter-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--ehu-navy);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition: border-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+.home-letter-link:hover {
+  border-color: var(--logo-green);
+  color: var(--logo-green-hover);
+}
+
+.home-cta-band {
+  background: linear-gradient(135deg, var(--ehu-navy-dark) 0%, var(--ehu-navy) 100%);
+  color: #ffffff;
+  padding: 3.5rem 0;
+  border-top: 4px solid var(--logo-green);
+}
+
+.home-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.home-cta-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+}
+
+.home-cta-text {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 620px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.home-cta-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .home-letter-teaser {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .home-letter-photo {
+    max-width: 160px;
+  }
+}
+
+.contact-write-card {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ==========================================================================

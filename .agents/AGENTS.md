@@ -16,7 +16,7 @@ This repository contains the modernized official web portal for the **Lipids & L
 - `src/content.config.ts`: Zod schema validation rules for all Markdown collections.
 - `src/layouts/Layout.astro`: Institutional layout with header, UPV/EHU & Biocruces branding, language switcher and footer. Light mode only (decided by the group): do not add a dark theme or theme toggle.
 - `src/pages/`:
-  - `index.astro`: Main portal with stats, presentation tabs, research lines, team grid, segmented theses filter, publications, training, and contact form.
+  - `portal/index.astro` (`HomePage.astro`): **Home Resumen** (decided with group leads): hero + stats, PI letter excerpt, research lines, latest 3 news and a contact/join band. Full content lives in dedicated pages: `/grupo` (letter + presentation tabs), `/curriculum` (team), `/lineas`, `/docencia`, `/colaboraciones`, `/contacto` (mailto, no form). Do not re-add sections to the home; link to these pages instead of `/#anchors`.
   - `tesis/index.astro` & `tesis/[id].astro`: Full PhD theses catalog and individual detail pages with interactive dropdown selector.
   - `curriculum/index.astro` & `curriculum/[id].astro`: Personnel directory and individual CV pages with interactive dropdown selector.
   - `lineas/index.astro` & `lineas/[id].astro`: Research lines index and individual project detail pages.

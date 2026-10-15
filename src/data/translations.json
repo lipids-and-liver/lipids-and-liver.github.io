@@ -310,7 +310,18 @@
     "patents_view_oepm": "Consultar en OEPM (INVENES)",
     "patents_download_pdf": "Descargar Patente Oficial (PDF)",
     "patents_ehu_portal": "Ficha en Producción Científica UPV/EHU",
-    "cv_patents": "Patentes y Propiedad Industrial"
+    "cv_patents": "Patentes y Propiedad Industrial",
+    "home_letter_more": "Leer la carta completa",
+    "home_lines_more": "Ver todas las líneas",
+    "home_news_title": "Actualidad",
+    "home_news_subtitle": "Últimas noticias e hitos del grupo",
+    "home_cta_title": "¿Quieres colaborar o unirte al grupo?",
+    "home_cta_text": "Escríbenos para proponer colaboraciones científicas, consultar sobre el doctorado o incorporarte al laboratorio.",
+    "contact_write_btn": "Escríbenos",
+    "contact_write_title": "Escríbenos",
+    "contact_write_text": "Para consultas sobre colaboraciones, doctorado, prácticas o servicios de lipidómica, escríbenos directamente al correo oficial del grupo. Te responderemos lo antes posible.",
+    "group_page_title": "El Grupo",
+    "group_page_sub": "Carta de la Investigadora Principal, presentación institucional e instalaciones"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -623,7 +634,18 @@
     "patents_view_oepm": "Kontsultatu OEPMn (INVENES)",
     "patents_download_pdf": "Deskargatu Patente Ofiziala (PDF)",
     "patents_ehu_portal": "UPV/EHUko Ekoizpen Zientifikoaren Fitxa",
-    "cv_patents": "Patenteak eta Jabetza Industriala"
+    "cv_patents": "Patenteak eta Jabetza Industriala",
+    "home_letter_more": "Gutun osoa irakurri",
+    "home_lines_more": "Lerro guztiak ikusi",
+    "home_news_title": "Gaurkotasuna",
+    "home_news_subtitle": "Taldearen azken albisteak eta mugarriak",
+    "home_cta_title": "Gurekin lankidetzan aritu edo taldean sartu nahi duzu?",
+    "home_cta_text": "Idatz iezaguzu lankidetza zientifikoak proposatzeko, doktoregoari buruz galdetzeko edo laborategian sartzeko.",
+    "contact_write_btn": "Idatz iezaguzu",
+    "contact_write_title": "Idatz iezaguzu",
+    "contact_write_text": "Lankidetzei, doktoregoari, praktikei edo lipidomika-zerbitzuei buruzko kontsultetarako, idatz iezaguzu zuzenean taldearen helbide elektroniko ofizialera. Ahal bezain laster erantzungo dizugu.",
+    "group_page_title": "Taldea",
+    "group_page_sub": "Ikertzaile Nagusiaren gutuna, aurkezpen instituzionala eta instalazioak"
   },
   "en": {
     "nav_home": "Home",
@@ -936,6 +958,17 @@
     "patents_view_oepm": "View on OEPM (INVENES)",
     "patents_download_pdf": "Download Official Patent (PDF)",
     "patents_ehu_portal": "UPV/EHU Scientific Production Record",
-    "cv_patents": "Patents & Industrial Property"
+    "cv_patents": "Patents & Industrial Property",
+    "home_letter_more": "Read the full letter",
+    "home_lines_more": "View all research lines",
+    "home_news_title": "Latest News",
+    "home_news_subtitle": "Latest news and milestones from the group",
+    "home_cta_title": "Would you like to collaborate or join the group?",
+    "home_cta_text": "Write to us to propose scientific collaborations, ask about PhD opportunities or join the lab.",
+    "contact_write_btn": "Write to us",
+    "contact_write_title": "Write to us",
+    "contact_write_text": "For enquiries about collaborations, PhD positions, internships or lipidomics services, write directly to the group's official email address. We will reply as soon as possible.",
+    "group_page_title": "The Group",
+    "group_page_sub": "Letter from the Principal Investigator, institutional profile and facilities"
   }
 }

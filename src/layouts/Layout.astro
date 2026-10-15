@@ -156,12 +156,12 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 
             <!-- 2. El Grupo (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/#about', lang)} class={`nav-dropdown-trigger ${['about', 'team', 'curriculum', 'alumni'].includes(currentPage) ? 'active' : ''}`}>
+              <a href={getLocalizedPath('/grupo', lang)} class={`nav-dropdown-trigger ${['about', 'team', 'curriculum', 'alumni', 'collaborations'].includes(currentPage) ? 'active' : ''}`}>
                 <span>{t.nav_group_group || 'El Grupo'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
                 <li>
-                  <a href={getLocalizedPath('/#about', lang)}>
+                  <a href={getLocalizedPath('/grupo', lang)}>
                     <i class="fas fa-landmark"></i>
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_about || 'Presentación'}</span>
@@ -170,7 +170,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
                   </a>
                 </li>
                 <li>
-                  <a href={getLocalizedPath('/#team', lang)}>
+                  <a href={getLocalizedPath('/curriculum', lang)}>
                     <i class="fas fa-users"></i>
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_team || 'Personal e Investigadores'}</span>
@@ -188,7 +188,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
                   </a>
                 </li>
                 <li>
-                  <a href={getLocalizedPath('/#collaborations', lang)}>
+                  <a href={getLocalizedPath('/colaboraciones', lang)}>
                     <i class="fas fa-project-diagram"></i>
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_collaborations || 'Alianzas y Colaboraciones'}</span>
@@ -201,12 +201,12 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 
             <!-- 3. Investigación (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/#lines', lang)} class={`nav-dropdown-trigger ${['lines', 'projects', 'theses', 'pubs'].includes(currentPage) ? 'active' : ''}`}>
+              <a href={getLocalizedPath('/lineas', lang)} class={`nav-dropdown-trigger ${['lines', 'projects', 'theses', 'pubs'].includes(currentPage) ? 'active' : ''}`}>
                 <span>{t.nav_group_research || 'Investigación'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
                 <li>
-                  <a href={getLocalizedPath('/#lines', lang)}>
+                  <a href={getLocalizedPath('/lineas', lang)}>
                     <i class="fas fa-microscope"></i>
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_lines || 'Líneas de Investigación'}</span>
@@ -288,12 +288,12 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 
             <!-- 5. Formación & Talento (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/#training', lang)} class={`nav-dropdown-trigger ${['training', 'join'].includes(currentPage) ? 'active' : ''}`}>
+              <a href={getLocalizedPath('/docencia', lang)} class={`nav-dropdown-trigger ${['training', 'join'].includes(currentPage) ? 'active' : ''}`}>
                 <span>{t.nav_group_training || 'Formación & Talento'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
                 <li>
-                  <a href={getLocalizedPath('/#training', lang)}>
+                  <a href={getLocalizedPath('/docencia', lang)}>
                     <i class="fas fa-chalkboard-teacher"></i>
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_training || 'Docencia y Formación'}</span>
@@ -322,7 +322,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
 
             <!-- 7. Contacto -->
             <li class="nav-menu-item nav-menu-contact" style="margin-left:auto">
-              <a href={getLocalizedPath('/#contact', lang)} class="nav-contact-link">
+              <a href={getLocalizedPath('/contacto', lang)} class={`nav-contact-link ${currentPage === 'contact' ? 'active' : ''}`}>
                 <i class="fas fa-envelope"></i> <span>{t.nav_contact}</span>
               </a>
             </li>
@@ -392,10 +392,10 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
           ) : (
             <ul class="footer-links-inst">
               <li><a href={getLocalizedPath('/', lang)}>{t.nav_home}</a></li>
-              <li><a href={getLocalizedPath('/#about', lang)}>{t.nav_about}</a></li>
-              <li><a href={getLocalizedPath('/#lines', lang)}>{t.nav_lines}</a></li>
+              <li><a href={getLocalizedPath('/grupo', lang)}>{t.nav_about}</a></li>
+              <li><a href={getLocalizedPath('/lineas', lang)}>{t.nav_lines}</a></li>
               <li><a href={getLocalizedPath('/proyectos', lang)}>{t.nav_projects || 'Proyectos Financiados'}</a></li>
-              <li><a href={getLocalizedPath('/#team', lang)}>{t.nav_team}</a></li>
+              <li><a href={getLocalizedPath('/curriculum', lang)}>{t.nav_team}</a></li>
               <li><a href={getLocalizedPath('/tesis', lang)}>{t.theses_page_title}</a></li>
               <li><a href={getLocalizedPath('/publicaciones', lang)}>{t.pubs_title}</a></li>
             </ul>
@@ -415,7 +415,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
                 <span style="background:#ffedd5; color:#c2410c; font-size:0.65rem; font-weight:700; padding:1px 5px; border-radius:3px; margin-left:5px; border:1px solid #fdba74; display:inline-block;">Fase 2</span>
               </a>
             </li>
-            <li><a href={getLocalizedPath('/#training', lang)}>{t.nav_training || 'Docencia y Formación'}</a></li>
+            <li><a href={getLocalizedPath('/docencia', lang)}>{t.nav_training || 'Docencia y Formación'}</a></li>
             <li><a href={getLocalizedPath('/unete', lang)}>{t.nav_join || 'Únete al Grupo'}</a></li>
             <li>
               <a href={getLocalizedPath('/alumni', lang)}>
