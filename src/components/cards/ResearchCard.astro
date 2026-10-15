@@ -12,7 +12,7 @@ const t = getTranslations(lang);
 ---
 
 <div class="research-card-inst">
-  <img src={line.data.image} alt={line.data.title} class="research-card-img" />
+  <img src={line.data.image} alt={line.data.title} class="research-card-img" loading="lazy" decoding="async" />
   <div class="research-card-content">
     <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-bottom:0.75rem;">
       <span class="research-badge">{line.data.badge}</span>
