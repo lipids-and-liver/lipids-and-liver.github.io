@@ -5,7 +5,7 @@ shortDesc: "Analysis of energy and lipid metabolic reprogramming in the liver tu
 image: "/assets/images/cancer.jpg"
 badge: "Metabolic Oncology"
 order: 2
-affiliation: "Department of Physiology, Faculty of Medicine and Nursing, UPV/EHU — Biocruces Bizkaia Health Research Institute (IIS Biocruces Bizkaia). In collaboration with the Oncology Department of Cruces University Hospital. Consolidated Group IT1560-22, Basque Government."
+affiliation: "Department of Physiology, Faculty of Medicine and Nursing, UPV/EHU — Biobizkaia Health Research Institute (IIS Biobizkaia). In collaboration with the Oncology Department of Cruces University Hospital. Consolidated Group IT1560-22, Basque Government."
 translationStatus: "draft"
 ---
 

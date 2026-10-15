@@ -3,7 +3,7 @@ id: "juanluis-garcia"
 name: "Dr. Juan Luis García Rodríguez"
 role: "Investigador Ramón y Cajal"
 category: "Ramón y Cajal"
-department: "Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biocruces"
+department: "Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biobizkaia"
 image: "/assets/images/team/juanluis-garcia/image.jpeg"
 email: "juanluis.garcia@ehu.eus"
 office: "Despacho 2.13, Facultad de Medicina y Enfermería, Leioa"
@@ -28,4 +28,4 @@ cv:
 
 ---
 
-Investigador Ramón y Cajal en el Departamento de Fisiología de la UPV/EHU e IIS Biocruces Bizkaia. Especializado en reprogramación metabólica, sensores lipídicos y receptores nucleares.
+Investigador Ramón y Cajal en el Departamento de Fisiología de la UPV/EHU e IIS Biobizkaia. Especializado en reprogramación metabólica, sensores lipídicos y receptores nucleares.

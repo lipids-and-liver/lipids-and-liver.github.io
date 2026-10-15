@@ -5,7 +5,7 @@ shortDesc: "Gibeleko tumore-mikroinguruneko birprogramazio metaboliko energetiko
 image: "/assets/images/cancer.jpg"
 badge: "Onkologia Metabolikoa"
 order: 2
-affiliation: "Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea, UPV/EHU — Biocruces Bizkaia Osasun Ikerketa Institutua (IIS Biocruces Bizkaia). Gurutzetako Unibertsitate Ospitaleko Onkologia Zerbitzuarekin lankidetzan. IT1560-22 Talde Finkatua, Eusko Jaurlaritza."
+affiliation: "Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea, UPV/EHU — Biobizkaia Osasun Ikerketa Institutua (IIS Biobizkaia). Gurutzetako Unibertsitate Ospitaleko Onkologia Zerbitzuarekin lankidetzan. IT1560-22 Talde Finkatua, Eusko Jaurlaritza."
 translationStatus: "draft"
 ---
 

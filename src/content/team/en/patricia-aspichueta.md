@@ -17,7 +17,7 @@ cv:
       - "National University Professor Accreditation (ANECA)"
   positions:
       - "Professor of Physiology, Department of Physiology, UPV/EHU (2018 - Present)"
-      - "Principal Investigator, Hepato-gastroenterology Area, IIS Biocruces Bizkaia"
+      - "Principal Investigator, Hepato-gastroenterology Area, IIS Biobizkaia"
       - "Coordinator of the Lipids & Liver Consolidated Research Group (Basque Government)"
       - "Associate Professor, UPV/EHU (2009 - 2018)"
   grants:
@@ -34,4 +34,4 @@ cv:
       - "Supervision of Bachelor's and Master's Theses, and PhD Theses."
 ---
 
-Full Professor at the Department of Physiology of the UPV/EHU and Principal Investigator at IIS Biocruces Bizkaia. Head of the Lipids & Liver research group.
+Full Professor at the Department of Physiology of the UPV/EHU and Principal Investigator at IIS Biobizkaia. Head of the Lipids & Liver research group.

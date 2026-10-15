@@ -17,7 +17,7 @@ cv:
       - "Unibertsitateko Katedradunaren Egiaztapen Nazionala (ANECA)"
   positions:
       - "Fisiologiako Katedraduna, Fisiologia Saila, UPV/EHU (2018 - Gaur egun)"
-      - "Ikertzaile Nagusia, Hepato-gastroenterologia Arloa, IIS Biocruces Bizkaia"
+      - "Ikertzaile Nagusia, Hepato-gastroenterologia Arloa, IIS Biobizkaia"
       - "Lipids & Liver Ikerketa Talde Finkatuaren Koordinatzailea (Eusko Jaurlaritza)"
       - "Unibertsitateko Irakasle Titularra, UPV/EHU (2009 - 2018)"
   grants:
@@ -34,4 +34,4 @@ cv:
       - "Gradu Amaierako Lanak, Master Amaierako Lanak eta Doktorego Tesien Zuzendaritza."
 ---
 
-UPV/EHUko Fisiologia Saileko Katedraduna eta IIS Biocruces Bizkaia Institutuko ikertzaile nagusia. Lipids & Liver ikerketa-taldearen burua.
+UPV/EHUko Fisiologia Saileko Katedraduna eta IIS Biobizkaia Institutuko ikertzaile nagusia. Lipids & Liver ikerketa-taldearen burua.

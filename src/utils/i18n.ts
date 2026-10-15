@@ -362,9 +362,9 @@ export function localizeTeamRole(role: string = '', lang: Locale = DEFAULT_LOCAL
       eu: 'Doktorego-aurreko Ikertzailea (UPV/EHU)',
       en: 'Predoctoral Researcher (UPV/EHU)'
     },
-    'Investigadora Predoctoral (Biocruces)': {
-      eu: 'Doktorego-aurreko Ikertzailea (Biocruces)',
-      en: 'Predoctoral Researcher (Biocruces)'
+    'Investigadora Predoctoral (Biobizkaia)': {
+      eu: 'Doktorego-aurreko Ikertzailea (Biobizkaia)',
+      en: 'Predoctoral Researcher (Biobizkaia)'
     },
     'Investigadora Predoctoral (FPU)': {
       eu: 'Doktorego-aurreko Ikertzailea (FPU)',
@@ -407,17 +407,17 @@ export function localizeTeamDepartment(dept: string = '', lang: Locale = DEFAULT
       eu: 'Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea, UPV/EHU',
       en: 'Department of Physiology, Faculty of Medicine and Nursing, UPV/EHU'
     },
-    'Departamento de Fisiología / IIS Biocruces Bizkaia': {
-      eu: 'Fisiologia Saila / Biocruces Bizkaia OII',
-      en: 'Department of Physiology / IIS Biocruces Bizkaia'
+    'Departamento de Fisiología / IIS Biobizkaia': {
+      eu: 'Fisiologia Saila / Biobizkaia OII',
+      en: 'Department of Physiology / IIS Biobizkaia'
     },
-    'Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biocruces': {
-      eu: 'Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea / Biocruces OII',
-      en: 'Department of Physiology, Faculty of Medicine and Nursing / IIS Biocruces'
+    'Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biobizkaia': {
+      eu: 'Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea / Biobizkaia OII',
+      en: 'Department of Physiology, Faculty of Medicine and Nursing / IIS Biobizkaia'
     },
-    'Departamento de Fisiología, UPV/EHU / IIS Biocruces': {
-      eu: 'Fisiologia Saila, UPV/EHU / Biocruces OII',
-      en: 'Department of Physiology, UPV/EHU / IIS Biocruces'
+    'Departamento de Fisiología, UPV/EHU / IIS Biobizkaia': {
+      eu: 'Fisiologia Saila, UPV/EHU / Biobizkaia OII',
+      en: 'Department of Physiology, UPV/EHU / IIS Biobizkaia'
     }
   };
 

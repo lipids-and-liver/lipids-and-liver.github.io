@@ -1,11 +1,11 @@
 ---
 id: "idoia-fernandez"
 name: "Idoia Fernández Puertas"
-role: "Investigadora Predoctoral (Biocruces)"
+role: "Investigadora Predoctoral (Biobizkaia)"
 category: "Predoctoral"
-department: "Departamento de Fisiología / IIS Biocruces Bizkaia"
+department: "Departamento de Fisiología / IIS Biobizkaia"
 email: "idoia.fernandez@ehu.eus"
-office: "Laboratorio Biocruces Bizkaia / Leioa"
+office: "Laboratorio Biobizkaia / Leioa"
 orcid: "0000-0002-7788-9900"
 order: 15
 cv:
@@ -14,9 +14,9 @@ cv:
       - "Máster en Biología Molecular y Biomedicina"
       - "Graduada en Bioquímica"
   positions:
-      - "Investigadora Predoctoral, Instituto Biocruces Bizkaia"
+      - "Investigadora Predoctoral, Instituto Biobizkaia"
   grants:
-      - "Beca de investigación predoctoral IIS Biocruces Bizkaia."
+      - "Beca de investigación predoctoral IIS Biobizkaia."
   publications:
       - "DNA Damage Response and Endoplasmic Reticulum Stress in Hepatocytes. DNA Repair, 2024."
   teaching:

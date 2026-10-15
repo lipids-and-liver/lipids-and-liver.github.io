@@ -14,4 +14,4 @@ Medikuntza eta Erizaintza Fakultateko graduondoko titulu ofiziala, giza patologi
 
 **Lipids & Liver** taldearen parte-hartzea:
 - Fisiopatologia translazionalari, gibeleko seinalizazioari eta gaixotasun metabolikoen eredu esperimentalei buruzko irakaskuntza aurreratua.
-- **Master Amaierako Lanak (MAL/TFM)** zuzentzea eta garatzea, **Biocruces Bizkaia OII**ren ingurune klinikoarekin lotura estuan.
+- **Master Amaierako Lanak (MAL/TFM)** zuzentzea eta garatzea, **Biobizkaia OII**ren ingurune klinikoarekin lotura estuan.

@@ -14,4 +14,4 @@ Official postgraduate degree from the Faculty of Medicine and Nursing focused on
 
 Involvement of the **Lipids & Liver** team:
 - Advanced teaching in translational pathophysiology, hepatic signaling, and experimental models of metabolic disease.
-- Supervision and experimental execution of **Master's Theses (TFM)** in close collaboration with the clinical and translational environment of **IIS Biocruces Bizkaia**.
+- Supervision and experimental execution of **Master's Theses (TFM)** in close collaboration with the clinical and translational environment of **IIS Biobizkaia**.

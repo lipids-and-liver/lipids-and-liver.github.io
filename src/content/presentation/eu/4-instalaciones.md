@@ -50,7 +50,7 @@ order: 4
     <ul class="facility-features">
       <li><i class="fas fa-check-circle"></i> <strong>Plataforma Teknologikoak eta SGIker:</strong> Ikerketarako Zerbitzu Orokorren (SGIker) Lipidomika Unitatearekiko lankidetza eta integrazio estuko espazioa.</li>
       <li><i class="fas fa-check-circle"></i> <strong>Bereizmen Handiko Masa-Espektrometria:</strong> Profil lipidikoak eta metabolitoak sakonki kuantifikatzeko eta ezaugarritzeko azpiegitura aurreratua.</li>
-      <li><i class="fas fa-check-circle"></i> <strong>Ekosistema Zientifiko Biomedikoa:</strong> Zientzia Parkeko puntako ikerketa-institutuekin eta Biocruces Bizkaia sarearekin konexio zuzena.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Ekosistema Zientifiko Biomedikoa:</strong> Zientzia Parkeko puntako ikerketa-institutuekin eta Biobizkaia sarearekin konexio zuzena.</li>
     </ul>
   </div>
 </div>

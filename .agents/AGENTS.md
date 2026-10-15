@@ -1,7 +1,7 @@
 # Workspace Context & Rules for Lipids & Liver Project
 
 ## Project Overview
-This repository contains the modernized official web portal for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco Tipo A — IT1560-22), affiliated with the **University of the Basque Country (UPV/EHU)** and **IIS Biocruces Bizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus). Lead Principal Investigator: **Dra. Patricia Aspichueta**.
+This repository contains the modernized official web portal for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco Tipo A — IT1560-22), affiliated with the **University of the Basque Country (UPV/EHU)** and **IIS Biobizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus). Lead Principal Investigator: **Dra. Patricia Aspichueta**.
 
 ## Architecture & File Structure (Astro v5 Content Collections)
 - `src/content/`:
@@ -10,11 +10,11 @@ This repository contains the modernized official web portal for the **Lipids & L
     - Includes predoctoral personnel: `paul-gomez.md`, `ane-ortiz.md`, `kendall-alfaro.md`.
   - `research/`: Individual Markdown files for active research lines (MAFLD, Cancer, Spatial Omics, E2F, Exposome, SGIker Lipidomics).
   - `publications/`: Individual Markdown files for JCR publications with abstracts and DOIs.
-  - `presentation/`: Multilingual institutional presentation tabs (profile, Biocruces, SGIker, facilities).
+  - `presentation/`: Multilingual institutional presentation tabs (profile, Biobizkaia, SGIker, facilities).
   - `training/`: Official undergraduate, master's and doctoral teaching activities.
   - `templates/`: Blank templates (`_plantilla_tesis.md`, `_plantilla_miembro.md`, `_plantilla_publicacion.md`) for non-technical team members.
 - `src/content.config.ts`: Zod schema validation rules for all Markdown collections.
-- `src/layouts/Layout.astro`: Institutional layout with header, UPV/EHU & Biocruces branding, language switcher and footer. Light mode only (decided by the group): do not add a dark theme or theme toggle.
+- `src/layouts/Layout.astro`: Institutional layout with header, UPV/EHU & Biobizkaia branding, language switcher and footer. Light mode only (decided by the group): do not add a dark theme or theme toggle.
 - `src/pages/`:
   - `portal/index.astro` (`HomePage.astro`): **Home Resumen** (decided with group leads): hero + stats, PI letter excerpt, research lines, latest 3 news and a contact/join band. Full content lives in dedicated pages: `/grupo` (letter + presentation tabs), `/curriculum` (team), `/lineas`, `/docencia`, `/colaboraciones`, `/contacto` (mailto, no form). Do not re-add sections to the home; link to these pages instead of `/#anchors`.
   - `tesis/index.astro` & `tesis/[id].astro`: Full PhD theses catalog and individual detail pages with interactive dropdown selector.

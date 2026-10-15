@@ -37,7 +37,7 @@ collections:
   - name: "presentation"
     label: "👥 El Grupo › Presentación Institucional"
     label_singular: "Pestaña de Presentación"
-    description: "Pestañas institucionales del perfil, Biocruces, SGIker e instalaciones"
+    description: "Pestañas institucionales del perfil, Biobizkaia, SGIker e instalaciones"
     folder: "src/content/presentation"
     i18n: true
     create: true

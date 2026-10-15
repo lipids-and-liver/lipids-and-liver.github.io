@@ -50,7 +50,7 @@ The **Lipids & Liver** research group benefits from dedicated scientific and exp
     <ul class="facility-features">
       <li><i class="fas fa-check-circle"></i> <strong>Technology Platforms & SGIker:</strong> Seamless integration and close collaboration with the SGIker Lipidomics Unit.</li>
       <li><i class="fas fa-check-circle"></i> <strong>Advanced Mass Spectrometry:</strong> Access to high-resolution mass spectrometry instrumentation for lipidomic, metabolomic, and biophysical profiling.</li>
-      <li><i class="fas fa-check-circle"></i> <strong>Biomedical Scientific Ecosystem:</strong> Direct synergy with leading institutes in the UPV/EHU Science Park and the Biocruces Bizkaia network.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Biomedical Scientific Ecosystem:</strong> Direct synergy with leading institutes in the UPV/EHU Science Park and the Biobizkaia network.</li>
     </ul>
   </div>
 </div>

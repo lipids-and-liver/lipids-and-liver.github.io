@@ -50,7 +50,7 @@ El grupo de investigación **Lipids & Liver** dispone de infraestructuras cient�
     <ul class="facility-features">
       <li><i class="fas fa-check-circle"></i> <strong>Plataformas Tecnológicas y SGIker:</strong> Espacio de estrecha integración y sinergia con la Unidad de Lipidómica de los Servicios Generales de Investigación (SGIker).</li>
       <li><i class="fas fa-check-circle"></i> <strong>Espectrometría de Masas de Alta Resolución:</strong> Infraestructura avanzada para la cuantificación y caracterización exhaustiva de perfiles lipídicos y metabolitos.</li>
-      <li><i class="fas fa-check-circle"></i> <strong>Ecosistema Científico Biomédico:</strong> Interconexión directa con institutos de investigación de vanguardia del Parque Científico y la red colaborativa de Biocruces Bizkaia.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Ecosistema Científico Biomédico:</strong> Interconexión directa con institutos de investigación de vanguardia del Parque Científico y la red colaborativa de Biobizkaia.</li>
     </ul>
   </div>
 </div>

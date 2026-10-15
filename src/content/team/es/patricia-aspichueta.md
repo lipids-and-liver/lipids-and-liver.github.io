@@ -17,7 +17,7 @@ cv:
       - "Acreditación Nacional como Catedrática de Universidad (ANECA)"
   positions:
       - "Catedrática de Fisiología, Departamento de Fisiología, UPV/EHU (2018 - Presente)"
-      - "Investigadora Principal, Área de Hepato-gastroenterología, IIS Biocruces Bizkaia"
+      - "Investigadora Principal, Área de Hepato-gastroenterología, IIS Biobizkaia"
       - "Coordinadora del Grupo Consolidado Lipids & Liver (Gobierno Vasco)"
       - "Profesora Titular de Universidad, UPV/EHU (2009 - 2018)"
   grants:
@@ -34,4 +34,4 @@ cv:
       - "Tutorización de Trabajos de Fin de Grado, Máster y Dirección de Tesis Doctorales."
 ---
 
-Catedrática de Universidad en el Departamento de Fisiología de la UPV/EHU e investigadora principal en el Instituto de Investigación Sanitaria Biocruces Bizkaia. Líder del grupo Lipids & Liver.
+Catedrática de Universidad en el Departamento de Fisiología de la UPV/EHU e investigadora principal en el Instituto de Investigación Sanitaria Biobizkaia. Líder del grupo Lipids & Liver.

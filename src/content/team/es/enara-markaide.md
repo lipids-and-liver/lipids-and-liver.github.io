@@ -3,9 +3,9 @@ id: "enara-markaide"
 name: "Dra. Enara Markaide Garcia"
 role: "Investigadora Posdoctoral"
 category: "Posdoctoral"
-department: "Departamento de Fisiología, UPV/EHU / IIS Biocruces"
+department: "Departamento de Fisiología, UPV/EHU / IIS Biobizkaia"
 email: "enara.markaide@ehu.eus"
-office: "Laboratorio 2.16, Leioa / Biocruces Bizkaia"
+office: "Laboratorio 2.16, Leioa / Biobizkaia"
 orcid: "0000-0002-9911-2233"
 order: 11
 cv:
@@ -15,7 +15,7 @@ cv:
       - "Máster en Biomedicina Evaluativa"
       - "Graduada en Biología (UPV/EHU)"
   positions:
-      - "Investigadora Posdoctoral, Grupo Lipids & Liver / IIS Biocruces Bizkaia"
+      - "Investigadora Posdoctoral, Grupo Lipids & Liver / IIS Biobizkaia"
       - "Investigadora Predoctoral, Beca del Departamento de Educación del Gobierno Vasco (2021-2025)"
   grants:
       - "Beca Predoctoral del Gobierno Vasco."

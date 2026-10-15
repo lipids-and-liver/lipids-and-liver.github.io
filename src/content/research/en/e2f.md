@@ -5,7 +5,7 @@ shortDesc: "Role of oxidative stress, lipid dysregulation and E2F factors in dru
 image: "/assets/images/e2f.jpg"
 badge: "Regeneration & DILI"
 order: 3
-affiliation: "Department of Physiology, Faculty of Medicine and Nursing, UPV/EHU — Biocruces Bizkaia Health Research Institute (IIS Biocruces Bizkaia). In collaboration with the Biomedical Research Networking Centre for Liver and Digestive Diseases (CIBERehd). Consolidated Group IT1560-22, Basque Government."
+affiliation: "Department of Physiology, Faculty of Medicine and Nursing, UPV/EHU — Biobizkaia Health Research Institute (IIS Biobizkaia). In collaboration with the Biomedical Research Networking Centre for Liver and Digestive Diseases (CIBERehd). Consolidated Group IT1560-22, Basque Government."
 translationStatus: "draft"
 ---
 
