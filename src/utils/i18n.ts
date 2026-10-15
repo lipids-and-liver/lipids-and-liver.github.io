@@ -468,7 +468,8 @@ export function getThesisBadgeText(
   }
 
   const base = t.theses_badge_completed || (lang === 'eu' ? 'Defendatua' : lang === 'en' ? 'Completed' : 'Defendida');
-  return thesis.data.year ? `${base} (${thesis.data.year})` : base;
+  // El año ya aparece en la fecha de la tarjeta: la etiqueta solo indica el estado
+  return base;
 }
 
 // Metadatos de tesis escritos en español en los datos (estado "En desarrollo (…)" e institución).

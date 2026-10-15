@@ -5,7 +5,7 @@ status: "completed"
 title: "Desarrollo de nuevos medicamentos para el tratamiento de complicaciones asociadas al síndrome metabólico. Nuevas aplicaciones terapéuticas de un flavonoide y un derivado de la vitamina D"
 institution: "UPV/EHU - Facultad de Medicina y Enfermería"
 year: "2022"
-badge: "Terminada (2022)"
+badge: "Defendida"
 directors:
   - "Dra. M. Olatz Fresnedo Aranguren"
   - "Dra. Patricia Aspichueta Celaá"
