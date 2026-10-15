@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import TrainingCard from '../cards/TrainingCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const trainings = await getLocalizedCollection('training', lang);
+trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<Layout currentPage="training" lang={lang} title={`${t.training_title} | Lipids & Liver`}>
+  <!-- Contextual Sub-bar -->
+  <div class="nav-sub-bar">
+    <div class="container nav-sub-container">
+      <div class="nav-sub-context">
+        <span class="nav-sub-badge">
+          <i class="fas fa-chalkboard-teacher"></i> {t.nav_training || 'Docencia y Formación'}
+        </span>
+      </div>
+      <div class="nav-sub-actions">
+        <a href={getLocalizedPath('/', lang)} class="btn-inst-outline-light">
+          <i class="fas fa-home"></i> {t.nav_home}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <section class="catalog-header-section">
+    <div class="container">
+      <div class="catalog-header-content">
+        <span class="catalog-badge">
+          <i class="fas fa-university"></i> {t.training_talent_title}
+        </span>
+        <h1 class="catalog-title">{t.training_title}</h1>
+        <p class="catalog-subtitle">{t.training_subtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="training-bento-grid" id="training-bento-grid">
+        {trainings.map((tr, idx) => (
+          <TrainingCard training={tr} lang={lang} index={idx} />
+        ))}
+      </div>
+
+      <!-- Puente hacia Únete -->
+      <div style="text-align:center; margin-top:3rem; background:var(--bg-surface-alt); padding:2rem; border-radius:var(--radius-md); border:1px dashed var(--border-color);">
+        <p style="font-size:1rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+          <i class="fas fa-flask" style="color:var(--logo-green); margin-right:8px;"></i>
+          {t.join_page_sub}
+        </p>
+        <a href={getLocalizedPath('/unete', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
+          <i class="fas fa-user-plus"></i> {t.join_btn} <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

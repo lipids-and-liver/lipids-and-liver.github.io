@@ -1,6 +1,6 @@
 # Lipids & Liver Research Group — Official Web Portal
 
-Official modernized website for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco Tipo A — IT1560-22) at the **University of the Basque Country (UPV/EHU)** and **IIS Biocruces Bizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus).
+Official modernized website for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco Tipo A — IT1560-22) at the **University of the Basque Country (UPV/EHU)** and **IIS Biobizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus).
 
 > [!WARNING]
 > ### ⚠️ Estado del Proyecto: Versión Demo en Desarrollo
@@ -59,8 +59,9 @@ El resultado estático se genera en el directorio **`dist/`** (185 páginas HTML
   - `templates/`: Plantillas en blanco (`_plantilla_*.md`) para añadir registros fácilmente.
 - **`src/data/`**: Datasets estructurados (`alumni.json` para antiguos miembros y trayectorias profesionales, `collaborations.json` para centros hospitalarios y de investigación, `translations.json` para diccionarios i18n).
 - **`src/content.config.ts`**: Esquemas de validación tipados con Zod para todo el contenido.
-- **`src/layouts/Layout.astro`**: Cabecera institucional con navegación en menús desplegables optimizados, doble logotipo UPV/EHU y grupo, barra de idiomas, selector de modo oscuro/claro y pie de página.
-- **`src/pages/`**: Páginas principales (`index.astro`, `/tesis`, `/curriculum`, `/lineas`, `/publicaciones`, `/proyectos`, `/noticias`, `/alumni`, `/divulgacion`, `/recursos`, `/sgiker`, `/unete`, y versiones localizadas en `/eu` y `/en`).
+- **`src/layouts/Layout.astro`**: Cabecera institucional con navegación en menús desplegables optimizados, doble logotipo UPV/EHU y grupo, barra de idiomas y pie de página. La web usa solo modo claro (decisión del grupo).
+- **`src/pages/portal/[...lang]/`**: Páginas del portal. Un solo fichero por página genera los tres idiomas (helpers en `src/utils/routes.ts`): **inglés por defecto** en `/portal/…`, español en `/portal/es/…` y euskera en `/portal/eu/…`. La raíz (`src/pages/index.astro`, «En construcción») mantiene el español por defecto (`/`, `/eu/`, `/en/`).
+- **Idiomas**: la fuente de verdad es `src/utils/i18n.ts` (`DEFAULT_LOCALE`, `FALLBACK_LOCALES`). Núcleo fijo en ES/EU/EN: interfaz, menús, portada, grupo, docencia, líneas de investigación y fichas del equipo. El resto puede estar en 1 o 2 idiomas: se muestra en el disponible con un aviso (`ContentLangNotice`). `npm run i18n:check` lista las traducciones que faltan del núcleo.
 - **`public/admin/`**: Panel de administración visual **Sveltia CMS** (`index.html` y `config.yml`), accesible en `/admin/` para editar contenidos sin tocar código.
 - **`public/assets/css/styles.css`**: Sistema de diseño institucional corporativo con paleta UPV/EHU.
 - **`under-construction/` & `en-construccion/`**: Página de preestreno "En Construcción" estática e independiente con simulación de vesículas en canvas y sin accesos a desarrollo, lista para subir directamente por FTP.
@@ -76,4 +77,4 @@ El resultado estático se genera en el directorio **`dist/`** (185 páginas HTML
 - **Azul Marino Institucional (UPV/EHU)**: `#002B49`
 - **Azul Pizarra Secundario**: `#1E3A5F`
 - **Verde Acento (Logotipo Lipids & Liver)**: `#689F38` / `#8AC63F`
-- **Fondo Neutro**: `#F8FAFC` / `#FFFFFF` (Modo Oscuro: `#0f172a` / `#1e293b`)
+- **Fondo Neutro**: `#F8FAFC` / `#FFFFFF` (solo modo claro)

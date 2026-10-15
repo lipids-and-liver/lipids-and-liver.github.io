@@ -1,7 +1,7 @@
 # Workspace Context & Rules for Lipids & Liver Project
 
 ## Project Overview
-This repository contains the modernized official web portal for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco Tipo A — IT1560-22), affiliated with the **University of the Basque Country (UPV/EHU)** and **IIS Biocruces Bizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus). Lead Principal Investigator: **Dra. Patricia Aspichueta**.
+This repository contains the modernized official web portal for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco Tipo A — IT1560-22), affiliated with the **University of the Basque Country (UPV/EHU)** and **IIS Biobizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus). Lead Principal Investigator: **Dra. Patricia Aspichueta**.
 
 ## Architecture & File Structure (Astro v5 Content Collections)
 - `src/content/`:
@@ -10,13 +10,13 @@ This repository contains the modernized official web portal for the **Lipids & L
     - Includes predoctoral personnel: `paul-gomez.md`, `ane-ortiz.md`, `kendall-alfaro.md`.
   - `research/`: Individual Markdown files for active research lines (MAFLD, Cancer, Spatial Omics, E2F, Exposome, SGIker Lipidomics).
   - `publications/`: Individual Markdown files for JCR publications with abstracts and DOIs.
-  - `presentation/`: Multilingual institutional presentation tabs (profile, Biocruces, SGIker, facilities).
+  - `presentation/`: Multilingual institutional presentation tabs (profile, Biobizkaia, SGIker, facilities).
   - `training/`: Official undergraduate, master's and doctoral teaching activities.
   - `templates/`: Blank templates (`_plantilla_tesis.md`, `_plantilla_miembro.md`, `_plantilla_publicacion.md`) for non-technical team members.
 - `src/content.config.ts`: Zod schema validation rules for all Markdown collections.
-- `src/layouts/Layout.astro`: Institutional layout with header, UPV/EHU & Biocruces branding, language switcher, dark/light theme, and footer.
+- `src/layouts/Layout.astro`: Institutional layout with header, UPV/EHU & Biobizkaia branding, language switcher and footer. Light mode only (decided by the group): do not add a dark theme or theme toggle.
 - `src/pages/`:
-  - `index.astro`: Main portal with stats, presentation tabs, research lines, team grid, segmented theses filter, publications, training, and contact form.
+  - `portal/index.astro` (`HomePage.astro`): **Home Resumen** (decided with group leads): hero + stats, PI letter excerpt, research lines, latest 3 news and a contact/join band. Full content lives in dedicated pages: `/grupo` (letter + presentation tabs), `/curriculum` (team), `/lineas`, `/docencia`, `/colaboraciones`, `/contacto` (mailto, no form). Do not re-add sections to the home; link to these pages instead of `/#anchors`.
   - `tesis/index.astro` & `tesis/[id].astro`: Full PhD theses catalog and individual detail pages with interactive dropdown selector.
   - `curriculum/index.astro` & `curriculum/[id].astro`: Personnel directory and individual CV pages with interactive dropdown selector.
   - `lineas/index.astro` & `lineas/[id].astro`: Research lines index and individual project detail pages.
@@ -29,6 +29,12 @@ This repository contains the modernized official web portal for the **Lipids & L
 - `PROJECT_CONTEXT.md`: Complete developer handover document.
 - `iniciar_servidor.sh`: Convenience script to run local dev server (`npm run dev` at `http://localhost:4321`).
 - `construir_web.sh`: Convenience script to compile static site (`npm run build` -> `dist/`).
+
+## Languages (group decision, Oct 2026)
+- Portal default language is **English** (`/portal/…`); Spanish `/portal/es/…`, Basque `/portal/eu/…`. Single source of truth: `src/utils/i18n.ts` (`DEFAULT_LOCALE`, `FALLBACK_LOCALES`, `CONTENT_SOURCE_LOCALE`). Never hardcode `'es'` as default.
+- Pages live once in `src/pages/portal/[...lang]/` (helpers in `src/utils/routes.ts`). The root holding page keeps Spanish as default.
+- Fixed core always in ES/EU/EN: UI strings (`translations.json`, no hardcoded UI text in components), menus, home, group, training, research lines, team profiles. Other content may exist in 1–2 languages and is shown with `ContentLangNotice`, never hidden. Publications/theses/projects stay in their original language.
+- Run `npm run i18n:check` to list missing core translations.
 
 ## Key Design Principles & Features
 - **Hero Section**:
@@ -44,7 +50,6 @@ This repository contains the modernized official web portal for the **Lipids & L
   - Secondary Slate Blue: `#1E3A5F`
   - Accent Green: `#689F38` (Lipids & Liver logo green) / `#8AC63F`
   - Neutral Light Background: `#F8FAFC` / `#FFFFFF`
-  - Dark Mode: `#0f172a` / `#1e293b`
 - **Typography**: Clean sans-serif System font stack (`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`).
 - **Style Rules**: Sober, institutional, prestigious university lab aesthetic. High readability, clear hierarchy, structured cards with micro-animations.
 

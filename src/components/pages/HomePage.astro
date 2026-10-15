@@ -1,19 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, sortTeamMembers, type Locale } from '../../utils/i18n';
-import { render } from 'astro:content';
+import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import stats from '../../data/stats.json';
+import leadership from '../../data/leadership.json';
+import heroGallery from '../../data/hero_gallery.json';
 import ResearchCard from '../cards/ResearchCard.astro';
-import TeamCard from '../cards/TeamCard.astro';
-import ThesisCard from '../cards/ThesisCard.astro';
-import PublicationCard from '../cards/PublicationCard.astro';
-import TrainingCard from '../cards/TrainingCard.astro';
-import ProjectCard from '../cards/ProjectCard.astro';
 import NewsCard from '../cards/NewsCard.astro';
-import PartnerCard from '../cards/PartnerCard.astro';
-import AlumniCard from '../cards/AlumniCard.astro';
-import collaborationsData from '../../data/collaborations.json';
-import alumniData from '../../data/alumni.json';
 
 interface Props {
   lang: Locale;
@@ -22,63 +14,34 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 
-const presentationEntries = await getLocalizedCollection('presentation', lang);
-presentationEntries.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-
-const presentationTabs = await Promise.all(
-  presentationEntries.map(async (entry, index) => {
-    const { Content } = await render(entry);
-    return {
-      entry,
-      Content,
-      isActive: index === 0
-    };
-  })
-);
+// Home Resumen: Hero + métricas, extracto de la carta de la IP, líneas, actualidad y franja de contacto.
+// El contenido completo de cada bloque vive en su propia página (/grupo, /lineas, /noticias, /contacto).
 
 const letterEntry = await getLocalizedEntry('letter', 'carta', lang);
-const letterRender = letterEntry ? await render(letterEntry) : null;
-const LetterContent = letterRender ? letterRender.Content : null;
+// Extracto: primer párrafo del cuerpo de la carta, sin marcas de Markdown
+const letterExcerpt = (letterEntry?.body || '')
+  .trim()
+  .split(/\n\s*\n/)[0]
+  .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+  .replace(/[*_`]/g, '')
+  .trim();
 
 const researchLines = await getLocalizedCollection('research', lang);
 researchLines.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
-import { sortTheses } from '../../utils/theses';
-
-const teamMembers = await getLocalizedCollection('team', lang);
-sortTeamMembers(teamMembers);
-const allTheses = await getLocalizedCollection('theses', lang);
-sortTheses(allTheses);
-const ongoingCount = allTheses.filter(t => t.data.status === 'ongoing').length;
-const completedCount = allTheses.filter(t => t.data.status === 'completed').length;
-
-const allPubs = await getLocalizedCollection('publications', lang);
-allPubs.sort((a, b) => Number(b.data.year) - Number(a.data.year));
-const latestPublications = allPubs.slice(0, 6);
-
-const trainings = await getLocalizedCollection('training', lang);
-trainings.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-
-const allProjects = await getLocalizedCollection('projects', lang);
-allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-const featuredProjects = allProjects.slice(0, 4);
-
 const allNews = await getLocalizedCollection('news', lang);
 allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-const featuredNews = allNews.filter(article => article.data.featured === true);
-const nonFeaturedNews = allNews.filter(article => !article.data.featured);
-const latestNews = [...featuredNews, ...nonFeaturedNews].slice(0, 3);
+const latestNews = allNews.slice(0, 3);
 
 const rawStats = (stats as any).stats || stats;
 const statsList: any[] = Array.isArray(rawStats) ? rawStats : [];
-const rawAlumni = (alumniData as any).alumni || alumniData;
-const featuredAlumni = Array.isArray(rawAlumni) ? rawAlumni.slice(0, 4) : [];
-const rawCollaborations = (collaborationsData as any).collaborations || collaborationsData;
-const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollaborations : [];
+const contactEmail = leadership.coordinator.email;
+const rawSlides = (heroGallery as any).slides || heroGallery;
+const heroSlides: any[] = (Array.isArray(rawSlides) ? rawSlides : []).filter((s: any) => s && s.image);
 ---
 
 <Layout currentPage="home" lang={lang}>
-  <!-- Institutional Hero Banner with Dynamic Interactive Network -->
+  <!-- 1. Institutional Hero Banner with Dynamic Interactive Network -->
   <section class="institutional-hero" id="hero">
     <!-- Interactive Background Canvas & Ambient Glowing Orbs -->
     <div class="hero-canvas-wrap">
@@ -96,7 +59,7 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
           </span>
           <i class="fas fa-award"></i> {t.hero_tag || 'Grupo Consolidado del Gobierno Vasco (IT1560-22)'}
         </span>
-        
+
         <h1 class="hero-headline">
           {t.hero_title}
         </h1>
@@ -106,17 +69,64 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
         </p>
 
         <div class="hero-btn-group">
-          <a href={getLocalizedPath('/#lines', lang)} class="btn-inst-primary">
+          <a href={getLocalizedPath('/lineas', lang)} class="btn-inst-primary">
             {t.cta_lines} <i class="fas fa-microscope"></i>
           </a>
-          <a href={getLocalizedPath('/#team', lang)} class="btn-inst-secondary">
+          <a href={getLocalizedPath('/curriculum', lang)} class="btn-inst-secondary">
             {t.cta_team} <i class="fas fa-user-friends"></i>
           </a>
         </div>
       </div>
 
-      <div class="hero-banner-img-box">
-        <img src="/assets/images/hero_outdoor_group.jpg" alt="Grupo de Investigación Lipids & Liver en Exteriores" />
+      <!-- Galería de fotos del grupo (datos en src/data/hero_gallery.json, editable desde el CMS) -->
+      <div
+        class="hero-banner-img-box hero-gallery"
+        id="hero-gallery"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={t.hero_gallery_label}
+      >
+        <div class="hero-gallery-track" aria-live="off">
+          {heroSlides.map((slide: any, i: number) => (
+            <figure
+              class={`hero-gallery-slide ${i === 0 ? 'is-active' : ''}`}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} ${t.hero_gallery_of} ${heroSlides.length}`}
+              aria-hidden={i === 0 ? 'false' : 'true'}
+            >
+              <!-- Solo la primera se descarga al cargar; el resto bajo demanda (data-src) -->
+              <img
+                src={i === 0 ? slide.image : undefined}
+                data-src={i === 0 ? undefined : slide.image}
+                alt={slide[`alt_${lang}`] || slide.alt_es}
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
+
+        {heroSlides.length > 1 && (
+          <>
+            <button type="button" class="hero-gallery-btn hero-gallery-prev" aria-label={t.hero_gallery_prev}>
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="hero-gallery-btn hero-gallery-next" aria-label={t.hero_gallery_next}>
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+            <div class="hero-gallery-dots">
+              {heroSlides.map((_: any, i: number) => (
+                <button
+                  type="button"
+                  class={`hero-gallery-dot ${i === 0 ? 'is-active' : ''}`}
+                  aria-label={`${t.hero_gallery_goto} ${i + 1}`}
+                  aria-current={i === 0 ? 'true' : 'false'}
+                  data-index={i}
+                ></button>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   </section>
@@ -124,7 +134,7 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
   <!-- Stats Bar -->
   <section class="stats-bar">
     <div class="container">
-      <div class="stats-grid" id="stats-grid">
+      <div class="stats-grid" id="stats-grid" style={`--stats-cols: ${statsList.length || 3};`}>
         {statsList.map((stat: any) => {
           const label = stat[`label_${lang}`] || stat.label_es || stat.label;
           const subtext = stat[`subtext_${lang}`] || stat.subtext_es || stat.subtext;
@@ -140,167 +150,38 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
     </div>
   </section>
 
-  <!-- About / Presentación Section -->
+  <!-- 2. Extracto de la Carta de la Investigadora Principal -->
   <section class="page-section" id="about">
     <div class="container">
-      <div class="section-header-inst">
-        <div>
-          <h2 class="section-title-inst">{t.about_title}</h2>
-          <span class="section-subtitle-inst">{t.about_subtitle}</span>
-        </div>
-      </div>
-
-      <!-- Apartado 1: Carta de Presentación de la Investigadora Principal (IP) -->
-      <article class="about-pi-card">
-        <!-- Cabecera de la Carta a ancho completo -->
-        <header class="about-letter-header">
+      <article class="about-pi-card home-letter-teaser">
+        <img
+          src={letterEntry?.data.piImage || "/assets/images/team/patricia-aspichueta/image.jpg"}
+          alt={letterEntry?.data.piName || t.about_letter_sign_name}
+          class="home-letter-photo"
+          loading="lazy"
+        />
+        <div class="home-letter-text">
           <div class="about-letter-kicker">
             <span class="about-letter-dot"></span>
             {letterEntry?.data.badge || t.about_letter_badge}
           </div>
-          <h3 class="about-letter-heading">{letterEntry?.data.title || t.about_letter_title}</h3>
-        </header>
-
-        <!-- Contenedor del Cuerpo con Foto Flotante -->
-        <div class="about-letter-content">
-          <!-- Figura Flotante: Foto de cuerpo entero + Insignia -->
-          <figure class="about-pi-figure">
-            <div class="about-pi-portrait">
-              <img
-                src={letterEntry?.data.piImage || "/assets/images/team/patricia-aspichueta/image.jpg"}
-                alt={letterEntry?.data.piName || t.about_letter_sign_name}
-                class="about-pi-photo"
-                loading="lazy"
-              />
-              <span class="about-pi-badge-tag">
-                <i class="fas fa-crown"></i> {letterEntry?.data.piBadgeOverlay || 'IP & Coordinadora'}
-              </span>
+          <h2 class="about-letter-heading">{letterEntry?.data.title || t.about_letter_title}</h2>
+          <p class="home-letter-excerpt">{letterExcerpt || t.about_letter_p1}</p>
+          <div class="home-letter-footer">
+            <div>
+              <div class="about-letter-sign-name">{letterEntry?.data.piName || t.about_letter_sign_name}</div>
+              <div class="about-letter-sign-meta">{letterEntry?.data.piRole || t.about_letter_sign_role}</div>
             </div>
-          </figure>
-
-          <!-- Texto de la Carta que rodea a la foto flotante -->
-          <div class="about-letter-body">
-            <p class="about-letter-salutation">
-              <strong>{letterEntry?.data.salutation || t.about_letter_greeting}</strong>
-            </p>
-            {LetterContent ? (
-              <LetterContent />
-            ) : (
-              <>
-                <p>{t.about_letter_p1}</p>
-                <p>{t.about_letter_p2}</p>
-                <p>{t.about_letter_p3}</p>
-              </>
-            )}
+            <a href={getLocalizedPath('/grupo#carta', lang)} class="home-letter-link">
+              {t.home_letter_more} <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
-
-        <!-- Bloque de Firma al pie de la carta -->
-        <footer class="about-letter-signature-block">
-          <div class="about-letter-signature-mark"></div>
-          <div class="about-letter-sign-details">
-            <div class="about-letter-sign-name">{letterEntry?.data.piName || t.about_letter_sign_name}</div>
-            <div class="about-letter-sign-meta">
-              <span>{letterEntry?.data.signRole || t.about_letter_sign_role}</span>
-              <span class="about-letter-sign-separator">•</span>
-              <span>{letterEntry?.data.signDept || t.about_letter_sign_dept}</span>
-            </div>
-          </div>
-        </footer>
       </article>
-
-      <!-- Apartado 2: A continuación, las pestañas siguientes -->
-      <div class="about-tabs-block">
-        <div class="about-tabs-header-bar">
-          <h3 class="about-tabs-block-title">
-            <i class="fas fa-layer-group"></i> {t.about_tabs_heading}
-          </h3>
-          <span class="about-tabs-block-subtitle">
-            {t.about_tabs_subheading}
-          </span>
-        </div>
-
-        <div class="about-card">
-          <div class="about-tabs" id="about-tabs-group">
-            {presentationTabs.map((tab) => (
-              <button
-                class={`tab-btn ${tab.isActive ? 'active' : ''}`}
-                data-tab={tab.entry.data.tabId}
-              >
-                {tab.entry.data.tabTitle}
-                {tab.entry.data.tabId === 'tab-infraestructura' && (
-                  <span style="background:#fee2e2; color:#b91c1c; font-size:0.65rem; font-weight:700; padding:2px 5px; border-radius:3px; margin-left:6px; border:1px solid #fca5a5; vertical-align:middle; display:inline-block;">
-                    ¿Sustituir por EHU-iBio?
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-
-          {presentationTabs.map((tab) => {
-            const { entry, Content, isActive } = tab;
-            const { tabId, specialties, staffCompositionTitle, staffComposition } = entry.data;
-            const hasSidebar = (specialties && specialties.length > 0) || (staffComposition && staffComposition.length > 0);
-
-            return (
-              <div class={`tab-content ${isActive ? 'active' : ''}`} id={tabId}>
-                {hasSidebar ? (
-                  <div class="about-grid">
-                    <div class="about-text">
-                      <Content />
-                      {specialties && specialties.length > 0 && (
-                        <div class="specialty-list">
-                          {specialties.map((spec: string) => (
-                            <span class="specialty-chip"><i class="fas fa-check-circle"></i> {spec}</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {staffComposition && staffComposition.length > 0 && (
-                      <div style="background:var(--bg-surface-alt); padding:1.5rem; border-radius:var(--radius-md); border:1px solid var(--border-color)">
-                        <h4 style="margin-bottom:1rem; color:var(--ehu-navy)">
-                          <i class="fas fa-users"></i> {staffCompositionTitle || 'Composición del Personal'}
-                        </h4>
-                        <ul style="list-style:none; line-height:2">
-                          {staffComposition.map((member: { count: string; role: string }) => (
-                            <li>
-                              <strong style="color:var(--ehu-navy)">{member.count}</strong> {member.role}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div class="about-text">
-                    {entry.data.tabId === 'tab-infraestructura' && (
-                      <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:6px; padding:0.85rem 1.1rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:10px;">
-                        <i class="fas fa-question-circle" style="color:#dc2626; font-size:1.2rem; flex-shrink:0;"></i>
-                        <span style="font-size:0.9rem; color:#991b1b; line-height:1.4;">
-                          <strong>Aviso en revisión:</strong> Se plantea sustituir la Unidad de Lipidómica SGIker por <strong>EHU-iBio</strong> en la versión definitiva de la web.
-                        </span>
-                      </div>
-                    )}
-                    <Content />
-                    {entry.data.tabId === 'tab-infraestructura' && (
-                      <div style="margin-top: 1.5rem;">
-                        <a href={getLocalizedPath('/sgiker', lang)} class="btn-inst-primary" style="display:inline-flex; align-items:center; gap:8px;">
-                          <i class="fas fa-flask"></i> {t.sgiker_btn || 'Ver Servicios y Protocolos'} <i class="fas fa-arrow-right"></i>
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Research Lines Section -->
+  <!-- 3. Líneas de Investigación -->
   <section class="page-section page-section-alt" id="lines">
     <div class="container">
       <div class="section-header-inst">
@@ -308,6 +189,9 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
           <h2 class="section-title-inst">{t.lines_title}</h2>
           <span class="section-subtitle-inst">{t.lines_subtitle}</span>
         </div>
+        <a href={getLocalizedPath('/lineas', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-microscope"></i> {t.home_lines_more} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        </a>
       </div>
 
       <div class="research-grid-inst" id="lines-grid">
@@ -318,545 +202,129 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
     </div>
   </section>
 
-  <!-- Section: Producción Científica & Hitos (Publicaciones, Proyectos y Tesis Unificados) -->
-  <section class="page-section" id="outputs">
+  <!-- 4. Actualidad: últimas noticias -->
+  <section class="page-section" id="news">
     <div class="container">
       <div class="section-header-inst">
         <div>
-          <h2 class="section-title-inst">{t.outputs_section_title || 'Producción Científica & Hitos'}</h2>
-          <span class="section-subtitle-inst">{t.outputs_section_subtitle || 'Artículos de impacto internacional, proyectos públicos competitivos y tesis doctorales'}</span>
+          <h2 class="section-title-inst">{t.home_news_title}</h2>
+          <span class="section-subtitle-inst">{t.home_news_subtitle}</span>
         </div>
-      </div>
-
-      <!-- Segmented Switcher for Scientific Outputs -->
-      <div style="display:flex; justify-content:center; margin-bottom:2rem;">
-        <div class="segmented-control-bar" id="outputs-switcher">
-          <button class="segmented-btn outputs-tab-btn active" data-target="output-pubs">
-            <i class="fas fa-book-open"></i> {t.outputs_tab_pubs || 'Publicaciones JCR'} <span class="segmented-count">{allPubs.length}</span>
-          </button>
-          <button class="segmented-btn outputs-tab-btn" data-target="output-projects">
-            <i class="fas fa-hand-holding-usd"></i> {t.outputs_tab_projects || 'Proyectos Financiados'} <span class="segmented-count">{allProjects.length}</span>
-          </button>
-          <button class="segmented-btn outputs-tab-btn" data-target="output-theses">
-            <i class="fas fa-graduation-cap"></i> {t.outputs_tab_theses || 'Tesis Doctorales'} <span class="segmented-count">{allTheses.length}</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Tab Panel 1: Publicaciones -->
-      <div class="output-panel active" id="output-pubs">
-        <div class="pubs-list" id="pubs-list">
-          {latestPublications.map(pub => (
-            <PublicationCard pub={pub} />
-          ))}
-        </div>
-        <div style="text-align:center; margin-top:2.5rem; background:var(--bg-surface-alt); padding:2rem; border-radius:var(--radius-md); border:1px dashed var(--border-color);">
-          <p style="font-size:1rem; color:var(--text-secondary); margin-bottom:1.25rem;">
-            <i class="fas fa-book-reader" style="color:var(--logo-green); margin-right:8px;"></i>
-            {t.pubs_archive_note}
-          </p>
-          <a href={getLocalizedPath('/publicaciones', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
-            <i class="fas fa-book-open"></i> {t.pubs_view_all_btn} ({allPubs.length}) <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Tab Panel 2: Proyectos Financiados -->
-      <div class="output-panel" id="output-projects" style="display:none;">
-        <div class="projects-grid-inst" id="featured-projects-grid">
-          {featuredProjects.map(project => (
-            <ProjectCard project={project} lang={lang} />
-          ))}
-        </div>
-        <div style="text-align:center; margin-top:2.5rem;">
-          <a href={getLocalizedPath('/proyectos', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
-            <i class="fas fa-hand-holding-usd"></i> {t.projects_view_catalog || 'Ver Todos los Proyectos'} ({allProjects.length}) <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Tab Panel 3: Tesis Doctorales -->
-      <div class="output-panel" id="output-theses" style="display:none;">
-        <div style="display:flex; justify-content:center; margin-bottom: 2rem;">
-          <div class="segmented-control-bar" id="theses-filter-bar">
-            <button class="segmented-btn theses-filter-btn active" data-type="ALL">
-              <i class="fas fa-layer-group"></i> {t.theses_all} <span class="segmented-count">{allTheses.length}</span>
-            </button>
-            <button class="segmented-btn theses-filter-btn" data-type="ONGOING">
-              <i class="fas fa-spinner fa-spin"></i> {t.theses_ongoing} <span class="segmented-count">{ongoingCount}</span>
-            </button>
-            <button class="segmented-btn theses-filter-btn" data-type="COMPLETED">
-              <i class="fas fa-check-circle"></i> {t.theses_completed} <span class="segmented-count">{completedCount}</span>
-            </button>
-          </div>
-        </div>
-        <div class="theses-grid-inst" id="theses-grid">
-          {allTheses.map(thesis => (
-            <ThesisCard thesis={thesis} lang={lang} />
-          ))}
-        </div>
-        <div style="text-align:center; margin-top:2.5rem;">
-          <a href={getLocalizedPath('/tesis', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
-            <i class="fas fa-graduation-cap"></i> {t.theses_page_title} ({allTheses.length}) <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section: Equipo & Trayectoria (Equipo Actual + Alumni Unificados) -->
-  <section class="page-section page-section-alt" id="team">
-    <div class="container">
-      <div class="section-header-inst">
-        <div>
-          <h2 class="section-title-inst">{t.team_title}</h2>
-          <span class="section-subtitle-inst">{t.team_subtitle}</span>
-        </div>
-      </div>
-
-      <!-- Segmented Switcher for Team Views: Current Team vs Alumni -->
-      <div style="display:flex; justify-content:center; margin-bottom:2rem;">
-        <div class="segmented-control-bar" id="team-view-switcher">
-          <button class="segmented-btn team-view-btn active" data-target="team-active-panel">
-            <i class="fas fa-users"></i> {t.team_tab_active || 'Equipo Actual'} <span class="segmented-count">{teamMembers.length}</span>
-          </button>
-          <button class="segmented-btn team-view-btn" data-target="team-alumni-panel">
-            <i class="fas fa-user-graduate"></i> {t.team_tab_alumni || 'Antiguos Miembros (Alumni)'} <span class="segmented-count">{featuredAlumni.length}</span>
-            <span style="background:#fef9c3; color:#854d0e; font-size:0.65rem; font-weight:700; padding:2px 6px; border-radius:4px; margin-left:6px; border:1px solid #fde047; vertical-align:middle; display:inline-block;">
-              Pedir permiso
-            </span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Panel: Active Team -->
-      <div class="team-panel active" id="team-active-panel">
-        <div class="team-filter-bar" id="team-category-filters">
-          <button class="team-filter-btn active" data-category="ALL"><i class="fas fa-users"></i> {t.team_all}</button>
-          <button class="team-filter-btn" data-category="PDI"><i class="fas fa-user-tie"></i> {t.team_pdi}</button>
-          <button class="team-filter-btn" data-category="Posdoctoral"><i class="fas fa-user-graduate"></i> {t.team_postdoc}</button>
-          <button class="team-filter-btn" data-category="Predoctoral"><i class="fas fa-book-reader"></i> {t.team_predoc}</button>
-          <button class="team-filter-btn" data-category="Técnico"><i class="fas fa-tools"></i> {t.team_tech}</button>
-        </div>
-
-        <div class="team-grid-inst" id="team-grid">
-          {teamMembers.map(member => (
-            <TeamCard member={member} lang={lang} />
-          ))}
-        </div>
-      </div>
-
-      <!-- Panel: Alumni -->
-      <div class="team-panel" id="team-alumni-panel" style="display:none;">
-        <div style="background:#fefce8; border:1px solid #fef08a; border-left:4px solid #ca8a04; border-radius:6px; padding:0.85rem 1.1rem; margin-bottom:1.5rem; display:flex; align-items:center; gap:10px;">
-          <i class="fas fa-user-shield" style="color:#ca8a04; font-size:1.2rem; flex-shrink:0;"></i>
-          <span style="font-size:0.9rem; color:#854d0e; line-height:1.4;">
-            <strong>Aviso de privacidad:</strong> Queda pendiente recabar el consentimiento explícito de las personas egresadas para su inclusión pública en el portal.
-          </span>
-        </div>
-        <div class="alumni-grid-inst">
-          {featuredAlumni.map(alumni => (
-            <AlumniCard alumni={alumni} lang={lang} />
-          ))}
-        </div>
-        <div style="text-align:center; margin-top:2.5rem; background:var(--bg-surface-alt); padding:2rem; border-radius:var(--radius-md); border:1px dashed var(--border-color);">
-          <p style="font-size:1rem; color:var(--text-secondary); margin-bottom:1.25rem;">
-            <i class="fas fa-university" style="color:var(--logo-green); margin-right:8px;"></i>
-            {t.alumni_stat_desc}
-          </p>
-          <a href={getLocalizedPath('/alumni', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
-            <i class="fas fa-user-graduate"></i> {t.alumni_view_all || 'Ver Red de Antiguos Miembros'} <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section: Formación Académica & Talento (Docencia + Únete Unificados) -->
-  <section class="page-section" id="training">
-    <div class="container">
-      <div class="section-header-inst">
-        <div>
-          <h2 class="section-title-inst">{t.training_talent_title || 'Formación Académica & Talento'}</h2>
-          <span class="section-subtitle-inst">{t.training_talent_subtitle || 'Docencia oficial en la UPV/EHU y oportunidades de incorporación para estudiantes e investigadores'}</span>
-        </div>
-        <a href={getLocalizedPath('/unete', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
-          <i class="fas fa-user-plus"></i> {t.join_btn || 'Ver Oportunidades y Convocatorias'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
+        <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
+          <i class="fas fa-newspaper"></i> {t.news_view_all} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
         </a>
       </div>
 
-      <!-- Segmented Switcher for Training vs Opportunities -->
-      <div style="display:flex; justify-content:center; margin-bottom:2rem;">
-        <div class="segmented-control-bar" id="training-view-switcher">
-          <button class="segmented-btn training-tab-btn active" data-target="training-courses-panel">
-            <i class="fas fa-chalkboard-teacher"></i> {t.training_tab_academic || 'Docencia (Grados y Másteres)'}
-          </button>
-          <button class="segmented-btn training-tab-btn" data-target="training-join-panel">
-            <i class="fas fa-user-plus"></i> {t.training_tab_opportunities || 'Únete al Laboratorio (TFG, TFM, Tesis)'}
-          </button>
-        </div>
-      </div>
-
-      <!-- Panel: Courses / Docencia -->
-      <div class="training-panel active" id="training-courses-panel">
-        <div class="training-bento-grid" id="training-bento-grid">
-          {trainings.map((tr, idx) => (
-            <TrainingCard training={tr} lang={lang} index={idx} />
+      {latestNews.length > 0 && (
+        <div class="news-bento-bottom" id="featured-news-grid">
+          {latestNews.map(article => (
+            <NewsCard article={article} lang={lang} variant="standard" />
           ))}
         </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Franja final: Contacto y Únete -->
+  <section class="home-cta-band" id="contact">
+    <div class="container home-cta-inner">
+      <div>
+        <h2 class="home-cta-title">{t.home_cta_title}</h2>
+        <p class="home-cta-text">{t.home_cta_text}</p>
       </div>
-
-      <!-- Panel: Opportunities / Únete -->
-      <div class="training-panel" id="training-join-panel" style="display:none;">
-        <div class="research-grid-inst">
-          <div class="research-card-inst">
-            <div class="research-card-content">
-              <div class="research-card-header">
-                <span class="research-badge" style="background:#e0f2fe; color:#0369a1;"><i class="fas fa-book-reader"></i> TFG / TFM</span>
-                <h3 class="research-card-title">Estudiantes de Grado y Máster</h3>
-              </div>
-              <p class="research-card-desc">
-                Prácticas de laboratorio y trabajos fin de titulación en Medicina, Bioquímica, Biología, Biotecnología y Farmacia (UPV/EHU).
-              </p>
-            </div>
-          </div>
-
-          <div class="research-card-inst">
-            <div class="research-card-content">
-              <div class="research-card-header">
-                <span class="research-badge" style="background:#fef3c7; color:#92400e;"><i class="fas fa-graduation-cap"></i> Doctorado</span>
-                <h3 class="research-card-title">Tesis Doctorales (FPU / FPI)</h3>
-              </div>
-              <p class="research-card-desc">
-                Apoyo en solicitudes de contratos predoctorales del Gobierno Vasco y Plan Estatal para integrarse en proyectos financiados de vanguardia.
-              </p>
-            </div>
-          </div>
-
-          <div class="research-card-inst">
-            <div class="research-card-content">
-              <div class="research-card-header">
-                <span class="research-badge" style="background:#f3e8ff; color:#6b21a8;"><i class="fas fa-microscope"></i> Posdoctoral</span>
-                <h3 class="research-card-title">Investigadores/as Posdoctorales</h3>
-              </div>
-              <p class="research-card-desc">
-                Recepción de candidaturas para programas Juan de la Cierva, Marie Skłodowska-Curie Actions (MSCA) y perfeccionamiento posdoctoral UPV/EHU.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-top:2.5rem; background:var(--bg-surface-alt); padding:2rem; border-radius:var(--radius-md); border:1px dashed var(--border-color);">
-          <p style="font-size:1rem; color:var(--text-secondary); margin-bottom:1.25rem;">
-            <i class="fas fa-flask" style="color:var(--logo-green); margin-right:8px;"></i>
-            {t.join_page_sub || 'Desarrolla tu carrera investigadora en un grupo consolidado de excelencia con equipamiento puntero.'}
-          </p>
-          <a href={getLocalizedPath('/unete', lang)} class="btn-inst-primary" style="padding:12px 28px; font-size:0.95rem; border-radius:30px; display:inline-flex; align-items:center; gap:10px;">
-            <i class="fas fa-user-plus"></i> {t.join_btn || 'Ver Convocatorias y Cómo Solicitar'} <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
+      <div class="home-cta-actions">
+        <a href={`mailto:${contactEmail}`} class="btn-inst-primary">
+          <i class="fas fa-paper-plane"></i> {t.contact_write_btn}
+        </a>
+        <a href={getLocalizedPath('/unete', lang)} class="btn-inst-secondary">
+          <i class="fas fa-user-plus"></i> {t.nav_join}
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Section: Actualidad, Divulgación & Sociedad (Noticias + Divulgación Unificados) -->
-  <section class="page-section page-section-alt" id="news">
-    <div class="container">
-      <div class="section-header-inst">
-        <div>
-          <h2 class="section-title-inst">{t.news_outreach_title || 'Actualidad, Divulgación & Sociedad'}</h2>
-          <span class="section-subtitle-inst">{t.news_outreach_subtitle || 'Avances científicos, presencia en medios, salud hepática y transferencia social'}</span>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href={getLocalizedPath('/divulgacion', lang)} class="btn-inst-secondary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
-            <i class="fas fa-heartbeat"></i> {t.outreach_btn || 'Salud Hepática & Divulgación'}
-          </a>
-          <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-primary" style="font-size:0.85rem; padding:8px 18px; border-radius:30px;">
-            <i class="fas fa-newspaper"></i> {t.news_view_all || 'Sala de Prensa'} <i class="fas fa-arrow-right" style="margin-left:4px;"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="news-grid-inst" id="featured-news-grid">
-        {latestNews.map(article => (
-          <NewsCard article={article} lang={lang} />
-        ))}
-      </div>
-
-      <!-- Science Outreach / Patient Impact Spotlight Card -->
-      <div class="about-card" style="padding:2.25rem; margin-top:2.5rem; background:linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-surface-alt) 100%);">
-        <div class="about-grid">
-          <div class="about-text">
-            <h3 style="color:var(--ehu-navy); margin-bottom:1rem; font-size:1.35rem;">
-              <i class="fas fa-heartbeat" style="color:var(--logo-green);"></i> Salud Hepática y Conciencia Social (MASLD/MASH)
-            </h3>
-            <p style="font-size:0.98rem; line-height:1.7; color:var(--text-secondary); margin-bottom:1.25rem;">
-              En el grupo Lipids & Liver acercamos la investigación preclínica a la ciudadanía a través de talleres en la <strong>Zientzia Astea UPV/EHU</strong>, charlas del <strong>11 de Febrero (Mujer y Niña en la Ciencia)</strong> y estrecha cooperación con asociaciones de pacientes hepáticos.
-            </p>
-            <div class="specialty-list">
-              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Información para Pacientes MASLD</span>
-              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Talleres Escolares Zientzia Astea</span>
-              <span class="specialty-chip"><i class="fas fa-check-circle"></i> Fomento de Vocaciones Científicas Femeninas</span>
-            </div>
-          </div>
-
-          <div style="background:var(--bg-surface); padding:1.75rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:center;">
-            <h4 style="color:var(--ehu-navy); margin-bottom:0.75rem; font-size:1.1rem;">
-              <i class="fas fa-book-open" style="color:var(--logo-green);"></i> Guías y Recursos Divulgativos
-            </h4>
-            <p style="font-size:0.9rem; line-height:1.6; color:var(--text-secondary); margin-bottom:1.25rem;">
-              Consulta recomendaciones sobre prevención no farmacológica del daño metabólico en el hígado y hábitos cardiosaludables.
-            </p>
-            <a href={getLocalizedPath('/divulgacion', lang)} class="btn-inst-primary" style="text-align:center; justify-content:center;">
-              Portal de Divulgación <i class="fas fa-arrow-right" style="margin-left:6px;"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section: Red de Colaboraciones y Alianzas -->
-  <section class="page-section" id="collaborations">
-    <div class="container">
-      <div class="section-header-inst">
-        <div>
-          <h2 class="section-title-inst">{t.collab_title || 'Red de Colaboraciones y Alianzas'}</h2>
-          <span class="section-subtitle-inst">{t.collab_subtitle || 'Entorno hospitalario, centros de investigación de excelencia y consorcios internacionales'}</span>
-        </div>
-      </div>
-
-      <div class="partners-grid-inst">
-        {collaborationsList.map((partner: any) => (
-          <PartnerCard partner={partner} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="page-section" id="contact">
-    <div class="container">
-      <div class="section-header-inst">
-        <div>
-          <h2 class="section-title-inst">{t.contact_title}</h2>
-          <span class="section-subtitle-inst">{t.contact_subtitle}</span>
-        </div>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info-card">
-          <h3 style="margin-bottom:1.5rem; font-size:1.3rem; color:var(--ehu-navy)">{t.contact_hq}</h3>
-          
-          <div class="info-item">
-            <div class="info-icon"><i class="fas fa-university"></i></div>
-            <div class="info-text">
-              <h4>{t.contact_postal}</h4>
-              <p style="white-space:pre-line">{t.contact_postal_val}</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon"><i class="fas fa-user-check"></i></div>
-            <div class="info-text">
-              <h4>{t.contact_coord}</h4>
-              <p>Dra. Patricia Aspichueta Celaá<br />Catedrática de Fisiología (UPV/EHU)</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon"><i class="fas fa-envelope"></i></div>
-            <div class="info-text">
-              <h4>{t.contact_email_title}</h4>
-              <p>patricia.aspichueta@ehu.eus</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-info-card">
-          <h3 style="margin-bottom:1.5rem; font-size:1.3rem; color:var(--ehu-navy)">{t.contact_form_title}</h3>
-          
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <label for="contact-name">{t.contact_form_name}</label>
-              <input type="text" id="contact-name" class="form-control" required placeholder="Ej. Dr. Juan Pérez" />
-            </div>
-
-            <div class="form-group">
-              <label for="contact-email">{t.contact_form_email}</label>
-              <input type="email" id="contact-email" class="form-control" required placeholder="juan.perez@ejemplo.com" />
-            </div>
-
-            <div class="form-group">
-              <label for="contact-subject">{t.contact_form_subject}</label>
-              <input type="text" id="contact-subject" class="form-control" required placeholder="Consulta sobre Colaboración / Doctorado" />
-            </div>
-
-            <div class="form-group">
-              <label for="contact-message">{t.contact_form_msg}</label>
-              <textarea id="contact-message" class="form-control" required placeholder="Escriba aquí su mensaje..."></textarea>
-            </div>
-
-            <button type="submit" class="btn-inst-primary" style="border:none; cursor:pointer">
-              {t.contact_form_send} <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Client-side Logic for Index Page (Tabs, Segmented Theses, Team Search) -->
+  <!-- Interactive Client-side Logic: Hero particle network -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. About Tabs
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabContents = document.querySelectorAll('.tab-content');
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          tabBtns.forEach(b => b.classList.remove('active'));
-          tabContents.forEach(c => c.classList.remove('active'));
-          btn.classList.add('active');
-          const target = document.getElementById(btn.dataset.tab);
-          if (target) target.classList.add('active');
-        });
-      });
+      // Hero Photo Gallery: fade carousel with arrows, dots, keyboard, swipe and autoplay
+      const gallery = document.getElementById('hero-gallery');
+      const slides = gallery ? Array.from(gallery.querySelectorAll('.hero-gallery-slide')) : [];
 
-      // 2. Scientific Outputs Segmented Switcher (Pubs, Projects, Theses)
-      const outputBtns = document.querySelectorAll('.outputs-tab-btn');
-      const outputPanels = document.querySelectorAll('.output-panel');
-      outputBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          outputBtns.forEach(b => b.classList.remove('active'));
-          const targetBtn = e.target.closest('.outputs-tab-btn');
-          if (targetBtn) {
-            targetBtn.classList.add('active');
-            const targetId = targetBtn.dataset.target;
-            outputPanels.forEach(panel => {
-              if (panel.id === targetId) {
-                panel.style.display = 'block';
-                panel.classList.add('active');
-              } else {
-                panel.style.display = 'none';
-                panel.classList.remove('active');
-              }
-            });
+      if (gallery && slides.length > 1) {
+        const dots = Array.from(gallery.querySelectorAll('.hero-gallery-dot'));
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const AUTOPLAY_MS = 6000;
+        let current = 0;
+        let timer = null;
+        let paused = false;
+
+        const loadSlide = (index) => {
+          const img = slides[index % slides.length].querySelector('img');
+          if (img && img.dataset.src) {
+            img.src = img.dataset.src;
+            delete img.dataset.src;
           }
-        });
-      });
+        };
 
-      // 3. Theses Sub-filter inside Outputs Panel
-      const thesisFilterBtns = document.querySelectorAll('.theses-filter-btn');
-      const thesisCards = document.querySelectorAll('.theses-grid-inst .thesis-card-inst');
-      thesisFilterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          thesisFilterBtns.forEach(b => b.classList.remove('active'));
-          const targetBtn = e.target.closest('.theses-filter-btn');
-          if (targetBtn) {
-            targetBtn.classList.add('active');
-            const type = targetBtn.dataset.type;
-            thesisCards.forEach(card => {
-              if (type === 'ALL' || card.dataset.type === type) {
-                card.style.display = 'flex';
-              } else {
-                card.style.display = 'none';
-              }
-            });
+        const goTo = (index) => {
+          current = (index + slides.length) % slides.length;
+          slides.forEach((slide, i) => {
+            const active = i === current;
+            slide.classList.toggle('is-active', active);
+            slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === current);
+            dot.setAttribute('aria-current', i === current ? 'true' : 'false');
+          });
+          // Carga la imagen actual y precarga la siguiente para que el fundido no muestre un hueco
+          loadSlide(current);
+          loadSlide(current + 1);
+        };
+
+        const stop = () => { clearInterval(timer); timer = null; };
+        const start = () => {
+          stop();
+          if (!reduceMotion && !paused && !document.hidden) {
+            timer = setInterval(() => goTo(current + 1), AUTOPLAY_MS);
           }
+        };
+        // Navegación manual: reinicia el temporizador
+        const navigate = (index) => { goTo(index); start(); };
+
+        gallery.querySelector('.hero-gallery-prev').addEventListener('click', () => navigate(current - 1));
+        gallery.querySelector('.hero-gallery-next').addEventListener('click', () => navigate(current + 1));
+        dots.forEach((dot) => dot.addEventListener('click', () => navigate(Number(dot.dataset.index))));
+
+        gallery.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(current - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); navigate(current + 1); }
         });
-      });
 
-      // 4. Team View Switcher (Active Team vs Alumni)
-      const teamViewBtns = document.querySelectorAll('.team-view-btn');
-      const teamPanels = document.querySelectorAll('.team-panel');
-      teamViewBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          teamViewBtns.forEach(b => b.classList.remove('active'));
-          const targetBtn = e.target.closest('.team-view-btn');
-          if (targetBtn) {
-            targetBtn.classList.add('active');
-            const targetId = targetBtn.dataset.target;
-            teamPanels.forEach(panel => {
-              if (panel.id === targetId) {
-                panel.style.display = 'block';
-                panel.classList.add('active');
-              } else {
-                panel.style.display = 'none';
-                panel.classList.remove('active');
-              }
-            });
-          }
-        });
-      });
+        // Pausa mientras el usuario interactúa con la galería
+        const pause = () => { paused = true; stop(); };
+        const resume = () => { paused = false; start(); };
+        gallery.addEventListener('mouseenter', pause);
+        gallery.addEventListener('mouseleave', resume);
+        gallery.addEventListener('focusin', pause);
+        gallery.addEventListener('focusout', (e) => { if (!gallery.contains(e.relatedTarget)) resume(); });
+        document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
 
-      // 5. Team Filter Buttons (Active Team)
-      const teamFilterBtns = document.querySelectorAll('.team-filter-btn');
-      const teamCards = document.querySelectorAll('.team-grid-inst .team-card-inst');
+        // Deslizar con el dedo en móvil
+        let touchX = null;
+        gallery.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+        gallery.addEventListener('touchend', (e) => {
+          if (touchX === null) return;
+          const dx = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(dx) > 40) navigate(dx < 0 ? current + 1 : current - 1);
+          touchX = null;
+        }, { passive: true });
 
-      let currentCategory = 'ALL';
-
-      function filterTeam() {
-        teamCards.forEach(card => {
-          const category = card.dataset.category || '';
-          const catKey = card.dataset.catkey || '';
-
-          let matchesCategory = false;
-          if (currentCategory === 'ALL') {
-            matchesCategory = true;
-          } else if (currentCategory === 'PDI') {
-            matchesCategory = catKey === 'pdi' || catKey === 'leadership' || catKey === 'ryc' || category === 'Coordinadora' || category === 'Directora de Línea' || category === 'Investigador Senior' || category === 'PDI' || category.includes('Ramón y Cajal');
-          } else if (currentCategory === 'Posdoctoral') {
-            matchesCategory = catKey === 'postdoc' || category.toLowerCase().includes('posdoctoral');
-          } else if (currentCategory === 'Predoctoral') {
-            matchesCategory = catKey === 'predoc' || category.toLowerCase().includes('predoctoral');
-          } else if (currentCategory === 'Técnico') {
-            matchesCategory = catKey === 'tech' || category.toLowerCase().includes('técnico') || category.toLowerCase().includes('tecnico');
-          } else {
-            matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase()) || catKey === currentCategory.toLowerCase();
-          }
-
-          card.style.display = matchesCategory ? 'flex' : 'none';
-        });
+        goTo(0);
+        start();
       }
 
-      teamFilterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          teamFilterBtns.forEach(b => b.classList.remove('active'));
-          const target = e.target.closest('.team-filter-btn');
-          if (target) {
-            target.classList.add('active');
-            currentCategory = target.dataset.category;
-            filterTeam();
-          }
-        });
-      });
-
-      // 6. Training View Switcher (Courses vs Opportunities)
-      const trainingTabBtns = document.querySelectorAll('.training-tab-btn');
-      const trainingPanels = document.querySelectorAll('.training-panel');
-      trainingTabBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          trainingTabBtns.forEach(b => b.classList.remove('active'));
-          const targetBtn = e.target.closest('.training-tab-btn');
-          if (targetBtn) {
-            targetBtn.classList.add('active');
-            const targetId = targetBtn.dataset.target;
-            trainingPanels.forEach(panel => {
-              if (panel.id === targetId) {
-                panel.style.display = 'block';
-                panel.classList.add('active');
-              } else {
-                panel.style.display = 'none';
-                panel.classList.remove('active');
-              }
-            });
-          }
-        });
-      });
-
-
-
-      // 0. Hero Interactive Dynamic Effects
+      // Hero Interactive Dynamic Effects
       // A. Dynamic Molecular/Lipid Particle Network Simulation
       const heroSection = document.getElementById('hero');
       const heroCanvas = document.getElementById('hero-particles-canvas');
@@ -1009,16 +477,6 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
 
           animate();
         }
-      }
-
-      // 6. Contact Form
-      const form = document.getElementById('contact-form');
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          alert("¡Muchas gracias! Su mensaje ha sido enviado correctamente al Grupo de Investigación Lipids & Liver.");
-          form.reset();
-        });
       }
     });
   </script>

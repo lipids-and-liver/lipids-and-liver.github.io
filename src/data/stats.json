@@ -3,7 +3,7 @@
     {
       "number": "2007",
       "label_es": "Grupo Consolidado",
-      "label_eu": "Talde Sendotua",
+      "label_eu": "Talde Finkatua",
       "label_en": "Consolidated Group",
       "subtext_es": "Reconocido por el Gobierno Vasco",
       "subtext_eu": "Eusko Jaurlaritzak aitortua",
@@ -12,18 +12,18 @@
       "subtext": "Reconocido por el Gobierno Vasco"
     },
     {
-      "number": "10+",
-      "label_es": "PDI y Catedráticos",
-      "label_eu": "Irakasle-ikertzaileak eta Katedradunak",
-      "label_en": "Faculty Members & Full Professors",
-      "subtext_es": "Facultad de Medicina y Enfermería",
-      "subtext_eu": "Medikuntza eta Erizaintza Fakultatea",
-      "subtext_en": "Faculty of Medicine and Nursing",
-      "label": "PDI y Catedráticos",
-      "subtext": "Facultad de Medicina y Enfermería"
+      "number": "6",
+      "label_es": "Investigadores Sénior",
+      "label_eu": "Ikertzaile Seniorrak",
+      "label_en": "Senior Researchers",
+      "subtext_es": "PDI, Ikerbasque y Ramón y Cajal",
+      "subtext_eu": "Irakasle-ikertzaileak, Ikerbasque eta Ramón y Cajal",
+      "subtext_en": "Faculty, Ikerbasque & Ramón y Cajal",
+      "label": "Investigadores Sénior",
+      "subtext": "PDI, Ikerbasque y Ramón y Cajal"
     },
     {
-      "number": "15+",
+      "number": "35+",
       "label_es": "Tesis Doctorales",
       "label_eu": "Doktore-tesiak",
       "label_en": "PhD Theses",
@@ -34,15 +34,15 @@
       "subtext": "Defendidas y en curso de investigación"
     },
     {
-      "number": "SGIker",
-      "label_es": "Unidad de Lipidómica",
-      "label_eu": "Lipidomika Unitatea",
-      "label_en": "Lipidomics Unit",
-      "subtext_es": "Servicios Generales UPV/EHU",
-      "subtext_eu": "UPV/EHUko Zerbitzu Orokorrak",
-      "subtext_en": "UPV/EHU General Research Services",
-      "label": "Unidad de Lipidómica",
-      "subtext": "Servicios Generales UPV/EHU"
+      "number": "1",
+      "label_es": "Patente de Invención",
+      "label_eu": "Asmakuntza-patentea",
+      "label_en": "Invention Patent",
+      "subtext_es": "OEPM • Transferencia Tecnológica",
+      "subtext_eu": "OEPM • Transferentzia Teknologikoa",
+      "subtext_en": "OEPM • Technology Transfer",
+      "label": "Patente de Invención",
+      "subtext": "OEPM • Transferencia Tecnológica"
     }
   ]
 }

@@ -1,6 +1,7 @@
 ---
+import ContentLangNotice from '../ContentLangNotice.astro';
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getLocalizedEntry, getTranslations, getLocalizedPath, type Locale, formatNewsDate } from '../../utils/i18n';
 import { render } from 'astro:content';
 
 interface Props {
@@ -20,17 +21,9 @@ if (!article) {
 const { Content } = await render(article);
 const { title, date, category, categoryBadge, author, image } = article.data;
 
-let formattedDate = date;
-try {
-  const d = new Date(date);
-  if (!isNaN(d.getTime())) {
-    formattedDate = d.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'eu' ? 'eu-ES' : 'es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
-} catch (e) {}
+const formattedDate = formatNewsDate(date, article.data.datePrecision, lang);
+// Etiqueta: la propia de la noticia o, si no tiene, la categoría traducida
+const categoryLabel = categoryBadge || (t as Record<string, string>)[`news_cat_${category}`] || category;
 
 const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https://') ? image : (image.startsWith('/') ? image : `/${image}`)) : null;
 ---
@@ -60,7 +53,7 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
 
           <div class="cv-aside-badge">
             <span class="news-category-badge">
-              <i class="fas fa-tag"></i> {categoryBadge || category}
+              <i class="fas fa-tag"></i> {categoryLabel}
             </span>
           </div>
 
@@ -101,16 +94,17 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
 
       <!-- Columna Derecha: Contenido del artículo -->
       <article class="cv-main">
+        <ContentLangNotice contentLang={article.locale} lang={lang} variant="banner" />
         <div class="cv-kicker">
           <span class="cv-dot"></span>
-          {categoryBadge || category} • {formattedDate}
+          {categoryLabel} • {formattedDate}
         </div>
 
-        <h1 class="cv-main-name" style="margin-bottom:1.25rem;">
+        <h1 class="cv-main-name" lang={article.locale !== lang ? article.locale : undefined} style="margin-bottom:1.25rem;">
           {title}
         </h1>
 
-        <div class="cv-bio markdown-body" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+        <div class="cv-bio markdown-body" lang={article.locale !== lang ? article.locale : undefined} style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
           <Content />
         </div>
 

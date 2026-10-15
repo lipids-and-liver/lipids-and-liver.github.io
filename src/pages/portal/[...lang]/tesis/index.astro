@@ -1,0 +1,10 @@
+---
+import ThesesIndexPage from '../../../../components/pages/ThesesIndexPage.astro';
+import { localePaths } from '../../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<ThesesIndexPage lang={lang} />

@@ -1,0 +1,11 @@
+---
+import NewsDetailPage from '../../../../components/pages/NewsDetailPage.astro';
+import { localeSlugPaths } from '../../../../utils/routes';
+
+export const getStaticPaths = () => localeSlugPaths('news');
+
+const { lang } = Astro.props;
+const { id } = Astro.params;
+---
+
+<NewsDetailPage id={id!} lang={lang} />

@@ -9,11 +9,20 @@ const theses = defineCollection({
     status: z.enum(['ongoing', 'completed']).default('ongoing'),
     title: z.string().default('Tesis Doctoral'),
     institution: z.string().nullish().transform(val => val || 'UPV/EHU'),
-    year: z.union([z.string(), z.number()]).default(new Date().getFullYear()),
+    year: z.union([z.string(), z.number()]),
     badge: z.string().nullish(),
     directors: z.array(z.string()).nullish().transform(val => val || []),
     program: z.string().nullish(),
     keywords: z.array(z.string()).nullish().transform(val => val || []),
+    // Línea de investigación (id de src/content/research): su imagen aparece en la tarjeta de la tesis
+    researchLine: z.string().nullish(),
+    defenseDate: z.string().nullish(),
+    officialUrl: z.string().nullish(),
+    handleUrl: z.string().nullish(),
+    dialnetUrl: z.string().nullish(),
+    teseoId: z.string().nullish(),
+    department: z.string().nullish(),
+    university: z.string().nullish(),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
   })
 });
@@ -21,10 +30,14 @@ const theses = defineCollection({
 const team = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
   schema: z.object({
+    // Traducción en borrador pendiente de revisión por el grupo (ver npm run i18n:check)
+    translationStatus: z.enum(['draft', 'reviewed']).optional(),
     id: z.string().optional(),
     name: z.string().default('Investigador/a'),
     role: z.string().default('Investigador/a'),
     category: z.string().default('Predoctoral'),
+    // Personal jubilado: sale del listado de personal y aparece en Antiguos Miembros (conserva su CV)
+    status: z.enum(['active', 'retired']).default('active'),
     department: z.string().nullish().transform(val => val || 'Departamento de Fisiología, Facultad de Medicina y Enfermería'),
     image: z.string().nullish().transform(val => val || '/assets/images/team/placeholder.jpg'),
     email: z.string().nullish().transform(val => val || ''),
@@ -44,6 +57,7 @@ const team = defineCollection({
       positions: z.array(z.string()).nullish().transform(val => val || []),
       grants: z.array(z.string()).nullish().transform(val => val || []),
       publications: z.array(z.string()).nullish().transform(val => val || []),
+      patents: z.array(z.string()).nullish().transform(val => val || []),
       teaching: z.array(z.string()).nullish().transform(val => val || [])
     }).nullish()
   })
@@ -58,7 +72,9 @@ const research = defineCollection({
     image: z.string().nullish().transform(val => val || '/assets/images/mafld.jpg'),
     badge: z.string().default('Línea Prioritaria'),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
-    affiliation: z.string().nullish()
+    affiliation: z.string().nullish(),
+    // Traducción en borrador pendiente de revisión por el grupo (ver npm run i18n:check)
+    translationStatus: z.enum(['draft', 'reviewed']).optional(),
   })
 });
 
@@ -66,7 +82,7 @@ const publications = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/publications" }),
   schema: z.object({
     id: z.string().optional(),
-    year: z.union([z.string(), z.number()]).default(new Date().getFullYear()),
+    year: z.union([z.string(), z.number()]),
     title: z.string(),
     authors: z.string(),
     journal: z.string(),
@@ -113,6 +129,7 @@ const projects = defineCollection({
   schema: z.object({
     id: z.string().optional(),
     title: z.string().default('Proyecto de Investigación'),
+    acronym: z.string().nullish(),
     code: z.string().default(''),
     fundingBody: z.string().default(''),
     fundingType: z.enum(['regional', 'national', 'european', 'foundation']).nullish().transform(val => val || 'national'),
@@ -122,22 +139,39 @@ const projects = defineCollection({
     budget: z.string().nullish(),
     badge: z.string().nullish(),
     summary: z.string().nullish(),
+    officialUrl: z.string().nullish(),
+    scope: z.string().nullish(),
+    call: z.string().nullish(),
+    year: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : undefined),
+    researchers: z.array(z.string()).nullish(),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
   })
 });
+
+// Categorías de noticias (clave estable; la etiqueta se traduce con news_cat_<clave>).
+// Textos antiguos o desconocidos se normalizan; lo que no encaja va a "otros".
+const NEWS_CATEGORIES = ['divulgacion', 'congresos', 'publicaciones', 'premios', 'institucional', 'tesis', 'otros'] as const;
+const NEWS_CATEGORY_ALIASES: Record<string, (typeof NEWS_CATEGORIES)[number]> = { acreditacion: 'institucional' };
+const normalizeNewsCategory = (val: string) => {
+  const key = val.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+  if ((NEWS_CATEGORIES as readonly string[]).includes(key)) return key as (typeof NEWS_CATEGORIES)[number];
+  return NEWS_CATEGORY_ALIASES[key] ?? 'otros';
+};
 
 const news = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/news" }),
   schema: z.object({
     id: z.string().optional(),
     title: z.string().default('Noticia'),
-    date: z.union([z.string(), z.date()]).nullish().transform(val => val instanceof Date ? val.toISOString().split('T')[0] : (val ? String(val) : new Date().toISOString().split('T')[0])),
-    category: z.string().default('Novedades'),
+    date: z.union([z.string(), z.date()]).transform(val => val instanceof Date ? val.toISOString().split('T')[0] : String(val)),
+    category: z.string().default('otros').transform(normalizeNewsCategory),
     categoryBadge: z.string().nullish(),
     summary: z.string().default(''),
     image: z.string().nullish(),
     author: z.string().nullish(),
     link: z.string().nullish(),
+    // 'year' cuando solo se conoce el año (p. ej. noticias antiguas basadas en registros)
+    datePrecision: z.enum(['day', 'year']).default('day'),
     featured: z.boolean().nullish().transform(val => Boolean(val)),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
   })
@@ -164,7 +198,49 @@ const letter = defineCollection({
   })
 });
 
+const patents = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/patents" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string().default('Patente de Invención'),
+    applicationNumber: z.string().default(''),
+    publicationNumber: z.string().default(''),
+    year: z.union([z.number(), z.string()]).default(2020),
+    applicationDate: z.string().nullish(),
+    publicationDate: z.string().nullish(),
+    applicant: z.string().default('Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)'),
+    inventors: z.array(z.string()).default([]),
+    groupInventors: z.array(z.string()).nullish().transform(val => val || []),
+    scope: z.string().default('Nacional (España - OEPM)'),
+    status: z.string().default('Concedida / Publicada'),
+    badge: z.string().default('Patente OEPM'),
+    abstract: z.string().nullish(),
+    invenesUrl: z.string().nullish(),
+    pdfUrl: z.string().nullish(),
+    ehuUrl: z.string().nullish(),
+    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
+  })
+});
+
+// Recursos científicos: servicios y plataformas que usa el grupo (SGIker, Biobizkaia…)
+const sciresources = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/sciresources" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    provider: z.enum(['sgiker', 'biobizkaia']),
+    icon: z.string().default('fas fa-flask'),
+    location: z.string().nullish(),
+    url: z.string().url(),
+    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
+    // Texto redactado a partir de fuentes públicas, pendiente de validación por el grupo
+    draft: z.boolean().default(false),
+    translationStatus: z.enum(['draft', 'reviewed']).optional(),
+  })
+});
+
 export const collections = {
+  sciresources,
   theses,
   team,
   research,
@@ -173,7 +249,8 @@ export const collections = {
   training,
   projects,
   news,
-  letter
+  letter,
+  patents
 };
 
 

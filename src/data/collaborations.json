@@ -12,12 +12,12 @@
     },
     {
       "id": "biocruces",
-      "name": "IIS Biocruces Bizkaia",
+      "name": "IIS Biobizkaia",
       "type": "Sanitaria e Investigación Traslacional",
       "role": "Área de Enfermedades Digestivas",
       "location": "Barakaldo, Bizkaia",
       "icon": "fas fa-hospital-user",
-      "url": "https://www.biocrucesbizkaia.org",
+      "url": "https://www.bio-bizkaia.eus",
       "desc": "Instituto Sanitario de referencia para la translación directa de los descubrimientos moleculares hacia el diagnóstico y abordaje de pacientes hepáticos."
     },
     {

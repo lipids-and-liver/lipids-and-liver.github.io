@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
+import ContentLangNotice from '../ContentLangNotice.astro';
 
 interface Props {
   lang: Locale;
@@ -8,6 +9,8 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+// Página de Fase 2 con texto provisional: el cuerpo solo existe en español hasta su versión definitiva
+const bodyLang = lang !== CONTENT_SOURCE_LOCALE ? CONTENT_SOURCE_LOCALE : undefined;
 ---
 
 <Layout currentPage="outreach" lang={lang} title={`${t.outreach_page_title} | Lipids & Liver`}>
@@ -32,7 +35,7 @@ const t = getTranslations(lang);
     <div class="container">
       <div class="catalog-header-content">
         <span class="catalog-badge">
-          <i class="fas fa-users"></i> Ciencia Ciudadana & Transferencia Social
+          <i class="fas fa-users"></i> {t.outreach_badge}
         </span>
         <h1 class="catalog-title">{t.outreach_page_title}</h1>
         <p class="catalog-subtitle">{t.outreach_page_sub}</p>
@@ -41,8 +44,9 @@ const t = getTranslations(lang);
   </section>
 
   <!-- Content Section -->
-  <section class="page-section">
+  <section lang={bodyLang} class="page-section">
     <div class="container">
+      <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
       <!-- Notice Banner: Fase 2 -->
       <div style="background: #fff7ed; border: 1px solid #fed7aa; border-left: 5px solid #ea580c; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1rem; box-shadow: 0 2px 4px rgba(234,88,12,0.06);">
         <i class="fas fa-calendar-alt" style="color: #ea580c; font-size: 1.5rem; margin-top: 2px; flex-shrink:0;"></i>
@@ -65,7 +69,7 @@ const t = getTranslations(lang);
             En el Grupo <strong>Lipids & Liver</strong> consideramos que la divulgación científica es un deber ético fundamental: comunicar de forma accesible y rigurosa cómo funciona el metabolismo humano, cómo prevenir enfermedades crónicas del hígado y cuál es el impacto de la investigación preclínica en la salud de las personas.
           </p>
           <p style="font-size:1rem; line-height:1.7; color:var(--text-secondary);">
-            Participamos activamente en jornadas de puertas abiertas, ferias científicas de la UPV/EHU y foros comunitarios en colaboración con el IIS Biocruces Bizkaia y asociaciones de pacientes.
+            Participamos activamente en jornadas de puertas abiertas, ferias científicas de la UPV/EHU y foros comunitarios en colaboración con el IIS Biobizkaia y asociaciones de pacientes.
           </p>
         </div>
 
@@ -136,7 +140,7 @@ const t = getTranslations(lang);
         </div>
       </div>
 
-      <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));">
         <div class="stat-box" style="text-align:left; padding:2rem;">
           <div style="font-size:2rem; color:var(--logo-green); margin-bottom:0.75rem;"><i class="fas fa-flask"></i></div>
           <h4 style="font-size:1.15rem; color:var(--ehu-navy); margin-bottom:0.5rem;">Zientzia Astea UPV/EHU</h4>

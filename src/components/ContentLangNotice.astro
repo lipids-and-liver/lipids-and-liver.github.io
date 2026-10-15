@@ -1,0 +1,28 @@
+---
+// Aviso para contenido mostrado en un idioma distinto al de la página (política de idiomas:
+// lo que no está traducido se muestra con aviso, nunca se oculta). No pinta nada si coinciden.
+import { getTranslations, type Locale } from '../utils/i18n';
+
+interface Props {
+  contentLang: Locale;
+  lang: Locale;
+  variant?: 'badge' | 'banner';
+}
+
+const { contentLang, lang, variant = 'badge' } = Astro.props;
+const t = getTranslations(lang);
+const message = t[`content_only_in_${contentLang}` as keyof typeof t] as string;
+---
+
+{contentLang !== lang && (
+  variant === 'banner' ? (
+    <p class="content-lang-notice" role="note">
+      <i class="fas fa-language" aria-hidden="true"></i> {message}
+    </p>
+  ) : (
+    <span class="content-lang-badge" title={message}>
+      <span aria-hidden="true">{contentLang.toUpperCase()}</span>
+      <span class="sr-only">{message}</span>
+    </span>
+  )
+)}

@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations, getLocalizedPath, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
+import ContentLangNotice from '../ContentLangNotice.astro';
+import PartnerCard from '../cards/PartnerCard.astro';
+import collaborationsData from '../../data/collaborations.json';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const rawCollaborations = (collaborationsData as any).collaborations || collaborationsData;
+const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollaborations : [];
+---
+
+<Layout currentPage="collaborations" lang={lang} title={`${t.collab_title} | Lipids & Liver`}>
+  <!-- Contextual Sub-bar -->
+  <div class="nav-sub-bar">
+    <div class="container nav-sub-container">
+      <div class="nav-sub-context">
+        <span class="nav-sub-badge">
+          <i class="fas fa-project-diagram"></i> {t.nav_collaborations || 'Alianzas y Colaboraciones'}
+        </span>
+      </div>
+      <div class="nav-sub-actions">
+        <a href={getLocalizedPath('/', lang)} class="btn-inst-outline-light">
+          <i class="fas fa-home"></i> {t.nav_home}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <section class="catalog-header-section">
+    <div class="container">
+      <div class="catalog-header-content">
+        <span class="catalog-badge">
+          <i class="fas fa-handshake"></i> {t.nav_group_group || 'El Grupo'}
+        </span>
+        <h1 class="catalog-title">{t.collab_title}</h1>
+        <p class="catalog-subtitle">{t.collab_subtitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <!-- collaborations.json solo está en español -->
+      <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
+      <div class="partners-grid-inst" lang={lang !== CONTENT_SOURCE_LOCALE ? CONTENT_SOURCE_LOCALE : undefined}>
+        {collaborationsList.map((partner: any) => (
+          <PartnerCard partner={partner} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

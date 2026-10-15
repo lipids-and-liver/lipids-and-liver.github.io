@@ -1,0 +1,4115 @@
+[
+  {
+    "id": "ehu-1839710",
+    "ehuId": "1839710",
+    "title": "Heterogeneidad de MASLD y cáncer primario hepático: restaurar el programa metabólico para prevenir la progresión de la enfermedad",
+    "acronym": "Rest-MASCANLive",
+    "code": "MCIU-O24/P13",
+    "fundingBody": "MCIU-Proyectos de Investigación Orientada 2024 ORIENTADA",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 September 2025 - 31 August 2028",
+    "startDate": "01 September 2025",
+    "endDate": "31 August 2028",
+    "year": 2028,
+    "status": "active",
+    "budget": "€406,250.00",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Javier Bustamante Schneider",
+        "role": "Investigador"
+      },
+      {
+        "name": "Mikel Gastaca Mateo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Gomez Santos",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1839710/detalle"
+  },
+  {
+    "id": "ehu-1303542",
+    "ehuId": "1303542",
+    "title": "Nuevos mecanismos de prevención y diagnóstico de metástasis hepáticas de cáncer colorrectal: reprogramando el metabolismo del colesterol en hepatocitos",
+    "acronym": "",
+    "code": "FP24/44",
+    "fundingBody": "FUNDACIONES PRIVADAS 2024",
+    "fundingType": "foundation",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 December 2024 - 30 November 2027",
+    "startDate": "01 December 2024",
+    "endDate": "30 November 2027",
+    "year": 2027,
+    "status": "active",
+    "budget": "€300,000.00",
+    "scope": "",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303542/detalle"
+  },
+  {
+    "id": "ehu-1303835",
+    "ehuId": "1303835",
+    "title": "Enhance of the Joint Research Lab on Applied Artificial Intelligence through applications to Health, Meteorology, Language Automatic Treatment, Speech Technologies, and Industrial Sciences",
+    "acronym": "",
+    "code": "EHU-G24/03",
+    "fundingBody": "PROYECTOS COLABORATIVOS UPV/EHU 2024",
+    "fundingType": "regional",
+    "pi": "Irantzu Barrio Beraza, David Pardo Zubiaur",
+    "period": "01 January 2025 - 31 December 2026",
+    "startDate": "01 January 2025",
+    "endDate": "31 December 2026",
+    "year": 2026,
+    "status": "active",
+    "budget": "€30,000.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Irantzu Barrio Beraza",
+        "role": "Leader"
+      },
+      {
+        "name": "David Pardo Zubiaur",
+        "role": "Co-IP"
+      },
+      {
+        "name": "Eneko Agirre Bengoa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Itziar Angulo Pita",
+        "role": "Investigador"
+      },
+      {
+        "name": "Arrate Antuñano Martin",
+        "role": "Investigador"
+      },
+      {
+        "name": "Inmaculada Arostegui Madariaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Arantza Casillas Rubio",
+        "role": "Investigador"
+      },
+      {
+        "name": "Javier Del Ser Lorente",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Gomez Santos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Inmaculada Concepcion Hernaez Rioja",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ricardo Hueso Alonso",
+        "role": "Investigador"
+      },
+      {
+        "name": "Eneko Iradier Gil",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Labaka Intxauspe",
+        "role": "Investigador"
+      },
+      {
+        "name": "Eva Navas Cordon",
+        "role": "Investigador"
+      },
+      {
+        "name": "Santiago Perez Hoyos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ibon Saratxaga Couceiro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iker Sobron Polancos",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303835/detalle"
+  },
+  {
+    "id": "ehu-1840417",
+    "ehuId": "1840417",
+    "title": "Generación y Caracterización de Tumor Twins -en-chip para Mimetizar la Heterogeneidad del Cáncer Billar (CCA) y Evaluar Nuevas Terapias",
+    "acronym": "BILTWIN",
+    "code": "ELKARTEK25/16;ELKARTEK25/17",
+    "fundingBody": "ELKARTEK 2025",
+    "fundingType": "regional",
+    "pi": "Xabier Buque Garcia, Maria Jesus Perugorria Montiel",
+    "period": "03 March 2025 - 31 December 2026",
+    "startDate": "03 March 2025",
+    "endDate": "31 December 2026",
+    "year": 2026,
+    "status": "active",
+    "budget": "€168,565.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Jesus Perugorria Montiel",
+        "role": "Leader"
+      },
+      {
+        "name": "Kendall Alonso Alfaro Jimenez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Luis Bujanda Fernandez De Pierola",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Gomez Santos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aritz Lopategui Martinez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1840417/detalle"
+  },
+  {
+    "id": "ehu-799673",
+    "ehuId": "799673",
+    "title": "Single-cell RNAseq analysis of blood dendritic cells and monocytes in multiple sclerosis",
+    "acronym": "",
+    "code": "GVCV23/18",
+    "fundingBody": "GOBIERNO VASCO CONVOCATORIAS VARIAS 2023",
+    "fundingType": "regional",
+    "pi": "Iraide Alloza Moral",
+    "period": "01 December 2023 - 30 November 2026",
+    "startDate": "01 December 2023",
+    "endDate": "30 November 2026",
+    "year": 2026,
+    "status": "active",
+    "budget": "€15,950.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Iraide Alloza Moral",
+        "role": "Leader"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/799673/detalle"
+  },
+  {
+    "id": "ehu-1840268",
+    "ehuId": "1840268",
+    "title": "Análisis multi-omico con Olink Explore HT y scRNAseq para la identificación de firmas moleculares en esclerosis múltiple",
+    "acronym": "OlinkEM",
+    "code": "SAN25/12",
+    "fundingBody": "INVESTIGACION SANITARIA 2025",
+    "fundingType": "regional",
+    "pi": "Iraide Alloza Moral",
+    "period": "01 January 2025 - 31 December 2025",
+    "startDate": "01 January 2025",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€6,865.25",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Iraide Alloza Moral",
+        "role": "Leader"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1840268/detalle"
+  },
+  {
+    "id": "ehu-1305846",
+    "ehuId": "1305846",
+    "title": "Dianas terapeuticas y biomarcadores para la medicina de precision en MAFLD",
+    "acronym": "PREMED-MAFLD",
+    "code": "Instituto Salud Carlos III (conv varias)21/01",
+    "fundingBody": "Instituto Salud Carlos III (conv varias) 2021",
+    "fundingType": "national",
+    "pi": "Dra. Patricia Aspichueta",
+    "period": "01 January 2022 - 31 December 2025",
+    "startDate": "01 January 2022",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€201,740.00",
+    "scope": "National",
+    "researchers": [],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305846/detalle"
+  },
+  {
+    "id": "ehu-1301710",
+    "ehuId": "1301710",
+    "title": "Heterogeneidad metabólica en cánceres primarios de hígado y MAFLD: un papel para el factor de transcripción E2F2",
+    "acronym": "Lip-METABOtreat",
+    "code": "MCIU-O21/P10",
+    "fundingBody": "MCIU-Proyectos de Investigación Orientada 2021 ORIENTADA",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 September 2022 - 31 August 2025",
+    "startDate": "01 September 2022",
+    "endDate": "31 August 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€302,500.00",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Javier Bustamante Schneider",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1301710/detalle"
+  },
+  {
+    "id": "ehu-1305778",
+    "ehuId": "1305778",
+    "title": "Nuevas Técnicas de imagen e Inteligencia Artificial en el Diagnóstico y Pronóstico del Cáncer (ONKOimaging)",
+    "acronym": "ONKOimg",
+    "code": "ELKARTEK24/80;ELKARTEK24/81;ELKARTEK24/82;ELKARTEK24/83",
+    "fundingBody": "ELKARTEK 2024",
+    "fundingType": "regional",
+    "pi": "Aintzane Apraiz Garcia",
+    "period": "07 March 2024 - 31 December 2025",
+    "startDate": "07 March 2024",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€433,074.43",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Aintzane Apraiz Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Arteta Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aitor Benedicto Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Perez-Yarza Perez-Irezabal",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305778/detalle"
+  },
+  {
+    "id": "ehu-1302701",
+    "ehuId": "1302701",
+    "title": "Nuevos mecanismos, biomarcadores de diagnóstico y progresión y dianas terapéuticas de enfermedad metabólica y Cáncer",
+    "acronym": "Lipids&amp;Liver",
+    "code": "AIG24/139",
+    "fundingBody": "AYUDAS A LA INCORPORACION A GRUPOS 2024 MOD II",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2025 - 31 December 2025",
+    "startDate": "01 January 2025",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€3,500.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Mikel Gastaca Mateo",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302701/detalle"
+  },
+  {
+    "id": "ehu-1304096",
+    "ehuId": "1304096",
+    "title": "Nuevos mecanismos, biomarcadores de diagnóstico y progresión y dianas terapéuticas de enfermedad metabólica y Cáncer",
+    "acronym": "Lipids&amp;Liver",
+    "code": "AIG24/141",
+    "fundingBody": "AYUDAS A LA INCORPORACION A GRUPOS 2024 MOD II",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2025 - 31 December 2025",
+    "startDate": "01 January 2025",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€3,500.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Koen Vandenbroeck .",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304096/detalle"
+  },
+  {
+    "id": "ehu-1306269",
+    "ehuId": "1306269",
+    "title": "Nuevos mecanismos, biomarcadores de diagnóstico y progresión y dianas terapéuticas de enfermedad metabólica y Cáncer",
+    "acronym": "Lipids&amp;Liver",
+    "code": "AIG24/138",
+    "fundingBody": "AYUDAS A LA INCORPORACION A GRUPOS 2024 MOD II",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2025 - 31 December 2025",
+    "startDate": "01 January 2025",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€3,500.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Iraide Alloza Moral",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1306269/detalle"
+  },
+  {
+    "id": "ehu-1303956",
+    "ehuId": "1303956",
+    "title": "Nuevos mecanismos, biomarcadores de diagnóstico y progresión y dianas terapéuticas de enfermedad metabólica y Cáncer",
+    "acronym": "Lipids&amp;Liver",
+    "code": "AIG24/108",
+    "fundingBody": "AYUDAS A LA INCORPORACION A GRUPOS 2024 MOD II",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2025 - 31 December 2025",
+    "startDate": "01 January 2025",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€3,500.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Beatriz Gomez Santos",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303956/detalle"
+  },
+  {
+    "id": "ehu-1302235",
+    "ehuId": "1302235",
+    "title": "Nuevos mecanismos, biomarcadores de diagnóstico y progresión y dianas terapéuticas de enfermedad metabólica y Cáncer",
+    "acronym": "Lipids&amp;Liver",
+    "code": "AIG24/140",
+    "fundingBody": "AYUDAS A LA INCORPORACION A GRUPOS 2024 MOD II",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2025 - 31 December 2025",
+    "startDate": "01 January 2025",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€3,500.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Aritz Lopategui Martinez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302235/detalle"
+  },
+  {
+    "id": "ehu-1302795",
+    "ehuId": "1302795",
+    "title": "Nuevos mecanismos, biomarcadores de diagnóstico y progresión y dianas terapéuticas de enfermedad metabólica y cáncer",
+    "acronym": "Lipids&amp;Liver",
+    "code": "GIC21/87",
+    "fundingBody": "GRUPOS CONSOLIDADOS 2021",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2022 - 31 December 2025",
+    "startDate": "01 January 2022",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€372,750.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Kendall Alonso Alfaro Jimenez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iraide Alloza Moral",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maider Apodaka Biguri",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Javier Bustamante Schneider",
+        "role": "Investigador"
+      },
+      {
+        "name": "Estibaliz Castillero Olabarria",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Susana Cristobal Barragan",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Idoia Fernandez Puertas",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Mikel Gastaca Mateo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Paul Gomez Jauregui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Gomez Santos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aritz Lopategui Martinez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ane Nieva Zuluaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Mikel Ruiz De Gauna Madariaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Natalia Sainz Ramirez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Andres Valdivieso Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Koen Vandenbroeck .",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302795/detalle"
+  },
+  {
+    "id": "ehu-1304611",
+    "ehuId": "1304611",
+    "title": "Plataforma de imagen in vivo de alto rendimiento con holotomografía, microscopía confocal de super resolución y bioluminiscencia (de la célula al organismo)",
+    "acronym": "",
+    "code": "FEDER24/05",
+    "fundingBody": "Infraestructura FEDER 2024",
+    "fundingType": "european",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2024 - 31 December 2025",
+    "startDate": "01 January 2024",
+    "endDate": "31 December 2025",
+    "year": 2025,
+    "status": "completed",
+    "budget": "€483,481.14",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304611/detalle"
+  },
+  {
+    "id": "ehu-1303175",
+    "ehuId": "1303175",
+    "title": "Citómetro de flujo analizador de 3 láseres y 6 colores",
+    "acronym": "",
+    "code": "INF24/04",
+    "fundingBody": "INFRAESTRUCTURA 2024",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2024 - 31 December 2024",
+    "startDate": "01 January 2024",
+    "endDate": "31 December 2024",
+    "year": 2024,
+    "status": "completed",
+    "budget": "€29,988.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Daniel Alonso Alconada",
+        "role": "Investigador"
+      },
+      {
+        "name": "Joana Marquez Clavijo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iraia Maialen Muñoa Hoyos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Nerea Subiran Ciudad",
+        "role": "Investigador"
+      },
+      {
+        "name": "Fernando Jose Unda Rodriguez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303175/detalle"
+  },
+  {
+    "id": "ehu-1304860",
+    "ehuId": "1304860",
+    "title": "Modelo de cáncer Biliar-en-Chip para el estudio de su biología y respuesta a nuevas terapias",
+    "acronym": "BIL-CHIP",
+    "code": "ELKARTEK23/10;ELKARTEK23/11",
+    "fundingBody": "ELKARTEK 2023",
+    "fundingType": "regional",
+    "pi": "Dra. Patricia Aspichueta",
+    "period": "03 March 2023 - 31 December 2024",
+    "startDate": "03 March 2023",
+    "endDate": "31 December 2024",
+    "year": 2024,
+    "status": "completed",
+    "budget": "€115,163.70",
+    "scope": "Regional",
+    "researchers": [],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304860/detalle"
+  },
+  {
+    "id": "ehu-1305899",
+    "ehuId": "1305899",
+    "title": "Tomografía computarizada de rayos X, micro-nano CT",
+    "acronym": "",
+    "code": "FEDER21/04",
+    "fundingBody": "Infraestructura FEDER 2021",
+    "fundingType": "european",
+    "pi": "Gotzon Madariaga Menendez",
+    "period": "01 June 2021 - 31 December 2024",
+    "startDate": "01 June 2021",
+    "endDate": "31 December 2024",
+    "year": 2024,
+    "status": "completed",
+    "budget": "€1,234,365.00",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Gotzon Madariaga Menendez",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Juan Manuel Gutierrez Zorrilla Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Galina Kourliandskaia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Luis Norberto Lopez De La Calle Marcaide",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Maria San Juan Nuñez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305899/detalle"
+  },
+  {
+    "id": "ehu-1301496",
+    "ehuId": "1301496",
+    "title": "Entorno lipídico y progresión de la enfermedad hepática: un papel metabólico para el factor de transcripción E2F2",
+    "acronym": "HEPATOLIP",
+    "code": "MINECOR18/P32",
+    "fundingBody": "MINECOR 2018 RETOS PROYECTOS",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2019 - 30 June 2022",
+    "startDate": "01 January 2019",
+    "endDate": "30 June 2022",
+    "year": 2022,
+    "status": "completed",
+    "budget": "€169,400.00",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Beatriz Arteta Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Sonia Gaztambide Saenz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Andres Valdivieso Lopez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1301496/detalle"
+  },
+  {
+    "id": "ehu-70617",
+    "ehuId": "70617",
+    "title": "Exploring Tumor Lipidome Using Digital Molecular Histology",
+    "acronym": "",
+    "code": "COLAB19/15",
+    "fundingBody": "PROYECTOS COLABORATIVOS UPV/EHU 2019",
+    "fundingType": "regional",
+    "pi": "Jose Andres Fernandez Gonzalez, Maria Dolores Boyano Lopez",
+    "period": "12 February 2020 - 11 February 2022",
+    "startDate": "12 February 2020",
+    "endDate": "11 February 2022",
+    "year": 2022,
+    "status": "completed",
+    "budget": "€25,200.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Jose Andres Fernandez Gonzalez",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Dolores Boyano Lopez",
+        "role": "Co-IP"
+      },
+      {
+        "name": "Maria Noelia Andollo Victoriano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Apraiz Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Jose Basterrechea Elguezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Larrinaga Embeita",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rafael Morales Arboleya",
+        "role": "Investigador"
+      },
+      {
+        "name": "Itxaro Perez Urzelai",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Perez-Yarza Perez-Irezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/70617/detalle"
+  },
+  {
+    "id": "ehu-75627",
+    "ehuId": "75627",
+    "title": "Healthcare Advancements through Joint Research Lab in Artificial Intelligence",
+    "acronym": "SIGZE",
+    "code": "COLAB20/01",
+    "fundingBody": "PROYECTOS COLABORATIVOS UPV/EHU 2020",
+    "fundingType": "regional",
+    "pi": "Inmaculada Arostegui Madariaga, David Pardo Zubiaur",
+    "period": "01 January 2021 - 31 December 2022",
+    "startDate": "01 January 2021",
+    "endDate": "31 December 2022",
+    "year": 2022,
+    "status": "completed",
+    "budget": "€33,120.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Inmaculada Arostegui Madariaga",
+        "role": "Leader"
+      },
+      {
+        "name": "David Pardo Zubiaur",
+        "role": "Co-IP"
+      },
+      {
+        "name": "Erik Alonso Gonzalez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Elisabete Aramendi Ecenarro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Elixabete Arrese Arratibel",
+        "role": "Investigador"
+      },
+      {
+        "name": "Amaia Arrinda Sanzberro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Basaras Ibarzabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Javier Del Ser Lorente",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "David Guerra Pereda",
+        "role": "Investigador"
+      },
+      {
+        "name": "Unai Irusta Zarandona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Marina Jugo Orrantia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Artzai Picon Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Manuel Maria Velez Elordi",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/75627/detalle"
+  },
+  {
+    "id": "ehu-77164",
+    "ehuId": "77164",
+    "title": "Aplicación del Test RT-PCR para la detección de coronavirus SARS-CoV-2 desde laboratorios de la UPV/EHU",
+    "acronym": "",
+    "code": "CONV20/05",
+    "fundingBody": "CONVENIOS 2020",
+    "fundingType": "national",
+    "pi": "Ugo Mayor Martinez",
+    "period": "29 April 2020 - 28 April 2021",
+    "startDate": "29 April 2020",
+    "endDate": "28 April 2021",
+    "year": 2021,
+    "status": "completed",
+    "budget": "€15,000.00",
+    "scope": "",
+    "researchers": [
+      {
+        "name": "Ugo Mayor Martinez",
+        "role": "Leader"
+      },
+      {
+        "name": "Santos Alonso Alegre",
+        "role": "Investigador"
+      },
+      {
+        "name": "Leire Aparicio Fernandez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maialen Areitio Beramendi",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iker Badiola Echaburu",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jimena Baleriola Gomez De Pablos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rocio Barrena Barbadillo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Basaras Ibarzabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Asier Benito Vicente",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ramon Bilbao Catala",
+        "role": "Investigador"
+      },
+      {
+        "name": "Adrian Bozal Leorri",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ainara Castellanos Rubio",
+        "role": "Investigador"
+      },
+      {
+        "name": "Fabio Cavaliere",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Nora Fernandez Jimenez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ana Belen Fraile Bermudez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Teresa Fuertes Mendizabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Adhara Mikaela Gaminde Blasco",
+        "role": "Investigador"
+      },
+      {
+        "name": "Lucia Gandarias Albaina",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iraia Garcia Santisteban",
+        "role": "Investigador"
+      },
+      {
+        "name": "Itziar Gonzalez Moro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Guruceaga Sierra",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maier Lorizate Nogales",
+        "role": "Investigador"
+      },
+      {
+        "name": "Agustin Javier Marin Peña",
+        "role": "Investigador"
+      },
+      {
+        "name": "Daniel Marino Bilbao",
+        "role": "Investigador"
+      },
+      {
+        "name": "Cesar Augusto Martin Plagaro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Leire Martin Souto",
+        "role": "Investigador"
+      },
+      {
+        "name": "Sonia Olaechea Lazaro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ane Olazagoitia Garmendia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Olatz Pampliega Ormaetxea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Uxue Perez Cuesta",
+        "role": "Investigador"
+      },
+      {
+        "name": "Guiomar Perez De Nanclares Leal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ramon Pineda Marti",
+        "role": "Investigador"
+      },
+      {
+        "name": "Andoni Ramirez Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aitor Domingo Rementeria Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Izortze Santin Gomez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maialen Sebastian De La Cruz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Amanda Sierra Saavedra",
+        "role": "Investigador"
+      },
+      {
+        "name": "Veronica Torrano Moya",
+        "role": "Investigador"
+      },
+      {
+        "name": "Saloa Unanue Arza",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jon Vallejo Rodriguez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/77164/detalle"
+  },
+  {
+    "id": "ehu-1305478",
+    "ehuId": "1305478",
+    "title": "Diagnóstico, pronóstico y tratamiento del cáncer: una nueva generación basada en lipidómica y desarrollo de vacunas personalizadas",
+    "acronym": "Onkotool",
+    "code": "ELKARTEK20/04;ELKARTEK20/09;ELKARTEK20/10;ELKARTEK20/11;ELKARTEK20/12",
+    "fundingBody": "ELKARTEK 2020",
+    "fundingType": "regional",
+    "pi": "Maria Olatz Fresnedo Aranguren, Gorka Larrinaga Embeita",
+    "period": "27 February 2020 - 31 December 2021",
+    "startDate": "27 February 2020",
+    "endDate": "31 December 2021",
+    "year": 2021,
+    "status": "completed",
+    "budget": "€284,331.40",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Leader"
+      },
+      {
+        "name": "Gorka Larrinaga Embeita",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Noelia Andollo Victoriano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Apraiz Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ines Arrieta Aguirre",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Arteta Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Jose Basterrechea Elguezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Marichalar Mendia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iratxe Perez Urdiales",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Perez-Yarza Perez-Irezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Sanz Echevarria",
+        "role": "Investigador"
+      },
+      {
+        "name": "Antonio Veloso Fernandez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305478/detalle"
+  },
+  {
+    "id": "ehu-1304953",
+    "ehuId": "1304953",
+    "title": "Patogénesis de la enfermedad hepática de origen metabólico",
+    "acronym": "",
+    "code": "GIC15/18",
+    "fundingBody": "GRUPOS CONSOLIDADOS 2015",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2016 - 31 December 2021",
+    "startDate": "01 January 2016",
+    "endDate": "31 December 2021",
+    "year": 2021,
+    "status": "completed",
+    "budget": "€492,900.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Maider Apodaka Biguri",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Susana Cristobal Barragan",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Gomez Santos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Gonzalez Romero",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Daniela Constanza Mestre Congregado",
+        "role": "Investigador"
+      },
+      {
+        "name": "Hiart Navarro Imaz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ane Nieva Zuluaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Mikel Ruiz De Gauna Madariaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Andres Valdivieso Lopez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304953/detalle"
+  },
+  {
+    "id": "ehu-76061",
+    "ehuId": "76061",
+    "title": "El homogeneizador de bolas o molino de bolas",
+    "acronym": "",
+    "code": "INF20/06",
+    "fundingBody": "INFRAESTRUCTURA 2020",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2020 - 31 December 2020",
+    "startDate": "01 January 2020",
+    "endDate": "31 December 2020",
+    "year": 2020,
+    "status": "completed",
+    "budget": "€4,750.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Javier Gil Goicouria",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jon Irazusta Astiazaran",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Sanz Echevarria",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/76061/detalle"
+  },
+  {
+    "id": "ehu-1301733",
+    "ehuId": "1301733",
+    "title": "Investigación multidisciplinar en nuevas estrategias para el diagnóstico temprano y tratamiento personalizado del cáncer",
+    "acronym": "ONKOiker",
+    "code": "ELKARTEK18/07;ELKARTEK18/08;ELKARTEK18/09;ELKARTEK18/10;ELKARTEK18/11;ELKARTEK18/12;ELKARTEK18/13",
+    "fundingBody": "ELKARTEK 2018",
+    "fundingType": "regional",
+    "pi": "Maria Dolores Boyano Lopez, Maria Olatz Fresnedo Aranguren, Rosa Maria Hernandez Martin, Gorka Larrinaga Embeita",
+    "period": "01 January 2018 - 31 March 2020",
+    "startDate": "01 January 2018",
+    "endDate": "31 March 2020",
+    "year": 2020,
+    "status": "completed",
+    "budget": "€380,161.05",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Dolores Boyano Lopez",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Leader"
+      },
+      {
+        "name": "Rosa Maria Hernandez Martin",
+        "role": "Leader"
+      },
+      {
+        "name": "Gorka Larrinaga Embeita",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Noelia Andollo Victoriano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Apraiz Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Arteta Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aitor Benedicto Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Manuela Igartua Olaechea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Joana Marquez Clavijo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Elvira Olaso Montero",
+        "role": "Investigador"
+      },
+      {
+        "name": "Itxaro Perez Urzelai",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Perez-Yarza Perez-Irezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aiala Salvador Martinez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Edorta Santos Vizcaino",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Sanz Echevarria",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1301733/detalle"
+  },
+  {
+    "id": "ehu-1306374",
+    "ehuId": "1306374",
+    "title": "Sistema de secuenciación masiva de alto rendimiento Novaseq 6000",
+    "acronym": "",
+    "code": "FEDER19/06",
+    "fundingBody": "Infraestructura FEDER 2019",
+    "fundingType": "european",
+    "pi": "Ana Maria Zubiaga Elordieta",
+    "period": "01 January 2019 - 31 December 2020",
+    "startDate": "01 January 2019",
+    "endDate": "31 December 2020",
+    "year": 2020,
+    "status": "completed",
+    "budget": "€398,803.29",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Ana Maria Zubiaga Elordieta",
+        "role": "Leader"
+      },
+      {
+        "name": "Santos Alonso Alegre",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ibon Cancio Uriarte",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Domercq Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Arturo Elosegi Irurtia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Andone Estomba Recalde",
+        "role": "Investigador"
+      },
+      {
+        "name": "Javier Garaizar Candina",
+        "role": "Investigador"
+      },
+      {
+        "name": "Benjamin Juan Gomez Moliner",
+        "role": "Investigador"
+      },
+      {
+        "name": "Daniel Marino Bilbao",
+        "role": "Investigador"
+      },
+      {
+        "name": "Adrian Odriozola Martinez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Peter Bretton Pearman",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aitor Domingo Rementeria Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Amanda Sierra Saavedra",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1306374/detalle"
+  },
+  {
+    "id": "ehu-1303360",
+    "ehuId": "1303360",
+    "title": "Desarrollo del sistema oncofinder para la detección y prognosis de tumores mediante biomarcadores lipídicos",
+    "acronym": "ONCOFINDER",
+    "code": "IPT15/01;IPT15/10",
+    "fundingBody": "INNPACTO 2015",
+    "fundingType": "national",
+    "pi": "Jose Andres Fernandez Gonzalez",
+    "period": "25 February 2015 - 30 June 2019",
+    "startDate": "25 February 2015",
+    "endDate": "30 June 2019",
+    "year": 2019,
+    "status": "completed",
+    "budget": "€321,784.20",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Jose Andres Fernandez Gonzalez",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303360/detalle"
+  },
+  {
+    "id": "ehu-1303610",
+    "ehuId": "1303610",
+    "title": "Investigación colaborativa en medicina de precisión y biomarcadores. Enfermedades raras",
+    "acronym": "BG 2016",
+    "code": "ELKARTEK16/02;ELKARTEK16/69",
+    "fundingBody": "ELKARTEK 2016",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa, Cesar Augusto Martin Plagaro",
+    "period": "26 February 2016 - 31 March 2018",
+    "startDate": "26 February 2016",
+    "endDate": "31 March 2018",
+    "year": 2018,
+    "status": "completed",
+    "budget": "€114,934.98",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Cesar Augusto Martin Plagaro",
+        "role": "Leader"
+      },
+      {
+        "name": "Ekaitz Aguirregoitia Marcos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Naiara Aguirregoitia Marcos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alessandro Alaimo Campi",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Itziar Alcorta Calvo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alicia Alonso Izquierdo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Itxaso Alvarez Rodriguez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Apellaniz Unzalu",
+        "role": "Investigador"
+      },
+      {
+        "name": "Lide Arana Urbieta",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Basañez Asua",
+        "role": "Investigador"
+      },
+      {
+        "name": "Asier Benito Vicente",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Pablo Carravilla Palomanes",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Contreras Gomez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Arturo Escalada Massanes",
+        "role": "Investigador"
+      },
+      {
+        "name": "Asier Etxaniz Iriondo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Vadim Frolov Buyanov",
+        "role": "Investigador"
+      },
+      {
+        "name": "Olatz Garaiyurrebaso Rodriguez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aritz Garcia Arribas",
+        "role": "Investigador"
+      },
+      {
+        "name": "José Manuel Gómez Vilar",
+        "role": "Investigador"
+      },
+      {
+        "name": "Felix Maria Goñi Urcelay",
+        "role": "Investigador"
+      },
+      {
+        "name": "Emilio Jose Gonzalez Ramirez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Diego Marcelo A. Guerin Aguilar",
+        "role": "Investigador"
+      },
+      {
+        "name": "Nerea Huarte Arrayago",
+        "role": "Investigador"
+      },
+      {
+        "name": "Eneko Largo Pereda",
+        "role": "Investigador"
+      },
+      {
+        "name": "Banafshe Larijani",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maier Lorizate Nogales",
+        "role": "Investigador"
+      },
+      {
+        "name": "Daniela Constanza Mestre Congregado",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jon Ander Nieto Garai",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Nieva Escandon",
+        "role": "Investigador"
+      },
+      {
+        "name": "Eider Nuñez Viadero",
+        "role": "Investigador"
+      },
+      {
+        "name": "Elena Amaya Ostolaza Echabe",
+        "role": "Investigador"
+      },
+      {
+        "name": "Kepa Ruiz Mirazo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Edurne Rujas Diez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ruben Sanchez Eugenia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Anna Shnyrova Zhadan",
+        "role": "Investigador"
+      },
+      {
+        "name": "Oihana Terrones Urio",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ariana Velasco Del Olmo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alvaro Villarroel Muñoz",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303610/detalle"
+  },
+  {
+    "id": "ehu-1305951",
+    "ehuId": "1305951",
+    "title": "Investigación multidisciplinar del melanoma maligno. Identificación de nuevos biomarcadores de utilidad en el pronóstico y tratamiento del melanoma",
+    "acronym": "MELAMIC2",
+    "code": "ELKARTEK17/04;ELKARTEK17/05;ELKARTEK17/06;ELKARTEK17/07",
+    "fundingBody": "ELKARTEK 2017",
+    "fundingType": "regional",
+    "pi": "Santos Alonso Alegre, Maria Dolores Boyano Lopez, Jose Andres Fernandez Gonzalez, Begoña Ochoa Olascoaga",
+    "period": "01 January 2017 - 31 March 2018",
+    "startDate": "01 January 2017",
+    "endDate": "31 March 2018",
+    "year": 2018,
+    "status": "completed",
+    "budget": "€107,031.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Santos Alonso Alegre",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Dolores Boyano Lopez",
+        "role": "Leader"
+      },
+      {
+        "name": "Jose Andres Fernandez Gonzalez",
+        "role": "Leader"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Noelia Andollo Victoriano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Apraiz Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Jose Basterrechea Elguezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Alicia Garcia De Galdeano Zaldivar",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Perez-Yarza Perez-Irezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Arrate Sevilla Mambrilla",
+        "role": "Investigador"
+      },
+      {
+        "name": "Isabel Smith Zubiaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305951/detalle"
+  },
+  {
+    "id": "ehu-1305489",
+    "ehuId": "1305489",
+    "title": "Papel de los reguladores del ciclo celular E2F1 y E2F2 en la patogénesis y pronóstico de la enfermedad hepática: de hepatoesteatosis a hepatocarcinoma",
+    "acronym": "HEPATOHEALTH",
+    "code": "MINECOR15/P07",
+    "fundingBody": "MINECOR 2015 RETOS PROYECTOS",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2016 - 31 December 2018",
+    "startDate": "01 January 2016",
+    "endDate": "31 December 2018",
+    "year": 2018,
+    "status": "completed",
+    "budget": "€145,200.00",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Sonia Gaztambide Saenz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305489/detalle"
+  },
+  {
+    "id": "ehu-73150",
+    "ehuId": "73150",
+    "title": "Sistema de alta sensibilidad para generación de imágenes",
+    "acronym": "",
+    "code": "INF17/03",
+    "fundingBody": "INFRAESTRUCTURA 2017",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2018 - 31 December 2018",
+    "startDate": "01 January 2018",
+    "endDate": "31 December 2018",
+    "year": 2018,
+    "status": "completed",
+    "budget": "€13,585.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Dolores Boyano Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Oscar Casis Saenz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Susana Cristobal Barragan",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Monica Gallego Muñoz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Javier Gil Goicouria",
+        "role": "Investigador"
+      },
+      {
+        "name": "Luisa Hernandez Frias",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jon Irazusta Astiazaran",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosaura Navarro Lobato",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Ruiz Larrea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ignacio Ruiz Sanz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Sanz Echevarria",
+        "role": "Investigador"
+      },
+      {
+        "name": "Nerea Subiran Ciudad",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/73150/detalle"
+  },
+  {
+    "id": "ehu-1302371",
+    "ehuId": "1302371",
+    "title": "Investigación multidisciplinar del melanoma maligno. Identificación de nuevos biomarcadores de utilidad en el pronóstico y tratamiento del melanoma",
+    "acronym": "MELAMICS",
+    "code": "ELKARTEK16/08;ELKARTEK16/09;ELKARTEK16/10;ELKARTEK16/11",
+    "fundingBody": "ELKARTEK 2016",
+    "fundingType": "regional",
+    "pi": "Santos Alonso Alegre, Maria Dolores Boyano Lopez, Jose Andres Fernandez Gonzalez, Begoña Ochoa Olascoaga",
+    "period": "26 February 2016 - 30 June 2017",
+    "startDate": "26 February 2016",
+    "endDate": "30 June 2017",
+    "year": 2017,
+    "status": "completed",
+    "budget": "€144,218.42",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Santos Alonso Alegre",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Dolores Boyano Lopez",
+        "role": "Leader"
+      },
+      {
+        "name": "Jose Andres Fernandez Gonzalez",
+        "role": "Leader"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Noelia Andollo Victoriano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Alicia Garcia De Galdeano Zaldivar",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Perez-Yarza Perez-Irezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Isabel Smith Zubiaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302371/detalle"
+  },
+  {
+    "id": "ehu-76613",
+    "ehuId": "76613",
+    "title": "Cluster for molecular biomedicine education and research",
+    "acronym": "CLUMBER",
+    "code": "UFI11/20",
+    "fundingBody": "UNIDADES DE FORMACION E INVESTIGACION UPV/EHU 2011",
+    "fundingType": "regional",
+    "pi": "Ana Maria Zubiaga Elordieta",
+    "period": "01 November 2011 - 31 December 2016",
+    "startDate": "01 November 2011",
+    "endDate": "31 December 2016",
+    "year": 2016,
+    "status": "completed",
+    "budget": "€111,062.89",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Ana Maria Zubiaga Elordieta",
+        "role": "Leader"
+      },
+      {
+        "name": "Ana Isabel Aguirre Escobal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jesus Maria Arizmendi Bastarrika",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Susana Cristobal Barragan",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Asier Fullaondo Elordui-Zapaterieche",
+        "role": "Investigador"
+      },
+      {
+        "name": "Antonio Gomez Muñoz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Luisa Hernandez Frias",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ainhoa Iglesias Ara",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Marina Jugo Orrantia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosaura Navarro Lobato",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maitane Nuñez Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Josu Omaetxebarria Ibarra",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Agurtzane Ortiz Jauregui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Antonio Rodriguez Perez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Guillermo Ruiz Irastorza",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Ruiz Larrea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ignacio Ruiz Sanz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miguel Angel Trueba Conde",
+        "role": "Investigador"
+      },
+      {
+        "name": "Endika Varela Martinez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alberto Vicario Casla",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Zugaza Gurruchaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/76613/detalle"
+  },
+  {
+    "id": "ehu-1304447",
+    "ehuId": "1304447",
+    "title": "Bases moleculares de enfermedades metabólicas con componente lipídico",
+    "acronym": "",
+    "code": "GIC10/114",
+    "fundingBody": "GRUPOS CONSOLIDADOS 2010",
+    "fundingType": "regional",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 January 2010 - 31 December 2015",
+    "startDate": "01 January 2010",
+    "endDate": "31 December 2015",
+    "year": 2015,
+    "status": "completed",
+    "budget": "€593,000.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enara Arretxe Oliden",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Larraitz Fernandez Ares",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Gomez Santos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Daniela Constanza Mestre Congregado",
+        "role": "Investigador"
+      },
+      {
+        "name": "Hiart Navarro Imaz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maitane Nuñez Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304447/detalle"
+  },
+  {
+    "id": "ehu-1303407",
+    "ehuId": "1303407",
+    "title": "Plataforma de secuenciación masiva",
+    "acronym": "",
+    "code": "FEDER13/06",
+    "fundingBody": "Infraestructura FEDER 2013",
+    "fundingType": "european",
+    "pi": "Miren Andone Estomba Recalde",
+    "period": "01 January 2013 - 31 December 2015",
+    "startDate": "01 January 2013",
+    "endDate": "31 December 2015",
+    "year": 2015,
+    "status": "completed",
+    "budget": "€60,033.99",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Miren Andone Estomba Recalde",
+        "role": "Leader"
+      },
+      {
+        "name": "Joseba Bikandi Bikandi",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Karmele Duñabeitia Aurrecoechea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Maria Estavillo Aurre",
+        "role": "Investigador"
+      },
+      {
+        "name": "Benjamin Juan Gomez Moliner",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Gonzalez Moro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enrique Navarro Adorno",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aitor Domingo Rementeria Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Koen Vandenbroeck .",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ana Maria Zubiaga Elordieta",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Zugaza Gurruchaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303407/detalle"
+  },
+  {
+    "id": "ehu-77673",
+    "ehuId": "77673",
+    "title": "Contador de centelleo líquido",
+    "acronym": "",
+    "code": "INF14/07",
+    "fundingBody": "INFRAESTRUCTURA 2014",
+    "fundingType": "national",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2014 - 31 December 2014",
+    "startDate": "01 January 2014",
+    "endDate": "31 December 2014",
+    "year": 2014,
+    "status": "completed",
+    "budget": "€21,635.97",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rafael Rodriguez Puertas",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Victoria Sanchez Gomez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/77673/detalle"
+  },
+  {
+    "id": "ehu-1302711",
+    "ehuId": "1302711",
+    "title": "Identificación de las interacciones génicas del coactivador transcripcional SND1",
+    "acronym": "GINTERAC",
+    "code": "SAI13/176",
+    "fundingBody": "SAIOTEK 2013",
+    "fundingType": "regional",
+    "pi": "Begoña Ochoa Olascoaga",
+    "period": "01 January 2013 - 30 June 2014",
+    "startDate": "01 January 2013",
+    "endDate": "30 June 2014",
+    "year": 2014,
+    "status": "completed",
+    "budget": "€8,069.16",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Susana Cristobal Barragan",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302711/detalle"
+  },
+  {
+    "id": "ehu-1303816",
+    "ehuId": "1303816",
+    "title": "Investigación estratégica y desarrollo tecnológico aplicado al metabolismo hepático y la Porfiria",
+    "acronym": "bioGUNE 2013",
+    "code": "ETORTEK13/01",
+    "fundingBody": "ETORTEK 2013",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2013 - 31 December 2014",
+    "startDate": "01 January 2013",
+    "endDate": "31 December 2014",
+    "year": 2014,
+    "status": "completed",
+    "budget": "€40,917.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Daniela Constanza Mestre Congregado",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303816/detalle"
+  },
+  {
+    "id": "ehu-1305857",
+    "ehuId": "1305857",
+    "title": "Análisis de los genes diana de SND1 en células de hepatoma humano en situaciones inflamatorias",
+    "acronym": "CHIPSND",
+    "code": "SAI12/17",
+    "fundingBody": "SAIOTEK 2012",
+    "fundingType": "regional",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 January 2012 - 31 December 2013",
+    "startDate": "01 January 2012",
+    "endDate": "31 December 2013",
+    "year": 2013,
+    "status": "completed",
+    "budget": "€11,867.44",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Lino Arisqueta Herranz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enara Arretxe Oliden",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305857/detalle"
+  },
+  {
+    "id": "ehu-1301838",
+    "ehuId": "1301838",
+    "title": "Contratación de los servicios de la empresa one way liver genomics, SL (OWL) para el análisis metabolómico de muestras hepáticas procedentes de un modelo animal deficiente en osteopontina",
+    "acronym": "",
+    "code": "AEGV12/09",
+    "fundingBody": "ACCIONES ESPECIALES GV 2012",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 July 2012 - 31 December 2013",
+    "startDate": "01 July 2012",
+    "endDate": "31 December 2013",
+    "year": 2013,
+    "status": "completed",
+    "budget": "€6,000.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Teresa Martinez Uña",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maitane Nuñez Garcia",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1301838/detalle"
+  },
+  {
+    "id": "ehu-1306424",
+    "ehuId": "1306424",
+    "title": "Diagnóstico y pronóstico de cánceres mediante imagen por espectrometría de masas y microarrays",
+    "acronym": "ONCOIMG",
+    "code": "SAI13/122;SAI13/123;SAI13/178;SAI13/179;SAI13/356",
+    "fundingBody": "SAIOTEK 2013",
+    "fundingType": "regional",
+    "pi": "Aintzane Asumendi Mallea, Jose Andres Fernandez Gonzalez, Jesus Gardeazabal Garcia, Begoña Ochoa Olascoaga, Veronica Velasco Benito",
+    "period": "01 January 2013 - 31 December 2013",
+    "startDate": "01 January 2013",
+    "endDate": "31 December 2013",
+    "year": 2013,
+    "status": "completed",
+    "budget": "€14,014.85",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Aintzane Asumendi Mallea",
+        "role": "Leader"
+      },
+      {
+        "name": "Jose Andres Fernandez Gonzalez",
+        "role": "Leader"
+      },
+      {
+        "name": "Jesus Gardeazabal Garcia",
+        "role": "Leader"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Veronica Velasco Benito",
+        "role": "Leader"
+      },
+      {
+        "name": "Francisco Jose Basterrechea Elguezabal",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Dolores Boyano Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Emilio Jose Cocinero Perez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosa Maria Izu Belloso",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1306424/detalle"
+  },
+  {
+    "id": "ehu-1306469",
+    "ehuId": "1306469",
+    "title": "Factores de transcripción reguladores de la expresión de SND1: efecto del silenciamiento mediante sirnas específicos",
+    "acronym": "",
+    "code": "AEGV12/10",
+    "fundingBody": "ACCIONES ESPECIALES GV 2012",
+    "fundingType": "regional",
+    "pi": "Yolanda Chico Carmona",
+    "period": "01 September 2012 - 31 March 2013",
+    "startDate": "01 September 2012",
+    "endDate": "31 March 2013",
+    "year": 2013,
+    "status": "completed",
+    "budget": "€4,550.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Leader"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enara Arretxe Oliden",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1306469/detalle"
+  },
+  {
+    "id": "ehu-1304686",
+    "ehuId": "1304686",
+    "title": "Investigación estratégica y desarrollo tecnológico en metabolómica, biología estructural y validación de dianas con actividad terapéutica y puesta en marcha de mecanismos para la explotación de capacidades y resultados del centro",
+    "acronym": "bioGUNE 2011",
+    "code": "ETORTEK11/24;ETORTEK11/25",
+    "fundingBody": "ETORTEK 2011",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa, Felix Maria Goñi Urcelay",
+    "period": "01 January 2011 - 31 December 2013",
+    "startDate": "01 January 2011",
+    "endDate": "31 December 2013",
+    "year": 2013,
+    "status": "completed",
+    "budget": "€370,314.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Felix Maria Goñi Urcelay",
+        "role": "Leader"
+      },
+      {
+        "name": "Sandra Aguila Arcos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jon Aguirre Hernandez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Hasnae Ahyayouch",
+        "role": "Investigador"
+      },
+      {
+        "name": "Araitz Alberdi Gonzalez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Itziar Alcorta Calvo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alicia Alonso Izquierdo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Apellaniz Unzalu",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Sonia Bañuelos Rodriguez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Basañez Asua",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jon Busto Vega",
+        "role": "Investigador"
+      },
+      {
+        "name": "Aitor Echevarria Gallego",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Angel Fernandez Higuero",
+        "role": "Investigador"
+      },
+      {
+        "name": "Noelia Fernandez Rivero",
+        "role": "Investigador"
+      },
+      {
+        "name": "Vadim Frolov Buyanov",
+        "role": "Investigador"
+      },
+      {
+        "name": "Marcos Garcia Pacios",
+        "role": "Investigador"
+      },
+      {
+        "name": "José Manuel Gómez Vilar",
+        "role": "Investigador"
+      },
+      {
+        "name": "Juan Manuel Gonzalez Mañas",
+        "role": "Investigador"
+      },
+      {
+        "name": "Diego Marcelo A. Guerin Aguilar",
+        "role": "Investigador"
+      },
+      {
+        "name": "Nerea Huarte Arrayago",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ane Landajuela Larma",
+        "role": "Investigador"
+      },
+      {
+        "name": "Cesar Augusto Martin Plagaro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Janire Martin Sanchez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Lidia Ruth Montes Burgos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Koldobika Morante Sagasti",
+        "role": "Investigador"
+      },
+      {
+        "name": "Fernando Moro Perez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Arturo Muga Villate",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Nieva Escandon",
+        "role": "Investigador"
+      },
+      {
+        "name": "Elena Amaya Ostolaza Echabe",
+        "role": "Investigador"
+      },
+      {
+        "name": "Judit Perales Calvo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Adelina Prado Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Isbaal Ramos Hernandez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Rodriguez Arrondo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Eva Rodriguez Hortelano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Lissete Sanchez Magraner",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosa De Lima Segura Peregrina",
+        "role": "Investigador"
+      },
+      {
+        "name": "Anna Shnyrova Zhadan",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jesus Sot Sanz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Oihana Terrones Urio",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Angeles Urbaneja Arrue",
+        "role": "Investigador"
+      },
+      {
+        "name": "Saioa Urresti San Vicente",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alvaro Villarroel Muñoz",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304686/detalle"
+  },
+  {
+    "id": "ehu-1301654",
+    "ehuId": "1301654",
+    "title": "Papel de la acido graso translocasa CD36 en la patología hepática",
+    "acronym": "AGPAE",
+    "code": "SAI12/200",
+    "fundingBody": "SAIOTEK 2012",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2012 - 31 December 2013",
+    "startDate": "01 January 2012",
+    "endDate": "31 December 2013",
+    "year": 2013,
+    "status": "completed",
+    "budget": "€14,226.94",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Teresa Martinez Uña",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maitane Nuñez Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1301654/detalle"
+  },
+  {
+    "id": "ehu-1301441",
+    "ehuId": "1301441",
+    "title": "Análisis de la localización de los lugares de unión de la proteína SND1 a DNA humano mediante chip-on-chip (inmunoprecipitación de la cromatina y micromatrices): efecto del tnf-a",
+    "acronym": "",
+    "code": "AEGV11/09",
+    "fundingBody": "ACCIONES ESPECIALES GV 2011",
+    "fundingType": "regional",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 September 2011 - 30 June 2012",
+    "startDate": "01 September 2011",
+    "endDate": "30 June 2012",
+    "year": 2012,
+    "status": "completed",
+    "budget": "€4,200.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enara Arretxe Oliden",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1301441/detalle"
+  },
+  {
+    "id": "ehu-70610",
+    "ehuId": "70610",
+    "title": "Exploración del papel de los cuerpos lipídicos hepáticos en la respuesta inmune innata",
+    "acronym": "INNALIP",
+    "code": "SAI11/67",
+    "fundingBody": "SAIOTEK 2011",
+    "fundingType": "regional",
+    "pi": "Maria Olatz Fresnedo Aranguren",
+    "period": "01 January 2011 - 31 December 2012",
+    "startDate": "01 January 2011",
+    "endDate": "31 December 2012",
+    "year": 2012,
+    "status": "completed",
+    "budget": "€12,179.89",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Leader"
+      },
+      {
+        "name": "Lino Arisqueta Herranz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/70610/detalle"
+  },
+  {
+    "id": "ehu-74669",
+    "ehuId": "74669",
+    "title": "Papel del estrés de retículo endoplásmico generado por alteraciones en el metabolismo fosfolipídico en la evolución de la enfermedad del hígado graso no alcohólica",
+    "acronym": "EREHGNA",
+    "code": "SAI11/17",
+    "fundingBody": "SAIOTEK 2011",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2011 - 31 December 2012",
+    "startDate": "01 January 2011",
+    "endDate": "31 December 2012",
+    "year": 2012,
+    "status": "completed",
+    "budget": "€16,845.18",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maitane Nuñez Garcia",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/74669/detalle"
+  },
+  {
+    "id": "ehu-1303135",
+    "ehuId": "1303135",
+    "title": "Papel del ácido graso translocasa FAT/CD36 en la instauración y desarrollo de la enfermedad del hígado graso no alcohólica",
+    "acronym": "",
+    "code": "AEGV11/01",
+    "fundingBody": "ACCIONES ESPECIALES GV 2011",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 July 2011 - 31 March 2012",
+    "startDate": "01 July 2011",
+    "endDate": "31 March 2012",
+    "year": 2012,
+    "status": "completed",
+    "budget": "€5,020.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Igor Aurrekoetxea Galindo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303135/detalle"
+  },
+  {
+    "id": "ehu-1304265",
+    "ehuId": "1304265",
+    "title": "Potenciación del Servicio Central de Análisis: Unidad de Lipidómica",
+    "acronym": "",
+    "code": "FEDER10/09",
+    "fundingBody": "Infraestructura FEDER 2010",
+    "fundingType": "european",
+    "pi": "Jose Andres Fernandez Gonzalez",
+    "period": "01 January 2010 - 31 December 2012",
+    "startDate": "01 January 2010",
+    "endDate": "31 December 2012",
+    "year": 2012,
+    "status": "completed",
+    "budget": "€240,351.00",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Jose Andres Fernandez Gonzalez",
+        "role": "Leader"
+      },
+      {
+        "name": "Rosa Maria Alonso Rojas",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rafael Rodriguez Puertas",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Ruiz Larrea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ignacio Ruiz Sanz",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304265/detalle"
+  },
+  {
+    "id": "ehu-73636",
+    "ehuId": "73636",
+    "title": "Regulación epigenética y transcripcional del gen SND1 en condiciones de estrés inflamatorio y estrés de retículo endoplásmico",
+    "acronym": "EPISND",
+    "code": "SAI11/158",
+    "fundingBody": "SAIOTEK 2011",
+    "fundingType": "regional",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 January 2011 - 31 December 2012",
+    "startDate": "01 January 2011",
+    "endDate": "31 December 2012",
+    "year": 2012,
+    "status": "completed",
+    "budget": "€14,634.12",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enara Arretxe Oliden",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/73636/detalle"
+  },
+  {
+    "id": "ehu-1302009",
+    "ehuId": "1302009",
+    "title": "Transcriptoma diferencial por sobreexpresión de SNS1 en hepatoma de rata",
+    "acronym": "",
+    "code": "AEGV12/08",
+    "fundingBody": "ACCIONES ESPECIALES GV 2012",
+    "fundingType": "regional",
+    "pi": "Maria Olatz Fresnedo Aranguren",
+    "period": "01 July 2012 - 31 December 2012",
+    "startDate": "01 July 2012",
+    "endDate": "31 December 2012",
+    "year": 2012,
+    "status": "completed",
+    "budget": "€4,650.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Leader"
+      },
+      {
+        "name": "Lino Arisqueta Herranz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302009/detalle"
+  },
+  {
+    "id": "ehu-1305321",
+    "ehuId": "1305321",
+    "title": "Estudio del papel de SDN1 en la inflamación y colestasis hepáticas",
+    "acronym": "SHEIC",
+    "code": "SAI10/146",
+    "fundingBody": "SAIOTEK 2010",
+    "fundingType": "regional",
+    "pi": "Maria Olatz Fresnedo Aranguren",
+    "period": "01 January 2010 - 31 December 2011",
+    "startDate": "01 January 2010",
+    "endDate": "31 December 2011",
+    "year": 2011,
+    "status": "completed",
+    "budget": "€17,478.51",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Leader"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enara Arretxe Oliden",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305321/detalle"
+  },
+  {
+    "id": "ehu-1302535",
+    "ehuId": "1302535",
+    "title": "Papel de la APOE en el desarrollo de la enfermedad del hígado graso no alcohólica (NAFLD)",
+    "acronym": "APONAF",
+    "code": "SAI10/09",
+    "fundingBody": "SAIOTEK 2010",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2010 - 31 December 2011",
+    "startDate": "01 January 2010",
+    "endDate": "31 December 2011",
+    "year": 2011,
+    "status": "completed",
+    "budget": "€18,130.29",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Lino Arisqueta Herranz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ainara Cano San Jose",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302535/detalle"
+  },
+  {
+    "id": "ehu-79772",
+    "ehuId": "79772",
+    "title": "Ultracentrífuga preparativa optima L-100XP con dos rotores",
+    "acronym": "",
+    "code": "GVINF11/46",
+    "fundingBody": "INFRAESTRUCTURA GRUPOS A GOBIERNO VASCO 2011",
+    "fundingType": "regional",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 January 2011 - 31 December 2011",
+    "startDate": "01 January 2011",
+    "endDate": "31 December 2011",
+    "year": 2011,
+    "status": "completed",
+    "budget": "€81,500.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Lino Arisqueta Herranz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Sandra Armengol Lopez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Enara Arretxe Oliden",
+        "role": "Investigador"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ainara Cano San Jose",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Francisco Javier Gil Goicouria",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jon Irazusta Astiazaran",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/79772/detalle"
+  },
+  {
+    "id": "ehu-1303453",
+    "ehuId": "1303453",
+    "title": "INVESTIGACIÓN ESTRATÉGICA Y DESARROLLO TECNOLÓGICO EN SILENCIAMIENTO GENICO, BIOLOGÍA ESTRUCTURAL Y ENFERMEDADES HEPÁTICAS",
+    "acronym": "BIOGUNE 2008",
+    "code": "ETORTEK08/29;ETORTEK08/42",
+    "fundingBody": "ETORTEK 2008",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa, Felix Maria Goñi Urcelay",
+    "period": "01 January 2008 - 31 December 2010",
+    "startDate": "01 January 2008",
+    "endDate": "31 December 2010",
+    "year": 2010,
+    "status": "completed",
+    "budget": "€484,003.00",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Felix Maria Goñi Urcelay",
+        "role": "Leader"
+      },
+      {
+        "name": "Miren Itziar Alcorta Calvo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alicia Alonso Izquierdo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Beatriz Apellaniz Unzalu",
+        "role": "Investigador"
+      },
+      {
+        "name": "Sonia Bañuelos Rodriguez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Basañez Asua",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ainara Cano San Jose",
+        "role": "Investigador"
+      },
+      {
+        "name": "Urko Del Castillo Rojo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jorge Falces Ramos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Juan Manuel Gonzalez Mañas",
+        "role": "Investigador"
+      },
+      {
+        "name": "Nerea Huarte Arrayago",
+        "role": "Investigador"
+      },
+      {
+        "name": "Cesar Augusto Martin Plagaro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Fernando Moro Perez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Arturo Muga Villate",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Nieva Escandon",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Elena Amaya Ostolaza Echabe",
+        "role": "Investigador"
+      },
+      {
+        "name": "Adelina Prado Ruiz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Rodriguez Arrondo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosa De Lima Segura Peregrina",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Angeles Urbaneja Arrue",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ana Julia Vecino Ortega",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alvaro Villarroel Muñoz",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303453/detalle"
+  },
+  {
+    "id": "ehu-1305523",
+    "ehuId": "1305523",
+    "title": "Profundizando en las alteraciones moleculares asociadas a la esteatosis hepática",
+    "acronym": "ESTHEP",
+    "code": "SAI08/49",
+    "fundingBody": "SAIOTEK",
+    "fundingType": "regional",
+    "pi": "Dra. Patricia Aspichueta",
+    "period": "01 January 2008 - 30 June 2010",
+    "startDate": "01 January 2008",
+    "endDate": "30 June 2010",
+    "year": 2010,
+    "status": "completed",
+    "budget": "€40,431.30",
+    "scope": "Regional",
+    "researchers": [],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305523/detalle"
+  },
+  {
+    "id": "ehu-1302540",
+    "ehuId": "1302540",
+    "title": "Profundizando en las alteraciones moleculares asociadas a la esteatosis hepática de etiología metabólica",
+    "acronym": "ESTHEP-I",
+    "code": "SAI09/29",
+    "fundingBody": "SAIOTEK 2009",
+    "fundingType": "regional",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 January 2009 - 31 December 2010",
+    "startDate": "01 January 2009",
+    "endDate": "31 December 2010",
+    "year": 2010,
+    "status": "completed",
+    "budget": "€30,003.95",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302540/detalle"
+  },
+  {
+    "id": "ehu-1304371",
+    "ehuId": "1304371",
+    "title": "Proteínas clave de la enfermedad del hígado graso no alcohólica (NAFLD)",
+    "acronym": "PRONA",
+    "code": "SAI09/83",
+    "fundingBody": "SAIOTEK 2009",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2009 - 31 December 2010",
+    "startDate": "01 January 2009",
+    "endDate": "31 December 2010",
+    "year": 2010,
+    "status": "completed",
+    "budget": "€22,393.21",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304371/detalle"
+  },
+  {
+    "id": "ehu-1839518",
+    "ehuId": "1839518",
+    "title": "Bases moleculares de enfermedades metabólicas con componente lipídico",
+    "acronym": "",
+    "code": "GIC07/108",
+    "fundingBody": "GRUPOS CONSOLIDADOS 2007",
+    "fundingType": "regional",
+    "pi": "Begoña Ochoa Olascoaga",
+    "period": "01 January 2007 - 31 December 2009",
+    "startDate": "01 January 2007",
+    "endDate": "31 December 2009",
+    "year": 2009,
+    "status": "completed",
+    "budget": "€84,784.26",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1839518/detalle"
+  },
+  {
+    "id": "ehu-1302013",
+    "ehuId": "1302013",
+    "title": "Búsqueda de marcadores diagnóstico/pronóstico de la enfermedad del lupus eritematoso sistemático",
+    "acronym": "GENMOLUP",
+    "code": "SAI08/63;SAI08/65;SAI08/66;SAI08/67;SAI08/68",
+    "fundingBody": "SAIOTEK",
+    "fundingType": "regional",
+    "pi": "Maria Olatz Fresnedo Aranguren, Jose Antonio Lozano Alonso, Carmen Manzano Basabe, Ana Maria Zubiaga Elordieta",
+    "period": "01 January 2008 - 31 December 2009",
+    "startDate": "01 January 2008",
+    "endDate": "31 December 2009",
+    "year": 2009,
+    "status": "completed",
+    "budget": "€84,806.25",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Leader"
+      },
+      {
+        "name": "Jose Antonio Lozano Alonso",
+        "role": "Leader"
+      },
+      {
+        "name": "Carmen Manzano Basabe",
+        "role": "Leader"
+      },
+      {
+        "name": "Ana Maria Zubiaga Elordieta",
+        "role": "Leader"
+      },
+      {
+        "name": "Jesus Maria Arizmendi Bastarrika",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Andone Estomba Recalde",
+        "role": "Investigador"
+      },
+      {
+        "name": "Asier Fullaondo Elordui-Zapaterieche",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iñaki Inza Cano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Mikel Iriondo Orensanz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Miren Josu Omaetxebarria Ibarra",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alberto Vicario Casla",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1302013/detalle"
+  },
+  {
+    "id": "ehu-1305564",
+    "ehuId": "1305564",
+    "title": "Genómica funcional de SND P102",
+    "acronym": "GENSND",
+    "code": "SAI07/57",
+    "fundingBody": "SAIOTEK",
+    "fundingType": "regional",
+    "pi": "Begoña Ochoa Olascoaga",
+    "period": "01 January 2007 - 30 June 2009",
+    "startDate": "01 January 2007",
+    "endDate": "30 June 2009",
+    "year": 2009,
+    "status": "completed",
+    "budget": "€19,982.60",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305564/detalle"
+  },
+  {
+    "id": "ehu-1304495",
+    "ehuId": "1304495",
+    "title": "Proteínas diana en enfermedades hepáticas",
+    "acronym": "PROHEP",
+    "code": "SAI08/08",
+    "fundingBody": "SAIOTEK",
+    "fundingType": "regional",
+    "pi": "Patricia Aspichueta Celaa",
+    "period": "01 January 2008 - 31 December 2009",
+    "startDate": "01 January 2008",
+    "endDate": "31 December 2009",
+    "year": 2009,
+    "status": "completed",
+    "budget": "€20,191.09",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Leader"
+      },
+      {
+        "name": "Xabier Buque Garcia",
+        "role": "Investigador"
+      },
+      {
+        "name": "Ainara Cano San Jose",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304495/detalle"
+  },
+  {
+    "id": "ehu-1303442",
+    "ehuId": "1303442",
+    "title": "Estudio del lupus eritematoso sistémico mediante aproximaciones genómicas, proteómicas y bioinformáticas",
+    "acronym": "GENMOSLE",
+    "code": "SAI07/52;SAI07/53;SAI07/54;SAI07/55;SAI07/56",
+    "fundingBody": "SAIOTEK",
+    "fundingType": "regional",
+    "pi": "Jesus Maria Arizmendi Bastarrika, Miren Andone Estomba Recalde, Maria Olatz Fresnedo Aranguren, Jose Antonio Lozano Alonso",
+    "period": "01 January 2007 - 31 December 2008",
+    "startDate": "01 January 2007",
+    "endDate": "31 December 2008",
+    "year": 2008,
+    "status": "completed",
+    "budget": "€76,199.45",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Jesus Maria Arizmendi Bastarrika",
+        "role": "Leader"
+      },
+      {
+        "name": "Miren Andone Estomba Recalde",
+        "role": "Leader"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Leader"
+      },
+      {
+        "name": "Jose Antonio Lozano Alonso",
+        "role": "Leader"
+      },
+      {
+        "name": "Endika Bengoetxea Castro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Igotz Delgado Balzategui",
+        "role": "Investigador"
+      },
+      {
+        "name": "Iñaki Inza Cano",
+        "role": "Investigador"
+      },
+      {
+        "name": "Mikel Iriondo Orensanz",
+        "role": "Investigador"
+      },
+      {
+        "name": "Pedro Maria Larrañaga Mugica",
+        "role": "Investigador"
+      },
+      {
+        "name": "Carmen Manzano Basabe",
+        "role": "Investigador"
+      },
+      {
+        "name": "Alexander Mendiburu Alberro",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Teresa Miquelez Echegaray",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Fernando Rendo Fornet",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303442/detalle"
+  },
+  {
+    "id": "ehu-1839696",
+    "ehuId": "1839696",
+    "title": "Sistema de cromatografía liquida de alta resolución",
+    "acronym": "",
+    "code": "INF08/18",
+    "fundingBody": "INFRAESTRUCTURA 2008",
+    "fundingType": "national",
+    "pi": "Begoña Ochoa Olascoaga",
+    "period": "01 July 2008 - 31 December 2008",
+    "startDate": "01 July 2008",
+    "endDate": "31 December 2008",
+    "year": 2008,
+    "status": "completed",
+    "budget": "€35,999.90",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Carlos Gonzalez Milicua",
+        "role": "Investigador"
+      },
+      {
+        "name": "Luisa Hernandez Frias",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Dolores Moragues Tosantos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosaura Navarro Lobato",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ponton San Emeterio",
+        "role": "Investigador"
+      },
+      {
+        "name": "Guillermo Quindos Andres",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Luis Rodriguez Arrondo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Ruiz Larrea",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1839696/detalle"
+  },
+  {
+    "id": "ehu-1303375",
+    "ehuId": "1303375",
+    "title": "Unidad de lipidología",
+    "acronym": "LIPIDOL2",
+    "code": "SAI07/66",
+    "fundingBody": "SAIOTEK",
+    "fundingType": "regional",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 January 2007 - 31 December 2008",
+    "startDate": "01 January 2007",
+    "endDate": "31 December 2008",
+    "year": 2008,
+    "status": "completed",
+    "budget": "€30,590.92",
+    "scope": "Regional",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Luisa Hernandez Frias",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosaura Navarro Lobato",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Ruiz Larrea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ignacio Ruiz Sanz",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1303375/detalle"
+  },
+  {
+    "id": "ehu-1305107",
+    "ehuId": "1305107",
+    "title": "Análisis molecular de la esteatosis hepatocelular: lipidómica y papel de SND P102 en su desarrollo y regresión",
+    "acronym": "PIA 12007-53",
+    "code": "MEC07/78",
+    "fundingBody": "MEC",
+    "fundingType": "national",
+    "pi": "Maria Jose Martinez San Pelayo",
+    "period": "01 Oc - ber 2007 to 24 October 2010",
+    "startDate": "01 Oc",
+    "endDate": "ber 2007 to 24 October 2010",
+    "year": 2007,
+    "status": "completed",
+    "budget": "€101,640.00",
+    "scope": "National",
+    "researchers": [
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Itsaso Garcia Arcos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Investigador"
+      },
+      {
+        "name": "Lourdes Palacios Martin",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yuri Rueda Estevez",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1305107/detalle"
+  },
+  {
+    "id": "ehu-1840070",
+    "ehuId": "1840070",
+    "title": "Concentrador-evaporador para muestras acuosas y orgánicas",
+    "acronym": "",
+    "code": "INF07/28",
+    "fundingBody": "INFRAESTRUCTURA 2007",
+    "fundingType": "national",
+    "pi": "Begoña Ochoa Olascoaga",
+    "period": "12 July 2007 - 31 December 2007",
+    "startDate": "12 July 2007",
+    "endDate": "31 December 2007",
+    "year": 2007,
+    "status": "completed",
+    "budget": "€42,838.00",
+    "scope": "Institutional",
+    "researchers": [
+      {
+        "name": "Begoña Ochoa Olascoaga",
+        "role": "Leader"
+      },
+      {
+        "name": "Patricia Aspichueta Celaa",
+        "role": "Investigador"
+      },
+      {
+        "name": "Gorka Basañez Asua",
+        "role": "Investigador"
+      },
+      {
+        "name": "Yolanda Chico Carmona",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Olatz Fresnedo Aranguren",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Teresa Giralt Rue",
+        "role": "Investigador"
+      },
+      {
+        "name": "Luisa Hernandez Frias",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Jose Martinez San Pelayo",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Dolores Moragues Tosantos",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rosaura Navarro Lobato",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ponton San Emeterio",
+        "role": "Investigador"
+      },
+      {
+        "name": "Rafael Rodriguez Puertas",
+        "role": "Investigador"
+      },
+      {
+        "name": "Maria Begoña Ruiz Larrea",
+        "role": "Investigador"
+      },
+      {
+        "name": "Jose Ignacio Ruiz Sanz",
+        "role": "Investigador"
+      }
+    ],
+    "officialUrl": "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1840070/detalle"
+  }
+]

@@ -10,7 +10,8 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 
-const teamMembers = await getLocalizedCollection('team', lang);
+// El personal jubilado se muestra en Antiguos Miembros (/alumni)
+const teamMembers = (await getLocalizedCollection('team', lang)).filter(m => m.data.status !== 'retired');
 sortTeamMembers(teamMembers);
 ---
 
@@ -18,7 +19,7 @@ sortTeamMembers(teamMembers);
   <!-- Nav Extra: Member Dropdown Selector -->
   <div slot="nav-extra" class="nav-quick-select-group">
     <label for="member-select"><i class="fas fa-user-circle"></i> {t.team_select_label}</label>
-    <select id="member-select" data-lang={lang} class="nav-quick-select">
+    <select id="member-select" data-base={getLocalizedPath('/curriculum', lang)} class="nav-quick-select">
       <option value="">{t.team_select_placeholder}</option>
       {teamMembers.map(m => (
         <option value={m.slug}>
@@ -33,21 +34,16 @@ sortTeamMembers(teamMembers);
       <div class="section-header-inst">
         <div>
           <h1 class="section-title-inst">{t.team_page_title}</h1>
-          <span class="section-subtitle-inst">{t.team_page_sub} &bull; {teamMembers.length} {t.team_active_members}</span>
+          <span class="section-subtitle-inst">{t.team_page_sub} &bull; {teamMembers.length} {t.team_active_members} &bull; <a href={`${getLocalizedPath('/alumni', lang)}#alumni-jubilados`}>{t.team_see_retired}</a></span>
         </div>
       </div>
 
-      <div class="team-filter-bar" id="team-category-filters">
+      <div class="team-filter-bar" id="team-category-filters" style="margin-bottom:2rem">
         <button class="team-filter-btn active" data-category="ALL"><i class="fas fa-users"></i> {t.team_all}</button>
         <button class="team-filter-btn" data-category="PDI"><i class="fas fa-user-tie"></i> {t.team_pdi}</button>
         <button class="team-filter-btn" data-category="Posdoctoral"><i class="fas fa-user-graduate"></i> {t.team_postdoc}</button>
         <button class="team-filter-btn" data-category="Predoctoral"><i class="fas fa-book-reader"></i> {t.team_predoc}</button>
         <button class="team-filter-btn" data-category="Técnico"><i class="fas fa-tools"></i> {t.team_tech}</button>
-      </div>
-
-      <div class="team-search-bar" style="margin-bottom:2rem">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" class="search-input" id="team-search" placeholder={t.team_search_placeholder} />
       </div>
 
       <div class="team-grid-inst" id="team-grid">
@@ -62,28 +58,23 @@ sortTeamMembers(teamMembers);
     document.addEventListener('DOMContentLoaded', () => {
       const select = document.getElementById('member-select');
       if (select) {
-        const lang = select.dataset.lang || 'es';
-        const prefix = lang === 'es' ? '' : '/' + lang;
+        const base = select.dataset.base;
         select.addEventListener('change', (e) => {
           if (e.target.value) {
-            window.location.href = prefix + '/curriculum/' + e.target.value;
+            window.location.href = base + '/' + e.target.value;
           }
         });
       }
 
       const filterBtns = document.querySelectorAll('.team-filter-btn');
-      const searchInput = document.getElementById('team-search');
       const teamCards = document.querySelectorAll('.team-grid-inst .team-card-inst');
 
       let currentCategory = 'ALL';
-      let currentSearch = '';
 
       function filterTeam() {
-        const query = currentSearch.toLowerCase().trim();
         teamCards.forEach(card => {
           const category = card.dataset.category || '';
           const catKey = card.dataset.catkey || '';
-          const searchData = card.dataset.search || '';
 
           let matchesCategory = false;
           if (currentCategory === 'ALL') {
@@ -100,9 +91,7 @@ sortTeamMembers(teamMembers);
             matchesCategory = category.toLowerCase().includes(currentCategory.toLowerCase()) || catKey === currentCategory.toLowerCase();
           }
 
-          const matchesSearch = !query || searchData.includes(query);
-
-          if (matchesCategory && matchesSearch) {
+          if (matchesCategory) {
             card.style.display = 'flex';
           } else {
             card.style.display = 'none';
@@ -121,13 +110,6 @@ sortTeamMembers(teamMembers);
           }
         });
       });
-
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          currentSearch = e.target.value;
-          filterTeam();
-        });
-      }
     });
   </script>
 </Layout>

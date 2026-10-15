@@ -5,7 +5,7 @@ tabId: "tab-instalaciones"
 order: 4
 ---
 
-El grupo de investigación **Lipids & Liver** dispone de infraestructuras científicas y experimentales especializadas, distribuidas estratégicamente en el Campus de Leioa de la Universidad del País Vasco (UPV/EHU) para articular la actividad docente universitaria, la formación predoctoral y posdoctoral, y la investigación biomédica de vanguardia:
+El grupo de investigación **Lipids & Liver** dispone de infraestructuras científicas y experimentales especializadas, distribuidas entre el Campus de Leioa de la Universidad del País Vasco (UPV/EHU) y el Instituto de Investigación Sanitaria Biobizkaia (Barakaldo) para articular la actividad docente universitaria, la formación predoctoral y posdoctoral, y la investigación biomédica de vanguardia:
 
 <div class="facilities-grid">
   <div class="facility-card">
@@ -50,7 +50,30 @@ El grupo de investigación **Lipids & Liver** dispone de infraestructuras cient�
     <ul class="facility-features">
       <li><i class="fas fa-check-circle"></i> <strong>Plataformas Tecnológicas y SGIker:</strong> Espacio de estrecha integración y sinergia con la Unidad de Lipidómica de los Servicios Generales de Investigación (SGIker).</li>
       <li><i class="fas fa-check-circle"></i> <strong>Espectrometría de Masas de Alta Resolución:</strong> Infraestructura avanzada para la cuantificación y caracterización exhaustiva de perfiles lipídicos y metabolitos.</li>
-      <li><i class="fas fa-check-circle"></i> <strong>Ecosistema Científico Biomédico:</strong> Interconexión directa con institutos de investigación de vanguardia del Parque Científico y la red colaborativa de Biocruces Bizkaia.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Ecosistema Científico Biomédico:</strong> Interconexión directa con institutos de investigación de vanguardia del Parque Científico y la red colaborativa de Biobizkaia.</li>
+    </ul>
+  </div>
+  <div class="facility-card">
+    <div class="facility-card-image-box facility-card-image-placeholder" role="img" aria-label="Instituto de Investigación Sanitaria Biobizkaia">
+      <i class="fas fa-hospital"></i>
+    </div>
+    <div class="facility-card-header">
+      <div class="facility-card-icon">
+        <i class="fas fa-hospital-user"></i>
+      </div>
+      <div class="facility-card-header-info">
+        <h3 class="facility-card-title">Instituto de Investigación Sanitaria Biobizkaia</h3>
+        <span class="facility-card-location"><i class="fas fa-map-marker-alt"></i> Hospital Universitario Cruces (Barakaldo, Bizkaia)</span>
+      </div>
+    </div>
+    <p class="content-lang-notice" role="note"><i class="fas fa-pen-nib" aria-hidden="true"></i> Borrador redactado a partir de fuentes públicas (web de IIS Biobizkaia), pendiente de validación por el grupo.</p>
+    <p class="facility-card-desc">
+      Instituto de investigación sanitaria con núcleo en el Hospital Universitario Cruces, que reúne a las organizaciones sanitarias de Bizkaia. El grupo forma parte de su Área de Enfermedades Digestivas, que conecta la investigación de laboratorio con la práctica clínica.
+    </p>
+    <ul class="facility-features">
+      <li><i class="fas fa-check-circle"></i> <strong>Entorno hospitalario:</strong> Proximidad a la actividad clínica del Hospital Universitario Cruces y de los hospitales de Bizkaia integrados en el instituto (Basurto, Galdakao, San Eloy y Urduliz).</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Plataformas de apoyo a la investigación:</strong> Acceso a las plataformas científico-técnicas del instituto, como la Plataforma de Proteómica (edificio Bio 1, Cruces).</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Red institucional:</strong> Instituto promovido por el Departamento de Salud del Gobierno Vasco, Osakidetza, BIOEF y la UPV/EHU.</li>
     </ul>
   </div>
 </div>

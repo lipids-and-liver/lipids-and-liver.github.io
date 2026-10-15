@@ -1,4 +1,5 @@
 ---
+import ContentLangNotice from '../ContentLangNotice.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
@@ -36,9 +37,9 @@ const { Content } = await render(line);
   <!-- Nav Extra: Research Line Dropdown Selector -->
   <div slot="nav-extra" class="nav-quick-select-group">
     <label for="line-select"><i class="fas fa-microscope"></i> {t.lines_select_label}</label>
-    <select id="line-select" data-lang={lang} class="nav-quick-select">
+    <select id="line-select" data-base={getLocalizedPath('/lineas', lang)} class="nav-quick-select">
       {allLines.map(item => (
-        <option value={item.slug} selected={item.slug === currentSlug}>
+        <option value={item.slug} selected={item.slug === currentSlug} lang={item.locale !== lang ? item.locale : undefined}>
           {item.data.title.substring(0, 50)}...
         </option>
       ))}
@@ -47,7 +48,7 @@ const { Content } = await render(line);
 
   <div class="container cv-container">
     <div class="cv-top-bar">
-      <a href={getLocalizedPath('/#lines', lang)} class="btn-inst-secondary" style="padding:6px 14px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
+      <a href={getLocalizedPath('/lineas', lang)} class="btn-inst-secondary" style="padding:6px 14px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
         <i class="fas fa-arrow-left"></i> {t.lines_back}
       </a>
     </div>
@@ -91,7 +92,7 @@ const { Content } = await render(line);
               <i class="fas fa-university"></i>
               <div>
                 <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.theses_affiliation_title || 'Filiación'}</div>
-                <span>UPV/EHU • Biocruces</span>
+                <span>UPV/EHU • Biobizkaia</span>
               </div>
             </div>
 
@@ -107,16 +108,20 @@ const { Content } = await render(line);
 
       <!-- Columna Derecha: Contenido completo de la Línea de Investigación -->
       <article class="cv-main">
+        <ContentLangNotice contentLang={line.locale} lang={lang} variant="banner" />
+        {line.locale === lang && line.data.translationStatus === 'draft' && (
+          <p class="content-lang-notice" role="note"><i class="fas fa-pen-nib" aria-hidden="true"></i> {t.content_draft_translation}</p>
+        )}
         <div class="cv-kicker">
           <span class="cv-dot"></span>
           {line.data.badge} • {t.lines_title || 'Líneas de Investigación'}
         </div>
 
-        <h1 class="cv-main-name">
+        <h1 class="cv-main-name" lang={line.locale !== lang ? line.locale : undefined}>
           {line.data.title}
         </h1>
 
-        <div class="cv-main-title" style="font-size:1.05rem; line-height:1.6; color:var(--text-secondary); font-weight:400;">
+        <div class="cv-main-title" lang={line.locale !== lang ? line.locale : undefined} style="font-size:1.05rem; line-height:1.6; color:var(--text-secondary); font-weight:400;">
           {line.data.shortDesc}
         </div>
 
@@ -133,7 +138,9 @@ const { Content } = await render(line);
         <!-- Descripción / Contenido Markdown -->
         <div class="cv-bio">
           <h3 class="cv-block-title" style="margin-bottom:0.85rem;"><i class="fas fa-file-alt"></i> {t.lines_desc_title}</h3>
-          <Content />
+          <div lang={line.locale !== lang ? line.locale : undefined}>
+            <Content />
+          </div>
         </div>
 
         <!-- Filiación Institucional -->
@@ -164,7 +171,7 @@ const { Content } = await render(line);
 
             <div class="pubs-list" style="margin-top:0.75rem;">
               {displayedPubs.map(pub => (
-                <PublicationCard pub={pub} />
+                <PublicationCard pub={pub} lang={lang} />
               ))}
             </div>
 
@@ -188,11 +195,10 @@ const { Content } = await render(line);
   <script is:inline>
     const select = document.getElementById('line-select');
     if (select) {
-      const lang = select.dataset.lang || 'es';
-      const prefix = lang === 'es' ? '/portal' : '/portal/' + lang;
+      const base = select.dataset.base;
       select.addEventListener('change', (e) => {
         if (e.target.value) {
-          window.location.href = prefix + '/lineas/' + e.target.value;
+          window.location.href = base + '/' + e.target.value;
         }
       });
     }

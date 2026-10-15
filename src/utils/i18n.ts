@@ -2,8 +2,23 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import translationsData from '../data/translations.json';
 
 export type Locale = 'es' | 'eu' | 'en';
-export const DEFAULT_LOCALE: Locale = 'es';
-export const LOCALES: Locale[] = ['es', 'eu', 'en'];
+
+// Idioma principal del portal (decisión del grupo, oct. 2026): se sirve sin prefijo en /portal/.
+// Única fuente de verdad del portal; la página "En construcción" de la raíz tiene sus propias rutas.
+export const DEFAULT_LOCALE: Locale = 'en';
+export const LOCALES: Locale[] = ['en', 'es', 'eu'];
+
+// Idioma en que está escrito el contenido sin carpeta de idioma (noticias, proyectos)
+// y en el que se edita el resto por defecto en el CMS.
+export const CONTENT_SOURCE_LOCALE: Locale = 'es';
+
+// Si un contenido no existe en el idioma pedido, se muestra en el primero disponible de esta lista
+// (siempre con aviso; ver ContentLangNotice). Nada se oculta.
+export const FALLBACK_LOCALES: Record<Locale, Locale[]> = {
+  en: ['en', 'es', 'eu'],
+  es: ['es', 'en', 'eu'],
+  eu: ['eu', 'es', 'en'],
+};
 
 export type Translations = typeof translationsData.es;
 
@@ -20,10 +35,10 @@ export function getItemSlug(entry: { id: string; data?: { id?: string } }): stri
 export function getItemLang(entry: { id: string }): Locale {
   const parts = entry.id.split('/');
   const prefix = parts[0];
-  if (prefix === 'eu' || prefix === 'en' || prefix === 'es') {
-    return prefix;
+  if ((LOCALES as string[]).includes(prefix)) {
+    return prefix as Locale;
   }
-  return 'es';
+  return CONTENT_SOURCE_LOCALE;
 }
 
 export const PORTAL_BASE = '/portal';
@@ -39,8 +54,8 @@ export function getPathWithoutLocale(pathname: string): string {
     clean = clean.slice(PORTAL_BASE.length);
   }
 
-  // Remove /eu or /en prefix (e.g. /eu, /eu/, /eu/tesis, /en/curriculum)
-  clean = clean.replace(/^\/(eu|en)(\/|$)/, '/');
+  // Remove the locale prefix (e.g. /es, /eu/, /eu/tesis, /es/curriculum)
+  clean = clean.replace(new RegExp(`^/(${LOCALES.join('|')})(/|$)`), '/');
 
   // Ensure starts with /
   if (!clean.startsWith('/')) clean = '/' + clean;
@@ -77,7 +92,22 @@ export function getLocalizedPath(path: string, lang: Locale = DEFAULT_LOCALE): s
 
 export type LocalizedItem<T> = T & { slug: string; locale: Locale };
 
-export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(
+// Fecha de una noticia según su precisión: "25 de septiembre de 2026" o solo "2019"
+export function formatNewsDate(date: string, precision: 'day' | 'year' = 'day', lang: Locale = DEFAULT_LOCALE): string {
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return date;
+  if (precision === 'year') return String(d.getUTCFullYear());
+  return d.toLocaleDateString(lang === 'en' ? 'en-GB' : lang === 'eu' ? 'eu-ES' : 'es-ES', {
+    year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'
+  });
+}
+
+// Primer idioma disponible según FALLBACK_LOCALES[lang]
+function pickLocale(available: Map<Locale, unknown>, lang: Locale): Locale | undefined {
+  return FALLBACK_LOCALES[lang].find(l => available.has(l));
+}
+
+export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents' | 'sciresources'>(
   collectionName: C,
   lang: Locale = DEFAULT_LOCALE
 ): Promise<Array<CollectionEntry<C> & { slug: string; locale: Locale }>> {
@@ -99,24 +129,9 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
   const result: Array<CollectionEntry<C> & { slug: string; locale: Locale }> = [];
 
   for (const [slug, langMap] of grouped.entries()) {
-    let selected: CollectionEntry<C> | undefined = langMap.get(lang);
-    let selectedLocale: Locale = lang;
-
-    if (!selected) {
-      // Fallback to Spanish
-      selected = langMap.get(DEFAULT_LOCALE);
-      selectedLocale = DEFAULT_LOCALE;
-    }
-
-    if (!selected) {
-      // Fallback to any available language
-      const [firstLocale, firstEntry] = langMap.entries().next().value || [];
-      selected = firstEntry;
-      selectedLocale = (firstLocale as Locale) || DEFAULT_LOCALE;
-    }
-
-    if (selected) {
-      result.push(Object.assign(selected, { slug, locale: selectedLocale }));
+    const selectedLocale = pickLocale(langMap, lang);
+    if (selectedLocale) {
+      result.push({ ...langMap.get(selectedLocale)!, slug, locale: selectedLocale });
     }
   }
 
@@ -127,38 +142,24 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
   return result;
 }
 
-export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(
+export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents' | 'sciresources'>(
   collectionName: C,
   slug: string,
   lang: Locale = DEFAULT_LOCALE
 ): Promise<(CollectionEntry<C> & { slug: string; locale: Locale }) | undefined> {
   const allEntries = await getCollection(collectionName);
-  
-  let targetEntry: CollectionEntry<C> | undefined;
-  let fallbackEntry: CollectionEntry<C> | undefined;
 
+  const langMap = new Map<Locale, CollectionEntry<C>>();
   for (const entry of allEntries) {
-    const itemSlug = getItemSlug(entry);
-    if (itemSlug === slug) {
-      const itemLang = getItemLang(entry);
-      if (itemLang === lang) {
-        targetEntry = entry;
-        break;
-      }
-      if (itemLang === DEFAULT_LOCALE) {
-        fallbackEntry = entry;
-      }
-    }
+    if (getItemSlug(entry) === slug) langMap.set(getItemLang(entry), entry);
   }
 
-  const chosen = targetEntry || fallbackEntry;
-  if (!chosen) return undefined;
-
-  const chosenLang = getItemLang(chosen);
-  return Object.assign(chosen, { slug, locale: chosenLang });
+  const chosenLocale = pickLocale(langMap, lang);
+  if (!chosenLocale) return undefined;
+  return { ...langMap.get(chosenLocale)!, slug, locale: chosenLocale };
 }
 
-export async function getAllSlugs<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(
+export async function getAllSlugs<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents' | 'sciresources'>(
   collectionName: C
 ): Promise<string[]> {
   const allEntries = await getCollection(collectionName);
@@ -280,7 +281,7 @@ export function sortTeamMembers<T extends { data: { category?: string; order?: n
 }
 
 export function localizeTeamRole(role: string = '', lang: Locale = DEFAULT_LOCALE): string {
-  if (lang === 'es' || !role) return role;
+  if (lang === CONTENT_SOURCE_LOCALE || !role) return role;
 
   const roleTranslations: Record<string, { eu: string; en: string }> = {
     'Catedrática de Fisiología': {
@@ -371,9 +372,9 @@ export function localizeTeamRole(role: string = '', lang: Locale = DEFAULT_LOCAL
       eu: 'Doktorego-aurreko Ikertzailea (UPV/EHU)',
       en: 'Predoctoral Researcher (UPV/EHU)'
     },
-    'Investigadora Predoctoral (Biocruces)': {
-      eu: 'Doktorego-aurreko Ikertzailea (Biocruces)',
-      en: 'Predoctoral Researcher (Biocruces)'
+    'Investigadora Predoctoral (Biobizkaia)': {
+      eu: 'Doktorego-aurreko Ikertzailea (Biobizkaia)',
+      en: 'Predoctoral Researcher (Biobizkaia)'
     },
     'Investigadora Predoctoral (FPU)': {
       eu: 'Doktorego-aurreko Ikertzailea (FPU)',
@@ -405,7 +406,7 @@ export function localizeTeamRole(role: string = '', lang: Locale = DEFAULT_LOCAL
 }
 
 export function localizeTeamDepartment(dept: string = '', lang: Locale = DEFAULT_LOCALE): string {
-  if (lang === 'es' || !dept) return dept;
+  if (lang === CONTENT_SOURCE_LOCALE || !dept) return dept;
 
   const deptTranslations: Record<string, { eu: string; en: string }> = {
     'Departamento de Fisiología, Facultad de Medicina y Enfermería': {
@@ -416,17 +417,17 @@ export function localizeTeamDepartment(dept: string = '', lang: Locale = DEFAULT
       eu: 'Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea, UPV/EHU',
       en: 'Department of Physiology, Faculty of Medicine and Nursing, UPV/EHU'
     },
-    'Departamento de Fisiología / IIS Biocruces Bizkaia': {
-      eu: 'Fisiologia Saila / Biocruces Bizkaia OII',
-      en: 'Department of Physiology / IIS Biocruces Bizkaia'
+    'Departamento de Fisiología / IIS Biobizkaia': {
+      eu: 'Fisiologia Saila / Biobizkaia OII',
+      en: 'Department of Physiology / IIS Biobizkaia'
     },
-    'Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biocruces': {
-      eu: 'Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea / Biocruces OII',
-      en: 'Department of Physiology, Faculty of Medicine and Nursing / IIS Biocruces'
+    'Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biobizkaia': {
+      eu: 'Fisiologia Saila, Medikuntza eta Erizaintza Fakultatea / Biobizkaia OII',
+      en: 'Department of Physiology, Faculty of Medicine and Nursing / IIS Biobizkaia'
     },
-    'Departamento de Fisiología, UPV/EHU / IIS Biocruces': {
-      eu: 'Fisiologia Saila, UPV/EHU / Biocruces OII',
-      en: 'Department of Physiology, UPV/EHU / IIS Biocruces'
+    'Departamento de Fisiología, UPV/EHU / IIS Biobizkaia': {
+      eu: 'Fisiologia Saila, UPV/EHU / Biobizkaia OII',
+      en: 'Department of Physiology, UPV/EHU / IIS Biobizkaia'
     }
   };
 
@@ -443,7 +444,7 @@ export function localizeTeamOffice(office: string = '', lang: Locale = DEFAULT_L
     if (lang === 'en') return 'Faculty of Medicine and Nursing, Leioa';
     return 'Facultad de Medicina y Enfermería, Leioa';
   }
-  if (lang === 'es') return office;
+  if (lang === CONTENT_SOURCE_LOCALE) return office;
 
   let localized = office;
   if (lang === 'en') {
@@ -477,7 +478,24 @@ export function getThesisBadgeText(
   }
 
   const base = t.theses_badge_completed || (lang === 'eu' ? 'Defendatua' : lang === 'en' ? 'Completed' : 'Defendida');
-  return thesis.data.year ? `${base} (${thesis.data.year})` : base;
+  // El año ya aparece en la fecha de la tarjeta: la etiqueta solo indica el estado
+  return base;
+}
+
+// Metadatos de tesis escritos en español en los datos (estado "En desarrollo (…)" e institución).
+// El título y el resumen de la tesis se muestran en su idioma original.
+const THESIS_META_TERMS: Record<string, Partial<Record<Locale, string>>> = {
+  'En desarrollo': { en: 'In progress', eu: 'Bidean' },
+  'Departamento de Fisiología': { en: 'Department of Physiology', eu: 'Fisiologia Saila' },
+  'Facultad de Medicina y Enfermería': { en: 'Faculty of Medicine and Nursing', eu: 'Medikuntza eta Erizaintza Fakultatea' },
+};
+
+export function localizeThesisMeta(value: string = '', lang: Locale = DEFAULT_LOCALE): string {
+  if (lang === CONTENT_SOURCE_LOCALE || !value) return value;
+  return Object.entries(THESIS_META_TERMS).reduce(
+    (text, [es, tr]) => (tr[lang] ? text.replace(es, tr[lang]!) : text),
+    value
+  );
 }
 
 export function localizeThesisProgram(program: string = '', lang: Locale = DEFAULT_LOCALE): string {
@@ -486,7 +504,7 @@ export function localizeThesisProgram(program: string = '', lang: Locale = DEFAU
     if (lang === 'en') return 'PhD Program in Biomedicine (UPV/EHU)';
     return 'Programa de Doctorado en Biomedicina (UPV/EHU)';
   }
-  if (lang === 'es') return program;
+  if (lang === CONTENT_SOURCE_LOCALE) return program;
 
   let localized = program;
   if (lang === 'en') {

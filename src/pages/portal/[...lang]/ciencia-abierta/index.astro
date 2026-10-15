@@ -1,0 +1,10 @@
+---
+import ResourcesPage from '../../../../components/pages/ResourcesPage.astro';
+import { localePaths } from '../../../../utils/routes';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+---
+
+<ResourcesPage lang={lang} />

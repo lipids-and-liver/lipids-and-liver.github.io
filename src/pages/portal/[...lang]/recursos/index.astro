@@ -1,0 +1,11 @@
+---
+// La página de ciencia abierta pasó a /ciencia-abierta para no confundirse con
+// "Recursos científicos" (/recursos-cientificos). Se mantiene la URL antigua.
+import { localePaths } from '../../../../utils/routes';
+import { getLocalizedPath } from '../../../../utils/i18n';
+
+export const getStaticPaths = localePaths;
+
+const { lang } = Astro.props;
+return Astro.redirect(getLocalizedPath('/ciencia-abierta', lang), 301);
+---

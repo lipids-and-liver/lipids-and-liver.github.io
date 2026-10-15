@@ -1,65 +1,110 @@
 ---
+import ContentLangNotice from '../ContentLangNotice.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getTranslations, getLocalizedPath, getItemSlug, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, getItemSlug, getItemLang, DEFAULT_LOCALE, type Locale, formatNewsDate } from '../../utils/i18n';
 
 interface Props {
-  article: CollectionEntry<'news'>;
+  article: CollectionEntry<'news'> & { locale?: Locale };
   lang?: Locale;
+  variant?: 'lead' | 'compact' | 'standard';
+  isLead?: boolean;
 }
 
-const { article, lang = 'es' } = Astro.props;
+const { article, lang = DEFAULT_LOCALE, variant = 'standard', isLead = false } = Astro.props;
+const currentVariant = isLead ? 'lead' : variant;
 const { title, date, category, categoryBadge, summary, author, featured, image } = article.data;
 const slug = getItemSlug(article);
 const t = getTranslations(lang);
+// Idioma del texto si difiere del de la página (contenido sin traducir)
+const articleLang = article.locale ?? getItemLang(article);
+const contentLang = articleLang !== lang ? articleLang : undefined;
 
-// Format date nicely
-let formattedDate = date;
-try {
-  const d = new Date(date);
-  if (!isNaN(d.getTime())) {
-    formattedDate = d.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'eu' ? 'eu-ES' : 'es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
-} catch (e) {}
+const formattedDate = formatNewsDate(date, article.data.datePrecision, lang);
+// Etiqueta: la propia de la noticia o, si no tiene, la categoría traducida
+const categoryLabel = categoryBadge || (t as Record<string, string>)[`news_cat_${category}`] || category;
 
 const articleUrl = getLocalizedPath(`/noticias/${slug}`, lang);
 const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https://') ? image : (image.startsWith('/') ? image : `/${image}`)) : null;
 ---
 
-<article class={`news-card-inst ${featured ? 'news-card-featured' : ''}`}>
-  {imageSrc && (
-    <a href={articleUrl} class="news-card-img-link">
-      <img src={imageSrc} alt={title} class="news-card-img" loading="lazy" />
-    </a>
-  )}
-  <div class="news-card-top">
-    <span class="news-category-badge">
-      <i class="fas fa-bookmark"></i> {categoryBadge || category}
-    </span>
-    <time class="news-date" datetime={date}>
-      <i class="far fa-calendar-alt"></i> {formattedDate}
-    </time>
-  </div>
-
-  <h3 class="news-title">
-    <a href={articleUrl}>{title}</a>
-  </h3>
-
-  <p class="news-summary">
-    {summary}
-  </p>
-
-  <div class="news-card-footer">
-    {author && (
-      <span class="news-author">
-        <i class="fas fa-pen-nib"></i> {author}
-      </span>
+{currentVariant === 'compact' ? (
+  <article class={`news-card-inst news-card-compact ${featured ? 'news-card-featured' : ''}`}>
+    {imageSrc && (
+      <a href={articleUrl} class="news-compact-img-link" aria-label={title}>
+        <img src={imageSrc} alt={title} class="news-compact-img" loading="lazy" />
+      </a>
     )}
-    <a href={articleUrl} class="news-read-more">
-      {t.news_read_more || 'Leer más'} <i class="fas fa-arrow-right"></i>
-    </a>
-  </div>
-</article>
+    <div class="news-compact-content">
+      <div class="news-compact-top-block">
+        <div class="news-compact-meta">
+          <span class="news-category-badge">
+            <i class="fas fa-bookmark"></i> {categoryLabel}
+          </span>
+          <ContentLangNotice contentLang={articleLang} lang={lang} />
+          <time class="news-date" datetime={date}>
+            <i class="far fa-calendar-alt"></i> {formattedDate}
+          </time>
+        </div>
+
+        <h4 class="news-compact-title" lang={contentLang}>
+          <a href={articleUrl}>{title}</a>
+        </h4>
+
+        {summary && (
+          <p class="news-compact-summary" lang={contentLang}>
+            {summary}
+          </p>
+        )}
+      </div>
+
+      <div class="news-compact-footer">
+        <a href={articleUrl} class="news-compact-link">
+          {t.news_read_more || 'Leer más'} <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </article>
+) : (
+  <article class={`news-card-inst ${currentVariant === 'lead' ? 'news-card-lead' : ''} ${featured ? 'news-card-featured' : ''}`}>
+    {currentVariant === 'lead' && (
+      <div class="news-lead-tag">
+        <i class="fas fa-star"></i> {t.news_featured_badge || 'Última Noticia Destacada'}
+      </div>
+    )}
+    {imageSrc && (
+      <a href={articleUrl} class="news-card-img-link">
+        <img src={imageSrc} alt={title} class="news-card-img" loading="lazy" />
+      </a>
+    )}
+    <div class="news-card-content">
+      <div class="news-card-top">
+        <span class="news-category-badge">
+          <i class="fas fa-bookmark"></i> {categoryLabel}
+        </span>
+        <ContentLangNotice contentLang={articleLang} lang={lang} />
+        <time class="news-date" datetime={date}>
+          <i class="far fa-calendar-alt"></i> {formattedDate}
+        </time>
+      </div>
+
+      <h3 class="news-title" lang={contentLang}>
+        <a href={articleUrl}>{title}</a>
+      </h3>
+
+      <p class="news-summary" lang={contentLang}>
+        {summary}
+      </p>
+
+      <div class="news-card-footer">
+        {author && (
+          <span class="news-author">
+            <i class="fas fa-pen-nib"></i> {author}
+          </span>
+        )}
+        <a href={articleUrl} class="news-read-more">
+          {t.news_read_more || 'Leer más'} <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </article>
+)}

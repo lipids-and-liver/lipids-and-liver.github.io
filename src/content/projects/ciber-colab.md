@@ -7,7 +7,7 @@ fundingType: "national"
 pi: "Dra. Patricia Aspichueta / Colaboradores CIBERehd"
 period: "2023 - 2025"
 status: "active"
-budget: "Acción Estratégica en Salud / Instituto de Salud Carlos III"
+budget: "ISCIII / CIBERehd"
 badge: "CIBERehd"
 summary: "Proyecto intramural multidisciplinar para mapear las firmas lipídicas celulares en microambientes tumorales de colangiocarcinoma mediante espectrometría espacial."
 order: 5

@@ -1,8 +1,9 @@
 ---
-id: "mariajose-martinez"
+id: "yolanda-chico"
 name: "Dra. Yolanda Chico"
 role: "Profesora Titular de Universidad"
 category: "PDI"
+status: "retired"
 department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
 image: "/assets/images/team/yolanda-chico/image.jpg"
 email: "yolanda.chico@ehu.eus"

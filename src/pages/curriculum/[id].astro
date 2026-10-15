@@ -1,0 +1,11 @@
+---
+// URL corta heredada: /curriculum/<id> -> /portal/curriculum/<id>
+import { getAllSlugs } from '../../utils/i18n';
+
+export async function getStaticPaths() {
+  const slugs = await getAllSlugs('team');
+  return slugs.map(id => ({ params: { id } }));
+}
+
+return Astro.redirect(`/portal/curriculum/${Astro.params.id}`, 301);
+---

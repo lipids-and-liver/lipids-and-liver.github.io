@@ -5,7 +5,7 @@ tabId: "tab-instalaciones"
 order: 4
 ---
 
-The **Lipids & Liver** research group benefits from dedicated scientific and experimental infrastructure, strategically situated across the Leioa Campus of the University of the Basque Country (UPV/EHU) to support academic education, predoctoral/postdoctoral training, and cutting-edge biomedical research:
+The **Lipids & Liver** research group benefits from dedicated scientific and experimental infrastructure, located on the Leioa Campus of the University of the Basque Country (UPV/EHU) and at the Biobizkaia Health Research Institute (Barakaldo) to support academic education, predoctoral/postdoctoral training, and cutting-edge biomedical research:
 
 <div class="facilities-grid">
   <div class="facility-card">
@@ -50,7 +50,30 @@ The **Lipids & Liver** research group benefits from dedicated scientific and exp
     <ul class="facility-features">
       <li><i class="fas fa-check-circle"></i> <strong>Technology Platforms & SGIker:</strong> Seamless integration and close collaboration with the SGIker Lipidomics Unit.</li>
       <li><i class="fas fa-check-circle"></i> <strong>Advanced Mass Spectrometry:</strong> Access to high-resolution mass spectrometry instrumentation for lipidomic, metabolomic, and biophysical profiling.</li>
-      <li><i class="fas fa-check-circle"></i> <strong>Biomedical Scientific Ecosystem:</strong> Direct synergy with leading institutes in the UPV/EHU Science Park and the Biocruces Bizkaia network.</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Biomedical Scientific Ecosystem:</strong> Direct synergy with leading institutes in the UPV/EHU Science Park and the Biobizkaia network.</li>
+    </ul>
+  </div>
+  <div class="facility-card">
+    <div class="facility-card-image-box facility-card-image-placeholder" role="img" aria-label="Biobizkaia Health Research Institute">
+      <i class="fas fa-hospital"></i>
+    </div>
+    <div class="facility-card-header">
+      <div class="facility-card-icon">
+        <i class="fas fa-hospital-user"></i>
+      </div>
+      <div class="facility-card-header-info">
+        <h3 class="facility-card-title">Biobizkaia Health Research Institute</h3>
+        <span class="facility-card-location"><i class="fas fa-map-marker-alt"></i> Cruces University Hospital (Barakaldo, Bizkaia)</span>
+      </div>
+    </div>
+    <p class="content-lang-notice" role="note"><i class="fas fa-pen-nib" aria-hidden="true"></i> Draft based on public sources (IIS Biobizkaia website), pending validation by the group.</p>
+    <p class="facility-card-desc">
+      A health research institute centred on Cruces University Hospital that brings together the health organisations of Bizkaia. The group is part of its Digestive Diseases Area, which connects laboratory research with clinical practice.
+    </p>
+    <ul class="facility-features">
+      <li><i class="fas fa-check-circle"></i> <strong>Hospital setting:</strong> Close links with clinical activity at Cruces University Hospital and the Bizkaia hospitals that make up the institute (Basurto, Galdakao, San Eloy and Urduliz).</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Research support platforms:</strong> Access to the institute's scientific and technical platforms, such as the Proteomics Platform (Bio 1 building, Cruces).</li>
+      <li><i class="fas fa-check-circle"></i> <strong>Institutional network:</strong> Institute promoted by the Basque Government Department of Health, Osakidetza, BIOEF and UPV/EHU.</li>
     </ul>
   </div>
 </div>

@@ -14,4 +14,4 @@ Título de posgrado oficial de la Facultad de Medicina y Enfermería enfocado en
 
 Participación docente del equipo **Lipids & Liver**:
 - Impartición de contenidos formativos en fisiopatología traslacional, señalización hepática y modelos experimentales de enfermedad metabólica.
-- Dirección y desarrollo experimental de **Trabajos de Fin de Máster (TFM)** en estrecha conexión con el entorno hospitalario e investigación clínica del **IIS Biocruces Bizkaia**.
+- Dirección y desarrollo experimental de **Trabajos de Fin de Máster (TFM)** en estrecha conexión con el entorno hospitalario e investigación clínica del **IIS Biobizkaia**.

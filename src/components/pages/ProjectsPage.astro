@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { formatProjectCode } from '../../utils/projects';
 import ProjectCard from '../cards/ProjectCard.astro';
 
 interface Props {
@@ -13,8 +14,16 @@ const t = getTranslations(lang);
 const allProjects = await getLocalizedCollection('projects', lang);
 allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
-const activeCount = allProjects.filter(p => p.data.status === 'active').length;
-const completedCount = allProjects.filter(p => p.data.status === 'completed').length;
+const activeProjects = allProjects.filter(p => p.data.status === 'active');
+const completedProjects = allProjects.filter(p => p.data.status === 'completed');
+
+// Sort completed by year descending
+completedProjects.sort((a, b) => {
+  const yA = a.data.year || (a.data.period ? parseInt(a.data.period.match(/\b(20\d\d)\b/)?.[1] || '0') : 0);
+  const yB = b.data.year || (b.data.period ? parseInt(b.data.period.match(/\b(20\d\d)\b/)?.[1] || '0') : 0);
+  if (yB !== yA) return yB - yA;
+  return (a.data.order || 99) - (b.data.order || 99);
+});
 ---
 
 <Layout currentPage="projects" lang={lang} title={`${t.projects_page_title} | Lipids & Liver`}>
@@ -44,33 +53,229 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
         <h1 class="catalog-title">{t.projects_page_title}</h1>
         <p class="catalog-subtitle">{t.projects_page_sub}</p>
       </div>
-
-      <!-- Segmented Status Filter -->
-      <div class="filter-controls-wrap">
-        <div class="segmented-control-bar" id="projects-status-filters">
-          <button class="segmented-btn active" data-filter="ALL">
-            <i class="fas fa-layer-group"></i> {t.projects_all} <span class="segmented-count">{allProjects.length}</span>
-          </button>
-          <button class="segmented-btn" data-filter="ACTIVE">
-            <i class="fas fa-spinner fa-spin"></i> {t.projects_active} <span class="segmented-count">{activeCount}</span>
-          </button>
-          <button class="segmented-btn" data-filter="COMPLETED">
-            <i class="fas fa-check-circle"></i> {t.projects_completed} <span class="segmented-count">{completedCount}</span>
-          </button>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Projects Grid Section -->
-  <section class="page-section">
+  <!-- Main Content: Active Cards + Compact Archive Table -->
+  <section class="page-section" style="padding-top: 1rem;">
     <div class="container">
-      <div class="projects-grid-inst" id="projects-grid">
-        {allProjects.map(project => (
-          <div class="project-item" data-status={project.data.status.toUpperCase()} data-type={project.data.fundingType}>
-            <ProjectCard project={project} lang={lang} />
-          </div>
+
+      <!-- ==========================================
+           SECCIÓN 1: PROYECTOS EN EJECUCIÓN (TARJETAS)
+           ========================================== -->
+      <div class="projects-block-header">
+        <div class="projects-block-title-wrap">
+          <h2 class="projects-block-title">
+            <i class="fas fa-spinner fa-pulse" style="color:var(--logo-green);"></i>
+            {t.projects_active_section_title || 'Proyectos en Ejecución'}
+            <span class="projects-block-badge">{activeProjects.length}</span>
+          </h2>
+          <p class="projects-block-sub">
+            {t.projects_active_section_sub || 'Proyectos competitivos y ayudas estructurales con dotación presupuestaria activa'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Active Projects Grid (Clean & Impactful) -->
+      <div class="projects-grid-inst" id="active-projects-grid">
+        {activeProjects.map(project => (
+          <ProjectCard project={project} lang={lang} />
         ))}
+      </div>
+
+      <!-- ==========================================
+           SECCIÓN 2: HISTÓRICO EN TABLA COMPACTA
+           ========================================== -->
+      <div class="projects-archive-box" id="historico">
+        <!-- Archive Header & Toolbar -->
+        <div class="projects-archive-toolbar">
+          <div class="archive-search-row">
+            <div>
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--ehu-navy); margin:0 0 4px 0; display:flex; align-items:center; gap:8px;">
+                <i class="fas fa-archive" style="color:var(--logo-green);"></i>
+                {t.projects_archive_section_title || 'Histórico de Convocatorias y Proyectos Finalizados'}
+                <span class="projects-block-badge" style="font-size:0.75rem;">{completedProjects.length}</span>
+              </h3>
+              <p style="font-size:0.86rem; color:var(--text-secondary); margin:0;">
+                {t.projects_archive_section_sub || 'Registro auditado de proyectos concluidos con participación del equipo'}
+              </p>
+            </div>
+
+            <!-- Instant Search Input -->
+            <div class="archive-search-box">
+              <i class="fas fa-search"></i>
+              <input 
+                type="text" 
+                id="archive-search-input" 
+                class="archive-search-input" 
+                placeholder={t.projects_search_placeholder || 'Buscar por título, acrónimo, código, IP...'} 
+                aria-label={t.projects_search_aria}
+              />
+            </div>
+          </div>
+
+          <!-- Entity Filter Pills & Counter Row -->
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div class="projects-entity-filters" id="archive-entity-filters" style="justify-content:flex-start;">
+              <button class="entity-pill-btn active" data-type-filter="ALL">
+                <i class="fas fa-th"></i> {lang === 'eu' ? 'Guztiak' : (lang === 'en' ? 'All' : 'Todas las entidades')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="national">
+                <i class="fas fa-landmark"></i> {lang === 'eu' ? 'MCIU / Estatua' : (lang === 'en' ? 'National' : 'Nacional (MCIU/ISCIII)')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="regional">
+                <i class="fas fa-map-marker-alt"></i> {lang === 'eu' ? 'Eusko Jaurlaritza' : (lang === 'en' ? 'Regional' : 'Autonómico (Gob. Vasco)')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="european">
+                <i class="fas fa-globe-europe"></i> {lang === 'eu' ? 'FEDER / Europa' : (lang === 'en' ? 'European' : 'Europeo (FEDER)')}
+              </button>
+              <button class="entity-pill-btn" data-type-filter="foundation">
+                <i class="fas fa-hand-holding-heart"></i> {lang === 'eu' ? 'Fundazioak' : (lang === 'en' ? 'Foundations' : 'Fundaciones (AECC)')}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compact Table Scroll Container -->
+        <div class="archive-table-scroll">
+          <table class="projects-compact-table" id="archive-table">
+            <thead>
+              <tr>
+                <th class="col-year">{t.projects_col_year || 'Año / Periodo'}</th>
+                <th class="col-code">{t.projects_col_code || 'Acrónimo / Ref.'}</th>
+                <th class="col-title">{t.projects_col_title || 'Título del Proyecto'}</th>
+                <th class="col-pi">{t.projects_col_pi || 'IP / Dirección'}</th>
+                <th class="col-entity">{t.projects_col_entity || 'Entidad'}</th>
+                <th class="col-action">{t.projects_col_link || 'Ficha UPV/EHU'}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {completedProjects.map(project => {
+                const yearVal = project.data.year || project.data.period?.match(/\b(20\d\d)\b/)?.[1] || '-';
+                const formattedCode = formatProjectCode(project.data.code);
+                return (
+                  <tr 
+                    class="archive-row" 
+                    data-type={project.data.fundingType}
+                    data-search={`${project.data.title} ${project.data.acronym || ''} ${project.data.code || ''} ${project.data.pi || ''} ${project.data.fundingBody || ''} ${yearVal}`.toLowerCase()}
+                  >
+                    <td class="col-year">
+                      <span class="archive-year-tag">{yearVal}</span>
+                    </td>
+                    <td class="col-code">
+                      <div class="col-code-stack">
+                        {project.data.acronym && (
+                          <span class="archive-acronym-badge">{project.data.acronym}</span>
+                        )}
+                        {formattedCode.displayCode && formattedCode.displayCode.toLowerCase() !== (project.data.acronym || '').toLowerCase() && (
+                          <span 
+                            class="archive-code-sub" 
+                            title={formattedCode.extraCount > 0 ? `${t.projects_subprojects_title}${formattedCode.fullCode}` : t.projects_ref_code_title}
+                          >
+                            <span>{formattedCode.displayCode}</span>
+                            {formattedCode.extraCount > 0 && (
+                              <span class="code-more-badge">+{formattedCode.extraCount}</span>
+                            )}
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td class="col-title">
+                      <span class="archive-title-link">{project.data.title}</span>
+                    </td>
+                    <td class="col-pi">
+                      <span class="archive-pi-name">
+                        <i class="fas fa-user-circle"></i>
+                        {project.data.pi.split(',')[0]}
+                      </span>
+                    </td>
+                    <td class="col-entity">
+                      <span class="archive-entity-label" title={project.data.fundingBody}>
+                        {project.data.fundingBody.length > 32 ? `${project.data.fundingBody.slice(0, 32)}...` : project.data.fundingBody}
+                      </span>
+                    </td>
+                    <td class="col-action">
+                      {project.data.officialUrl ? (
+                        <a 
+                          href={project.data.officialUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          class="archive-link-btn" 
+                          title={t.projects_open_ehu_title}
+                        >
+                          <span>UPV/EHU</span>
+                          <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i>
+                        </a>
+                      ) : (
+                        <span style="color:var(--text-muted); font-size:0.8rem;">-</span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- No Archive Results Row -->
+        <div id="no-archive-results" style="display:none; text-align:center; padding: 3rem 1rem;">
+          <i class="fas fa-search" style="font-size:2rem; color:var(--text-muted); margin-bottom:0.75rem; display:block;"></i>
+          <p style="color:var(--text-secondary); margin:0;">
+            {lang === 'eu' ? 'Ez da proiekturik aurkitu irizpide hauekin' : (lang === 'en' ? 'No historical projects match your criteria' : 'No se han encontrado proyectos históricos con estos criterios')}
+          </p>
+        </div>
+
+        <!-- Table Pagination Footer -->
+        <div class="projects-table-footer" id="table-pagination-footer">
+          <div class="table-pagination-info" id="table-pagination-info">
+            <span>{lang === 'eu' ? 'Erakusten' : (lang === 'en' ? 'Showing' : 'Mostrando')}</span>
+            <strong id="page-range-start">1</strong>
+            <span>–</span>
+            <strong id="page-range-end">10</strong>
+            <span>{lang === 'eu' ? 'guztira:' : (lang === 'en' ? 'of' : 'de')}</span>
+            <strong id="pagination-total-count">{completedProjects.length}</strong>
+            <span>{lang === 'eu' ? 'proiektu' : (lang === 'en' ? 'projects' : 'proyectos')}</span>
+          </div>
+
+          <div class="table-pagination-controls">
+            <button class="pagination-nav-btn" id="btn-page-prev" aria-label={t.pagination_prev} disabled>
+              <i class="fas fa-chevron-left"></i> <span>{t.projects_pagination_prev || 'Anterior'}</span>
+            </button>
+            <div class="pagination-page-numbers" id="pagination-page-numbers"></div>
+            <button class="pagination-nav-btn" id="btn-page-next" aria-label={t.pagination_next}>
+              <span>{t.projects_pagination_next || 'Siguiente'}</span> <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           SECCIÓN 3: BANNER OFICIAL UPV/EHU & TRANSPARENCIA
+           ========================================== -->
+      <div class="projects-official-hub-card" style="margin-top: 3.5rem;">
+        <div class="projects-official-hub-info">
+          <div class="projects-official-hub-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div>
+            <h3 class="projects-official-hub-title">{t.projects_official_portal_btn || 'Portal de Producción Científica UPV/EHU'}</h3>
+            <p class="projects-official-hub-desc">
+              {t.projects_official_portal_desc || 'Registro oficial auditado de subvenciones del Grupo Lipids & Liver (Código 10483). Acceda a las fichas oficiales y al histórico institucional en la base de datos universitaria.'}
+            </p>
+          </div>
+        </div>
+        <div>
+          <a 
+            href="https://ekoizpen-zientifikoa.ehu.eus/grupos/10483/proyectos" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-inst-primary"
+            style="white-space:nowrap; padding:12px 22px; font-size:0.92rem; border-radius:30px; display:inline-flex; align-items:center; gap:8px;"
+          >
+            <span>{lang === 'eu' ? 'UPV/EHU Erregistro Ofiziala' : (lang === 'en' ? 'Official UPV/EHU Portal' : 'Ver Registro Oficial UPV/EHU')}</span>
+            <i class="fas fa-external-link-alt" style="font-size:0.8rem;"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Institutional Transparency Notice -->
@@ -79,37 +284,183 @@ const completedCount = allProjects.filter(p => p.data.status === 'completed').le
           <i class="fas fa-shield-alt"></i>
         </div>
         <div class="funding-notice-text">
-          <h4>Compromiso con la Transparencia y la Investigación de Impacto</h4>
+          <h4>{lang === 'eu' ? 'Gardentasunarekin eta Eraginpeko Ikerketarekin Konpromisoa' : (lang === 'en' ? 'Commitment to Transparency & High-Impact Research' : 'Compromiso con la Transparencia y la Investigación de Impacto')}</h4>
           <p>
-            Los proyectos del grupo Lipids & Liver están auditados y cofinanciados por entidades públicas y fundaciones científicas de máximo prestigio bajo directivas europeas de ciencia abierta y excelencia biomédica.
+            {lang === 'eu' 
+              ? 'Lipids & Liver taldearen proiektuak entitate publikoek eta ospe goreneko fundazio zientifikoek ikuskatu eta finantzatzen dituzte, zientzia irekiaren eta bikaintasun biomedikoaren europar zuzentarauen pean.'
+              : (lang === 'en'
+                ? 'All research projects in the Lipids & Liver group are audited and co-funded by prestigious public bodies and scientific foundations in full compliance with European open-science directives and biomedical excellence.'
+                : 'Los proyectos del grupo Lipids & Liver están auditados y cofinanciados por entidades públicas y fundaciones científicas de máximo prestigio bajo directivas europeas de ciencia abierta y excelencia biomédica.')
+            }
           </p>
         </div>
       </div>
+
     </div>
   </section>
 </Layout>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('#projects-status-filters .segmented-btn');
-    const projectItems = document.querySelectorAll('#projects-grid .project-item');
+    const searchInput = document.getElementById('archive-search-input');
+    const entityButtons = document.querySelectorAll('#archive-entity-filters .entity-pill-btn');
+    const rows = Array.from(document.querySelectorAll('#archive-table tbody tr.archive-row'));
+    const visibleCounter = document.getElementById('archive-visible-count');
+    const noResults = document.getElementById('no-archive-results');
+    const tableElement = document.getElementById('archive-table');
+    const paginationFooter = document.getElementById('table-pagination-footer');
+    const prevBtn = document.getElementById('btn-page-prev');
+    const nextBtn = document.getElementById('btn-page-next');
+    const pagesContainer = document.getElementById('pagination-page-numbers');
+    const rangeStart = document.getElementById('page-range-start');
+    const rangeEnd = document.getElementById('page-range-end');
+    const totalCountEl = document.getElementById('pagination-total-count');
 
-    filterButtons.forEach(btn => {
+    const PAGE_SIZE = 10;
+    let currentPage = 1;
+    let selectedType = 'ALL';
+    let searchQuery = '';
+    let filteredRows = [...rows];
+
+    function getVisiblePages(current, total) {
+      if (total <= 7) {
+        return Array.from({ length: total }, (_, i) => i + 1);
+      }
+      const pages = [];
+      pages.push(1);
+      if (current > 3) pages.push('...');
+      const start = Math.max(2, current - 1);
+      const end = Math.min(total - 1, current + 1);
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+      if (current < total - 2) pages.push('...');
+      pages.push(total);
+      return pages;
+    }
+
+    function renderPagination() {
+      const total = filteredRows.length;
+      const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * PAGE_SIZE;
+      const endIndex = Math.min(startIndex + PAGE_SIZE, total);
+
+      // Hide all rows, then display current page slice
+      rows.forEach(r => r.style.display = 'none');
+      for (let i = startIndex; i < endIndex; i++) {
+        if (filteredRows[i]) {
+          filteredRows[i].style.display = '';
+        }
+      }
+
+      // Update counter texts
+      if (rangeStart) rangeStart.textContent = total > 0 ? (startIndex + 1) : 0;
+      if (rangeEnd) rangeEnd.textContent = endIndex;
+      if (totalCountEl) totalCountEl.textContent = total;
+      if (visibleCounter) visibleCounter.textContent = total;
+
+      // Update Prev / Next buttons
+      if (prevBtn) prevBtn.disabled = currentPage <= 1;
+      if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+
+      // Render page number buttons
+      if (pagesContainer) {
+        pagesContainer.innerHTML = '';
+        if (totalPages > 1) {
+          const pageNumbers = getVisiblePages(currentPage, totalPages);
+          pageNumbers.forEach(p => {
+            if (p === '...') {
+              const ellipsis = document.createElement('span');
+              ellipsis.className = 'page-ellipsis';
+              ellipsis.textContent = '...';
+              pagesContainer.appendChild(ellipsis);
+            } else {
+              const btn = document.createElement('button');
+              btn.className = `page-num-btn ${p === currentPage ? 'active' : ''}`;
+              btn.textContent = p;
+              btn.addEventListener('click', () => {
+                currentPage = p;
+                renderPagination();
+                const archiveBox = document.getElementById('historico');
+                if (archiveBox) {
+                  const rect = archiveBox.getBoundingClientRect();
+                  if (rect.top < 0) {
+                    archiveBox.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              });
+              pagesContainer.appendChild(btn);
+            }
+          });
+        }
+      }
+
+      // Handle empty state & table visibility
+      if (noResults) {
+        noResults.style.display = total === 0 ? 'block' : 'none';
+      }
+      if (tableElement) {
+        tableElement.style.display = total === 0 ? 'none' : 'table';
+      }
+      if (paginationFooter) {
+        paginationFooter.style.display = total === 0 ? 'none' : 'flex';
+      }
+    }
+
+    function filterArchive() {
+      filteredRows = rows.filter(row => {
+        const rowType = row.getAttribute('data-type');
+        const rowSearch = row.getAttribute('data-search') || '';
+
+        const typeMatch = (selectedType === 'ALL' || rowType === selectedType);
+        const searchMatch = !searchQuery || rowSearch.includes(searchQuery);
+
+        return typeMatch && searchMatch;
+      });
+
+      currentPage = 1;
+      renderPagination();
+    }
+
+    entityButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
+        entityButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        projectItems.forEach(item => {
-          const status = item.getAttribute('data-status');
-          if (filter === 'ALL' || status === filter) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        selectedType = btn.getAttribute('data-type-filter') || 'ALL';
+        filterArchive();
       });
     });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        filterArchive();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderPagination();
+        }
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredRows.length / PAGE_SIZE);
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderPagination();
+        }
+      });
+    }
+
+    // Initial render
+    renderPagination();
   });
 </script>

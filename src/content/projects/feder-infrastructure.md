@@ -1,16 +1,21 @@
 ---
 id: feder-infrastructure
-title: "Equipamiento de Espectrometría de Masas de Alta Resolución para la Unidad Central de Lipidómica SGIker"
-code: "EQC2020-006815-P"
-fundingBody: "Unión Europea - Fondo Europeo de Desarrollo Regional (FEDER) / MICINN"
+title: "Plataforma de imagen in vivo de alto rendimiento con holotomografía, microscopía confocal de super resolución y bioluminiscencia (de la célula al organismo)"
+acronym: null
+code: "FEDER24/05"
+fundingBody: "Infraestructura FEDER 2024"
 fundingType: "european"
-pi: "UPV/EHU - Servicios Generales de Investigación (SGIker)"
-period: "2021 - 2023"
+pi: "Patricia Aspichueta Celaa"
+period: "01 January 2024 - 31 December 2025"
 status: "completed"
-budget: "Adquisición de Equipamiento Científico-Técnico"
-badge: "FEDER / UE"
-summary: "Cofinanciación de la plataforma analítica UHPLC-QTOF para el perfilado cuantitativo de lípidos bioactivos en biomedicina en el Campus de Leioa."
+budget: "€483,481.14"
+badge: "FEDER Infraestructura"
+scope: "National"
+year: 2025
+officialUrl: "https://ekoizpen-zientifikoa.ehu.eus/proyectos/1304611/detalle"
 order: 6
+researchers:
+  - "Patricia Aspichueta Celaa (Leader)"
 ---
 
 ### Resumen del Proyecto

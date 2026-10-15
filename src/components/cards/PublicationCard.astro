@@ -1,19 +1,21 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import type { Locale } from '../../utils/i18n';
+import { getTranslations, DEFAULT_LOCALE, type Locale } from '../../utils/i18n';
 
 interface Props {
   pub: CollectionEntry<'publications'> & { slug: string; locale: Locale };
+  lang?: Locale;
 }
 
-const { pub } = Astro.props;
+const { pub, lang = DEFAULT_LOCALE } = Astro.props;
+const t = getTranslations(lang);
 
 const topicLabels: Record<string, { label: string; icon: string }> = {
   'mafld': { label: 'MAFLD / MASH', icon: 'fa-notes-medical' },
-  'cancer': { label: 'Cáncer Hepático', icon: 'fa-dna' },
-  'lipidomics': { label: 'Lipidómica SGIker', icon: 'fa-vial' },
-  'e2f': { label: 'Daño Hepático (E2F)', icon: 'fa-chart-line' },
-  'exposome': { label: 'Exposoma & MDCs', icon: 'fa-globe-americas' },
+  'cancer': { label: t.pubs_topic_cancer, icon: 'fa-dna' },
+  'lipidomics': { label: `${t.pubs_topic_lipidomics} SGIker`, icon: 'fa-vial' },
+  'e2f': { label: t.pubs_topic_e2f, icon: 'fa-chart-line' },
+  'exposome': { label: t.pubs_topic_exposome, icon: 'fa-globe-americas' },
   'spatial-omics': { label: 'Spatial Omics', icon: 'fa-microscope' }
 };
 

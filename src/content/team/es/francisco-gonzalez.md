@@ -3,7 +3,7 @@ id: "francisco-gonzalez"
 name: "Dr. Francisco González Romero"
 role: "Investigador Posdoctoral"
 category: "Posdoctoral"
-department: "Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biocruces"
+department: "Departamento de Fisiología, Facultad de Medicina y Enfermería / IIS Biobizkaia"
 image: "/assets/images/team/francisco-gonzalez/image.jpg"
 email: "francisco.gonzalezr@ehu.eus"
 office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
@@ -16,7 +16,7 @@ cv:
       - "Máster en Biología Molecular y Biomedicina (UPV/EHU)"
       - "Licenciado en Bioquímica"
   positions:
-      - "Investigador Posdoctoral, Grupo Lipids & Liver / IIS Biocruces Bizkaia"
+      - "Investigador Posdoctoral, Grupo Lipids & Liver / IIS Biobizkaia"
       - "Estancia investigadora posdoctoral en centros internacionales"
   grants:
       - "Contrato Posdoctoral de Formación de Personal Investigador."

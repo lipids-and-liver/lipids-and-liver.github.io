@@ -1,20 +1,30 @@
 ---
-import { getTranslations, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, DEFAULT_LOCALE, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
 
 interface AlumniItem {
   id: string;
   name: string;
+  period?: string;
   labRole: string;
-  thesis: string;
-  year: string;
+  thesisId?: string;
+  thesis?: string;
+  year?: string;
   currentRole: string;
   currentAffiliation: string;
   location: string;
-  category: 'academia' | 'industry' | 'clinical';
+  category: 'academia' | 'industry' | 'clinical' | 'emerita';
   categoryLabel: string;
-  icon: string;
+  icon?: string;
+  ehuUrl?: string;
   linkedin?: string;
   orcid?: string;
+  isFounder?: boolean;
+  thesesSupervised?: number[];
+  patent?: string;
+  // Opcionales para personal del equipo mostrado con este formato (p. ej. jubilado)
+  cvUrl?: string;
+  badgeLabel?: string;
+  sourceLang?: Locale;
 }
 
 interface Props {
@@ -22,8 +32,12 @@ interface Props {
   lang?: Locale;
 }
 
-const { alumni, lang = 'es' } = Astro.props;
+const { alumni, lang = DEFAULT_LOCALE } = Astro.props;
 const t = getTranslations(lang);
+// alumni.json solo está en español: sus textos se marcan con su idioma real
+const sourceLang = alumni.sourceLang ?? CONTENT_SOURCE_LOCALE;
+const dataLang = lang !== sourceLang ? sourceLang : undefined;
+const categoryLabel = alumni.badgeLabel || (t as Record<string, string>)[`alumni_cat_${alumni.category}`] || alumni.categoryLabel;
 ---
 
 <div class={`alumni-card-inst category-${alumni.category}`}>
@@ -32,10 +46,11 @@ const t = getTranslations(lang);
       <i class={alumni.icon || 'fas fa-user-graduate'}></i>
     </div>
     <div class="alumni-identity">
-      <span class="alumni-category-badge">{alumni.categoryLabel}</span>
+      <span class="alumni-category-badge">{categoryLabel}</span>
       <h3 class="alumni-name">{alumni.name}</h3>
-      <span class="alumni-lab-past">
-        <i class="fas fa-history"></i> {alumni.labRole} • Tesis {alumni.year}
+      <span class="alumni-lab-past" lang={dataLang}>
+        <i class="fas fa-history"></i> {alumni.labRole}
+        {alumni.period && <span class="alumni-period"> • {alumni.period}</span>}
       </span>
     </div>
   </div>
@@ -43,38 +58,65 @@ const t = getTranslations(lang);
   <div class="alumni-card-body">
     <div class="alumni-current-box">
       <span class="current-label"><i class="fas fa-briefcase"></i> {t.alumni_current_label || 'Puesto Actual:'}</span>
-      <div class="current-role">{alumni.currentRole}</div>
-      <div class="current-affiliation">
+      <div class="current-role" lang={dataLang}>{alumni.currentRole}</div>
+      <div class="current-affiliation" lang={dataLang}>
         <i class="fas fa-building"></i> {alumni.currentAffiliation}
       </div>
-      <div class="current-location">
-        <i class="fas fa-map-marker-alt"></i> {alumni.location}
-      </div>
+      {alumni.location && (
+        <div class="current-location" lang={dataLang}>
+          <i class="fas fa-map-marker-alt"></i> {alumni.location}
+        </div>
+      )}
     </div>
 
     {alumni.thesis && (
       <div class="alumni-thesis-box">
         <span class="thesis-label"><i class="fas fa-graduation-cap"></i> {t.alumni_thesis_label || 'Tesis en Lipids & Liver:'}</span>
-        <p class="thesis-title">"{alumni.thesis}"</p>
+        <p class="thesis-title" title={alumni.thesis}>"{alumni.thesis}"</p>
+        {alumni.thesisId && (
+          <a href={getLocalizedPath(`/tesis/${alumni.thesisId}`, lang)} class="alumni-thesis-link" style="display:inline-flex; align-items:center; gap:5px; margin-top:6px; font-size:0.82rem; font-weight:600; color:var(--logo-green); text-decoration:none;">
+            <i class="fas fa-file-alt"></i> {t.alumni_thesis_view_record || 'Ver ficha completa de tesis'} <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+          </a>
+        )}
+      </div>
+    )}
+
+    {!alumni.thesis && alumni.thesesSupervised && (
+      <div class="alumni-thesis-box">
+        <span class="thesis-label"><i class="fas fa-graduation-cap"></i> {t.alumni_theses_supervised_label || 'Tesis Doctorales Dirigidas:'}</span>
+        <p class="thesis-title" style="font-style:normal;">
+          {t.alumni_theses_supervised_desc.replace('{n}', String(alumni.thesesSupervised.length))} ({alumni.thesesSupervised.map(n => `tesis-${n}`).join(', ')}).
+        </p>
+        <a href={getLocalizedPath('/tesis', lang)} class="alumni-thesis-link" style="display:inline-flex; align-items:center; gap:5px; margin-top:6px; font-size:0.82rem; font-weight:600; color:var(--logo-green); text-decoration:none;">
+          <i class="fas fa-graduation-cap"></i> {t.nav_theses || 'Catálogo de Tesis'} <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+        </a>
       </div>
     )}
   </div>
 
-  {(alumni.linkedin || alumni.orcid) && (
-    <div class="alumni-card-footer">
-      <span class="alumni-links-label">Perfiles profesionales:</span>
-      <div class="alumni-links">
-        {alumni.linkedin && (
-          <a href={alumni.linkedin} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        )}
-        {alumni.orcid && (
-          <a href={alumni.orcid} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="ORCID">
-            <i class="fab fa-orcid"></i>
-          </a>
-        )}
-      </div>
+  <div class="alumni-card-footer">
+    <span class="alumni-links-label">{t.alumni_links_label}</span>
+    <div class="alumni-links">
+      {alumni.cvUrl && (
+        <a href={alumni.cvUrl} class="ehu-cris-badge" title={t.team_view_cv}>
+          <i class="fas fa-id-card"></i> CV
+        </a>
+      )}
+      {alumni.ehuUrl && (
+        <a href={alumni.ehuUrl} target="_blank" rel="noopener noreferrer" class="ehu-cris-badge" title={t.alumni_ehu_link_title}>
+          <i class="fas fa-university"></i> Portal UPV/EHU
+        </a>
+      )}
+      {alumni.linkedin && (
+        <a href={alumni.linkedin} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      )}
+      {alumni.orcid && (
+        <a href={alumni.orcid} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title="ORCID">
+          <i class="fab fa-orcid"></i>
+        </a>
+      )}
     </div>
-  )}
+  </div>
 </div>
