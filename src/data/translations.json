@@ -12,7 +12,7 @@
     "header_sub": "Grupo de Investigación Consolidado",
     "hero_tag": "Grupo Consolidado del Gobierno Vasco (IT1560-22)",
     "hero_title": "Grupo de Investigación Lipids & Liver",
-    "hero_subtitle": "Departamento de Fisiología | Facultad de Medicina y Enfermería | Universidad del País Vasco (UPV/EHU) & Instituto de Investigación Sanitaria Biobizkaia.",
+    "hero_subtitle": "Departamento de Fisiología | Facultad de Medicina y Enfermería y Edificio María Goyri (EHU-iBio) | Universidad del País Vasco (UPV/EHU) & Instituto de Investigación Sanitaria Biobizkaia.",
     "hero_badge_1_title": "Metabolismo & MAFLD",
     "hero_badge_1_sub": "Dianas moleculares y lipidómica",
     "hero_badge_2_title": "Excelencia Investigadora",
@@ -490,7 +490,8 @@
     "news_cat_premios": "Premios",
     "news_cat_institucional": "Institucional",
     "news_cat_tesis": "Tesis",
-    "news_cat_otros": "Otros"
+    "news_cat_otros": "Otros",
+    "top_bar_goyri": "Edificio María Goyri (EHU-iBio)"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -505,7 +506,7 @@
     "header_sub": "Ikerketa Talde Finkatua",
     "hero_tag": "Eusko Jaurlaritzako Talde Finkatua (IT1560-22)",
     "hero_title": "Lipids & Liver Ikerketa Taldea",
-    "hero_subtitle": "Fisiologia Saila | Medikuntza eta Erizaintza Fakultatea | Euskal Herriko Unibertsitatea (UPV/EHU) & Biobizkaia Osasun Ikerketa Institutua.",
+    "hero_subtitle": "Fisiologia Saila | Medikuntza eta Erizaintza Fakultatea eta María Goyri eraikina (EHU-iBio) | Euskal Herriko Unibertsitatea (UPV/EHU) & Biobizkaia Osasun Ikerketa Institutua.",
     "hero_badge_1_title": "Metabolismoa & MAFLD",
     "hero_badge_1_sub": "Helburu molekularrak eta lipidomika",
     "hero_badge_2_title": "Ikerketa Bikaintasuna",
@@ -983,7 +984,8 @@
     "news_cat_premios": "Sariak",
     "news_cat_institucional": "Instituzionala",
     "news_cat_tesis": "Tesiak",
-    "news_cat_otros": "Besteak"
+    "news_cat_otros": "Besteak",
+    "top_bar_goyri": "María Goyri eraikina (EHU-iBio)"
   },
   "en": {
     "nav_home": "Home",
@@ -998,7 +1000,7 @@
     "header_sub": "Consolidated Research Group",
     "hero_tag": "Basque Government Consolidated Group (IT1560-22)",
     "hero_title": "Lipids & Liver Research Group",
-    "hero_subtitle": "Department of Physiology | Faculty of Medicine and Nursing | University of the Basque Country (UPV/EHU) & Biobizkaia Health Research Institute.",
+    "hero_subtitle": "Department of Physiology | Faculty of Medicine and Nursing and María Goyri Building (EHU-iBio) | University of the Basque Country (UPV/EHU) & Biobizkaia Health Research Institute.",
     "hero_badge_1_title": "Metabolism & MAFLD",
     "hero_badge_1_sub": "Molecular targets & lipidomics",
     "hero_badge_2_title": "Research Excellence",
@@ -1476,6 +1478,7 @@
     "news_cat_premios": "Awards",
     "news_cat_institucional": "Institutional",
     "news_cat_tesis": "Theses",
-    "news_cat_otros": "Other"
+    "news_cat_otros": "Other",
+    "top_bar_goyri": "María Goyri Building (EHU-iBio)"
   }
 }

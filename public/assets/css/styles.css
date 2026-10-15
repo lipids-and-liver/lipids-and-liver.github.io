@@ -115,6 +115,23 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }
 
+.top-bar-left a { white-space: nowrap; }
+.top-bar-left .tb-short { display: none; }
+
+@media (max-width: 1100px) {
+  .top-bar-right { display: none; }
+}
+
+@media (max-width: 640px) {
+  .top-bar-left { flex-wrap: wrap; justify-content: center; gap: 4px 10px; width: 100%; }
+  .top-bar-left .tb-long { display: none; }
+  .top-bar-left .tb-short { display: inline; }
+}
+
+@media (max-width: 360px) {
+  .top-bar-left > span { display: none; }
+}
+
 /* Demo Alert Banner (Discreet, Institutional, Dismissible) */
 html.demo-alert-hidden .demo-alert-banner {
   display: none !important;
