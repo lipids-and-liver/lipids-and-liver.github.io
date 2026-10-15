@@ -55,7 +55,7 @@ allPatents.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
           </div>
           <div class="highlight-text">
             <span class="highlight-num">1</span>
-            <span class="highlight-label">Patente Concedida (OEPM)</span>
+            <span class="highlight-label">{t.patents_hl_granted}</span>
           </div>
         </div>
 
@@ -65,7 +65,7 @@ allPatents.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
           </div>
           <div class="highlight-text">
             <span class="highlight-num">2</span>
-            <span class="highlight-label">Investigadores Cotitulares</span>
+            <span class="highlight-label">{t.patents_hl_coholders}</span>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ allPatents.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
           </div>
           <div class="highlight-text">
             <span class="highlight-num">Kit Dx</span>
-            <span class="highlight-label">Lipidómica Traslacional</span>
+            <span class="highlight-label">{t.patents_hl_lipidomics}</span>
           </div>
         </div>
 
@@ -85,7 +85,7 @@ allPatents.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
           </div>
           <div class="highlight-text">
             <span class="highlight-num">UPV/EHU</span>
-            <span class="highlight-label">Titularidad Institucional</span>
+            <span class="highlight-label">{t.patents_hl_ownership}</span>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ allPatents.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
       <div class="section-header-inst" style="margin-top: 2.5rem; margin-bottom: 1.5rem;">
         <div>
           <h2 class="section-title-inst">{t.patents_title}</h2>
-          <span class="section-subtitle-inst">Registros oficiales en la Oficina Española de Patentes y Marcas (OEPM)</span>
+          <span class="section-subtitle-inst">{t.patents_registry_sub}</span>
         </div>
       </div>
 
@@ -111,14 +111,14 @@ allPatents.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
           <i class="fas fa-lightbulb"></i>
         </div>
         <div class="editorial-content">
-          <h3 class="editorial-title">Transferencia Tecnológica y Traslación Clínica</h3>
+          <h3 class="editorial-title">{t.patents_editorial_title}</h3>
           <p class="editorial-desc">
-            En el Grupo <strong>Lipids &amp; Liver</strong> entendemos la investigación científica como un motor de innovación capaz de aportar soluciones tangibles a la sociedad y al sistema de salud. A través de la plataforma de lipidómica avanzada y la colaboración interdepartamental en la <strong>UPV/EHU</strong> y el <strong>IIS Biocruces Bizkaia</strong>, transformamos el conocimiento biológico fundamental sobre el metabolismo lipídico en métodos patentados de diagnóstico precoz y biomarcadores traslacionales.
+            <Fragment set:html={t.patents_editorial_desc} />
           </p>
           <div class="editorial-badges">
-            <span class="ed-tag"><i class="fas fa-check"></i> Protección de la Propiedad Industrial</span>
-            <span class="ed-tag"><i class="fas fa-check"></i> Colaboración Multidisciplinar</span>
-            <span class="ed-tag"><i class="fas fa-check"></i> Desarrollo de Kits Diagnósticos</span>
+            <span class="ed-tag"><i class="fas fa-check"></i> {t.patents_tag_ip}</span>
+            <span class="ed-tag"><i class="fas fa-check"></i> {t.patents_tag_collab}</span>
+            <span class="ed-tag"><i class="fas fa-check"></i> {t.patents_tag_kits}</span>
           </div>
         </div>
       </div>

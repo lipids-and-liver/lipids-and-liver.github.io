@@ -39,7 +39,7 @@ const { Content } = await render(line);
     <label for="line-select"><i class="fas fa-microscope"></i> {t.lines_select_label}</label>
     <select id="line-select" data-base={getLocalizedPath('/lineas', lang)} class="nav-quick-select">
       {allLines.map(item => (
-        <option value={item.slug} selected={item.slug === currentSlug}>
+        <option value={item.slug} selected={item.slug === currentSlug} lang={item.locale !== lang ? item.locale : undefined}>
           {item.data.title.substring(0, 50)}...
         </option>
       ))}
@@ -168,7 +168,7 @@ const { Content } = await render(line);
 
             <div class="pubs-list" style="margin-top:0.75rem;">
               {displayedPubs.map(pub => (
-                <PublicationCard pub={pub} />
+                <PublicationCard pub={pub} lang={lang} />
               ))}
             </div>
 

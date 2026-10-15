@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale, localizeThesisMeta } from '../../utils/i18n';
 import ThesisCard from '../cards/ThesisCard.astro';
 
 import { sortTheses } from '../../utils/theses';
@@ -35,7 +35,7 @@ const completedTheses = allTheses.filter(t => t.data.status === 'completed');
       <optgroup label={t.theses_completed}>
         {completedTheses.map(tItem => (
           <option value={tItem.slug}>
-            {tItem.data.author} ({tItem.data.year}) - {tItem.data.title.substring(0, 45)}...
+            {tItem.data.author} ({localizeThesisMeta(tItem.data.year, lang)}) - {tItem.data.title.substring(0, 45)}...
           </option>
         ))}
       </optgroup>

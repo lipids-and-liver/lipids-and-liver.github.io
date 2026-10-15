@@ -1,5 +1,5 @@
 ---
-import { getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, DEFAULT_LOCALE, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
 
 interface AlumniItem {
   id: string;
@@ -28,8 +28,11 @@ interface Props {
   lang?: Locale;
 }
 
-const { alumni, lang = 'es' } = Astro.props;
+const { alumni, lang = DEFAULT_LOCALE } = Astro.props;
 const t = getTranslations(lang);
+// alumni.json solo está en español: sus textos se marcan con su idioma real
+const dataLang = lang !== CONTENT_SOURCE_LOCALE ? CONTENT_SOURCE_LOCALE : undefined;
+const categoryLabel = (t as Record<string, string>)[`alumni_cat_${alumni.category}`] || alumni.categoryLabel;
 ---
 
 <div class={`alumni-card-inst category-${alumni.category}`}>
@@ -38,9 +41,9 @@ const t = getTranslations(lang);
       <i class={alumni.icon || 'fas fa-user-graduate'}></i>
     </div>
     <div class="alumni-identity">
-      <span class="alumni-category-badge">{alumni.categoryLabel}</span>
+      <span class="alumni-category-badge">{categoryLabel}</span>
       <h3 class="alumni-name">{alumni.name}</h3>
-      <span class="alumni-lab-past">
+      <span class="alumni-lab-past" lang={dataLang}>
         <i class="fas fa-history"></i> {alumni.labRole}
         {alumni.period && <span class="alumni-period"> • {alumni.period}</span>}
       </span>
@@ -50,11 +53,11 @@ const t = getTranslations(lang);
   <div class="alumni-card-body">
     <div class="alumni-current-box">
       <span class="current-label"><i class="fas fa-briefcase"></i> {t.alumni_current_label || 'Puesto Actual:'}</span>
-      <div class="current-role">{alumni.currentRole}</div>
-      <div class="current-affiliation">
+      <div class="current-role" lang={dataLang}>{alumni.currentRole}</div>
+      <div class="current-affiliation" lang={dataLang}>
         <i class="fas fa-building"></i> {alumni.currentAffiliation}
       </div>
-      <div class="current-location">
+      <div class="current-location" lang={dataLang}>
         <i class="fas fa-map-marker-alt"></i> {alumni.location}
       </div>
     </div>
@@ -75,7 +78,7 @@ const t = getTranslations(lang);
       <div class="alumni-thesis-box">
         <span class="thesis-label"><i class="fas fa-graduation-cap"></i> {t.alumni_theses_supervised_label || 'Tesis Doctorales Dirigidas:'}</span>
         <p class="thesis-title" style="font-style:normal;">
-          Dirección de 6+ tesis doctorales clave en el laboratorio ({alumni.thesesSupervised.map(n => `tesis-${n}`).join(', ')}).
+          {t.alumni_theses_supervised_desc.replace('{n}', String(alumni.thesesSupervised.length))} ({alumni.thesesSupervised.map(n => `tesis-${n}`).join(', ')}).
         </p>
         <a href={getLocalizedPath('/tesis', lang)} class="alumni-thesis-link" style="display:inline-flex; align-items:center; gap:5px; margin-top:6px; font-size:0.82rem; font-weight:600; color:var(--logo-green); text-decoration:none;">
           <i class="fas fa-graduation-cap"></i> {t.nav_theses || 'Catálogo de Tesis'} <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
@@ -85,10 +88,10 @@ const t = getTranslations(lang);
   </div>
 
   <div class="alumni-card-footer">
-    <span class="alumni-links-label">Filiación y registros:</span>
+    <span class="alumni-links-label">{t.alumni_links_label}</span>
     <div class="alumni-links">
       {alumni.ehuUrl && (
-        <a href={alumni.ehuUrl} target="_blank" rel="noopener noreferrer" class="ehu-cris-badge" title="Producción Científica UPV/EHU">
+        <a href={alumni.ehuUrl} target="_blank" rel="noopener noreferrer" class="ehu-cris-badge" title={t.alumni_ehu_link_title}>
           <i class="fas fa-university"></i> Portal UPV/EHU
         </a>
       )}

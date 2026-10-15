@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
+import ContentLangNotice from '../ContentLangNotice.astro';
 import AlumniCard from '../cards/AlumniCard.astro';
 import alumniData from '../../data/alumni.json';
 
@@ -41,7 +42,7 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
     <div class="container">
       <div class="catalog-header-content">
         <span class="catalog-badge">
-          <i class="fas fa-award"></i> Registro Institucional UPV/EHU & Trayectoria Científica
+          <i class="fas fa-award"></i> {t.alumni_badge}
         </span>
         <h1 class="catalog-title">{t.alumni_page_title || 'Antiguos Miembros'}</h1>
         <p class="catalog-subtitle">{t.alumni_page_sub || 'Investigadores y doctores del Grupo Consolidado Lipids & Liver registrados oficialmente en la Universidad del País Vasco'}</p>
@@ -54,13 +55,13 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
             <i class="fas fa-layer-group"></i> {t.team_all || 'Todos'} <span class="segmented-count">{alumniList.length}</span>
           </button>
           <button class="segmented-btn" data-filter="academia">
-            <i class="fas fa-university"></i> Academia & Investigación <span class="segmented-count">{academiaCount}</span>
+            <i class="fas fa-university"></i> {t.alumni_cat_academia} <span class="segmented-count">{academiaCount}</span>
           </button>
           <button class="segmented-btn" data-filter="industry">
-            <i class="fas fa-industry"></i> Industria & Biotecnología <span class="segmented-count">{industryCount}</span>
+            <i class="fas fa-industry"></i> {t.alumni_cat_industry} <span class="segmented-count">{industryCount}</span>
           </button>
           <button class="segmented-btn" data-filter="emerita">
-            <i class="fas fa-university"></i> Cátedra Emérita <span class="segmented-count">{emeritaCount}</span>
+            <i class="fas fa-university"></i> {t.alumni_cat_emerita} <span class="segmented-count">{emeritaCount}</span>
           </button>
         </div>
       </div>
@@ -75,10 +76,10 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
         <i class="fas fa-university" style="color: var(--logo-green); font-size: 1.6rem; margin-top: 2px; flex-shrink:0;"></i>
         <div>
           <div style="color: #14532d; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem;">
-            Registro Oficial de Investigadores • Universidad del País Vasco (UPV/EHU)
+            {t.alumni_registry_title}
           </div>
           <p style="color: #166534; margin: 0; font-size: 0.92rem; line-height: 1.55;">
-            Datos de adscripción histórica y trayectoria académica contrastados con el <strong>Portal de Producción Científica de la UPV/EHU</strong> (Grupo Consolidado Lipids & Liver IT1560-22). Incluye enlaces directos a sus tesis doctorales defendidas en el grupo y perfiles curriculares institucionales.
+            <Fragment set:html={t.alumni_registry_desc} />
           </p>
         </div>
       </div>
@@ -91,15 +92,17 @@ const emeritaCount = alumniList.filter((a: any) => a.category === 'emerita').len
           </div>
           <div style="flex:1; min-width:260px;">
             <h3 style="font-size:1.25rem; color:var(--ehu-navy); margin-bottom:0.4rem;">
-              Impacto de la Formación Doctoral en Lipids & Liver
+              {t.alumni_impact_title}
             </h3>
             <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6; margin:0;">
-              Las doctoras e investigadores formados en nuestro laboratorio continúan su trayectoria profesional en centros de excelencia internacional (como la <strong>Universidad de Yale</strong>, <strong>Biocruces Bizkaia</strong>, <strong>CIC bioGUNE</strong>), facultades universitarias y compañías punteras del sector biotecnológico, de ensayos clínicos y de tecnologías ómicas.
+              <Fragment set:html={t.alumni_impact_desc} />
             </p>
           </div>
         </div>
       </div>
 
+      <!-- Los perfiles (alumni.json) solo existen en español -->
+      <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
       <div class="alumni-grid-inst" id="alumni-grid">
         {alumniList.map((alumni: any) => (
           <div class="alumni-item" data-category={alumni.category}>

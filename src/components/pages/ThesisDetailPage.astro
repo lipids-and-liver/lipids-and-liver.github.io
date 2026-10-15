@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, getThesisBadgeText, localizeThesisProgram, type Locale } from '../../utils/i18n';
+import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, getThesisBadgeText, localizeThesisProgram, type Locale, localizeThesisMeta } from '../../utils/i18n';
 import { render } from 'astro:content';
 
 interface Props {
@@ -47,7 +47,7 @@ const { Content } = await render(thesis);
       <optgroup label={t.theses_completed}>
         {completedTheses.map(tItem => (
           <option value={tItem.slug} selected={tItem.slug === currentSlug}>
-            {tItem.data.author} ({tItem.data.year}) - {tItem.data.title.substring(0, 45)}...
+            {tItem.data.author} ({localizeThesisMeta(tItem.data.year, lang)}) - {tItem.data.title.substring(0, 45)}...
           </option>
         ))}
       </optgroup>
@@ -70,7 +70,7 @@ const { Content } = await render(thesis);
           <div class="thesis-portrait-icon">
             <i class="fas fa-graduation-cap"></i>
           </div>
-          <span class="thesis-year-tag">{thesis.data.year}</span>
+          <span class="thesis-year-tag">{localizeThesisMeta(thesis.data.year, lang)}</span>
         </div>
 
         <div class="cv-aside-badge">
@@ -92,7 +92,7 @@ const { Content } = await render(thesis);
             <i class="fas fa-calendar-alt"></i>
             <div>
               <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.theses_status_year}</div>
-              <span>{thesis.data.year}</span>
+              <span>{localizeThesisMeta(thesis.data.year, lang)}</span>
             </div>
           </div>
 
@@ -108,7 +108,7 @@ const { Content } = await render(thesis);
             <i class="fas fa-university"></i>
             <div>
               <div style="font-size:0.7rem; text-transform:uppercase; font-weight:700; color:var(--text-muted);">{t.theses_institution}</div>
-              <span>{thesis.data.institution}</span>
+              <span>{localizeThesisMeta(thesis.data.institution, lang)}</span>
             </div>
           </div>
 
@@ -187,7 +187,7 @@ const { Content } = await render(thesis);
       <article class="cv-main">
         <div class="cv-kicker">
           <span class="cv-dot"></span>
-          {badgeText} • {thesis.data.year}
+          {badgeText} • {localizeThesisMeta(thesis.data.year, lang)}
         </div>
 
         <h1 class="cv-main-name" style="font-size:1.6rem; line-height:1.35; margin-bottom:0.6rem;">

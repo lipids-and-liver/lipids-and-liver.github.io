@@ -109,7 +109,7 @@ completedProjects.sort((a, b) => {
                 id="archive-search-input" 
                 class="archive-search-input" 
                 placeholder={t.projects_search_placeholder || 'Buscar por título, acrónimo, código, IP...'} 
-                aria-label="Buscar en histórico de proyectos"
+                aria-label={t.projects_search_aria}
               />
             </div>
           </div>
@@ -170,7 +170,7 @@ completedProjects.sort((a, b) => {
                         {formattedCode.displayCode && formattedCode.displayCode.toLowerCase() !== (project.data.acronym || '').toLowerCase() && (
                           <span 
                             class="archive-code-sub" 
-                            title={formattedCode.extraCount > 0 ? `Subproyectos vinculados: ${formattedCode.fullCode}` : 'Código de referencia oficial'}
+                            title={formattedCode.extraCount > 0 ? `${t.projects_subprojects_title}${formattedCode.fullCode}` : t.projects_ref_code_title}
                           >
                             <span>{formattedCode.displayCode}</span>
                             {formattedCode.extraCount > 0 && (
@@ -201,7 +201,7 @@ completedProjects.sort((a, b) => {
                           target="_blank" 
                           rel="noopener noreferrer" 
                           class="archive-link-btn" 
-                          title="Abrir ficha oficial en el portal de la UPV/EHU"
+                          title={t.projects_open_ehu_title}
                         >
                           <span>UPV/EHU</span>
                           <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i>
@@ -238,11 +238,11 @@ completedProjects.sort((a, b) => {
           </div>
 
           <div class="table-pagination-controls">
-            <button class="pagination-nav-btn" id="btn-page-prev" aria-label="Página anterior" disabled>
+            <button class="pagination-nav-btn" id="btn-page-prev" aria-label={t.pagination_prev} disabled>
               <i class="fas fa-chevron-left"></i> <span>{t.projects_pagination_prev || 'Anterior'}</span>
             </button>
             <div class="pagination-page-numbers" id="pagination-page-numbers"></div>
-            <button class="pagination-nav-btn" id="btn-page-next" aria-label="Página siguiente">
+            <button class="pagination-nav-btn" id="btn-page-next" aria-label={t.pagination_next}>
               <span>{t.projects_pagination_next || 'Siguiente'}</span> <i class="fas fa-chevron-right"></i>
             </button>
           </div>

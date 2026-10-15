@@ -1,5 +1,5 @@
 ---
-import { getLocalizedPath, getTranslations, getThesisBadgeText, type Locale } from '../../utils/i18n';
+import { getLocalizedPath, getTranslations, getThesisBadgeText, type Locale, localizeThesisMeta } from '../../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -39,11 +39,11 @@ const badgeText = getThesisBadgeText(thesis, lang);
     )}
     <div class="thesis-meta-item">
       <i class="fas fa-university"></i>
-      <span>{thesis.data.institution}</span>
+      <span>{localizeThesisMeta(thesis.data.institution, lang)}</span>
     </div>
     <div class="thesis-meta-item">
       <i class="fas fa-calendar-alt"></i>
-      <span>{thesis.data.year}</span>
+      <span>{localizeThesisMeta(thesis.data.year, lang)}</span>
     </div>
   </div>
 
@@ -61,7 +61,7 @@ const badgeText = getThesisBadgeText(thesis, lang);
           rel="noopener noreferrer" 
           class="card-btn-compact"
           style="padding:6px 9px; background:var(--bg-surface-alt);"
-          title="Ficha oficial UPV/EHU"
+          title={t.theses_ehu_record_title}
         >
           <i class="fas fa-university"></i>
         </a>
@@ -73,7 +73,7 @@ const badgeText = getThesisBadgeText(thesis, lang);
           rel="noopener noreferrer" 
           class="card-btn-compact"
           style="padding:6px 9px; background:var(--bg-surface-alt);"
-          title="Texto Completo en Repositorio ADDI (PDF)"
+          title={t.theses_addi_title}
         >
           <i class="fas fa-file-pdf"></i>
         </a>

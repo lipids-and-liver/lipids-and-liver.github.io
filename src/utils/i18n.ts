@@ -471,6 +471,22 @@ export function getThesisBadgeText(
   return thesis.data.year ? `${base} (${thesis.data.year})` : base;
 }
 
+// Metadatos de tesis escritos en español en los datos (estado "En desarrollo (…)" e institución).
+// El título y el resumen de la tesis se muestran en su idioma original.
+const THESIS_META_TERMS: Record<string, Partial<Record<Locale, string>>> = {
+  'En desarrollo': { en: 'In progress', eu: 'Bidean' },
+  'Departamento de Fisiología': { en: 'Department of Physiology', eu: 'Fisiologia Saila' },
+  'Facultad de Medicina y Enfermería': { en: 'Faculty of Medicine and Nursing', eu: 'Medikuntza eta Erizaintza Fakultatea' },
+};
+
+export function localizeThesisMeta(value: string = '', lang: Locale = DEFAULT_LOCALE): string {
+  if (lang === CONTENT_SOURCE_LOCALE || !value) return value;
+  return Object.entries(THESIS_META_TERMS).reduce(
+    (text, [es, tr]) => (tr[lang] ? text.replace(es, tr[lang]!) : text),
+    value
+  );
+}
+
 export function localizeThesisProgram(program: string = '', lang: Locale = DEFAULT_LOCALE): string {
   if (!program) {
     if (lang === 'eu') return 'Biomedikuntzako Doktorego Programa (UPV/EHU)';

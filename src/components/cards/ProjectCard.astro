@@ -40,7 +40,7 @@ const formattedCode = formatProjectCode(code);
         {statusLabel}
       </span>
       {acronym && (
-        <span class="project-acronym-badge" title="Acrónimo oficial">
+        <span class="project-acronym-badge" title={t.projects_acronym_title}>
           <i class="fas fa-bookmark"></i> {acronym}
         </span>
       )}
@@ -49,7 +49,7 @@ const formattedCode = formatProjectCode(code);
     {formattedCode.displayCode && (
       <span 
         class="project-code-tag" 
-        title={formattedCode.extraCount > 0 ? `Referencias vinculadas: ${formattedCode.fullCode}` : 'Código de referencia oficial'}
+        title={formattedCode.extraCount > 0 ? `${t.projects_linked_refs_title}${formattedCode.fullCode}` : t.projects_ref_code_title}
       >
         <i class="fas fa-hashtag"></i> {formattedCode.displayCode}
         {formattedCode.extraCount > 0 && (
@@ -104,7 +104,7 @@ const formattedCode = formatProjectCode(code);
         target="_blank" 
         rel="noopener noreferrer" 
         class="btn-project-official"
-        title="Consultar ficha en el Portal de Producción Científica UPV/EHU"
+        title={t.projects_card_ehu_title}
       >
         <i class="fas fa-university"></i>
         <span>{t.projects_official_link || 'Ficha oficial UPV/EHU'}</span>

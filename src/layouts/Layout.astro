@@ -87,7 +87,7 @@ const alternates = isHoldingPage ? [] : [
     <aside class="demo-alert-banner" id="demo-alert-banner" role="alert" aria-label={t.demo_alert_aria}>
       <div class="container demo-alert-content">
         <div class="demo-alert-left">
-          <span class="demo-alert-badge">
+          <span class="demo-alert-badge" data-title={t.demo_badge_title}>
             <i class="fas fa-flask"></i> {t.demo_alert_badge || "Versión Demo"}
           </span>
           <span class="demo-alert-text">
@@ -110,7 +110,7 @@ const alternates = isHoldingPage ? [] : [
   <div class="top-institutional-bar">
     <div class="container top-bar-content">
       <div class="top-bar-left">
-        <a href="https://www.ehu.eus" target="_blank" rel="noopener"><i class="fas fa-university"></i> Universidad del País Vasco / Euskal Herriko Unibertsitatea</a>
+        <a href="https://www.ehu.eus" target="_blank" rel="noopener"><i class="fas fa-university"></i> {t.ehu_name_full}</a>
         <span>&bull;</span>
         <a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener"><i class="fas fa-hospital-user"></i> IIS Biocruces Bizkaia</a>
       </div>
@@ -467,7 +467,7 @@ const alternates = isHoldingPage ? [] : [
         <div>
           <h4>{t.footer_interest}</h4>
           <ul class="footer-links-inst">
-            <li><a href="https://www.ehu.eus" target="_blank" rel="noopener">Universidad del País Vasco (UPV/EHU)</a></li>
+            <li><a href="https://www.ehu.eus" target="_blank" rel="noopener">{t.ehu_name_short}</a></li>
             <li><a href="https://www.biocrucesbizkaia.org" target="_blank" rel="noopener">IIS Biocruces Bizkaia</a></li>
             <li><a href="https://ehu-ibio.org" target="_blank" rel="noopener">EHU-iBio</a></li>
             <li><a href="https://www.ciberehd.org" target="_blank" rel="noopener">CIBERehd (ISCIII)</a></li>
@@ -519,7 +519,7 @@ const alternates = isHoldingPage ? [] : [
               <div class="demo-official-link-left">
                 <i class="fas fa-university"></i>
                 <div>
-                  <span class="demo-official-link-name">Portal Oficial Lipids &amp; Liver en UPV/EHU</span>
+                  <span class="demo-official-link-name">{t.demo_official_portal_name}</span>
                   <span class="demo-official-link-url">https://www.ehu.eus/es/web/lipidsliver</span>
                 </div>
               </div>
@@ -669,7 +669,7 @@ const alternates = isHoldingPage ? [] : [
         const topDemoTrigger = document.querySelector('.demo-alert-badge');
         if (topDemoTrigger) {
           topDemoTrigger.style.cursor = 'pointer';
-          topDemoTrigger.title = 'Ver aviso detallado de la versión demo';
+          topDemoTrigger.title = topDemoTrigger.dataset.title || '';
           topDemoTrigger.addEventListener('click', openDemoModal);
         }
       }

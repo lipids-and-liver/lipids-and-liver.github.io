@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
+import ContentLangNotice from '../ContentLangNotice.astro';
 import PartnerCard from '../cards/PartnerCard.astro';
 import collaborationsData from '../../data/collaborations.json';
 
@@ -47,7 +48,9 @@ const collaborationsList: any[] = Array.isArray(rawCollaborations) ? rawCollabor
 
   <section class="page-section">
     <div class="container">
-      <div class="partners-grid-inst">
+      <!-- collaborations.json solo está en español -->
+      <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
+      <div class="partners-grid-inst" lang={lang !== CONTENT_SOURCE_LOCALE ? CONTENT_SOURCE_LOCALE : undefined}>
         {collaborationsList.map((partner: any) => (
           <PartnerCard partner={partner} />
         ))}
