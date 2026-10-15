@@ -441,7 +441,8 @@
     "demo_official_portal_name": "Portal Oficial Lipids & Liver en UPV/EHU",
     "demo_badge_title": "Ver aviso detallado de la versión demo",
     "ehu_name_full": "Universidad del País Vasco / Euskal Herriko Unibertsitatea",
-    "ehu_name_short": "Universidad del País Vasco (UPV/EHU)"
+    "ehu_name_short": "Universidad del País Vasco (UPV/EHU)",
+    "content_draft_translation": "Traducción en borrador, pendiente de revisión por el grupo."
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -885,7 +886,8 @@
     "demo_official_portal_name": "Lipids & Liver-en atari ofiziala UPV/EHUn",
     "demo_badge_title": "Ikusi demo-bertsioaren abisu zehatza",
     "ehu_name_full": "Euskal Herriko Unibertsitatea / Universidad del País Vasco",
-    "ehu_name_short": "Euskal Herriko Unibertsitatea (UPV/EHU)"
+    "ehu_name_short": "Euskal Herriko Unibertsitatea (UPV/EHU)",
+    "content_draft_translation": "Itzulpena zirriborroa da, taldeak berrikusteke."
   },
   "en": {
     "nav_home": "Home",
@@ -1329,6 +1331,7 @@
     "demo_official_portal_name": "Official Lipids & Liver Portal at UPV/EHU",
     "demo_badge_title": "View the detailed demo version notice",
     "ehu_name_full": "University of the Basque Country (UPV/EHU)",
-    "ehu_name_short": "University of the Basque Country (UPV/EHU)"
+    "ehu_name_short": "University of the Basque Country (UPV/EHU)",
+    "content_draft_translation": "Draft translation, pending review by the group."
   }
 }

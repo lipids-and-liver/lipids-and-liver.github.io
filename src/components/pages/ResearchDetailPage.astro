@@ -109,6 +109,9 @@ const { Content } = await render(line);
       <!-- Columna Derecha: Contenido completo de la Línea de Investigación -->
       <article class="cv-main">
         <ContentLangNotice contentLang={line.locale} lang={lang} variant="banner" />
+        {line.locale === lang && line.data.translationStatus === 'draft' && (
+          <p class="content-lang-notice" role="note"><i class="fas fa-pen-nib" aria-hidden="true"></i> {t.content_draft_translation}</p>
+        )}
         <div class="cv-kicker">
           <span class="cv-dot"></span>
           {line.data.badge} • {t.lines_title || 'Líneas de Investigación'}

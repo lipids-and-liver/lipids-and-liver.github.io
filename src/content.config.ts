@@ -28,6 +28,8 @@ const theses = defineCollection({
 const team = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
   schema: z.object({
+    // Traducción en borrador pendiente de revisión por el grupo (ver npm run i18n:check)
+    translationStatus: z.enum(['draft', 'reviewed']).optional(),
     id: z.string().optional(),
     name: z.string().default('Investigador/a'),
     role: z.string().default('Investigador/a'),
@@ -66,7 +68,9 @@ const research = defineCollection({
     image: z.string().nullish().transform(val => val || '/assets/images/mafld.jpg'),
     badge: z.string().default('Línea Prioritaria'),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
-    affiliation: z.string().nullish()
+    affiliation: z.string().nullish(),
+    // Traducción en borrador pendiente de revisión por el grupo (ver npm run i18n:check)
+    translationStatus: z.enum(['draft', 'reviewed']).optional(),
   })
 });
 

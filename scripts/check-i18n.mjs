@@ -23,6 +23,7 @@ const CORE_DATA = { 'stats.json': 'stats', 'hero_gallery.json': 'slides' };
 
 const strict = process.argv.includes('--strict');
 let missingTotal = 0;
+let draftTotal = 0;
 const line = (s = '') => console.log(s);
 
 line('Traducciones del núcleo fijo (ES · EU · EN)\n');
@@ -49,6 +50,13 @@ for (const [collection, label] of Object.entries(CORE_COLLECTIONS)) {
   gaps.forEach(([s, m]) => line(`  ✗ ${s}: falta ${m.join(', ').toUpperCase()}`));
   if (!gaps.length) line('  ✓ completa');
   missingTotal += gaps.reduce((n, [, m]) => n + m.length, 0);
+
+  // Traducciones existentes pero marcadas como borrador (translationStatus: "draft")
+  const drafts = LOCALES.flatMap(l => [...byLocale[l]].filter(s =>
+    /^translationStatus:\s*["']?draft/m.test(readFileSync(join(dir, l, `${s}.md`), 'utf8').split('---')[1] || '')
+  ).map(s => `${s} (${l.toUpperCase()})`));
+  if (drafts.length) line(`  ✎ en borrador, pendientes de revisión: ${drafts.join(', ')}`);
+  draftTotal += drafts.length;
 }
 
 // 3) Datos con campos por idioma
@@ -65,4 +73,5 @@ for (const [file, listKey] of Object.entries(CORE_DATA)) {
 
 line(`\n${missingTotal ? `Faltan ${missingTotal} traducciones del núcleo.` : 'El núcleo fijo está completo en los tres idiomas.'}`);
 line('Mientras falten, la web muestra el contenido en el idioma disponible con un aviso.');
+if (draftTotal) line(`${draftTotal} traducciones en borrador esperan revisión del grupo (cambiar translationStatus a "reviewed").`);
 if (strict && missingTotal) process.exit(1);
