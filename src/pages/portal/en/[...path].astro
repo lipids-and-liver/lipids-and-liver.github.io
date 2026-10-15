@@ -1,0 +1,21 @@
+---
+// El inglés pasó a ser el idioma por defecto del portal (oct. 2026): /portal/en/* -> /portal/*
+// Mantiene vivos los enlaces antiguos a la versión inglesa.
+import { getAllSlugs } from '../../../utils/i18n';
+
+export async function getStaticPaths() {
+  // getStaticPaths se ejecuta aislado: las listas tienen que vivir aquí dentro
+  const sections = ['', 'alumni', 'colaboraciones', 'contacto', 'curriculum', 'divulgacion', 'docencia', 'grupo',
+    'lineas', 'noticias', 'patentes', 'proyectos', 'publicaciones', 'recursos', 'tesis', 'unete'];
+  const details = { curriculum: 'team', lineas: 'research', noticias: 'news', tesis: 'theses' } as const;
+
+  const paths: (string | undefined)[] = sections.map(s => s || undefined);
+  for (const [section, collection] of Object.entries(details)) {
+    for (const id of await getAllSlugs(collection)) paths.push(`${section}/${id}`);
+  }
+  return paths.map(path => ({ params: { path } }));
+}
+
+const { path } = Astro.params;
+return Astro.redirect(path ? `/portal/${path}/` : '/portal/', 301);
+---

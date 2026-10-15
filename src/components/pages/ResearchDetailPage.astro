@@ -36,7 +36,7 @@ const { Content } = await render(line);
   <!-- Nav Extra: Research Line Dropdown Selector -->
   <div slot="nav-extra" class="nav-quick-select-group">
     <label for="line-select"><i class="fas fa-microscope"></i> {t.lines_select_label}</label>
-    <select id="line-select" data-lang={lang} class="nav-quick-select">
+    <select id="line-select" data-base={getLocalizedPath('/lineas', lang)} class="nav-quick-select">
       {allLines.map(item => (
         <option value={item.slug} selected={item.slug === currentSlug}>
           {item.data.title.substring(0, 50)}...
@@ -188,11 +188,10 @@ const { Content } = await render(line);
   <script is:inline>
     const select = document.getElementById('line-select');
     if (select) {
-      const lang = select.dataset.lang || 'es';
-      const prefix = lang === 'es' ? '/portal' : '/portal/' + lang;
+      const base = select.dataset.base;
       select.addEventListener('change', (e) => {
         if (e.target.value) {
-          window.location.href = prefix + '/lineas/' + e.target.value;
+          window.location.href = base + '/' + e.target.value;
         }
       });
     }

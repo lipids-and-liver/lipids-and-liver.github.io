@@ -330,7 +330,9 @@
     "nav_menu": "Menú",
     "nav_menu_open": "Abrir el menú de navegación",
     "nav_menu_close": "Cerrar el menú de navegación",
-    "nav_language": "Idioma"
+    "nav_language": "Idioma",
+    "site_title": "Lipids & Liver - Grupo de Investigación Consolidado | UPV/EHU & IIS Biocruces Bizkaia",
+    "site_description": "Página oficial del Grupo de Investigación Consolidado Lipids & Liver de la Universidad del País Vasco (UPV/EHU) e Instituto Sanitario Biocruces Bizkaia. Investigación en esteatosis hepática (MAFLD), cáncer hepático, lipidómica, tesis doctorales y exposoma."
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -663,7 +665,9 @@
     "nav_menu": "Menua",
     "nav_menu_open": "Nabigazio-menua ireki",
     "nav_menu_close": "Nabigazio-menua itxi",
-    "nav_language": "Hizkuntza"
+    "nav_language": "Hizkuntza",
+    "site_title": "Lipids & Liver - Ikerketa Talde Sendotua | UPV/EHU & IIS Biocruces Bizkaia",
+    "site_description": "Euskal Herriko Unibertsitateko (UPV/EHU) eta Biocruces Bizkaia Osasun Ikerketa Institutuko Lipids & Liver ikerketa talde sendotuaren webgune ofiziala. Gibeleko esteatosia (MAFLD), gibeleko minbizia, lipidomika, doktore-tesiak eta exposoma ikertzen ditugu."
   },
   "en": {
     "nav_home": "Home",
@@ -996,6 +1000,8 @@
     "nav_menu": "Menu",
     "nav_menu_open": "Open navigation menu",
     "nav_menu_close": "Close navigation menu",
-    "nav_language": "Language"
+    "nav_language": "Language",
+    "site_title": "Lipids & Liver - Consolidated Research Group | UPV/EHU & IIS Biocruces Bizkaia",
+    "site_description": "Official website of the Lipids & Liver Consolidated Research Group at the University of the Basque Country (UPV/EHU) and Biocruces Bizkaia Health Research Institute. Research on fatty liver disease (MAFLD), liver cancer, lipidomics, PhD theses and the exposome."
   }
 }

@@ -36,7 +36,7 @@ const { Content } = await render(thesis);
   <!-- Nav Extra: Thesis Dropdown Selector -->
   <div slot="nav-extra" class="nav-quick-select-group">
     <label for="thesis-select"><i class="fas fa-graduation-cap"></i> {t.theses_select_label}</label>
-    <select id="thesis-select" data-lang={lang} class="nav-quick-select">
+    <select id="thesis-select" data-base={getLocalizedPath('/tesis', lang)} class="nav-quick-select">
       <optgroup label={t.theses_ongoing}>
         {ongoingTheses.map(tItem => (
           <option value={tItem.slug} selected={tItem.slug === currentSlug}>
@@ -220,11 +220,10 @@ const { Content } = await render(thesis);
   <script is:inline>
     const select = document.getElementById('thesis-select');
     if (select) {
-      const lang = select.dataset.lang || 'es';
-      const prefix = lang === 'es' ? '/portal' : '/portal/' + lang;
+      const base = select.dataset.base;
       select.addEventListener('change', (e) => {
         if (e.target.value) {
-          window.location.href = prefix + '/tesis/' + e.target.value;
+          window.location.href = base + '/' + e.target.value;
         }
       });
     }

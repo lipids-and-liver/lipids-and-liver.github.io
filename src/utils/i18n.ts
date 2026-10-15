@@ -2,8 +2,23 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import translationsData from '../data/translations.json';
 
 export type Locale = 'es' | 'eu' | 'en';
-export const DEFAULT_LOCALE: Locale = 'es';
-export const LOCALES: Locale[] = ['es', 'eu', 'en'];
+
+// Idioma principal del portal (decisión del grupo, oct. 2026): se sirve sin prefijo en /portal/.
+// Única fuente de verdad del portal; la página "En construcción" de la raíz tiene sus propias rutas.
+export const DEFAULT_LOCALE: Locale = 'en';
+export const LOCALES: Locale[] = ['en', 'es', 'eu'];
+
+// Idioma en que está escrito el contenido sin carpeta de idioma (noticias, proyectos)
+// y en el que se edita el resto por defecto en el CMS.
+export const CONTENT_SOURCE_LOCALE: Locale = 'es';
+
+// Si un contenido no existe en el idioma pedido, se muestra en el primero disponible de esta lista
+// (siempre con aviso; ver ContentLangNotice). Nada se oculta.
+export const FALLBACK_LOCALES: Record<Locale, Locale[]> = {
+  en: ['en', 'es', 'eu'],
+  es: ['es', 'en', 'eu'],
+  eu: ['eu', 'es', 'en'],
+};
 
 export type Translations = typeof translationsData.es;
 
@@ -20,10 +35,10 @@ export function getItemSlug(entry: { id: string; data?: { id?: string } }): stri
 export function getItemLang(entry: { id: string }): Locale {
   const parts = entry.id.split('/');
   const prefix = parts[0];
-  if (prefix === 'eu' || prefix === 'en' || prefix === 'es') {
-    return prefix;
+  if ((LOCALES as string[]).includes(prefix)) {
+    return prefix as Locale;
   }
-  return 'es';
+  return CONTENT_SOURCE_LOCALE;
 }
 
 export const PORTAL_BASE = '/portal';
@@ -39,8 +54,8 @@ export function getPathWithoutLocale(pathname: string): string {
     clean = clean.slice(PORTAL_BASE.length);
   }
 
-  // Remove /eu or /en prefix (e.g. /eu, /eu/, /eu/tesis, /en/curriculum)
-  clean = clean.replace(/^\/(eu|en)(\/|$)/, '/');
+  // Remove the locale prefix (e.g. /es, /eu/, /eu/tesis, /es/curriculum)
+  clean = clean.replace(new RegExp(`^/(${LOCALES.join('|')})(/|$)`), '/');
 
   // Ensure starts with /
   if (!clean.startsWith('/')) clean = '/' + clean;
@@ -77,6 +92,11 @@ export function getLocalizedPath(path: string, lang: Locale = DEFAULT_LOCALE): s
 
 export type LocalizedItem<T> = T & { slug: string; locale: Locale };
 
+// Primer idioma disponible según FALLBACK_LOCALES[lang]
+function pickLocale(available: Map<Locale, unknown>, lang: Locale): Locale | undefined {
+  return FALLBACK_LOCALES[lang].find(l => available.has(l));
+}
+
 export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents'>(
   collectionName: C,
   lang: Locale = DEFAULT_LOCALE
@@ -99,24 +119,9 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
   const result: Array<CollectionEntry<C> & { slug: string; locale: Locale }> = [];
 
   for (const [slug, langMap] of grouped.entries()) {
-    let selected: CollectionEntry<C> | undefined = langMap.get(lang);
-    let selectedLocale: Locale = lang;
-
-    if (!selected) {
-      // Fallback to Spanish
-      selected = langMap.get(DEFAULT_LOCALE);
-      selectedLocale = DEFAULT_LOCALE;
-    }
-
-    if (!selected) {
-      // Fallback to any available language
-      const [firstLocale, firstEntry] = langMap.entries().next().value || [];
-      selected = firstEntry;
-      selectedLocale = (firstLocale as Locale) || DEFAULT_LOCALE;
-    }
-
-    if (selected) {
-      result.push({ ...selected, slug, locale: selectedLocale });
+    const selectedLocale = pickLocale(langMap, lang);
+    if (selectedLocale) {
+      result.push({ ...langMap.get(selectedLocale)!, slug, locale: selectedLocale });
     }
   }
 
@@ -133,31 +138,15 @@ export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research'
   lang: Locale = DEFAULT_LOCALE
 ): Promise<(CollectionEntry<C> & { slug: string; locale: Locale }) | undefined> {
   const allEntries = await getCollection(collectionName);
-  
-  let targetEntry: CollectionEntry<C> | undefined;
-  let fallbackEntry: CollectionEntry<C> | undefined;
-  let anyEntry: CollectionEntry<C> | undefined;
 
+  const langMap = new Map<Locale, CollectionEntry<C>>();
   for (const entry of allEntries) {
-    const itemSlug = getItemSlug(entry);
-    if (itemSlug === slug) {
-      const itemLang = getItemLang(entry);
-      if (itemLang === lang) {
-        targetEntry = entry;
-        break;
-      }
-      if (itemLang === DEFAULT_LOCALE) {
-        fallbackEntry = entry;
-      }
-      anyEntry ??= entry;
-    }
+    if (getItemSlug(entry) === slug) langMap.set(getItemLang(entry), entry);
   }
 
-  const chosen = targetEntry || fallbackEntry || anyEntry;
-  if (!chosen) return undefined;
-
-  const chosenLang = getItemLang(chosen);
-  return { ...chosen, slug, locale: chosenLang };
+  const chosenLocale = pickLocale(langMap, lang);
+  if (!chosenLocale) return undefined;
+  return { ...langMap.get(chosenLocale)!, slug, locale: chosenLocale };
 }
 
 export async function getAllSlugs<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(
@@ -282,7 +271,7 @@ export function sortTeamMembers<T extends { data: { category?: string; order?: n
 }
 
 export function localizeTeamRole(role: string = '', lang: Locale = DEFAULT_LOCALE): string {
-  if (lang === 'es' || !role) return role;
+  if (lang === CONTENT_SOURCE_LOCALE || !role) return role;
 
   const roleTranslations: Record<string, { eu: string; en: string }> = {
     'Catedrática de Fisiología': {
@@ -407,7 +396,7 @@ export function localizeTeamRole(role: string = '', lang: Locale = DEFAULT_LOCAL
 }
 
 export function localizeTeamDepartment(dept: string = '', lang: Locale = DEFAULT_LOCALE): string {
-  if (lang === 'es' || !dept) return dept;
+  if (lang === CONTENT_SOURCE_LOCALE || !dept) return dept;
 
   const deptTranslations: Record<string, { eu: string; en: string }> = {
     'Departamento de Fisiología, Facultad de Medicina y Enfermería': {
@@ -445,7 +434,7 @@ export function localizeTeamOffice(office: string = '', lang: Locale = DEFAULT_L
     if (lang === 'en') return 'Faculty of Medicine and Nursing, Leioa';
     return 'Facultad de Medicina y Enfermería, Leioa';
   }
-  if (lang === 'es') return office;
+  if (lang === CONTENT_SOURCE_LOCALE) return office;
 
   let localized = office;
   if (lang === 'en') {
@@ -488,7 +477,7 @@ export function localizeThesisProgram(program: string = '', lang: Locale = DEFAU
     if (lang === 'en') return 'PhD Program in Biomedicine (UPV/EHU)';
     return 'Programa de Doctorado en Biomedicina (UPV/EHU)';
   }
-  if (lang === 'es') return program;
+  if (lang === CONTENT_SOURCE_LOCALE) return program;
 
   let localized = program;
   if (lang === 'en') {

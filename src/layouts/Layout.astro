@@ -1,5 +1,5 @@
 ---
-import { getTranslations, getLocalizedPath, getPathWithoutLocale, type Locale } from '../utils/i18n';
+import { getTranslations, getLocalizedPath, getPathWithoutLocale, DEFAULT_LOCALE, LOCALES, type Locale } from '../utils/i18n';
 
 interface Props {
   title?: string;
@@ -10,25 +10,30 @@ interface Props {
 }
 
 const {
-  title = "Lipids & Liver - Grupo de Investigación Consolidado | UPV/EHU & IIS Biocruces Bizkaia",
-  description = "Página oficial del Grupo de Investigación Consolidado Lipids & Liver de la Universidad del País Vasco (UPV/EHU) e Instituto Sanitario Biocruces Bizkaia. Investigación en esteatosis hepática (MAFLD), cáncer hepático, lipidómica, tesis doctorales y exposoma.",
   currentPage = "home",
-  lang = "es",
+  lang = DEFAULT_LOCALE,
   isHoldingPage = false
 } = Astro.props;
 
 const t = getTranslations(lang);
+const title = Astro.props.title || t.site_title;
+const description = Astro.props.description || t.site_description;
 const currentPath = Astro.url.pathname;
 const basePath = getPathWithoutLocale(currentPath);
 
-const homeLink = isHoldingPage ? (lang === 'es' ? '/' : `/${lang}/`) : getLocalizedPath('/', lang);
-const langEsLink = isHoldingPage ? '/' : getLocalizedPath(basePath, 'es');
-const langEuLink = isHoldingPage ? '/eu/' : getLocalizedPath(basePath, 'eu');
-const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
-const langLinks = [
-  { code: 'es', label: 'ES', href: langEsLink },
-  { code: 'eu', label: 'EU', href: langEuLink },
-  { code: 'en', label: 'EN', href: langEnLink },
+// La página "En construcción" de la raíz mantiene el español como idioma por defecto (/, /eu/, /en/)
+const holdingPath = (l: Locale) => (l === 'es' ? '/' : `/${l}/`);
+const homeLink = isHoldingPage ? holdingPath(lang) : getLocalizedPath('/', lang);
+const langLinks = LOCALES.map(code => ({
+  code,
+  label: code.toUpperCase(),
+  href: isHoldingPage ? holdingPath(code) : getLocalizedPath(basePath, code),
+}));
+// Versiones alternativas para buscadores (x-default = idioma principal del portal)
+const siteUrl = Astro.site ? Astro.site.origin : '';
+const alternates = isHoldingPage ? [] : [
+  ...langLinks.map(l => ({ hreflang: l.code, href: siteUrl + l.href })),
+  { hreflang: 'x-default', href: siteUrl + getLocalizedPath(basePath, DEFAULT_LOCALE) },
 ];
 ---
 
@@ -55,6 +60,7 @@ const langLinks = [
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={Astro.url.href} />
+  {alternates.map(a => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
 
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />

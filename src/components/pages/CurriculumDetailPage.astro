@@ -58,7 +58,7 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
   <!-- Nav Extra: Member Dropdown Selector -->
   <div slot="nav-extra" class="nav-quick-select-group">
     <label for="member-select"><i class="fas fa-user-circle"></i> {t.team_select_label}</label>
-    <select id="member-select" data-lang={lang} class="nav-quick-select">
+    <select id="member-select" data-base={getLocalizedPath('/curriculum', lang)} class="nav-quick-select">
       {allTeam.map(m => (
         <option value={m.slug} selected={m.slug === currentSlug}>
           {m.data.name}
@@ -291,11 +291,10 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
   <script is:inline>
     const select = document.getElementById('member-select');
     if (select) {
-      const lang = select.dataset.lang || 'es';
-      const prefix = lang === 'es' ? '/portal' : '/portal/' + lang;
+      const base = select.dataset.base;
       select.addEventListener('change', (e) => {
         if (e.target.value) {
-          window.location.href = prefix + '/curriculum/' + e.target.value;
+          window.location.href = base + '/' + e.target.value;
         }
       });
     }
