@@ -30,6 +30,11 @@ const localizedProgram = localizeThesisProgram(thesis.data.program, lang);
 const directors = Array.isArray(thesis.data.directors) ? thesis.data.directors.join(', ') : thesis.data.directors;
 const currentSlug = thesis.slug;
 const { Content } = await render(thesis);
+
+// Línea de investigación a la que pertenece la tesis
+const line = thesis.data.researchLine
+  ? (await getLocalizedCollection('research', lang)).find(l => l.slug === thesis.data.researchLine)
+  : undefined;
 ---
 
 <Layout title={`${thesis.data.author} - ${t.theses_title} | Lipids & Liver`} currentPage="theses" lang={lang}>
@@ -195,8 +200,19 @@ const { Content } = await render(thesis);
         </h1>
 
         <div class="cv-main-title">
-          {t.theses_phd_candidate}: <strong>{thesis.data.author}</strong>
+          {t.theses_phd_candidate} <strong>{thesis.data.author}</strong>
         </div>
+
+        {line && (
+          <a href={getLocalizedPath(`/lineas/${line.slug}`, lang)} class="thesis-line-card">
+            <img src={line.data.image} alt="" class="thesis-line-card-img" loading="lazy" decoding="async" />
+            <span class="thesis-line-card-text">
+              <span class="thesis-line-card-label">{t.theses_line_label}</span>
+              <span class="thesis-line-card-title" lang={line.locale !== lang ? line.locale : undefined}>{line.data.title}</span>
+            </span>
+            <span class="thesis-line-card-cta">{t.theses_line_view} <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+          </a>
+        )}
 
         <!-- Resumen / Abstract -->
         <div class="cv-bio">

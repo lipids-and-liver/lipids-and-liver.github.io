@@ -476,7 +476,9 @@
     "alumni_retired_title": "Personal jubilado",
     "alumni_retired_sub": "Profesorado e investigadores que desarrollaron su carrera en el grupo y hoy están jubilados o son eméritos",
     "team_retired_badge": "Jubilado/a",
-    "team_see_retired": "Ver personal jubilado"
+    "team_see_retired": "Ver personal jubilado",
+    "theses_line_label": "Línea de investigación",
+    "theses_line_view": "Ver la línea"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -955,7 +957,9 @@
     "alumni_retired_title": "Erretiratutako langileak",
     "alumni_retired_sub": "Taldean beren ibilbidea egin eta gaur egun erretiratuta edo emerituak diren irakasle eta ikertzaileak",
     "team_retired_badge": "Erretiratua",
-    "team_see_retired": "Ikusi erretiratutako langileak"
+    "team_see_retired": "Ikusi erretiratutako langileak",
+    "theses_line_label": "Ikerketa-lerroa",
+    "theses_line_view": "Ikusi lerroa"
   },
   "en": {
     "nav_home": "Home",
@@ -1434,6 +1438,8 @@
     "alumni_retired_title": "Retired Staff",
     "alumni_retired_sub": "Faculty and researchers who built their careers in the group and are now retired or emeritus",
     "team_retired_badge": "Retired",
-    "team_see_retired": "See retired staff"
+    "team_see_retired": "See retired staff",
+    "theses_line_label": "Research line",
+    "theses_line_view": "View research line"
   }
 }

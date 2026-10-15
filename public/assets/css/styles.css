@@ -6062,3 +6062,68 @@ a.cv-contact-item:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Línea de investigación en la página de una tesis */
+.thesis-line-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0.25rem 0 1.75rem;
+  padding: 10px 16px 10px 10px;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--logo-green);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  text-decoration: none;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.thesis-line-card:hover {
+  border-color: var(--logo-green);
+  box-shadow: var(--shadow-sm);
+}
+
+.thesis-line-card-img {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.thesis-line-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.thesis-line-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--logo-green-hover);
+}
+
+.thesis-line-card-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ehu-navy);
+  line-height: 1.35;
+}
+
+.thesis-line-card-cta {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--logo-green-hover);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .thesis-line-card-cta {
+    display: none;
+  }
+}
