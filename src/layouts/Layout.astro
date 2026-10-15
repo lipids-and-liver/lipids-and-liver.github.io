@@ -113,14 +113,11 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
   <header class="site-header" id="site-header">
     <div class="container">
       <div class="header-main-row">
-        <!-- Dual Logos Container: EHU Logo + Group Logo -->
+        <!-- Marca de grupo de investigación según el manual de marca EHU (pág. 21):
+             imagotipo EHU | Ikerketa taldea - Grupo de investigación | logo propio -->
         <div class="brand-logos-container">
-          <a href={homeLink}>
-            <img src="/assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="ehu-logo-img" id="ehu-header-logo" />
-          </a>
-          <div class="brand-divider"></div>
-          <a href={homeLink}>
-            <img src="/assets/images/logo/lipid_liver_logo.svg" alt="Lipids & Liver Logo" class="group-logo-img" />
+          <a href={homeLink} class="brand-lockup-link">
+            <img src="/assets/images/logo/marca_ehu_lipids_liver.svg" alt="EHU · Ikerketa taldea · Grupo de investigación · Lipids & Liver" class="brand-lockup-img" />
           </a>
           <div class="header-title-box">
             <span class="header-title-main">Lipids &amp; Liver</span>
@@ -375,9 +372,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
     <!-- Franja clara de logos institucionales en su versión original a color -->
     <div class="footer-logos-strip">
       <div class="container footer-logos-row">
-        <img src="/assets/images/logo/ehu_logo_positiboa.svg" alt="UPV/EHU Logo" class="footer-logo-img" loading="lazy" />
-        <span class="footer-logos-divider"></span>
-        <img src="/assets/images/logo/lipid_liver_logo.svg" alt="Lipids & Liver Logo" class="footer-logo-img" loading="lazy" />
+        <img src="/assets/images/logo/marca_ehu_lipids_liver.svg" alt="EHU · Ikerketa taldea · Grupo de investigación · Lipids & Liver" class="footer-logo-img" loading="lazy" />
       </div>
     </div>
 

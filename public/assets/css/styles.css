@@ -545,25 +545,20 @@ html.demo-alert-hidden .demo-alert-banner {
 .brand-logos-container {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 32px;
 }
 
-.ehu-logo-img {
-  height: 48px;
+/* Marca EHU + grupo (manual de marca EHU, pág. 21). A 64 px de alto el imagotipo
+   mide ~58 px, por encima del mínimo de 50 px de la versión reducida (pág. 13). */
+.brand-lockup-link {
+  display: block;
+  flex-shrink: 0;
+}
+
+.brand-lockup-img {
+  height: 64px;
   width: auto;
-  object-fit: contain;
-}
-
-.brand-divider {
-  width: 1px;
-  height: 40px;
-  background-color: var(--border-color);
-}
-
-.group-logo-img {
-  height: 52px;
-  width: auto;
-  object-fit: contain;
+  display: block;
 }
 
 .header-title-box {
@@ -3602,14 +3597,8 @@ a.cv-contact-item:hover i {
   padding-bottom: 1.4rem;
 }
 
-.footer-logos-divider {
-  width: 1px;
-  height: 40px;
-  background: var(--border-color);
-}
-
 .footer-logo-img {
-  height: 58px;
+  height: 72px;
   width: auto;
 }
 
@@ -3758,6 +3747,10 @@ a.cv-contact-item:hover i {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+  /* En móvil la marca ya identifica al grupo: el título textual sobra */
+  .header-title-box {
+    display: none;
   }
   .hero-headline {
     font-size: 1.85rem;
