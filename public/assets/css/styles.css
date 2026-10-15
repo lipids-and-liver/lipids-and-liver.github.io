@@ -2014,7 +2014,7 @@ html.demo-alert-hidden .demo-alert-banner {
 /* Facilities Cards in About / Presentation */
 .facilities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -2140,7 +2140,7 @@ html.demo-alert-hidden .demo-alert-banner {
 /* Research Lines Cards Grid */
 .research-grid-inst {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -2714,7 +2714,7 @@ html.demo-alert-hidden .demo-alert-banner {
 /* Academic Team Grid */
 .team-grid-inst {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
   gap: 1.75rem;
 }
 
@@ -3581,7 +3581,7 @@ a.cv-contact-item:hover i {
 
 @media (max-width: 960px) {
   .cv-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
     padding: 2rem 1.5rem;
   }
@@ -3689,7 +3689,7 @@ a.cv-contact-item:hover i {
 
 @media (max-width: 992px) {
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -3875,7 +3875,7 @@ a.cv-contact-item:hover i {
    ========================================================================== */
 .projects-grid-inst {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -4079,7 +4079,7 @@ a.cv-contact-item:hover i {
 /* Base News Grid & Card */
 .news-grid-inst {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 1.75rem;
   align-items: stretch;
 }
@@ -4544,7 +4544,7 @@ a.cv-contact-item:hover i {
    ========================================================================== */
 .partners-grid-inst {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -4664,7 +4664,7 @@ a.cv-contact-item:hover i {
    ========================================================================== */
 .alumni-grid-inst {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
   gap: 1.75rem;
   align-items: stretch;
 }
@@ -5083,7 +5083,7 @@ a.cv-contact-item:hover i {
   align-items: center;
   gap: 1.25rem;
   flex: 1;
-  min-width: 280px;
+  min-width: min(280px, 100%);
 }
 
 .projects-official-hub-icon {
@@ -5832,7 +5832,7 @@ a.cv-contact-item:hover i {
 
 .sciresources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -6110,7 +6110,7 @@ a.cv-contact-item:hover i {
 /* Tesis en curso: tarjetas horizontales (imagen cuadrada de la línea a la izquierda) */
 .theses-featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(460px, 100%), 1fr));
   gap: 1.25rem;
 }
 
@@ -6328,4 +6328,15 @@ a.cv-contact-item:hover i {
 
 #news-grid {
   scroll-margin-top: 200px;
+}
+
+/* Móviles estrechos (≤400px): evitar desplazamiento horizontal */
+@media (max-width: 400px) {
+  .contact-info-card { padding: 1.4rem 1.1rem; overflow-wrap: anywhere; }
+  .cv-card { padding: 1.5rem 1rem; }
+  .cv-aside, .cv-main { min-width: 0; overflow-wrap: anywhere; }
+  .project-card-header { flex-wrap: wrap; }
+  .project-code-tag { white-space: normal; overflow-wrap: anywhere; }
+  .projects-official-hub-card { padding: 1.25rem 1rem; }
+  .pub-doi-link { max-width: 100%; overflow-wrap: anywhere; }
 }
