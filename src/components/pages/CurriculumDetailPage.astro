@@ -19,6 +19,9 @@ if (!member) {
 
 const allTeam = await getLocalizedCollection('team', lang);
 sortTeamMembers(allTeam);
+// En el selector, el personal jubilado va en un grupo aparte
+const activeTeam = allTeam.filter(m => m.data.status !== 'retired');
+const retiredTeam = allTeam.filter(m => m.data.status === 'retired');
 
 const currentSlug = member.slug;
 const cv = member.data.cv || {};
@@ -60,11 +63,20 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
   <div slot="nav-extra" class="nav-quick-select-group">
     <label for="member-select"><i class="fas fa-user-circle"></i> {t.team_select_label}</label>
     <select id="member-select" data-base={getLocalizedPath('/curriculum', lang)} class="nav-quick-select">
-      {allTeam.map(m => (
+      {activeTeam.map(m => (
         <option value={m.slug} selected={m.slug === currentSlug}>
           {m.data.name}
         </option>
       ))}
+      {retiredTeam.length > 0 && (
+        <optgroup label={t.alumni_retired_title}>
+          {retiredTeam.map(m => (
+            <option value={m.slug} selected={m.slug === currentSlug}>
+              {m.data.name}
+            </option>
+          ))}
+        </optgroup>
+      )}
     </select>
   </div>
 

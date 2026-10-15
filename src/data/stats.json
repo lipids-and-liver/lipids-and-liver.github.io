@@ -12,15 +12,15 @@
       "subtext": "Reconocido por el Gobierno Vasco"
     },
     {
-      "number": "10+",
-      "label_es": "PDI y Catedráticos",
-      "label_eu": "Irakasle-ikertzaileak eta Katedradunak",
-      "label_en": "Faculty Members & Full Professors",
-      "subtext_es": "Facultad de Medicina y Enfermería",
-      "subtext_eu": "Medikuntza eta Erizaintza Fakultatea",
-      "subtext_en": "Faculty of Medicine and Nursing",
-      "label": "PDI y Catedráticos",
-      "subtext": "Facultad de Medicina y Enfermería"
+      "number": "6",
+      "label_es": "Investigadores Sénior",
+      "label_eu": "Ikertzaile Seniorrak",
+      "label_en": "Senior Researchers",
+      "subtext_es": "PDI, Ikerbasque y Ramón y Cajal",
+      "subtext_eu": "Irakasle-ikertzaileak, Ikerbasque eta Ramón y Cajal",
+      "subtext_en": "Faculty, Ikerbasque & Ramón y Cajal",
+      "label": "Investigadores Sénior",
+      "subtext": "PDI, Ikerbasque y Ramón y Cajal"
     },
     {
       "number": "35+",
