@@ -1,9 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedCollection, getTranslations, getLocalizedPath, type Locale, localizeThesisMeta } from '../../utils/i18n';
-import ThesisCard from '../cards/ThesisCard.astro';
-
-import { sortTheses } from '../../utils/theses';
+import { sortTheses, extractThesisYear } from '../../utils/theses';
 
 interface Props {
   lang: Locale;
@@ -15,8 +13,38 @@ const t = getTranslations(lang);
 const allTheses = await getLocalizedCollection('theses', lang);
 sortTheses(allTheses);
 
-const ongoingTheses = allTheses.filter(t => t.data.status === 'ongoing');
-const completedTheses = allTheses.filter(t => t.data.status === 'completed');
+const ongoingTheses = allTheses.filter(th => th.data.status === 'ongoing');
+const completedTheses = allTheses.filter(th => th.data.status === 'completed');
+
+// Líneas de investigación (para la imagen de cada tesis y el filtro)
+const lines = await getLocalizedCollection('research', lang);
+lines.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+const lineOf = (th: (typeof allTheses)[number]) => lines.find(l => l.slug === th.data.researchLine);
+const lineKey = (th: (typeof allTheses)[number]) => lineOf(th)?.slug ?? 'none';
+
+// Filtro: solo las líneas que tienen tesis, más "Otras" si hay tesis sin línea
+const lineFilters = lines
+  .map(l => ({ key: l.slug, label: l.data.badge, image: l.data.image, count: allTheses.filter(th => lineKey(th) === l.slug).length }))
+  .filter(f => f.count > 0);
+const noLineCount = allTheses.filter(th => lineKey(th) === 'none').length;
+
+// Periodo de una tesis en curso: "En desarrollo (2024-2027)" -> "2024–2027"
+const period = (year: string | number) => {
+  const m = String(year).match(/(\d{4})\s*[-–]\s*(\d{4})/);
+  return m ? `${m[1]}–${m[2]}` : localizeThesisMeta(String(year), lang);
+};
+
+// Defendidas agrupadas por año (de más reciente a más antigua)
+const byYear = new Map<number, typeof completedTheses>();
+for (const th of completedTheses) {
+  const y = extractThesisYear(th.data.year);
+  if (!byYear.has(y)) byYear.set(y, []);
+  byYear.get(y)!.push(th);
+}
+const yearGroups = [...byYear.entries()].sort((a, b) => b[0] - a[0]);
+
+const directorsOf = (th: (typeof allTheses)[number]) =>
+  Array.isArray(th.data.directors) ? th.data.directors.join(', ') : (th.data.directors || '');
 ---
 
 <Layout title={`${t.theses_page_title} | Lipids & Liver (UPV/EHU)`} currentPage="theses" lang={lang}>
@@ -51,27 +79,88 @@ const completedTheses = allTheses.filter(t => t.data.status === 'completed');
         </div>
       </div>
 
-      <!-- Segmented Control Bar -->
-      <div style="display:flex; justify-content:center;">
-        <div class="segmented-control-bar" id="theses-filter-bar">
-          <button class="segmented-btn active" data-type="ALL">
-            <i class="fas fa-layer-group"></i> {t.theses_all} <span class="segmented-count">{allTheses.length}</span>
+      <!-- Filtro por línea de investigación -->
+      <div class="theses-line-filter" role="group" aria-label={t.theses_filter_label}>
+        <span class="theses-line-filter-label">{t.theses_filter_label}</span>
+        <button type="button" class="theses-line-filter-btn active" data-line="ALL" aria-pressed="true">
+          {t.theses_line_all} <span class="segmented-count">{allTheses.length}</span>
+        </button>
+        {lineFilters.map(f => (
+          <button type="button" class="theses-line-filter-btn" data-line={f.key} aria-pressed="false">
+            <img src={f.image} alt="" class="theses-line-filter-img" />
+            {f.label} <span class="segmented-count">{f.count}</span>
           </button>
-          <button class="segmented-btn" data-type="ONGOING">
-            <i class="fas fa-spinner fa-spin"></i> {t.theses_ongoing} <span class="segmented-count">{ongoingTheses.length}</span>
+        ))}
+        {noLineCount > 0 && (
+          <button type="button" class="theses-line-filter-btn" data-line="none" aria-pressed="false">
+            {t.theses_line_none} <span class="segmented-count">{noLineCount}</span>
           </button>
-          <button class="segmented-btn" data-type="COMPLETED">
-            <i class="fas fa-check-circle"></i> {t.theses_completed} <span class="segmented-count">{completedTheses.length}</span>
-          </button>
-        </div>
+        )}
       </div>
 
-      <!-- Theses Cards Grid -->
-      <div class="theses-grid-inst" id="theses-grid" style="margin-top:2.5rem;">
-        {allTheses.map(thesis => (
-          <ThesisCard thesis={thesis} lang={lang} />
-        ))}
-      </div>
+      <!-- Tesis en curso: tarjetas destacadas -->
+      {ongoingTheses.length > 0 && (
+        <section class="theses-block" data-theses-block>
+          <h2 class="theses-block-title"><i class="fas fa-spinner"></i> {t.theses_ongoing} <span class="segmented-count">{ongoingTheses.length}</span></h2>
+          <div class="theses-featured-grid">
+            {ongoingTheses.map(th => {
+              const line = lineOf(th);
+              return (
+                <a href={getLocalizedPath(`/tesis/${th.slug}`, lang)} class="thesis-feature-card" data-line={lineKey(th)}>
+                  <div class="thesis-feature-media">
+                    {line ? <img src={line.data.image} alt="" loading="lazy" decoding="async" /> : <i class="fas fa-graduation-cap" aria-hidden="true"></i>}
+                    {line && <span class="thesis-feature-line" lang={line.locale !== lang ? line.locale : undefined}>{line.data.badge}</span>}
+                  </div>
+                  <div class="thesis-feature-body">
+                    <h3 class="thesis-feature-title">{th.data.title}</h3>
+                    <span class="thesis-feature-author">{th.data.author}</span>
+                    <span class="thesis-feature-meta">
+                      <span><i class="far fa-calendar" aria-hidden="true"></i> {period(th.data.year)}</span>
+                      <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      <!-- Tesis defendidas: cronología por año -->
+      <section class="theses-block" data-theses-block>
+        <h2 class="theses-block-title"><i class="fas fa-check-circle"></i> {t.theses_completed} <span class="segmented-count">{completedTheses.length}</span></h2>
+        <div class="theses-timeline">
+          {yearGroups.map(([year, items]) => (
+            <div class="theses-year-group" data-year-group>
+              <div class="theses-year">{year || '—'}</div>
+              <ul class="theses-year-list">
+                {items.map(th => {
+                  const line = lineOf(th);
+                  return (
+                    <li data-line={lineKey(th)}>
+                      <a href={getLocalizedPath(`/tesis/${th.slug}`, lang)} class="thesis-row">
+                        {line
+                          ? <img src={line.data.image} alt="" class="thesis-row-img" loading="lazy" decoding="async" title={line.data.title} />
+                          : <span class="thesis-row-img thesis-row-img-empty" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>}
+                        <span class="thesis-row-text">
+                          <span class="thesis-row-title">{th.data.title}</span>
+                          <span class="thesis-row-meta">
+                            <strong>{th.data.author}</strong>
+                            {directorsOf(th) && <span> · {t.theses_dir_short} {directorsOf(th)}</span>}
+                          </span>
+                        </span>
+                        <i class="fas fa-arrow-right thesis-row-arrow" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <p class="theses-empty" hidden>{t.theses_no_results}</p>
     </div>
   </section>
 
@@ -87,23 +176,28 @@ const completedTheses = allTheses.filter(t => t.data.status === 'completed');
         });
       }
 
-      const segBtns = document.querySelectorAll('.segmented-btn');
-      const cards = document.querySelectorAll('.theses-grid-inst .thesis-card-inst');
-      segBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          segBtns.forEach(b => b.classList.remove('active'));
-          const target = e.target.closest('.segmented-btn');
-          if (target) {
-            target.classList.add('active');
-            const type = target.dataset.type;
-            cards.forEach(card => {
-              if (type === 'ALL' || card.dataset.type === type) {
-                card.style.display = 'flex';
-              } else {
-                card.style.display = 'none';
-              }
-            });
-          }
+      // Filtro por línea: oculta tarjetas y filas, y los grupos/secciones que se quedan vacíos
+      const buttons = document.querySelectorAll('.theses-line-filter-btn');
+      const items = document.querySelectorAll('.thesis-feature-card[data-line], .theses-year-list li[data-line]');
+      const empty = document.querySelector('.theses-empty');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const line = btn.dataset.line;
+          buttons.forEach(b => {
+            b.classList.toggle('active', b === btn);
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+          });
+          items.forEach(el => { el.hidden = line !== 'ALL' && el.dataset.line !== line; });
+          document.querySelectorAll('[data-year-group]').forEach(g => {
+            g.hidden = !g.querySelector('li[data-line]:not([hidden])');
+          });
+          let anyVisible = false;
+          document.querySelectorAll('[data-theses-block]').forEach(block => {
+            const visible = !!block.querySelector('[data-line]:not([hidden])');
+            block.hidden = !visible;
+            anyVisible = anyVisible || visible;
+          });
+          if (empty) empty.hidden = anyVisible;
         });
       });
     });

@@ -478,7 +478,12 @@
     "team_retired_badge": "Jubilado/a",
     "team_see_retired": "Ver personal jubilado",
     "theses_line_label": "Línea de investigación",
-    "theses_line_view": "Ver la línea"
+    "theses_line_view": "Ver la línea",
+    "theses_filter_label": "Línea de investigación:",
+    "theses_line_all": "Todas",
+    "theses_line_none": "Otras",
+    "theses_no_results": "No hay tesis de esta línea.",
+    "theses_dir_short": "Dir.:"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -959,7 +964,12 @@
     "team_retired_badge": "Erretiratua",
     "team_see_retired": "Ikusi erretiratutako langileak",
     "theses_line_label": "Ikerketa-lerroa",
-    "theses_line_view": "Ikusi lerroa"
+    "theses_line_view": "Ikusi lerroa",
+    "theses_filter_label": "Ikerketa-lerroa:",
+    "theses_line_all": "Guztiak",
+    "theses_line_none": "Besteak",
+    "theses_no_results": "Ez dago lerro honetako tesirik.",
+    "theses_dir_short": "Zuz.:"
   },
   "en": {
     "nav_home": "Home",
@@ -1440,6 +1450,11 @@
     "team_retired_badge": "Retired",
     "team_see_retired": "See retired staff",
     "theses_line_label": "Research line",
-    "theses_line_view": "View research line"
+    "theses_line_view": "View research line",
+    "theses_filter_label": "Research line:",
+    "theses_line_all": "All",
+    "theses_line_none": "Other",
+    "theses_no_results": "No theses in this research line.",
+    "theses_dir_short": "Supervisors:"
   }
 }
