@@ -6340,3 +6340,123 @@ a.cv-contact-item:hover i {
   .projects-official-hub-card { padding: 1.25rem 1rem; }
   .pub-doi-link { max-width: 100%; overflow-wrap: anywhere; }
 }
+
+.research-card-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+.research-card-title-link:hover {
+  color: var(--logo-green);
+}
+
+/* Home en móvil (≤640px): tarjetas compactas para acortar la página */
+@media (max-width: 640px) {
+  /* Cifras en 2×2 */
+  .stats-bar .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 100% !important;
+    gap: 1.25rem 0.75rem;
+  }
+  .stats-bar .stat-box {
+    border: none;
+    padding: 0 0.25rem;
+  }
+  .stats-bar .stat-val { font-size: 1.8rem; }
+  .stats-bar .stat-tit { font-size: 0.85rem; }
+  .stats-bar .stat-desc { font-size: 0.72rem; }
+
+  /* Carta: foto pequeña junto al título y extracto recortado */
+  .home-letter-teaser {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .home-letter-photo {
+    width: 96px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+  .home-letter-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0.75rem 0 1rem;
+  }
+
+  /* Líneas y noticias: tarjeta horizontal con miniatura cuadrada; toda la tarjeta enlaza */
+  #lines-grid,
+  #featured-news-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  #lines-grid .research-card-inst,
+  #featured-news-grid .news-card-inst {
+    position: relative;
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 0.9rem;
+    align-items: center;
+    padding: 0.75rem;
+  }
+  #lines-grid .research-card-img,
+  #featured-news-grid .news-card-img {
+    width: 88px;
+    height: 88px;
+    border-radius: 10px;
+  }
+  #featured-news-grid .news-card-img-link {
+    margin: 0;
+    border-radius: 10px;
+  }
+  #lines-grid .research-card-content,
+  #featured-news-grid .news-card-content {
+    padding: 0;
+    min-width: 0;
+  }
+  #lines-grid .research-card-content > div:first-child {
+    margin-bottom: 0.35rem !important;
+  }
+  #lines-grid .research-badge,
+  #featured-news-grid .news-category-badge {
+    font-size: 0.62rem;
+    padding: 2px 7px;
+  }
+  #lines-grid .research-card-content h3 {
+    font-size: 0.95rem !important;
+    line-height: 1.3;
+    margin: 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  #featured-news-grid .news-card-top {
+    margin-bottom: 0.35rem;
+    gap: 6px;
+  }
+  #featured-news-grid .news-date { font-size: 0.7rem; }
+  #featured-news-grid .news-title {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin: 0;
+  }
+  #lines-grid .research-card-content p,
+  #lines-grid .research-card-footer,
+  #featured-news-grid .news-summary,
+  #featured-news-grid .news-card-footer {
+    display: none;
+  }
+  /* Enlace que cubre toda la tarjeta */
+  #lines-grid .research-card-content h3 a::after,
+  #featured-news-grid .news-title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  #lines-grid .research-card-inst:hover,
+  #featured-news-grid .news-card-inst:hover {
+    transform: none;
+  }
+}

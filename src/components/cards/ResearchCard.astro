@@ -26,7 +26,7 @@ const contentLang = line.locale !== lang ? line.locale : undefined;
         </span>
       )}
     </div>
-    <h3 lang={contentLang} style="font-size:1.15rem; font-weight:700; margin-bottom:0.75rem; color:var(--ehu-navy);">{line.data.title}</h3>
+    <h3 lang={contentLang} style="font-size:1.15rem; font-weight:700; margin-bottom:0.75rem; color:var(--ehu-navy);"><a href={getLocalizedPath(`/lineas/${line.slug}`, lang)} class="research-card-title-link">{line.data.title}</a></h3>
     <p lang={contentLang} style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem; flex-grow:1; line-height:1.6;">{line.data.shortDesc}</p>
     <div class="research-card-footer">
       <a 
