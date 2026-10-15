@@ -107,13 +107,13 @@ const directorsOf = (th: (typeof allTheses)[number]) =>
               const line = lineOf(th);
               return (
                 <a href={getLocalizedPath(`/tesis/${th.slug}`, lang)} class="thesis-feature-card" data-line={lineKey(th)}>
+                  <div class="thesis-feature-media">
+                    {line
+                      ? <img src={line.data.image} alt="" loading="lazy" decoding="async" />
+                      : <i class="fas fa-graduation-cap" aria-hidden="true"></i>}
+                  </div>
                   <div class="thesis-feature-body">
-                    {line && (
-                      <span class="thesis-feature-line" lang={line.locale !== lang ? line.locale : undefined}>
-                        <img src={line.data.image} alt="" loading="lazy" decoding="async" />
-                        {line.data.badge}
-                      </span>
-                    )}
+                    {line && <span class="thesis-feature-line" lang={line.locale !== lang ? line.locale : undefined}>{line.data.badge}</span>}
                     <h3 class="thesis-feature-title">{th.data.title}</h3>
                     <span class="thesis-feature-author">{th.data.author}</span>
                     <span class="thesis-feature-meta">
