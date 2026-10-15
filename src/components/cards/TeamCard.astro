@@ -19,11 +19,10 @@ const currentSlug = member.slug;
 const localizedRole = member.locale === lang ? member.data.role : localizeTeamRole(member.data.role, lang);
 const localizedDept = member.locale === lang ? member.data.department : localizeTeamDepartment(member.data.department || '', lang);
 
-const searchIndex = `${member.data.name} ${localizedRole} ${catLabel} ${member.data.role} ${member.data.category} ${member.data.department || ''}`.toLowerCase();
 const imageSrc = member.data.image ? (member.data.image.startsWith('/') ? member.data.image : `/${member.data.image}`) : '/assets/images/team/placeholder.jpg';
 ---
 
-<div class={`team-card-inst team-card-${catKey}`} data-category={member.data.category} data-catkey={catKey} data-search={searchIndex}>
+<div class={`team-card-inst team-card-${catKey}`} data-category={member.data.category} data-catkey={catKey}>
   <div class={`team-photo-box photo-${catKey}`}>
     <img src={imageSrc} alt={member.data.name} class="team-photo-img" loading="lazy" decoding="async" />
   </div>
