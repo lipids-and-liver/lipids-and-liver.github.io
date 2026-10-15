@@ -1,4 +1,5 @@
 ---
+import ContentLangNotice from '../ContentLangNotice.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
@@ -101,16 +102,17 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
 
       <!-- Columna Derecha: Contenido del artículo -->
       <article class="cv-main">
+        <ContentLangNotice contentLang={article.locale} lang={lang} variant="banner" />
         <div class="cv-kicker">
           <span class="cv-dot"></span>
           {categoryBadge || category} • {formattedDate}
         </div>
 
-        <h1 class="cv-main-name" style="margin-bottom:1.25rem;">
+        <h1 class="cv-main-name" lang={article.locale !== lang ? article.locale : undefined} style="margin-bottom:1.25rem;">
           {title}
         </h1>
 
-        <div class="cv-bio markdown-body" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+        <div class="cv-bio markdown-body" lang={article.locale !== lang ? article.locale : undefined} style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
           <Content />
         </div>
 

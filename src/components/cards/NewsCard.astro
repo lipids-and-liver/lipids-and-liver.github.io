@@ -1,19 +1,23 @@
 ---
+import ContentLangNotice from '../ContentLangNotice.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getTranslations, getLocalizedPath, getItemSlug, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, getItemSlug, getItemLang, DEFAULT_LOCALE, type Locale } from '../../utils/i18n';
 
 interface Props {
-  article: CollectionEntry<'news'>;
+  article: CollectionEntry<'news'> & { locale?: Locale };
   lang?: Locale;
   variant?: 'lead' | 'compact' | 'standard';
   isLead?: boolean;
 }
 
-const { article, lang = 'es', variant = 'standard', isLead = false } = Astro.props;
+const { article, lang = DEFAULT_LOCALE, variant = 'standard', isLead = false } = Astro.props;
 const currentVariant = isLead ? 'lead' : variant;
 const { title, date, category, categoryBadge, summary, author, featured, image } = article.data;
 const slug = getItemSlug(article);
 const t = getTranslations(lang);
+// Idioma del texto si difiere del de la página (contenido sin traducir)
+const articleLang = article.locale ?? getItemLang(article);
+const contentLang = articleLang !== lang ? articleLang : undefined;
 
 // Format date nicely
 let formattedDate = date;
@@ -45,17 +49,18 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
           <span class="news-category-badge">
             <i class="fas fa-bookmark"></i> {categoryBadge || category}
           </span>
+          <ContentLangNotice contentLang={articleLang} lang={lang} />
           <time class="news-date" datetime={date}>
             <i class="far fa-calendar-alt"></i> {formattedDate}
           </time>
         </div>
 
-        <h4 class="news-compact-title">
+        <h4 class="news-compact-title" lang={contentLang}>
           <a href={articleUrl}>{title}</a>
         </h4>
 
         {summary && (
-          <p class="news-compact-summary">
+          <p class="news-compact-summary" lang={contentLang}>
             {summary}
           </p>
         )}
@@ -85,16 +90,17 @@ const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https
         <span class="news-category-badge">
           <i class="fas fa-bookmark"></i> {categoryBadge || category}
         </span>
+        <ContentLangNotice contentLang={articleLang} lang={lang} />
         <time class="news-date" datetime={date}>
           <i class="far fa-calendar-alt"></i> {formattedDate}
         </time>
       </div>
 
-      <h3 class="news-title">
+      <h3 class="news-title" lang={contentLang}>
         <a href={articleUrl}>{title}</a>
       </h3>
 
-      <p class="news-summary">
+      <p class="news-summary" lang={contentLang}>
         {summary}
       </p>
 

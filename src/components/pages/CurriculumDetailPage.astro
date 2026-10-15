@@ -1,4 +1,5 @@
 ---
+import ContentLangNotice from '../ContentLangNotice.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, getTeamCategoryInfo, sortTeamMembers, localizeTeamRole, localizeTeamDepartment, localizeTeamOffice, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
@@ -157,6 +158,7 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
       </aside>
       <!-- Columna Derecha: Resto del contenido -->
       <article class="cv-main">
+        <ContentLangNotice contentLang={member.locale} lang={lang} variant="banner" />
         <div class="cv-kicker">
           <span class="cv-dot"></span>
           <i class={catIcon} style="color:var(--logo-green); margin-right:4px;"></i> {catLabel} • {t.header_sub || 'Grupo Consolidado Lipids & Liver'}
@@ -166,7 +168,7 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
         <div class="cv-main-title">{localizedCvTitle}</div>
 
         {member.data.quote && (
-          <div class="cv-quotes-container">
+          <div class="cv-quotes-container" lang={member.locale !== lang ? member.locale : undefined}>
             {(Array.isArray(member.data.quote) ? member.data.quote : [member.data.quote]).map((q: string) => (
               <blockquote class="cv-quote-epigraph">
                 <i class="fas fa-quote-left"></i>
@@ -178,7 +180,7 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
 
         <!-- Bio / Semblanza -->
         <div class="cv-bio">
-          <div class="cv-bio-content">
+          <div class="cv-bio-content" lang={member.locale !== lang ? member.locale : undefined}>
             <Content />
           </div>
         </div>

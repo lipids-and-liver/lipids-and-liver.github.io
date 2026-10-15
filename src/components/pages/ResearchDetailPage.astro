@@ -1,4 +1,5 @@
 ---
+import ContentLangNotice from '../ContentLangNotice.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
@@ -107,16 +108,17 @@ const { Content } = await render(line);
 
       <!-- Columna Derecha: Contenido completo de la Línea de Investigación -->
       <article class="cv-main">
+        <ContentLangNotice contentLang={line.locale} lang={lang} variant="banner" />
         <div class="cv-kicker">
           <span class="cv-dot"></span>
           {line.data.badge} • {t.lines_title || 'Líneas de Investigación'}
         </div>
 
-        <h1 class="cv-main-name">
+        <h1 class="cv-main-name" lang={line.locale !== lang ? line.locale : undefined}>
           {line.data.title}
         </h1>
 
-        <div class="cv-main-title" style="font-size:1.05rem; line-height:1.6; color:var(--text-secondary); font-weight:400;">
+        <div class="cv-main-title" lang={line.locale !== lang ? line.locale : undefined} style="font-size:1.05rem; line-height:1.6; color:var(--text-secondary); font-weight:400;">
           {line.data.shortDesc}
         </div>
 
@@ -133,7 +135,9 @@ const { Content } = await render(line);
         <!-- Descripción / Contenido Markdown -->
         <div class="cv-bio">
           <h3 class="cv-block-title" style="margin-bottom:0.85rem;"><i class="fas fa-file-alt"></i> {t.lines_desc_title}</h3>
-          <Content />
+          <div lang={line.locale !== lang ? line.locale : undefined}>
+            <Content />
+          </div>
         </div>
 
         <!-- Filiación Institucional -->
