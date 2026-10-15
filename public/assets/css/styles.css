@@ -6017,17 +6017,27 @@ a.cv-contact-item:hover i {
   vertical-align: middle;
 }
 
+/* Fila superior de la tarjeta de tesis: línea de investigación (izq.) y estado (der.) */
+.thesis-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
 /* Línea de investigación en la tarjeta de tesis: miniatura + nombre corto */
 .thesis-line-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  min-width: 0;
   max-width: 100%;
-  padding: 2px 9px 2px 2px;
+  padding: 3px 12px 3px 3px;
   border: 1px solid var(--border-color);
   border-radius: 999px;
   background: var(--bg-surface);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--ehu-navy);
   text-decoration: none;
@@ -6040,8 +6050,8 @@ a.cv-contact-item:hover i {
 }
 
 .thesis-line-chip-img {
-  width: 22px;
-  height: 22px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;

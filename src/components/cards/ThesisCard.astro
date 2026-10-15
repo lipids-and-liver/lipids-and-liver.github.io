@@ -21,21 +21,17 @@ const line = thesis.data.researchLine
 ---
 
 <div class={`thesis-card-inst ${isOngoing ? 'ongoing' : ''}`} data-type={isOngoing ? 'ONGOING' : 'COMPLETED'}>
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.85rem; flex-wrap:wrap; gap:6px;">
-    <span class={isOngoing ? 'thesis-badge-ongoing' : 'thesis-badge-completed'} style="margin-bottom:0;">
-      <i class={isOngoing ? 'fas fa-spinner fa-spin' : 'fas fa-check-circle'}></i> {badgeText}
-    </span>
-    {thesis.data.handleUrl && (
-      <span style="font-size:0.72rem; font-weight:700; color:#15803d; background:#dcfce7; padding:2px 8px; border-radius:4px; display:inline-flex; align-items:center; gap:4px;">
-        <i class="fas fa-lock-open"></i> Open Access
-      </span>
-    )}
+  <!-- Línea de investigación (izquierda) y estado de la tesis (derecha) -->
+  <div class="thesis-card-top">
     {line && (
       <a href={getLocalizedPath(`/lineas/${line.slug}`, lang)} class="thesis-line-chip" title={line.data.title} lang={line.locale !== lang ? line.locale : undefined}>
         <img src={line.data.image} alt="" class="thesis-line-chip-img" loading="lazy" decoding="async" />
         <span>{line.data.badge}</span>
       </a>
     )}
+    <span class={isOngoing ? 'thesis-badge-ongoing' : 'thesis-badge-completed'} style="margin-bottom:0; margin-left:auto;">
+      <i class={isOngoing ? 'fas fa-spinner fa-spin' : 'fas fa-check-circle'}></i> {badgeText}
+    </span>
   </div>
 
   <h4 class="thesis-author">{thesis.data.author}</h4>
