@@ -80,7 +80,7 @@ const completedTheses = allTheses.filter(t => t.data.status === 'completed');
       const select = document.getElementById('thesis-select');
       if (select) {
         const lang = select.dataset.lang || 'es';
-        const prefix = lang === 'es' ? '' : '/' + lang;
+        const prefix = lang === 'es' ? '/portal' : '/portal/' + lang;
         select.addEventListener('change', (e) => {
           if (e.target.value) {
             window.location.href = prefix + '/tesis/' + e.target.value;
