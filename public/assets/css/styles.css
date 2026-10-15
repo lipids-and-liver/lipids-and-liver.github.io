@@ -736,6 +736,177 @@ html.demo-alert-hidden .demo-alert-banner {
   box-shadow: 0 4px 10px rgba(104, 159, 56, 0.4);
 }
 
+/* ==========================================================================
+   Menú hamburguesa (pantallas de menos de 1100 px)
+   ========================================================================== */
+.nav-toggle,
+.lang-selector.nav-panel-lang {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .header-main-row {
+    gap: 16px;
+  }
+
+  /* El título textual no cabe junto a la marca, el idioma y el botón */
+  .header-title-box {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 22px;
+    background: var(--ehu-navy);
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--transition-smooth);
+  }
+
+  .nav-toggle:hover,
+  .site-header.nav-open .nav-toggle {
+    background: var(--logo-green);
+  }
+
+  .nav-toggle:focus-visible {
+    outline: 3px solid var(--logo-green);
+    outline-offset: 2px;
+  }
+
+  .nav-toggle i {
+    width: 1em;
+    text-align: center;
+  }
+
+  /* Panel desplegable bajo la cabecera */
+  .nav-bar-row {
+    display: none;
+    max-height: calc(100vh - 90px);
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-top: 3px solid var(--logo-green);
+  }
+
+  .site-header.nav-open .nav-bar-row {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 10px 0 16px;
+  }
+
+  .nav-menu-item > a {
+    padding: 13px 14px;
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  .nav-menu-item > a .nav-caret {
+    margin-left: auto;
+  }
+
+  /* En táctil no hay hover: el resaltado y el despliegue solo siguen a .open */
+  .nav-menu-item.has-dropdown:hover > a,
+  .nav-menu-item.has-dropdown:focus-within > a {
+    background-color: transparent;
+  }
+
+  .nav-menu-item.has-dropdown.open > a,
+  .nav-menu-item > a.active,
+  .nav-menu-item > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-menu-item.has-dropdown:hover .nav-caret,
+  .nav-menu-item.has-dropdown:focus-within .nav-caret {
+    transform: none;
+  }
+
+  .nav-menu-item.has-dropdown.open .nav-caret {
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-menu,
+  .nav-menu-item.has-dropdown:hover .nav-dropdown-menu,
+  .nav-menu-item.has-dropdown:focus-within .nav-dropdown-menu {
+    display: none;
+    position: static;
+    min-width: 0;
+    margin: 4px 0 8px;
+    box-shadow: none;
+    border-radius: var(--radius-sm);
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+
+  .nav-menu-item.has-dropdown.open .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown-menu li a:hover {
+    transform: none;
+  }
+
+  .nav-menu-contact {
+    margin: 10px 0 0 !important;
+  }
+
+  .nav-contact-link {
+    width: 100%;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+  }
+}
+
+/* Móvil: la marca y el botón ocupan la cabecera; el idioma pasa al panel */
+@media (max-width: 600px) {
+  .header-actions .lang-selector {
+    display: none;
+  }
+
+  .lang-selector.nav-panel-lang {
+    display: inline-flex;
+    margin-top: 14px;
+  }
+
+  .nav-toggle-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .nav-toggle {
+    width: 46px;
+    height: 46px;
+    justify-content: center;
+    padding: 0;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-lockup-img {
+    height: 56px;
+  }
+}
+
 /* Contextual Secondary Utility Sub-Bar */
 .nav-sub-bar {
   background: #001a2e;
@@ -856,6 +1027,10 @@ html.demo-alert-hidden .demo-alert-banner {
 }
 
 .lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   border: none;
   background: transparent;
   color: var(--text-secondary);
@@ -3743,15 +3918,6 @@ a.cv-contact-item:hover i {
 }
 
 @media (max-width: 768px) {
-  .header-main-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  /* En móvil la marca ya identifica al grupo: el título textual sobra */
-  .header-title-box {
-    display: none;
-  }
   .hero-headline {
     font-size: 1.85rem;
   }
@@ -3764,39 +3930,6 @@ a.cv-contact-item:hover i {
   }
   .btn-inst-primary, .btn-inst-secondary {
     justify-content: center;
-  }
-  .nav-menu {
-    flex-wrap: wrap;
-    gap: 4px;
-    padding: 6px 0;
-  }
-  .nav-menu-item > a {
-    padding: 8px 12px;
-    font-size: 0.85rem;
-  }
-  .nav-menu-contact {
-    margin-left: 0 !important;
-    margin-top: 6px;
-    width: 100%;
-  }
-  .nav-contact-link {
-    width: 100%;
-    justify-content: center;
-  }
-  .nav-dropdown-menu {
-    position: static;
-    min-width: 100%;
-    box-shadow: none;
-    margin-top: 4px;
-    border-radius: var(--radius-sm);
-    display: none;
-  }
-  .nav-menu-item.has-dropdown.open .nav-dropdown-menu,
-  .nav-menu-item.has-dropdown:hover .nav-dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
   }
   .segmented-control-bar {
     flex-wrap: wrap;
