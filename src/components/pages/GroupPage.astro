@@ -10,7 +10,9 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 
-const presentationEntries = await getLocalizedCollection('presentation', lang);
+// Las instalaciones tienen página propia (/instalaciones): no se repiten como pestaña
+const presentationEntries = (await getLocalizedCollection('presentation', lang))
+  .filter(entry => entry.data.tabId !== 'tab-instalaciones');
 presentationEntries.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 
 const presentationTabs = await Promise.all(

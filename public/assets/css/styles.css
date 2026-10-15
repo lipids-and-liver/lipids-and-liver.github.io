@@ -5890,3 +5890,13 @@ a.cv-contact-item:hover i {
   color: var(--ehu-blue-slate);
   font-size: 1.1rem;
 }
+
+/* Ficha de instalación sin fotografía (pendiente): icono sobre fondo de la marca */
+.facility-card-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ehu-navy) 0%, var(--ehu-blue-slate) 100%);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 3.5rem;
+}

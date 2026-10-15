@@ -53,8 +53,8 @@
     "about_letter_sign_role": "Investigadora Principal y Coordinadora del Grupo Lipids & Liver",
     "about_letter_sign_dept": "Catedrática de Fisiología • Universidad del País Vasco (UPV/EHU) & IIS Biobizkaia",
     "about_letter_view_cv": "Ver Curriculum Vitae Completo",
-    "about_tabs_heading": "Estructura, Red Traslacional e Instalaciones",
-    "about_tabs_subheading": "Conozca los pilares institucionales, alianzas clínicas y laboratorios experimentales del grupo",
+    "about_tabs_heading": "Estructura y Red Traslacional",
+    "about_tabs_subheading": "Conozca los pilares institucionales y las alianzas clínicas del grupo",
     "lines_title": "Líneas de Investigación",
     "lines_subtitle": "Proyectos científicos activos del grupo",
     "research_btn_modal": "Ver Línea de Investigación",
@@ -442,7 +442,9 @@
     "demo_badge_title": "Ver aviso detallado de la versión demo",
     "ehu_name_full": "Universidad del País Vasco / Euskal Herriko Unibertsitatea",
     "ehu_name_short": "Universidad del País Vasco (UPV/EHU)",
-    "content_draft_translation": "Traducción en borrador, pendiente de revisión por el grupo."
+    "content_draft_translation": "Traducción en borrador, pendiente de revisión por el grupo.",
+    "facilities_title": "Instalaciones",
+    "facilities_page_sub": "Laboratorios del grupo en la Facultad de Medicina y Enfermería y el edificio María Goyri (UPV/EHU), y en el IIS Biobizkaia"
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -498,8 +500,8 @@
     "about_letter_sign_role": "Lipids & Liver Taldearen Zuzendaria eta Ikertzaile Nagusia",
     "about_letter_sign_dept": "Fisiologiako Katedraduna • Euskal Herriko Unibertsitatea (UPV/EHU) & Biobizkaia OII",
     "about_letter_view_cv": "Curriculum Osoa Ikusi",
-    "about_tabs_heading": "Egitura, Sare Translazionala eta Instalazioak",
-    "about_tabs_subheading": "Ezagutu taldearen erakunde-zutabeak, aliantza klinikoak eta laborategi esperimentalak",
+    "about_tabs_heading": "Egitura eta Sare Translazionala",
+    "about_tabs_subheading": "Ezagutu taldearen erakunde-zutabeak eta aliantza klinikoak",
     "lines_title": "Ikerketa Lerroak",
     "lines_subtitle": "Taldearen ikerketa-proiektu aktiboak",
     "research_btn_modal": "Ikerketa Lerroa Ikusi",
@@ -887,7 +889,9 @@
     "demo_badge_title": "Ikusi demo-bertsioaren abisu zehatza",
     "ehu_name_full": "Euskal Herriko Unibertsitatea / Universidad del País Vasco",
     "ehu_name_short": "Euskal Herriko Unibertsitatea (UPV/EHU)",
-    "content_draft_translation": "Itzulpena zirriborroa da, taldeak berrikusteke."
+    "content_draft_translation": "Itzulpena zirriborroa da, taldeak berrikusteke.",
+    "facilities_title": "Instalazioak",
+    "facilities_page_sub": "Taldearen laborategiak Medikuntza eta Erizaintza Fakultatean eta María Goyri eraikinean (UPV/EHU), eta IIS Biobizkaian"
   },
   "en": {
     "nav_home": "Home",
@@ -943,8 +947,8 @@
     "about_letter_sign_role": "Lead Principal Investigator & Coordinator of Lipids & Liver Group",
     "about_letter_sign_dept": "Full Professor of Physiology • University of the Basque Country (UPV/EHU) & Biobizkaia HRI",
     "about_letter_view_cv": "View Full Curriculum Vitae",
-    "about_tabs_heading": "Institutional Structure, Network & Facilities",
-    "about_tabs_subheading": "Explore the strategic pillars, clinical partnerships, and experimental laboratories of our group",
+    "about_tabs_heading": "Institutional Structure & Network",
+    "about_tabs_subheading": "Explore the strategic pillars and clinical partnerships of our group",
     "lines_title": "Research Lines",
     "lines_subtitle": "Active scientific research projects of the group",
     "research_btn_modal": "View Research Line",
@@ -1332,6 +1336,8 @@
     "demo_badge_title": "View the detailed demo version notice",
     "ehu_name_full": "University of the Basque Country (UPV/EHU)",
     "ehu_name_short": "University of the Basque Country (UPV/EHU)",
-    "content_draft_translation": "Draft translation, pending review by the group."
+    "content_draft_translation": "Draft translation, pending review by the group.",
+    "facilities_title": "Facilities",
+    "facilities_page_sub": "The group's laboratories at the Faculty of Medicine and Nursing and the María Goyri building (UPV/EHU), and at IIS Biobizkaia"
   }
 }
