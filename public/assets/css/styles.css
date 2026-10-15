@@ -6016,3 +6016,39 @@ a.cv-contact-item:hover i {
   border: 1px solid #fcd34d;
   vertical-align: middle;
 }
+
+/* Línea de investigación en la tarjeta de tesis: miniatura + nombre corto */
+.thesis-line-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 2px 9px 2px 2px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-surface);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ehu-navy);
+  text-decoration: none;
+  line-height: 1.2;
+  transition: border-color var(--transition-smooth);
+}
+
+.thesis-line-chip:hover {
+  border-color: var(--logo-green);
+}
+
+.thesis-line-chip-img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.thesis-line-chip span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

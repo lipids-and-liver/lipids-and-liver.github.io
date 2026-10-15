@@ -422,6 +422,7 @@ collections:
       - { label: "Universidad", name: "university", widget: "string", required: false, i18n: true, default: "UPV/EHU" }
       - { label: "Fecha de Defensa", name: "defenseDate", widget: "string", required: false, i18n: "duplicate", hint: "Ej: 14/07/2023 o 2023-07-14" }
       - { label: "Palabras Clave", name: "keywords", widget: "list", required: false, i18n: true }
+      - { label: "Línea de investigación", name: "researchLine", widget: "select", required: false, i18n: "duplicate", options: [{ label: "MAFLD / esteatosis", value: "mafld" }, { label: "Cáncer hepático", value: "cancer" }, { label: "Daño hepático y E2F", value: "e2f" }, { label: "Exposoma", value: "exposome" }, { label: "Ómicas espaciales", value: "spatial-omics" }], hint: "Su imagen aparece en la tarjeta de la tesis" }
       - { label: "Enlace Oficial UPV/EHU", name: "officialUrl", widget: "string", required: false, i18n: "duplicate", hint: "Enlace a ekoizpen-zientifikoa.ehu.eus" }
       - { label: "Identificador Handle (ADDI)", name: "handleUrl", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://hdl.handle.net/10810/XXXXX" }
       - { label: "Ficha Dialnet", name: "dialnetUrl", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://dialnet.unirioja.es/servlet/tesis?codigo=XXXXX" }

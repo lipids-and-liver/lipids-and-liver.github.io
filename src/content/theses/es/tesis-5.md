@@ -17,6 +17,7 @@ keywords:
   - "Estrés Oxidativo"
   - "Hepatocitos"
 order: 5
+researchLine: "e2f"
 ---
 
 Estudio integrativo que relaciona el estrés replicativo y el daño al genoma hepatocelular con las desregulaciones del metabolismo lipídico. El trabajo indaga la función de E2F2 en la senescencia hepática y el mantenimiento del retículo endoplásmico.

@@ -17,6 +17,7 @@ keywords:
   - "Colestasis"
   - "Metabolismo Lipídico"
 order: 5
+researchLine: "e2f"
 ---
 
 La transición de esteatosis simple hacia esteatohepatitis colestásica (MASH) cursa con alteraciones severas en los flujos de sales biliares y esteroles hepáticos. Esta investigación doctoral analiza la modulación transcripcional mediada por E2F2 y el microARN miR-34a-5p sobre la maquinaria molecular responsable de la secreción biliar y la toxicidad celular inducida por ácidos biliares, identificando dianas para prevenir la cirrosis y la descompensación hepática.

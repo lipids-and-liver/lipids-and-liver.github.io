@@ -14,6 +14,8 @@ const theses = defineCollection({
     directors: z.array(z.string()).nullish().transform(val => val || []),
     program: z.string().nullish(),
     keywords: z.array(z.string()).nullish().transform(val => val || []),
+    // Línea de investigación (id de src/content/research): su imagen aparece en la tarjeta de la tesis
+    researchLine: z.string().nullish(),
     defenseDate: z.string().nullish(),
     officialUrl: z.string().nullish(),
     handleUrl: z.string().nullish(),

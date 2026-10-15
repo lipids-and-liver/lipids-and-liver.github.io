@@ -1,5 +1,5 @@
 ---
-import { getLocalizedPath, getTranslations, getThesisBadgeText, type Locale, localizeThesisMeta } from '../../utils/i18n';
+import { getLocalizedPath, getLocalizedCollection, getTranslations, getThesisBadgeText, type Locale, localizeThesisMeta } from '../../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -13,6 +13,11 @@ const t = getTranslations(lang);
 const isOngoing = thesis.data.status === 'ongoing';
 const currentSlug = thesis.slug;
 const badgeText = getThesisBadgeText(thesis, lang);
+
+// Línea de investigación asociada (miniatura con su imagen)
+const line = thesis.data.researchLine
+  ? (await getLocalizedCollection('research', lang)).find(l => l.slug === thesis.data.researchLine)
+  : undefined;
 ---
 
 <div class={`thesis-card-inst ${isOngoing ? 'ongoing' : ''}`} data-type={isOngoing ? 'ONGOING' : 'COMPLETED'}>
@@ -24,6 +29,12 @@ const badgeText = getThesisBadgeText(thesis, lang);
       <span style="font-size:0.72rem; font-weight:700; color:#15803d; background:#dcfce7; padding:2px 8px; border-radius:4px; display:inline-flex; align-items:center; gap:4px;">
         <i class="fas fa-lock-open"></i> Open Access
       </span>
+    )}
+    {line && (
+      <a href={getLocalizedPath(`/lineas/${line.slug}`, lang)} class="thesis-line-chip" title={line.data.title} lang={line.locale !== lang ? line.locale : undefined}>
+        <img src={line.data.image} alt="" class="thesis-line-chip-img" loading="lazy" decoding="async" />
+        <span>{line.data.badge}</span>
+      </a>
     )}
   </div>
 

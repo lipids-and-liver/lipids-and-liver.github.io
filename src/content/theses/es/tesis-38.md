@@ -3,7 +3,7 @@ id: "tesis-38"
 author: "Ane Ortiz Palma"
 status: "ongoing"
 title: "Alteraciones en la señalización lipídica y proteostasis mitocondrial asociadas a disfunción metabólica en patologías hepáticas"
-institution: "UPV/EHU - IIS Biocruces Bizkaia"
+institution: "UPV/EHU - IIS Biobizkaia"
 year: "En desarrollo (2024-2027)"
 badge: "En Curso"
 directors:
@@ -16,6 +16,7 @@ keywords:
   - "MASLD"
   - "Estrés Celular"
 order: 6
+researchLine: "mafld"
 ---
 
 La disfunción de los orgánulos subcelulares, en particular del retículo endoplásmico y la mitocondria, es un sello distintivo de la esteatohepatitis asociada a disfunción metabólica (MASH). Esta tesis profundiza en los mecanismos de control de calidad mitocondrial y la remodelación de fosfolípidos estructurales en hepatocitos, con el fin de definir nuevos biomarcadores diagnósticos no invasivos y opciones terapéuticas basadas en la protección mitocondrial.

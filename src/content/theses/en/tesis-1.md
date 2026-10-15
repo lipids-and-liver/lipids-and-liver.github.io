@@ -22,6 +22,7 @@ dialnetUrl: "https://dialnet.unirioja.es/servlet/tesis?codigo=405088"
 teseoId: "329290"
 defenseDate: "30 October 2025"
 order: 10
+researchLine: "e2f"
 ---
 
 Metabolic dysfunction–associated steatotic liver disease (MASLD) is the most common cause of chronic liver disease, affecting over 30% of adults. It can progress from simple steatosis to metabolic dysfunction–associated steatohepatitis (MASH), fibrosis, cirrhosis, and hepatocellular carcinoma. Cholesterol accumulation is a key driver of MASLD. The first part of this work demonstrates that the transcription factor E2F2 regulates biliary metabolism in MASH via miR-34a-5p. The second part investigates the role of E2F2 in lipoprotein metabolism and its interaction with PCSK9, highlighting the contribution of this axis to dyslipidemia and cardiovascular risk.
