@@ -116,7 +116,7 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
     }
 
     if (selected) {
-      result.push(Object.assign(selected, { slug, locale: selectedLocale }));
+      result.push({ ...selected, slug, locale: selectedLocale });
     }
   }
 
@@ -136,6 +136,7 @@ export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research'
   
   let targetEntry: CollectionEntry<C> | undefined;
   let fallbackEntry: CollectionEntry<C> | undefined;
+  let anyEntry: CollectionEntry<C> | undefined;
 
   for (const entry of allEntries) {
     const itemSlug = getItemSlug(entry);
@@ -148,14 +149,15 @@ export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research'
       if (itemLang === DEFAULT_LOCALE) {
         fallbackEntry = entry;
       }
+      anyEntry ??= entry;
     }
   }
 
-  const chosen = targetEntry || fallbackEntry;
+  const chosen = targetEntry || fallbackEntry || anyEntry;
   if (!chosen) return undefined;
 
   const chosenLang = getItemLang(chosen);
-  return Object.assign(chosen, { slug, locale: chosenLang });
+  return { ...chosen, slug, locale: chosenLang };
 }
 
 export async function getAllSlugs<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(

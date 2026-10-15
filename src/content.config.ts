@@ -9,7 +9,7 @@ const theses = defineCollection({
     status: z.enum(['ongoing', 'completed']).default('ongoing'),
     title: z.string().default('Tesis Doctoral'),
     institution: z.string().nullish().transform(val => val || 'UPV/EHU'),
-    year: z.union([z.string(), z.number()]).default(new Date().getFullYear()),
+    year: z.union([z.string(), z.number()]),
     badge: z.string().nullish(),
     directors: z.array(z.string()).nullish().transform(val => val || []),
     program: z.string().nullish(),
@@ -74,7 +74,7 @@ const publications = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/publications" }),
   schema: z.object({
     id: z.string().optional(),
-    year: z.union([z.string(), z.number()]).default(new Date().getFullYear()),
+    year: z.union([z.string(), z.number()]),
     title: z.string(),
     authors: z.string(),
     journal: z.string(),
@@ -145,7 +145,7 @@ const news = defineCollection({
   schema: z.object({
     id: z.string().optional(),
     title: z.string().default('Noticia'),
-    date: z.union([z.string(), z.date()]).nullish().transform(val => val instanceof Date ? val.toISOString().split('T')[0] : (val ? String(val) : new Date().toISOString().split('T')[0])),
+    date: z.union([z.string(), z.date()]).transform(val => val instanceof Date ? val.toISOString().split('T')[0] : String(val)),
     category: z.string().default('Novedades'),
     categoryBadge: z.string().nullish(),
     summary: z.string().default(''),

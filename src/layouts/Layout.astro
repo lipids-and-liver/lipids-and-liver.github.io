@@ -57,8 +57,13 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
   <!-- Umami Analytics -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3b088faa-e063-478c-8b7e-d4aaec85a1dd"></script>
 
-  <!-- Prevent alert flash if previously dismissed in session -->
+  <!-- Apply saved theme and dismissed alert before first paint (avoids flash) -->
   <script is:inline>
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch(e) {}
     try {
       if (sessionStorage.getItem('lipids_demo_alert_dismissed') === '1') {
         document.documentElement.classList.add('demo-alert-hidden');
@@ -516,8 +521,7 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       // 1. Theme setup
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
+      const savedTheme = document.documentElement.getAttribute('data-theme') || 'light';
       updateThemeUI(savedTheme);
 
       const themeBtn = document.getElementById('theme-toggle');
@@ -526,7 +530,9 @@ const langEnLink = isHoldingPage ? '/en/' : getLocalizedPath(basePath, 'en');
           const current = document.documentElement.getAttribute('data-theme');
           const next = current === 'dark' ? 'light' : 'dark';
           document.documentElement.setAttribute('data-theme', next);
-          localStorage.setItem('theme', next);
+          try {
+            localStorage.setItem('theme', next);
+          } catch (e) {}
           updateThemeUI(next);
         });
       }
