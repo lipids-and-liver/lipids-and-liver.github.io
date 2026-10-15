@@ -30,6 +30,12 @@ This repository contains the modernized official web portal for the **Lipids & L
 - `iniciar_servidor.sh`: Convenience script to run local dev server (`npm run dev` at `http://localhost:4321`).
 - `construir_web.sh`: Convenience script to compile static site (`npm run build` -> `dist/`).
 
+## Languages (group decision, Oct 2026)
+- Portal default language is **English** (`/portal/…`); Spanish `/portal/es/…`, Basque `/portal/eu/…`. Single source of truth: `src/utils/i18n.ts` (`DEFAULT_LOCALE`, `FALLBACK_LOCALES`, `CONTENT_SOURCE_LOCALE`). Never hardcode `'es'` as default.
+- Pages live once in `src/pages/portal/[...lang]/` (helpers in `src/utils/routes.ts`). The root holding page keeps Spanish as default.
+- Fixed core always in ES/EU/EN: UI strings (`translations.json`, no hardcoded UI text in components), menus, home, group, training, research lines, team profiles. Other content may exist in 1–2 languages and is shown with `ContentLangNotice`, never hidden. Publications/theses/projects stay in their original language.
+- Run `npm run i18n:check` to list missing core translations.
+
 ## Key Design Principles & Features
 - **Hero Section**:
   - Two-column institutional layout (text on left, team photo in `hero-banner-img-box` on right).
