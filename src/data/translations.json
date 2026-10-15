@@ -444,7 +444,13 @@
     "ehu_name_short": "Universidad del País Vasco (UPV/EHU)",
     "content_draft_translation": "Traducción en borrador, pendiente de revisión por el grupo.",
     "facilities_title": "Instalaciones",
-    "facilities_page_sub": "Laboratorios del grupo en la Facultad de Medicina y Enfermería y el edificio María Goyri (UPV/EHU), y en el IIS Biobizkaia"
+    "facilities_page_sub": "Laboratorios del grupo en la Facultad de Medicina y Enfermería y el edificio María Goyri (UPV/EHU), y en el IIS Biobizkaia",
+    "sciresources_title": "Recursos Científicos",
+    "sciresources_page_sub": "Servicios y plataformas científico-técnicas con los que trabaja el grupo",
+    "sciresources_provider_sgiker": "SGIker · Servicios Generales de Investigación (UPV/EHU)",
+    "sciresources_provider_biobizkaia": "IIS Biobizkaia · Plataformas de apoyo a la investigación",
+    "sciresources_official_link": "Web oficial del servicio",
+    "content_draft_public_sources": "Borrador redactado a partir de fuentes públicas, pendiente de validación por el grupo."
   },
   "eu": {
     "nav_home": "Hasiera",
@@ -891,7 +897,13 @@
     "ehu_name_short": "Euskal Herriko Unibertsitatea (UPV/EHU)",
     "content_draft_translation": "Itzulpena zirriborroa da, taldeak berrikusteke.",
     "facilities_title": "Instalazioak",
-    "facilities_page_sub": "Taldearen laborategiak Medikuntza eta Erizaintza Fakultatean eta María Goyri eraikinean (UPV/EHU), eta IIS Biobizkaian"
+    "facilities_page_sub": "Taldearen laborategiak Medikuntza eta Erizaintza Fakultatean eta María Goyri eraikinean (UPV/EHU), eta IIS Biobizkaian",
+    "sciresources_title": "Baliabide Zientifikoak",
+    "sciresources_page_sub": "Taldeak erabiltzen dituen zerbitzu eta plataforma zientifiko-teknikoak",
+    "sciresources_provider_sgiker": "SGIker · Ikerketarako Zerbitzu Orokorrak (UPV/EHU)",
+    "sciresources_provider_biobizkaia": "IIS Biobizkaia · Ikerketarako laguntza-plataformak",
+    "sciresources_official_link": "Zerbitzuaren webgune ofiziala",
+    "content_draft_public_sources": "Iturri publikoetatik idatzitako zirriborroa, taldeak baliozkotzeke."
   },
   "en": {
     "nav_home": "Home",
@@ -1338,6 +1350,12 @@
     "ehu_name_short": "University of the Basque Country (UPV/EHU)",
     "content_draft_translation": "Draft translation, pending review by the group.",
     "facilities_title": "Facilities",
-    "facilities_page_sub": "The group's laboratories at the Faculty of Medicine and Nursing and the María Goyri building (UPV/EHU), and at IIS Biobizkaia"
+    "facilities_page_sub": "The group's laboratories at the Faculty of Medicine and Nursing and the María Goyri building (UPV/EHU), and at IIS Biobizkaia",
+    "sciresources_title": "Scientific Resources",
+    "sciresources_page_sub": "Scientific and technical services and platforms the group works with",
+    "sciresources_provider_sgiker": "SGIker · General Research Services (UPV/EHU)",
+    "sciresources_provider_biobizkaia": "IIS Biobizkaia · Research support platforms",
+    "sciresources_official_link": "Official service website",
+    "content_draft_public_sources": "Draft based on public sources, pending validation by the group."
   }
 }

@@ -270,6 +270,30 @@ collections:
       - { label: "Objetivos Científicos y Memoria Extensa", name: "body", widget: "markdown", required: false, i18n: true }
       - { label: "Estado de la traducción", name: "translationStatus", widget: "select", options: [{ label: "Borrador (pendiente de revisión)", value: "draft" }, { label: "Revisada", value: "reviewed" }], required: false, i18n: true, hint: "Marca «Revisada» cuando alguien del grupo haya validado esta versión" }
 
+  # 2.1b RECURSOS CIENTÍFICOS (SGIker, Biobizkaia)
+  - name: "sciresources"
+    label: "🔬 Investigación › Recursos Científicos"
+    label_singular: "Recurso Científico"
+    description: "Servicios y plataformas científico-técnicas que usa el grupo (página /recursos-cientificos)"
+    folder: "src/content/sciresources"
+    i18n: true
+    create: true
+    slug: "{{fields.id | default('{{fields.title}}')}}"
+    identifier_field: "title"
+    summary: "{{title}} ({{provider}})"
+    sortable_fields: ["order", "title"]
+    fields:
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: sgiker-lipidomica" }
+      - { label: "Nombre del servicio", name: "title", widget: "string", i18n: true }
+      - { label: "Proveedor", name: "provider", widget: "select", options: [{ label: "SGIker (UPV/EHU)", value: "sgiker" }, { label: "IIS Biobizkaia", value: "biobizkaia" }], i18n: "duplicate" }
+      - { label: "Icono (Font Awesome)", name: "icon", widget: "string", default: "fas fa-flask", i18n: "duplicate", hint: "Ej: fas fa-vial, fas fa-dna, fas fa-paw" }
+      - { label: "Ubicación", name: "location", widget: "string", required: false, i18n: true }
+      - { label: "Web oficial del servicio", name: "url", widget: "string", i18n: "duplicate" }
+      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
+      - { label: "Borrador (texto pendiente de validar)", name: "draft", widget: "boolean", default: false, i18n: "duplicate", hint: "Desmárcalo cuando el grupo haya revisado el texto" }
+      - { label: "Estado de la traducción", name: "translationStatus", widget: "select", options: [{ label: "Borrador (pendiente de revisión)", value: "draft" }, { label: "Revisada", value: "reviewed" }], required: false, i18n: true }
+      - { label: "Descripción", name: "body", widget: "markdown", i18n: true }
+
   # 2.2 PROYECTOS COMPETITIVOS
   - name: "projects"
     label: "🔬 Investigación › Proyectos Competitivos"

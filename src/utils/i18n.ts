@@ -97,7 +97,7 @@ function pickLocale(available: Map<Locale, unknown>, lang: Locale): Locale | und
   return FALLBACK_LOCALES[lang].find(l => available.has(l));
 }
 
-export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents'>(
+export async function getLocalizedCollection<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents' | 'sciresources'>(
   collectionName: C,
   lang: Locale = DEFAULT_LOCALE
 ): Promise<Array<CollectionEntry<C> & { slug: string; locale: Locale }>> {
@@ -132,7 +132,7 @@ export async function getLocalizedCollection<C extends 'theses' | 'team' | 'rese
   return result;
 }
 
-export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents'>(
+export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents' | 'sciresources'>(
   collectionName: C,
   slug: string,
   lang: Locale = DEFAULT_LOCALE
@@ -149,7 +149,7 @@ export async function getLocalizedEntry<C extends 'theses' | 'team' | 'research'
   return { ...langMap.get(chosenLocale)!, slug, locale: chosenLocale };
 }
 
-export async function getAllSlugs<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter'>(
+export async function getAllSlugs<C extends 'theses' | 'team' | 'research' | 'publications' | 'presentation' | 'training' | 'projects' | 'news' | 'letter' | 'patents' | 'sciresources'>(
   collectionName: C
 ): Promise<string[]> {
   const allEntries = await getCollection(collectionName);

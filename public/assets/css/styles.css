@@ -5900,3 +5900,109 @@ a.cv-contact-item:hover i {
   color: rgba(255, 255, 255, 0.85);
   font-size: 3.5rem;
 }
+
+/* ==========================================================================
+   Recursos científicos (SGIker, Biobizkaia)
+   ========================================================================== */
+.sciresources-section + .sciresources-section {
+  padding-top: 0;
+}
+
+.section-title-inst i {
+  color: var(--logo-green);
+  margin-right: 6px;
+}
+
+.sciresources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.sciresource-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--logo-green);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sciresource-card-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.sciresource-card-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(104, 159, 56, 0.12);
+  color: var(--logo-green-hover);
+  font-size: 1.2rem;
+}
+
+.sciresource-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--ehu-navy);
+  margin: 0 0 0.25rem;
+}
+
+.sciresource-card-location {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.sciresource-card-body {
+  flex-grow: 1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.sciresource-card-body p {
+  margin: 0 0 0.9rem;
+}
+
+.sciresource-card-body ul {
+  margin: 0 0 0.9rem;
+  padding-left: 1.2rem;
+}
+
+.sciresource-card-body li {
+  margin-bottom: 0.35rem;
+}
+
+.sciresource-card-body em {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.sciresource-card-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--logo-green-hover);
+  text-decoration: none;
+}
+
+.sciresource-card-link:hover {
+  text-decoration: underline;
+}
+
+.sciresource-card-body a {
+  color: var(--logo-green-hover);
+}

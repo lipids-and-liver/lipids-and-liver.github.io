@@ -206,7 +206,25 @@ const patents = defineCollection({
   })
 });
 
+// Recursos científicos: servicios y plataformas que usa el grupo (SGIker, Biobizkaia…)
+const sciresources = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/sciresources" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    provider: z.enum(['sgiker', 'biobizkaia']),
+    icon: z.string().default('fas fa-flask'),
+    location: z.string().nullish(),
+    url: z.string().url(),
+    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
+    // Texto redactado a partir de fuentes públicas, pendiente de validación por el grupo
+    draft: z.boolean().default(false),
+    translationStatus: z.enum(['draft', 'reviewed']).optional(),
+  })
+});
+
 export const collections = {
+  sciresources,
   theses,
   team,
   research,
