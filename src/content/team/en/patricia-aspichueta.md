@@ -22,7 +22,7 @@ cv:
       - "Associate Professor, UPV/EHU (2009 - 2018)"
   grants:
       - "PID2021-124592OB-I00: Novel metabolic targets and lipidomic biomarkers in MAFLD and Liver Cancer (MICINN, 2022-2025)."
-      - "IT1560-22: Lipids & Liver Consolidated Group (Basque Government, 2022-2025)."
+      - "IT1476-22: Lipids & Liver Consolidated Group (Basque Government, 2022-2025)."
       - "RICORS-HEPATIS: Research Network in Liver Diseases (Carlos III Health Institute)."
   publications:
       - "Integrative Lipidomics Identifies Plasma Phospholipid Signatures for Non-invasive Discrimination of NASH. Journal of Hepatology, 2024."

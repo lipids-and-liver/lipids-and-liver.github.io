@@ -1,6 +1,6 @@
 # Lipids & Liver Research Group — Official Web Portal
 
-Official modernized website for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco Tipo A — IT1560-22) at the **University of the Basque Country (UPV/EHU)** and **IIS Biobizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus).
+Official modernized website for the **Lipids & Liver Research Group** (Grupo Consolidado del Gobierno Vasco — IT1476-22) at the **University of the Basque Country (UPV/EHU)** and **IIS Biobizkaia** (Department of Physiology, Faculty of Medicine and Nursing, Leioa Campus).
 
 > [!WARNING]
 > ### ⚠️ Estado del Proyecto: Versión Demo en Desarrollo

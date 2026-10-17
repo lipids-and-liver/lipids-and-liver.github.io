@@ -22,7 +22,7 @@ cv:
       - "Profesora Titular de Universidad, UPV/EHU (2009 - 2018)"
   grants:
       - "PID2021-124592OB-I00: Nuevas dianas metabólicas y biomarcadores lipidómicos en MAFLD y Cáncer Hepático (MICINN, 2022-2025)."
-      - "IT1560-22: Grupo Consolidado Lipids & Liver (Gobierno Vasco, 2022-2025)."
+      - "IT1476-22: Grupo Consolidado Lipids & Liver (Gobierno Vasco, 2022-2025)."
       - "RICORS-HEPATIS: Red de Investigación en Enfermedades Hepáticas (Instituto de Salud Carlos III)."
   publications:
       - "Integrative Lipidomics Identifies Plasma Phospholipid Signatures for Non-invasive Discrimination of NASH. Journal of Hepatology, 2024."

@@ -5,7 +5,7 @@ shortDesc: "Identificación por proteómica de adductos y dianas en hepatocitos 
 image: "/assets/images/exposome.jpg"
 badge: "Exposoma"
 order: 4
-affiliation: "Departamento de Bioquímica y Biología Molecular, Facultad de Ciencia y Tecnología, UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Colaboración con el Consorcio Europeo HELIX (exposoma en infancia). Grupo Consolidado IT1560-22, Gobierno Vasco."
+affiliation: "Departamento de Bioquímica y Biología Molecular, Facultad de Ciencia y Tecnología, UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Colaboración con el Consorcio Europeo HELIX (exposoma en infancia). Grupo Consolidado IT1476-22, Gobierno Vasco."
 ---
 
 <p>Estudio del impacto de la contaminación ambiental en el metabolismo lipídico humano y la predisposición a enfermedades hepáticas crónicas.</p>

@@ -22,7 +22,7 @@ cv:
       - "Unibertsitateko Irakasle Titularra, UPV/EHU (2009 - 2018)"
   grants:
       - "PID2021-124592OB-I00: Helburu metaboliko berriak eta biomarkatzaile lipidomikoak MAFLD eta Gibeleko Minbizian (MICINN, 2022-2025)."
-      - "IT1560-22: Lipids & Liver Talde Finkatua (Eusko Jaurlaritza, 2022-2025)."
+      - "IT1476-22: Lipids & Liver Talde Finkatua (Eusko Jaurlaritza, 2022-2025)."
       - "RICORS-HEPATIS: Gibeleko Gaixotasunetako Ikerketa Sarea (Carlos III Osasun Institutua)."
   publications:
       - "Integrative Lipidomics Identifies Plasma Phospholipid Signatures for Non-invasive Discrimination of NASH. Journal of Hepatology, 2024."

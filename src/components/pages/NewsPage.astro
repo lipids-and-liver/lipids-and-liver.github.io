@@ -14,7 +14,7 @@ const allNews = await getLocalizedCollection('news', lang);
 allNews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
 // Categorías en orden fijo (traducidas); solo las que tienen noticias. "Otros" siempre al final.
-const CATEGORY_ORDER = ['publicaciones', 'tesis', 'congresos', 'premios', 'divulgacion', 'institucional', 'otros'];
+const CATEGORY_ORDER = ['publicaciones', 'tesis', 'congresos', 'premios', 'institucional', 'otros'];
 const categories = CATEGORY_ORDER
   .map(key => ({ key, label: (t as Record<string, string>)[`news_cat_${key}`] || key, count: allNews.filter(n => n.data.category === key).length }))
   .filter(c => c.count > 0);

@@ -5,7 +5,7 @@ shortDesc: "Papel del estrés oxidativo, desregulación de lípidos y factores E
 image: "/assets/images/e2f.jpg"
 badge: "Regeneración & DILI"
 order: 3
-affiliation: "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Colaboración con el Centro de Investigación Biomédica en Red de Enfermedades Hepáticas y Digestivas (CIBERehd). Grupo Consolidado IT1560-22, Gobierno Vasco."
+affiliation: "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Colaboración con el Centro de Investigación Biomédica en Red de Enfermedades Hepáticas y Digestivas (CIBERehd). Grupo Consolidado IT1476-22, Gobierno Vasco."
 ---
 
 <p>El daño hepático inducido por fármacos (DILI) activa rutas de regeneración donde los hepatocitos acumulan temporalmente triglicéridos. Investigamos el papel de los factores de transcripción E2Fs en este acoplamiento fenotípico.</p>

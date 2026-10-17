@@ -5,7 +5,7 @@ shortDesc: "Metabolismoa aldatzen duten ingurumen-kutsatzaileen eraginpean daude
 image: "/assets/images/exposome.jpg"
 badge: "Exposoma"
 order: 4
-affiliation: "Biokimika eta Biologia Molekularra Saila, Zientzia eta Teknologia Fakultatea, UPV/EHU — Biobizkaia Osasun Ikerketa Institutua (IIS Biobizkaia). HELIX Europako Partzuergoarekin (haurtzaroko exposoma) lankidetzan. IT1560-22 Talde Finkatua, Eusko Jaurlaritza."
+affiliation: "Biokimika eta Biologia Molekularra Saila, Zientzia eta Teknologia Fakultatea, UPV/EHU — Biobizkaia Osasun Ikerketa Institutua (IIS Biobizkaia). HELIX Europako Partzuergoarekin (haurtzaroko exposoma) lankidetzan. IT1476-22 Talde Finkatua, Eusko Jaurlaritza."
 translationStatus: "draft"
 ---
 
