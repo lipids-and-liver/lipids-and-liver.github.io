@@ -106,3 +106,43 @@ La Dra. Elena García López es investigadora predoctoral en el grupo *Lipids & 
 
 Durante su trayectoria, ha adquirido amplia experiencia en modelos in vivo e in vitro, así como en técnicas avanzadas de biología molecular y celular, contribuyendo al desarrollo de nuevas estrategias terapéuticas.
 ```
+
+---
+
+## 5. Importar el currículum desde el CVN (FECYT)
+
+En lugar de copiar el CV a mano, se puede importar del **CVN** que cada persona ya mantiene en el [editor de FECYT](https://cvn.fecyt.es/editor/). El PDF del CVN lleva dentro los datos estructurados, y el script los pasa al bloque `cv` de la ficha en castellano.
+
+1. Exporta el CVN en **PDF** desde el editor (o pídeselo a la persona).
+2. Guárdalo **fuera del repositorio** (por ejemplo, en `~/cvn/`). La web es pública: el CVN incluye DNI, teléfono y otros datos personales que no deben subirse.
+3. Ejecuta:
+
+```bash
+python3 scripts/importar_cvn.py ~/cvn/elena-garcia.pdf --miembro elena-garcia
+```
+
+4. Revisa el resultado con `git diff src/content/team/es/elena-garcia.md` y haz commit.
+
+Para actualizar el CV basta con repetirlo con el PDF nuevo. Si la persona tiene su CVN **publicado en línea** en el editor de FECYT, no hace falta el PDF: `--orcid 0000-0000-0000-0000` lo descarga directamente.
+
+**Qué se importa:** titulaciones y doctorado, cursos, puestos, proyectos competitivos, publicaciones (artículos, capítulos y libros, con DOI), asignaturas impartidas y tesis doctorales dirigidas. El título del CV (`title`), las patentes y la presentación se conservan tal cual. Solo se lee esa lista de apartados: los datos personales del CVN no se tocan.
+
+**Opciones útiles:**
+
+| Opción | Por defecto | Para qué |
+| :--- | :---: | :--- |
+| `--mostrar` | — | Ver el resultado sin modificar la ficha |
+| `--max-publicaciones N` | 10 | Publicaciones más recientes que se muestran |
+| `--max-proyectos N` | 15 | Proyectos más recientes |
+| `--max-puestos N` | 12 | Puestos (los actuales se incluyen siempre) |
+| `--max-docencia N` | 10 | Asignaturas distintas (las tesis dirigidas van todas) |
+| `--max-formacion N` | 10 | Cursos más recientes |
+| `--incluir-contratos` | no | Añadir contratos y convenios a los proyectos |
+
+El script solo modifica la ficha en castellano. Si el miembro no tiene ficha propia en euskera o inglés, la web muestra el CV importado en castellano con el aviso de idioma. Si la tiene (`src/content/team/eu/` o `en/`), esa versión conserva su CV anterior hasta que se traduzca o se actualice a mano.
+
+**Ejemplo para probar el script:** `scripts/ejemplos/` contiene dos CVN con datos inventados (uno extenso y otro breve). Con ellos se generaron las fichas de prueba `prueba-cvn-extenso` y `prueba-cvn-breve`, que hay que borrar antes de que la web deje de ser una demo. Para ver el resultado sin tocar ninguna ficha:
+
+```bash
+python3 scripts/importar_cvn.py scripts/ejemplos/cvn-ejemplo-extenso.xml --mostrar
+```

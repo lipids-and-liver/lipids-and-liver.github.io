@@ -15,3 +15,11 @@ dist/
 
 # Local documentation & notes
 info/
+
+# CVN (FECYT): contienen datos personales, nunca al repositorio
+*CVN*.pdf
+*cvn*.pdf
+cvn/
+
+# Python
+__pycache__/
