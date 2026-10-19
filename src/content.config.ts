@@ -1,6 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+// El CMS guarda '' cuando un desplegable opcional se deja sin elegir: se trata como ausente
+const translationStatus = z.preprocess(val => val || undefined, z.enum(['draft', 'reviewed']).optional());
+
 const theses = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/theses" }),
   schema: z.object({
@@ -31,7 +34,7 @@ const team = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
   schema: z.object({
     // Traducción en borrador pendiente de revisión por el grupo (ver npm run i18n:check)
-    translationStatus: z.enum(['draft', 'reviewed']).optional(),
+    translationStatus,
     id: z.string().optional(),
     name: z.string().default('Investigador/a'),
     role: z.string().default('Investigador/a'),
@@ -78,7 +81,7 @@ const research = defineCollection({
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
     affiliation: z.string().nullish(),
     // Traducción en borrador pendiente de revisión por el grupo (ver npm run i18n:check)
-    translationStatus: z.enum(['draft', 'reviewed']).optional(),
+    translationStatus,
   })
 });
 
@@ -240,7 +243,7 @@ const sciresources = defineCollection({
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
     // Texto redactado a partir de fuentes públicas, pendiente de validación por el grupo
     draft: z.boolean().default(false),
-    translationStatus: z.enum(['draft', 'reviewed']).optional(),
+    translationStatus,
   })
 });
 
