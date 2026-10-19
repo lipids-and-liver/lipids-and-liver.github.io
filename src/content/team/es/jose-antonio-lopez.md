@@ -9,6 +9,7 @@ email: joseantonio.lopez@ehu.eus
 phone: +34 601 2854
 office: Despacho 1.Q.11, Facultad de Medicina y Enfermería, Leioa
 orcid: 0009-0000-7870-0929
+cvn: 0009-0000-7870-0929
 x: https://x.com/joxan_lo
 linkedin: https://www.linkedin.com/in/josean-lopez-b2a3042b5
 github: https://github.com/smzlogoj

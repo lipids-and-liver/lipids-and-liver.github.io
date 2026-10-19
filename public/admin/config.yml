@@ -178,6 +178,7 @@ collections:
       - { label: "Teléfono", name: "phone", widget: "string", required: false, i18n: "duplicate", hint: "Ej: +34 94 601 2854" }
       - { label: "Despacho / Ubicación", name: "office", widget: "string", required: false, i18n: "duplicate", default: "Facultad de Medicina y Enfermería, Leioa" }
       - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", hint: "Formato: 0000-0002-XXXX-XXXX" }
+      - { label: "CVN en línea (FECYT)", name: "cvn", widget: "string", required: false, i18n: "duplicate", hint: "ORCID con el que está publicado el CVN en línea, o la URL completa" }
       - { label: "Perfil X / Twitter", name: "x", widget: "string", required: false, i18n: "duplicate", hint: "Ej: @usuario o https://x.com/usuario" }
       - { label: "Perfil LinkedIn", name: "linkedin", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://linkedin.com/in/usuario" }
       - { label: "Perfil GitHub", name: "github", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://github.com/usuario" }

@@ -44,6 +44,8 @@ const team = defineCollection({
     phone: z.string().nullish().transform(val => val || ''),
     office: z.string().nullish().transform(val => val || ''),
     orcid: z.string().nullish().transform(val => val || ''),
+    // CVN publicado en línea (FECYT): su ORCID o la URL completa
+    cvn: z.string().nullish(),
     twitter: z.string().nullish(),
     x: z.string().nullish(),
     linkedin: z.string().nullish(),
