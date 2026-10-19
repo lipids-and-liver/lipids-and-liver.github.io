@@ -155,7 +155,7 @@ El script solo modifica la ficha en castellano. Si el miembro no tiene ficha pro
 
 ### Actualización automática desde el CVN en línea
 
-Las fichas con el campo **CVN en línea** (`cvn:` con el ORCID con el que está publicado) se actualizan solas. Cada lunes, el flujo `.github/workflows/cvn.yml` descarga esos CVN, ejecuta `scripts/sincronizar_cvn.py` (el importador con `--biografia`) y, si algo ha cambiado, abre un pull request a `dev` titulado *Actualizar perfiles desde el CVN*. Su descripción resume los cambios y los avisos de cada miembro (CVN no publicado, texto de relleno descartado…).
+Las fichas con el campo **CVN en línea** (`cvn:` con el ORCID con el que está publicado) se actualizan solas. Cada lunes, el flujo `.github/workflows/cvn.yml` descarga esos CVN, ejecuta `scripts/sincronizar_cvn.py` (el importador con `--biografia`) y, si algo ha cambiado, abre un pull request a `main` titulado *Actualizar perfiles desde el CVN*. Su descripción resume los cambios y los avisos de cada miembro (CVN no publicado, texto de relleno descartado…). Al fusionarlo, la web se publica con los cambios; después conviene traerlos a `dev` (`git pull origin main` estando en `dev`) para que las dos ramas no se separen.
 
 Revisa el PR y fusiónalo; si ves erratas, corrígelas en `scripts/cvn_correcciones.json` antes. Para lanzarlo sin esperar al lunes: pestaña **Actions** → *Actualizar perfiles desde el CVN* → **Run workflow**. En local: `python3 scripts/sincronizar_cvn.py`.
 
