@@ -21,6 +21,14 @@ cv:
   degrees:
     - Licenciado en Ciencias Químicas, especialidad Química Fundamental, opción Química Analítica. Universidad del País Vasco (1996)
     - Técnico Superior en Laboratorio Clínico y Biomédico. Claudio Galeno
+  otherTraining:
+    - 'IA generativa en acción: herramientas, modelos y aplicaciones prácticas. Grupo G9 (2026)'
+    - Iniciación a entornos HPC (High Performance Computing). SGIKER (2025)
+    - 'STATSX0001: Statistical Learning. Stanford Online (2025)'
+    - Desarrollo de aplicaciones web con Python y Django. Grupo G9 (2024)
+    - Introducción a Google Apps Script. Grupo G9 (2023)
+    - Curso de metabolómica y lipidómica. Herramientas para el diagnóstico, pronóstico y tratamiento de enfermedades. SGIKER (2022)
+    - Python para el tratamiento, análisis y visualización de datos. Grupo G9 (2022)
   positions:
     - Técnico Especialista de Laboratorio (Sanitaria/Animalario), Universidad del País Vasco (2025-actualidad)
     - Técnico/a Especialista de Laboratorio, Universidad del País Vasco (2007-2025)
@@ -32,6 +40,8 @@ cv:
     - Inglés (B1)
 ---
 
-José Antonio López es **Técnico Especialista de Laboratorio** y una pieza clave en el día a día del grupo **Lipids & Liver** desde 2007. Aunque su formación base es en **Ciencias Químicas** y **laboratorio clínico**, su curiosidad le ha llevado a construir un **_perfil híbrido_** muy particular.
+Licenciado en Ciencias Químicas (especialidad Química Analítica) por la Universidad del País Vasco (1996) y Técnico Superior en Laboratorio Clínico y Biomédico. Trabaja en la UPV/EHU desde 2004: primero como Oficial de Laboratorio en la Escuela de Enfermería de Donostia y, desde 2007, como Técnico Especialista de Laboratorio en el Departamento de Fisiología de la Facultad de Medicina y Enfermería, donde desde 2025 ocupa la plaza de Técnico Especialista de Laboratorio (Sanitaria/Animalario).
 
-A lo largo de sus casi 20 años en la UPV/EHU, ha sabido tender un puente natural entre el trabajo experimental y la ciencia de datos. Hoy, lo mismo le encontrarás en la poyata trabajando con modelos experimentales, que frente a la terminal de su inseparable OpenSUSE. De forma **_autodidacta_**, se ha convertido en el principal **_apoyo bioinformático_** del grupo: analiza complejos datos de lipidómica, proteómica y transcriptómica (principalmente con R) y desarrolla aplicaciones interactivas (Shiny, Astro, Quarto) para dar vida y visualización a los descubrimientos del laboratorio.
+Forma parte del grupo de investigación Lipids & Liver, que estudia el metabolismo lipídico en la enfermedad hepática metabólica y el cáncer. Allí combina el trabajo experimental con el análisis de datos. En el laboratorio da soporte técnico a los proyectos del grupo y trabaja con modelos experimentales, con capacitación en experimentación animal (funciones b y c). En la parte computacional es el principal apoyo bioinformático del grupo: procesa e interpreta datos de lipidómica, proteómica y transcriptómica, sobre todo con R, y desarrolla aplicaciones interactivas de visualización y difusión de resultados con Shiny, Quarto y Astro.
+
+Ha completado su formación con cursos de metabolómica y lipidómica, programación en Python, entornos de computación de alto rendimiento (HPC), aprendizaje estadístico (Stanford Online) e inteligencia artificial generativa. Es coautor del artículo *Adaptations of lipid metabolism in low-grade clear cell renal cell carcinoma are linked to cholesteryl ester accumulation* (Scientific Reports, 2025). Idiomas: euskera (B2) e inglés (B1).
