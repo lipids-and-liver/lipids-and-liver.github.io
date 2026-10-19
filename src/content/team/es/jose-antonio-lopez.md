@@ -21,6 +21,8 @@ cv:
   degrees:
     - Licenciado en Ciencias Químicas, especialidad Química Fundamental, opción Química Analítica. Universidad del País Vasco (1996)
     - Técnico Superior en Laboratorio Clínico y Biomédico. Claudio Galeno
+    - Capacitación en materia de experimentación animal (funciones b y c). Diputación de Bizkaia (2024)
+    - Técnico Superior en Prevención de Riesgos Laborales (1999)
   otherTraining:
     - 'IA generativa en acción: herramientas, modelos y aplicaciones prácticas. Grupo G9 (2026)'
     - Iniciación a entornos HPC (High Performance Computing). SGIKER (2025)

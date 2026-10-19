@@ -6,7 +6,7 @@ El PDF de CVN lleva dentro los datos estructurados (clave /CVN-XML: un ZIP en ba
 cv.xml). El script los extrae y reescribe el bloque `cv:` de la ficha en castellano
 (src/content/team/es/<miembro>.md) con estos apartados:
 
-  degrees       titulaciones y doctorado
+  degrees       titulaciones, doctorado y otra formación de posgrado
   otherTraining cursos y formación especializada (los más recientes)
   positions     situación actual y cargos anteriores
   grants        proyectos competitivos (los más recientes; contratos con --incluir-contratos)
@@ -46,6 +46,7 @@ POSITIONS_CURRENT = '010.010.000.000'
 POSITIONS_PAST = '010.020.000.000'
 DEGREES = '020.010.010.000'
 DOCTORATE = '020.010.020.000'
+OTHER_POSTGRADUATE = '020.010.030.000'
 SPECIALISED_TRAINING = '020.020.000.000'
 COURSES = '020.050.000.000'
 LANGUAGES = '020.060.000.000'
@@ -232,6 +233,8 @@ def build_degrees(root):
             label += f', {grade}'
         out.append(with_period(label, year(el, 'Date/OnlyDate')))
     for el in sorted(items(root, DEGREES), key=sort_key, reverse=True):
+        out.append(with_period(join(text(el, 'Title/Name'), entity(el)), year(el, 'Date/OnlyDate')))
+    for el in sorted(items(root, OTHER_POSTGRADUATE), key=sort_key, reverse=True):
         out.append(with_period(join(text(el, 'Title/Name'), entity(el)), year(el, 'Date/OnlyDate')))
     return out
 
