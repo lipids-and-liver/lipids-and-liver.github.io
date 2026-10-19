@@ -44,6 +44,8 @@ const team = defineCollection({
     phone: z.string().nullish().transform(val => val || ''),
     office: z.string().nullish().transform(val => val || ''),
     orcid: z.string().nullish().transform(val => val || ''),
+    // CVN publicado en línea (FECYT): su ORCID o la URL completa
+    cvn: z.string().nullish(),
     twitter: z.string().nullish(),
     x: z.string().nullish(),
     linkedin: z.string().nullish(),
@@ -57,6 +59,8 @@ const team = defineCollection({
       positions: z.array(z.string()).nullish().transform(val => val || []),
       grants: z.array(z.string()).nullish().transform(val => val || []),
       publications: z.array(z.string()).nullish().transform(val => val || []),
+      conferences: z.array(z.string()).nullish().transform(val => val || []),
+      languages: z.array(z.string()).nullish().transform(val => val || []),
       patents: z.array(z.string()).nullish().transform(val => val || []),
       teaching: z.array(z.string()).nullish().transform(val => val || [])
     }).nullish()
@@ -150,8 +154,9 @@ const projects = defineCollection({
 
 // Categorías de noticias (clave estable; la etiqueta se traduce con news_cat_<clave>).
 // Textos antiguos o desconocidos se normalizan; lo que no encaja va a "otros".
-const NEWS_CATEGORIES = ['divulgacion', 'congresos', 'publicaciones', 'premios', 'institucional', 'tesis', 'otros'] as const;
-const NEWS_CATEGORY_ALIASES: Record<string, (typeof NEWS_CATEGORIES)[number]> = { acreditacion: 'institucional' };
+// Sin categoría de divulgación: esas actividades van al registro de src/content/outreach
+const NEWS_CATEGORIES = ['congresos', 'publicaciones', 'premios', 'institucional', 'tesis', 'otros'] as const;
+const NEWS_CATEGORY_ALIASES: Record<string, (typeof NEWS_CATEGORIES)[number]> = { acreditacion: 'institucional', divulgacion: 'otros' };
 const normalizeNewsCategory = (val: string) => {
   const key = val.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
   if ((NEWS_CATEGORIES as readonly string[]).includes(key)) return key as (typeof NEWS_CATEGORIES)[number];
@@ -194,7 +199,7 @@ const letter = defineCollection({
     viewCvText: z.string().optional().default('Ver Curriculum Vitae Completo'),
     cvLink: z.string().optional().default('/curriculum/patricia-aspichueta'),
     email: z.string().optional().default('patricia.aspichueta@ehu.eus'),
-    orcid: z.string().optional().default('0000-0002-8921-9421')
+    orcid: z.string().optional().default('0000-0002-3553-1755')
   })
 });
 
@@ -239,7 +244,42 @@ const sciresources = defineCollection({
   })
 });
 
+// Registro de actividades de divulgación (radio, prensa, charlas, jornadas…).
+// Una entrada por actividad, aunque no tenga noticia; si la tiene, se enlaza con `news`
+// (slug de src/content/news) en vez de repetir el texto.
+const OUTREACH_TYPES = ['radio-tv', 'prensa', 'charla', 'jornada', 'educacion', 'pacientes'] as const;
+
+const outreach = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/outreach" }),
+  schema: z.object({
+    id: z.string().optional(),
+    title: z.string(),
+    date: z.union([z.string(), z.date()]).transform(val => val instanceof Date ? val.toISOString().split('T')[0] : String(val)),
+    // 'year' cuando solo se conoce el año (o el curso)
+    datePrecision: z.enum(['day', 'year']).default('day'),
+    type: z.enum(OUTREACH_TYPES),
+    // Idioma en que se hizo o publicó la actividad: sus textos no se traducen
+    lang: z.enum(['es', 'eu', 'en']).default('es'),
+    // Medio, evento u organizador (Onda Vasca, Congreso de los Diputados, Jakiunde…)
+    venue: z.string(),
+    location: z.string().nullish(),
+    people: z.array(z.string()).nullish().transform(val => val || []),
+    summary: z.string().nullish(),
+    url: z.string().nullish(),
+    // Grabación o texto que se puede consultar: aparece en «Escucha, mira, lee»
+    resource: z.object({
+      kind: z.enum(['video', 'audio', 'texto']),
+      url: z.string().url()
+    }).nullish(),
+    // Slug de la noticia relacionada en src/content/news
+    news: z.string().nullish(),
+    // Dato sin fuente que lo confirme: se muestra marcado hasta que el grupo lo valide
+    draft: z.boolean().default(false)
+  })
+});
+
 export const collections = {
+  outreach,
   sciresources,
   theses,
   team,

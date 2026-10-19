@@ -5,7 +5,7 @@ shortDesc: "Estudio de agentes metabólicos, dianas terapéuticas y biomarcadore
 image: "/assets/images/mafld.jpg"
 badge: "MAFLD / MASLD"
 order: 1
-affiliation: "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Grupo Consolidado del Gobierno Vasco IT1560-22. Financiación: Ministerio de Ciencia e Innovación, Instituto de Salud Carlos III (ISCIII), Gobierno Vasco."
+affiliation: "Departamento de Fisiología, Facultad de Medicina y Enfermería, UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Grupo Consolidado del Gobierno Vasco IT1476-22. Financiación: Ministerio de Ciencia e Innovación, Instituto de Salud Carlos III (ISCIII), Gobierno Vasco."
 ---
 
 <p>La prevalencia de la obesidad y la diabetes mellitus tipo II ha aumentado exponencialmente, convirtiéndose en un desafío sanitario prioritario. Alrededor del 70-80% de estos pacientes desarrollan <strong>Esteatosis Hepática Metabólica (MAFLD / MASLD)</strong>, la principal causa de enfermedad hepática crónicamente progresiva.</p>

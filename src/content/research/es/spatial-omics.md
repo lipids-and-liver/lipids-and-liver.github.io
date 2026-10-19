@@ -5,7 +5,7 @@ shortDesc: "Mapeo espacial de alta resolución de la zonación metabólica, micr
 image: "/assets/images/spatial_omics.jpg"
 badge: "Spatial Multi-Omics"
 order: 5
-affiliation: "Unidad de Lipidómica SGIker UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Plataforma de Ómicas Espaciales, con acceso a tecnologías 10x Genomics Visium, MALDI-MSI y Xenium. Grupo Consolidado IT1560-22, Gobierno Vasco."
+affiliation: "Unidad de Lipidómica SGIker UPV/EHU — Instituto de Investigación Sanitaria Biobizkaia (IIS Biobizkaia). Plataforma de Ómicas Espaciales, con acceso a tecnologías 10x Genomics Visium, MALDI-MSI y Xenium. Grupo Consolidado IT1476-22, Gobierno Vasco."
 ---
 <p>
 Las tecnologías de <b>Ómicas Espaciales (Spatial Omics)</b> representan una revolución conceptual y metodológica en la investigación biomédica, permitiendo interrogar la expresión génica, la abundancia proteica y las especies lipídicas preservando la arquitectura tisular y la ubicación espacial celular nativa.

@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CVN de ejemplo con datos inventados (estructura de la Norma CVN de FECYT). Ver COMO_EDITAR.md, sección 5. -->
+<tns:CVN xmlns:tns="http://cv.normalizado.org/cvn">
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>020.010.020.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Biomedicina</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Quality code="x"/>
+      <Quality>
+        <Measure code="x">
+          <Item>Sobresaliente Cum Laude</Item>
+        </Measure>
+      </Quality>
+    </Link>
+    <Entity>
+      <EntityName code="x">
+        <Item>Universidad del País Vasco (UPV/EHU)</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2006</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>020.010.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Licenciatura en Biología</Item>
+      </Name>
+    </Title>
+    <Entity>
+      <EntityName code="x">
+        <Item>Universidad del País Vasco (UPV/EHU)</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2001</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>020.050.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Curso de experimentación animal (función B)</Item>
+      </Name>
+    </Title>
+    <Entity>
+      <EntityName code="x">
+        <Item>UPV/EHU</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2024-03-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>020.050.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Curso de experimentación animal (función B)</Item>
+      </Name>
+    </Title>
+    <Entity>
+      <EntityName code="x">
+        <Item>UPV/EHU</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2023-03-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>020.050.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Curso de experimentación animal (función B)</Item>
+      </Name>
+    </Title>
+    <Entity>
+      <EntityName code="x">
+        <Item>UPV/EHU</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2022-03-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>010.010.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Profesora Titular de Universidad</Item>
+      </Name>
+    </Title>
+    <Entity>
+      <EntityName code="x">
+        <Item>Universidad del País Vasco (UPV/EHU)</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2016-09-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>010.010.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Investigadora asociada, Área de Enfermedades Hepáticas</Item>
+      </Name>
+    </Title>
+    <Entity>
+      <EntityName code="x">
+        <Item>IIS Biobizkaia</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2018-09-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>050.020.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Nuevas dianas en metástasis hepática de cáncer colorrectal</Item>
+      </Name>
+    </Title>
+    <ExternalPK>
+      <Code code="x">
+        <Item>PID2025-147324OB-I00</Item>
+      </Code>
+    </ExternalPK>
+    <Link>
+      <Entity>
+        <EntityName code="x">
+          <Item>Instituto de Salud Carlos III</Item>
+        </EntityName>
+      </Entity>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2025-01-01</Item>
+        </DayMonthYear>
+      </StartDate>
+      <EndDate>
+        <DayMonthYear code="x">
+          <Item>2028-12-31</Item>
+        </DayMonthYear>
+      </EndDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>050.020.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Nuevas dianas en osteopontina y envejecimiento</Item>
+      </Name>
+    </Title>
+    <ExternalPK>
+      <Code code="x">
+        <Item>PID2024-132975OB-I00</Item>
+      </Code>
+    </ExternalPK>
+    <Link>
+      <Entity>
+        <EntityName code="x">
+          <Item>Gobierno Vasco</Item>
+        </EntityName>
+      </Entity>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2024-01-01</Item>
+        </DayMonthYear>
+      </StartDate>
+      <EndDate>
+        <DayMonthYear code="x">
+          <Item>2027-12-31</Item>
+        </DayMonthYear>
+      </EndDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>050.020.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Nuevas dianas en esteatosis hepática metabólica</Item>
+      </Name>
+    </Title>
+    <ExternalPK>
+      <Code code="x">
+        <Item>PID2023-179534OB-I00</Item>
+      </Code>
+    </ExternalPK>
+    <Link>
+      <Entity>
+        <EntityName code="x">
+          <Item>Comisión Europea</Item>
+        </EntityName>
+      </Entity>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2023-01-01</Item>
+        </DayMonthYear>
+      </StartDate>
+      <EndDate>
+        <DayMonthYear code="x">
+          <Item>2026-12-31</Item>
+        </DayMonthYear>
+      </EndDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>060.010.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Subtype>
+      <SubType1 code="060.010.010.000">
+        <Item>035</Item>
+      </SubType1>
+    </Subtype>
+    <Title>
+      <Name code="x">
+        <Item>Targeting factores de transcripción E2F in experimental models</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Nature Communications</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2026</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+    <Author>
+      <GivenName code="x">
+        <Item>Maite</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Otxoa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>1</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Otxoa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>2</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Iker</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Otxoa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>3</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Nerea</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ejemplo</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>4</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Ane</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Arrieta</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>5</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Iker</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Arrieta</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>6</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Maite</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ibarra</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>7</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Leire</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Otxoa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>8</Item>
+      </SignatureOrder>
+    </Author>
+    <Url>
+      <Value code="x">
+        <Item>https://doi.org/10.3907/demo.2026.000</Item>
+      </Value>
+    </Url>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>060.010.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Subtype>
+      <SubType1 code="060.010.010.000">
+        <Item>035</Item>
+      </SubType1>
+    </Subtype>
+    <Title>
+      <Name code="x">
+        <Item>Targeting esteatosis hepática metabólica in experimental models</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Aging Cell</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2026</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Uriarte</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>1</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Leire</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Otxoa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>2</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Otxoa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>3</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Leire</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Lasa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>4</Item>
+      </SignatureOrder>
+    </Author>
+    <Url>
+      <Value code="x">
+        <Item>https://doi.org/10.7793/demo.2026.001</Item>
+      </Value>
+    </Url>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>060.010.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Subtype>
+      <SubType1 code="060.010.010.000">
+        <Item>035</Item>
+      </SubType1>
+    </Subtype>
+    <Title>
+      <Name code="x">
+        <Item>Remodelling of osteopontina y envejecimiento in experimental models</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Aging Cell</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2026</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Lasa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>1</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Leire</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ibarra</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>2</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Iker</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Otxoa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>3</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Mikel</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Lasa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>4</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Nerea</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Lasa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>5</Item>
+      </SignatureOrder>
+    </Author>
+    <Url>
+      <Value code="x">
+        <Item>https://doi.org/10.9205/demo.2026.002</Item>
+      </Value>
+    </Url>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>060.010.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Subtype>
+      <SubType1 code="060.010.010.000">
+        <Item>035</Item>
+      </SubType1>
+    </Subtype>
+    <Title>
+      <Name code="x">
+        <Item>Remodelling of regeneración hepática in experimental models</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Aging Cell</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2025</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Bilbao</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>1</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Iker</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Lasa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>2</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Mikel</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Arrieta</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>3</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Leire</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Bilbao</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>4</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Nerea</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Lasa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>5</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Nerea</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Zabala</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>6</Item>
+      </SignatureOrder>
+    </Author>
+    <Url>
+      <Value code="x">
+        <Item>https://doi.org/10.9261/demo.2025.003</Item>
+      </Value>
+    </Url>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>060.010.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Subtype>
+      <SubType1 code="060.010.010.000">
+        <Item>035</Item>
+      </SubType1>
+    </Subtype>
+    <Title>
+      <Name code="x">
+        <Item>Metabolic control of secreción de VLDL in experimental models</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Cell Metabolism</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2025</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+    <Author>
+      <GivenName code="x">
+        <Item>Maite</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Zabala</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>1</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Mikel</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Lasa</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>2</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Bilbao</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>3</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Jon</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Arrieta</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>4</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Ane</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Mendia</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>5</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Jon</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ejemplo</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>6</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Ane</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Zabala</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>7</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Mikel</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Garai</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>8</Item>
+      </SignatureOrder>
+    </Author>
+    <Url>
+      <Value code="x">
+        <Item>https://doi.org/10.9558/demo.2025.004</Item>
+      </Value>
+    </Url>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>060.010.010.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Subtype>
+      <SubType1 code="060.010.010.000">
+        <Item>035</Item>
+      </SubType1>
+    </Subtype>
+    <Title>
+      <Name code="x">
+        <Item>Remodelling of hepatocarcinoma asociado a obesidad in experimental models</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Cell Metabolism</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <OnlyDate>
+        <Year code="x">
+          <Item>2025</Item>
+        </Year>
+      </OnlyDate>
+    </Date>
+    <Author>
+      <GivenName code="x">
+        <Item>Mikel</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ejemplo</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>1</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Maite</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ejemplo</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>2</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Ane</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Arrieta</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>3</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Uriarte</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>4</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Mikel</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ejemplo</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>5</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Jon</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Garai</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>6</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Jon</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ejemplo</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>7</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Ane</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Ejemplo</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>8</Item>
+      </SignatureOrder>
+    </Author>
+    <Author>
+      <GivenName code="x">
+        <Item>Unai</Item>
+      </GivenName>
+      <FirstFamilyName code="x">
+        <Item>Zabala</Item>
+      </FirstFamilyName>
+      <SignatureOrder code="x">
+        <Item>9</Item>
+      </SignatureOrder>
+    </Author>
+    <Url>
+      <Value code="x">
+        <Item>https://doi.org/10.3093/demo.2025.005</Item>
+      </Value>
+    </Url>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>030.010.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Fisiología Humana</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Grado en Medicina</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Entity>
+      <EntityName code="x">
+        <Item>Facultad de Medicina y Enfermería (UPV/EHU)</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2024-09-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>030.010.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Fisiología del Aparato Digestivo</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Grado en Medicina</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Entity>
+      <EntityName code="x">
+        <Item>Facultad de Medicina y Enfermería (UPV/EHU)</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2023-09-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>030.010.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Fisiopatología del Metabolismo Lipídico</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Máster en Biomedicina</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Entity>
+      <EntityName code="x">
+        <Item>Facultad de Medicina y Enfermería (UPV/EHU)</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2022-09-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+  <CvnItem>
+    <CvnItemID>
+      <CVNPK>
+        <Item>030.010.000.000</Item>
+      </CVNPK>
+    </CvnItemID>
+    <Title>
+      <Name code="x">
+        <Item>Fisiología General</Item>
+      </Name>
+    </Title>
+    <Link>
+      <Title>
+        <Name code="x">
+          <Item>Grado en Enfermería</Item>
+        </Name>
+      </Title>
+    </Link>
+    <Entity>
+      <EntityName code="x">
+        <Item>Facultad de Medicina y Enfermería (UPV/EHU)</Item>
+      </EntityName>
+    </Entity>
+    <Date>
+      <Moment>OTHERS</Moment>
+      <StartDate>
+        <DayMonthYear code="x">
+          <Item>2021-09-01</Item>
+        </DayMonthYear>
+      </StartDate>
+    </Date>
+  </CvnItem>
+</tns:CVN>

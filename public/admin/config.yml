@@ -88,7 +88,7 @@ collections:
       - { label: "Texto Enlace a CV", name: "viewCvText", widget: "string", required: false, i18n: true }
       - { label: "Ruta del CV", name: "cvLink", widget: "string", required: false, i18n: "duplicate", default: "/curriculum/patricia-aspichueta" }
       - { label: "Correo Electrónico", name: "email", widget: "string", required: false, i18n: "duplicate", default: "patricia.aspichueta@ehu.eus" }
-      - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", default: "0000-0002-8921-9421" }
+      - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", default: "0000-0002-3553-1755" }
       - { label: "Cuerpo de la Carta (Texto Completo)", name: "body", widget: "markdown", required: false, i18n: true }
 
   # 1.2b GALERÍA DE FOTOS DEL HERO (PORTADA)
@@ -178,6 +178,7 @@ collections:
       - { label: "Teléfono", name: "phone", widget: "string", required: false, i18n: "duplicate", hint: "Ej: +34 94 601 2854" }
       - { label: "Despacho / Ubicación", name: "office", widget: "string", required: false, i18n: "duplicate", default: "Facultad de Medicina y Enfermería, Leioa" }
       - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", hint: "Formato: 0000-0002-XXXX-XXXX" }
+      - { label: "CVN en línea (FECYT)", name: "cvn", widget: "string", required: false, i18n: "duplicate", hint: "ORCID con el que está publicado el CVN en línea, o la URL completa" }
       - { label: "Perfil X / Twitter", name: "x", widget: "string", required: false, i18n: "duplicate", hint: "Ej: @usuario o https://x.com/usuario" }
       - { label: "Perfil LinkedIn", name: "linkedin", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://linkedin.com/in/usuario" }
       - { label: "Perfil GitHub", name: "github", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://github.com/usuario" }
@@ -195,6 +196,8 @@ collections:
           - { label: "Puestos y Trayectoria Previa", name: "positions", widget: "list", required: false, hint: "Ej: Investigador en formación (2024-Presente)" }
           - { label: "Proyectos y Financiación", name: "grants", widget: "list", required: false, hint: "Ej: Contrato Predoctoral Gobierno Vasco (2024-2028)" }
           - { label: "Publicaciones Relevantes", name: "publications", widget: "list", required: false, hint: "Citas destacadas" }
+          - { label: "Comunicaciones a Congresos", name: "conferences", widget: "list", required: false, hint: "Pósters y resúmenes presentados en congresos" }
+          - { label: "Idiomas", name: "languages", widget: "list", required: false, hint: "Idioma y nivel del MCER, p. ej. Inglés (B1)" }
           - { label: "Patentes y Propiedad Industrial", name: "patents", widget: "list", required: false, hint: "Patentes de invención o registros OEPM" }
           - { label: "Docencia Universitaria", name: "teaching", widget: "list", required: false, hint: "Docencia de Grado o Prácticas" }
       - { label: "Semblanza / Biografía Breve", name: "body", widget: "markdown", required: false, i18n: true, default: "Investigador/a en el Departamento de Fisiología de la Facultad de Medicina y Enfermería de la UPV/EHU e integrante del Grupo Lipids & Liver." }
@@ -502,7 +505,7 @@ collections:
   - name: "news"
     label: "📰 Noticias › Novedades & Hitos"
     label_singular: "Noticia"
-    description: "Noticias de divulgación, congresos, tesis y hitos del laboratorio"
+    description: "Publicaciones, tesis, congresos, premios e hitos del laboratorio. Las actividades de divulgación van en «Divulgación › Registro de Actividades»."
     folder: "src/content/news"
     i18n: false
     create: true
@@ -518,10 +521,10 @@ collections:
         field: "featured"
         pattern: true
     fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: easl-congress-milan" }
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: publicacion-aging-cell-osteopontina-2020" }
       - { label: "Titular de la Noticia", name: "title", widget: "string" }
       - { label: "Fecha de Publicación", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD" }
-      - { label: "Categoría", name: "category", widget: "select", default: "otros", options: [{ label: "Divulgación", value: "divulgacion" }, { label: "Congresos", value: "congresos" }, { label: "Publicaciones", value: "publicaciones" }, { label: "Premios", value: "premios" }, { label: "Institucional (acreditaciones, convenios…)", value: "institucional" }, { label: "Tesis", value: "tesis" }, { label: "Otros (cuando no encaja en las anteriores)", value: "otros" }] }
+      - { label: "Categoría", name: "category", widget: "select", default: "otros", options: [{ label: "Congresos", value: "congresos" }, { label: "Publicaciones", value: "publicaciones" }, { label: "Premios", value: "premios" }, { label: "Institucional (acreditaciones, convenios…)", value: "institucional" }, { label: "Tesis", value: "tesis" }, { label: "Otros (cuando no encaja en las anteriores)", value: "otros" }] }
       - { label: "Precisión de la fecha", name: "datePrecision", widget: "select", default: "day", required: false, options: [{ label: "Día exacto", value: "day" }, { label: "Solo el año", value: "year" }], hint: "Usa «Solo el año» si no se conoce el día (se mostrará solo el año)" }
       - { label: "Insignia de Categoría", name: "categoryBadge", widget: "string", required: false }
       - { label: "Resumen Breve", name: "summary", widget: "text" }
@@ -531,6 +534,48 @@ collections:
       - { label: "Destacada en Portada", name: "featured", widget: "boolean", default: false }
       - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int" }
       - { label: "Cuerpo de la Noticia", name: "body", widget: "markdown", required: false }
+
+  # 4.2 REGISTRO DE DIVULGACIÓN
+  - name: "outreach"
+    label: "📣 Divulgación › Registro de Actividades"
+    label_singular: "Actividad de Divulgación"
+    description: "Una entrada por actividad (radio, prensa, charla, jornada…), aunque no tenga noticia. Si la tiene, enlázala en «Noticia relacionada» en vez de repetir el texto."
+    folder: "src/content/outreach"
+    i18n: false
+    create: true
+    slug: "{{fields.id | default('{{fields.title}}')}}"
+    identifier_field: "title"
+    summary: "{{date}} · {{type}} · {{title}}"
+    sortable_fields: ["date", "type"]
+    view_groups:
+      - label: "Tipo de Actividad"
+        field: "type"
+    view_filters:
+      - label: "Pendientes de confirmar"
+        field: "draft"
+        pattern: true
+    fields:
+      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: onda-vasca-patient-advocate-2026" }
+      - { label: "Título", name: "title", widget: "string", hint: "Título de la charla, del programa o del artículo" }
+      - { label: "Fecha", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD" }
+      - { label: "Precisión de la fecha", name: "datePrecision", widget: "select", default: "day", required: false, options: [{ label: "Día exacto", value: "day" }, { label: "Solo el año", value: "year" }] }
+      - { label: "Tipo", name: "type", widget: "select", options: [{ label: "Radio y TV", value: "radio-tv" }, { label: "Prensa y artículos", value: "prensa" }, { label: "Charla", value: "charla" }, { label: "Jornada / acto institucional", value: "jornada" }, { label: "Centro educativo", value: "educacion" }, { label: "Pacientes", value: "pacientes" }] }
+      - { label: "Idioma original", name: "lang", widget: "select", default: "es", options: [{ label: "Castellano", value: "es" }, { label: "Euskera", value: "eu" }, { label: "Inglés", value: "en" }], hint: "Idioma en que se hizo o publicó la actividad. Sus textos se muestran tal cual, sin traducir." }
+      - { label: "Medio / evento / organizador", name: "venue", widget: "string", hint: "Ej: Onda Vasca · Las mañanas de Onda Vasca" }
+      - { label: "Lugar", name: "location", widget: "string", required: false }
+      - { label: "Participantes del grupo", name: "people", widget: "list", required: false }
+      - { label: "Resumen (una o dos frases)", name: "summary", widget: "text", required: false }
+      - { label: "Enlace a la fuente", name: "url", widget: "string", required: false }
+      - label: "Grabación o texto consultable"
+        name: "resource"
+        widget: "object"
+        required: false
+        hint: "Si se rellena, aparece en «Escucha, mira, lee»"
+        fields:
+          - { label: "Tipo", name: "kind", widget: "select", options: [{ label: "Vídeo", value: "video" }, { label: "Audio", value: "audio" }, { label: "Artículo", value: "texto" }] }
+          - { label: "Enlace", name: "url", widget: "string" }
+      - { label: "Noticia relacionada (slug)", name: "news", widget: "relation", collection: "news", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false }
+      - { label: "Pendiente de confirmar", name: "draft", widget: "boolean", default: false, hint: "Márcalo si no hay fuente que lo confirme; se mostrará con un aviso" }
 
   # ============================================================================
   # 5. BLOQUE: RED & ALIANZAS
@@ -589,6 +634,8 @@ collections:
               - { label: "Puestos y Trayectoria", name: "positions", widget: "list" }
               - { label: "Proyectos y Financiación", name: "grants", widget: "list" }
               - { label: "Publicaciones Relevantes", name: "publications", widget: "list" }
+              - { label: "Comunicaciones a Congresos", name: "conferences", widget: "list" }
+              - { label: "Idiomas", name: "languages", widget: "list" }
               - { label: "Patentes y Propiedad Industrial", name: "patents", widget: "list" }
               - { label: "Docencia Universitaria", name: "teaching", widget: "list" }
           - { label: "Semblanza / Perfil", name: "body", widget: "markdown" }

@@ -46,6 +46,9 @@ const phoneClean = phone ? phone.replace(/[\s()-]/g, '') : '';
 const orcid = member.data.orcid?.trim();
 const orcidUrl = orcid ? (orcid.startsWith('http') ? orcid : `https://orcid.org/${orcid}`) : '';
 
+const cvnRaw = member.data.cvn?.trim();
+const cvnUrl = cvnRaw ? (cvnRaw.startsWith('http') ? cvnRaw : `https://editor.cvn.fecyt.es/${cvnRaw}`) : '';
+
 const xRaw = (member.data.x || member.data.twitter)?.trim();
 const xUrl = xRaw ? (xRaw.startsWith('http') ? xRaw : (xRaw.startsWith('@') ? `https://x.com/${xRaw.slice(1)}` : `https://x.com/${xRaw}`)) : '';
 
@@ -55,7 +58,7 @@ const linkedinUrl = linkedinRaw ? (linkedinRaw.startsWith('http') ? linkedinRaw 
 const githubRaw = member.data.github?.trim();
 const githubUrl = githubRaw ? (githubRaw.startsWith('http') ? githubRaw : `https://github.com/${githubRaw}`) : '';
 
-const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || githubUrl);
+const hasSocial = Boolean(email || phone || orcidUrl || cvnUrl || xUrl || linkedinUrl || githubUrl);
 ---
 
 <Layout title={`${member.data.name} - ${localizedCvTitle} | Lipids & Liver`} currentPage="curriculum" lang={lang}>
@@ -145,6 +148,11 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
                 {orcidUrl && (
                   <a href={orcidUrl} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title={`ORCID: ${orcid}`} aria-label={t.cv_contact_orcid}>
                     <i class="fab fa-orcid"></i>
+                  </a>
+                )}
+                {cvnUrl && (
+                  <a href={cvnUrl} target="_blank" rel="noopener noreferrer" class="alumni-social-link" title={t.cv_contact_cvn} aria-label={t.cv_contact_cvn}>
+                    <i class="fas fa-address-card"></i>
                   </a>
                 )}
                 {xUrl && (
@@ -249,12 +257,32 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
           </div>
         )}
 
+        <!-- Comunicaciones a Congresos -->
+        {cv.conferences && cv.conferences.length > 0 && (
+          <div class="cv-block">
+            <h3 class="cv-block-title"><i class="fas fa-comments"></i> {t.cv_conferences}</h3>
+            <ul class="cv-clean-list">
+              {cv.conferences.map((c: string) => <li>{c}</li>)}
+            </ul>
+          </div>
+        )}
+
         <!-- Patentes y Propiedad Industrial -->
         {cv.patents && cv.patents.length > 0 && (
           <div class="cv-block">
             <h3 class="cv-block-title"><i class="fas fa-certificate"></i> {t.cv_patents || 'Patentes y Propiedad Industrial'}</h3>
             <ul class="cv-clean-list">
               {cv.patents.map((pat: string) => <li>{pat}</li>)}
+            </ul>
+          </div>
+        )}
+
+        <!-- Idiomas -->
+        {cv.languages && cv.languages.length > 0 && (
+          <div class="cv-block">
+            <h3 class="cv-block-title"><i class="fas fa-language"></i> {t.cv_languages}</h3>
+            <ul class="cv-clean-list">
+              {cv.languages.map((l: string) => <li>{l}</li>)}
             </ul>
           </div>
         )}
