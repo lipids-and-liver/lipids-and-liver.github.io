@@ -1,0 +1,70 @@
+name: Actualizar perfiles desde el CVN
+
+# Cada lunes descarga el CVN en línea (FECYT) de los miembros con el campo `cvn`
+# y, si algo ha cambiado, abre un pull request a `dev` para revisarlo.
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: cvn
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Solo hace falta si algún PDF guarda los datos CVN comprimidos
+      - name: Install pypdf
+        run: pip install pypdf==5.1.0
+
+      - name: Sincronizar fichas con el CVN
+        run: python3 scripts/sincronizar_cvn.py --informe "$RUNNER_TEMP/informe.md"
+
+      - name: Informe
+        run: cat "$RUNNER_TEMP/informe.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: ¿Hay cambios?
+        id: changes
+        run: git diff --quiet -- src/content/team || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Si el CVN rompe el esquema de las fichas, el flujo falla aquí en lugar de abrir el PR
+      - name: Setup Node
+        if: steps.changes.outputs.changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Comprobar que la web compila
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Abrir pull request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          base: dev
+          branch: cvn/actualizacion
+          delete-branch: true
+          add-paths: src/content/team/es/*.md
+          commit-message: 'chore(cvn): actualizar perfiles desde el CVN en línea'
+          title: 'Actualizar perfiles desde el CVN'
+          body-path: ${{ runner.temp }}/informe.md

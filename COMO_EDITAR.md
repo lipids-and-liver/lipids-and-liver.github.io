@@ -125,7 +125,7 @@ python3 scripts/importar_cvn.py ~/cvn/elena-garcia.pdf --miembro elena-garcia
 
 Para actualizar el CV basta con repetirlo con el PDF nuevo. Si la persona tiene su CVN **publicado en línea** en el editor de FECYT, no hace falta el PDF: `--orcid 0000-0000-0000-0000` lo descarga directamente.
 
-**Qué se importa:** titulaciones y doctorado, cursos, puestos, proyectos competitivos, publicaciones (artículos, capítulos y libros, con DOI), asignaturas impartidas y tesis doctorales dirigidas. El título del CV (`title`), las patentes y la presentación se conservan tal cual. Solo se lee esa lista de apartados: los datos personales del CVN no se tocan.
+**Qué se importa:** titulaciones, doctorado y otra formación de posgrado, cursos, puestos, proyectos competitivos, publicaciones (artículos, capítulos y libros, con DOI), asignaturas impartidas, tesis doctorales dirigidas e idiomas. Con `--biografia`, el «Resumen libre del currículum» sustituye además la presentación de la ficha. El texto de relleno («Lorem ipsum…») no se importa nunca. El título del CV (`title`), las patentes y la presentación se conservan tal cual. Solo se lee esa lista de apartados: los datos personales del CVN no se tocan.
 
 **Opciones útiles:**
 
@@ -138,8 +138,26 @@ Para actualizar el CV basta con repetirlo con el PDF nuevo. Si la persona tiene 
 | `--max-docencia N` | 10 | Asignaturas distintas (las tesis dirigidas van todas) |
 | `--max-formacion N` | 10 | Cursos más recientes |
 | `--incluir-contratos` | no | Añadir contratos y convenios a los proyectos |
+| `--biografia` | no | Usar el resumen libre del CVN como presentación |
 
 El script solo modifica la ficha en castellano. Si el miembro no tiene ficha propia en euskera o inglés, la web muestra el CV importado en castellano con el aviso de idioma. Si la tiene (`src/content/team/eu/` o `en/`), esa versión conserva su CV anterior hasta que se traduzca o se actualice a mano.
+
+**Corregir erratas del CVN:** si un CVN trae erratas o textos cortados y la persona no puede corregirlos en el editor de FECYT, añade el arreglo en `scripts/cvn_correcciones.json`. Se aplica en cada importación, así que no se pierde al actualizar:
+
+```json
+"elena-garcia": {
+  "reemplazos": [["Capatizacion", "Capacitación"]],
+  "biografia": false
+}
+```
+
+`"biografia": false` hace que esa persona conserve la presentación de la web aunque su CVN tenga resumen libre. Los reemplazos de la clave `"*"` se aplican a todos.
+
+### Actualización automática desde el CVN en línea
+
+Las fichas con el campo **CVN en línea** (`cvn:` con el ORCID con el que está publicado) se actualizan solas. Cada lunes, el flujo `.github/workflows/cvn.yml` descarga esos CVN, ejecuta `scripts/sincronizar_cvn.py` (el importador con `--biografia`) y, si algo ha cambiado, abre un pull request a `dev` titulado *Actualizar perfiles desde el CVN*. Su descripción resume los cambios y los avisos de cada miembro (CVN no publicado, texto de relleno descartado…).
+
+Revisa el PR y fusiónalo; si ves erratas, corrígelas en `scripts/cvn_correcciones.json` antes. Para lanzarlo sin esperar al lunes: pestaña **Actions** → *Actualizar perfiles desde el CVN* → **Run workflow**. En local: `python3 scripts/sincronizar_cvn.py`.
 
 **Ejemplo para probar el script:** `scripts/ejemplos/` contiene dos CVN con datos inventados (uno extenso y otro breve). Con ellos se generaron las fichas de prueba `prueba-cvn-extenso` y `prueba-cvn-breve`, que hay que borrar antes de que la web deje de ser una demo. Para ver el resultado sin tocar ninguna ficha:
 

@@ -1,0 +1,17 @@
+{
+  "*": {
+    "reemplazos": []
+  },
+  "jose-antonio-lopez": {
+    "reemplazos": [
+      ["Licenciado en Ciencias Químicas Especialidad Química Fundamental Opción Química Analítica", "Licenciado en Ciencias Químicas, especialidad Química Fundamental, opción Química Analítica"],
+      ["Capatizacion en materia de experimentacion animal", "Capacitación en materia de experimentación animal"],
+      ["Diputacion Bizkaia", "Diputación de Bizkaia"],
+      ["aplicaciones practicas", "aplicaciones prácticas"],
+      ["con python y django", "con Python y Django"],
+      ["Técnico/a Especialista Laboratorio", "Técnico/a Especialista de Laboratorio"],
+      ["e intelig Es coautor del artículoAdaptations of lipid metabolism in low-grade clear cell renal cell carcinoma are linked to cholesteryl esterports, 2025)", "e inteligencia artificial generativa. Es coautor del artículo *Adaptations of lipid metabolism in low-grade clear cell renal cell carcinoma are linked to cholesteryl ester accumulation* (Scientific Reports, 2025)"],
+      ["euskera(B2)", "euskera (B2)"]
+    ]
+  }
+}
