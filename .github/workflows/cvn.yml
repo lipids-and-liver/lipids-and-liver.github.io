@@ -1,7 +1,7 @@
 name: Actualizar perfiles desde el CVN
 
 # Cada lunes descarga el CVN en línea (FECYT) de los miembros con el campo `cvn`
-# y, si algo ha cambiado, abre un pull request a `dev` para revisarlo.
+# y, si algo ha cambiado, abre un pull request a `main`: al fusionarlo se publica en la web.
 on:
   schedule:
     - cron: '0 5 * * 1'
@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -61,7 +61,7 @@ jobs:
         if: steps.changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
-          base: dev
+          base: main
           branch: cvn/actualizacion
           delete-branch: true
           add-paths: src/content/team/es/*.md
