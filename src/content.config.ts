@@ -57,6 +57,8 @@ const team = defineCollection({
       positions: z.array(z.string()).nullish().transform(val => val || []),
       grants: z.array(z.string()).nullish().transform(val => val || []),
       publications: z.array(z.string()).nullish().transform(val => val || []),
+      conferences: z.array(z.string()).nullish().transform(val => val || []),
+      languages: z.array(z.string()).nullish().transform(val => val || []),
       patents: z.array(z.string()).nullish().transform(val => val || []),
       teaching: z.array(z.string()).nullish().transform(val => val || [])
     }).nullish()
@@ -195,7 +197,7 @@ const letter = defineCollection({
     viewCvText: z.string().optional().default('Ver Curriculum Vitae Completo'),
     cvLink: z.string().optional().default('/curriculum/patricia-aspichueta'),
     email: z.string().optional().default('patricia.aspichueta@ehu.eus'),
-    orcid: z.string().optional().default('0000-0002-8921-9421')
+    orcid: z.string().optional().default('0000-0002-3553-1755')
   })
 });
 

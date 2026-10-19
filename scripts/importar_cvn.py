@@ -12,13 +12,14 @@ cv.xml). El script los extrae y reescribe el bloque `cv:` de la ficha en castell
   grants        proyectos competitivos (los más recientes; contratos con --incluir-contratos)
   publications  artículos, capítulos y libros (los más recientes)
   teaching      asignaturas impartidas y tesis doctorales dirigidas
+  languages     idiomas con su nivel (MCER)
 
 `title`, `patents` y cualquier otro apartado de la ficha se conservan tal cual.
 Los datos personales del CVN (DNI, teléfono, dirección…) no se leen nunca.
 
 Uso:
   python3 scripts/importar_cvn.py CVN.pdf --miembro patricia-aspichueta
-  python3 scripts/importar_cvn.py --orcid 0000-0002-8921-9421 --miembro patricia-aspichueta
+  python3 scripts/importar_cvn.py --orcid 0000-0002-3553-1755 --miembro patricia-aspichueta
   python3 scripts/importar_cvn.py CVN.pdf --mostrar        # solo muestra el resultado
 
 IMPORTANTE: no guardes el PDF del CVN dentro del repositorio (la web es pública).
@@ -47,6 +48,7 @@ DEGREES = '020.010.010.000'
 DOCTORATE = '020.010.020.000'
 SPECIALISED_TRAINING = '020.020.000.000'
 COURSES = '020.050.000.000'
+LANGUAGES = '020.060.000.000'
 TEACHING = '030.010.000.000'
 SUPERVISION = '030.040.000.000'
 PROJECTS = '050.020.010.000'
@@ -242,6 +244,19 @@ def build_training(root, limit):
     return out
 
 
+def build_languages(root):
+    """Idioma y nivel MCER; si las destrezas difieren, el rango (p. ej. «B1–B2»)."""
+    out = []
+    for el in items(root, LANGUAGES):
+        name = text(el, 'Title/Name')
+        levels = sorted({clean(q.text) for q in el.findall('Quality/Measure/Item') if clean(q.text)})
+        if not name:
+            continue
+        level = levels[0] if len(levels) == 1 else f'{levels[0]}–{levels[-1]}' if levels else ''
+        out.append(f'{name} ({level})' if level else name)
+    return out
+
+
 def build_positions(root, limit):
     """Todos los puestos actuales y, después, los anteriores más recientes hasta `limit`."""
     out = []
@@ -335,6 +350,7 @@ def build_cv(root, args):
         'grants': build_grants(root, args.max_proyectos, args.incluir_contratos),
         'publications': build_publications(root, args.max_publicaciones),
         'teaching': build_teaching(root, args.max_docencia),
+        'languages': build_languages(root),
     }
 
 
@@ -376,7 +392,7 @@ def update_member_file(path: Path, cv: dict):
     start, end, existing = split_cv_block(fm)
 
     block = ['cv:']
-    order = ['title', 'degrees', 'otherTraining', 'positions', 'grants', 'publications', 'patents', 'teaching']
+    order = ['title', 'degrees', 'otherTraining', 'positions', 'grants', 'publications', 'conferences', 'patents', 'teaching', 'languages']
     for key in order + [k for k in existing if k not in order]:
         if key in cv and cv[key]:
             block += yaml_list(key, cv[key])

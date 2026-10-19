@@ -88,7 +88,7 @@ collections:
       - { label: "Texto Enlace a CV", name: "viewCvText", widget: "string", required: false, i18n: true }
       - { label: "Ruta del CV", name: "cvLink", widget: "string", required: false, i18n: "duplicate", default: "/curriculum/patricia-aspichueta" }
       - { label: "Correo Electrónico", name: "email", widget: "string", required: false, i18n: "duplicate", default: "patricia.aspichueta@ehu.eus" }
-      - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", default: "0000-0002-8921-9421" }
+      - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", default: "0000-0002-3553-1755" }
       - { label: "Cuerpo de la Carta (Texto Completo)", name: "body", widget: "markdown", required: false, i18n: true }
 
   # 1.2b GALERÍA DE FOTOS DEL HERO (PORTADA)
@@ -195,6 +195,8 @@ collections:
           - { label: "Puestos y Trayectoria Previa", name: "positions", widget: "list", required: false, hint: "Ej: Investigador en formación (2024-Presente)" }
           - { label: "Proyectos y Financiación", name: "grants", widget: "list", required: false, hint: "Ej: Contrato Predoctoral Gobierno Vasco (2024-2028)" }
           - { label: "Publicaciones Relevantes", name: "publications", widget: "list", required: false, hint: "Citas destacadas" }
+          - { label: "Comunicaciones a Congresos", name: "conferences", widget: "list", required: false, hint: "Pósters y resúmenes presentados en congresos" }
+          - { label: "Idiomas", name: "languages", widget: "list", required: false, hint: "Idioma y nivel del MCER, p. ej. Inglés (B1)" }
           - { label: "Patentes y Propiedad Industrial", name: "patents", widget: "list", required: false, hint: "Patentes de invención o registros OEPM" }
           - { label: "Docencia Universitaria", name: "teaching", widget: "list", required: false, hint: "Docencia de Grado o Prácticas" }
       - { label: "Semblanza / Biografía Breve", name: "body", widget: "markdown", required: false, i18n: true, default: "Investigador/a en el Departamento de Fisiología de la Facultad de Medicina y Enfermería de la UPV/EHU e integrante del Grupo Lipids & Liver." }
@@ -631,6 +633,8 @@ collections:
               - { label: "Puestos y Trayectoria", name: "positions", widget: "list" }
               - { label: "Proyectos y Financiación", name: "grants", widget: "list" }
               - { label: "Publicaciones Relevantes", name: "publications", widget: "list" }
+              - { label: "Comunicaciones a Congresos", name: "conferences", widget: "list" }
+              - { label: "Idiomas", name: "languages", widget: "list" }
               - { label: "Patentes y Propiedad Industrial", name: "patents", widget: "list" }
               - { label: "Docencia Universitaria", name: "teaching", widget: "list" }
           - { label: "Semblanza / Perfil", name: "body", widget: "markdown" }

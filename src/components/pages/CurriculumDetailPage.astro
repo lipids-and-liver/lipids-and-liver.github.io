@@ -249,12 +249,32 @@ const hasSocial = Boolean(email || phone || orcidUrl || xUrl || linkedinUrl || g
           </div>
         )}
 
+        <!-- Comunicaciones a Congresos -->
+        {cv.conferences && cv.conferences.length > 0 && (
+          <div class="cv-block">
+            <h3 class="cv-block-title"><i class="fas fa-comments"></i> {t.cv_conferences}</h3>
+            <ul class="cv-clean-list">
+              {cv.conferences.map((c: string) => <li>{c}</li>)}
+            </ul>
+          </div>
+        )}
+
         <!-- Patentes y Propiedad Industrial -->
         {cv.patents && cv.patents.length > 0 && (
           <div class="cv-block">
             <h3 class="cv-block-title"><i class="fas fa-certificate"></i> {t.cv_patents || 'Patentes y Propiedad Industrial'}</h3>
             <ul class="cv-clean-list">
               {cv.patents.map((pat: string) => <li>{pat}</li>)}
+            </ul>
+          </div>
+        )}
+
+        <!-- Idiomas -->
+        {cv.languages && cv.languages.length > 0 && (
+          <div class="cv-block">
+            <h3 class="cv-block-title"><i class="fas fa-language"></i> {t.cv_languages}</h3>
+            <ul class="cv-clean-list">
+              {cv.languages.map((l: string) => <li>{l}</li>)}
             </ul>
           </div>
         )}
