@@ -39,8 +39,8 @@ cv:
   publications:
       - "Adaptations of lipid metabolism in low-grade clear cell renal cell carcinoma are linked to cholesteryl ester accumulation. 2025."
   languages:
-      - "Inglés (B1)"
       - "Euskera (B2)"
+      - "Inglés (B2)"
 ---
 
 Licenciado en Ciencias Químicas (especialidad Química Analítica) por la Universidad del País Vasco (1996) y Técnico Superior en Laboratorio Clínico y Biomédico. Trabaja en la UPV/EHU desde 2004: primero como Oficial de Laboratorio en la Escuela de Enfermería de Donostia y, desde 2007, como Técnico Especialista de Laboratorio en el Departamento de Fisiología de la Facultad de Medicina y Enfermería, donde desde 2025 ocupa la plaza de Técnico Especialista de Laboratorio (Sanitaria/Animalario).
