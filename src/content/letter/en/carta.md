@@ -13,7 +13,7 @@ signDept: Full Professor of Physiology • University of the Basque Country (UPV
 viewCvText: View Full Curriculum Vitae
 cvLink: /curriculum/patricia-aspichueta
 email: patricia.aspichueta@ehu.eus
-orcid: 0000-0002-8921-9421
+orcid: 0000-0002-3553-1755
 ---
 
 I am delighted to warmly welcome you to the official web portal of the **Lipids & Liver** Consolidated Research Group (IT1476-22). Based in the Department of Physiology at the Faculty of Medicine and Nursing of the University of the Basque Country (UPV/EHU) and affiliated with the Biobizkaia Health Research Institute, our group combines frontier biomedical research with higher education and an enduring commitment to transferring scientific innovation to healthcare and society.

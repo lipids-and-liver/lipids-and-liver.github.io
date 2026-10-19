@@ -13,7 +13,7 @@ signDept: Catedrática de Fisiología • Universidad del País Vasco (UPV/EHU) 
 viewCvText: Ver Curriculum Vitae Completo
 cvLink: /curriculum/patricia-aspichueta
 email: patricia.aspichueta@ehu.eus
-orcid: 0000-0002-8921-9421
+orcid: 0000-0002-3553-1755
 ---
 
 Les doy una cordial bienvenida al portal web oficial del Grupo de Investigación Consolidado **Lipids & Liver** (IT1476-22). Con sede en el Departamento de Fisiología de la Facultad de Medicina y Enfermería de la Universidad del País Vasco (UPV/EHU) e integrado en el Instituto de Investigación Sanitaria Biobizkaia, nuestro equipo aúna la investigación biomédica de frontera con la docencia universitaria y un firme compromiso de transferencia del conocimiento a la sociedad y al sistema de salud.

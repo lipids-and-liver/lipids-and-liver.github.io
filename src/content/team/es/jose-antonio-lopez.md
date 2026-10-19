@@ -17,31 +17,19 @@ quote:
   - '"Mantén el fuego encendido." — Cormac McCarthy'
 order: 20
 cv:
-  title: Técnico especialista de Laboratorio (Sanitario/Animalario)
+  title: Técnico Especialista de Laboratorio (Sanitaria/Animalario)
   degrees:
-    - Licenciado en Ciencias Químicas
-    - Técnico Superior en Prevencion de Riesgos Laborales
-    - Técnico Superior en Laboratorio Clínico y Biomédico
-  otherTraining:
-    - Python para el tratamiento, análisis y visualización de datos. (Grupo G9 2022)
-    - Curso de metabolómica y lipidómica. Herramientas para el diagnóstico, pronóstico y tratamiento de enfermedades. (sgiker 2022)
-    - Introducción a Google Apps Script. (Grupo G9 2023)
-    - Renovación de la capatizacion en materia de experimentación animal (funciones b y c). (2024)
-    - Desarrollo de aplicaciones web con python y django. (Grupo G9 2024)
-    - Iniciación a entornos HPC (High Performance Computing). (sgiker 2025)
-    - 'STATSX0001: Statistical Learning (Stanford Online 2025)'
-    - 'IA generativa en acción: herramientas, modelos y aplicaciones practicas. (Grupo G9 2026)'
+    - Licenciado en Ciencias Químicas, especialidad Química Fundamental, opción Química Analítica. Universidad del País Vasco (1996)
+    - Técnico Superior en Laboratorio Clínico y Biomédico. Claudio Galeno
   positions:
-    - Oficial de Laboratorio, Escuela Enfermería - UPV/EHU. Donostia (2004-2007)
-    - Técnico Especialista de Laboratorio. Dpto. Fisiología - UPV/EHU. Leioa (2007- actualidad)
-  grants:
-    - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-    - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+    - Técnico Especialista de Laboratorio (Sanitaria/Animalario), Universidad del País Vasco (2025-actualidad)
+    - Técnico/a Especialista de Laboratorio, Universidad del País Vasco (2007-2025)
+    - Oficial de Laboratorio, Universidad del País Vasco (2004-2007)
   publications:
-    - Adaptations of lipid metabolism in low-grade clear cell renal cell carcinoma are linked to cholesteryl ester accumulation. 2025
-  teaching:
-    - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-    - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+    - Adaptations of lipid metabolism in low-grade clear cell renal cell carcinoma are linked to cholesteryl ester accumulation. 2025.
+  languages:
+    - Euskera (B2)
+    - Inglés (B1)
 ---
 
 José Antonio López es **Técnico Especialista de Laboratorio** y una pieza clave en el día a día del grupo **Lipids & Liver** desde 2007. Aunque su formación base es en **Ciencias Químicas** y **laboratorio clínico**, su curiosidad le ha llevado a construir un **_perfil híbrido_** muy particular.

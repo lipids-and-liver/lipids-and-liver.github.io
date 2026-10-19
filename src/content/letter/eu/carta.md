@@ -13,7 +13,7 @@ signDept: Fisiologiako Katedraduna • Euskal Herriko Unibertsitatea (UPV/EHU) &
 viewCvText: Curriculum Osoa Ikusi
 cvLink: /curriculum/patricia-aspichueta
 email: patricia.aspichueta@ehu.eus
-orcid: 0000-0002-8921-9421
+orcid: 0000-0002-3553-1755
 ---
 
 Ongi etorri zinez **Lipids & Liver** Ikerketa Talde Finkatuaren (IT1476-22) web atari ofizialera. Euskal Herriko Unibertsitateko (UPV/EHU) Medikuntza eta Erizaintza Fakultateko Fisiologia Sailean kokatuta eta Biobizkaia Osasun Ikerketa Institutuan integratuta, gure lantaldeak puntako ikerketa biomedikoa, unibertsitate-irakaskuntza eta gizartearen zein osasun-sistemaren zerbitzurako ezagutza-transferentzia uztartzen ditu.
