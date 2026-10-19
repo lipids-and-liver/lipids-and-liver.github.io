@@ -15,11 +15,22 @@ cv.xml). El script los extrae y reescribe el bloque `cv:` de la ficha en castell
   languages     idiomas con su nivel (MCER)
 
 `title`, `patents` y cualquier otro apartado de la ficha se conservan tal cual.
+Con --biografia, el «Resumen libre del currículum» del CVN sustituye además el texto de
+la ficha (la biografía breve).
 Los datos personales del CVN (DNI, teléfono, dirección…) no se leen nunca.
+
+El texto de relleno («Lorem ipsum…») no se importa nunca. Las erratas del CVN se
+corrigen con scripts/cvn_correcciones.json, que se aplica en cada importación:
+
+  {"<miembro>": {"reemplazos": [["texto del CVN", "texto corregido"], …],
+                 "biografia": false}}    # opcional: no tocar la biografía
+
+La clave "*" aplica sus reemplazos a todos los miembros.
 
 Uso:
   python3 scripts/importar_cvn.py CVN.pdf --miembro patricia-aspichueta
   python3 scripts/importar_cvn.py --orcid 0000-0002-3553-1755 --miembro patricia-aspichueta
+  python3 scripts/importar_cvn.py --orcid 0009-0000-7870-0929 --miembro jose-antonio-lopez --biografia
   python3 scripts/importar_cvn.py CVN.pdf --mostrar        # solo muestra el resultado
 
 IMPORTANTE: no guardes el PDF del CVN dentro del repositorio (la web es pública).
@@ -27,6 +38,7 @@ IMPORTANTE: no guardes el PDF del CVN dentro del repositorio (la web es pública
 
 import argparse
 import base64
+import html
 import io
 import json
 import re
@@ -39,6 +51,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 TEAM_DIR = REPO / 'src' / 'content' / 'team' / 'es'
 CVN_ONLINE = 'https://editor.cvn.fecyt.es/editor/cvnOnline/{orcid}'
+CORRECTIONS_FILE = REPO / 'scripts' / 'cvn_correcciones.json'
 MAX_XML_BYTES = 50 * 1024 * 1024
 
 # Códigos CVNPK de los apartados que se importan (Norma CVN, FECYT)
@@ -55,11 +68,13 @@ SUPERVISION = '030.040.000.000'
 PROJECTS = '050.020.010.000'
 CONTRACTS = '050.020.020.000'
 PUBLICATIONS = '060.010.010.000'
+SUMMARY = '070.010.000.000'
 
 SUPERVISION_PHD = '100'
 PUBLICATION_TYPES = {'035': 'article', '148': 'chapter', '112': 'book'}
 
 DOI_RE = re.compile(r'10\.\d{4,9}/[^\s"<>]+')
+PLACEHOLDER_RE = re.compile(r'lorem ipsum|dummy text|texto de (relleno|ejemplo)', re.I)
 
 
 # ---------------------------------------------------------------------------
@@ -127,8 +142,8 @@ def load_cvn(source: str = None, orcid: str = None) -> ET.Element:
         req = urllib.request.Request(CVN_ONLINE.format(orcid=orcid), headers={'User-Agent': 'Mozilla/5.0'})
         data = urllib.request.urlopen(req, timeout=60).read()
         if not data.startswith(b'%PDF'):
-            sys.exit(f'Error: no hay ningún CVN publicado en línea para el ORCID {orcid}. '
-                     'Descarga el PDF desde el editor CVN y pásalo como fichero.')
+            raise SystemExit(f'Error: no hay ningún CVN publicado en línea para el ORCID {orcid}. '
+                             'Descarga el PDF desde el editor CVN y pásalo como fichero.')
     else:
         data = Path(source).read_bytes()
     xml = data if data.lstrip().startswith(b'<') else xml_from_pdf(data)
@@ -189,6 +204,11 @@ def with_period(label, p) -> str:
     return f'{label} ({p})' if p else label
 
 
+def name(el) -> str:
+    """Título de un elemento sin el punto final que a veces trae el CVN."""
+    return text(el, 'Title/Name').rstrip('.').rstrip()
+
+
 def entity(el) -> str:
     return text(el, 'Entity/EntityName')
 
@@ -233,9 +253,9 @@ def build_degrees(root):
             label += f', {grade}'
         out.append(with_period(label, year(el, 'Date/OnlyDate')))
     for el in sorted(items(root, DEGREES), key=sort_key, reverse=True):
-        out.append(with_period(join(text(el, 'Title/Name'), entity(el)), year(el, 'Date/OnlyDate')))
+        out.append(with_period(join(name(el), entity(el)), year(el, 'Date/OnlyDate')))
     for el in sorted(items(root, OTHER_POSTGRADUATE), key=sort_key, reverse=True):
-        out.append(with_period(join(text(el, 'Title/Name'), entity(el)), year(el, 'Date/OnlyDate')))
+        out.append(with_period(join(name(el), entity(el)), year(el, 'Date/OnlyDate')))
     return out
 
 
@@ -243,7 +263,7 @@ def build_training(root, limit):
     els = items(root, SPECIALISED_TRAINING) + items(root, COURSES)
     out = []
     for el in sorted(els, key=sort_key, reverse=True)[:limit]:
-        out.append(with_period(join(text(el, 'Title/Name'), entity(el)), period(el)))
+        out.append(with_period(join(name(el), entity(el)), period(el)))
     return out
 
 
@@ -264,11 +284,11 @@ def build_positions(root, limit):
     """Todos los puestos actuales y, después, los anteriores más recientes hasta `limit`."""
     out = []
     for el in sorted(items(root, POSITIONS_CURRENT), key=sort_key, reverse=True):
-        out.append(with_period(join(text(el, 'Title/Name'), entity(el)), period(el, current=True)))
+        out.append(with_period(join(name(el), entity(el)), period(el, current=True)))
     for el in sorted(items(root, POSITIONS_PAST), key=sort_key, reverse=True):
         if len(out) >= limit:
             break
-        out.append(with_period(join(text(el, 'Title/Name'), entity(el)), period(el)))
+        out.append(with_period(join(name(el), entity(el)), period(el)))
     return out
 
 
@@ -345,6 +365,43 @@ def build_teaching(root, limit):
     return out
 
 
+def build_summary(root):
+    """Resumen libre del CVN en párrafos; vacío si no hay o es texto de relleno."""
+    el = next(iter(items(root, SUMMARY)), None)
+    raw = (el.findtext('Description/Item') or '') if el is not None else ''
+    # El editor separa los párrafos con <br/> dobles; uno solo es un salto de línea
+    paras = [clean(html.unescape(re.sub(r'<br\s*/?>', ' ', p))) for p in re.split(r'(?:\s*<br\s*/?>\s*){2,}', raw)]
+    paras = [p for p in paras if p]
+    if not paras or PLACEHOLDER_RE.search(' '.join(paras)):
+        return []
+    return paras
+
+
+def load_corrections(member):
+    """Reemplazos y opciones de scripts/cvn_correcciones.json para un miembro."""
+    if not CORRECTIONS_FILE.exists():
+        return [], {}
+    data = json.loads(CORRECTIONS_FILE.read_text(encoding='utf-8'))
+    own = data.get(member, {}) if member else {}
+    return data.get('*', {}).get('reemplazos', []) + own.get('reemplazos', []), own
+
+
+def correct(value, replacements):
+    for old, new in replacements:
+        value = value.replace(old, new)
+    return value
+
+
+def drop_placeholders(cv):
+    """Quita las entradas de relleno; devuelve cuántas se han quitado."""
+    dropped = 0
+    for key, values in cv.items():
+        keep = [v for v in values if not PLACEHOLDER_RE.search(v)]
+        dropped += len(values) - len(keep)
+        cv[key] = keep
+    return dropped
+
+
 def build_cv(root, args):
     return {
         'degrees': build_degrees(root),
@@ -386,7 +443,7 @@ def split_cv_block(frontmatter_lines):
     return start, end, sections
 
 
-def update_member_file(path: Path, cv: dict):
+def update_member_file(path: Path, cv: dict, bio=None):
     content = path.read_text(encoding='utf-8')
     m = re.match(r'^---\r?\n(.*?)\r?\n---\r?\n', content, re.S)
     if not m:
@@ -406,12 +463,41 @@ def update_member_file(path: Path, cv: dict):
         fm += block
     else:
         fm = fm[:start] + block + fm[end:]
-    path.write_text(f'---\n' + '\n'.join(fm) + '\n---\n' + content[m.end():], encoding='utf-8')
+    body = '\n' + '\n\n'.join(bio) + '\n' if bio else content[m.end():]
+    path.write_text(f'---\n' + '\n'.join(fm) + '\n---\n' + body, encoding='utf-8')
 
 
 # ---------------------------------------------------------------------------
 
-def main():
+def import_member(args, path=None, show=False):
+    """Importa el CVN indicado en `args` a la ficha `path`. Devuelve los avisos."""
+    replacements, options = load_corrections(path.stem if path else None)
+    root = load_cvn(args.cvn, args.orcid)
+    cv = {k: [correct(v, replacements) for v in vals] for k, vals in build_cv(root, args).items()}
+    warnings = []
+    dropped = drop_placeholders(cv)
+    if dropped:
+        warnings.append(f'{dropped} entrada(s) con texto de relleno no importada(s)')
+
+    bio = None
+    if args.biografia and options.get('biografia', True):
+        bio = [correct(p, replacements) for p in build_summary(root)]
+        if not bio:
+            warnings.append('el resumen libre del CVN está vacío o es texto de relleno: la biografía no cambia')
+
+    for key, values in cv.items():
+        print(f'{key}: {len(values)}', file=sys.stderr)
+    if show or not path:
+        print('\n'.join(['cv:'] + [l for k, v in cv.items() if v for l in yaml_list(k, v)]))
+        if bio:
+            print('\n' + '\n\n'.join(bio))
+        return warnings
+
+    update_member_file(path, cv, bio)
+    return warnings
+
+
+def build_parser():
     p = argparse.ArgumentParser(description='Importa un CVN (FECYT) a la ficha de un miembro del grupo.')
     p.add_argument('cvn', nargs='?', help='PDF del CVN (o su cv.xml)')
     p.add_argument('--orcid', help='descargar el CVN publicado en línea en el editor de FECYT')
@@ -424,8 +510,15 @@ def main():
     p.add_argument('--max-docencia', type=int, default=10, help='asignaturas (las tesis dirigidas van todas)')
     p.add_argument('--max-formacion', type=int, default=10)
     p.add_argument('--max-puestos', type=int, default=12, help='los puestos actuales se incluyen siempre')
+    p.add_argument('--biografia', action='store_true',
+                   help='usar el resumen libre del CVN como biografía (si no es texto de relleno)')
     p.add_argument('--incluir-contratos', action='store_true',
                    help='añadir a los proyectos los contratos y convenios (por defecto solo proyectos competitivos)')
+    return p
+
+
+def main():
+    p = build_parser()
     args = p.parse_args()
 
     if bool(args.cvn) == bool(args.orcid):
@@ -433,20 +526,13 @@ def main():
     if not args.mostrar and not (args.miembro or args.fichero):
         p.error('indica --miembro o --fichero, o usa --mostrar')
 
-    root = load_cvn(args.cvn, args.orcid)
-    cv = build_cv(root, args)
-
-    for key, values in cv.items():
-        print(f'{key}: {len(values)}', file=sys.stderr)
-    if args.mostrar:
-        print('\n'.join(['cv:'] + [l for k, v in cv.items() if v for l in yaml_list(k, v)]))
-        return
-
-    path = Path(args.fichero) if args.fichero else TEAM_DIR / f'{args.miembro}.md'
-    if not path.exists():
+    path = Path(args.fichero) if args.fichero else TEAM_DIR / f'{args.miembro}.md' if args.miembro else None
+    if path and not path.exists():
         sys.exit(f'Error: no existe la ficha {path}')
-    update_member_file(path, cv)
-    print(f'Actualizada {path.relative_to(REPO) if path.is_relative_to(REPO) else path}. Revisa el cambio con git diff.')
+    for warning in import_member(args, path, args.mostrar):
+        print(f'Aviso: {warning}', file=sys.stderr)
+    if path and not args.mostrar:
+        print(f'Actualizada {path.relative_to(REPO) if path.is_relative_to(REPO) else path}. Revisa el cambio con git diff.')
 
 
 if __name__ == '__main__':
