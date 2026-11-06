@@ -12,8 +12,6 @@ bentoSpan: compact
 
 Programa de doctorado de máxima excelencia académica orientado a la formación de personal investigador doctor de proyección internacional.
 
-Lorem Ipsum
-
 El grupo **Lipids & Liver** lidera la línea de investigación oficial:
 
 - **Fisiopatología de los lípidos y técnicas lipidómicas**, integrando estudios en esteatohepatitis metabólica (MAFLD/MASLD), daño celular, cáncer de hígado y lipidómica traslacional.

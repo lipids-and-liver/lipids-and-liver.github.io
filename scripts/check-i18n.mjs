@@ -19,7 +19,8 @@ const CORE_COLLECTIONS = {
   team: 'Fichas del equipo',
 };
 // Datos con campos por idioma (<campo>_es, <campo>_eu, <campo>_en)
-const CORE_DATA = { 'stats.json': 'stats', 'hero_gallery.json': 'slides' };
+// (si no hay <campo>_es, el campo base cuenta como la versión en español, como en alumni.json)
+const CORE_DATA = { 'stats.json': 'stats', 'hero_gallery.json': 'slides', 'alumni.json': 'alumni' };
 
 const strict = process.argv.includes('--strict');
 let missingTotal = 0;
@@ -64,7 +65,7 @@ for (const [file, listKey] of Object.entries(CORE_DATA)) {
   const raw = JSON.parse(readFileSync(join(ROOT, 'src/data', file), 'utf8'));
   const items = raw[listKey] || [];
   const fields = [...new Set(items.flatMap(it => Object.keys(it).filter(k => /_(es|eu|en)$/.test(k)).map(k => k.slice(0, -3))))];
-  const gaps = items.flatMap((it, i) => fields.flatMap(f => LOCALES.filter(l => !it[`${f}_${l}`]?.toString().trim()).map(l => `#${i + 1} ${f}_${l}`)));
+  const gaps = items.flatMap((it, i) => fields.flatMap(f => LOCALES.filter(l => !(it[`${f}_${l}`] ?? (l === 'es' ? it[f] : undefined))?.toString().trim()).map(l => `#${i + 1} ${f}_${l}`)));
   line(`\nDatos ${file}: ${items.length} elementos`);
   gaps.forEach(g => line(`  ✗ falta ${g}`));
   if (!gaps.length) line('  ✓ completos');

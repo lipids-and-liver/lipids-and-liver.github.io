@@ -39,8 +39,6 @@ const team = defineCollection({
     name: z.string().default('Investigador/a'),
     role: z.string().default('Investigador/a'),
     category: z.string().default('Predoctoral'),
-    // Personal jubilado: sale del listado de personal y aparece en Antiguos Miembros (conserva su CV)
-    status: z.enum(['active', 'retired']).default('active'),
     department: z.string().nullish().transform(val => val || 'Departamento de Fisiología, Facultad de Medicina y Enfermería'),
     image: z.string().nullish().transform(val => val || '/assets/images/team/placeholder.jpg'),
     email: z.string().nullish().transform(val => val || ''),
@@ -131,30 +129,6 @@ const training = defineCollection({
   })
 });
 
-const projects = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
-  schema: z.object({
-    id: z.string().optional(),
-    title: z.string().default('Proyecto de Investigación'),
-    acronym: z.string().nullish(),
-    code: z.string().default(''),
-    fundingBody: z.string().default(''),
-    fundingType: z.enum(['regional', 'national', 'european', 'foundation']).nullish().transform(val => val || 'national'),
-    pi: z.string().default('Dra. Patricia Aspichueta'),
-    period: z.string().default(''),
-    status: z.enum(['active', 'completed']).nullish().transform(val => val || 'active'),
-    budget: z.string().nullish(),
-    badge: z.string().nullish(),
-    summary: z.string().nullish(),
-    officialUrl: z.string().nullish(),
-    scope: z.string().nullish(),
-    call: z.string().nullish(),
-    year: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : undefined),
-    researchers: z.array(z.string()).nullish(),
-    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
-  })
-});
-
 // Categorías de noticias (clave estable; la etiqueta se traduce con news_cat_<clave>).
 // Textos antiguos o desconocidos se normalizan; lo que no encaja va a "otros".
 // Sin categoría de divulgación: esas actividades van al registro de src/content/outreach
@@ -203,30 +177,6 @@ const letter = defineCollection({
     cvLink: z.string().optional().default('/curriculum/patricia-aspichueta'),
     email: z.string().optional().default('patricia.aspichueta@ehu.eus'),
     orcid: z.string().optional().default('0000-0002-3553-1755')
-  })
-});
-
-const patents = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/patents" }),
-  schema: z.object({
-    id: z.string().optional(),
-    title: z.string().default('Patente de Invención'),
-    applicationNumber: z.string().default(''),
-    publicationNumber: z.string().default(''),
-    year: z.union([z.number(), z.string()]).default(2020),
-    applicationDate: z.string().nullish(),
-    publicationDate: z.string().nullish(),
-    applicant: z.string().default('Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)'),
-    inventors: z.array(z.string()).default([]),
-    groupInventors: z.array(z.string()).nullish().transform(val => val || []),
-    scope: z.string().default('Nacional (España - OEPM)'),
-    status: z.string().default('Concedida / Publicada'),
-    badge: z.string().default('Patente OEPM'),
-    abstract: z.string().nullish(),
-    invenesUrl: z.string().nullish(),
-    pdfUrl: z.string().nullish(),
-    ehuUrl: z.string().nullish(),
-    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
   })
 });
 
@@ -290,10 +240,8 @@ export const collections = {
   publications,
   presentation,
   training,
-  projects,
   news,
-  letter,
-  patents
+  letter
 };
 
 

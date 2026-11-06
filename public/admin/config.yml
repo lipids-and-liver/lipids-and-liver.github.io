@@ -171,7 +171,6 @@ collections:
       - { label: "Nombre Completo", name: "name", widget: "string", required: true, i18n: "duplicate", hint: "Ej: Dr. Jon Ander Pérez" }
       - { label: "Cargo / Puesto", name: "role", widget: "string", required: false, default: "Investigador/a Predoctoral", i18n: true, hint: "Ej: Investigador Predoctoral, Posdoctoral, etc. (se traduce automáticamente si no se introduce en euskera/inglés)" }
       - { label: "Categoría", name: "category", widget: "select", options: ["Coordinadora", "Investigadora Senior", "Investigador Senior", "Directora de Línea", "PDI", "Ramón y Cajal", "Posdoctoral", "Predoctoral", "Técnico"], default: "Predoctoral", i18n: "duplicate", hint: "Categoría para filtros del portal (se traduce automáticamente)" }
-      - { label: "Situación", name: "status", widget: "select", options: [{ label: "En activo", value: "active" }, { label: "Jubilado/a (pasa a Antiguos Miembros)", value: "retired" }], default: "active", i18n: "duplicate" }
       - { label: "Departamento / Centro", name: "department", widget: "string", required: false, i18n: "duplicate", default: "Departamento de Fisiología, Facultad de Medicina y Enfermería" }
       - { label: "Fotografía", name: "image", widget: "image", required: false, i18n: "duplicate", hint: "Opcional. Si se deja vacía se muestra la silueta institucional por defecto" }
       - { label: "Correo Electrónico UPV/EHU", name: "email", widget: "string", required: false, i18n: "duplicate", hint: "Ej: nombre.apellido@ehu.eus" }
@@ -203,17 +202,17 @@ collections:
       - { label: "Semblanza / Biografía Breve", name: "body", widget: "markdown", required: false, i18n: true, default: "Investigador/a en el Departamento de Fisiología de la Facultad de Medicina y Enfermería de la UPV/EHU e integrante del Grupo Lipids & Liver." }
       - { label: "Estado de la traducción", name: "translationStatus", widget: "select", options: [{ label: "Borrador (pendiente de revisión)", value: "draft" }, { label: "Revisada", value: "reviewed" }], required: false, i18n: true, hint: "Marca «Revisada» cuando la persona haya validado esta versión" }
 
-  # 1.5 ANTIGUOS MIEMBROS
+  # 1.5 ALUMNI
   - name: "alumni"
-    label: "👥 El Grupo › Antiguos Miembros"
+    label: "👥 El Grupo › Alumni"
     description: "Directorio histórico de investigadores y doctores vinculados al grupo"
     files:
-      - label: "Directorio de Antiguos Miembros"
+      - label: "Directorio de Alumni"
         name: "alumni_data"
         file: "src/data/alumni.json"
         format: "json"
         fields:
-          - label: "Lista de Antiguos Miembros"
+          - label: "Lista de Alumni"
             name: "alumni"
             widget: "list"
             summary: "{{fields.name}} ({{fields.period}})"
@@ -222,13 +221,22 @@ collections:
               - { label: "Nombre", name: "name", widget: "string" }
               - { label: "Periodo en el Grupo", name: "period", widget: "string", hint: "Ej: 2010 – 2015" }
               - { label: "Rol en el Laboratorio", name: "labRole", widget: "string", hint: "Ej: Investigadora Predoctoral, Catedrática de Universidad" }
+              - { label: "Rol en el Laboratorio (EU)", name: "labRole_eu", widget: "string", required: false }
+              - { label: "Rol en el Laboratorio (EN)", name: "labRole_en", widget: "string", required: false }
               - { label: "Rol / Título Académico", name: "role", widget: "string", required: false, hint: "Ej: Catedrática Emérita de Bioquímica y Biología Molecular" }
               - { label: "ID de Tesis en la Web", name: "thesisId", widget: "string", required: false, hint: "Ej: tesis-10, tesis-25" }
               - { label: "Título de la Tesis", name: "thesis", widget: "string", required: false }
               - { label: "Año de Tesis / Egreso", name: "year", widget: "string", required: false }
               - { label: "Puesto Actual", name: "currentRole", widget: "string" }
+              - { label: "Puesto Actual (EU)", name: "currentRole_eu", widget: "string", required: false }
+              - { label: "Puesto Actual (EN)", name: "currentRole_en", widget: "string", required: false }
               - { label: "Afiliación / Centro Actual", name: "currentAffiliation", widget: "string" }
+              - { label: "Afiliación / Centro Actual (EU)", name: "currentAffiliation_eu", widget: "string", required: false }
+              - { label: "Afiliación / Centro Actual (EN)", name: "currentAffiliation_en", widget: "string", required: false }
               - { label: "Ubicación Geográfica", name: "location", widget: "string" }
+              - { label: "Ubicación Geográfica (EU)", name: "location_eu", widget: "string", required: false }
+              - { label: "Ubicación Geográfica (EN)", name: "location_en", widget: "string", required: false }
+              - { label: "Ubicación en el mapa", name: "place", widget: "string", required: false, hint: "ID de la ubicación (ver «Ubicaciones del mapa»): euskadi, barcelona, nueva-york, estados-unidos, reino-unido… Vacío = no sale en el mapa" }
               - label: "Categoría"
                 name: "category"
                 widget: "select"
@@ -236,7 +244,6 @@ collections:
                   - { label: "Academia & Investigación", value: "academia" }
                   - { label: "Industria & Biotecnología", value: "industry" }
                   - { label: "Investigación Clínica", value: "clinical" }
-                  - { label: "Personal jubilado / emérito (sección propia)", value: "emerita" }
               - { label: "Etiqueta de Categoría", name: "categoryLabel", widget: "string" }
               - { label: "¿Es Cofundadora / Honorífico?", name: "isFounder", widget: "boolean", default: false, required: false }
               - { label: "Tesis Dirigidas (Números)", name: "thesesSupervised", widget: "list", required: false, hint: "Números de tesis dirigidas, ej: 29, 31" }
@@ -246,6 +253,25 @@ collections:
               - { label: "Icono FontAwesome", name: "icon", widget: "string", default: "fas fa-user-graduate", required: false }
               - { label: "Enlace LinkedIn", name: "linkedin", widget: "string", required: false }
               - { label: "Enlace ORCID", name: "orcid", widget: "string", required: false }
+
+      - label: "Ubicaciones del mapa"
+        name: "alumni_places"
+        file: "src/data/alumni_places.json"
+        format: "json"
+        fields:
+          - label: "Ubicaciones"
+            name: "places"
+            widget: "list"
+            summary: "{{fields.name_es}} ({{fields.id}})"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Minúsculas y guiones. Es lo que se pone en «Ubicación en el mapa» de cada persona" }
+              - { label: "Nombre (ES)", name: "name_es", widget: "string" }
+              - { label: "Nombre (EU)", name: "name_eu", widget: "string" }
+              - { label: "Nombre (EN)", name: "name_en", widget: "string" }
+              - { label: "Latitud", name: "lat", widget: "number", value_type: "float" }
+              - { label: "Longitud", name: "lng", widget: "number", value_type: "float", hint: "Oeste en negativo (Bilbao: -2.93)" }
+              - { label: "Solo se conoce el país", name: "approximate", widget: "boolean", default: false, required: false }
+              - { label: "Posición de la etiqueta", name: "labelPos", widget: "select", options: ["right", "left", "top", "bottom"], default: "right" }
 
   # ============================================================================
   # 2. BLOQUE: INVESTIGACIÓN
@@ -297,51 +323,6 @@ collections:
       - { label: "Borrador (texto pendiente de validar)", name: "draft", widget: "boolean", default: false, i18n: "duplicate", hint: "Desmárcalo cuando el grupo haya revisado el texto" }
       - { label: "Estado de la traducción", name: "translationStatus", widget: "select", options: [{ label: "Borrador (pendiente de revisión)", value: "draft" }, { label: "Revisada", value: "reviewed" }], required: false, i18n: true }
       - { label: "Descripción", name: "body", widget: "markdown", i18n: true }
-
-  # 2.2 PROYECTOS COMPETITIVOS
-  - name: "projects"
-    label: "🔬 Investigación › Proyectos Competitivos"
-    label_singular: "Proyecto"
-    description: "Proyectos financiados del Plan Nacional, Gobierno Vasco, FEDER y Fundaciones"
-    folder: "src/content/projects"
-    i18n: false
-    create: true
-    slug: "{{fields.id | default('{{fields.title}}')}}"
-    identifier_field: "title"
-    summary: "{{title}} [{{code}}] ({{status}})"
-    sortable_fields: ["order", "period", "status"]
-    view_groups:
-      - label: "Estado del Proyecto"
-        field: "status"
-      - label: "Ámbito de Convocatoria"
-        field: "fundingType"
-    view_filters:
-      - label: "Proyectos Activos"
-        field: "status"
-        pattern: "active"
-      - label: "Proyectos Finalizados"
-        field: "status"
-        pattern: "completed"
-    fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, hint: "Ej: pid2021-mafld" }
-      - { label: "Título del Proyecto", name: "title", widget: "string" }
-      - { label: "Acrónimo", name: "acronym", widget: "string", required: false, hint: "Ej: AGPAE, ONCOFINDER, SHEIC" }
-      - { label: "Código / Expediente", name: "code", widget: "string" }
-      - { label: "Entidad Financiadora", name: "fundingBody", widget: "string" }
-      - { label: "Ámbito de Convocatoria", name: "fundingType", widget: "select", options: [{ label: "Nacional (MICINN / ISCIII)", value: "national" }, { label: "Regional (Gobierno Vasco)", value: "regional" }, { label: "Europeo (Horizon / FEDER)", value: "european" }, { label: "Fundación (AECC, etc.)", value: "foundation" }] }
-      - { label: "Investigadora Principal", name: "pi", widget: "string", default: "Dra. Patricia Aspichueta" }
-      - { label: "Periodo de Ejecución", name: "period", widget: "string", hint: "Ej: 2022 - 2025" }
-      - { label: "Año de Fin / Referencia", name: "year", widget: "number", required: false, value_type: "int", hint: "Ej: 2027" }
-      - { label: "Estado", name: "status", widget: "select", options: [{ label: "Activo", value: "active" }, { label: "Finalizado", value: "completed" }] }
-      - { label: "Ámbito Territorial", name: "scope", widget: "string", required: false, hint: "Ej: Regional, Estatal, Europeo" }
-      - { label: "Convocatoria Específica", name: "call", widget: "string", required: false, hint: "Ej: Proyectos I+D+i 2021" }
-      - { label: "Presupuesto / Programa", name: "budget", widget: "string", required: false }
-      - { label: "Insignia", name: "badge", widget: "string", required: false }
-      - { label: "Resumen Breve", name: "summary", widget: "text", required: false }
-      - { label: "URL Oficial Ficha UPV/EHU", name: "officialUrl", widget: "string", required: false, hint: "URL a ekoizpen-zientifikoa.ehu.eus" }
-      - { label: "Investigadores Participantes", name: "researchers", widget: "list", required: false, hint: "Lista de investigadores del proyecto" }
-      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int" }
-      - { label: "Memoria y Objetivos del Proyecto", name: "body", widget: "markdown", required: false }
 
   # 2.3 PUBLICACIONES CIENTÍFICAS JCR
   - name: "publications"
@@ -432,39 +413,6 @@ collections:
       - { label: "Identificador TESEO", name: "teseoId", widget: "string", required: false, i18n: "duplicate", hint: "Código TESEO del Ministerio" }
       - { label: "Orden de Aparición", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
       - { label: "Resumen / Abstract", name: "body", widget: "markdown", required: false, i18n: true }
-
-  # 2.5 PROPIEDAD INDUSTRIAL & PATENTES
-  - name: "patents"
-    label: "🔬 Investigación › Propiedad Industrial & Patentes"
-    label_singular: "Patente"
-    description: "Patentes de invención, registros OEPM y transferencia de tecnología"
-    folder: "src/content/patents"
-    i18n: true
-    create: true
-    slug: "{{fields.id | default('{{fields.title}}')}}"
-    identifier_field: "title"
-    summary: "{{title}} [{{publicationNumber}}] ({{year}})"
-    sortable_fields: ["order", "year", "title"]
-    fields:
-      - { label: "Identificador (Slug)", name: "id", widget: "string", required: false, i18n: "duplicate", hint: "Ej: p201831028-lipidos-lagrima" }
-      - { label: "Título de la Invención", name: "title", widget: "string", i18n: true }
-      - { label: "Número de Solicitud", name: "applicationNumber", widget: "string", i18n: "duplicate", hint: "Ej: P201831028" }
-      - { label: "Número de Publicación", name: "publicationNumber", widget: "string", i18n: "duplicate", hint: "Ej: ES2755963A1" }
-      - { label: "Año de Publicación", name: "year", widget: "number", default: 2020, value_type: "int", i18n: "duplicate" }
-      - { label: "Fecha de Solicitud", name: "applicationDate", widget: "string", required: false, i18n: "duplicate", hint: "Formato: YYYY-MM-DD" }
-      - { label: "Fecha de Publicación", name: "publicationDate", widget: "string", required: false, i18n: "duplicate", hint: "Formato: YYYY-MM-DD" }
-      - { label: "Entidad Titular", name: "applicant", widget: "string", default: "Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)", i18n: true }
-      - { label: "Inventores", name: "inventors", widget: "list", i18n: "duplicate" }
-      - { label: "Inventores del Grupo Lipids & Liver", name: "groupInventors", widget: "list", required: false, i18n: "duplicate", hint: "Nombres de los miembros del grupo para destacarlos" }
-      - { label: "Ámbito Territorial", name: "scope", widget: "string", default: "Nacional (España - OEPM)", i18n: true }
-      - { label: "Estado", name: "status", widget: "string", default: "Concedida / Publicada (A1)", i18n: true }
-      - { label: "Insignia / Badge", name: "badge", widget: "string", default: "Patente OEPM", i18n: true }
-      - { label: "Resumen Oficial", name: "abstract", widget: "text", required: false, i18n: true }
-      - { label: "Enlace INVENES (OEPM)", name: "invenesUrl", widget: "string", required: false, i18n: "duplicate", hint: "URL base INVENES OEPM" }
-      - { label: "Enlace Documento PDF (OEPM)", name: "pdfUrl", widget: "string", required: false, i18n: "duplicate", hint: "URL descarga directa PDF OEPM" }
-      - { label: "Enlace Ficha UPV/EHU", name: "ehuUrl", widget: "string", required: false, i18n: "duplicate", hint: "URL portal producción científica UPV/EHU" }
-      - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
-      - { label: "Memoria y Aplicabilidad Clínica", name: "body", widget: "markdown", required: false, i18n: true }
 
   # ============================================================================
   # 3. BLOQUE: FORMACIÓN & TALENTO
@@ -661,53 +609,6 @@ collections:
           - { label: "Identificador TESEO", name: "teseoId", widget: "string", required: false }
           - { label: "Orden", name: "order", widget: "number", default: 99 }
           - { label: "Resumen", name: "body", widget: "markdown" }
-
-      - label: "Plantilla › Proyecto de Investigación"
-        name: "template_project"
-        file: "src/content/templates/_plantilla_proyecto.md"
-        fields:
-          - { label: "ID / Slug", name: "id", widget: "string", default: "codigo-proyecto" }
-          - { label: "Título del Proyecto", name: "title", widget: "string", default: "Título del Proyecto" }
-          - { label: "Acrónimo", name: "acronym", widget: "string", required: false }
-          - { label: "Código / Expediente", name: "code", widget: "string", default: "PID202X-XXXXXX-XX" }
-          - { label: "Entidad Financiadora", name: "fundingBody", widget: "string", default: "Ministerio de Ciencia e Innovación" }
-          - { label: "Ámbito de Convocatoria", name: "fundingType", widget: "select", options: [{ label: "Nacional (MICINN / ISCIII)", value: "national" }, { label: "Regional (Gobierno Vasco)", value: "regional" }, { label: "Europeo (Horizon / FEDER)", value: "european" }, { label: "Fundación (AECC, etc.)", value: "foundation" }], default: "national" }
-          - { label: "Investigadora Principal", name: "pi", widget: "string", default: "Dra. Patricia Aspichueta Celaá" }
-          - { label: "Periodo", name: "period", widget: "string", default: "2024 - 2027" }
-          - { label: "Año de Fin", name: "year", widget: "number", default: 2027 }
-          - { label: "Estado", name: "status", widget: "select", options: [{ label: "Activo", value: "active" }, { label: "Finalizado", value: "completed" }], default: "active" }
-          - { label: "Presupuesto", name: "budget", widget: "string", default: "150.000 €" }
-          - { label: "Insignia", name: "badge", widget: "string", default: "Plan Estatal I+D+i" }
-          - { label: "Ámbito", name: "scope", widget: "string", default: "Estatal" }
-          - { label: "Convocatoria", name: "call", widget: "string", required: false }
-          - { label: "Enlace Oficial UPV/EHU", name: "officialUrl", widget: "string", required: false }
-          - { label: "Investigadores", name: "researchers", widget: "list", required: false }
-          - { label: "Orden", name: "order", widget: "number", default: 10 }
-          - { label: "Resumen y Memoria", name: "body", widget: "markdown" }
-
-      - label: "Plantilla › Patente de Invención"
-        name: "template_patent"
-        file: "src/content/templates/_plantilla_patente.md"
-        fields:
-          - { label: "ID / Slug", name: "id", widget: "string", default: "p202X-titulo" }
-          - { label: "Título de la Invención", name: "title", widget: "string", default: "Título oficial de la Patente" }
-          - { label: "Nº Solicitud", name: "applicationNumber", widget: "string", default: "P202XXXXXX" }
-          - { label: "Nº Publicación", name: "publicationNumber", widget: "string", default: "ES2XXXXXXA1" }
-          - { label: "Año", name: "year", widget: "number", default: 2025 }
-          - { label: "Fecha Solicitud", name: "applicationDate", widget: "string", default: "2024-05-15" }
-          - { label: "Fecha Publicación", name: "publicationDate", widget: "string", default: "2025-11-20" }
-          - { label: "Titular", name: "applicant", widget: "string", default: "Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)" }
-          - { label: "Inventores", name: "inventors", widget: "list" }
-          - { label: "Inventores Lipids & Liver", name: "groupInventors", widget: "list", required: false }
-          - { label: "Ámbito", name: "scope", widget: "string", default: "Nacional (España - OEPM)" }
-          - { label: "Estado", name: "status", widget: "string", default: "Concedida / Publicada (A1)" }
-          - { label: "Insignia", name: "badge", widget: "string", default: "Patente OEPM" }
-          - { label: "Resumen", name: "abstract", widget: "text" }
-          - { label: "Enlace INVENES", name: "invenesUrl", widget: "string", required: false }
-          - { label: "Enlace PDF", name: "pdfUrl", widget: "string", required: false }
-          - { label: "Enlace Ficha UPV/EHU", name: "ehuUrl", widget: "string", required: false }
-          - { label: "Orden", name: "order", widget: "number", default: 1 }
-          - { label: "Memoria Descriptiva", name: "body", widget: "markdown" }
 
       - label: "Plantilla › Publicación Científica"
         name: "template_pub"

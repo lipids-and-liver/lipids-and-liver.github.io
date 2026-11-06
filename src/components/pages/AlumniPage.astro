@@ -1,8 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getTranslations, getLocalizedPath, getLocalizedCollection, localizeTeamRole, localizeTeamDepartment, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
+import { getTranslations, getLocalizedPath, CONTENT_SOURCE_LOCALE, type Locale } from '../../utils/i18n';
 import ContentLangNotice from '../ContentLangNotice.astro';
 import AlumniCard from '../cards/AlumniCard.astro';
+import AlumniMap from '../AlumniMap.astro';
+import placesData from '../../data/alumni_places.json';
 import alumniData from '../../data/alumni.json';
 
 interface Props {
@@ -15,27 +17,13 @@ const t = getTranslations(lang);
 const rawAlumni = (alumniData as any).alumni || alumniData;
 const alumniList: any[] = Array.isArray(rawAlumni) ? rawAlumni : [];
 
-// Egresados (formados en el grupo) y personal jubilado se muestran por separado
-const RETIRED_CATEGORIES = ['emerita'];
-const retiredList = alumniList.filter((a: any) => RETIRED_CATEGORIES.includes(a.category));
-const graduatesList = alumniList.filter((a: any) => !RETIRED_CATEGORIES.includes(a.category));
-// Personal del equipo marcado como jubilado (status: retired): conserva su ficha de CV
-const retiredTeam = (await getLocalizedCollection('team', lang)).filter(m => m.data.status === 'retired');
-// Se muestran con el mismo formato que el resto de antiguos miembros (AlumniCard)
-const retiredTeamCards = retiredTeam.map(m => ({
-  id: m.slug,
-  name: m.data.name,
-  labRole: m.locale === lang ? m.data.role : localizeTeamRole(m.data.role, lang),
-  currentRole: t.team_retired_badge,
-  currentAffiliation: m.locale === lang ? m.data.department : localizeTeamDepartment(m.data.department || '', lang),
-  category: 'emerita',
-  badgeLabel: t.team_retired_badge,
-  icon: 'fas fa-university',
-  orcid: m.data.orcid ? (m.data.orcid.startsWith('http') ? m.data.orcid : `https://orcid.org/${m.data.orcid}`) : undefined,
-  linkedin: m.data.linkedin || undefined,
-  cvUrl: getLocalizedPath(`/curriculum/${m.slug}`, lang),
-  sourceLang: lang, // cargo y departamento ya salen traducidos
-}));
+const graduatesList = alumniList;
+
+// Campos traducibles de cada perfil (base en español + <campo>_eu / <campo>_en)
+const ALUMNI_I18N_FIELDS = ['labRole', 'currentRole', 'currentAffiliation', 'location'];
+const missingTranslation = lang !== CONTENT_SOURCE_LOCALE && graduatesList.some((a: any) =>
+  ALUMNI_I18N_FIELDS.some(f => a[f] && !a[`${f}_${lang}`]?.toString().trim())
+);
 
 // Filtros de egresados: solo las categorías que tienen alguien
 const graduateFilters = [
@@ -47,13 +35,13 @@ const graduateFilters = [
   .filter(f => f.count > 0);
 ---
 
-<Layout currentPage="alumni" lang={lang} title={`${t.alumni_page_title || 'Antiguos Miembros'} | Lipids & Liver`}>
+<Layout currentPage="alumni" lang={lang} title={`${t.alumni_page_title || 'Alumni'} | Lipids & Liver`}>
   <!-- Contextual Sub-bar -->
   <div class="nav-sub-bar">
     <div class="container nav-sub-container">
       <div class="nav-sub-context">
         <span class="nav-sub-badge">
-          <i class="fas fa-users-cog"></i> {t.alumni_title || 'Antiguos Miembros y Trayectoria'}
+          <i class="fas fa-users-cog"></i> {t.alumni_title || 'Alumni'}
         </span>
       </div>
       <div class="nav-sub-actions">
@@ -71,7 +59,7 @@ const graduateFilters = [
         <span class="catalog-badge">
           <i class="fas fa-award"></i> {t.alumni_badge}
         </span>
-        <h1 class="catalog-title">{t.alumni_page_title || 'Antiguos Miembros'}</h1>
+        <h1 class="catalog-title">{t.alumni_page_title || 'Alumni'}</h1>
         <p class="catalog-subtitle">{t.alumni_page_sub || 'Investigadores y doctores del Grupo Consolidado Lipids & Liver registrados oficialmente en la Universidad del País Vasco'}</p>
       </div>
     </div>
@@ -93,8 +81,8 @@ const graduateFilters = [
         </div>
       </div>
 
-      <!-- Los perfiles (alumni.json) solo existen en español -->
-      <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
+      <!-- Aviso solo si algún perfil sigue sin traducir a este idioma -->
+      {missingTranslation && <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />}
     </div>
   </section>
 
@@ -125,6 +113,8 @@ const graduateFilters = [
         </div>
       </div>
 
+      <AlumniMap alumni={graduatesList} lang={lang} />
+
       {graduateFilters.length > 1 && (
         <div class="filter-controls-wrap" style="margin-bottom:2rem;">
           <div class="segmented-control-bar" id="alumni-category-filters">
@@ -140,9 +130,18 @@ const graduateFilters = [
         </div>
       )}
 
+      <!-- Filtro activo por ubicación (lo rellena el script) -->
+      <div class="alumni-place-status" id="alumni-place-status" hidden>
+        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+        <span>{t.alumni_map_filtering} <strong id="alumni-place-status-name"></strong></span>
+        <button type="button" class="alumni-place-clear" id="alumni-place-clear">
+          <i class="fas fa-times" aria-hidden="true"></i> {t.alumni_map_clear}
+        </button>
+      </div>
+
       <div class="alumni-grid-inst" id="alumni-grid">
         {graduatesList.map((alumni: any) => (
-          <div class="alumni-item" data-category={alumni.category}>
+          <div class="alumni-item" data-category={alumni.category} data-place={placesData.places.some(p => p.id === alumni.place) ? alumni.place : 'none'}>
             <AlumniCard alumni={alumni} lang={lang} />
           </div>
         ))}
@@ -150,49 +149,55 @@ const graduateFilters = [
     </div>
   </section>
 
-  <!-- Personal jubilado -->
-  {(retiredList.length > 0 || retiredTeam.length > 0) && (
-    <section class="page-section page-section-alt" id="alumni-jubilados">
-      <div class="container">
-        <div class="section-header-inst">
-          <div>
-            <h2 class="section-title-inst"><i class="fas fa-award"></i> {t.alumni_retired_title}</h2>
-            <span class="section-subtitle-inst">{t.alumni_retired_sub}</span>
-          </div>
-        </div>
-        <div class="alumni-grid-inst">
-          {[...retiredTeamCards, ...retiredList].map((alumni: any) => (
-            <div class="alumni-item" data-category={alumni.category}>
-              <AlumniCard alumni={alumni} lang={lang} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
 </Layout>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('#alumni-category-filters .segmented-btn');
-    const alumniItems = document.querySelectorAll('#alumni-grid .alumni-item');
+    // Dos filtros combinables: categoría (botones) y ubicación (mapa o lista de ubicaciones)
+    const state = { category: 'ALL', place: null };
+    const categoryButtons = document.querySelectorAll('#alumni-category-filters .segmented-btn');
+    const placeControls = document.querySelectorAll('[data-place-filter]');
+    const items = document.querySelectorAll('#alumni-grid .alumni-item');
+    const status = document.getElementById('alumni-place-status');
+    const statusName = document.getElementById('alumni-place-status-name');
 
-    filterButtons.forEach(btn => {
+    const render = () => {
+      items.forEach(item => {
+        const okCategory = state.category === 'ALL' || item.dataset.category === state.category;
+        const okPlace = !state.place || item.dataset.place === state.place;
+        item.style.display = okCategory && okPlace ? '' : 'none';
+      });
+      placeControls.forEach(el => {
+        const on = el.dataset.placeFilter === state.place;
+        el.classList.toggle('active', on);
+        el.setAttribute('aria-pressed', String(on));
+      });
+      if (status) {
+        status.hidden = !state.place;
+        const source = document.querySelector(`.alumni-map-place[data-place-filter="${state.place}"] .place-name`);
+        if (statusName) statusName.textContent = source ? source.textContent : '';
+      }
+    };
+
+    categoryButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
+        categoryButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        alumniItems.forEach(item => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'ALL' || category === filter) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        state.category = btn.getAttribute('data-filter');
+        render();
       });
     });
+
+    const togglePlace = id => { state.place = state.place === id ? null : id; render(); };
+    placeControls.forEach(el => {
+      el.addEventListener('click', () => togglePlace(el.dataset.placeFilter));
+      el.addEventListener('keydown', e => {
+        if (el.tagName !== 'BUTTON' && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          togglePlace(el.dataset.placeFilter);
+        }
+      });
+    });
+    document.getElementById('alumni-place-clear')?.addEventListener('click', () => { state.place = null; render(); });
   });
 </script>
