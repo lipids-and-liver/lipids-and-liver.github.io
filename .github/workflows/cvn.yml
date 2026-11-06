@@ -3,8 +3,9 @@ name: Actualizar perfiles desde el CVN
 # Cada lunes descarga el CVN en línea (FECYT) de los miembros con el campo `cvn`
 # y, si algo ha cambiado, abre un pull request a `main`: al fusionarlo se publica en la web.
 on:
-  schedule:
-    - cron: '0 5 * * 1'
+  # Desactivado temporalmente: descomentar para reactivar la ejecución semanal
+  # schedule:
+  #   - cron: '0 5 * * 1'
   workflow_dispatch:
 
 permissions:
