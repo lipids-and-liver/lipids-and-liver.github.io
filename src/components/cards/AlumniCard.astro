@@ -12,7 +12,7 @@ interface AlumniItem {
   currentRole: string;
   currentAffiliation: string;
   location: string;
-  category: 'academia' | 'industry' | 'clinical' | 'emerita';
+  category: 'academia' | 'industry' | 'clinical';
   categoryLabel: string;
   icon?: string;
   ehuUrl?: string;
@@ -21,7 +21,7 @@ interface AlumniItem {
   isFounder?: boolean;
   thesesSupervised?: number[];
   patent?: string;
-  // Opcionales para personal del equipo mostrado con este formato (p. ej. jubilado)
+  // Opcionales
   cvUrl?: string;
   badgeLabel?: string;
   sourceLang?: Locale;
@@ -34,9 +34,19 @@ interface Props {
 
 const { alumni, lang = DEFAULT_LOCALE } = Astro.props;
 const t = getTranslations(lang);
-// alumni.json solo está en español: sus textos se marcan con su idioma real
+// alumni.json: el campo base está en español; <campo>_eu y <campo>_en llevan las traducciones.
+// Si falta la traducción se muestra el español, marcado con su idioma real.
 const sourceLang = alumni.sourceLang ?? CONTENT_SOURCE_LOCALE;
-const dataLang = lang !== sourceLang ? sourceLang : undefined;
+const field = (key: 'labRole' | 'currentRole' | 'currentAffiliation' | 'location') => {
+  const translated = lang !== sourceLang ? (alumni as any)[`${key}_${lang}`] : undefined;
+  return translated
+    ? { text: translated as string, lang: undefined }
+    : { text: (alumni[key] || '') as string, lang: lang !== sourceLang ? sourceLang : undefined };
+};
+const labRole = field('labRole');
+const currentRole = field('currentRole');
+const currentAffiliation = field('currentAffiliation');
+const location = field('location');
 const categoryLabel = alumni.badgeLabel || (t as Record<string, string>)[`alumni_cat_${alumni.category}`] || alumni.categoryLabel;
 ---
 
@@ -48,8 +58,8 @@ const categoryLabel = alumni.badgeLabel || (t as Record<string, string>)[`alumni
     <div class="alumni-identity">
       <span class="alumni-category-badge">{categoryLabel}</span>
       <h3 class="alumni-name">{alumni.name}</h3>
-      <span class="alumni-lab-past" lang={dataLang}>
-        <i class="fas fa-history"></i> {alumni.labRole}
+      <span class="alumni-lab-past" lang={labRole.lang}>
+        <i class="fas fa-history"></i> {labRole.text}
         {alumni.period && <span class="alumni-period"> • {alumni.period}</span>}
       </span>
     </div>
@@ -58,13 +68,13 @@ const categoryLabel = alumni.badgeLabel || (t as Record<string, string>)[`alumni
   <div class="alumni-card-body">
     <div class="alumni-current-box">
       <span class="current-label"><i class="fas fa-briefcase"></i> {t.alumni_current_label || 'Puesto Actual:'}</span>
-      <div class="current-role" lang={dataLang}>{alumni.currentRole}</div>
-      <div class="current-affiliation" lang={dataLang}>
-        <i class="fas fa-building"></i> {alumni.currentAffiliation}
+      <div class="current-role" lang={currentRole.lang}>{currentRole.text}</div>
+      <div class="current-affiliation" lang={currentAffiliation.lang}>
+        <i class="fas fa-building"></i> {currentAffiliation.text}
       </div>
-      {alumni.location && (
-        <div class="current-location" lang={dataLang}>
-          <i class="fas fa-map-marker-alt"></i> {alumni.location}
+      {location.text && (
+        <div class="current-location" lang={location.lang}>
+          <i class="fas fa-map-marker-alt"></i> {location.text}
         </div>
       )}
     </div>

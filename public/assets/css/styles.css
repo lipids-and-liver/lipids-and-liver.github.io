@@ -4703,10 +4703,6 @@ a.cv-contact-item:hover i {
   background-color: #0284c7;
 }
 
-.alumni-card-inst.category-emerita::before {
-  background-color: #f59e0b;
-}
-
 .alumni-card-inst:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
@@ -4752,10 +4748,6 @@ a.cv-contact-item:hover i {
   color: #0284c7;
 }
 
-.category-emerita .alumni-category-badge {
-  color: #d97706;
-}
-
 .alumni-name {
   font-size: 1.15rem;
   font-weight: 700;
@@ -4795,10 +4787,6 @@ a.cv-contact-item:hover i {
 
 .category-industry .current-label {
   color: #0284c7;
-}
-
-.category-emerita .current-label {
-  color: #d97706;
 }
 
 .current-role {
@@ -5946,22 +5934,6 @@ a.cv-contact-item:hover i {
   border-top: 1px solid var(--border-light);
 }
 
-/* Etiqueta de personal jubilado en la ficha de CV */
-.cv-retired-badge {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 1px 8px;
-  border-radius: 10px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: #92400e;
-  background: #fef3c7;
-  border: 1px solid #fcd34d;
-  vertical-align: middle;
-}
-
 /* Línea de investigación en la página de una tesis */
 .thesis-line-card {
   display: flex;
@@ -6459,4 +6431,212 @@ a.cv-contact-item:hover i {
   #featured-news-grid .news-card-inst:hover {
     transform: none;
   }
+}
+
+/* ==========================================================================
+   ALUMNI MAP (prototipo): ubicación actual de los alumni
+   ========================================================================== */
+.alumni-map-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.alumni-map-head { margin-bottom: 1.25rem; }
+.alumni-map-title {
+  font-size: 1.25rem;
+  color: var(--ehu-navy);
+  margin: 0 0 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.alumni-map-title i { color: var(--logo-green); }
+.alumni-map-sub { margin: 0; font-size: 0.95rem; color: var(--text-secondary); }
+
+.alumni-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.alumni-map-figure { margin: 0; position: relative; }
+
+.alumni-map-tooltip {
+  position: absolute;
+  z-index: 5;
+  transform: translate(-50%, -100%);
+  min-width: 170px;
+  max-width: min(280px, 90%);
+  padding: 0.6rem 0.8rem;
+  background: var(--ehu-navy);
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 43, 73, 0.25);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+.alumni-map-tooltip[hidden] { display: none; }
+.alumni-map-tooltip.below { transform: translate(-50%, 0); }
+.alumni-map-tooltip::after {
+  content: "";
+  position: absolute;
+  left: calc(50% + var(--arrow-x, 0px));
+  top: 100%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--ehu-navy);
+}
+.alumni-map-tooltip.below::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--ehu-navy); }
+.alumni-map-tooltip .tooltip-place {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #c5e1a5;
+  margin-bottom: 0.3rem;
+}
+.alumni-map-tooltip ul { list-style: none; margin: 0; padding: 0; }
+.alumni-map-tooltip li + li { margin-top: 0.15rem; }
+.alumni-map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+.alumni-map-sea { fill: #f3f7fa; }
+.alumni-map-land { fill: #dde6ee; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: round; }
+
+.alumni-map-marker { cursor: pointer; outline: none; }
+.alumni-map-halo { fill: var(--logo-green); opacity: 0; transition: opacity 0.2s ease; }
+.alumni-map-dot { fill: var(--logo-green); stroke: #ffffff; stroke-width: 2.5; transition: fill 0.2s ease; }
+.alumni-map-count { fill: #ffffff; font-size: 14px; font-weight: 700; pointer-events: none; }
+.alumni-map-label {
+  fill: var(--ehu-navy);
+  font-size: 14px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: #f3f7fa;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.alumni-map-marker.approximate .alumni-map-dot { fill: #ffffff; stroke: var(--logo-green); stroke-dasharray: 4 3; }
+.alumni-map-marker.approximate .alumni-map-count { fill: var(--logo-green); }
+.alumni-map-marker:hover .alumni-map-halo,
+.alumni-map-marker:focus-visible .alumni-map-halo { opacity: 0.22; }
+.alumni-map-marker:focus-visible .alumni-map-dot { stroke: var(--ehu-navy); }
+.alumni-map-marker.active .alumni-map-dot { fill: var(--ehu-navy); stroke: #ffffff; stroke-dasharray: none; }
+.alumni-map-marker.active .alumni-map-count { fill: #ffffff; }
+.alumni-map-marker.active .alumni-map-halo { fill: var(--ehu-navy); opacity: 0.18; }
+
+.alumni-map-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1.2rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.alumni-map-legend { display: inline-flex; align-items: center; gap: 0.4rem; }
+.alumni-map-source { margin-left: auto; opacity: 0.8; }
+
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--logo-green);
+  flex-shrink: 0;
+}
+.legend-dot.approximate { background: #ffffff; border: 2px dashed var(--logo-green); }
+.legend-dot.none { background: var(--border-color); }
+
+.alumni-map-list-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin: 0 0 0.6rem;
+}
+.alumni-map-list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+.alumni-map-place {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--ehu-navy);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.alumni-map-place:hover { background: #f3f7fa; border-color: var(--border-color); }
+.alumni-map-place:focus-visible { outline: 2px solid var(--ehu-navy); outline-offset: 2px; }
+.alumni-map-place .place-name { flex: 1; }
+.alumni-map-place .place-count {
+  min-width: 1.6rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: #eef4e8;
+  color: #3f6b1f;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-align: center;
+}
+.alumni-map-place.unplaced { color: var(--text-secondary); }
+.alumni-map-place.active { background: var(--ehu-navy); border-color: var(--ehu-navy); color: #ffffff; }
+.alumni-map-place.active .place-count { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
+.alumni-map-hint { margin: 0.8rem 0 0; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; }
+
+.alumni-place-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
+  margin-bottom: 1.5rem;
+  padding: 0.7rem 1rem;
+  background: #f3f7fa;
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--ehu-navy);
+  border-radius: 8px;
+  color: var(--ehu-navy);
+  font-size: 0.92rem;
+}
+.alumni-place-status[hidden] { display: none; }
+.alumni-place-clear {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--ehu-navy);
+  cursor: pointer;
+}
+.alumni-place-clear:hover { background: #ffffff; }
+
+@media (max-width: 860px) {
+  .alumni-map-layout { grid-template-columns: 1fr; }
+  .alumni-map-list ul { grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); }
+}
+@media (max-width: 560px) {
+  .alumni-map-block { padding: 1.1rem; }
+  /* En pantallas pequeñas el mapa es orientativo: los nombres van en la lista de debajo */
+  .alumni-map-label { display: none; }
+  .alumni-map-count { font-size: 18px; }
+  .alumni-map-source { margin-left: 0; }
 }

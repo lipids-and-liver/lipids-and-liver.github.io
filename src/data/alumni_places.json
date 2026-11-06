@@ -1,0 +1,9 @@
+{
+  "places": [
+    { "id": "euskadi", "name_es": "Euskadi", "name_eu": "Euskadi", "name_en": "Basque Country", "lat": 43.26, "lng": -2.93, "approximate": false, "labelPos": "left" },
+    { "id": "barcelona", "name_es": "Barcelona", "name_eu": "Bartzelona", "name_en": "Barcelona", "lat": 41.39, "lng": 2.17, "approximate": false, "labelPos": "bottom" },
+    { "id": "nueva-york", "name_es": "Nueva York", "name_eu": "New York", "name_en": "New York", "lat": 40.71, "lng": -74.01, "approximate": false, "labelPos": "right" },
+    { "id": "estados-unidos", "name_es": "Estados Unidos", "name_eu": "Ameriketako Estatu Batuak", "name_en": "United States", "lat": 39.5, "lng": -89.5, "approximate": true, "labelPos": "bottom" },
+    { "id": "reino-unido", "name_es": "Reino Unido", "name_eu": "Erresuma Batua", "name_en": "United Kingdom", "lat": 52.8, "lng": -1.6, "approximate": true, "labelPos": "right" }
+  ]
+}

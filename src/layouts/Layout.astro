@@ -216,7 +216,7 @@ const alternates = isHoldingPage ? [] : [
                   <a href={getLocalizedPath('/alumni', lang)}>
                     <i class="fas fa-user-graduate"></i>
                     <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_alumni || 'Antiguos Miembros'}</span>
+                      <span class="dropdown-link-title">{t.nav_alumni || 'Alumni'}</span>
                       <span class="dropdown-link-sub">{t.nav_sub_alumni}</span>
                     </div>
                   </a>
@@ -235,7 +235,7 @@ const alternates = isHoldingPage ? [] : [
 
             <!-- 3. Investigación (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/lineas', lang)} class={`nav-dropdown-trigger ${['lines', 'facilities', 'sciresources', 'projects', 'pubs', 'patents', 'theses'].includes(currentPage) ? 'active' : ''}`}>
+              <a href={getLocalizedPath('/lineas', lang)} class={`nav-dropdown-trigger ${['lines', 'facilities', 'sciresources', 'pubs', 'theses'].includes(currentPage) ? 'active' : ''}`}>
                 <span>{t.nav_group_research}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
@@ -269,29 +269,11 @@ const alternates = isHoldingPage ? [] : [
                 <!-- Subgrupo: Producción científica -->
                 <li class="nav-dropdown-group-label" role="presentation">{t.nav_group_production}</li>
                 <li class="nav-dropdown-subitem">
-                  <a href={getLocalizedPath('/proyectos', lang)}>
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_projects}</span>
-                      <span class="dropdown-link-sub">{t.nav_sub_projects}</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="nav-dropdown-subitem">
                   <a href={getLocalizedPath('/publicaciones', lang)}>
                     <i class="fas fa-book-open"></i>
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_pubs}</span>
                       <span class="dropdown-link-sub">{t.nav_sub_pubs}</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="nav-dropdown-subitem">
-                  <a href={getLocalizedPath('/patentes', lang)}>
-                    <i class="fas fa-certificate"></i>
-                    <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_patents}</span>
-                      <span class="dropdown-link-sub">{t.nav_sub_patents}</span>
                     </div>
                   </a>
                 </li>
@@ -373,14 +355,11 @@ const alternates = isHoldingPage ? [] : [
             {currentPage === 'lines' && (
               <span class="nav-sub-badge"><i class="fas fa-microscope"></i> {t.lines_title}</span>
             )}
-            {currentPage === 'projects' && (
-              <span class="nav-sub-badge"><i class="fas fa-hand-holding-usd"></i> {t.projects_title || 'Proyectos Financiados'}</span>
-            )}
             {currentPage === 'news' && (
               <span class="nav-sub-badge"><i class="fas fa-newspaper"></i> {t.news_title || 'Noticias y Actualidad'}</span>
             )}
             {currentPage === 'alumni' && (
-              <span class="nav-sub-badge"><i class="fas fa-user-graduate"></i> {t.alumni_title || 'Antiguos Miembros y Alumni'}</span>
+              <span class="nav-sub-badge"><i class="fas fa-user-graduate"></i> {t.alumni_title || 'Alumni'}</span>
             )}
           </div>
           <div class="nav-sub-action">
@@ -419,9 +398,7 @@ const alternates = isHoldingPage ? [] : [
               <li><a href={getLocalizedPath('/lineas', lang)}>{t.nav_lines}</a></li>
               <li><a href={getLocalizedPath('/instalaciones', lang)}>{t.facilities_title}</a></li>
               <li><a href={getLocalizedPath('/recursos-cientificos', lang)}>{t.sciresources_title}</a></li>
-              <li><a href={getLocalizedPath('/proyectos', lang)}>{t.nav_projects}</a></li>
               <li><a href={getLocalizedPath('/publicaciones', lang)}>{t.pubs_title}</a></li>
-              <li><a href={getLocalizedPath('/patentes', lang)}>{t.nav_patents}</a></li>
               <li><a href={getLocalizedPath('/tesis', lang)}>{t.theses_page_title}</a></li>
             </ul>
           )}

@@ -1,0 +1,167 @@
+---
+// Mapa de la ubicación actual de los alumni (prototipo).
+// - Siluetas: src/data/alumni_map.json (Natural Earth, generado una vez; no hay mapas externos).
+// - Ubicaciones: src/data/alumni_places.json; cada alumni apunta a una con su campo "place".
+//   Quien no tiene "place" no se sitúa en el mapa y cuenta como "sin ubicación precisa".
+// El filtrado de las fichas lo hace el script de AlumniPage (eventos sobre [data-place-filter]).
+import { getTranslations, type Locale } from '../utils/i18n';
+import mapData from '../data/alumni_map.json';
+import placesData from '../data/alumni_places.json';
+
+interface Props {
+  alumni: any[];
+  lang: Locale;
+}
+
+const { alumni, lang } = Astro.props;
+const t = getTranslations(lang) as Record<string, string>;
+const { projection: P, width: W, height: H } = mapData;
+const cos0 = Math.cos((P.phi0 * Math.PI) / 180);
+const project = (lng: number, lat: number) => [(lng - P.lonMin) * cos0 * P.k, (P.latMax - lat) * P.k];
+
+const places = placesData.places
+  .map(p => {
+    const [x, y] = project(p.lng, p.lat);
+    const people = alumni.filter(a => a.place === p.id).map(a => a.name as string);
+    const count = people.length;
+    const name = (p as any)[`name_${lang}`] || p.name_es;
+    const r = 9 + 4 * Math.sqrt(count);
+    return { ...p, x, y, count, people, name, r };
+  })
+  .filter(p => p.count > 0)
+  .sort((a, b) => b.count - a.count);
+const unplaced = alumni.filter(a => !a.place || !places.some(p => p.id === a.place)).length;
+
+// Posición de la etiqueta respecto al punto
+const labelAttrs = (p: (typeof places)[number]) => {
+  const gap = p.r + 6;
+  switch (p.labelPos) {
+    case 'left': return { x: p.x - gap, y: p.y + 5, 'text-anchor': 'end' };
+    case 'right': return { x: p.x + gap, y: p.y + 5, 'text-anchor': 'start' };
+    case 'top': return { x: p.x, y: p.y - gap, 'text-anchor': 'middle' };
+    default: return { x: p.x, y: p.y + gap + 12, 'text-anchor': 'middle' };
+  }
+};
+---
+
+<div class="alumni-map-block">
+  <div class="alumni-map-head">
+    <h3 class="alumni-map-title"><i class="fas fa-globe-europe" aria-hidden="true"></i> {t.alumni_map_title}</h3>
+    <p class="alumni-map-sub">{t.alumni_map_sub}</p>
+  </div>
+
+  <div class="alumni-map-layout">
+    <figure class="alumni-map-figure" id="alumni-map-figure">
+      <svg viewBox={`0 0 ${W} ${H}`} class="alumni-map-svg" role="group" aria-label={t.alumni_map_aria}>
+        <rect width={W} height={H} class="alumni-map-sea" />
+        <path d={mapData.path} class="alumni-map-land" />
+        {places.map(p => (
+          <g
+            class:list={['alumni-map-marker', { approximate: p.approximate }]}
+            data-place-filter={p.id}
+            role="button"
+            tabindex="0"
+            aria-pressed="false"
+            aria-label={`${p.name}: ${p.count}`}
+            aria-describedby={`alumni-map-tip-${p.id}`}
+            data-x={p.x}
+            data-y={p.y}
+            data-r={p.r}
+          >
+            <circle cx={p.x} cy={p.y} r={p.r + 6} class="alumni-map-halo" />
+            <circle cx={p.x} cy={p.y} r={p.r} class="alumni-map-dot" />
+            <text x={p.x} y={p.y + 5} text-anchor="middle" class="alumni-map-count">{p.count}</text>
+            <text {...labelAttrs(p)} class="alumni-map-label">{p.name}</text>
+          </g>
+        ))}
+      </svg>
+      <!-- Nombres de cada ubicación: aparecen al pasar el ratón, con el teclado o al tocar el punto -->
+      {places.map(p => (
+        <div class="alumni-map-tooltip" id={`alumni-map-tip-${p.id}`} role="tooltip" hidden>
+          <span class="tooltip-place">{p.name}</span>
+          <ul>{p.people.map(n => <li>{n}</li>)}</ul>
+        </div>
+      ))}
+      <figcaption class="alumni-map-caption">
+        <span class="alumni-map-legend"><span class="legend-dot" aria-hidden="true"></span> {t.alumni_map_legend_city}</span>
+        <span class="alumni-map-legend"><span class="legend-dot approximate" aria-hidden="true"></span> {t.alumni_map_legend_country}</span>
+        <span class="alumni-map-source">{t.alumni_map_source}</span>
+      </figcaption>
+    </figure>
+
+    <aside class="alumni-map-list">
+      <h4 class="alumni-map-list-title">{t.alumni_map_list_title}</h4>
+      <ul>
+        {places.map(p => (
+          <li>
+            <button type="button" class="alumni-map-place" data-place-filter={p.id} aria-pressed="false">
+              <span class:list={['legend-dot', { approximate: p.approximate }]} aria-hidden="true"></span>
+              <span class="place-name">{p.name}</span>
+              <span class="place-count">{p.count}</span>
+            </button>
+          </li>
+        ))}
+        {unplaced > 0 && (
+          <li>
+            <button type="button" class="alumni-map-place unplaced" data-place-filter="none" aria-pressed="false">
+              <span class="legend-dot none" aria-hidden="true"></span>
+              <span class="place-name">{t.alumni_map_unplaced}</span>
+              <span class="place-count">{unplaced}</span>
+            </button>
+          </li>
+        )}
+      </ul>
+      <p class="alumni-map-hint">{t.alumni_map_hint}</p>
+    </aside>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const figure = document.getElementById('alumni-map-figure');
+    if (!figure) return;
+    const svg = figure.querySelector('svg');
+    let pinned = null; // tooltip abierto con toque/clic (pantallas táctiles)
+
+    const hideAll = () => figure.querySelectorAll('.alumni-map-tooltip').forEach(tip => { tip.hidden = true; });
+    const show = marker => {
+      const tip = document.getElementById(marker.getAttribute('aria-describedby'));
+      if (!tip || !svg) return;
+      hideAll();
+      // Coordenadas del punto (unidades del viewBox) -> píxeles dentro de la figura
+      const vb = svg.viewBox.baseVal;
+      const box = svg.getBoundingClientRect();
+      const fig = figure.getBoundingClientRect();
+      const scale = box.width / vb.width;
+      const x = box.left - fig.left + Number(marker.dataset.x) * scale;
+      const y = box.top - fig.top + (Number(marker.dataset.y) - Number(marker.dataset.r)) * scale;
+      tip.hidden = false;
+      // Se mantiene dentro de la figura en horizontal; si no cabe encima, va debajo del punto
+      const half = tip.offsetWidth / 2;
+      const left = Math.min(Math.max(x, half + 4), figure.clientWidth - half - 4);
+      const below = y - tip.offsetHeight - 10 < 0;
+      tip.classList.toggle('below', below);
+      tip.style.left = `${left}px`;
+      tip.style.top = below ? `${y + Number(marker.dataset.r) * 2 * scale + 10}px` : `${y - 10}px`;
+      tip.style.setProperty('--arrow-x', `${x - left}px`);
+    };
+
+    figure.querySelectorAll('.alumni-map-marker').forEach(marker => {
+      marker.addEventListener('mouseenter', () => show(marker));
+      // Al salir, vuelve el tooltip fijado (si lo hay) o se ocultan todos
+      const restore = () => (pinned ? show(pinned) : hideAll());
+      marker.addEventListener('mouseleave', restore);
+      marker.addEventListener('focus', () => show(marker));
+      marker.addEventListener('blur', restore);
+      marker.addEventListener('click', () => {
+        pinned = pinned === marker ? null : marker;
+        pinned ? show(marker) : hideAll();
+      });
+    });
+    document.addEventListener('click', e => {
+      if (pinned && !pinned.contains(e.target)) { pinned = null; hideAll(); }
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { pinned = null; hideAll(); } });
+    window.addEventListener('resize', () => { pinned = null; hideAll(); });
+  })();
+</script>

@@ -57,7 +57,7 @@ El resultado estático se genera en el directorio **`dist/`** (185 páginas HTML
   - `projects/`: Proyectos de investigación competitivos (Plan Nacional, Gobierno Vasco, FEDER).
   - `news/`: Noticias, notas de prensa y hitos científicos del laboratorio.
   - `templates/`: Plantillas en blanco (`_plantilla_*.md`) para añadir registros fácilmente.
-- **`src/data/`**: Datasets estructurados (`alumni.json` para antiguos miembros y trayectorias profesionales, `collaborations.json` para centros hospitalarios y de investigación, `translations.json` para diccionarios i18n).
+- **`src/data/`**: Datasets estructurados (`alumni.json` para alumni y trayectorias profesionales, `collaborations.json` para centros hospitalarios y de investigación, `translations.json` para diccionarios i18n).
 - **`src/content.config.ts`**: Esquemas de validación tipados con Zod para todo el contenido.
 - **`src/layouts/Layout.astro`**: Cabecera institucional con navegación en menús desplegables optimizados, doble logotipo UPV/EHU y grupo, barra de idiomas y pie de página. La web usa solo modo claro (decisión del grupo).
 - **`src/pages/portal/[...lang]/`**: Páginas del portal. Un solo fichero por página genera los tres idiomas (helpers en `src/utils/routes.ts`): **inglés por defecto** en `/portal/…`, español en `/portal/es/…` y euskera en `/portal/eu/…`. La raíz (`src/pages/index.astro`, «En construcción») mantiene el español por defecto (`/`, `/eu/`, `/en/`).
