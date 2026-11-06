@@ -1,29 +1,22 @@
 ---
 id: ''
-name: David Perez Medina
+name: Jon Ander Pérez
 role: Investigador/a Predoctoral
 category: Predoctoral
 status: active
 department: Departamento de Fisiología, Facultad de Medicina y Enfermería
-image: ''
-email: daviz@sssss.es
-phone: +34 94 601 2854
+image: /assets/images/uploads/joecalih-1l6UeCc9P9o-unsplash.jpg
+email: ''
+phone: ''
 office: Facultad de Medicina y Enfermería, Leioa
-orcid: 000-0002-2234-3345
+orcid: ''
 cvn: ''
 x: ''
 linkedin: ''
 github: ''
 quote: []
 order: 99
-cv:
-  title: Tecnico Especialista Laboratorio
-  degrees:
-    - Grado en Química
-  positions: []
-  grants: []
-  publications: []
-  teaching: []
+cv: null
 translationStatus: ''
 ---
 
