@@ -6,7 +6,7 @@ import { getAllSlugs } from '../../../utils/i18n';
 export async function getStaticPaths() {
   // getStaticPaths se ejecuta aislado: las listas tienen que vivir aquí dentro
   const sections = ['', 'alumni', 'colaboraciones', 'contacto', 'curriculum', 'divulgacion', 'docencia', 'grupo',
-    'lineas', 'noticias', 'patentes', 'proyectos', 'publicaciones', 'tesis', 'unete'];
+    'lineas', 'noticias', 'publicaciones', 'tesis', 'unete'];
   const details = { curriculum: 'team', lineas: 'research', noticias: 'news', tesis: 'theses' } as const;
 
   const paths: (string | undefined)[] = sections.map(s => s || undefined);
