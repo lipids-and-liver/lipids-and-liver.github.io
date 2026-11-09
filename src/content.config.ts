@@ -155,7 +155,13 @@ const news = defineCollection({
     // 'year' cuando solo se conoce el año (p. ej. noticias antiguas basadas en registros)
     datePrecision: z.enum(['day', 'year']).default('day'),
     featured: z.boolean().nullish().transform(val => Boolean(val)),
-    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99)
+    order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
+    // Aviso en redes sociales (lo usa el feed RSS /portal/noticias/rss.xml). Opcional.
+    social: z.object({
+      enabled: z.boolean().nullish().transform(val => val !== false), // false = no anunciar
+      text: z.string().nullish(),                                     // texto propio; vacío = resumen
+      hashtags: z.array(z.string()).nullish().transform(val => val || []),
+    }).nullish().transform(val => val ?? { enabled: true, text: null, hashtags: [] as string[] }),
   })
 });
 

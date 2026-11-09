@@ -19,7 +19,7 @@ if (!article) {
 }
 
 const { Content } = await render(article);
-const { title, date, category, categoryBadge, author, image } = article.data;
+const { title, date, category, categoryBadge, author, image, summary, datePrecision } = article.data;
 
 const formattedDate = formatNewsDate(date, article.data.datePrecision, lang);
 // Etiqueta: la propia de la noticia o, si no tiene, la categoría traducida
@@ -28,7 +28,16 @@ const categoryLabel = categoryBadge || (t as Record<string, string>)[`news_cat_$
 const imageSrc = image ? (image.startsWith('http://') || image.startsWith('https://') ? image : (image.startsWith('/') ? image : `/${image}`)) : null;
 ---
 
-<Layout currentPage="news" lang={lang} title={`${title} | Lipids & Liver`}>
+<Layout
+  currentPage="news"
+  lang={lang}
+  title={`${title} | Lipids & Liver`}
+  description={summary || undefined}
+  image={imageSrc}
+  imageAlt={title}
+  type="article"
+  publishedTime={datePrecision === 'day' ? date : undefined}
+>
   <div class="container cv-container">
     <div class="cv-top-bar">
       <a href={getLocalizedPath('/noticias', lang)} class="btn-inst-secondary" style="padding:6px 14px; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
