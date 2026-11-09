@@ -8,7 +8,7 @@ Official modernized website for the **Lipids & Liver Research Group** (Grupo Con
 > Esta web se encuentra actualmente en **fase de desarrollo activo y validación (versión demo/prototipo)**. 
 > 
 > Por este motivo:
-> - **Parte de la información que se muestra en el portal actualmente es provisional o no es correcta** (incluyendo textos de relleno, borradores de proyectos, datos simulados de noticias o asignaciones de personal pendientes de validación oficial).
+> - **Parte de la información que se muestra en el portal actualmente es provisional o no es correcta** (incluyendo textos de relleno, datos simulados de noticias o asignaciones de personal pendientes de validación oficial).
 > - Ningún dato provisional mostrado en esta versión preliminar debe considerarse definitivo ni oficial hasta la publicación y aprobación final por parte de la Investigadora Principal (**Dra. Patricia Aspichueta**) y el equipo directivo del grupo.
 > - La **web oficial y vigente** del grupo de investigación sigue estando disponible en el portal institucional de la UPV/EHU:  
 >   🔗 **[https://www.ehu.eus/es/web/lipidsliver](https://www.ehu.eus/es/web/lipidsliver)**
