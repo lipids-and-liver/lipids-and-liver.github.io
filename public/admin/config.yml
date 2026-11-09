@@ -127,7 +127,7 @@ collections:
             widget: "list"
             summary: "{{fields.number}} — {{fields.label_es}}"
             fields:
-              - { label: "Cifra o Texto Destacado", name: "number", widget: "string", hint: "Ej: 2007, 10+, 15+, SGIker" }
+              - { label: "Cifra o Texto Destacado", name: "number", widget: "string", hint: "Ej: 2015, 10+, 15+, SGIker" }
               - { label: "Etiqueta (Español)", name: "label_es", widget: "string", hint: "Ej: Grupo Consolidado" }
               - { label: "Etiketa (Euskara)", name: "label_eu", widget: "string", hint: "Ej: Talde Sendotua" }
               - { label: "Label (English)", name: "label_en", widget: "string", hint: "Ej: Consolidated Group" }
