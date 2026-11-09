@@ -1,0 +1,38 @@
+---
+// Franja «Con la financiación de» encima del pie, en todas las páginas del portal.
+// Logos en color sobre fondo blanco: los manuales de marca (MICIU/AEI, UE…) no permiten alterarlos.
+import { getTranslations, getLocalizedPath, type Locale } from '../utils/i18n';
+import { getFunders } from '../utils/funders';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang) as Record<string, string>;
+const funders = getFunders(lang).filter(f => f.footer);
+---
+
+{funders.length > 0 && (
+  <section class="funders-band" aria-labelledby="funders-band-title">
+    <div class="container funders-band-inner">
+      <h2 class="funders-band-title" id="funders-band-title">{t.funders_title}</h2>
+      <ul class="funders-band-logos">
+        {funders.map(f => (
+          <li>
+            {f.url ? (
+              <a href={f.url} target="_blank" rel="noopener noreferrer" title={f.name}>
+                <img src={f.logo} alt={f.name} loading="lazy" class={`funder-logo funder-logo-${f.id}`} />
+              </a>
+            ) : (
+              <img src={f.logo} alt={f.name} loading="lazy" class={`funder-logo funder-logo-${f.id}`} />
+            )}
+          </li>
+        ))}
+      </ul>
+      <a href={`${getLocalizedPath('/grupo', lang)}#tab-financiacion`} class="funders-band-more">
+        {t.funders_see_all} <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+)}

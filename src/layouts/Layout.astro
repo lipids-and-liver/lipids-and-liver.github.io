@@ -1,5 +1,6 @@
 ---
-import { getTranslations, getLocalizedPath, getPathWithoutLocale, DEFAULT_LOCALE, LOCALES, type Locale } from '../utils/i18n';
+import FundersBand from '../components/FundersBand.astro';
+import { getTranslations, getLocalizedPath, getPathWithoutLocale, DEFAULT_LOCALE, LOCALES, PORTAL_BASE, type Locale } from '../utils/i18n';
 
 interface Props {
   title?: string;
@@ -7,6 +8,11 @@ interface Props {
   currentPage?: string;
   lang?: Locale;
   isHoldingPage?: boolean;
+  // Tarjetas para redes sociales (Open Graph / X). Sin imagen se usa la institucional.
+  image?: string | null;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string; // YYYY-MM-DD (solo artículos con fecha exacta)
 }
 
 const {
@@ -35,6 +41,16 @@ const alternates = isHoldingPage ? [] : [
   ...langLinks.map(l => ({ hreflang: l.code, href: siteUrl + l.href })),
   { hreflang: 'x-default', href: siteUrl + getLocalizedPath(basePath, DEFAULT_LOCALE) },
 ];
+
+// Open Graph / X: URLs absolutas para que las redes generen bien la vista previa
+const DEFAULT_OG_IMAGE = '/assets/images/og-default.png'; // 1200×630
+const OG_LOCALES: Record<Locale, string> = { en: 'en_GB', es: 'es_ES', eu: 'eu_ES' };
+const ogType = Astro.props.type || 'website';
+const ogImageIsDefault = !Astro.props.image;
+const ogImage = new URL(Astro.props.image || DEFAULT_OG_IMAGE, Astro.site || Astro.url).href;
+const ogImageAlt = ogImageIsDefault ? t.og_default_image_alt : (Astro.props.imageAlt || title);
+const publishedTime = ogType === 'article' ? Astro.props.publishedTime : undefined;
+const feedHref = `${PORTAL_BASE}/noticias/rss.xml`;
 ---
 
 <!DOCTYPE html>
@@ -56,10 +72,24 @@ const alternates = isHoldingPage ? [] : [
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
 
+  <meta property="og:site_name" content="Lipids & Liver" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:locale" content={OG_LOCALES[lang]} />
+  {LOCALES.filter(l => l !== lang).map(l => <meta property="og:locale:alternate" content={OG_LOCALES[l]} />)}
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:alt" content={ogImageAlt} />
+  {ogImageIsDefault && <meta property="og:image:width" content="1200" />}
+  {ogImageIsDefault && <meta property="og:image:height" content="630" />}
+  {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={ogImageAlt} />
+  {!isHoldingPage && <link rel="alternate" type="application/rss+xml" title={t.news_rss_title} href={feedHref} />}
   {alternates.map(a => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
 
   <!-- FontAwesome Icons -->
@@ -190,7 +220,7 @@ const alternates = isHoldingPage ? [] : [
 
             <!-- 2. El Grupo (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/grupo', lang)} class={`nav-dropdown-trigger ${['about', 'team', 'curriculum', 'alumni', 'collaborations'].includes(currentPage) ? 'active' : ''}`}>
+              <a href={getLocalizedPath('/grupo', lang)} class={`nav-dropdown-trigger ${['about', 'team', 'curriculum', 'alumni'].includes(currentPage) ? 'active' : ''}`}>
                 <span>{t.nav_group_group || 'El Grupo'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
@@ -218,15 +248,6 @@ const alternates = isHoldingPage ? [] : [
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_alumni || 'Alumni'}</span>
                       <span class="dropdown-link-sub">{t.nav_sub_alumni}</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href={getLocalizedPath('/colaboraciones', lang)}>
-                    <i class="fas fa-project-diagram"></i>
-                    <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_collaborations || 'Alianzas y Colaboraciones'}</span>
-                      <span class="dropdown-link-sub">{t.nav_sub_collab}</span>
                     </div>
                   </a>
                 </li>
@@ -373,6 +394,8 @@ const alternates = isHoldingPage ? [] : [
   <main>
     <slot />
   </main>
+
+  {!isHoldingPage && <FundersBand lang={lang} />}
 
   <!-- Institutional Footer with Both Logos -->
   <footer class="institutional-footer">

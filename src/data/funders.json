@@ -1,0 +1,56 @@
+{
+  "funders": [
+    {
+      "id": "gobierno-vasco",
+      "name": "Gobierno Vasco",
+      "name_eu": "Eusko Jaurlaritza",
+      "name_en": "Basque Government",
+      "logo": "/assets/images/funders/gobierno-vasco.svg",
+      "url": "https://www.euskadi.eus",
+      "program": "Grupos de investigación del sistema universitario vasco (IT1476-22) y programa Elkartek",
+      "program_eu": "Euskal unibertsitate-sistemako ikerketa-taldeak (IT1476-22) eta Elkartek programa",
+      "program_en": "Research groups of the Basque university system (IT1476-22) and Elkartek programme",
+      "footer": true,
+      "order": 1
+    },
+    {
+      "id": "miciu-aei",
+      "name": "Ministerio de Ciencia, Innovación y Universidades · Agencia Estatal de Investigación",
+      "name_eu": "Ministerio de Ciencia, Innovación y Universidades · Agencia Estatal de Investigación",
+      "name_en": "Ministerio de Ciencia, Innovación y Universidades · Agencia Estatal de Investigación",
+      "logo": "/assets/images/funders/miciu-aei.svg",
+      "url": "https://www.aei.gob.es",
+      "program": "Proyectos de investigación del Plan Estatal de Investigación Científica, Técnica y de Innovación",
+      "program_eu": "Ikerketa Zientifiko, Tekniko eta Berrikuntzako Estatu Planeko ikerketa-proiektuak",
+      "program_en": "Research projects of the State Plan for Scientific, Technical and Innovation Research",
+      "footer": true,
+      "order": 2
+    },
+    {
+      "id": "isciii",
+      "name": "Instituto de Salud Carlos III",
+      "name_eu": "Instituto de Salud Carlos III",
+      "name_en": "Instituto de Salud Carlos III",
+      "logo": "/assets/images/funders/isciii.svg",
+      "url": "https://www.isciii.es",
+      "program": "Proyectos de investigación en salud (Acción Estratégica en Salud)",
+      "program_eu": "Osasun-ikerketako proiektuak (Osasuneko Ekintza Estrategikoa)",
+      "program_en": "Health research projects (Strategic Action in Health)",
+      "footer": true,
+      "order": 3
+    },
+    {
+      "id": "aecc",
+      "name": "Asociación Española Contra el Cáncer",
+      "name_eu": "Minbiziaren Aurkako Espainiako Elkartea",
+      "name_en": "Spanish Association Against Cancer",
+      "logo": "/assets/images/funders/aecc.svg",
+      "url": "https://www.contraelcancer.es",
+      "program": "Ayudas a la investigación en cáncer",
+      "program_eu": "Minbiziaren ikerketarako laguntzak",
+      "program_en": "Cancer research grants",
+      "footer": true,
+      "order": 4
+    }
+  ]
+}

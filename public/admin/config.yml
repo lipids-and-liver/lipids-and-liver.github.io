@@ -127,7 +127,7 @@ collections:
             widget: "list"
             summary: "{{fields.number}} — {{fields.label_es}}"
             fields:
-              - { label: "Cifra o Texto Destacado", name: "number", widget: "string", hint: "Ej: 2007, 10+, 15+, SGIker" }
+              - { label: "Cifra o Texto Destacado", name: "number", widget: "string", hint: "Ej: 2015, 10+, 15+, SGIker" }
               - { label: "Etiqueta (Español)", name: "label_es", widget: "string", hint: "Ej: Grupo Consolidado" }
               - { label: "Etiketa (Euskara)", name: "label_eu", widget: "string", hint: "Ej: Talde Sendotua" }
               - { label: "Label (English)", name: "label_en", widget: "string", hint: "Ej: Consolidated Group" }
@@ -227,16 +227,17 @@ collections:
               - { label: "ID de Tesis en la Web", name: "thesisId", widget: "string", required: false, hint: "Ej: tesis-10, tesis-25" }
               - { label: "Título de la Tesis", name: "thesis", widget: "string", required: false }
               - { label: "Año de Tesis / Egreso", name: "year", widget: "string", required: false }
-              - { label: "Puesto Actual", name: "currentRole", widget: "string" }
+              - { label: "Trayectoria actual pendiente de confirmar", name: "pending", widget: "boolean", default: false, required: false, hint: "Márcalo si no se sabe dónde está ahora: la tarjeta lo indica y no se muestran puesto, centro ni ubicación (déjalos vacíos)" }
+              - { label: "Puesto Actual", name: "currentRole", widget: "string", required: false }
               - { label: "Puesto Actual (EU)", name: "currentRole_eu", widget: "string", required: false }
               - { label: "Puesto Actual (EN)", name: "currentRole_en", widget: "string", required: false }
-              - { label: "Afiliación / Centro Actual", name: "currentAffiliation", widget: "string" }
+              - { label: "Afiliación / Centro Actual", name: "currentAffiliation", widget: "string", required: false }
               - { label: "Afiliación / Centro Actual (EU)", name: "currentAffiliation_eu", widget: "string", required: false }
               - { label: "Afiliación / Centro Actual (EN)", name: "currentAffiliation_en", widget: "string", required: false }
-              - { label: "Ubicación Geográfica", name: "location", widget: "string" }
+              - { label: "Ubicación Geográfica", name: "location", widget: "string", required: false }
               - { label: "Ubicación Geográfica (EU)", name: "location_eu", widget: "string", required: false }
               - { label: "Ubicación Geográfica (EN)", name: "location_en", widget: "string", required: false }
-              - { label: "Ubicación en el mapa", name: "place", widget: "string", required: false, hint: "ID de la ubicación (ver «Ubicaciones del mapa»): euskadi, barcelona, nueva-york, estados-unidos, reino-unido… Vacío = no sale en el mapa" }
+              - { label: "Ubicación en el mapa", name: "place", widget: "string", required: false, hint: "ID de la ubicación (ver «Ubicaciones del mapa»): euskadi, barcelona, madrid, nueva-york, new-haven… Vacío = no sale en el mapa" }
               - label: "Categoría"
                 name: "category"
                 widget: "select"
@@ -244,7 +245,7 @@ collections:
                   - { label: "Academia & Investigación", value: "academia" }
                   - { label: "Industria & Biotecnología", value: "industry" }
                   - { label: "Investigación Clínica", value: "clinical" }
-              - { label: "Etiqueta de Categoría", name: "categoryLabel", widget: "string" }
+              - { label: "Etiqueta de Categoría", name: "categoryLabel", widget: "string", required: false, hint: "Solo se usa si la categoría no tiene texto propio en la web" }
               - { label: "¿Es Cofundadora / Honorífico?", name: "isFounder", widget: "boolean", default: false, required: false }
               - { label: "Tesis Dirigidas (Números)", name: "thesesSupervised", widget: "list", required: false, hint: "Números de tesis dirigidas, ej: 29, 31" }
               - { label: "Patente Asociada", name: "patent", widget: "string", required: false, hint: "Ej: P201831028 (OEPM)" }
@@ -272,6 +273,34 @@ collections:
               - { label: "Longitud", name: "lng", widget: "number", value_type: "float", hint: "Oeste en negativo (Bilbao: -2.93)" }
               - { label: "Solo se conoce el país", name: "approximate", widget: "boolean", default: false, required: false }
               - { label: "Posición de la etiqueta", name: "labelPos", widget: "select", options: ["right", "left", "top", "bottom"], default: "right" }
+
+  # 1.6 ENTIDADES FINANCIADORAS
+  - name: "funders"
+    label: "🏛️ El Grupo › Entidades financiadoras"
+    description: "Logos de la franja sobre el pie de página y pestaña «Financiación» de /grupo"
+    files:
+      - label: "Entidades financiadoras"
+        name: "funders_data"
+        file: "src/data/funders.json"
+        format: "json"
+        fields:
+          - label: "Entidades"
+            name: "funders"
+            widget: "list"
+            summary: "{{fields.order}} · {{fields.name}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Minúsculas y guiones, ej: gobierno-vasco" }
+              - { label: "Nombre (ES)", name: "name", widget: "string" }
+              - { label: "Nombre (EU)", name: "name_eu", widget: "string", required: false }
+              - { label: "Nombre (EN)", name: "name_en", widget: "string", required: false }
+              - { label: "Logo", name: "logo", widget: "image", hint: "Logo oficial en color, a ser posible en SVG, descargado de la web de la entidad. No cambies sus colores." }
+              - { label: "Web de la entidad", name: "url", widget: "string", required: false }
+              - { label: "Programa o convocatoria (ES)", name: "program", widget: "string", required: false, hint: "Ej: Grupos de investigación del sistema universitario vasco (IT1476-22)" }
+              - { label: "Programa o convocatoria (EU)", name: "program_eu", widget: "string", required: false }
+              - { label: "Programa o convocatoria (EN)", name: "program_en", widget: "string", required: false }
+              - { label: "Referencia de la ayuda", name: "reference", widget: "string", required: false, hint: "Ej: PID2021-XXXXXXOB-I00 financiado por MICIU/AEI/10.13039/501100011033. Se muestra tal cual, sin traducir" }
+              - { label: "Mostrar en el pie de página", name: "footer", widget: "boolean", default: true, required: false }
+              - { label: "Orden", name: "order", widget: "number", value_type: "int", default: 99 }
 
   # ============================================================================
   # 2. BLOQUE: INVESTIGACIÓN
@@ -481,6 +510,16 @@ collections:
       - { label: "Enlace Externo (Opcional)", name: "link", widget: "string", required: false }
       - { label: "Destacada en Portada", name: "featured", widget: "boolean", default: false }
       - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int" }
+      - label: "Redes sociales"
+        name: "social"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Aviso que se publica en las redes del grupo a partir del feed RSS de noticias. Solo se anuncian noticias con fecha exacta (no «Solo el año») y que no sean futuras."
+        fields:
+          - { label: "Anunciar en redes", name: "enabled", widget: "boolean", default: true, required: false }
+          - { label: "Texto del aviso", name: "text", widget: "text", required: false, hint: "Opcional. Si se deja vacío se usa el resumen. Para X conviene no pasar de unos 230 caracteres (el enlace y los hashtags también cuentan)." }
+          - { label: "Hashtags", name: "hashtags", widget: "list", required: false, hint: "Sin el símbolo #. Ej: MASLD, Hepatology, EHU" }
       - { label: "Cuerpo de la Noticia", name: "body", widget: "markdown", required: false }
 
   # 4.2 REGISTRO DE DIVULGACIÓN
@@ -526,35 +565,7 @@ collections:
       - { label: "Pendiente de confirmar", name: "draft", widget: "boolean", default: false, hint: "Márcalo si no hay fuente que lo confirme; se mostrará con un aviso" }
 
   # ============================================================================
-  # 5. BLOQUE: RED & ALIANZAS
-  # ============================================================================
-
-  # 5.1 CENTROS COLABORADORES
-  - name: "collaborations"
-    label: "⚙️ Red & Alianzas › Centros Colaboradores"
-    description: "Hospitales, centros de investigación, universidades y consorcios"
-    files:
-      - label: "Centros Colaboradores"
-        name: "collaborations_data"
-        file: "src/data/collaborations.json"
-        format: "json"
-        fields:
-          - label: "Lista de Colaboraciones"
-            name: "collaborations"
-            widget: "list"
-            summary: "{{fields.name}} ({{fields.type}})"
-            fields:
-              - { label: "ID / Slug", name: "id", widget: "string" }
-              - { label: "Nombre de la Institución", name: "name", widget: "string" }
-              - { label: "Tipo / Categoría", name: "type", widget: "string" }
-              - { label: "Rol / Área de Alianza", name: "role", widget: "string" }
-              - { label: "Ubicación Geográfica", name: "location", widget: "string" }
-              - { label: "Icono FontAwesome", name: "icon", widget: "string", default: "fas fa-university" }
-              - { label: "Sitio Web Oficial", name: "url", widget: "string", required: false }
-              - { label: "Descripción / Alcance", name: "desc", widget: "text", required: false }
-
-  # ============================================================================
-  # 6. BLOQUE: MODELOS Y PLANTILLAS DE EJEMPLO
+  # 5. BLOQUE: MODELOS Y PLANTILLAS DE EJEMPLO
   # ============================================================================
   - name: "templates"
     label: "📋 Modelos & Plantillas de Referencia"

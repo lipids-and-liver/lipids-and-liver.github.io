@@ -1,8 +1,10 @@
 ---
-// Mapa de la ubicación actual de los alumni (prototipo).
+// Mapa de la ubicación actual de los alumni.
 // - Siluetas: src/data/alumni_map.json (Natural Earth, generado una vez; no hay mapas externos).
 // - Ubicaciones: src/data/alumni_places.json; cada alumni apunta a una con su campo "place".
 //   Quien no tiene "place" no se sitúa en el mapa y cuenta como "sin ubicación precisa".
+// - Al pasar el ratón por un punto con varias personas, se abre en abanico un punto por persona;
+//   cada uno muestra su cargo, institución y ubicación.
 // El filtrado de las fichas lo hace el script de AlumniPage (eventos sobre [data-place-filter]).
 import { getTranslations, type Locale } from '../utils/i18n';
 import mapData from '../data/alumni_map.json';
@@ -19,18 +21,66 @@ const { projection: P, width: W, height: H } = mapData;
 const cos0 = Math.cos((P.phi0 * Math.PI) / 180);
 const project = (lng: number, lat: number) => [(lng - P.lonMin) * cos0 * P.k, (P.latMax - lat) * P.k];
 
+// Campo traducido con vuelta al español
+const tr = (a: any, f: string): string => (a[`${f}_${lang}`] || a[f] || '').toString().trim();
+
+const PERSON_R = 8; // radio de cada punto del abanico (unidades del viewBox)
+
 const places = placesData.places
   .map(p => {
     const [x, y] = project(p.lng, p.lat);
-    const people = alumni.filter(a => a.place === p.id).map(a => a.name as string);
-    const count = people.length;
     const name = (p as any)[`name_${lang}`] || p.name_es;
+    const members = alumni.filter(a => a.place === p.id);
+    const count = members.length;
     const r = 9 + 4 * Math.sqrt(count);
-    return { ...p, x, y, count, people, name, r };
+    // Abanico: anillo alrededor del punto, con hueco suficiente entre personas
+    const ring = Math.max(r + PERSON_R + 10, ((2 * PERSON_R + 8) * count) / (2 * Math.PI));
+    const start = count === 2 ? Math.PI : -Math.PI / 2; // dos personas: izquierda y derecha
+    const people = members.map((a, i) => {
+      const angle = start + (2 * Math.PI * i) / count;
+      return {
+        id: a.id as string,
+        name: a.name as string,
+        role: tr(a, 'currentRole'),
+        affiliation: tr(a, 'currentAffiliation'),
+        location: tr(a, 'location'),
+        dx: Math.round(Math.cos(angle) * ring * 10) / 10,
+        dy: Math.round(Math.sin(angle) * ring * 10) / 10,
+      };
+    });
+    return { ...p, x, y, count, people, name, r, ring };
   })
   .filter(p => p.count > 0)
   .sort((a, b) => b.count - a.count);
+
+// Separación de puntos cercanos: si dos círculos se pisan (p. ej. Nueva York y New Haven),
+// se apartan lo justo a lo largo de la recta que los une. Cada punto conserva su ubicación
+// real (ox, oy), a la que queda unido con una línea fina.
+const GAP = 6;
+for (const p of places as any[]) Object.assign(p, { ox: p.x, oy: p.y });
+for (let iter = 0; iter < 60; iter++) {
+  let moved = false;
+  for (let i = 0; i < places.length; i++) {
+    for (let j = i + 1; j < places.length; j++) {
+      const a = places[i], b = places[j];
+      let dx = b.x - a.x, dy = b.y - a.y;
+      let d = Math.hypot(dx, dy);
+      const min = a.r + b.r + GAP;
+      if (d >= min) continue;
+      if (d < 0.01) { dx = 1; dy = 0; d = 1; } // misma posición: se separan en horizontal
+      const push = (min - d) / 2;
+      a.x -= (dx / d) * push; a.y -= (dy / d) * push;
+      b.x += (dx / d) * push; b.y += (dy / d) * push;
+      moved = true;
+    }
+  }
+  if (!moved) break;
+}
+// La línea solo se dibuja si la ubicación real queda fuera del círculo apartado
+const displaced = (places as any[]).filter(p => Math.hypot(p.x - p.ox, p.y - p.oy) > p.r + 2);
+
 const unplaced = alumni.filter(a => !a.place || !places.some(p => p.id === a.place)).length;
+const allPeople = places.flatMap(p => p.people.map(person => ({ ...person, place: p })));
 
 // Posición de la etiqueta respecto al punto
 const labelAttrs = (p: (typeof places)[number]) => {
@@ -50,70 +100,104 @@ const labelAttrs = (p: (typeof places)[number]) => {
     <p class="alumni-map-sub">{t.alumni_map_sub}</p>
   </div>
 
-  <div class="alumni-map-layout">
-    <figure class="alumni-map-figure" id="alumni-map-figure">
-      <svg viewBox={`0 0 ${W} ${H}`} class="alumni-map-svg" role="group" aria-label={t.alumni_map_aria}>
-        <rect width={W} height={H} class="alumni-map-sea" />
-        <path d={mapData.path} class="alumni-map-land" />
-        {places.map(p => (
-          <g
-            class:list={['alumni-map-marker', { approximate: p.approximate }]}
-            data-place-filter={p.id}
-            role="button"
-            tabindex="0"
-            aria-pressed="false"
-            aria-label={`${p.name}: ${p.count}`}
-            aria-describedby={`alumni-map-tip-${p.id}`}
-            data-x={p.x}
-            data-y={p.y}
-            data-r={p.r}
-          >
-            <circle cx={p.x} cy={p.y} r={p.r + 6} class="alumni-map-halo" />
+  <figure class="alumni-map-figure" id="alumni-map-figure">
+    <svg viewBox={`0 0 ${W} ${H}`} class="alumni-map-svg" role="group" aria-label={t.alumni_map_aria}>
+      <rect width={W} height={H} class="alumni-map-sea" />
+      <path d={mapData.path} class="alumni-map-land" />
+      <!-- Ubicación real de los puntos que se han apartado para no pisarse -->
+      {displaced.map(p => (
+        <g class="alumni-map-leader" aria-hidden="true">
+          <line x1={p.ox} y1={p.oy} x2={p.x} y2={p.y} />
+          <circle cx={p.ox} cy={p.oy} r="2.5" />
+        </g>
+      ))}
+      {places.map(p => (
+        <g
+          class:list={['alumni-map-marker', { approximate: p.approximate }]}
+          data-place-filter={p.id}
+          data-place-name={p.name}
+          data-count={p.count}
+          role="button"
+          tabindex="0"
+          aria-pressed="false"
+          aria-label={`${p.name}: ${p.count}`}
+          aria-describedby={`alumni-map-tip-${p.id}`}
+          data-x={p.x}
+          data-y={p.y}
+          data-r={p.r}
+          data-person-tip={p.count === 1 ? `alumni-map-person-${p.people[0].id}` : undefined}
+        >
+          <circle cx={p.x} cy={p.y} r={p.r + 6} class="alumni-map-halo" />
+          <circle cx={p.x} cy={p.y} r={p.r} class="alumni-map-dot" />
+          <text x={p.x} y={p.y + 5} text-anchor="middle" class="alumni-map-count">{p.count}</text>
+          <text {...labelAttrs(p)} class="alumni-map-label">{p.name}</text>
+        </g>
+      ))}
+
+      <!-- Abanicos (al final del SVG para quedar por encima de los demás puntos) -->
+      {places.filter(p => p.count > 1).map(p => (
+        <g class:list={['alumni-map-fan', { approximate: p.approximate }]} data-fan={p.id} aria-hidden="true" style={`transform-origin: ${p.x}px ${p.y}px;`}>
+          <circle cx={p.x} cy={p.y} r={p.ring + PERSON_R + 8} class="alumni-map-fan-area" />
+          {p.people.map(person => (
+            <line x1={p.x} y1={p.y} x2={p.x + person.dx} y2={p.y + person.dy} class="alumni-map-fan-line" />
+          ))}
+          <g class="alumni-map-fan-center" data-place-filter={p.id} data-place-name={p.name}>
             <circle cx={p.x} cy={p.y} r={p.r} class="alumni-map-dot" />
             <text x={p.x} y={p.y + 5} text-anchor="middle" class="alumni-map-count">{p.count}</text>
-            <text {...labelAttrs(p)} class="alumni-map-label">{p.name}</text>
           </g>
-        ))}
-      </svg>
-      <!-- Nombres de cada ubicación: aparecen al pasar el ratón, con el teclado o al tocar el punto -->
-      {places.map(p => (
-        <div class="alumni-map-tooltip" id={`alumni-map-tip-${p.id}`} role="tooltip" hidden>
-          <span class="tooltip-place">{p.name}</span>
-          <ul>{p.people.map(n => <li>{n}</li>)}</ul>
-        </div>
+          {p.people.map((person, i) => (
+            <g
+              class="alumni-map-person"
+              data-person-tip={`alumni-map-person-${person.id}`}
+              data-x={p.x + person.dx}
+              data-y={p.y + person.dy}
+              data-r={PERSON_R}
+              style={`--dx: ${person.dx}px; --dy: ${person.dy}px; --i: ${i};`}
+            >
+              <circle cx={p.x} cy={p.y} r={PERSON_R + 6} class="alumni-map-person-hit" />
+              <circle cx={p.x} cy={p.y} r={PERSON_R} class="alumni-map-person-dot" />
+            </g>
+          ))}
+        </g>
       ))}
-      <figcaption class="alumni-map-caption">
-        <span class="alumni-map-legend"><span class="legend-dot" aria-hidden="true"></span> {t.alumni_map_legend_city}</span>
-        <span class="alumni-map-legend"><span class="legend-dot approximate" aria-hidden="true"></span> {t.alumni_map_legend_country}</span>
-        <span class="alumni-map-source">{t.alumni_map_source}</span>
-      </figcaption>
-    </figure>
+    </svg>
 
-    <aside class="alumni-map-list">
-      <h4 class="alumni-map-list-title">{t.alumni_map_list_title}</h4>
-      <ul>
-        {places.map(p => (
-          <li>
-            <button type="button" class="alumni-map-place" data-place-filter={p.id} aria-pressed="false">
-              <span class:list={['legend-dot', { approximate: p.approximate }]} aria-hidden="true"></span>
-              <span class="place-name">{p.name}</span>
-              <span class="place-count">{p.count}</span>
-            </button>
-          </li>
-        ))}
-        {unplaced > 0 && (
-          <li>
-            <button type="button" class="alumni-map-place unplaced" data-place-filter="none" aria-pressed="false">
-              <span class="legend-dot none" aria-hidden="true"></span>
-              <span class="place-name">{t.alumni_map_unplaced}</span>
-              <span class="place-count">{unplaced}</span>
-            </button>
-          </li>
-        )}
-      </ul>
-      <p class="alumni-map-hint">{t.alumni_map_hint}</p>
-    </aside>
-  </div>
+    <!-- Lista de cada ubicación: con el teclado (foco en el punto) -->
+    {places.map(p => (
+      <div class="alumni-map-tooltip" id={`alumni-map-tip-${p.id}`} role="tooltip" hidden>
+        <span class="tooltip-place">{p.name}</span>
+        <ul>
+          {p.people.map(person => (
+            <li>
+              <strong>{person.name}</strong>
+              {person.affiliation && <span class="tooltip-detail">{person.affiliation}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+    <!-- Detalle de cada persona: al pasar el ratón o tocar su punto -->
+    {allPeople.map(person => (
+      <div class="alumni-map-tooltip person" id={`alumni-map-person-${person.id}`} role="tooltip" hidden>
+        <span class="tooltip-place"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {person.location || person.place.name}</span>
+        <strong class="tooltip-name">{person.name}</strong>
+        {person.role && <span class="tooltip-detail">{person.role}</span>}
+        {person.affiliation && <span class="tooltip-detail affiliation"><i class="fas fa-university" aria-hidden="true"></i> {person.affiliation}</span>}
+      </div>
+    ))}
+
+    <figcaption class="alumni-map-caption">
+      <span class="alumni-map-legend"><span class="legend-dot" aria-hidden="true"></span> {t.alumni_map_legend_city}</span>
+      <span class="alumni-map-legend"><span class="legend-dot approximate" aria-hidden="true"></span> {t.alumni_map_legend_country}</span>
+      {unplaced > 0 && (
+        <button type="button" class="alumni-map-unplaced" data-place-filter="none" data-place-name={t.alumni_map_unplaced} aria-pressed="false">
+          <span class="legend-dot none" aria-hidden="true"></span> {t.alumni_map_unplaced} ({unplaced})
+        </button>
+      )}
+      <span class="alumni-map-source">{t.alumni_map_source}</span>
+    </figcaption>
+    <p class="alumni-map-hint">{t.alumni_map_hint}</p>
+  </figure>
 </div>
 
 <script is:inline>
@@ -121,20 +205,23 @@ const labelAttrs = (p: (typeof places)[number]) => {
     const figure = document.getElementById('alumni-map-figure');
     if (!figure) return;
     const svg = figure.querySelector('svg');
-    let pinned = null; // tooltip abierto con toque/clic (pantallas táctiles)
+    let pinned = null; // ubicación fijada con clic o toque (pantallas táctiles)
+    let openFan = null;
 
-    const hideAll = () => figure.querySelectorAll('.alumni-map-tooltip').forEach(tip => { tip.hidden = true; });
-    const show = marker => {
-      const tip = document.getElementById(marker.getAttribute('aria-describedby'));
+    const hideTips = () => figure.querySelectorAll('.alumni-map-tooltip').forEach(tip => { tip.hidden = true; });
+
+    // Muestra un tooltip junto a un punto del mapa (coordenadas en unidades del viewBox)
+    const showTip = (tipId, el) => {
+      const tip = document.getElementById(tipId);
       if (!tip || !svg) return;
-      hideAll();
-      // Coordenadas del punto (unidades del viewBox) -> píxeles dentro de la figura
+      hideTips();
       const vb = svg.viewBox.baseVal;
       const box = svg.getBoundingClientRect();
       const fig = figure.getBoundingClientRect();
       const scale = box.width / vb.width;
-      const x = box.left - fig.left + Number(marker.dataset.x) * scale;
-      const y = box.top - fig.top + (Number(marker.dataset.y) - Number(marker.dataset.r)) * scale;
+      const r = Number(el.dataset.r);
+      const x = box.left - fig.left + Number(el.dataset.x) * scale;
+      const y = box.top - fig.top + (Number(el.dataset.y) - r) * scale;
       tip.hidden = false;
       // Se mantiene dentro de la figura en horizontal; si no cabe encima, va debajo del punto
       const half = tip.offsetWidth / 2;
@@ -142,26 +229,67 @@ const labelAttrs = (p: (typeof places)[number]) => {
       const below = y - tip.offsetHeight - 10 < 0;
       tip.classList.toggle('below', below);
       tip.style.left = `${left}px`;
-      tip.style.top = below ? `${y + Number(marker.dataset.r) * 2 * scale + 10}px` : `${y - 10}px`;
+      tip.style.top = below ? `${y + r * 2 * scale + 10}px` : `${y - 10}px`;
       tip.style.setProperty('--arrow-x', `${x - left}px`);
     };
 
+    const fanOf = id => svg && svg.querySelector(`.alumni-map-fan[data-fan="${id}"]`);
+    const markerOf = id => svg && svg.querySelector(`.alumni-map-marker[data-place-filter="${id}"]`);
+
+    const open = (id, { keyboard = false } = {}) => {
+      const marker = markerOf(id);
+      if (!marker) return;
+      const fan = fanOf(id);
+      if (openFan && openFan !== fan) openFan.classList.remove('open');
+      openFan = fan || null;
+      hideTips();
+      if (fan) {
+        fan.classList.add('open');
+        if (keyboard) showTip(marker.getAttribute('aria-describedby'), marker);
+      } else if (marker.dataset.personTip) {
+        showTip(marker.dataset.personTip, marker);
+      }
+    };
+    const close = () => {
+      if (openFan) openFan.classList.remove('open');
+      openFan = null;
+      hideTips();
+    };
+    // Al salir del punto o del abanico, vuelve el fijado (si lo hay) o se cierra todo
+    const restore = () => (pinned ? open(pinned) : close());
+    const togglePin = id => {
+      pinned = pinned === id ? null : id;
+      if (pinned) open(id);
+      else if (!figure.querySelector(':hover.alumni-map-fan, :hover.alumni-map-marker')) close();
+    };
+
     figure.querySelectorAll('.alumni-map-marker').forEach(marker => {
-      marker.addEventListener('mouseenter', () => show(marker));
-      // Al salir, vuelve el tooltip fijado (si lo hay) o se ocultan todos
-      const restore = () => (pinned ? show(pinned) : hideAll());
-      marker.addEventListener('mouseleave', restore);
-      marker.addEventListener('focus', () => show(marker));
+      const id = marker.dataset.placeFilter;
+      marker.addEventListener('mouseenter', () => open(id));
+      // Con abanico, el cierre lo gestiona el propio abanico (se abre justo encima del punto)
+      marker.addEventListener('mouseleave', () => { if (!fanOf(id)) restore(); });
+      marker.addEventListener('focus', () => open(id, { keyboard: true }));
       marker.addEventListener('blur', restore);
-      marker.addEventListener('click', () => {
-        pinned = pinned === marker ? null : marker;
-        pinned ? show(marker) : hideAll();
+      marker.addEventListener('click', () => togglePin(id));
+    });
+
+    figure.querySelectorAll('.alumni-map-fan').forEach(fan => {
+      const id = fan.dataset.fan;
+      fan.addEventListener('mouseleave', restore);
+      fan.querySelector('.alumni-map-fan-center')?.addEventListener('click', () => togglePin(id));
+      fan.querySelectorAll('.alumni-map-person').forEach(person => {
+        person.addEventListener('mouseenter', () => showTip(person.dataset.personTip, person));
+        person.addEventListener('mouseleave', hideTips);
+        person.addEventListener('click', () => showTip(person.dataset.personTip, person));
       });
     });
+
     document.addEventListener('click', e => {
-      if (pinned && !pinned.contains(e.target)) { pinned = null; hideAll(); }
+      if (!pinned) return;
+      const inside = [markerOf(pinned), fanOf(pinned)].some(el => el && el.contains(e.target));
+      if (!inside) { pinned = null; close(); }
     });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { pinned = null; hideAll(); } });
-    window.addEventListener('resize', () => { pinned = null; hideAll(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { pinned = null; close(); } });
+    window.addEventListener('resize', () => { pinned = null; close(); });
   })();
 </script>
