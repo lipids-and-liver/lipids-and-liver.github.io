@@ -16,7 +16,8 @@ const topicLabels: Record<string, { label: string; icon: string }> = {
   'lipidomics': { label: `${t.pubs_topic_lipidomics} SGIker`, icon: 'fa-vial' },
   'e2f': { label: t.pubs_topic_e2f, icon: 'fa-chart-line' },
   'exposome': { label: t.pubs_topic_exposome, icon: 'fa-globe-americas' },
-  'spatial-omics': { label: 'Spatial Omics', icon: 'fa-microscope' }
+  'spatial-omics': { label: 'Spatial Omics', icon: 'fa-microscope' },
+  'otros': { label: t.pubs_topic_other, icon: 'fa-shapes' }
 };
 
 const topicInfo = topicLabels[pub.data.topic] || { label: pub.data.topic, icon: 'fa-tag' };

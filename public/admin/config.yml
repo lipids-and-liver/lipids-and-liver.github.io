@@ -361,7 +361,8 @@ collections:
     folder: "src/content/publications/es"
     i18n: false
     create: true
-    slug: "{{fields.id | default('{{fields.title}}')}}"
+    # El DOI es la clave única: el nombre del fichero sale de él
+    slug: "{{fields.doi}}"
     identifier_field: "title"
     summary: "{{year}}: {{title}} ({{journal}})"
     sortable_fields: ["year", "title", "topic"]
@@ -389,14 +390,18 @@ collections:
       - label: "Lipidómica"
         field: "topic"
         pattern: "lipidomics"
+      - label: "Otras áreas"
+        field: "topic"
+        pattern: "otros"
     fields:
-      - { label: "ID", name: "id", widget: "string", required: false, hint: "Ej: pub-001" }
-      - { label: "Año", name: "year", widget: "string", hint: "Ej: 2026" }
+      - { label: "DOI (clave única)", name: "doi", widget: "string", hint: "Obligatorio y sin «https://doi.org/». Ej: 10.1080/19490976.2026.2631834. Antes de dar de alta, busca el DOI en la lista para no repetir la publicación." }
+      - { label: "Año", name: "year", widget: "string", hint: "Solo artículos y revisiones desde 2015. Ej: 2026" }
       - { label: "Título del Artículo", name: "title", widget: "string" }
       - { label: "Autores", name: "authors", widget: "text" }
       - { label: "Revista Científica", name: "journal", widget: "string" }
-      - { label: "Área Temática", name: "topic", widget: "select", options: [{ label: "MAFLD / MASLD", value: "mafld" }, { label: "Cáncer Hepático", value: "cancer" }, { label: "Ómicas Espaciales", value: "spatial-omics" }, { label: "Ciclo Celular E2F", value: "e2f" }, { label: "Esposoma", value: "exposome" }, { label: "Lipidómica", value: "lipidomics" }] }
-      - { label: "DOI (Identificador)", name: "doi", widget: "string", required: false, hint: "Ej: 10.1080/19490976.2026.2631834" }
+      - { label: "Área Temática", name: "topic", widget: "select", options: [{ label: "MAFLD / MASLD", value: "mafld" }, { label: "Cáncer Hepático", value: "cancer" }, { label: "Ómicas Espaciales", value: "spatial-omics" }, { label: "Ciclo Celular E2F", value: "e2f" }, { label: "Exposoma", value: "exposome" }, { label: "Lipidómica", value: "lipidomics" }, { label: "Otras áreas (fuera de las líneas del grupo)", value: "otros" }] }
+      - { label: "Tipo", name: "type", widget: "select", required: false, default: "article", options: [{ label: "Artículo original", value: "article" }, { label: "Revisión", value: "review" }] }
+      - { label: "PMID (PubMed)", name: "pmid", widget: "string", required: false, hint: "Opcional. Ej: 38123456" }
       - { label: "Abstract / Resumen", name: "body", widget: "markdown", required: false }
 
   # 2.4 TESIS DOCTORALES

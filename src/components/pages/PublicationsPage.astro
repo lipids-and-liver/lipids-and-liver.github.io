@@ -10,7 +10,18 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 
-const allPubs = await getLocalizedCollection('publications', lang);
+// El DOI es la clave única: si una publicación se da de alta dos veces (p. ej. desde el CMS), se muestra una sola vez
+const seenDois = new Set<string>();
+const allPubs = (await getLocalizedCollection('publications', lang)).filter(p => {
+  const doi = (p.data.doi || '').trim().toLowerCase();
+  if (!doi) return true;
+  if (seenDois.has(doi)) {
+    console.warn(`[publicaciones] DOI repetido, se omite: ${doi} (${p.id})`);
+    return false;
+  }
+  seenDois.add(doi);
+  return true;
+});
 allPubs.sort((a, b) => Number(b.data.year) - Number(a.data.year));
 
 // Topic counts
@@ -22,6 +33,7 @@ const counts = {
   e2f: allPubs.filter(p => p.data.topic === 'e2f').length,
   exposome: allPubs.filter(p => p.data.topic === 'exposome').length,
   'spatial-omics': allPubs.filter(p => p.data.topic === 'spatial-omics').length,
+  otros: allPubs.filter(p => p.data.topic === 'otros').length,
 };
 ---
 
@@ -75,6 +87,11 @@ const counts = {
       <button class="pub-filter-btn" data-topic="spatial-omics">
         <i class="fas fa-microscope"></i> Spatial Omics <span>({counts['spatial-omics']})</span>
       </button>
+      {counts.otros > 0 && (
+        <button class="pub-filter-btn" data-topic="otros">
+          <i class="fas fa-shapes"></i> {t.pubs_topic_other} <span>({counts.otros})</span>
+        </button>
+      )}
     </div>
 
     <!-- Meta / Results Count Row -->

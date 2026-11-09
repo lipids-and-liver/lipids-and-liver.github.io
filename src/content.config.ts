@@ -92,7 +92,10 @@ const publications = defineCollection({
     authors: z.string(),
     journal: z.string(),
     topic: z.string(),
-    doi: z.string().nullish()
+    // Clave única de cada publicación (el nombre del fichero sale del DOI)
+    doi: z.string().nullish(),
+    pmid: z.union([z.string(), z.number()]).nullish().transform(val => (val === null || val === undefined || val === '') ? null : String(val)),
+    type: z.enum(['article', 'review']).nullish(),
   })
 });
 
