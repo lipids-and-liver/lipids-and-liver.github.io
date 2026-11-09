@@ -8,7 +8,7 @@ Official modernized website for the **Lipids & Liver Research Group** (Grupo Con
 > Esta web se encuentra actualmente en **fase de desarrollo activo y validación (versión demo/prototipo)**. 
 > 
 > Por este motivo:
-> - **Parte de la información que se muestra en el portal actualmente es provisional o no es correcta** (incluyendo textos de relleno, borradores de proyectos, datos simulados de noticias, colaboraciones o asignaciones de personal pendientes de validación oficial).
+> - **Parte de la información que se muestra en el portal actualmente es provisional o no es correcta** (incluyendo textos de relleno, borradores de proyectos, datos simulados de noticias o asignaciones de personal pendientes de validación oficial).
 > - Ningún dato provisional mostrado en esta versión preliminar debe considerarse definitivo ni oficial hasta la publicación y aprobación final por parte de la Investigadora Principal (**Dra. Patricia Aspichueta**) y el equipo directivo del grupo.
 > - La **web oficial y vigente** del grupo de investigación sigue estando disponible en el portal institucional de la UPV/EHU:  
 >   🔗 **[https://www.ehu.eus/es/web/lipidsliver](https://www.ehu.eus/es/web/lipidsliver)**
@@ -57,7 +57,7 @@ El resultado estático se genera en el directorio **`dist/`** (185 páginas HTML
   - `projects/`: Proyectos de investigación competitivos (Plan Nacional, Gobierno Vasco, FEDER).
   - `news/`: Noticias, notas de prensa y hitos científicos del laboratorio.
   - `templates/`: Plantillas en blanco (`_plantilla_*.md`) para añadir registros fácilmente.
-- **`src/data/`**: Datasets estructurados (`alumni.json` para alumni y trayectorias profesionales, `collaborations.json` para centros hospitalarios y de investigación, `translations.json` para diccionarios i18n).
+- **`src/data/`**: Datasets estructurados (`alumni.json` para alumni y trayectorias profesionales, `translations.json` para diccionarios i18n).
 - **`src/content.config.ts`**: Esquemas de validación tipados con Zod para todo el contenido.
 - **`src/layouts/Layout.astro`**: Cabecera institucional con navegación en menús desplegables optimizados, doble logotipo UPV/EHU y grupo, barra de idiomas y pie de página. La web usa solo modo claro (decisión del grupo).
 - **`src/pages/portal/[...lang]/`**: Páginas del portal. Un solo fichero por página genera los tres idiomas (helpers en `src/utils/routes.ts`): **inglés por defecto** en `/portal/…`, español en `/portal/es/…` y euskera en `/portal/eu/…`. La raíz (`src/pages/index.astro`, «En construcción») mantiene el español por defecto (`/`, `/eu/`, `/en/`).

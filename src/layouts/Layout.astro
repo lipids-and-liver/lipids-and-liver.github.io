@@ -190,7 +190,7 @@ const alternates = isHoldingPage ? [] : [
 
             <!-- 2. El Grupo (Dropdown) -->
             <li class="nav-menu-item has-dropdown">
-              <a href={getLocalizedPath('/grupo', lang)} class={`nav-dropdown-trigger ${['about', 'team', 'curriculum', 'alumni', 'collaborations'].includes(currentPage) ? 'active' : ''}`}>
+              <a href={getLocalizedPath('/grupo', lang)} class={`nav-dropdown-trigger ${['about', 'team', 'curriculum', 'alumni'].includes(currentPage) ? 'active' : ''}`}>
                 <span>{t.nav_group_group || 'El Grupo'}</span> <i class="fas fa-chevron-down nav-caret"></i>
               </a>
               <ul class="nav-dropdown-menu">
@@ -218,15 +218,6 @@ const alternates = isHoldingPage ? [] : [
                     <div class="dropdown-link-text">
                       <span class="dropdown-link-title">{t.nav_alumni || 'Alumni'}</span>
                       <span class="dropdown-link-sub">{t.nav_sub_alumni}</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href={getLocalizedPath('/colaboraciones', lang)}>
-                    <i class="fas fa-project-diagram"></i>
-                    <div class="dropdown-link-text">
-                      <span class="dropdown-link-title">{t.nav_collaborations || 'Alianzas y Colaboraciones'}</span>
-                      <span class="dropdown-link-sub">{t.nav_sub_collab}</span>
                     </div>
                   </a>
                 </li>

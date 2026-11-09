@@ -526,35 +526,7 @@ collections:
       - { label: "Pendiente de confirmar", name: "draft", widget: "boolean", default: false, hint: "Márcalo si no hay fuente que lo confirme; se mostrará con un aviso" }
 
   # ============================================================================
-  # 5. BLOQUE: RED & ALIANZAS
-  # ============================================================================
-
-  # 5.1 CENTROS COLABORADORES
-  - name: "collaborations"
-    label: "⚙️ Red & Alianzas › Centros Colaboradores"
-    description: "Hospitales, centros de investigación, universidades y consorcios"
-    files:
-      - label: "Centros Colaboradores"
-        name: "collaborations_data"
-        file: "src/data/collaborations.json"
-        format: "json"
-        fields:
-          - label: "Lista de Colaboraciones"
-            name: "collaborations"
-            widget: "list"
-            summary: "{{fields.name}} ({{fields.type}})"
-            fields:
-              - { label: "ID / Slug", name: "id", widget: "string" }
-              - { label: "Nombre de la Institución", name: "name", widget: "string" }
-              - { label: "Tipo / Categoría", name: "type", widget: "string" }
-              - { label: "Rol / Área de Alianza", name: "role", widget: "string" }
-              - { label: "Ubicación Geográfica", name: "location", widget: "string" }
-              - { label: "Icono FontAwesome", name: "icon", widget: "string", default: "fas fa-university" }
-              - { label: "Sitio Web Oficial", name: "url", widget: "string", required: false }
-              - { label: "Descripción / Alcance", name: "desc", widget: "text", required: false }
-
-  # ============================================================================
-  # 6. BLOQUE: MODELOS Y PLANTILLAS DE EJEMPLO
+  # 5. BLOQUE: MODELOS Y PLANTILLAS DE EJEMPLO
   # ============================================================================
   - name: "templates"
     label: "📋 Modelos & Plantillas de Referencia"
