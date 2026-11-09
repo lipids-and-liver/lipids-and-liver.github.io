@@ -60,31 +60,19 @@ const graduateFilters = [
           <i class="fas fa-award"></i> {t.alumni_badge}
         </span>
         <h1 class="catalog-title">{t.alumni_page_title || 'Alumni'}</h1>
-        <p class="catalog-subtitle">{t.alumni_page_sub || 'Investigadores y doctores del Grupo Consolidado Lipids & Liver registrados oficialmente en la Universidad del País Vasco'}</p>
+        <p class="catalog-subtitle">{t.alumni_page_sub || 'Doctoras, doctores e investigadores formados en Lipids & Liver'}</p>
       </div>
     </div>
   </section>
 
-  <!-- Alumni Grid Section -->
-  <section class="page-section">
-    <div class="container">
-      <!-- Institutional Registry Badge Banner -->
-      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 5px solid var(--logo-green); border-radius: 8px; padding: 1.25rem 1.6rem; margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1.2rem; box-shadow: 0 2px 4px rgba(104,159,56,0.08);">
-        <i class="fas fa-university" style="color: var(--logo-green); font-size: 1.6rem; margin-top: 2px; flex-shrink:0;"></i>
-        <div>
-          <div style="color: #14532d; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem;">
-            {t.alumni_registry_title}
-          </div>
-          <p style="color: #166534; margin: 0; font-size: 0.92rem; line-height: 1.55;">
-            <Fragment set:html={t.alumni_registry_desc} />
-          </p>
-        </div>
+  <!-- Aviso solo si algún perfil sigue sin traducir a este idioma -->
+  {missingTranslation && (
+    <section class="page-section">
+      <div class="container">
+        <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />
       </div>
-
-      <!-- Aviso solo si algún perfil sigue sin traducir a este idioma -->
-      {missingTranslation && <ContentLangNotice contentLang={CONTENT_SOURCE_LOCALE} lang={lang} variant="banner" />}
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- Alumni: egresados formados en el grupo -->
   <section class="page-section" id="alumni-graduados">
