@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedCollection, getTranslations, type Locale } from '../../utils/i18n';
 import PublicationCard from '../cards/PublicationCard.astro';
+import { publicationsForMember } from '../../utils/publications';
 
 interface Props {
   lang: Locale;
@@ -10,8 +11,30 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 
-const allPubs = await getLocalizedCollection('publications', lang);
+// El DOI es la clave única: si una publicación se da de alta dos veces (p. ej. desde el CMS), se muestra una sola vez
+const seenDois = new Set<string>();
+const allPubs = (await getLocalizedCollection('publications', lang)).filter(p => {
+  const doi = (p.data.doi || '').trim().toLowerCase();
+  if (!doi) return true;
+  if (seenDois.has(doi)) {
+    console.warn(`[publicaciones] DOI repetido, se omite: ${doi} (${p.id})`);
+    return false;
+  }
+  seenDois.add(doi);
+  return true;
+});
 allPubs.sort((a, b) => Number(b.data.year) - Number(a.data.year));
+
+// Personas del equipo que firma cada publicación (para el filtro ?autor=<id> que enlazan los CV)
+const team = await getLocalizedCollection('team', lang);
+const authorsByPub = new Map<string, string[]>();
+const teamNames: Record<string, string> = {};
+for (const m of team) {
+  teamNames[m.slug] = m.data.name.replace(/^(Dra?\.?|Dr)\s+/i, '');
+  for (const { pub } of publicationsForMember(allPubs, { name: m.data.name, publicationNames: m.data.publicationNames })) {
+    authorsByPub.set(pub.id, [...(authorsByPub.get(pub.id) || []), m.slug]);
+  }
+}
 
 // Topic counts
 const counts = {
@@ -22,6 +45,7 @@ const counts = {
   e2f: allPubs.filter(p => p.data.topic === 'e2f').length,
   exposome: allPubs.filter(p => p.data.topic === 'exposome').length,
   'spatial-omics': allPubs.filter(p => p.data.topic === 'spatial-omics').length,
+  otros: allPubs.filter(p => p.data.topic === 'otros').length,
 };
 ---
 
@@ -75,6 +99,18 @@ const counts = {
       <button class="pub-filter-btn" data-topic="spatial-omics">
         <i class="fas fa-microscope"></i> Spatial Omics <span>({counts['spatial-omics']})</span>
       </button>
+      {counts.otros > 0 && (
+        <button class="pub-filter-btn" data-topic="otros">
+          <i class="fas fa-shapes"></i> {t.pubs_topic_other} <span>({counts.otros})</span>
+        </button>
+      )}
+    </div>
+
+    <!-- Filtro por persona: lo activa el enlace «Ver todas» de cada CV (?autor=<id>) -->
+    <div class="pub-author-filter" id="pub-author-filter" hidden>
+      <i class="fas fa-user" aria-hidden="true"></i>
+      <span>{t.pubs_filter_author} <strong id="pub-author-filter-name"></strong></span>
+      <button type="button" id="pub-author-filter-clear"><i class="fas fa-times" aria-hidden="true"></i> {t.pubs_filter_author_clear}</button>
     </div>
 
     <!-- Meta / Results Count Row -->
@@ -97,7 +133,7 @@ const counts = {
     <!-- Publications List -->
     <div class="pubs-list" id="pubs-list">
       {allPubs.map(pub => (
-        <PublicationCard pub={pub} lang={lang} />
+        <PublicationCard pub={pub} lang={lang} members={authorsByPub.get(pub.id) || []} />
       ))}
     </div>
 
@@ -105,7 +141,7 @@ const counts = {
     <div class="pub-pagination" id="pub-pagination"></div>
   </div>
 
-  <script is:inline>
+  <script is:inline define:vars={{ teamNames }}>
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('pub-search-input');
       const searchClear = document.getElementById('pub-search-clear');
@@ -125,8 +161,27 @@ const counts = {
       const cardData = pubCards.map(card => ({
         el: card,
         topic: card.dataset.topic || '',
+        members: (card.dataset.members || '').split(' ').filter(Boolean),
         text: (card.innerText || '').toLowerCase()
       }));
+
+      // Filtro por persona (?autor=<id>), desde el enlace «Ver todas» del CV
+      let currentAuthor = new URLSearchParams(location.search).get('autor');
+      if (currentAuthor && !teamNames[currentAuthor]) currentAuthor = null;
+      const authorBox = document.getElementById('pub-author-filter');
+      const showAuthor = () => {
+        if (!authorBox) return;
+        authorBox.hidden = !currentAuthor;
+        const nameEl = document.getElementById('pub-author-filter-name');
+        if (nameEl) nameEl.textContent = currentAuthor ? teamNames[currentAuthor] : '';
+      };
+      document.getElementById('pub-author-filter-clear')?.addEventListener('click', () => {
+        currentAuthor = null;
+        history.replaceState(null, '', location.pathname);
+        showAuthor();
+        currentPage = 1;
+        applyFilters();
+      });
 
       function applyFilters() {
         const query = searchQuery.trim().toLowerCase();
@@ -135,7 +190,8 @@ const counts = {
         const matching = cardData.filter(item => {
           const matchTopic = currentTopic === 'ALL' || item.topic === currentTopic;
           const matchSearch = !query || item.text.includes(query);
-          return matchTopic && matchSearch;
+          const matchAuthor = !currentAuthor || item.members.includes(currentAuthor);
+          return matchTopic && matchSearch && matchAuthor;
         });
 
         const totalMatching = matching.length;
@@ -288,6 +344,7 @@ const counts = {
       }
 
       // Initial run
+      showAuthor();
       applyFilters();
     });
   </script>

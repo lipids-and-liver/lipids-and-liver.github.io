@@ -7,7 +7,7 @@ department: "Departamento de Fisiología, Facultad de Medicina y Enfermería / I
 image: "/assets/images/team/francisco-gonzalez/image.jpg"
 email: "francisco.gonzalezr@ehu.eus"
 office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
-orcid: "0000-0002-4455-6677"
+orcid: "0000-0002-7064-3592"
 order: 9
 cv:
   title: "Investigador Posdoctoral"
@@ -20,8 +20,6 @@ cv:
       - "Estancia investigadora posdoctoral en centros internacionales"
   grants:
       - "Contrato Posdoctoral de Formación de Personal Investigador."
-  publications:
-      - "E2F2 transcription factor controls hepatic fatty acid desaturation and NASH progression. Journal of Hepatology, 2023."
   teaching:
       - "Docencia colaborativa en prácticas de Fisiología Humana (UPV/EHU)"
 ---

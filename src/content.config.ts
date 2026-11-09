@@ -45,8 +45,8 @@ const team = defineCollection({
     phone: z.string().nullish().transform(val => val || ''),
     office: z.string().nullish().transform(val => val || ''),
     orcid: z.string().nullish().transform(val => val || ''),
-    // CVN publicado en línea (FECYT): su ORCID o la URL completa
-    cvn: z.string().nullish(),
+    // Formas exactas en que firma en las publicaciones, si el reconocimiento automático por nombre falla
+    publicationNames: z.array(z.string()).nullish().transform(val => val || []),
     twitter: z.string().nullish(),
     x: z.string().nullish(),
     linkedin: z.string().nullish(),
@@ -59,7 +59,6 @@ const team = defineCollection({
       otherTraining: z.array(z.string()).nullish().transform(val => val || []),
       positions: z.array(z.string()).nullish().transform(val => val || []),
       grants: z.array(z.string()).nullish().transform(val => val || []),
-      publications: z.array(z.string()).nullish().transform(val => val || []),
       conferences: z.array(z.string()).nullish().transform(val => val || []),
       languages: z.array(z.string()).nullish().transform(val => val || []),
       patents: z.array(z.string()).nullish().transform(val => val || []),
@@ -92,7 +91,10 @@ const publications = defineCollection({
     authors: z.string(),
     journal: z.string(),
     topic: z.string(),
-    doi: z.string().nullish()
+    // Clave única de cada publicación (el nombre del fichero sale del DOI)
+    doi: z.string().nullish(),
+    pmid: z.union([z.string(), z.number()]).nullish().transform(val => (val === null || val === undefined || val === '') ? null : String(val)),
+    type: z.enum(['article', 'review']).nullish(),
   })
 });
 

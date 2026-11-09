@@ -7,7 +7,7 @@ department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
 image: "/assets/images/team/maider-apodaka/image.jpg"
 email: "maider.apodaka@ehu.eus"
 office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
-orcid: "0000-0003-1122-3344"
+orcid: "0000-0002-8459-4752"
 order: 11
 cv:
   title: "Investigadora Predoctoral (Contrato FPU)"
@@ -18,8 +18,6 @@ cv:
       - "Investigadora Predoctoral FPU, Ministerio de Ciencia e Innovación, UPV/EHU"
   grants:
       - "Ayuda FPU para la Formación de Profesorado Universitario (MICINN)."
-  publications:
-      - "Lipidomic Remodeling in Metabolic Dysfunction-Associated Steatotic Liver Disease. Frontiers in Physiology, 2024."
   teaching:
       - "Prácticas de Fisiología Humana (Grado en Medicina)"
 ---

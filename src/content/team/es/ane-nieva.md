@@ -7,7 +7,6 @@ department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
 image: "/assets/images/team/ane-nieva/image.jpeg"
 email: "ane.nieva@ehu.eus"
 office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
-orcid: "0000-0003-8877-6655"
 order: 14
 cv:
   title: "Investigadora Predoctoral"
@@ -18,8 +17,6 @@ cv:
       - "Investigadora Predoctoral, Convocatoria Predoctoral UPV/EHU"
   grants:
       - "Beca Predoctoral UPV/EHU."
-  publications:
-      - "Pre-metastatic Niche Conditioning in Fatty Liver. Cancer Research, 2023."
   teaching:
       - "Prácticas de laboratorio en Fisiología"
 ---

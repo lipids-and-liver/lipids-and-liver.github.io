@@ -32,9 +32,6 @@ cv:
     - "Investigador/a en Grupo Lipids & Liver (2020 - Presente)"
   grants:
     - "Proyecto de investigación financiado (MICINN / Gobierno Vasco)"
-  publications:
-    - "Referencia bibliográfica destacada 1"
-    - "Referencia bibliográfica destacada 2"
   patents:
     - "Patente o registro de propiedad industrial (OEPM, etc.)"
   teaching:

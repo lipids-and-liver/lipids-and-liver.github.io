@@ -6,7 +6,6 @@ category: "Predoctoral"
 department: "Departamento de Fisiología / IIS Biobizkaia"
 email: "idoia.fernandez@ehu.eus"
 office: "Laboratorio Biobizkaia / Leioa"
-orcid: "0000-0002-7788-9900"
 order: 15
 cv:
   title: "Investigadora Predoctoral"
@@ -17,8 +16,6 @@ cv:
       - "Investigadora Predoctoral, Instituto Biobizkaia"
   grants:
       - "Beca de investigación predoctoral IIS Biobizkaia."
-  publications:
-      - "DNA Damage Response and Endoplasmic Reticulum Stress in Hepatocytes. DNA Repair, 2024."
   teaching:
       - "Apoyo docente práctico"
 ---

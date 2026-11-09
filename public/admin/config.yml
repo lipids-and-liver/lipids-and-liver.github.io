@@ -177,7 +177,7 @@ collections:
       - { label: "Teléfono", name: "phone", widget: "string", required: false, i18n: "duplicate", hint: "Ej: +34 94 601 2854" }
       - { label: "Despacho / Ubicación", name: "office", widget: "string", required: false, i18n: "duplicate", default: "Facultad de Medicina y Enfermería, Leioa" }
       - { label: "ORCID", name: "orcid", widget: "string", required: false, i18n: "duplicate", hint: "Formato: 0000-0002-XXXX-XXXX" }
-      - { label: "CVN en línea (FECYT)", name: "cvn", widget: "string", required: false, i18n: "duplicate", hint: "ORCID con el que está publicado el CVN en línea, o la URL completa" }
+      - { label: "Firmas en publicaciones", name: "publicationNames", widget: "list", required: false, i18n: "duplicate", hint: "Opcional. Solo si sus publicaciones no salen en el CV: formas exactas en que firma, tal como aparecen en la lista de autores (ej: Aspichueta P, Patricia Aspichueta)" }
       - { label: "Perfil X / Twitter", name: "x", widget: "string", required: false, i18n: "duplicate", hint: "Ej: @usuario o https://x.com/usuario" }
       - { label: "Perfil LinkedIn", name: "linkedin", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://linkedin.com/in/usuario" }
       - { label: "Perfil GitHub", name: "github", widget: "string", required: false, i18n: "duplicate", hint: "Ej: https://github.com/usuario" }
@@ -194,7 +194,6 @@ collections:
           - { label: "Formación Continua y Cursos", name: "otherTraining", widget: "list", required: false, hint: "Ej: Acreditación animalario (Funciones B y C), Cursos de especialización técnica, bioinformática, etc." }
           - { label: "Puestos y Trayectoria Previa", name: "positions", widget: "list", required: false, hint: "Ej: Investigador en formación (2024-Presente)" }
           - { label: "Proyectos y Financiación", name: "grants", widget: "list", required: false, hint: "Ej: Contrato Predoctoral Gobierno Vasco (2024-2028)" }
-          - { label: "Publicaciones Relevantes", name: "publications", widget: "list", required: false, hint: "Citas destacadas" }
           - { label: "Comunicaciones a Congresos", name: "conferences", widget: "list", required: false, hint: "Pósters y resúmenes presentados en congresos" }
           - { label: "Idiomas", name: "languages", widget: "list", required: false, hint: "Idioma y nivel del MCER, p. ej. Inglés (B1)" }
           - { label: "Patentes y Propiedad Industrial", name: "patents", widget: "list", required: false, hint: "Patentes de invención o registros OEPM" }
@@ -361,7 +360,8 @@ collections:
     folder: "src/content/publications/es"
     i18n: false
     create: true
-    slug: "{{fields.id | default('{{fields.title}}')}}"
+    # El DOI es la clave única: el nombre del fichero sale de él
+    slug: "{{fields.doi}}"
     identifier_field: "title"
     summary: "{{year}}: {{title}} ({{journal}})"
     sortable_fields: ["year", "title", "topic"]
@@ -389,14 +389,18 @@ collections:
       - label: "Lipidómica"
         field: "topic"
         pattern: "lipidomics"
+      - label: "Otras áreas"
+        field: "topic"
+        pattern: "otros"
     fields:
-      - { label: "ID", name: "id", widget: "string", required: false, hint: "Ej: pub-001" }
-      - { label: "Año", name: "year", widget: "string", hint: "Ej: 2026" }
+      - { label: "DOI (clave única)", name: "doi", widget: "string", hint: "Obligatorio y sin «https://doi.org/». Ej: 10.1080/19490976.2026.2631834. Antes de dar de alta, busca el DOI en la lista para no repetir la publicación." }
+      - { label: "Año", name: "year", widget: "string", hint: "Solo artículos y revisiones desde 2015. Ej: 2026" }
       - { label: "Título del Artículo", name: "title", widget: "string" }
       - { label: "Autores", name: "authors", widget: "text" }
       - { label: "Revista Científica", name: "journal", widget: "string" }
-      - { label: "Área Temática", name: "topic", widget: "select", options: [{ label: "MAFLD / MASLD", value: "mafld" }, { label: "Cáncer Hepático", value: "cancer" }, { label: "Ómicas Espaciales", value: "spatial-omics" }, { label: "Ciclo Celular E2F", value: "e2f" }, { label: "Esposoma", value: "exposome" }, { label: "Lipidómica", value: "lipidomics" }] }
-      - { label: "DOI (Identificador)", name: "doi", widget: "string", required: false, hint: "Ej: 10.1080/19490976.2026.2631834" }
+      - { label: "Área Temática", name: "topic", widget: "select", options: [{ label: "MAFLD / MASLD", value: "mafld" }, { label: "Cáncer Hepático", value: "cancer" }, { label: "Ómicas Espaciales", value: "spatial-omics" }, { label: "Ciclo Celular E2F", value: "e2f" }, { label: "Exposoma", value: "exposome" }, { label: "Lipidómica", value: "lipidomics" }, { label: "Otras áreas (fuera de las líneas del grupo)", value: "otros" }] }
+      - { label: "Tipo", name: "type", widget: "select", required: false, default: "article", options: [{ label: "Artículo original", value: "article" }, { label: "Revisión", value: "review" }] }
+      - { label: "PMID (PubMed)", name: "pmid", widget: "string", required: false, hint: "Opcional. Ej: 38123456" }
       - { label: "Abstract / Resumen", name: "body", widget: "markdown", required: false }
 
   # 2.4 TESIS DOCTORALES
@@ -592,7 +596,6 @@ collections:
               - { label: "Titulaciones Académicas", name: "degrees", widget: "list" }
               - { label: "Puestos y Trayectoria", name: "positions", widget: "list" }
               - { label: "Proyectos y Financiación", name: "grants", widget: "list" }
-              - { label: "Publicaciones Relevantes", name: "publications", widget: "list" }
               - { label: "Comunicaciones a Congresos", name: "conferences", widget: "list" }
               - { label: "Idiomas", name: "languages", widget: "list" }
               - { label: "Patentes y Propiedad Industrial", name: "patents", widget: "list" }

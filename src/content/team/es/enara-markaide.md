@@ -6,7 +6,6 @@ category: "Posdoctoral"
 department: "Departamento de Fisiología, UPV/EHU / IIS Biobizkaia"
 email: "enara.markaide@ehu.eus"
 office: "Laboratorio 2.16, Leioa / Biobizkaia"
-orcid: "0000-0002-9911-2233"
 order: 11
 cv:
   title: "Doctora en Biomedicina - Investigadora Posdoctoral"
@@ -19,9 +18,6 @@ cv:
       - "Investigadora Predoctoral, Beca del Departamento de Educación del Gobierno Vasco (2021-2025)"
   grants:
       - "Beca Predoctoral del Gobierno Vasco."
-  publications:
-      - "The role of mitochondrial energy metabolism in polycystic liver disease (2025)."
-      - "Bioenergetic Alterations in Polycystic Liver Disease. Liver International, 2024."
   teaching:
       - "Tutorización de prácticas de laboratorio y docencia colaborativa"
 ---
