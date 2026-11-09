@@ -18,8 +18,6 @@ cv:
       - "Investigadora Predoctoral FPU, Ministerio de Ciencia e Innovación, UPV/EHU"
   grants:
       - "Ayuda FPU para la Formación de Profesorado Universitario (MICINN)."
-  publications:
-      - "Lipidomic Remodeling in Metabolic Dysfunction-Associated Steatotic Liver Disease. Frontiers in Physiology, 2024."
   teaching:
       - "Prácticas de Fisiología Humana (Grado en Medicina)"
 ---

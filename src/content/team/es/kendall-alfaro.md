@@ -17,9 +17,6 @@ cv:
       - "Miembro de la Red Europea COST Action CA22125 (Precision-BTC)"
   grants:
       - "Contrato Predoctoral de Formación de Personal Investigador (UPV/EHU)"
-  publications:
-      - "E2F2 transcription factor promotes a cholestatic MASH phenotype by regulating hepatobiliary metabolism through miR-34a-5p. Hepatology, 2026."
-      - "Mitochondrial metabolic alterations and transcriptional networks in biliary tract cancer."
   teaching:
       - "Apoyo docente en prácticas de laboratorio de Fisiología (UPV/EHU)"
 ---

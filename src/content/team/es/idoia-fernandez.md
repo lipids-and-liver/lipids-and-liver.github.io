@@ -16,8 +16,6 @@ cv:
       - "Investigadora Predoctoral, Instituto Biobizkaia"
   grants:
       - "Beca de investigación predoctoral IIS Biobizkaia."
-  publications:
-      - "DNA Damage Response and Endoplasmic Reticulum Stress in Hepatocytes. DNA Repair, 2024."
   teaching:
       - "Apoyo docente práctico"
 ---

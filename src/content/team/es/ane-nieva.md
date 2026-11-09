@@ -17,8 +17,6 @@ cv:
       - "Investigadora Predoctoral, Convocatoria Predoctoral UPV/EHU"
   grants:
       - "Beca Predoctoral UPV/EHU."
-  publications:
-      - "Pre-metastatic Niche Conditioning in Fatty Liver. Cancer Research, 2023."
   teaching:
       - "Prácticas de laboratorio en Fisiología"
 ---

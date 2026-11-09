@@ -17,8 +17,6 @@ cv:
       - "Investigadora Predoctoral FPU (MICINN)"
   grants:
       - "Ayuda Predoctoral FPU (2024-2027)."
-  publications:
-      - "Single-Cell Metabolomics in Hepatocellular Carcinoma. Analytical Chemistry, 2024."
   teaching:
       - "Colaboración docente en Fisiología Humana"
 ---

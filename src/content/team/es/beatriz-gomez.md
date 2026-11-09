@@ -23,17 +23,6 @@ cv:
       - "GIC21/87 (Lipids&Liver): Nuevos mecanismos, biomarcadores de diagnóstico y progresión y dianas terapéuticas de enfermedad metabólica y cáncer (Grupos Consolidados, 2022-2025)."
       - "GIC15/18: Patogénesis de la enfermedad hepática de origen metabólico (Grupos Consolidados, 2016-2021)."
       - "GIC10/114: Bases moleculares de enfermedades metabólicas con componente lipídico (Grupos Consolidados, 2010-2015)."
-  publications:
-      - "The dual GLP-1/glucagon receptor agonist G49 mimics bariatric surgery effects by inducing metabolic rewiring and inter-organ crosstalk. Nature Communications, 2024."
-      - "Fat: Quality, or Quantity? What Matters Most for the Progression of Metabolic Associated Fatty Liver Disease (MAFLD). Biomedicines, 2021."
-      - "E2F1 and E2F2-Mediated Repression of CPT2 Establishes a Lipid-Rich Tumor-Promoting Environment. Cancer Research, 2021."
-      - "Magnesium accumulation upon cyclin M4 silencing activates microsomal triglyceride transfer protein improving NASH. Journal of Hepatology, 2021."
-      - "Liver osteopontin is required to prevent the progression of age‐related nonalcoholic fatty liver disease. Aging Cell, 2020."
-      - "Targeting Hepatic Glutaminase 1 Ameliorates Non-alcoholic Steatohepatitis by Restoring Very-Low-Density Lipoprotein Triglyceride Assembly. Cell Metabolism, 2020."
-      - "miR-873-5p targets mitochondrial GNMT-Complex II interface contributing to non-alcoholic fatty liver disease. Molecular Metabolism, 2019."
-      - "Atorvastatin provides a new lipidome improving early regeneration after partial hepatectomy in osteopontin deficient mice. Scientific Reports, 2018."
-      - "Hypothalamic AMPK-ER Stress-JNK1 Axis Mediates the Central Actions of Thyroid Hormones on Energy Balance. Cell Metabolism, 2017."
-      - "Osteopontin regulates the cross-talk between phosphatidylcholine and cholesterol metabolism in mouse liver. Journal of Lipid Research, 2017."
 ---
 
 Profesora Adjunta del Departamento de Fisiología de la UPV/EHU y doctora por esta universidad (2019), con una tesis sobre el papel de la osteopontina en el metabolismo lipídico y la esteatosis hepática asociada al envejecimiento, dirigida por María Luz Martínez Chantar y Patricia Aspichueta. Su investigación estudia el metabolismo lipídico del hígado en la enfermedad hepática metabólica (MASLD) y en el cáncer hepático, con trabajos sobre la osteopontina, el ensamblaje de VLDL y los factores de transcripción E2F1 y E2F2.

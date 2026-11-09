@@ -11,7 +11,6 @@ cv:
       - "Licenciado en Ciencias Químicas"
   positions: []
   grants: []
-  publications: []
   teaching: []
 ---
 

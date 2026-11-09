@@ -16,9 +16,6 @@ cv:
       - "Investigadora Predoctoral, Grupo Lipids & Liver, Departamento de Fisiología (UPV/EHU)"
   grants:
       - "Contrato Predoctoral de Formación de Investigadores (Gobierno Vasco / UPV/EHU)"
-  publications:
-      - "E2F2 transcription factor promotes a cholestatic MASH phenotype by regulating hepatobiliary metabolism through miR-34a-5p. Hepatology, 2026."
-      - "Extracellular vesicles and metabolic inter-organ crosstalk in steatotic liver disease."
   teaching:
       - "Apoyo en prácticas de laboratorio en el Grado de Medicina y Enfermería (UPV/EHU)"
 ---

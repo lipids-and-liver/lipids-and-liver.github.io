@@ -47,8 +47,6 @@ const team = defineCollection({
     orcid: z.string().nullish().transform(val => val || ''),
     // Formas exactas en que firma en las publicaciones, si el reconocimiento automático por nombre falla
     publicationNames: z.array(z.string()).nullish().transform(val => val || []),
-    // CVN publicado en línea (FECYT): su ORCID o la URL completa
-    cvn: z.string().nullish(),
     twitter: z.string().nullish(),
     x: z.string().nullish(),
     linkedin: z.string().nullish(),
@@ -61,7 +59,6 @@ const team = defineCollection({
       otherTraining: z.array(z.string()).nullish().transform(val => val || []),
       positions: z.array(z.string()).nullish().transform(val => val || []),
       grants: z.array(z.string()).nullish().transform(val => val || []),
-      publications: z.array(z.string()).nullish().transform(val => val || []),
       conferences: z.array(z.string()).nullish().transform(val => val || []),
       languages: z.array(z.string()).nullish().transform(val => val || []),
       patents: z.array(z.string()).nullish().transform(val => val || []),

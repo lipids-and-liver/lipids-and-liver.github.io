@@ -26,7 +26,7 @@ const allPubs = (await getLocalizedCollection('publications', lang)).filter(p =>
 allPubs.sort((a, b) => Number(b.data.year) - Number(a.data.year));
 
 // Personas del equipo que firma cada publicación (para el filtro ?autor=<id> que enlazan los CV)
-const team = (await getLocalizedCollection('team', lang)).filter(m => !/prueba/i.test(m.slug));
+const team = await getLocalizedCollection('team', lang);
 const authorsByPub = new Map<string, string[]>();
 const teamNames: Record<string, string> = {};
 for (const m of team) {

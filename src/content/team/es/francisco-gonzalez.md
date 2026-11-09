@@ -20,8 +20,6 @@ cv:
       - "Estancia investigadora posdoctoral en centros internacionales"
   grants:
       - "Contrato Posdoctoral de Formación de Personal Investigador."
-  publications:
-      - "E2F2 transcription factor controls hepatic fatty acid desaturation and NASH progression. Journal of Hepatology, 2023."
   teaching:
       - "Docencia colaborativa en prácticas de Fisiología Humana (UPV/EHU)"
 ---

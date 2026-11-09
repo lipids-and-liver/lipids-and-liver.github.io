@@ -21,9 +21,6 @@ cv:
   grants:
       - "Plan Nacional de I+D+i en Toxicología Proteómica y Compuestos Disruptores Endocrinos."
       - "Proyectos Internacionales UE Horizon Europe en Salud Ambiental."
-  publications:
-      - "Environmental Proteomics for MDCs Identification. Environ. Health Perspect., 2022."
-      - "Peroxisomal membrane proteome and lipid alterations. Proteomics, 2021."
   teaching:
       - "Proteómica y Espectrometría de Masas (Máster en Biología Molecular y Biomedicina)"
 ---
