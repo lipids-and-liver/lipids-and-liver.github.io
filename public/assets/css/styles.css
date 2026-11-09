@@ -3694,6 +3694,95 @@ a.cv-contact-item:hover i {
 }
 
 /* Institutional Footer */
+/* ==========================================================================
+   ENTIDADES FINANCIADORAS: franja sobre el pie y pestaña en /grupo
+   Logos en color sobre blanco (los manuales de marca no permiten alterarlos)
+   ========================================================================== */
+.funders-band {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  padding: 1.75rem 0;
+}
+.funders-band-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+}
+.funders-band-title {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  flex: 0 0 auto;
+}
+.funders-band-logos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 2.25rem;
+  flex: 1 1 auto;
+}
+.funders-band-logos a { display: block; line-height: 0; border-radius: 4px; }
+.funders-band-logos a:focus-visible { outline: 2px solid var(--ehu-navy); outline-offset: 4px; }
+.funder-logo { display: block; height: 46px; width: auto; max-width: 240px; object-fit: contain; }
+.funder-logo-gobierno-vasco { height: 30px; max-width: 250px; }
+.funders-band-more {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ehu-navy);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.funders-band-more:hover { color: var(--logo-green); }
+.funders-band-more i { font-size: 0.75rem; margin-left: 0.2rem; }
+
+.funders-grid {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 1.25rem;
+}
+.funder-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  overflow: hidden;
+}
+.funder-card-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+}
+.funder-card-logo .funder-logo { height: 60px; max-width: 100%; }
+.funder-card-logo .funder-logo-gobierno-vasco { height: 36px; }
+.funder-card-body { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
+.funder-card-name { margin: 0; font-size: 1rem; color: var(--ehu-navy); line-height: 1.35; }
+.funder-card-program { margin: 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+.funder-card-ref { margin: 0; font-size: 0.82rem; color: var(--text-secondary); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.funder-card-link { margin-top: auto; padding-top: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--logo-green); text-decoration: none; }
+.funder-card-link:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .funders-band-inner { flex-direction: column; align-items: flex-start; }
+  .funders-band-logos { gap: 1rem 1.5rem; }
+  .funder-logo { height: 38px; max-width: 180px; }
+  .funder-logo-gobierno-vasco { height: 24px; max-width: 200px; }
+}
+
 .institutional-footer {
   background: var(--ehu-navy-dark);
   color: #94a3b8;

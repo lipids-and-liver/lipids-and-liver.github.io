@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedCollection, getLocalizedEntry, getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
+import { getFunders } from '../../utils/funders';
 
 interface Props {
   lang: Locale;
@@ -25,6 +26,9 @@ const presentationTabs = await Promise.all(
     };
   })
 );
+
+// Pestaña «Financiación»: entidades financiadoras (src/data/funders.json)
+const funders = getFunders(lang);
 
 const letterEntry = await getLocalizedEntry('letter', 'carta', lang);
 const letterRender = letterEntry ? await render(letterEntry) : null;
@@ -138,6 +142,9 @@ const LetterContent = letterRender ? letterRender.Content : null;
                 {tab.entry.data.tabTitle}
               </button>
             ))}
+            {funders.length > 0 && (
+              <button class="tab-btn" data-tab="tab-financiacion">{t.funders_tab}</button>
+            )}
           </div>
 
           {presentationTabs.map((tab) => {
@@ -188,6 +195,33 @@ const LetterContent = letterRender ? letterRender.Content : null;
               </div>
             );
           })}
+
+          {funders.length > 0 && (
+            <div class="tab-content" id="tab-financiacion">
+              <div class="about-text">
+                <p>{t.funders_tab_intro}</p>
+              </div>
+              <ul class="funders-grid">
+                {funders.map(f => (
+                  <li class="funder-card">
+                    <div class="funder-card-logo">
+                      <img src={f.logo} alt="" loading="lazy" class={`funder-logo funder-logo-${f.id}`} />
+                    </div>
+                    <div class="funder-card-body">
+                      <h3 class="funder-card-name">{f.name}</h3>
+                      {f.program && <p class="funder-card-program">{f.program}</p>}
+                      {f.reference && <p class="funder-card-ref">{f.reference}</p>}
+                      {f.url && (
+                        <a href={f.url} target="_blank" rel="noopener noreferrer" class="funder-card-link">
+                          {f.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')} <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -197,15 +231,23 @@ const LetterContent = letterRender ? letterRender.Content : null;
     document.addEventListener('DOMContentLoaded', () => {
       const tabBtns = document.querySelectorAll('.tab-btn');
       const tabContents = document.querySelectorAll('.tab-content');
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          tabBtns.forEach(b => b.classList.remove('active'));
-          tabContents.forEach(c => c.classList.remove('active'));
-          btn.classList.add('active');
-          const target = document.getElementById(btn.dataset.tab);
-          if (target) target.classList.add('active');
-        });
-      });
+      const activate = btn => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.dataset.tab);
+        if (target) target.classList.add('active');
+      };
+      tabBtns.forEach(btn => btn.addEventListener('click', () => activate(btn)));
+      // Enlace directo a una pestaña (p. ej. /grupo#tab-financiacion desde el pie)
+      const fromHash = () => {
+        const btn = location.hash && document.querySelector(`.tab-btn[data-tab="${CSS.escape(location.hash.slice(1))}"]`);
+        if (!btn) return;
+        activate(btn);
+        btn.closest('.about-tabs-block')?.scrollIntoView({ block: 'start' });
+      };
+      fromHash();
+      window.addEventListener('hashchange', fromHash);
     });
   </script>
 </Layout>

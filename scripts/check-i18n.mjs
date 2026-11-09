@@ -20,7 +20,7 @@ const CORE_COLLECTIONS = {
 };
 // Datos con campos por idioma (<campo>_es, <campo>_eu, <campo>_en)
 // (si no hay <campo>_es, el campo base cuenta como la versión en español, como en alumni.json)
-const CORE_DATA = { 'stats.json': 'stats', 'hero_gallery.json': 'slides', 'alumni.json': 'alumni' };
+const CORE_DATA = { 'stats.json': 'stats', 'hero_gallery.json': 'slides', 'alumni.json': 'alumni', 'funders.json': 'funders' };
 
 const strict = process.argv.includes('--strict');
 let missingTotal = 0;

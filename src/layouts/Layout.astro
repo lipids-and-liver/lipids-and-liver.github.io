@@ -1,4 +1,5 @@
 ---
+import FundersBand from '../components/FundersBand.astro';
 import { getTranslations, getLocalizedPath, getPathWithoutLocale, DEFAULT_LOCALE, LOCALES, type Locale } from '../utils/i18n';
 
 interface Props {
@@ -364,6 +365,8 @@ const alternates = isHoldingPage ? [] : [
   <main>
     <slot />
   </main>
+
+  {!isHoldingPage && <FundersBand lang={lang} />}
 
   <!-- Institutional Footer with Both Logos -->
   <footer class="institutional-footer">

@@ -274,6 +274,34 @@ collections:
               - { label: "Solo se conoce el país", name: "approximate", widget: "boolean", default: false, required: false }
               - { label: "Posición de la etiqueta", name: "labelPos", widget: "select", options: ["right", "left", "top", "bottom"], default: "right" }
 
+  # 1.6 ENTIDADES FINANCIADORAS
+  - name: "funders"
+    label: "🏛️ El Grupo › Entidades financiadoras"
+    description: "Logos de la franja sobre el pie de página y pestaña «Financiación» de /grupo"
+    files:
+      - label: "Entidades financiadoras"
+        name: "funders_data"
+        file: "src/data/funders.json"
+        format: "json"
+        fields:
+          - label: "Entidades"
+            name: "funders"
+            widget: "list"
+            summary: "{{fields.order}} · {{fields.name}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Minúsculas y guiones, ej: gobierno-vasco" }
+              - { label: "Nombre (ES)", name: "name", widget: "string" }
+              - { label: "Nombre (EU)", name: "name_eu", widget: "string", required: false }
+              - { label: "Nombre (EN)", name: "name_en", widget: "string", required: false }
+              - { label: "Logo", name: "logo", widget: "image", hint: "Logo oficial en color, a ser posible en SVG, descargado de la web de la entidad. No cambies sus colores." }
+              - { label: "Web de la entidad", name: "url", widget: "string", required: false }
+              - { label: "Programa o convocatoria (ES)", name: "program", widget: "string", required: false, hint: "Ej: Grupos de investigación del sistema universitario vasco (IT1476-22)" }
+              - { label: "Programa o convocatoria (EU)", name: "program_eu", widget: "string", required: false }
+              - { label: "Programa o convocatoria (EN)", name: "program_en", widget: "string", required: false }
+              - { label: "Referencia de la ayuda", name: "reference", widget: "string", required: false, hint: "Ej: PID2021-XXXXXXOB-I00 financiado por MICIU/AEI/10.13039/501100011033. Se muestra tal cual, sin traducir" }
+              - { label: "Mostrar en el pie de página", name: "footer", widget: "boolean", default: true, required: false }
+              - { label: "Orden", name: "order", widget: "number", value_type: "int", default: 99 }
+
   # ============================================================================
   # 2. BLOQUE: INVESTIGACIÓN
   # ============================================================================
