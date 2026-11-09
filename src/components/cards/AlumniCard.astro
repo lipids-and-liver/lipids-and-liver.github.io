@@ -9,9 +9,10 @@ interface AlumniItem {
   thesisId?: string;
   thesis?: string;
   year?: string;
-  currentRole: string;
-  currentAffiliation: string;
-  location: string;
+  currentRole?: string;
+  currentAffiliation?: string;
+  location?: string;
+  pending?: boolean; // trayectoria actual sin confirmar: no se muestra cargo ni institución
   category: 'academia' | 'industry' | 'clinical';
   categoryLabel: string;
   icon?: string;
@@ -68,10 +69,18 @@ const categoryLabel = alumni.badgeLabel || (t as Record<string, string>)[`alumni
   <div class="alumni-card-body">
     <div class="alumni-current-box">
       <span class="current-label"><i class="fas fa-briefcase"></i> {t.alumni_current_label || 'Puesto Actual:'}</span>
-      <div class="current-role" lang={currentRole.lang}>{currentRole.text}</div>
-      <div class="current-affiliation" lang={currentAffiliation.lang}>
-        <i class="fas fa-building"></i> {currentAffiliation.text}
-      </div>
+      {alumni.pending ? (
+        <div class="current-role current-pending">{(t as Record<string, string>).alumni_current_pending}</div>
+      ) : (
+        <>
+          <div class="current-role" lang={currentRole.lang}>{currentRole.text}</div>
+          {currentAffiliation.text && (
+            <div class="current-affiliation" lang={currentAffiliation.lang}>
+              <i class="fas fa-building"></i> {currentAffiliation.text}
+            </div>
+          )}
+        </>
+      )}
       {location.text && (
         <div class="current-location" lang={location.lang}>
           <i class="fas fa-map-marker-alt"></i> {location.text}

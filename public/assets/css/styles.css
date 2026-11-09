@@ -6501,6 +6501,8 @@ a.cv-contact-item:hover i {
 .alumni-map-unplaced.active { background: var(--ehu-navy); border-color: var(--ehu-navy); color: #ffffff; }
 .alumni-map-hint { margin: 0.5rem 0 0; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; }
 
+.alumni-card-inst .current-pending { font-weight: 500; font-style: italic; color: var(--text-secondary); }
+
 .alumni-place-status {
   display: flex;
   flex-wrap: wrap;

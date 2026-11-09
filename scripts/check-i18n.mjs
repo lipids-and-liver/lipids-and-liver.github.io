@@ -65,7 +65,9 @@ for (const [file, listKey] of Object.entries(CORE_DATA)) {
   const raw = JSON.parse(readFileSync(join(ROOT, 'src/data', file), 'utf8'));
   const items = raw[listKey] || [];
   const fields = [...new Set(items.flatMap(it => Object.keys(it).filter(k => /_(es|eu|en)$/.test(k)).map(k => k.slice(0, -3))))];
-  const gaps = items.flatMap((it, i) => fields.flatMap(f => LOCALES.filter(l => !(it[`${f}_${l}`] ?? (l === 'es' ? it[f] : undefined))?.toString().trim()).map(l => `#${i + 1} ${f}_${l}`)));
+  // Solo se revisan los campos que el elemento usa (p. ej. un alumni sin trayectoria confirmada no tiene cargo)
+  const uses = (it, f) => it[f] !== undefined || LOCALES.some(l => it[`${f}_${l}`] !== undefined);
+  const gaps = items.flatMap((it, i) => fields.filter(f => uses(it, f)).flatMap(f => LOCALES.filter(l => !(it[`${f}_${l}`] ?? (l === 'es' ? it[f] : undefined))?.toString().trim()).map(l => `#${i + 1} ${f}_${l}`)));
   line(`\nDatos ${file}: ${items.length} elementos`);
   gaps.forEach(g => line(`  ✗ falta ${g}`));
   if (!gaps.length) line('  ✓ completos');
