@@ -6,7 +6,6 @@ category: "Predoctoral"
 department: "Departamento de Fisiología / IIS Biobizkaia"
 email: "idoia.fernandez@ehu.eus"
 office: "Laboratorio Biobizkaia / Leioa"
-orcid: "0000-0002-7788-9900"
 order: 15
 cv:
   title: "Investigadora Predoctoral"

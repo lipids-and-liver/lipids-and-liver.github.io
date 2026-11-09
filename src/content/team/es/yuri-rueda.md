@@ -7,7 +7,7 @@ department: "Departamento de Fisiología, Facultad de Medicina y Enfermería"
 image: "/assets/images/team/yuri-rueda/image.jpg"
 email: "yuri.rueda@ehu.eus"
 office: "Despacho 2.09, Facultad de Medicina y Enfermería, Leioa"
-orcid: "0000-0003-2211-9988"
+orcid: "0000-0002-0832-8460"
 order: 8
 cv:
   title: "Profesora Titular de Universidad"

@@ -6,7 +6,6 @@ category: "Posdoctoral"
 department: "Departamento de Fisiología, UPV/EHU / IIS Biobizkaia"
 email: "enara.markaide@ehu.eus"
 office: "Laboratorio 2.16, Leioa / Biobizkaia"
-orcid: "0000-0002-9911-2233"
 order: 11
 cv:
   title: "Doctora en Biomedicina - Investigadora Posdoctoral"

@@ -7,7 +7,6 @@ department: "Departamento de Fisiología / IIS Biobizkaia"
 image: "/assets/images/team/natalia-sainz/image.jpeg"
 email: "natalia.sainz@ehu.eus"
 office: "Laboratorio 2.16, Leioa"
-orcid: "0000-0001-9988-7766"
 order: 16
 cv:
   title: "Investigadora Predoctoral"

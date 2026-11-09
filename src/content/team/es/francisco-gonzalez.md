@@ -7,7 +7,7 @@ department: "Departamento de Fisiología, Facultad de Medicina y Enfermería / I
 image: "/assets/images/team/francisco-gonzalez/image.jpg"
 email: "francisco.gonzalezr@ehu.eus"
 office: "Laboratorio 2.16, Facultad de Medicina y Enfermería, Leioa"
-orcid: "0000-0002-4455-6677"
+orcid: "0000-0002-7064-3592"
 order: 9
 cv:
   title: "Investigador Posdoctoral"
