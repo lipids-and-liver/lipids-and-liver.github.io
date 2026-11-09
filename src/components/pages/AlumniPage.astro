@@ -153,7 +153,7 @@ const graduateFilters = [
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    // Dos filtros combinables: categoría (botones) y ubicación (mapa o lista de ubicaciones)
+    // Dos filtros combinables: categoría (botones) y ubicación (puntos del mapa o «sin ubicación precisa»)
     const state = { category: 'ALL', place: null };
     const categoryButtons = document.querySelectorAll('#alumni-category-filters .segmented-btn');
     const placeControls = document.querySelectorAll('[data-place-filter]');
@@ -174,8 +174,8 @@ const graduateFilters = [
       });
       if (status) {
         status.hidden = !state.place;
-        const source = document.querySelector(`.alumni-map-place[data-place-filter="${state.place}"] .place-name`);
-        if (statusName) statusName.textContent = source ? source.textContent : '';
+        const source = document.querySelector(`[data-place-filter="${state.place}"][data-place-name]`);
+        if (statusName) statusName.textContent = source ? source.dataset.placeName : '';
       }
     };
 
