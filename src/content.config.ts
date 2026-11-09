@@ -45,6 +45,8 @@ const team = defineCollection({
     phone: z.string().nullish().transform(val => val || ''),
     office: z.string().nullish().transform(val => val || ''),
     orcid: z.string().nullish().transform(val => val || ''),
+    // Formas exactas en que firma en las publicaciones, si el reconocimiento automático por nombre falla
+    publicationNames: z.array(z.string()).nullish().transform(val => val || []),
     // CVN publicado en línea (FECYT): su ORCID o la URL completa
     cvn: z.string().nullish(),
     twitter: z.string().nullish(),

@@ -3,6 +3,7 @@ import ContentLangNotice from '../ContentLangNotice.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getLocalizedEntry, getLocalizedCollection, getTranslations, getLocalizedPath, getTeamCategoryInfo, sortTeamMembers, localizeTeamRole, localizeTeamDepartment, localizeTeamOffice, type Locale } from '../../utils/i18n';
 import { render } from 'astro:content';
+import { publicationsForMember, splitAuthors } from '../../utils/publications';
 
 interface Props {
   id: string;
@@ -35,6 +36,24 @@ const localizedDept = member.locale === lang ? member.data.department : localize
 const localizedOffice = member.locale === lang ? member.data.office : localizeTeamOffice(member.data.office || '', lang);
 
 const imageSrc = member.data.image ? (member.data.image.startsWith('/') ? member.data.image : `/${member.data.image}`) : '/assets/images/team/placeholder.jpg';
+
+// Publicaciones recientes: se calculan a partir del listado general (src/content/publications)
+const RECENT_PUBS = 10;
+const memberPubs = publicationsForMember(await getLocalizedCollection('publications', lang), {
+  name: member.data.name,
+  publicationNames: member.data.publicationNames,
+});
+// Autores abreviados: los tres primeros, la persona (si va más atrás) y el último
+const shortAuthors = (authors: string, me: number) => {
+  const list = splitAuthors(authors);
+  const show = new Set(list.length <= 6 ? list.map((_, i) => i) : [0, 1, 2, me, list.length - 1]);
+  const out: { text: string; me?: boolean; gap?: boolean }[] = [];
+  list.forEach((a, i) => {
+    if (show.has(i)) out.push({ text: a, me: i === me });
+    else if (!out[out.length - 1]?.gap) out.push({ text: '…', gap: true });
+  });
+  return out;
+};
 
 const email = member.data.email?.trim();
 const phone = member.data.phone?.trim();
@@ -231,6 +250,35 @@ const hasSocial = Boolean(email || phone || orcidUrl || cvnUrl || xUrl || linked
             <ul class="cv-clean-list">
               {cv.grants.map((g: string) => <li>{g}</li>)}
             </ul>
+          </div>
+        )}
+
+        <!-- Publicaciones recientes (automáticas, a partir del listado de publicaciones) -->
+        {memberPubs.length > 0 && (
+          <div class="cv-block">
+            <h3 class="cv-block-title"><i class="fas fa-newspaper"></i> {t.cv_recent_pubs}</h3>
+            <ol class="cv-pub-list">
+              {memberPubs.slice(0, RECENT_PUBS).map(({ pub, authorIndex }) => (
+                <li class="cv-pub-item">
+                  {pub.data.doi ? (
+                    <a href={`https://doi.org/${pub.data.doi}`} target="_blank" rel="noopener noreferrer" class="cv-pub-title">{pub.data.title}</a>
+                  ) : (
+                    <span class="cv-pub-title">{pub.data.title}</span>
+                  )}
+                  <span class="cv-pub-authors">
+                    {shortAuthors(pub.data.authors, authorIndex).map((a, i, all) => (
+                      <Fragment>{a.me ? <strong>{a.text}</strong> : a.text}{i < all.length - 1 ? ', ' : ''}</Fragment>
+                    ))}
+                  </span>
+                  <span class="cv-pub-meta"><em>{pub.data.journal}</em> · {pub.data.year}</span>
+                </li>
+              ))}
+            </ol>
+            {memberPubs.length > RECENT_PUBS && (
+              <a href={`${getLocalizedPath('/publicaciones', lang)}?autor=${encodeURIComponent(currentSlug)}`} class="cv-pub-all">
+                {t.cv_recent_pubs_all.replace('{n}', String(memberPubs.length))} <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            )}
           </div>
         )}
 

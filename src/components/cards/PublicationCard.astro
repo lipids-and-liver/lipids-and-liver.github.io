@@ -5,9 +5,10 @@ import { getTranslations, DEFAULT_LOCALE, type Locale } from '../../utils/i18n';
 interface Props {
   pub: CollectionEntry<'publications'> & { slug: string; locale: Locale };
   lang?: Locale;
+  members?: string[]; // ids de las personas del equipo que la firman (filtro ?autor=)
 }
 
-const { pub, lang = DEFAULT_LOCALE } = Astro.props;
+const { pub, lang = DEFAULT_LOCALE, members = [] } = Astro.props;
 const t = getTranslations(lang);
 
 const topicLabels: Record<string, { label: string; icon: string }> = {
@@ -23,7 +24,7 @@ const topicLabels: Record<string, { label: string; icon: string }> = {
 const topicInfo = topicLabels[pub.data.topic] || { label: pub.data.topic, icon: 'fa-tag' };
 ---
 
-<div class="pub-card" data-topic={pub.data.topic} data-year={pub.data.year}>
+<div class="pub-card" data-topic={pub.data.topic} data-year={pub.data.year} data-members={members.join(' ')}>
   <div class="pub-header">
     <h4 class="pub-title">{pub.data.title}</h4>
     <span class="pub-year">{pub.data.year}</span>
