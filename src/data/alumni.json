@@ -181,19 +181,11 @@
       "thesisId": "tesis-27",
       "thesis": "Efecto del lipopolisacárido sobre el metabolismo de los cuerpos lipídicos hepáticos en ratón",
       "year": "2013",
-      "currentRole": "Docente Investigador",
-      "currentRole_eu": "Irakasle ikertzailea",
-      "currentRole_en": "Lecturer and Researcher",
-      "currentAffiliation": "Universidad Internacional SEK",
-      "currentAffiliation_eu": "Universidad Internacional SEK",
-      "currentAffiliation_en": "Universidad Internacional SEK",
-      "location": "Quito, Ecuador",
-      "location_eu": "Quito, Ekuador",
-      "location_en": "Quito, Ecuador",
       "category": "academia",
       "categoryLabel": "Docencia e Investigación Universitaria",
       "ehuUrl": "https://ekoizpen-zientifikoa.ehu.eus/investigadores/1029388/detalle",
-      "icon": "fas fa-chalkboard-teacher"
+      "icon": "fas fa-chalkboard-teacher",
+      "pending": true
     },
     {
       "id": "sandra-armengol",
