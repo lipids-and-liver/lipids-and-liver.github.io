@@ -9,6 +9,9 @@ image: "/assets/images/news/tesis-defensa.jpg"
 summary: "Beatriz Gómez Santos defiende su tesis «Osteopontin role in lipid metabolism: involvement in age-related hepatosteatosis», dirigida por la Dra. Patricia Aspichueta."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 Beatriz Gómez Santos ha defendido su tesis doctoral **«Osteopontin role in lipid metabolism: involvement in age-related hepatosteatosis»**, dentro del Programa de Doctorado en Biomedicina de la UPV/EHU, bajo la dirección de la Dra. Patricia Aspichueta Celaá.

@@ -9,6 +9,9 @@ image: "/assets/images/mafld.jpg"
 summary: "El grupo participa en un estudio publicado en Gastroenterology que identifica subtipos de esteatohepatitis no alcohólica a partir del perfil metabolómico en suero."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 El grupo Lipids & Liver participa en el artículo **«Metabolomic Identification of Subtypes of Nonalcoholic Steatohepatitis»**, publicado en la revista *Gastroenterology* (2017), dentro de una amplia colaboración multicéntrica.

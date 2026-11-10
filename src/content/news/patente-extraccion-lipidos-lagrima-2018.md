@@ -8,6 +8,9 @@ categoryBadge: "Transferencia"
 summary: "La UPV/EHU solicita ante la OEPM la patente P201831028, un método para extraer lípidos de la lágrima con participación de investigadores del grupo."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 La Universidad del País Vasco (UPV/EHU) ha presentado ante la Oficina Española de Patentes y Marcas (OEPM) la solicitud de patente **P201831028**, «Método para extraer lípidos de la lágrima».

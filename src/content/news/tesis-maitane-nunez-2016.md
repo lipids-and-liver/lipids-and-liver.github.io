@@ -9,6 +9,9 @@ image: "/assets/images/news/tesis-defensa.jpg"
 summary: "Maitane Núñez García defiende su tesis doctoral «Osteopontin: a key regulator of liver lipid metabolism», dirigida por las Dras. Patricia Aspichueta y Olatz Fresnedo."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 Maitane Núñez García ha defendido su tesis doctoral **«Osteopontin: a key regulator of liver lipid metabolism»**, dentro del Programa de Doctorado en Biomedicina de la UPV/EHU, bajo la dirección de la Dra. Patricia Aspichueta Celaá y la Dra. M. Olatz Fresnedo Aranguren.

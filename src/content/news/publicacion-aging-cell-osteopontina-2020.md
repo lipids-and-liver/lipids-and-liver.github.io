@@ -9,6 +9,9 @@ image: "/assets/images/mafld.jpg"
 summary: "Un estudio del grupo publicado en Aging Cell describe el papel de la osteopontina hepática en la esteatosis asociada al envejecimiento."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 El grupo Lipids & Liver publica en *Aging Cell* (2020) el artículo **«Liver osteopontin is required to prevent the progression of age-related nonalcoholic fatty liver disease»**, con la Dra. Patricia Aspichueta como última autora.

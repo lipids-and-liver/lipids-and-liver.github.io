@@ -158,7 +158,7 @@ const news = defineCollection({
     datePrecision: z.enum(['day', 'year']).default('day'),
     featured: z.boolean().nullish().transform(val => Boolean(val)),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
-    // Aviso en redes sociales (lo usa el feed RSS /portal/noticias/rss.xml). Opcional.
+    // Aviso en redes (feeds RSS /portal/noticias/rss.xml y rss-bluesky.xml; ver src/utils/newsFeed.ts). Opcional.
     social: z.object({
       enabled: z.boolean().nullish().transform(val => val !== false), // false = no anunciar
       text: z.string().nullish(),                                     // texto propio; vacío = resumen

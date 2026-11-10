@@ -555,10 +555,10 @@ collections:
         widget: "object"
         required: false
         collapsed: true
-        hint: "Aviso que se publica en las redes del grupo a partir del feed RSS de noticias. Solo se anuncian noticias con fecha exacta (no «Solo el año») y que no sean futuras."
+        hint: "Aviso que se publica automáticamente en LinkedIn y Bluesky (vía Buffer) a partir del feed RSS de noticias. Solo se anuncian noticias con fecha exacta (no «Solo el año») y que no sean futuras."
         fields:
-          - { label: "Anunciar en redes", name: "enabled", widget: "boolean", default: true, required: false }
-          - { label: "Texto del aviso", name: "text", widget: "text", required: false, hint: "Opcional. Si se deja vacío se usa el resumen. Para X conviene no pasar de unos 230 caracteres (el enlace y los hashtags también cuentan)." }
+          - { label: "Anunciar en redes", name: "enabled", widget: "boolean", default: true, required: false, hint: "Desmárcalo para que esta noticia no se publique en LinkedIn ni en Bluesky" }
+          - { label: "Texto del aviso", name: "text", widget: "text", required: false, hint: "Opcional. Si se deja vacío se usa el resumen. En LinkedIn se publica completo; en Bluesky (límite de 300 caracteres, contando enlace y hashtags) se recorta solo si no cabe. Para que salga entero en Bluesky, no pases de unos 200 caracteres." }
           - { label: "Hashtags", name: "hashtags", widget: "list", required: false, hint: "Sin el símbolo #. Ej: MASLD, Hepatology, EHU" }
       - { label: "Cuerpo de la Noticia", name: "body", widget: "markdown", required: false }
 
