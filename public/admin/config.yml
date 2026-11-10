@@ -569,6 +569,18 @@ collections:
           - { label: "Tipo", name: "kind", widget: "select", options: [{ label: "Vídeo", value: "video" }, { label: "Audio", value: "audio" }, { label: "Artículo", value: "texto" }] }
           - { label: "Enlace", name: "url", widget: "string" }
       - { label: "Noticia relacionada (slug)", name: "news", widget: "relation", collection: "news", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false }
+      - { label: "Imagen", name: "image", widget: "image", required: false, hint: "Opcional. Horizontal (16:9). Mejor una foto propia del grupo; si es de internet, solo con licencia libre y rellenando los créditos" }
+      - label: "Créditos de la imagen"
+        name: "imageCredit"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Obligatorio para imágenes con licencia CC BY o CC BY-SA. Déjalo vacío si la foto es del grupo"
+        fields:
+          - { label: "Autor", name: "author", widget: "string" }
+          - { label: "Licencia (p. ej. CC BY 4.0, CC0, Dominio público)", name: "license", widget: "string" }
+          - { label: "Enlace a la licencia", name: "licenseUrl", widget: "string", required: false }
+          - { label: "Página de origen de la imagen", name: "source", widget: "string", required: false }
       - { label: "Pendiente de confirmar", name: "draft", widget: "boolean", default: false, hint: "Márcalo si no hay fuente que lo confirme; se mostrará con un aviso" }
 
   # ============================================================================

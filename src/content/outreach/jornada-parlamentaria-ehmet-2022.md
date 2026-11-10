@@ -11,4 +11,10 @@ url: "https://aeeh.es/jornada-parlamentaria-sobre-la-enfermedad-hepatica-metabol
 resource:
   kind: "video"
   url: "https://youtu.be/zYezNl61P64"
+image: "/assets/images/outreach/jornada-parlamentaria-ehmet-2022.jpg"
+imageCredit:
+  author: "Barcex"
+  license: "CC BY-SA 3.0"
+  licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0"
+  source: "https://commons.wikimedia.org/wiki/File:Madrid_-_Hemiciclo_del_Congreso_-_141203_100648.jpg"
 ---

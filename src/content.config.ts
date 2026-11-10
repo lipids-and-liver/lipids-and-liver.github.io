@@ -239,6 +239,14 @@ const outreach = defineCollection({
     }).nullish(),
     // Slug de la noticia relacionada en src/content/news
     news: z.string().nullish(),
+    // Imagen ilustrativa (opcional) y sus créditos, obligatorios si la licencia los exige (CC BY, CC BY-SA…)
+    image: z.string().nullish(),
+    imageCredit: z.object({
+      author: z.string(),
+      license: z.string(),
+      licenseUrl: z.string().url().nullish(),
+      source: z.string().url().nullish()
+    }).nullish(),
     // Dato sin fuente que lo confirme: se muestra marcado hasta que el grupo lo valide
     draft: z.boolean().default(false)
   })
