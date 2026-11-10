@@ -9,6 +9,9 @@ image: "/assets/images/news/tesis-defensa.jpg"
 summary: "Daniela Constanza Mestre Congregado defiende en euskera su tesis sobre los factores E2F1 y E2F2 en el desarrollo del hepatocarcinoma asociado a la obesidad."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 Daniela Constanza Mestre Congregado ha defendido en euskera su tesis doctoral **«E2F1 eta E2F2 transkripzio faktoreen parte-hartzea obesitatearekin loturiko hepatokartzinomaren garapenean»**, dentro del Programa de Doctorado en Biomedicina de la UPV/EHU, bajo la dirección del Dr. Igor Aurrekoetxea Galindo y la Dra. Patricia Aspichueta Celaá.

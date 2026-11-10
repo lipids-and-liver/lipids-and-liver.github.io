@@ -1,0 +1,53 @@
+{
+  "photos": [
+    {
+      "image": "/assets/images/join/provisional-poyata.jpg",
+      "caption_es": "Trabajo en la poyata",
+      "caption_eu": "Lana laborategiko mahaian",
+      "caption_en": "Work at the bench",
+      "placeholder": true,
+      "credit": {
+        "author": "Maggie Bartlett, NHGRI",
+        "license": "Dominio público",
+        "source": "https://commons.wikimedia.org/wiki/File:NHGRI_researcher_uses_a_pipette_to_remove_DNA_from_a_micro_test_tube.jpg"
+      }
+    },
+    {
+      "image": "/assets/images/join/provisional-microscopio.jpg",
+      "caption_es": "Al microscopio",
+      "caption_eu": "Mikroskopioan",
+      "caption_en": "At the microscope",
+      "placeholder": true,
+      "credit": {
+        "author": "Katherine Stember",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Scientist_at_the_Microscope.jpg"
+      }
+    },
+    {
+      "image": "/assets/images/join/provisional-laboratorio.jpg",
+      "caption_es": "Nuestro laboratorio",
+      "caption_eu": "Gure laborategia",
+      "caption_en": "Our lab",
+      "placeholder": true,
+      "credit": {
+        "author": "Diane A. Reid (NIH)",
+        "license": "Dominio público",
+        "source": "https://commons.wikimedia.org/wiki/File:Laboratory_at_NIH.jpg"
+      }
+    },
+    {
+      "image": "/assets/images/join/provisional-congreso.jpg",
+      "caption_es": "Presentando resultados en congresos",
+      "caption_eu": "Emaitzak biltzarretan aurkezten",
+      "caption_en": "Presenting results at conferences",
+      "placeholder": true,
+      "credit": {
+        "author": "NOAA Satellites",
+        "license": "Dominio público",
+        "source": "https://commons.wikimedia.org/wiki/File:AMS_2016_Annual_Meeting_Poster_Session_(24395208872).jpg"
+      }
+    }
+  ]
+}

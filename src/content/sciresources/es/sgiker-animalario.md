@@ -5,8 +5,9 @@ provider: "sgiker"
 icon: "fas fa-paw"
 location: "Animalario de Bizkaia (SGIker) · Campus de Leioa"
 url: "https://www.ehu.eus/es/web/sgiker/bizkaiko-animaliategia-aurkezpena"
+image: "/assets/images/sciresources/sgiker-animalario.svg"
 order: 3
-draft: true
+draft: false
 ---
 
 Unidad central del servicio de animalario de SGIker, en el edificio rehabilitado anexo a la Facultad de Medicina de Leioa. Está registrada como establecimiento usuario de animales de experimentación (EU-02.BI).

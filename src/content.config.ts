@@ -158,7 +158,7 @@ const news = defineCollection({
     datePrecision: z.enum(['day', 'year']).default('day'),
     featured: z.boolean().nullish().transform(val => Boolean(val)),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
-    // Aviso en redes sociales (lo usa el feed RSS /portal/noticias/rss.xml). Opcional.
+    // Aviso en redes (feeds RSS /portal/noticias/rss.xml y rss-bluesky.xml; ver src/utils/newsFeed.ts). Opcional.
     social: z.object({
       enabled: z.boolean().nullish().transform(val => val !== false), // false = no anunciar
       text: z.string().nullish(),                                     // texto propio; vacío = resumen
@@ -198,6 +198,11 @@ const sciresources = defineCollection({
     icon: z.string().default('fas fa-flask'),
     location: z.string().nullish(),
     url: z.string().url(),
+    // Foto del servicio (opcional); sin ella la ficha muestra solo el icono
+    image: z.string().nullish(),
+    imageAlt: z.string().nullish(),
+    // Tamaño en el mosaico (bento): destacada 2×2, ancha 2×1 o normal
+    size: z.enum(['normal', 'wide', 'featured']).nullish().transform(v => v ?? 'normal'),
     order: z.union([z.number(), z.string()]).nullish().transform(val => (val !== null && val !== undefined && val !== '') ? Number(val) : 99),
     // Texto redactado a partir de fuentes públicas, pendiente de validación por el grupo
     draft: z.boolean().default(false),
@@ -234,6 +239,14 @@ const outreach = defineCollection({
     }).nullish(),
     // Slug de la noticia relacionada en src/content/news
     news: z.string().nullish(),
+    // Imagen ilustrativa (opcional) y sus créditos, obligatorios si la licencia los exige (CC BY, CC BY-SA…)
+    image: z.string().nullish(),
+    imageCredit: z.object({
+      author: z.string(),
+      license: z.string(),
+      licenseUrl: z.string().url().nullish(),
+      source: z.string().url().nullish()
+    }).nullish(),
     // Dato sin fuente que lo confirme: se muestra marcado hasta que el grupo lo valide
     draft: z.boolean().default(false)
   })

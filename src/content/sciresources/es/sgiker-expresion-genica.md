@@ -5,8 +5,9 @@ provider: "sgiker"
 icon: "fas fa-dna"
 location: "Servicio de Genómica y Proteómica (SGIker) · UPV/EHU"
 url: "https://www.ehu.eus/es/web/sgiker/gene-adierazpenen-aurkezpena"
+image: "/assets/images/sciresources/sgiker-expresion-genica.svg"
 order: 2
-draft: true
+draft: false
 ---
 
 Unidad del Servicio de Genómica y Proteómica de SGIker que ofrece apoyo experimental y asesoramiento para el estudio de genes y genomas a la red científica vasca, empresas e instituciones públicas y privadas.

@@ -9,6 +9,9 @@ image: "/assets/images/cancer.jpg"
 summary: "Un estudio del grupo publicado en Hepatology muestra que la progresión del colangiocarcinoma depende de la captación y el metabolismo de lípidos extracelulares."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 El grupo Lipids & Liver publica en *Hepatology* (2022) el artículo **«Cholangiocarcinoma progression depends on the uptake and metabolization of extracellular lipids»**, con la Dra. Patricia Aspichueta como última autora.

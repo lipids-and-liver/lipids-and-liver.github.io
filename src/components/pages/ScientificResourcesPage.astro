@@ -62,10 +62,21 @@ const providers = [
             </div>
           </div>
           <div class="sciresources-grid">
-            {items.map(({ entry, Content }) => (
-              <article class="sciresource-card" lang={entry.locale !== lang ? entry.locale : undefined}>
+            {items.map(({ entry, Content }) => {
+              const size = entry.data.size;
+              const featured = size === 'featured';
+              const moreId = `more-${entry.data.id ?? entry.id}`;
+              return (
+              <article class={`sciresource-card is-${size}`} lang={entry.locale !== lang ? entry.locale : undefined}>
+                {featured && entry.data.image && (
+                  <img src={entry.data.image} alt={entry.data.imageAlt ?? ''} class="sciresource-card-banner" width="480" height="270" loading="lazy" decoding="async" />
+                )}
                 <header class="sciresource-card-header">
-                  <span class="sciresource-card-icon"><i class={entry.data.icon} aria-hidden="true"></i></span>
+                  {featured ? null : entry.data.image ? (
+                    <img src={entry.data.image} alt={entry.data.imageAlt ?? ''} class="sciresource-card-thumb" width="128" height="72" loading="lazy" decoding="async" />
+                  ) : (
+                    <span class="sciresource-card-icon"><i class={entry.data.icon} aria-hidden="true"></i></span>
+                  )}
                   <div>
                     <h3 class="sciresource-card-title">{entry.data.title}</h3>
                     {entry.data.location && (
@@ -74,17 +85,23 @@ const providers = [
                   </div>
                 </header>
                 <ContentLangNotice contentLang={entry.locale} lang={lang} variant="banner" />
-                {entry.data.draft && (
-                  <p class="content-lang-notice" role="note"><i class="fas fa-pen-nib" aria-hidden="true"></i> {t.content_draft_public_sources}</p>
-                )}
+                {/* La destacada se ve entera; en las demás solo el primer párrafo y el resto con «Ver más», sin JS */}
+                {!featured && <input type="checkbox" id={moreId} class="sciresource-more-toggle sr-only" />}
                 <div class="sciresource-card-body">
                   <Content />
                 </div>
+                {!featured && (
+                  <label for={moreId} class="sciresource-more-btn">
+                    <span class="more">{t.sciresources_more} <i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+                    <span class="less">{t.sciresources_less} <i class="fas fa-chevron-up" aria-hidden="true"></i></span>
+                  </label>
+                )}
                 <a href={entry.data.url} target="_blank" rel="noopener noreferrer" class="sciresource-card-link">
                   {t.sciresources_official_link} <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                 </a>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

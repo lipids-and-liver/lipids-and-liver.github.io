@@ -5,8 +5,10 @@ provider: "sgiker"
 icon: "fas fa-vial"
 location: "Servicio Central de Análisis de Bizkaia (SGIker) · Campus de Leioa"
 url: "https://www.ehu.eus/es/web/sgiker/bizkaiko-analisirako-zerbitzu-zentrala"
+image: "/assets/images/sciresources/sgiker-lipidomica.svg"
 order: 1
-draft: true
+size: "featured"
+draft: false
 ---
 
 Unidad de lipidómica y metabolómica del Servicio Central de Análisis de Bizkaia, integrado en los Servicios Generales de Investigación (SGIker) de la UPV/EHU. El grupo **Lipids & Liver** contribuyó de forma decisiva a su creación y desarrollo.

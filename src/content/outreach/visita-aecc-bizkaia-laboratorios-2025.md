@@ -8,4 +8,9 @@ location: "Leioa"
 people: ["Kendall Alonso Alfaro Jiménez", "Estíbaliz Castillero", "Natalia Sainz"]
 summary: "Con motivo del Día Mundial de la Investigación en Cáncer, 40 personas (pacientes, voluntariado y representantes de la asociación) visitaron nueve grupos de investigación, entre ellos el laboratorio del grupo, que desarrolla un proyecto financiado por la AECC."
 url: "https://www.ehu.eus/es/web/campusa/-/pacientes-de-cancer-visitan-los-laboratorios-donde-se-investiga-su-enfermedad"
+image: "/assets/images/outreach/visita-aecc-bizkaia-laboratorios-2025.jpg"
+imageCredit:
+  author: "Maggie Bartlett, NHGRI"
+  license: "Public domain"
+  source: "https://commons.wikimedia.org/wiki/File:NHGRI_researcher_uses_a_pipette_to_remove_DNA_from_a_micro_test_tube.jpg"
 ---

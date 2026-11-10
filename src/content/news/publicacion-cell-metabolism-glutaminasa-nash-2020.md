@@ -9,6 +9,9 @@ image: "/assets/images/mafld.jpg"
 summary: "Un trabajo publicado en Cell Metabolism, con participación del grupo, muestra que inhibir la glutaminasa hepática GLS1 mejora la esteatohepatitis no alcohólica."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 El grupo Lipids & Liver participa en el artículo **«Targeting Hepatic Glutaminase 1 Ameliorates Non-alcoholic Steatohepatitis by Restoring Very-Low-Density Lipoprotein Triglyceride Assembly»**, publicado en *Cell Metabolism* (2020).

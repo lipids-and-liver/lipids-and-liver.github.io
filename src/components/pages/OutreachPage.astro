@@ -45,6 +45,9 @@ const stats = [
   { value: years.length ? `${Math.min(...years)}–${Math.max(...years)}` : '—', label: t.outreach_stat_period },
 ];
 
+// Imágenes con créditos, para la nota al pie
+const credited = activities.filter(a => a.data.image && a.data.imageCredit);
+
 // Agrupado por año para la línea de tiempo
 const byYear = new Map<number, typeof activities>();
 for (const a of activities) {
@@ -118,7 +121,8 @@ for (const a of activities) {
             {resources.map(a => {
               const kind = RESOURCE_KINDS[a.data.resource!.kind];
               return (
-                <a class="outreach-resource" href={a.data.resource!.url} target="_blank" rel="noopener noreferrer">
+                <a class={`outreach-resource${a.data.image ? ' has-image' : ''}`} href={a.data.resource!.url} target="_blank" rel="noopener noreferrer">
+                  {a.data.image && <img src={a.data.image} alt="" class="outreach-resource-img" width="800" height="450" loading="lazy" decoding="async" />}
                   <span class={`outreach-resource-kind kind-${a.data.resource!.kind}`}>
                     <i class={kind.icon} aria-hidden="true"></i> {kind.label}
                   </span>
@@ -164,7 +168,9 @@ for (const a of activities) {
                 const type = TYPES[a.data.type];
                 const newsUrl = a.data.news && newsSlugs.has(a.data.news) ? getLocalizedPath(`/noticias/${a.data.news}`, lang) : null;
                 return (
-                  <li class="outreach-item" data-type={a.data.type}>
+                  <li class={`outreach-item${a.data.image ? ' has-image' : ''}`} data-type={a.data.type}>
+                    {a.data.image && <img src={a.data.image} alt="" class="outreach-item-img" width="800" height="450" loading="lazy" decoding="async" />}
+                    <div class="outreach-item-content">
                     <div class="outreach-item-head">
                       <span class="outreach-type"><i class={type.icon} aria-hidden="true"></i> {type.label}</span>
                       <span class="outreach-date">{formatNewsDate(a.data.date, a.data.datePrecision, lang)}</span>
@@ -183,6 +189,7 @@ for (const a of activities) {
                         {a.data.url && <a href={a.data.url} target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> {t.outreach_source}</a>}
                       </div>
                     )}
+                    </div>
                   </li>
                 );
               })}
@@ -190,6 +197,25 @@ for (const a of activities) {
           </div>
         ))}
       </div>
+
+      <!-- Créditos de las imágenes (exigidos por las licencias CC BY / CC BY-SA) -->
+      {credited.length > 0 && (
+        <details class="outreach-credits">
+          <summary><i class="fas fa-camera" aria-hidden="true"></i> {t.outreach_credits_title}</summary>
+          <p>{t.outreach_credits_note}</p>
+          <ul>
+            {credited.map(a => (
+              <li>
+                <span lang={a.data.lang}>{a.data.title}</span>: {a.data.imageCredit!.source
+                  ? <a href={a.data.imageCredit!.source} target="_blank" rel="noopener noreferrer">{a.data.imageCredit!.author}</a>
+                  : a.data.imageCredit!.author}, {a.data.imageCredit!.licenseUrl
+                  ? <a href={a.data.imageCredit!.licenseUrl} target="_blank" rel="noopener noreferrer license">{a.data.imageCredit!.license}</a>
+                  : a.data.imageCredit!.license}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
 
     </div>
   </section>
@@ -239,6 +265,15 @@ for (const a of activities) {
     transition: box-shadow var(--transition-smooth), transform var(--transition-smooth);
   }
   .outreach-resource:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .outreach-resource.has-image { padding-top: 0; overflow: hidden; }
+  .outreach-resource-img {
+    display: block;
+    width: calc(100% + 2.5rem);
+    margin: 0 -1.25rem 0.4rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--bg-surface-alt);
+  }
   .outreach-resource-kind {
     align-self: flex-start;
     font-size: 0.75rem;
@@ -275,6 +310,24 @@ for (const a of activities) {
   }
   .outreach-item { position: relative; padding: 1rem 0; border-bottom: 1px dashed var(--border-light); }
   .outreach-item:last-child { border-bottom: none; }
+  .outreach-item.has-image { display: grid; grid-template-columns: 160px 1fr; gap: 1.1rem; align-items: start; }
+  .outreach-item-img {
+    width: 160px;
+    height: 80px;
+    margin-top: 0.15rem;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    background: var(--bg-surface-alt);
+  }
+  .outreach-item-content { min-width: 0; }
+  .outreach-item.has-image[hidden] { display: none; }
+
+  .outreach-credits { font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 1rem; }
+  .outreach-credits summary { cursor: pointer; font-weight: 600; color: var(--text-secondary); }
+  .outreach-credits p { margin: 0.6rem 0 0.4rem; }
+  .outreach-credits ul { margin: 0; padding-left: 1.2rem; line-height: 1.7; }
+  .outreach-credits a { color: var(--ehu-blue-slate); }
   .outreach-item[hidden] { display: none; }
   .outreach-item::before {
     content: '';
@@ -309,6 +362,8 @@ for (const a of activities) {
 
 
   @media (max-width: 640px) {
+    .outreach-item.has-image { grid-template-columns: 104px 1fr; gap: 0.75rem; }
+    .outreach-item-img { width: 104px; height: 58px; }
     .outreach-year { grid-template-columns: 1fr; gap: 0; }
     .outreach-year-label { padding-top: 0.5rem; }
   }

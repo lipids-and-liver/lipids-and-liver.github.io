@@ -9,6 +9,9 @@ image: "/assets/images/news/tesis-defensa.jpg"
 summary: "Diego Sáenz de Urturi Indart defiende su tesis sobre el gen de la metionina adenosiltransferasa 1A como diana terapéutica en la obesidad y sus comorbilidades."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 Diego Sáenz de Urturi Indart ha defendido su tesis doctoral **«Targeting methionine adenosyltrasferase 1 alpha gene to treat obesity and the associated comorbidities»**, dentro del Programa de Doctorado en Biomedicina de la UPV/EHU, bajo la dirección del Dr. Xabier Buqué García y la Dra. Patricia Aspichueta Celaá.

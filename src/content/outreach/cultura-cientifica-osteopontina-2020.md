@@ -10,4 +10,9 @@ resource:
   kind: "texto"
   url: "https://culturacientifica.com/2020/08/28/la-osteopontina-evita-la-aparicion-precoz-de-la-enfermedad-de-higado-graso-no-alcoholica-por-envejecimiento/"
 news: "publicacion-aging-cell-osteopontina-2020"
+image: "/assets/images/outreach/cultura-cientifica-osteopontina-2020.jpg"
+imageCredit:
+  author: "Laboratory of Experimental Pathology, NIEHS"
+  license: "Public domain"
+  source: "https://commons.wikimedia.org/wiki/File:Liver_steatosis_fatty_change.jpg"
 ---

@@ -5,8 +5,10 @@ provider: "sgiker"
 icon: "fas fa-vial"
 location: "Central Analysis Service of Bizkaia (SGIker) · Leioa Campus"
 url: "https://www.ehu.eus/es/web/sgiker/bizkaiko-analisirako-zerbitzu-zentrala"
+image: "/assets/images/sciresources/sgiker-lipidomica.svg"
 order: 1
-draft: true
+size: "featured"
+draft: false
 translationStatus: "draft"
 ---
 

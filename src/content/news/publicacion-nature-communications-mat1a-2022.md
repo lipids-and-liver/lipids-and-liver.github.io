@@ -9,6 +9,9 @@ image: "/assets/images/news/nature-comms-cancer.jpg"
 summary: "Un estudio del grupo publicado en Nature Communications muestra que silenciar MAT1A activa el eje hígado-tejido adiposo marrón y previene la obesidad y la esteatosis."
 author: "Grupo Lipids & Liver"
 featured: false
+# Publicada antes de conectar las redes: no se anuncia
+social:
+  enabled: false
 ---
 
 El grupo Lipids & Liver publica en *Nature Communications* (2022) el artículo **«Methionine adenosyltransferase 1a antisense oligonucleotides activate the liver-brown adipose tissue axis preventing obesity and associated hepatosteatosis»**, con la Dra. Patricia Aspichueta como última autora.

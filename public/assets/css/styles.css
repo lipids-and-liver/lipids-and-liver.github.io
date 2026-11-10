@@ -5844,10 +5844,66 @@ a.cv-pub-title:hover { text-decoration: underline; }
   margin-right: 6px;
 }
 
+/* Mosaico (bento): 3 columnas en escritorio, 2 en tableta, 1 en móvil.
+   Tamaños por ficha: normal (1×1), ancha (2×1) y destacada (2×2). */
 .sciresources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  grid-auto-flow: row dense;
+  gap: 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .sciresources-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sciresource-card.is-wide,
+  .sciresource-card.is-featured {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1080px) {
+  .sciresources-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sciresource-card.is-featured {
+    grid-row: span 2;
+  }
+}
+
+.sciresource-card-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.1rem;
+  background: var(--bg-surface-alt);
+}
+
+@media (min-width: 720px) and (max-width: 1079px) {
+  /* En tableta la destacada ocupa una sola fila: imagen más baja */
+  .sciresource-card.is-featured .sciresource-card-banner {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+.sciresource-card.is-featured .sciresource-card-title {
+  font-size: 1.45rem;
+}
+
+.sciresource-card.is-featured {
+  border-top-width: 6px;
+}
+
+@media (min-width: 720px) {
+  .sciresource-card.is-wide .sciresource-card-thumb {
+    width: 176px;
+    height: 99px;
+  }
 }
 
 .sciresource-card {
@@ -5936,6 +5992,60 @@ a.cv-pub-title:hover { text-decoration: underline; }
 
 .sciresource-card-body a {
   color: var(--logo-green-hover);
+}
+
+/* Foto o ilustración del servicio: miniatura junto al título (en lugar del icono) */
+.sciresource-card-thumb {
+  flex-shrink: 0;
+  width: 128px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface-alt);
+}
+
+@media (max-width: 420px) {
+  .sciresource-card-thumb {
+    width: 96px;
+    height: 54px;
+  }
+}
+
+/* Ficha compacta: primer párrafo visible, el resto con «Ver más» */
+.sciresource-more-toggle:not(:checked) + .sciresource-card-body > :not(:first-child) {
+  display: none;
+}
+
+.sciresource-more-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ehu-navy);
+  margin-bottom: 0.4rem;
+  user-select: none;
+}
+
+.sciresource-more-btn i {
+  font-size: 0.7rem;
+  margin-left: 4px;
+}
+
+.sciresource-more-btn .less,
+.sciresource-more-toggle:checked ~ .sciresource-more-btn .more {
+  display: none;
+}
+
+.sciresource-more-toggle:checked ~ .sciresource-more-btn .less {
+  display: inline;
+}
+
+.sciresource-more-toggle:focus-visible ~ .sciresource-more-btn {
+  outline: 2px solid var(--logo-green);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* Subgrupo dentro de un desplegable del menú (p. ej. "Producción científica") */

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getTranslations, getLocalizedPath, type Locale } from '../../utils/i18n';
+import joinGallery from '../../data/join_gallery.json';
 
 interface Props {
   lang: Locale;
@@ -8,6 +9,10 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+
+// Fotos del día a día (src/data/join_gallery.json, editable desde el CMS)
+type Credit = { author: string; license: string; licenseUrl?: string; source?: string };
+const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Credit }).credit, caption: (p as Record<string, any>)[`caption_${lang}`] || p.caption_es }));
 ---
 
 <Layout currentPage="join" lang={lang} title={`${t.join_page_title} | Lipids & Liver`}>
@@ -57,6 +62,8 @@ const t = getTranslations(lang);
           </p>
         </div>
 
+        <div class="join-intro-side">
+        <img src="/assets/images/hero/grupo-laboratorio-world-cca-day.jpg" alt={t.join_photo_alt} class="join-intro-photo" width="870" height="490" loading="lazy" decoding="async" />
         <div style="background:var(--bg-surface-alt); padding:2rem; border-radius:var(--radius-md); border:1px solid var(--border-color);">
           <h4 style="color:var(--ehu-navy); margin-bottom:1.25rem; font-size:1.15rem;">
             <i class="fas fa-star" style="color:var(--logo-green);"></i> {t.join_offer_title}
@@ -69,7 +76,40 @@ const t = getTranslations(lang);
             <li><i class="fas fa-check-circle" style="color:var(--logo-green); margin-right:8px;"></i> {t.join_offer_5}</li>
           </ul>
         </div>
+        </div>
       </div>
+
+      <!-- El día a día en el laboratorio -->
+      {photos.length > 0 && (
+        <>
+          <div class="section-header-inst">
+            <div>
+              <h2 class="section-title-inst">{t.join_life_title}</h2>
+              <span class="section-subtitle-inst">{t.join_life_sub}</span>
+            </div>
+          </div>
+          <div class="join-life-grid">
+            {photos.map(p => (
+              <figure class="join-life-item">
+                <img src={p.image} alt="" width="800" height="600" loading="lazy" decoding="async" />
+                <figcaption>{p.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+          {photos.some(p => p.credit) && (
+            <p class="join-life-credits">
+              <i class="fas fa-camera" aria-hidden="true"></i> {t.outreach_credits_title}:{' '}
+              {photos.filter(p => p.credit).map((p, i) => (
+                <>
+                  {i > 0 && ' · '}
+                  {p.credit!.source ? <a href={p.credit!.source} target="_blank" rel="noopener noreferrer">{p.credit!.author}</a> : p.credit!.author}
+                  {' ('}{p.credit!.licenseUrl ? <a href={p.credit!.licenseUrl} target="_blank" rel="noopener noreferrer license">{p.credit!.license}</a> : p.credit!.license}{')'}
+                </>
+              ))}
+            </p>
+          )}
+        </>
+      )}
 
       <!-- Opportunities Tracks Grid -->
       <div class="section-header-inst">
@@ -228,3 +268,37 @@ const t = getTranslations(lang);
     </div>
   </section>
 </Layout>
+
+<style>
+  .join-intro-side { display: flex; flex-direction: column; gap: 1.25rem; }
+  .join-intro-photo {
+    display: block;
+    width: 100%;
+    height: auto; /* proporción original (16:9), sin recortar a nadie */
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .join-life-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .join-life-item { margin: 0; }
+  .join-life-credits { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 3.5rem; line-height: 1.6; }
+  .join-life-credits a { color: var(--text-muted); }
+  .join-life-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface-alt);
+  }
+  .join-life-item figcaption { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.4; }
+
+  @media (max-width: 900px) {
+    .join-life-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
