@@ -347,6 +347,9 @@ collections:
       - { label: "Icono (Font Awesome)", name: "icon", widget: "string", default: "fas fa-flask", i18n: "duplicate", hint: "Ej: fas fa-vial, fas fa-dna, fas fa-paw" }
       - { label: "Ubicación", name: "location", widget: "string", required: false, i18n: true }
       - { label: "Web oficial del servicio", name: "url", widget: "string", i18n: "duplicate" }
+      - { label: "Foto del servicio", name: "image", widget: "image", required: false, i18n: "duplicate", hint: "Opcional. Horizontal (16:9); se muestra en miniatura junto al título. Sin foto se ve el icono" }
+      - { label: "Texto alternativo de la foto", name: "imageAlt", widget: "string", required: false, i18n: true, hint: "Describe brevemente la foto (accesibilidad)" }
+      - { label: "Tamaño en el mosaico", name: "size", widget: "select", options: [{ label: "Normal", value: "normal" }, { label: "Ancha (2 columnas)", value: "wide" }, { label: "Destacada (2×2, con imagen grande)", value: "featured" }], default: "normal", required: false, i18n: "duplicate", hint: "En escritorio el mosaico tiene 3 columnas: combina tamaños para que no queden huecos" }
       - { label: "Orden", name: "order", widget: "number", default: 99, value_type: "int", i18n: "duplicate" }
       - { label: "Borrador (texto pendiente de validar)", name: "draft", widget: "boolean", default: false, i18n: "duplicate", hint: "Desmárcalo cuando el grupo haya revisado el texto" }
       - { label: "Estado de la traducción", name: "translationStatus", widget: "select", options: [{ label: "Borrador (pendiente de revisión)", value: "draft" }, { label: "Revisada", value: "reviewed" }], required: false, i18n: true }

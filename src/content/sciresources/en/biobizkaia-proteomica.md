@@ -5,8 +5,10 @@ provider: "biobizkaia"
 icon: "fas fa-microscope"
 location: "IIS Biobizkaia · Bio 1 building, Cruces (Barakaldo)"
 url: "https://www.bio-bizkaia.eus/en/plataformas/omicas/proteomica"
+image: "/assets/images/sciresources/biobizkaia-proteomica.svg"
 order: 4
-draft: true
+size: "wide"
+draft: false
 translationStatus: "draft"
 ---
 

@@ -5,8 +5,9 @@ provider: "sgiker"
 icon: "fas fa-paw"
 location: "Bizkaiko Animaliategia (SGIker) · Leioako Campusa"
 url: "https://www.ehu.eus/es/web/sgiker/bizkaiko-animaliategia-aurkezpena"
+image: "/assets/images/sciresources/sgiker-animalario.svg"
 order: 3
-draft: true
+draft: false
 translationStatus: "draft"
 ---
 

@@ -5,8 +5,10 @@ provider: "biobizkaia"
 icon: "fas fa-microscope"
 location: "IIS Biobizkaia · Edificio Bio 1, Cruces (Barakaldo)"
 url: "https://www.bio-bizkaia.eus/en/plataformas/omicas/proteomica"
+image: "/assets/images/sciresources/biobizkaia-proteomica.svg"
 order: 4
-draft: true
+size: "wide"
+draft: false
 ---
 
 Plataforma de apoyo a la investigación del IIS Biobizkaia dedicada a diseñar y aplicar estrategias de proteómica para resolver preguntas biomédicas. Cubre todo el experimento: preparación de muestras, espectrometría de masas y análisis de datos.
