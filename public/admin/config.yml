@@ -112,6 +112,39 @@ collections:
               - { label: "Deskribapena (Euskara)", name: "alt_eu", widget: "string", required: false }
               - { label: "Description (English)", name: "alt_en", widget: "string", required: false }
 
+  # 1.2c FOTOS DEL DÍA A DÍA (PÁGINA ÚNETE)
+  - name: "join_gallery"
+    label: "🤝 Únete › Fotos del Día a Día"
+    description: "Franja de fotos «El día a día en el laboratorio» de la página Únete. Las marcadas como provisionales son imágenes libres de internet: sustitúyelas por fotos propias del grupo."
+    files:
+      - label: "Fotos del Día a Día"
+        name: "join_gallery_data"
+        file: "src/data/join_gallery.json"
+        format: "json"
+        fields:
+          - label: "Fotos"
+            name: "photos"
+            widget: "list"
+            summary: "{{fields.caption_es}}"
+            hint: "Recomendado: 4 fotos (se muestran en una fila de 4, o 2×2 en móvil). Se recortan a formato 4:3. Asegúrate de que las personas que salen están de acuerdo."
+            fields:
+              - { label: "Imagen", name: "image", widget: "image" }
+              - { label: "Pie de foto (Español)", name: "caption_es", widget: "string" }
+              - { label: "Pie de foto (Euskara)", name: "caption_eu", widget: "string", required: false }
+              - { label: "Pie de foto (English)", name: "caption_en", widget: "string", required: false }
+              - { label: "Provisional (imagen de internet)", name: "placeholder", widget: "boolean", default: false, required: false, hint: "Solo para recordar cuáles hay que sustituir; no se muestra en la web" }
+              - label: "Créditos"
+                name: "credit"
+                widget: "object"
+                required: false
+                collapsed: true
+                hint: "Solo para imágenes de internet. Déjalo vacío si la foto es del grupo"
+                fields:
+                  - { label: "Autor", name: "author", widget: "string" }
+                  - { label: "Licencia", name: "license", widget: "string" }
+                  - { label: "Enlace a la licencia", name: "licenseUrl", widget: "string", required: false }
+                  - { label: "Página de origen", name: "source", widget: "string", required: false }
+
   # 1.3 CIFRAS CLAVE & MÉTRICAS (STATS)
   - name: "stats"
     label: "👥 El Grupo › Cifras Clave & Métricas (Stats)"
