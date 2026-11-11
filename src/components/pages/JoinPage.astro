@@ -88,13 +88,15 @@ const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Cre
               <span class="section-subtitle-inst">{t.join_life_sub}</span>
             </div>
           </div>
-          <div class="join-life-grid">
-            {photos.map(p => (
-              <figure class="join-life-item">
-                <img src={p.image} alt="" width="800" height="600" loading="lazy" decoding="async" />
-                <figcaption>{p.caption}</figcaption>
-              </figure>
-            ))}
+          <div class="join-life-wrap">
+            <div class="join-life-grid">
+              {photos.map(p => (
+                <figure class="join-life-item">
+                  <img src={p.image} alt="" width="1320" height="600" loading="lazy" decoding="async" />
+                  <figcaption>{p.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
           {photos.some(p => p.credit) && (
             <p class="join-life-credits">
@@ -279,26 +281,64 @@ const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Cre
     box-shadow: var(--shadow-md);
   }
 
+  /* Mosaico: fotos 1 y 2 altas (1 columna × 2 filas), fotos 3 y 4 anchas
+     (2 columnas × 1 fila), apiladas a la derecha. Las filas miden lo mismo
+     que una columna, así que las altas y las anchas son el mismo rectángulo
+     girado (aprox. 1:2 y 2:1). */
+  .join-life-wrap { container-type: inline-size; margin-bottom: 0.75rem; }
   .join-life-grid {
+    --col: calc((100cqw - 3rem) / 4);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, var(--col));
     gap: 1rem;
-    margin-bottom: 0.75rem;
   }
-  .join-life-item { margin: 0; }
-  .join-life-credits { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 3.5rem; line-height: 1.6; }
-  .join-life-credits a { color: var(--text-muted); }
-  .join-life-item img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+  .join-life-item {
+    position: relative;
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
     border-radius: var(--radius-md);
     background: var(--bg-surface-alt);
   }
-  .join-life-item figcaption { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.4; }
+  .join-life-item:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; }
+  .join-life-item:nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
+  .join-life-item:nth-child(3) { grid-column: 3 / span 2; grid-row: 1; }
+  .join-life-item:nth-child(4) { grid-column: 3 / span 2; grid-row: 2; }
+  .join-life-item img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .join-life-item figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.75rem 0.9rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 20, 40, 0.75), rgba(0, 20, 40, 0));
+  }
+  .join-life-credits { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 3.5rem; line-height: 1.6; }
+  .join-life-credits a { color: var(--text-muted); }
 
-  @media (max-width: 900px) {
-    .join-life-grid { grid-template-columns: repeat(2, 1fr); }
+  /* En móvil: las dos altas juntas arriba y las dos anchas debajo,
+     manteniendo los mismos rectángulos (1:2 y 2:1) */
+  @media (max-width: 640px) {
+    .join-life-grid {
+      --col: calc((100cqw - 1rem) / 2);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: calc(2 * var(--col) + 1rem) var(--col) var(--col);
+    }
+    .join-life-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .join-life-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .join-life-item:nth-child(3) { grid-column: 1 / span 2; grid-row: 2; }
+    .join-life-item:nth-child(4) { grid-column: 1 / span 2; grid-row: 3; }
   }
 </style>

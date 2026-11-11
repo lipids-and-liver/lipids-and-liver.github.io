@@ -126,7 +126,7 @@ collections:
             name: "photos"
             widget: "list"
             summary: "{{fields.caption_es}}"
-            hint: "Recomendado: 4 fotos (se muestran en una fila de 4, o 2×2 en móvil). Se recortan a formato 4:3. Asegúrate de que las personas que salen están de acuerdo."
+            hint: "4 fotos en mosaico: la 1.ª y la 2.ª se muestran altas (aprox. 1:2) y la 3.ª y la 4.ª anchas (aprox. 2:1, el mismo rectángulo girado), apiladas a la derecha. Pon primero las de detalle y después las de grupo. Asegúrate de que las personas que salen están de acuerdo."
             fields:
               - { label: "Imagen", name: "image", widget: "image" }
               - { label: "Pie de foto (Español)", name: "caption_es", widget: "string" }
