@@ -63,7 +63,7 @@ const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Cre
         </div>
 
         <div class="join-intro-side">
-        <img src="/assets/images/hero/grupo-laboratorio-world-cca-day.jpg" alt={t.join_photo_alt} class="join-intro-photo" width="870" height="490" loading="lazy" decoding="async" />
+        <img src="/assets/images/join/grupo-exterior.jpg" alt={t.join_photo_alt} class="join-intro-photo" width="1600" height="1200" loading="lazy" decoding="async" />
         <div style="background:var(--bg-surface-alt); padding:2rem; border-radius:var(--radius-md); border:1px solid var(--border-color);">
           <h4 style="color:var(--ehu-navy); margin-bottom:1.25rem; font-size:1.15rem;">
             <i class="fas fa-star" style="color:var(--logo-green);"></i> {t.join_offer_title}
@@ -274,7 +274,7 @@ const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Cre
   .join-intro-photo {
     display: block;
     width: 100%;
-    height: auto; /* proporción original (16:9), sin recortar a nadie */
+    height: auto; /* proporción original (4:3), sin recortar a nadie */
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
   }
