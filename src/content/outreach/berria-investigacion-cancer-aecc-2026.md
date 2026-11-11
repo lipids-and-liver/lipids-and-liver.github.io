@@ -13,8 +13,4 @@ resource:
   kind: "texto"
   url: "https://www.berria.eus/lurraldeak/bizkaia/ikerketa-ostera-ere-kroketak-jan-ahal-izateko_2164045_102.html"
 image: "/assets/images/outreach/berria-investigacion-cancer-aecc-2026.jpg"
-imageCredit:
-  author: "Rhoda Baer (National Cancer Institute)"
-  license: "Public domain"
-  source: "https://commons.wikimedia.org/wiki/File:Researcher_uses_pipettes.jpg"
 ---
