@@ -68,7 +68,6 @@ El resultado estático se genera en el directorio **`dist/`** (185 páginas HTML
 - **`GUIA_SVELTIA_CMS.md`**: Guía detallada para autenticación con token de GitHub y edición mediante Sveltia CMS.
 - **`COMO_EDITAR.md`**: Guía paso a paso para que personal no técnico del laboratorio actualice contenidos.
 - **`PROJECT_CONTEXT.md`**: Documento exhaustivo de arquitectura técnica para desarrolladores y asistentes IA.
-- **`.agents/AGENTS.md`**: Reglas y directrices automáticas para el asistente IA **Antigravity**.
 
 ---
 
