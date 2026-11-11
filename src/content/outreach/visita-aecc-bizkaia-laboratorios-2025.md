@@ -10,7 +10,7 @@ summary: "Con motivo del Día Mundial de la Investigación en Cáncer, 40 person
 url: "https://www.ehu.eus/es/web/campusa/-/pacientes-de-cancer-visitan-los-laboratorios-donde-se-investiga-su-enfermedad"
 image: "/assets/images/outreach/visita-aecc-bizkaia-laboratorios-2025.jpg"
 imageCredit:
-  author: "Maggie Bartlett, NHGRI"
-  license: "Public domain"
-  source: "https://commons.wikimedia.org/wiki/File:NHGRI_researcher_uses_a_pipette_to_remove_DNA_from_a_micro_test_tube.jpg"
+  author: "EHU"
+  license: "Todos los derechos reservados"
+  source: "https://www.ehu.eus/es/web/campusa/-/pacientes-de-cancer-visitan-los-laboratorios-donde-se-investiga-su-enfermedad"
 ---

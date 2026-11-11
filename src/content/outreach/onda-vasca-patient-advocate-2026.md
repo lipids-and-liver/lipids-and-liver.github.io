@@ -14,8 +14,7 @@ resource:
 news: "8601c2834ddf"
 image: "/assets/images/outreach/onda-vasca-patient-advocate-2026.jpg"
 imageCredit:
-  author: "Shixart1985"
-  license: "CC BY 2.0"
-  licenseUrl: "https://creativecommons.org/licenses/by/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Close_up_view_of_a_microphone_set_up_in_a_recording_studio.jpg"
+  author: "Onda Vasca"
+  license: "Todos los derechos reservados"
+  source: "https://www.ondavasca.com/investigacion-contra-el-cancer-el-programa-patient-advocate-da-voz-a-pacientes-y-familiares-en-la-financiacion-y-diseno-de-terapias/"
 ---

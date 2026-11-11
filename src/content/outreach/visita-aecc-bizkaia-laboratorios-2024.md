@@ -10,9 +10,4 @@ url: "https://www.ehu.eus/es/web/campusa/-/visita-aecc-de-bizkaia-campus-de-bizk
 # La crónica no nombra los grupos visitados: confirmar que el laboratorio participó y quién lo atendió
 draft: false
 image: "/assets/images/outreach/visita-aecc-bizkaia-laboratorios-2024.jpg"
-imageCredit:
-  author: "Zarateman"
-  license: "CC0"
-  licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
-  source: "https://commons.wikimedia.org/wiki/File:Lejona_-_Campus_de_Bizkaia_de_la_UPV-EHU_-_Aula_Magna_05.jpg"
 ---
