@@ -623,6 +623,7 @@ collections:
           - { label: "Licencia (p. ej. CC BY 4.0, CC0, Dominio público)", name: "license", widget: "string" }
           - { label: "Enlace a la licencia", name: "licenseUrl", widget: "string", required: false }
           - { label: "Página de origen de la imagen", name: "source", widget: "string", required: false }
+          - { label: "Mostrar sobre la foto", name: "onImage", widget: "boolean", default: false, required: false, hint: "Pone «Foto: autor» en una esquina de la foto grande (sección de recursos). Útil para fotos de medios o fotógrafos" }
       - { label: "Pendiente de confirmar", name: "draft", widget: "boolean", default: false, hint: "Márcalo si no hay fuente que lo confirme; se mostrará con un aviso" }
 
   # ============================================================================

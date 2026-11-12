@@ -17,4 +17,5 @@ imageCredit:
   author: "Onda Vasca"
   license: "Todos los derechos reservados"
   source: "https://www.ondavasca.com/investigacion-contra-el-cancer-el-programa-patient-advocate-da-voz-a-pacientes-y-familiares-en-la-financiacion-y-diseno-de-terapias/"
+  onImage: true
 ---

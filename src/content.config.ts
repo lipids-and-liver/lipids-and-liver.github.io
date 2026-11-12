@@ -245,7 +245,9 @@ const outreach = defineCollection({
       author: z.string(),
       license: z.string(),
       licenseUrl: z.string().url().nullish(),
-      source: z.string().url().nullish()
+      source: z.string().url().nullish(),
+      // Mostrar el crédito sobre la propia foto (en la tarjeta de recursos), además de en el desplegable
+      onImage: z.boolean().nullish()
     }).nullish(),
     // Dato sin fuente que lo confirme: se muestra marcado hasta que el grupo lo valide
     draft: z.boolean().default(false)

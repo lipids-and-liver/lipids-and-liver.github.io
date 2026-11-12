@@ -123,6 +123,11 @@ for (const a of activities) {
               return (
                 <a class={`outreach-resource${a.data.image ? ' has-image' : ''}`} href={a.data.resource!.url} target="_blank" rel="noopener noreferrer">
                   {a.data.image && <img src={a.data.image} alt="" class="outreach-resource-img" width="800" height="450" loading="lazy" decoding="async" />}
+                  {a.data.image && a.data.imageCredit?.onImage && (
+                    <span class="outreach-resource-credit">
+                      <i class="fas fa-camera" aria-hidden="true"></i> {t.hero_photo_credit}: {a.data.imageCredit.author}
+                    </span>
+                  )}
                   <span class={`outreach-resource-kind kind-${a.data.resource!.kind}`}>
                     <i class={kind.icon} aria-hidden="true"></i> {kind.label}
                   </span>
@@ -265,7 +270,20 @@ for (const a of activities) {
     transition: box-shadow var(--transition-smooth), transform var(--transition-smooth);
   }
   .outreach-resource:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .outreach-resource.has-image { padding-top: 0; overflow: hidden; }
+  .outreach-resource.has-image { position: relative; padding-top: 0; overflow: hidden; }
+  /* Crédito sobre la foto, como en el hero y en Únete (sin enlace: la tarjeta entera ya lo es) */
+  .outreach-resource-credit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 2px 7px;
+    border-radius: 30px;
+    background: rgba(0, 30, 54, 0.55);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.56rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
   .outreach-resource-img {
     display: block;
     width: calc(100% + 2.5rem);
