@@ -4,13 +4,21 @@
       "image": "/assets/images/hero_outdoor_group.jpg",
       "alt_es": "Grupo Lipids & Liver frente a un edificio de la UPV/EHU",
       "alt_eu": "Lipids & Liver taldea UPV/EHUko eraikin baten aurrean",
-      "alt_en": "The Lipids & Liver group outside a UPV/EHU building"
+      "alt_en": "The Lipids & Liver group outside a UPV/EHU building",
+      "credit": {
+        "author": "Laura López (EHU)",
+        "source": "https://www.ehu.eus/es/web/campusa/-/encuentran-un-mecanismo-que-agrava-el-higado-graso-de-origen-metabolico"
+      }
     },
     {
       "image": "/assets/images/hero/grupo-entrada-maria-goyri.jpg",
       "alt_es": "Grupo Lipids & Liver en la entrada del edificio María Goyri",
       "alt_eu": "Lipids & Liver taldea María Goyri eraikinaren sarreran",
-      "alt_en": "The Lipids & Liver group at the entrance of the María Goyri building"
+      "alt_en": "The Lipids & Liver group at the entrance of the María Goyri building",
+      "credit": {
+        "author": "Laura López (EHU)",
+        "source": "https://www.ehu.eus/es/web/campusa/-/encuentran-un-mecanismo-que-agrava-el-higado-graso-de-origen-metabolico"
+      }
     },
     {
       "image": "/assets/images/hero/grupo-sala-ventanal.jpg",

@@ -111,6 +111,15 @@ collections:
               - { label: "Descripción (Español)", name: "alt_es", widget: "string", hint: "Describe la foto para personas que usan lector de pantalla. Ej: Grupo Lipids & Liver en el laboratorio" }
               - { label: "Deskribapena (Euskara)", name: "alt_eu", widget: "string", required: false }
               - { label: "Description (English)", name: "alt_en", widget: "string", required: false }
+              - label: "Créditos de la foto"
+                name: "credit"
+                widget: "object"
+                required: false
+                collapsed: true
+                hint: "Rellénalo si la foto es de otra persona (p. ej. un fotógrafo de la EHU). Se muestra en una esquina de la foto"
+                fields:
+                  - { label: "Autor", name: "author", widget: "string" }
+                  - { label: "Página de origen", name: "source", widget: "string", required: false }
 
   # 1.2c FOTOS DEL DÍA A DÍA (PÁGINA ÚNETE)
   - name: "join_gallery"

@@ -1359,6 +1359,25 @@ html.demo-alert-hidden .demo-alert-banner {
   visibility: visible;
 }
 
+/* Crédito de la foto (solo en las que lo tienen), arriba a la derecha para no chocar con los puntos */
+.hero-gallery-credit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 2px 7px;
+  border-radius: 30px;
+  background: rgba(0, 30, 54, 0.55);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.56rem;
+  line-height: 1.4;
+}
+
+.hero-gallery-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .hero-gallery-btn {
   position: absolute;
   top: 50%;

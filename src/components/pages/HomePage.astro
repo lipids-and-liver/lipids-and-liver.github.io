@@ -102,6 +102,14 @@ const heroSlides: any[] = (Array.isArray(rawSlides) ? rawSlides : []).filter((s:
                 alt={slide[`alt_${lang}`] || slide.alt_es}
                 decoding="async"
               />
+              {slide.credit?.author && (
+                <figcaption class="hero-gallery-credit">
+                  <i class="fas fa-camera" aria-hidden="true"></i> {t.hero_photo_credit}:{' '}
+                  {slide.credit.source
+                    ? <a href={slide.credit.source} target="_blank" rel="noopener noreferrer">{slide.credit.author}</a>
+                    : slide.credit.author}
+                </figcaption>
+              )}
             </figure>
           ))}
         </div>

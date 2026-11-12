@@ -94,22 +94,18 @@ const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Cre
                 <figure class="join-life-item">
                   <img src={p.image} alt="" width="1320" height="600" loading="lazy" decoding="async" />
                   <figcaption>{p.caption}</figcaption>
+                  {p.credit?.author && (
+                    <small class="join-life-credit">
+                      <i class="fas fa-camera" aria-hidden="true"></i> {t.hero_photo_credit}:{' '}
+                      {p.credit.source
+                        ? <a href={p.credit.source} target="_blank" rel="noopener noreferrer">{p.credit.author}</a>
+                        : p.credit.author}
+                    </small>
+                  )}
                 </figure>
               ))}
             </div>
           </div>
-          {photos.some(p => p.credit) && (
-            <p class="join-life-credits">
-              <i class="fas fa-camera" aria-hidden="true"></i> {t.outreach_credits_title}:{' '}
-              {photos.filter(p => p.credit).map((p, i) => (
-                <>
-                  {i > 0 && ' · '}
-                  {p.credit!.source ? <a href={p.credit!.source} target="_blank" rel="noopener noreferrer">{p.credit!.author}</a> : p.credit!.author}
-                  {' ('}{p.credit!.licenseUrl ? <a href={p.credit!.licenseUrl} target="_blank" rel="noopener noreferrer license">{p.credit!.license}</a> : p.credit!.license}{')'}
-                </>
-              ))}
-            </p>
-          )}
         </>
       )}
 
@@ -285,7 +281,7 @@ const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Cre
      (2 columnas × 1 fila), apiladas a la derecha. Las filas miden lo mismo
      que una columna, así que las altas y las anchas son el mismo rectángulo
      girado (aprox. 1:2 y 2:1). */
-  .join-life-wrap { container-type: inline-size; margin-bottom: 0.75rem; }
+  .join-life-wrap { container-type: inline-size; margin-bottom: 3.5rem; }
   .join-life-grid {
     --col: calc((100cqw - 3rem) / 4);
     display: grid;
@@ -325,8 +321,20 @@ const photos = joinGallery.photos.map(p => ({ ...p, credit: (p as { credit?: Cre
     color: #fff;
     background: linear-gradient(to top, rgba(0, 20, 40, 0.75), rgba(0, 20, 40, 0));
   }
-  .join-life-credits { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 3.5rem; line-height: 1.6; }
-  .join-life-credits a { color: var(--text-muted); }
+  /* Crédito sobre la propia foto, como en la galería del hero */
+  .join-life-credit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    max-width: calc(100% - 20px);
+    padding: 2px 7px;
+    border-radius: 30px;
+    background: rgba(0, 30, 54, 0.55);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.56rem;
+    line-height: 1.4;
+  }
+  .join-life-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
   /* En móvil: las dos altas juntas arriba y las dos anchas debajo,
      manteniendo los mismos rectángulos (1:2 y 2:1) */
